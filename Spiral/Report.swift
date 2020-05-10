@@ -9,9 +9,10 @@
 import Foundation
 
 struct Report {
-    var total_grand:Int // total seconds tracked
-    var total_count:Int // total number of time entries in the report
-    var per_page:Int    // number of time entries provided per request
+    var total_grand:Int          // total seconds tracked
+    var total_count:Int          // total number of time entries in the report
+    var per_page:Int             // number of time entries provided per request
+    var entries:[TimeEntry] = [] // list of TimeEntry's
     init(_ json:Dictionary<String, AnyObject>){
         // unwrap optionals
         print(json["total_grand"], json["total_count"], json["per_page"])
@@ -30,16 +31,14 @@ struct Report {
         
         if let data = json["data"] as? [Dictionary<String, AnyObject>]{
             for entry in data{
-                TimeEntry(entry)
+                entries.append(TimeEntry(entry))
             }
         } else {
-            
             print("could not coerce!")
         }
         
         self.total_grand = total_grand
         self.total_count = total_count
         self.per_page = per_page
-        
     }
 }

@@ -21,74 +21,17 @@ enum NetworkError: Error {
     // generic error for handling non-network errors
 }
 
-// makes API calls until all pages are fetched
-func toggl_request(token: String) -> Report{
-    
-    // assemble request URL (page is added later)
-    let df = DateFormatter()
-    df.dateFormat = "yyyy-MM-dd" // ISO 8601 format, day precision
-    
-    let since = df.string(from: Date().addingTimeInterval(TimeInterval(-86400 * 365)))
-    let until = df.string(from: Date())
-    
-    // documented at https://github.com/toggl/toggl_api_docs/blob/master/reports.md
-    let base_url = "https://toggl.com/reports/api/v2/"
-    let detailsURL = URL(string:"\(base_url)details?" + [
-        "user_agent=\(user_agent)",    // identifies my app
-        "workspace_id=\(myWorkspace)", // provided by the User
-        "since=\(since)",              // grab 365 days...
-        "until=\(until)"               // ...from today
-        ].joined(separator: "&"))!
-    
-    
-    
-    
-    var report = Report([:])
-    DispatchQueue.global(qos: .utility).async {
-        var bigSem = DispatchSemaphore(value: 0)
-        let result = toggl_helper(
-            old: Result<Report, NetworkError>.success(report),
-            detailsURL: detailsURL,
-            page: 0,
-            token: token,
-            sem: bigSem
-        )
-        bigSem.wait()
-//            .flatMap{toggl_helper(old: Result<Report, NetworkError>.success($0), detailsURL: detailsURL, page: 1, token: token)}
-        DispatchQueue.main.async {
-            switch result {
-            case let .success(myReport):
-                report = myReport
-            case let .failure(error):
-            //    print(error)
-            }
-        }
-    }
-    
-    
-    
-    
-    
-    
-    
-
-    print("\(report.total_count) entries found. Now fetching...")
-    return report
-}
-
-// HTTP-requests and parses data from the Toggl API
+// makes HTTP-requests and parses data from the Toggl API
 // utilizing semaphore method from https://medium.com/@michaellong/swift-5-async-await-result-gcd-and-timeout-1f1652d7adcf
-func toggl_helper(
-    old: Result<Report, NetworkError>,
+func toggl_request(
     detailsURL: URL,
-    page: Int,
-    token: String,
-    sem: DispatchSemaphore
+    token: String
 ) -> Result<Report, NetworkError> {
+    var page = 0
     var result: Result<Report, NetworkError>!
+    var report: Report!
     // semaphore for API call
-    var callSem = DispatchSemaphore(value: 0)
-    print("Page \(page)") // DEBUG
+    let sem = DispatchSemaphore(value: 0)
     
     //define completionHandler
     let myHandler = {(data: Data?, resp: URLResponse?, error: Error?) -> Void in
@@ -97,44 +40,59 @@ func toggl_helper(
             let data = data
         else {
             result = .failure(.other)
-            callSem.signal()
+            sem.signal()
             return
         }
         guard http_response.statusCode == 200 else {
             result = .failure(.statusCode)
-            callSem.signal()
+            sem.signal()
             return
         }
         
         // all checks passed
         do {
             let json = try JSONSerialization.jsonObject(with: data, options: [])
-            result = .success(Report(json as! Dictionary<String, AnyObject>))
-            
-            try print("\(result.get().per_page) entries fetched")
-            if (page < 3){
-//                result = result.flatMap{toggl_helper(old: $0, detailsURL: detailsURL, page: page + 1, token: token)}
+            switch page {
+            case 0:
+                // first call gets meta-data (number of Entry's to expect)
+                report = Report(json as! Dictionary<String, AnyObject>)
+            default:
+                // subsequent calls simply append results to report
+                report.entries += Report(json as! Dictionary<String, AnyObject>).entries
             }
-            callSem.signal()
+            sem.signal()
         } catch {
-            print(error)
+            result = .failure(.other)
+            sem.signal()
+            return
         }
     }
     
-    // append page no.
-    let page_url = detailsURL.appendingPathComponent("&page=\(page)", isDirectory: false)
-    var request = URLRequest(url: page_url)
-    
-    // set headers
-    let auth = Data("\(token):api_token".utf8).base64EncodedString()
-    request.setValue("Basic \(auth)", forHTTPHeaderField: "Authorization")
-    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-    
     // send request
-    URLSession.shared.dataTask(with: request, completionHandler: myHandler).resume()
+    repeat {
+        
+        // append page no. to URL
+        let page_url = detailsURL.appendingPathComponent("&page=\(page)", isDirectory: false)
+        var request = URLRequest(url: page_url)
+        
+        // set headers
+        let auth = Data("\(token):api_token".utf8).base64EncodedString()
+        request.setValue("Basic \(auth)", forHTTPHeaderField: "Authorization")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        URLSession.shared.dataTask(with: request, completionHandler: myHandler).resume()
+        
+        // wait for call to complete
+        if sem.wait(timeout: .now() + 15) == .timedOut {
+            // abort if call takes too long
+            return .failure(.timeout)
+        }
+        
+        // request next page of data
+        page += 1
+    } while(report.entries.count < report.total_count)
+    result = .success(report)
     
     // wait for request to complete
-    _ = callSem.wait(wallTimeout: .distantFuture)
-    sem.signal()
     return result
 }
