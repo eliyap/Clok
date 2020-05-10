@@ -60,7 +60,7 @@ func toggl_request(token: String) -> Report{
             case let .success(myReport):
                 report = myReport
             case let .failure(error):
-                print(error)
+            //    print(error)
             }
         }
     }
