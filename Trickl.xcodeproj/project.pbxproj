@@ -18,12 +18,14 @@
 		C6C18D512448F96F000345D5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6C18D4F2448F96F000345D5 /* LaunchScreen.storyboard */; };
 		C6C18D5C2448F96F000345D5 /* LandwarksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C18D5B2448F96F000345D5 /* LandwarksTests.swift */; };
 		C6C18D672448F96F000345D5 /* LandwarksUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C18D662448F96F000345D5 /* LandwarksUITests.swift */; };
-		C6C18D7524493EC8000345D5 /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C18D7424493EC8000345D5 /* Badge.swift */; };
+		C6C18D7524493EC8000345D5 /* SpiralUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C18D7424493EC8000345D5 /* SpiralUI.swift */; };
 		C6C18D7724493F93000345D5 /* Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C18D7624493F93000345D5 /* Hex.swift */; };
 		C6C18D79244B6BB9000345D5 /* Arc.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C18D78244B6BB9000345D5 /* Arc.swift */; };
 		C6C18D7B244BB76F000345D5 /* ZESpiral.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C18D7A244BB76F000345D5 /* ZESpiral.swift */; };
 		C6C18D7D244BE891000345D5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C18D7C244BE891000345D5 /* Constants.swift */; };
 		C6C18D80244CD7D2000345D5 /* SpiralHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C18D7F244CD7D2000345D5 /* SpiralHelpers.swift */; };
+		C6F605AD246C520D00D0FE82 /* EntrySpiral.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F605AC246C520D00D0FE82 /* EntrySpiral.swift */; };
+		C6F605AF246C6B1700D0FE82 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F605AE246C6B1700D0FE82 /* DateExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,12 +63,14 @@
 		C6C18D622448F96F000345D5 /* TricklUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TricklUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6C18D662448F96F000345D5 /* LandwarksUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandwarksUITests.swift; sourceTree = "<group>"; };
 		C6C18D682448F96F000345D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C6C18D7424493EC8000345D5 /* Badge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Badge.swift; sourceTree = "<group>"; };
+		C6C18D7424493EC8000345D5 /* SpiralUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiralUI.swift; sourceTree = "<group>"; };
 		C6C18D7624493F93000345D5 /* Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hex.swift; sourceTree = "<group>"; };
 		C6C18D78244B6BB9000345D5 /* Arc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arc.swift; sourceTree = "<group>"; };
 		C6C18D7A244BB76F000345D5 /* ZESpiral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZESpiral.swift; sourceTree = "<group>"; };
 		C6C18D7C244BE891000345D5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C6C18D7F244CD7D2000345D5 /* SpiralHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiralHelpers.swift; sourceTree = "<group>"; };
+		C6F605AC246C520D00D0FE82 /* EntrySpiral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntrySpiral.swift; sourceTree = "<group>"; };
+		C6F605AE246C6B1700D0FE82 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,10 +167,12 @@
 			children = (
 				C6C18D7A244BB76F000345D5 /* ZESpiral.swift */,
 				C6C18D7F244CD7D2000345D5 /* SpiralHelpers.swift */,
-				C6C18D7424493EC8000345D5 /* Badge.swift */,
+				C6C18D7424493EC8000345D5 /* SpiralUI.swift */,
+				C6F605AC246C520D00D0FE82 /* EntrySpiral.swift */,
 				C615CD56245F332300D62B87 /* Toggl.swift */,
 				C615CD58245F33F100D62B87 /* Report.swift */,
 				C67EAAB3244D04F0008D4982 /* TimeEntry.swift */,
+				C6F605AE246C6B1700D0FE82 /* DateExtension.swift */,
 			);
 			path = Spiral;
 			sourceTree = "<group>";
@@ -303,13 +309,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6C18D452448F96C000345D5 /* AppDelegate.swift in Sources */,
+				C6F605AF246C6B1700D0FE82 /* DateExtension.swift in Sources */,
 				C6C18D7B244BB76F000345D5 /* ZESpiral.swift in Sources */,
 				C6C18D7724493F93000345D5 /* Hex.swift in Sources */,
 				C6C18D79244B6BB9000345D5 /* Arc.swift in Sources */,
-				C6C18D7524493EC8000345D5 /* Badge.swift in Sources */,
+				C6C18D7524493EC8000345D5 /* SpiralUI.swift in Sources */,
 				C67EAAB5244D0FF3008D4982 /* TimeEntry.swift in Sources */,
 				C6C18D472448F96C000345D5 /* SceneDelegate.swift in Sources */,
 				C6C18D492448F96C000345D5 /* ContentView.swift in Sources */,
+				C6F605AD246C520D00D0FE82 /* EntrySpiral.swift in Sources */,
 				C6C18D7D244BE891000345D5 /* Constants.swift in Sources */,
 				C6C18D80244CD7D2000345D5 /* SpiralHelpers.swift in Sources */,
 				C615CD57245F332300D62B87 /* Toggl.swift in Sources */,

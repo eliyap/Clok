@@ -11,9 +11,11 @@ import SwiftUI
 
 
 struct TimeEntry {
+    let id:Int
+    
     // time parameters
-    let startTheta: Angle
-    let endTheta: Angle
+    var startTheta = Angle(degrees: 0)
+    var endTheta = Angle(degrees: 0)
     let start: Date // needs to be coerced from ISO 8601 date / time format (YYYY - MM - DDTHH: MM: SS)
     let end: Date   // needs to be coerced from ISO 8601 date / time format (YYYY - MM - DDTHH: MM: SS)
     let dur: Int = 0
@@ -33,32 +35,60 @@ struct TimeEntry {
     // let cur // currency
     
     // as yet unhandled
-    let id: Int = 0//
     let uid: Int = 0
     let user: String = ""
     // let tags
     
+    // used to create a TimeEntry from data parsed from JSON
     init(
         _ data:Dictionary<String,AnyObject>
     ){
+        // initialize DateFormatter to handle ISO8601 strings
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+        
+        // nullable properties
+        // downcast cannot be checked via "guard"
+        let pid = data["pid"] as? Int
+        let project = data["project"] as? String
+        let project_hex_color = data["project_hex_color"] as? String
+        let tid = data["tid"] as? Int
+        let task = data["task"] as? String
+        
+        // check that these properties are not nil
         guard
-            // nullable properties
-            let pid = data["pid"] as? Int,
-            let project = data["project"] as? String,
-            let project_hex_color = data["project_hex_color"] as? String,
-            let tid = data["tid"] as? Int,
-            let task = data["task"] as? String,
-            // not nullables
+            let id = data["id"] as? Int,
             data["description"] != nil,
             let description = data["description"] as? String,
             // get Dates from ISO8601 string
             data["start"] != nil,
             let startString = data["start"] as? String,
-            let start = DateFormatter().date(from: startString),
+            let start = df.date(from: startString),
             data["end"] != nil,
             let endString = data["end"] as? String,
-            let end = DateFormatter().date(from: endString)
+            let end = df.date(from: endString)
         else {
+            #if DEBUG
+            print("Entry initialization failed!")
+            print(data)
+            #endif
+            self.pid = nil
+            self.project = nil
+            self.project_hex_color = nil
+            self.tid = nil
+            self.task = nil
+            self.description = "" 
+            self.start = Date()
+            self.end = Date()
+            self.id = -1
+            return // maybe have a return value indicating failure?
+        }
+        // sanity check, make sure end time is after start time
+        guard start < end else {
+            #if DEBUG
+            print("Start cannot be after end!")
+            print(data)
+            #endif
             self.pid = nil
             self.project = nil
             self.project_hex_color = nil
@@ -67,11 +97,10 @@ struct TimeEntry {
             self.description = ""
             self.start = Date()
             self.end = Date()
-            self.startTheta = Angle(degrees: 0)
-            self.endTheta = Angle(degrees: 0)
-            return // maybe have a return value indicating failure?
+            self.id = -1
+            return
         }
-        
+        self.id = id
         self.pid = pid
         self.project = project
         self.project_hex_color = project_hex_color
@@ -80,16 +109,28 @@ struct TimeEntry {
         self.description = description
         self.start = start
         self.end = end
-        // calculate start / end angle
-        self.startTheta = dateTheta(date: start)
-        self.endTheta = dateTheta(date: end)
-        
     }
-}
-
-let degreesPerMin: Double = 360.0 / (24 * 60)
-func dateTheta(date:Date)->Angle{
-    var cal = Calendar.current
-    let mins = Double(cal.component(.hour, from: date) * 60 + cal.component(.minute, from: date))
-    return Angle(degrees: mins * degreesPerMin)
+    
+    // empty initializer for convenience
+    init () {
+        self.pid = nil
+        self.project = nil
+        self.project_hex_color = nil
+        self.tid = nil
+        self.task = nil
+        self.description = ""
+        self.start = Date()
+        self.end = Date()
+        self.id = -1
+    }
+    
+    // sets the start and end angles based on the provided start datetime
+    // similar to "zeroing" a graph or weighing scale
+    let degreesPerSec: Double = 360.0 / (24 * 60 * 60)
+    mutating func zero (_ zeroDate:Date) {
+        let startInt = (start > zeroDate) ? (start - zeroDate) : TimeInterval(exactly: 0)
+        let endInt = (end > zeroDate) ? (end - zeroDate) : TimeInterval(exactly: 0)
+        self.startTheta = Angle(degrees: startInt! * degreesPerSec)
+        self.endTheta = Angle(degrees: endInt! * degreesPerSec)
+    }
 }

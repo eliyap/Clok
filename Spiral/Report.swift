@@ -15,7 +15,6 @@ struct Report {
     var entries:[TimeEntry] = [] // list of TimeEntry's
     init(_ json:Dictionary<String, AnyObject>){
         // unwrap optionals
-        print(json["total_grand"], json["total_count"], json["per_page"])
         guard
             let total_grand = json["total_grand"] as? Int,
             let total_count = json["total_count"] as? Int,
@@ -29,16 +28,20 @@ struct Report {
             return
         }
         
-        if let data = json["data"] as? [Dictionary<String, AnyObject>]{
-            for entry in data{
-                entries.append(TimeEntry(entry))
-            }
-        } else {
-            print("could not coerce!")
-        }
-        
         self.total_grand = total_grand
         self.total_count = total_count
         self.per_page = per_page
+        
+        if let data = json["data"] as? [Dictionary<String, AnyObject>] {
+            data.forEach { self.entries.append(TimeEntry($0)) }
+        } else {
+            print("could not coerce!")
+        }
+    }
+    // initializes an empty Report for convenience
+    init () {
+        self.total_grand = -1
+        self.total_count = -1
+        self.per_page = -1
     }
 }

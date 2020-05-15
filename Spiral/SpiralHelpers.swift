@@ -41,7 +41,7 @@ func moveOutControl(
     pt: CGPoint,
     theta: Double,
     phi: Double
-) -> CGPoint{
+) -> CGPoint {
     let tPrime = thiccness * 2 * sin(phi / 2) / sin(phi)
     return CGPoint(
         x: Double(pt.x) + cos(theta) * tPrime,

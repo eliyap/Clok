@@ -20,8 +20,10 @@ struct Spiral: Shape {
     
     func path(in rect: CGRect) -> Path {
         guard (theta2 > theta1) else {
+            print("invalid thetas!")
             return Path()
         }
+        print(theta1,theta2)
         
         var oldT = theta1
         var newT = theta1
@@ -35,7 +37,7 @@ struct Spiral: Shape {
         let del2 = (theta2 == 0) ? (corner_radius) : (corner_radius / theta2)
         
         // approximate small arcs with rounded rects
-        guard (theta2 - theta1 > 0.05 * Double.pi) else {
+        guard (theta2 - theta1 > 0.2 * Double.pi) else {
             return Path.init(
                 roundedRect: CGRect(
                     origin: CGPoint(
@@ -50,6 +52,8 @@ struct Spiral: Shape {
         }
         
         var thetas: [Double] = []
+        // iterate from start to end theta (accounting for small variation due to round cap)
+        // to create a list of angles
         for t in stride(from: theta1 + del1, to: theta2 - del2, by: thetaStep){
             thetas.append(t)
         }
