@@ -10,12 +10,12 @@ import Foundation
 import SwiftUI
 
 
-struct TimeEntry {
+class TimeEntry : ObservableObject {
     let id:Int
     
     // time parameters
-    var startTheta = Angle(degrees: 0)
-    var endTheta = Angle(degrees: 0)
+    @Published var startTheta = Angle(degrees: 0)
+    @Published var endTheta = Angle(degrees: 0)
     let start: Date // needs to be coerced from ISO 8601 date / time format (YYYY - MM - DDTHH: MM: SS)
     let end: Date   // needs to be coerced from ISO 8601 date / time format (YYYY - MM - DDTHH: MM: SS)
     let dur: Int = 0
@@ -127,7 +127,7 @@ struct TimeEntry {
     // sets the start and end angles based on the provided start datetime
     // similar to "zeroing" a graph or weighing scale
     let degreesPerSec: Double = 360.0 / (24 * 60 * 60)
-    mutating func zero (_ zeroDate:Date) {
+    func zero (_ zeroDate:Date) {
         let startInt = (start > zeroDate) ? (start - zeroDate) : TimeInterval(exactly: 0)
         let endInt = (end > zeroDate) ? (end - zeroDate) : TimeInterval(exactly: 0)
         self.startTheta = Angle(degrees: startInt! * degreesPerSec)
