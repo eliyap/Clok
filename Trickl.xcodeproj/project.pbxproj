@@ -10,6 +10,8 @@
 		C615CD57245F332300D62B87 /* Toggl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C615CD56245F332300D62B87 /* Toggl.swift */; };
 		C615CD59245F33F100D62B87 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = C615CD58245F33F100D62B87 /* Report.swift */; };
 		C67EAAB5244D0FF3008D4982 /* TimeEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67EAAB3244D04F0008D4982 /* TimeEntry.swift */; };
+		C6B0FF9C246F124300DED011 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B0FF9B246F124300DED011 /* ColorExtension.swift */; };
+		C6B0FF9E246F51CE00DED011 /* EntryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B0FF9D246F51CE00DED011 /* EntryList.swift */; };
 		C6C18D452448F96C000345D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C18D442448F96C000345D5 /* AppDelegate.swift */; };
 		C6C18D472448F96C000345D5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C18D462448F96C000345D5 /* SceneDelegate.swift */; };
 		C6C18D492448F96C000345D5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C18D482448F96C000345D5 /* ContentView.swift */; };
@@ -19,7 +21,6 @@
 		C6C18D5C2448F96F000345D5 /* LandwarksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C18D5B2448F96F000345D5 /* LandwarksTests.swift */; };
 		C6C18D672448F96F000345D5 /* LandwarksUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C18D662448F96F000345D5 /* LandwarksUITests.swift */; };
 		C6C18D7524493EC8000345D5 /* SpiralUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C18D7424493EC8000345D5 /* SpiralUI.swift */; };
-		C6C18D7724493F93000345D5 /* Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C18D7624493F93000345D5 /* Hex.swift */; };
 		C6C18D79244B6BB9000345D5 /* Arc.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C18D78244B6BB9000345D5 /* Arc.swift */; };
 		C6C18D7B244BB76F000345D5 /* ZESpiral.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C18D7A244BB76F000345D5 /* ZESpiral.swift */; };
 		C6C18D7D244BE891000345D5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C18D7C244BE891000345D5 /* Constants.swift */; };
@@ -49,6 +50,8 @@
 		C615CD56245F332300D62B87 /* Toggl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toggl.swift; sourceTree = "<group>"; };
 		C615CD58245F33F100D62B87 /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
 		C67EAAB3244D04F0008D4982 /* TimeEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntry.swift; sourceTree = "<group>"; };
+		C6B0FF9B246F124300DED011 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		C6B0FF9D246F51CE00DED011 /* EntryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryList.swift; sourceTree = "<group>"; };
 		C6C18D412448F96C000345D5 /* Trickl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trickl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6C18D442448F96C000345D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C6C18D462448F96C000345D5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,7 +67,6 @@
 		C6C18D662448F96F000345D5 /* LandwarksUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandwarksUITests.swift; sourceTree = "<group>"; };
 		C6C18D682448F96F000345D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C6C18D7424493EC8000345D5 /* SpiralUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiralUI.swift; sourceTree = "<group>"; };
-		C6C18D7624493F93000345D5 /* Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hex.swift; sourceTree = "<group>"; };
 		C6C18D78244B6BB9000345D5 /* Arc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arc.swift; sourceTree = "<group>"; };
 		C6C18D7A244BB76F000345D5 /* ZESpiral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZESpiral.swift; sourceTree = "<group>"; };
 		C6C18D7C244BE891000345D5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -98,16 +100,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C6B0FF9F246F521400DED011 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				C6B0FF9D246F51CE00DED011 /* EntryList.swift */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		C6B0FFA0246F52A700DED011 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C615CD56245F332300D62B87 /* Toggl.swift */,
+				C615CD58245F33F100D62B87 /* Report.swift */,
+				C67EAAB3244D04F0008D4982 /* TimeEntry.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C6B0FFA1246F52B600DED011 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C6B0FF9B246F124300DED011 /* ColorExtension.swift */,
+				C6F605AE246C6B1700D0FE82 /* DateExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		C6C18D382448F96C000345D5 = {
 			isa = PBXGroup;
 			children = (
 				C6C18D7C244BE891000345D5 /* Constants.swift */,
-				C6C18D7624493F93000345D5 /* Hex.swift */,
 				C6C18D78244B6BB9000345D5 /* Arc.swift */,
 				C6C18D432448F96C000345D5 /* Landwarks */,
 				C6C18D5A2448F96F000345D5 /* LandwarksTests */,
 				C6C18D652448F96F000345D5 /* LandwarksUITests */,
 				C6C18D422448F96C000345D5 /* Products */,
+				C6B0FFA1246F52B600DED011 /* Extensions */,
+				C6B0FFA0246F52A700DED011 /* Models */,
+				C6B0FF9F246F521400DED011 /* Details */,
 				C6C18D7E244CD7AA000345D5 /* Spiral */,
 			);
 			sourceTree = "<group>";
@@ -169,10 +200,6 @@
 				C6C18D7F244CD7D2000345D5 /* SpiralHelpers.swift */,
 				C6C18D7424493EC8000345D5 /* SpiralUI.swift */,
 				C6F605AC246C520D00D0FE82 /* EntrySpiral.swift */,
-				C615CD56245F332300D62B87 /* Toggl.swift */,
-				C615CD58245F33F100D62B87 /* Report.swift */,
-				C67EAAB3244D04F0008D4982 /* TimeEntry.swift */,
-				C6F605AE246C6B1700D0FE82 /* DateExtension.swift */,
 			);
 			path = Spiral;
 			sourceTree = "<group>";
@@ -311,14 +338,15 @@
 				C6C18D452448F96C000345D5 /* AppDelegate.swift in Sources */,
 				C6F605AF246C6B1700D0FE82 /* DateExtension.swift in Sources */,
 				C6C18D7B244BB76F000345D5 /* ZESpiral.swift in Sources */,
-				C6C18D7724493F93000345D5 /* Hex.swift in Sources */,
 				C6C18D79244B6BB9000345D5 /* Arc.swift in Sources */,
 				C6C18D7524493EC8000345D5 /* SpiralUI.swift in Sources */,
 				C67EAAB5244D0FF3008D4982 /* TimeEntry.swift in Sources */,
 				C6C18D472448F96C000345D5 /* SceneDelegate.swift in Sources */,
 				C6C18D492448F96C000345D5 /* ContentView.swift in Sources */,
+				C6B0FF9C246F124300DED011 /* ColorExtension.swift in Sources */,
 				C6F605AD246C520D00D0FE82 /* EntrySpiral.swift in Sources */,
 				C6C18D7D244BE891000345D5 /* Constants.swift in Sources */,
+				C6B0FF9E246F51CE00DED011 /* EntryList.swift in Sources */,
 				C6C18D80244CD7D2000345D5 /* SpiralHelpers.swift in Sources */,
 				C615CD57245F332300D62B87 /* Toggl.swift in Sources */,
 				C615CD59245F33F100D62B87 /* Report.swift in Sources */,
