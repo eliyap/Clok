@@ -20,10 +20,9 @@ struct Spiral: Shape {
     
     func path(in rect: CGRect) -> Path {
         guard (theta2 > theta1) else {
-            print("invalid thetas!")
+//            print("invalid thetas!")
             return Path()
         }
-        print(theta1,theta2)
         
         var oldT = theta1
         var newT = theta1
@@ -36,8 +35,13 @@ struct Spiral: Shape {
         let del1 = (theta1 == 0) ? (corner_radius) : (corner_radius / theta1)
         let del2 = (theta2 == 0) ? (corner_radius) : (corner_radius / theta2)
         
-        // approximate small arcs with rounded rects
-        guard (theta2 - theta1 > 0.2 * Double.pi) else {
+        // approximate small arcs by simply returning rounded rects
+        guard
+            // arc is not too thin a sliver
+            (theta2 > 3 && theta2 - theta1 > 0.05 * Double.pi)
+                // and is not too close to the center
+                || (theta2 < 3 && theta2 - theta1 > 1)
+        else {
             return Path.init(
                 roundedRect: CGRect(
                     origin: CGPoint(
@@ -47,7 +51,9 @@ struct Spiral: Shape {
                     size: CGSize(width: thiccness, height: (theta2 - theta1) * (theta2 + theta1) / 2)),
                 cornerRadius: CGFloat(corner_radius)
             )
+                // rotate it into place
                 .applying(CGAffineTransform(rotationAngle: CGFloat(theta1)))
+                // center it
                 .applying(CGAffineTransform(translationX: frame_size/2, y: frame_size/2))
         }
         
