@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import Landwarks
+@testable import Trickl
 
 class LandwarksTests: XCTestCase {
 

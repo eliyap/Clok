@@ -135,7 +135,7 @@
 			children = (
 				C6C18D7C244BE891000345D5 /* Constants.swift */,
 				C6C18D78244B6BB9000345D5 /* Arc.swift */,
-				C6C18D432448F96C000345D5 /* Landwarks */,
+				C6C18D432448F96C000345D5 /* Trickl */,
 				C6C18D5A2448F96F000345D5 /* LandwarksTests */,
 				C6C18D652448F96F000345D5 /* LandwarksUITests */,
 				C6C18D422448F96C000345D5 /* Products */,
@@ -156,7 +156,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C6C18D432448F96C000345D5 /* Landwarks */ = {
+		C6C18D432448F96C000345D5 /* Trickl */ = {
 			isa = PBXGroup;
 			children = (
 				C6C18D442448F96C000345D5 /* AppDelegate.swift */,
@@ -167,7 +167,7 @@
 				C6C18D522448F96F000345D5 /* Info.plist */,
 				C6C18D4C2448F96F000345D5 /* Preview Content */,
 			);
-			path = Landwarks;
+			path = Trickl;
 			sourceTree = "<group>";
 		};
 		C6C18D4C2448F96F000345D5 /* Preview Content */ = {
