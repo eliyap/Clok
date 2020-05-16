@@ -18,7 +18,6 @@ enum NetworkError: Error {
     case server
     case timeout
     case statusCode
-    case empty
     case other // bad practice, in future try to figure out how I can have some
     // generic error for handling non-network errors
 }
@@ -31,6 +30,7 @@ func toggl_request(
 ) -> Result<Report, NetworkError> {
     var page = 1 // pages are indexed from 1
     var result: Result<Report, NetworkError>!
+    var emptyReq = false // flag for when a request returns no entries
     // initialize as empty to prevent crashes when offline
     var report: Report = Report([:])
     // semaphore for API call
@@ -74,7 +74,7 @@ func toggl_request(
                 guard new_entries.count > 0 else {
                     // return expression had nothing!
                     // causes requests to stop, this prevents infinite polling of the API
-                    result = .failure(.empty)
+                    emptyReq = true
                     return
                 }
                 report.entries += new_entries
@@ -104,15 +104,12 @@ func toggl_request(
             // abort if call takes too long
             return .failure(.timeout)
         }
-        
-        switch result {
-        case .failure(.empty):
+        if emptyReq {
             // if nothing was found, stop requesting!
             break page_loop
-        default:
-            // request next page of data
-            page += 1
         }
+        // request next page of data
+        page += 1
     } while(report.entries.count < report.total_count)
     
     // only return success if there is no failure

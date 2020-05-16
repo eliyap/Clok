@@ -18,12 +18,12 @@ class TimeEntry : ObservableObject {
     @Published var endTheta = Angle(degrees: 0)
     let start: Date // needs to be coerced from ISO 8601 date / time format (YYYY - MM - DDTHH: MM: SS)
     let end: Date   // needs to be coerced from ISO 8601 date / time format (YYYY - MM - DDTHH: MM: SS)
-    let dur: Int = 0
+    let dur: TimeInterval
 
     // categorization parameters
     let pid: Int?
     let project: String?
-    let project_hex_color: String?
+    let project_hex_color: Color
     let tid: Int?
     let task: String? // might not be a string???
     let description: String // not nullable
@@ -40,7 +40,7 @@ class TimeEntry : ObservableObject {
     // let tags
     
     // used to create a TimeEntry from data parsed from JSON
-    init(
+    init?(
         _ data:Dictionary<String,AnyObject>
     ){
         // initialize DateFormatter to handle ISO8601 strings
@@ -66,22 +66,14 @@ class TimeEntry : ObservableObject {
             let start = df.date(from: startString),
             data["end"] != nil,
             let endString = data["end"] as? String,
-            let end = df.date(from: endString)
+            let end = df.date(from: endString),
+            let dur = data["dur"] as? Int
         else {
             #if DEBUG
             print("Entry initialization failed!")
             print(data)
             #endif
-            self.pid = nil
-            self.project = nil
-            self.project_hex_color = nil
-            self.tid = nil
-            self.task = nil
-            self.description = "" 
-            self.start = Date()
-            self.end = Date()
-            self.id = -1
-            return // maybe have a return value indicating failure?
+            return nil
         }
         // sanity check, make sure end time is after start time
         guard start < end else {
@@ -89,43 +81,38 @@ class TimeEntry : ObservableObject {
             print("Start cannot be after end!")
             print(data)
             #endif
-            self.pid = nil
-            self.project = nil
-            self.project_hex_color = nil
-            self.tid = nil
-            self.task = nil
-            self.description = ""
-            self.start = Date()
-            self.end = Date()
-            self.id = -1
-            return
+            return nil
         }
+        
         self.id = id
         self.pid = pid
         self.project = project
-        self.project_hex_color = project_hex_color
+        self.project_hex_color = Color(hex: project_hex_color ?? "#888888") // middle of the road grey, replace with dark mode sensitive color later
         self.tid = tid
         self.task = task
         self.description = description
         self.start = start
         self.end = end
+        self.dur = TimeInterval(exactly: dur/1000)!
     }
     
     // empty initializer for convenience
     init () {
         self.pid = nil
         self.project = nil
-        self.project_hex_color = nil
+        self.project_hex_color = Color.black
         self.tid = nil
         self.task = nil
         self.description = ""
         self.start = Date()
         self.end = Date()
         self.id = -1
+        self.dur = -1
     }
     
     // sets the start and end angles based on the provided start datetime
     // similar to "zeroing" a graph or weighing scale
+    // NOTE: max angle does not need to be set, capped by ZESpiral
     let degreesPerSec: Double = 360.0 / (24 * 60 * 60)
     func zero (_ zeroDate:Date) {
         let startInt = (start > zeroDate) ? (start - zeroDate) : TimeInterval(exactly: 0)

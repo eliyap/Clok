@@ -9,14 +9,35 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var report:Report
+    @State var report = Report()
+    // detect the device size class
+    // https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/adaptivity-and-layout/
+    @Environment(\.verticalSizeClass) var heightClass
     
     var body : some View {
-        GeometryReader { geo in
-            SpiralUI.init()
-                .scaleEffect(min(geo.size.width / frame_size, geo.size.height / frame_size))
+        GeometryReader {geo in
+            HStack {
+                // landscape mode
+                if geo.size.width > geo.size.height {
+                    SpiralUI(self.report)
+                    EntryList(report: self.report)
+                } else {
+                    // portrait mode
+                    // switch to a VStack (HStack with only 1 element has no effect)
+                    VStack(alignment: .center) {
+                        SpiralUI(self.report)
+//                        TimeEntryList()
+                        EntryList(report: self.report)
+                    }
+                }
+            } .onAppear { // load data immediately
+                self.loadData()
+            }
+
         }
+                
     }
+    
     
     func loadData() {
         DispatchQueue.global(qos: .utility).async {
@@ -61,6 +82,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(report: Report())
     }
 }

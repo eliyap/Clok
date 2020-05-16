@@ -14,8 +14,9 @@ struct EntrySpiral: View {
         Spiral(theta1: entry.startTheta, theta2: entry.endTheta)
             // fill in with the provided color, or black by default
             // TODO: accomodate dark mode with an adaptive color here
-            .fill(Color.init(hex: entry.project_hex_color ?? "#000000"))
+            .fill(entry.project_hex_color)
             .gesture(TapGesture().onEnded(){_ in
+                // PLACEHOLDER
                 print("\(self.entry.description) - \(self.entry.project ?? "none")")
             })
     }

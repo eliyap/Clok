@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		C615CD57245F332300D62B87 /* Toggl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C615CD56245F332300D62B87 /* Toggl.swift */; };
 		C615CD59245F33F100D62B87 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = C615CD58245F33F100D62B87 /* Report.swift */; };
+		C6428DD0246F892A00A02A9B /* LineEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6428DCF246F892A00A02A9B /* LineEntry.swift */; };
 		C67EAAB5244D0FF3008D4982 /* TimeEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67EAAB3244D04F0008D4982 /* TimeEntry.swift */; };
 		C6B0FF9C246F124300DED011 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B0FF9B246F124300DED011 /* ColorExtension.swift */; };
 		C6B0FF9E246F51CE00DED011 /* EntryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B0FF9D246F51CE00DED011 /* EntryList.swift */; };
@@ -49,6 +50,7 @@
 /* Begin PBXFileReference section */
 		C615CD56245F332300D62B87 /* Toggl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toggl.swift; sourceTree = "<group>"; };
 		C615CD58245F33F100D62B87 /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
+		C6428DCF246F892A00A02A9B /* LineEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineEntry.swift; sourceTree = "<group>"; };
 		C67EAAB3244D04F0008D4982 /* TimeEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntry.swift; sourceTree = "<group>"; };
 		C6B0FF9B246F124300DED011 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		C6B0FF9D246F51CE00DED011 /* EntryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryList.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				C6B0FF9D246F51CE00DED011 /* EntryList.swift */,
+				C6428DCF246F892A00A02A9B /* LineEntry.swift */,
 			);
 			path = Details;
 			sourceTree = "<group>";
@@ -339,6 +342,7 @@
 				C6F605AF246C6B1700D0FE82 /* DateExtension.swift in Sources */,
 				C6C18D7B244BB76F000345D5 /* ZESpiral.swift in Sources */,
 				C6C18D79244B6BB9000345D5 /* Arc.swift in Sources */,
+				C6428DD0246F892A00A02A9B /* LineEntry.swift in Sources */,
 				C6C18D7524493EC8000345D5 /* SpiralUI.swift in Sources */,
 				C67EAAB5244D0FF3008D4982 /* TimeEntry.swift in Sources */,
 				C6C18D472448F96C000345D5 /* SceneDelegate.swift in Sources */,

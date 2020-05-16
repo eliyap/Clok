@@ -14,8 +14,9 @@ struct Spiral: Shape {
     let id = UUID()
     
     init(theta1: Angle, theta2: Angle){
-        self.theta1 = theta1.radians
-        self.theta2 = theta2.radians
+        // cap angles at the end of the spiral so that later events are not rendered
+        self.theta1 = min(MAX_RADIUS, theta1.radians)
+        self.theta2 = min(MAX_RADIUS, theta2.radians)
     }
     
     func path(in rect: CGRect) -> Path {

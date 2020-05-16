@@ -8,11 +8,17 @@
 
 import Foundation
 
-struct Report {
+class Report : ObservableObject {
+    // unpacked from Toggl JSON
     var total_grand:Int          // total seconds tracked
     var total_count:Int          // total number of time entries in the report
     var per_page:Int             // number of time entries provided per request
     var entries:[TimeEntry] = [] // list of TimeEntry's
+    
+    // my stuff, not from the Toggl API
+    var minDate = Date() // used as zeroDate to cut off entries that are too early
+    var maxDate = Date() // cuts off entries that are too late
+    
     init(_ json:Dictionary<String, AnyObject>){
         // unwrap optionals
         guard
@@ -33,7 +39,12 @@ struct Report {
         self.per_page = per_page
         
         if let data = json["data"] as? [Dictionary<String, AnyObject>] {
-            data.forEach { self.entries.append(TimeEntry($0)) }
+            data.forEach { i in
+//              if init fails, do not append
+                if let newEntry = TimeEntry(i) {
+                    self.entries.append(newEntry)
+                }
+            }
         } else {
             print("could not coerce!")
         }
