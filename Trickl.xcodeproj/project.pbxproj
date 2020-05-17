@@ -10,6 +10,7 @@
 		C615CD57245F332300D62B87 /* Toggl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C615CD56245F332300D62B87 /* Toggl.swift */; };
 		C615CD59245F33F100D62B87 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = C615CD58245F33F100D62B87 /* Report.swift */; };
 		C6428DD0246F892A00A02A9B /* LineEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6428DCF246F892A00A02A9B /* LineEntry.swift */; };
+		C6428DDC2470A6FE00A02A9B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C6428DDB2470A6FE00A02A9B /* Default-568h@2x.png */; };
 		C67EAAB5244D0FF3008D4982 /* TimeEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67EAAB3244D04F0008D4982 /* TimeEntry.swift */; };
 		C6B0FF9C246F124300DED011 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B0FF9B246F124300DED011 /* ColorExtension.swift */; };
 		C6B0FF9E246F51CE00DED011 /* EntryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B0FF9D246F51CE00DED011 /* EntryList.swift */; };
@@ -51,6 +52,7 @@
 		C615CD56245F332300D62B87 /* Toggl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toggl.swift; sourceTree = "<group>"; };
 		C615CD58245F33F100D62B87 /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
 		C6428DCF246F892A00A02A9B /* LineEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineEntry.swift; sourceTree = "<group>"; };
+		C6428DDB2470A6FE00A02A9B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		C67EAAB3244D04F0008D4982 /* TimeEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntry.swift; sourceTree = "<group>"; };
 		C6B0FF9B246F124300DED011 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		C6B0FF9D246F51CE00DED011 /* EntryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryList.swift; sourceTree = "<group>"; };
@@ -102,6 +104,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C6751D70247197EE002965CC /* CustomTableView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CustomTableView;
+			sourceTree = "<group>";
+		};
 		C6B0FF9F246F521400DED011 /* Details */ = {
 			isa = PBXGroup;
 			children = (
@@ -133,6 +142,7 @@
 		C6C18D382448F96C000345D5 = {
 			isa = PBXGroup;
 			children = (
+				C6428DDB2470A6FE00A02A9B /* Default-568h@2x.png */,
 				C6C18D7C244BE891000345D5 /* Constants.swift */,
 				C6C18D78244B6BB9000345D5 /* Arc.swift */,
 				C6C18D432448F96C000345D5 /* Trickl */,
@@ -142,6 +152,7 @@
 				C6B0FFA1246F52B600DED011 /* Extensions */,
 				C6B0FFA0246F52A700DED011 /* Models */,
 				C6B0FF9F246F521400DED011 /* Details */,
+				C6751D70247197EE002965CC /* CustomTableView */,
 				C6C18D7E244CD7AA000345D5 /* Spiral */,
 			);
 			sourceTree = "<group>";
@@ -312,6 +323,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6C18D512448F96F000345D5 /* LaunchScreen.storyboard in Resources */,
+				C6428DDC2470A6FE00A02A9B /* Default-568h@2x.png in Resources */,
 				C6C18D4E2448F96F000345D5 /* Preview Assets.xcassets in Resources */,
 				C6C18D4B2448F96F000345D5 /* Assets.xcassets in Resources */,
 			);
@@ -519,9 +531,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"Landwarks/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Trickl/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = Landwarks/Info.plist;
+				INFOPLIST_FILE = Trickl/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -538,9 +550,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"Landwarks/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Trickl/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = Landwarks/Info.plist;
+				INFOPLIST_FILE = Trickl/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

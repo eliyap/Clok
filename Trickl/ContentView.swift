@@ -26,8 +26,8 @@ struct ContentView: View {
                     // switch to a VStack (HStack with only 1 element has no effect)
                     VStack(alignment: .center) {
                         SpiralUI(self.report)
-//                        TimeEntryList()
-                        EntryList(report: self.report)
+                        CustomTableView()
+//                        EntryList(report: self.report)
                     }
                 }
             } .onAppear { // load data immediately
