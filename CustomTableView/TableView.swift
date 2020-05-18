@@ -19,6 +19,7 @@ protocol TableViewDelegate {
     func onScroll(_ tableView: TableView, isScrolling: Bool) -> Void
     func onAppear(_ tableView: TableView, at index: Int) -> Void
     func onTapped(_ tableView: TableView, at index: Int) -> Void
+    func scrollFinished(_ tableView:TableView, _ target: UnsafeMutablePointer<CGPoint>) -> Void
 }
 
 struct TableView: UIViewRepresentable {
@@ -28,6 +29,9 @@ struct TableView: UIViewRepresentable {
     
     let tableView = UITableView()
     
+    @EnvironmentObject var listPosition: ListPosition
+    // receives updates on the clicked time Entry from SpiralUI
+    
     func makeCoordinator() -> TableView.Coordinator {
         Coordinator(self, delegate: self.delegate)
     }
@@ -35,14 +39,16 @@ struct TableView: UIViewRepresentable {
     func makeUIView(context: Context) -> UITableView {
         tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 1, height: 60))
         tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "CellIdentifier")
+        // restore the saved scroll position
+        tableView.setContentOffset(CGPoint(x: 0.0, y: listPosition.position), animated: false)
+        tableView.selectRow(at: IndexPath(item: 5, section: 0), animated: false, scrollPosition: .top)
         return tableView
     }
     
     func updateUIView(_ uiView: UITableView, context: Context) {
-        //
         uiView.delegate = context.coordinator
         uiView.dataSource = context.coordinator
-        
+    
         if context.coordinator.updateData(newData: self.dataSource) {
             uiView.reloadData()
         }
@@ -104,13 +110,19 @@ struct TableView: UIViewRepresentable {
         func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
             return self.delegate?.heightForRow(parent, at: indexPath.row) ?? 56.0
         }
-                
+        
+        func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+            // something here?
+        }
+        
         func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
             self.delegate?.onScroll(parent, isScrolling: true)
         }
         
         func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
             self.delegate?.onScroll(parent, isScrolling: false)
+            self.delegate?.scrollFinished(parent, targetContentOffset)
         }
+        
     }
 }

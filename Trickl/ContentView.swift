@@ -10,9 +10,9 @@ import SwiftUI
 
 struct ContentView: View {
     @State var report = Report()
-    // detect the device size class
-    // https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/adaptivity-and-layout/
-    @Environment(\.verticalSizeClass) var heightClass
+    
+    // keeps track of where the user has scrolled to between rotations
+    @EnvironmentObject var listPosition: ListPosition
     
     var body : some View {
         GeometryReader {geo in
@@ -20,14 +20,13 @@ struct ContentView: View {
                 // landscape mode
                 if geo.size.width > geo.size.height {
                     SpiralUI(self.report)
-                    EntryList(report: self.report)
+                    CustomTableView(self.report.entries)
                 } else {
                     // portrait mode
                     // switch to a VStack (HStack with only 1 element has no effect)
                     VStack(alignment: .center) {
                         SpiralUI(self.report)
-                        CustomTableView()
-//                        EntryList(report: self.report)
+                        CustomTableView(self.report.entries)
                     }
                 }
             } .onAppear { // load data immediately

@@ -15,13 +15,14 @@ struct SpiralUI: View {
             
             ZStack {
                 ForEach(self.report.entries, id: \.id) { entry in
-                    EntrySpiral(entry, Date().addingTimeInterval(TimeInterval(-86400 * 7)))
+                    EntrySpiral(
+                        entry,
+                        zeroTo:Date().addingTimeInterval(TimeInterval(-86400 * 7))
+                    )
                 }
             }
             .border(Color.black)
             .frame(width: frame_size, height: frame_size)
-            .scaledToFill()
-                
             .scaleEffect(min(geo.size.width / frame_size, geo.size.height / frame_size))
         }
     }
