@@ -13,6 +13,7 @@ struct ContentView: View {
     
     // keeps track of where the user has scrolled to between rotations
     @EnvironmentObject var listPosition: ListPosition
+    @EnvironmentObject var listRow: ListRow
     
     var body : some View {
         GeometryReader {geo in

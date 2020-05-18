@@ -10,7 +10,7 @@ import SwiftUI
 
 struct EntrySpiral: View {
     @ObservedObject var entry:TimeEntry = TimeEntry()
-    @EnvironmentObject var listPosition: ListPosition
+    @EnvironmentObject var listRow: ListRow
     
     var body: some View {
         Spiral(theta1: entry.startTheta, theta2: entry.endTheta)
@@ -18,6 +18,7 @@ struct EntrySpiral: View {
             // TODO: accomodate dark mode with an adaptive color here
             .fill(entry.project_hex_color)
             .gesture(TapGesture().onEnded(){_ in
+                self.listRow.row = 1 // to be replaced by it's real index
                 print("\(self.entry.description) - \(self.entry.project ?? "none")")
             })
     }

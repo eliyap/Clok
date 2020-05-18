@@ -9,6 +9,10 @@
 import Foundation
 import SwiftUI
 
-class ListPosition : ObservableObject {
+class ListPosition: ObservableObject {
     @Published var position:CGFloat = 0 
+}
+
+class ListRow: ObservableObject {
+    @Published var row:Int = NSNotFound
 }

@@ -42,6 +42,9 @@ struct CustomTableView: View, TableViewDelegate {
     @State var detailViewRow = 0
     @State var isLoading = false
     
+    @State var myRow:Int = 0
+    
+    @EnvironmentObject var listRow:ListRow
     @EnvironmentObject var listPosition: ListPosition
     
     let total = 100
@@ -73,12 +76,15 @@ struct CustomTableView: View, TableViewDelegate {
                 
                 TableView(
                     dataSource: self.mutableData as TableViewDataSource,
-                    delegate: self
-                )
+                    delegate: self,
+                    row: self.$myRow
+                ).onReceive(listRow.$row, perform: {
+                    self.myRow = $0
+                })
                 
                 VStack{
                     Text("\(listPosition.position)") // debug
-//                    Text("\(self.row.row)")
+                    Text("\(self.myRow)")
                 }
                 
             }

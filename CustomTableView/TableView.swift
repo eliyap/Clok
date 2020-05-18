@@ -31,6 +31,8 @@ struct TableView: UIViewRepresentable {
     
     @EnvironmentObject var listPosition: ListPosition
     // receives updates on the clicked time Entry from SpiralUI
+    @Binding var row:Int
+    @EnvironmentObject var listRow: ListRow
     
     func makeCoordinator() -> TableView.Coordinator {
         Coordinator(self, delegate: self.delegate)
@@ -41,17 +43,31 @@ struct TableView: UIViewRepresentable {
         tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "CellIdentifier")
         // restore the saved scroll position
         tableView.setContentOffset(CGPoint(x: 0.0, y: listPosition.position), animated: false)
-        tableView.selectRow(at: IndexPath(item: 5, section: 0), animated: false, scrollPosition: .top)
         return tableView
     }
     
     func updateUIView(_ uiView: UITableView, context: Context) {
         uiView.delegate = context.coordinator
         uiView.dataSource = context.coordinator
-    
+        
         if context.coordinator.updateData(newData: self.dataSource) {
             uiView.reloadData()
         }
+        
+        // move to selected row, or none if out of bounds
+        if row < uiView.numberOfRows(inSection: 0){
+            uiView.scrollToRow(at: IndexPath(row: row, section: 0), at: .none, animated: true)
+            // prevents table from infinitely updating itself
+            listRow.row = NSNotFound
+        }
+        print("update", row)
+        
+//        self.listPosition.position = uiView.contentOffset.y
+        
+        // we cannot update the saved position here, though I would like to,
+        // as it causes an infinite loop.
+        
+        
     }
     
     //MARK: - Coordinator
