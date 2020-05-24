@@ -11,6 +11,10 @@ import SwiftUI
 struct ContentView: View {
     @State var report = Report()
     
+    @State var testTheta1 = Angle(degrees: 30)
+    @State var testTheta2 = Angle(degrees: 300)
+    
+    
     var body : some View {
         GeometryReader {geo in
             HStack {
@@ -26,6 +30,17 @@ struct ContentView: View {
                         CustomTableView(self.report.entries)
                     }
                 }
+                
+                // testing
+                Spiral(theta1: self.testTheta1, theta2: self.testTheta2)
+                    .onTapGesture {
+                        withAnimation {
+                            self.testTheta1 = Angle(degrees: self.testTheta1.degrees + 50)
+                            self.testTheta2 = Angle(degrees: self.testTheta2.degrees + 50)
+                        }
+                        
+                    }
+                
             } .onAppear { // load data immediately
                 self.loadData()
             }

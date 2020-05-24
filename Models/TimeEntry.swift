@@ -117,7 +117,9 @@ class TimeEntry : ObservableObject {
     func zero (_ zeroDate:Date) {
         let startInt = (start > zeroDate) ? (start - zeroDate) : TimeInterval(exactly: 0)
         let endInt = (end > zeroDate) ? (end - zeroDate) : TimeInterval(exactly: 0)
-        self.startTheta = Angle(degrees: startInt! * degreesPerSec)
-        self.endTheta = Angle(degrees: endInt! * degreesPerSec)
+        withAnimation(.easeIn(duration: 0.5)) {
+            self.startTheta = Angle(degrees: startInt! * degreesPerSec)
+            self.endTheta = Angle(degrees: endInt! * degreesPerSec)
+        }
     }
 }

@@ -22,19 +22,21 @@ struct SpiralUI: View {
                         zeroTo:self.zero
                     )
                 }
-                .onAppear(){
-                    var timer = Timer.scheduledTimer(
-                        withTimeInterval: 0.02,
-                        repeats: true,
-                        block: { _ in
-                            self.zero = self.zero.addingTimeInterval(-1)
-                        }
-                    )
-                }
             }
             .border(Color.black)
             .frame(width: frame_size, height: frame_size)
             .scaleEffect(min(geo.size.width / frame_size, geo.size.height / frame_size))
+            .onAppear(){
+                
+                var timer = Timer.scheduledTimer(
+                    withTimeInterval: 0.5,
+                    repeats: true,
+                    block: { _ in
+                        self.zero = self.zero.addingTimeInterval(-10000)
+                    }
+                )
+                RunLoop.main.add(timer, forMode: .common)
+            }
         }
     }
     
