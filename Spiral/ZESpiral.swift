@@ -9,9 +9,17 @@ import SwiftUI
 
 // main workhorse
 struct Spiral: Shape {
-    let theta1: Double
-    let theta2: Double
-    let id = UUID()
+    var theta1: Double
+    var theta2: Double
+    
+    public var animatableData: AnimatablePair<Double, Double> {
+        get {
+            AnimatablePair(theta1, theta2)
+        }
+        set {
+            (self.theta1, self.theta2) = (newValue.first, newValue.second)
+        }
+    }
     
     init(theta1: Angle, theta2: Angle){
         // cap angles at the end of the spiral so that later events are not rendered

@@ -22,14 +22,7 @@ struct ContentView: View {
                     // portrait mode
                     // switch to a VStack (HStack with only 1 element has no effect)
                     VStack(alignment: .center) {
-//                        SpiralUI(self.report)
-                        SpiralView(
-                            frame: WeekTimeFrame(
-                                starts: Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: Date())!.addingTimeInterval(-weekLength)
-                            ),
-                            entries: self.report.entries
-                        )
-                            .border(Color.black)
+                        SpiralUI(self.report)
                         CustomTableView(self.report.entries)
                     }
                 }
