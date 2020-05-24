@@ -11,10 +11,6 @@ import SwiftUI
 struct ContentView: View {
     @State var report = Report()
     
-    // keeps track of where the user has scrolled to between rotations
-    @EnvironmentObject var listPosition: ListPosition
-    @EnvironmentObject var listRow: ListRow
-    
     var body : some View {
         GeometryReader {geo in
             HStack {
@@ -26,7 +22,14 @@ struct ContentView: View {
                     // portrait mode
                     // switch to a VStack (HStack with only 1 element has no effect)
                     VStack(alignment: .center) {
-                        SpiralUI(self.report)
+//                        SpiralUI(self.report)
+                        SpiralView(
+                            frame: WeekTimeFrame(
+                                starts: Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: Date())!.addingTimeInterval(-weekLength)
+                            ),
+                            entries: self.report.entries
+                        )
+                            .border(Color.black)
                         CustomTableView(self.report.entries)
                     }
                 }

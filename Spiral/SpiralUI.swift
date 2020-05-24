@@ -9,6 +9,8 @@ import SwiftUI
 
 struct SpiralUI: View {
     @ObservedObject var report = Report()
+    @State var zero:Date = Date().addingTimeInterval(TimeInterval(-86400 * 7))
+    @State var dummy = 10
     
     var body: some View {
         GeometryReader { geo in
@@ -17,7 +19,16 @@ struct SpiralUI: View {
                 ForEach(self.report.entries, id: \.id) { entry in
                     EntrySpiral(
                         entry,
-                        zeroTo:Date().addingTimeInterval(TimeInterval(-86400 * 7))
+                        zeroTo:self.zero
+                    )
+                }
+                .onAppear(){
+                    var timer = Timer.scheduledTimer(
+                        withTimeInterval: 0.02,
+                        repeats: true,
+                        block: { _ in
+                            self.zero = self.zero.addingTimeInterval(-1)
+                        }
                     )
                 }
             }
