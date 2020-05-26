@@ -77,4 +77,14 @@ struct WeekTimeFrame: Equatable {
             lhs.end == rhs.end &&
             lhs.firstDay == rhs.firstDay
     }
+    
+    // filters Time Entries down to only those which fall
+    // at least partially within the week
+    func within(_ entries:[TimeEntry]) -> [TimeEntry] {
+        entries.filter {
+            // either the start or end date must fall within the date range
+            self.start < $0.start && $0.start < self.end
+            || self.start < $0.end && $0.end < self.end
+        }
+    }
 }

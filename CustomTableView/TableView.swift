@@ -56,10 +56,11 @@ struct TableView: UIViewRepresentable {
             uiView.reloadData()
         }
         
-        // move to selected row, or none if out of bounds
+        // move to selected row, or none if out of bounds (including if NSNotFound)
         if row < uiView.numberOfRows(inSection: 0){
             uiView.scrollToRow(at: IndexPath(row: row, section: 0), at: .top, animated: true)
-            // prevents table from infinitely updating itself
+            
+            // prevent table from infinitely updating itself
             listRow.row = NSNotFound
         }
     }
@@ -106,6 +107,7 @@ struct TableView: UIViewRepresentable {
             if let dataSource = mydata {
                 cell.heading.text = dataSource.titleForRow(row: indexPath.row)
                 cell.subheading.text = dataSource.subtitleForRow(row: indexPath.row)
+//                cell.bar.draw(CGRect(x: 0, y: 0, width: 100, height: 200))
                 cell.accessoryType = .disclosureIndicator
                 delegate?.onAppear(parent, at: indexPath.row)
             }

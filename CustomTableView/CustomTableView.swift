@@ -87,10 +87,12 @@ struct CustomTableView: View, TableViewDelegate {
                     Text("\(self.myRow)")
                 }
                 
-            }
+                }
+            .navigationBarTitle("Entries")
             // prevents a weird white space when the title contracts when scrolling down
             .edgesIgnoringSafeArea(.top)
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
     
     //MARK: - TableViewDelegate Functions

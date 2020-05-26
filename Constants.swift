@@ -9,7 +9,7 @@
 import Foundation
 import SwiftUI
 
-// MARK: Drawing Constants
+// MARK: - Drawing Constants
 
 // controls the angle of spiral being approximated by Bezier curves
 // smaller angles lead to more complex paths
@@ -29,7 +29,7 @@ let frame_size = CGFloat(2 * (MAX_RADIUS + thiccness))
 let corner_radius = 0.7
 
 
-// MARK: API components
+// MARK: - API components
 
 // lets Toggle know who I am
 let user_agent = "trickl.app"
@@ -42,7 +42,7 @@ let myUsername = "TricklTest"
 let myWorkspace = "3109909"
 
 
-// MARK: Time Constants
+// MARK: - Time Constants
 
 let dayLength = TimeInterval(24 * 60 * 60)
 let weekLength: TimeInterval = 7 * dayLength
@@ -50,6 +50,8 @@ let weekLength: TimeInterval = 7 * dayLength
 // the length of an Archimedean Spiral with a = 0, b = 1, from 0 to 14 pi
 // https://www.wolframalpha.com/input/?i=integrate+sqrt%28x%5E2%2B1%29dx+from+0+to+14pi
 let weekSpiralLength = NSNumber(969.7)
+
+// follows the same pattern as Calendar.current.weekdaySymbols
 enum Weekdays: Int {
     case Sunday = 0
     case Monday = 1

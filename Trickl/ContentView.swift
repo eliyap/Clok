@@ -10,6 +10,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State var report = Report()
+    @EnvironmentObject var zero:ZeroDate
     
     var body : some View {
         GeometryReader {geo in
@@ -17,13 +18,13 @@ struct ContentView: View {
                 // landscape mode
                 if geo.size.width > geo.size.height {
                     SpiralUI(self.report)
-                    CustomTableView(self.report.entries)
+                    CustomTableView(self.zero.frame.within(self.report.entries))
                 } else {
                     // portrait mode
                     // switch to a VStack (HStack with only 1 element has no effect)
                     VStack(alignment: .center) {
                         SpiralUI(self.report)
-                        CustomTableView(self.report.entries)
+                        CustomTableView(self.zero.frame.within(self.report.entries))
                     }
                 }
             } .onAppear { // load data immediately
