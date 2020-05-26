@@ -88,7 +88,6 @@ struct CustomTableView: View, TableViewDelegate {
                 }
                 
             }
-            .navigationBarTitle("UITableView")
             // prevents a weird white space when the title contracts when scrolling down
             .edgesIgnoringSafeArea(.top)
         }

@@ -60,10 +60,10 @@ struct Spiral: Shape {
                     size: CGSize(width: thiccness, height: (theta2 - theta1) * (theta2 + theta1) / 2)),
                 cornerRadius: CGFloat(corner_radius)
             )
-                // rotate it into place
-                .applying(CGAffineTransform(rotationAngle: CGFloat(theta1)))
-                // center it
-                .applying(CGAffineTransform(translationX: frame_size/2, y: frame_size/2))
+            // rotate it into place
+            .applying(CGAffineTransform(rotationAngle: CGFloat(theta1)))
+            // center it
+            .applying(CGAffineTransform(translationX: frame_size/2, y: frame_size/2))
         }
         
         var thetas: [Double] = []

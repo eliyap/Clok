@@ -39,10 +39,12 @@ struct TableView: UIViewRepresentable {
     }
     
     func makeUIView(context: Context) -> UITableView {
-        tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 1, height: 60))
+        
         tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "CellIdentifier")
+        
         // restore the saved scroll position
         tableView.setContentOffset(CGPoint(x: 0.0, y: listPosition.position), animated: false)
+        
         return tableView
     }
     
@@ -60,14 +62,6 @@ struct TableView: UIViewRepresentable {
             // prevents table from infinitely updating itself
             listRow.row = NSNotFound
         }
-        print("update", row)
-        
-//        self.listPosition.position = uiView.contentOffset.y
-        
-        // we cannot update the saved position here, though I would like to,
-        // as it causes an infinite loop.
-        
-        
     }
     
     //MARK: - Coordinator
@@ -138,6 +132,10 @@ struct TableView: UIViewRepresentable {
         func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
             self.delegate?.onScroll(parent, isScrolling: false)
             self.delegate?.scrollFinished(parent, targetContentOffset)
+        }
+        
+        func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+            return nil
         }
         
     }

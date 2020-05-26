@@ -1,68 +1,80 @@
-//
-//  TimeFrame.swift
-//  Trickl
-//
-//  Created by Secret Asian Man 3 on 20.05.23.
-//  Copyright © 2020 Secret Asian Man 3. All rights reserved.
-//
-
 import Foundation
-import SwiftUI
-import simd
 
-protocol TimePeriod {
-    var start:Date {get}
-    var end:Date {get}
-    var length:TimeInterval {get}
-}
-
-struct WeekTimeFrame : TimePeriod {
-    var start:Date
-    var end:Date
-    let length = weekLength
+struct WeekTimeFrame: Equatable {
+    var start = Date()
+    var end = Date()
+    var firstDay:Int
+    let dayNames:[String] = DateFormatter().weekdaySymbols
     
-    enum contains {
-        case doesNot
-        case partially
-        case completely
+    // returns the day index of a given Date, from 0 (Sunday) through 6 (Monday)
+    func dayOf(_ day:Date) -> Int {
+        Calendar.current.component(.weekday, from: day) - 1
     }
     
-    init(starts:Date) {
-        self.start = starts
-        assert(
-            Calendar.current.component(.hour, from:starts) == 0 &&
-            Calendar.current.component(.minute, from:starts) == 0,
-            "Week must start at midnight!"
-        )
-        self.end = starts.addingTimeInterval(weekLength)
+    // recursively finds the start of the week
+    // by stepping back until it finds the right day of the week
+    func weekStart(trying day:Date, contains:Date) -> Date {
+        if firstDay == dayOf(day) && day < contains {
+            return day
+        }
+        else {
+            return weekStart(
+                trying: day.addingTimeInterval(-24 * 60 * 60),
+                contains: contains
+            )
+        }
     }
     
-    // check whether a given TimePeriod falls within this TimeFrame
-    func contains(_ entry:TimeEntry) -> contains {
-        if entry.start > self.end { return .doesNot }
-        if entry.end < self.start { return .doesNot }
-        if entry.start < self.start { return .partially }
-        if entry.end > self.end { return .partially }
-        assert(self.start < entry.start && self.end > entry.end, "Logical error in contains comparison!")
-        return .completely
+    // recursively finds the end of the week
+    // by stepping forwards until it finds the right day of the week
+    func weekEnd(trying day:Date, contains:Date) -> Date {
+        if firstDay == dayOf(day) && day > contains {
+            return day
+        }
+        else {
+            return weekEnd(
+                trying: day.addingTimeInterval(+24 * 60 * 60),
+                contains: contains
+            )
+        }
     }
     
-    // returns the Angles for this TimeEntry
-    func getAngles(_ entry:TimeEntry) -> (Angle, Angle) {
-        (
-            Angle(radians: ((entry.start - self.start) / weekLength) * 14 * Double.pi),
-            Angle(radians: ((entry.end - self.start) / weekLength) * 14 * Double.pi)
-        )
+    // provide a start day from 0 (Sunday) through 6 (Monday)
+    // and a date that you want this week range to contain
+    init(starts:Int, contains:Date) {
+        // ensures date range is set by midnight
+        let dayStart = Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: contains)!
+        firstDay = starts
+        start = weekStart(trying: dayStart, contains: contains)
+        end = weekEnd(trying: dayStart, contains: contains)
     }
     
-    // the start and end positions on the week spiral of the given time entry
-    func phase(_ date:Date) -> Double {
-        // normalized Time in range [0, 1]
-        let nT = (date - self.start) / weekLength
-        // get angle on the spiral
-        let a = nT * 14 * Double.pi
-        return (a * sqrt(a * a + 1) + asinh(a)) / 2
+    // get the prior week
+    init(preceding:WeekTimeFrame) {
+        firstDay = preceding.firstDay
+        start = preceding.start.addingTimeInterval(-weekLength)
+        end = preceding.end.addingTimeInterval(-weekLength)
     }
     
+    // get the next week
+    init(succeeding:WeekTimeFrame) {
+        firstDay = succeeding.firstDay
+        start = succeeding.start.addingTimeInterval(+weekLength)
+        end = succeeding.end.addingTimeInterval(+weekLength)
+    }
     
+    // returns the week covering the past 7 days (including today)
+    init() {
+        firstDay = -1
+        start = Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: Date())!
+                .addingTimeInterval(-6 * dayLength)
+        end = start.addingTimeInterval(weekLength)
+    }
+    
+    static func == (lhs: WeekTimeFrame, rhs: WeekTimeFrame) -> Bool {
+        return
+            lhs.start == rhs.start &&
+            lhs.end == rhs.end &&
+            lhs.firstDay == rhs.firstDay
+    }
 }

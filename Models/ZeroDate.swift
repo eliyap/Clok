@@ -9,7 +9,35 @@
 import Foundation
 
 class ZeroDate: ObservableObject {
+    let pastSeven = WeekTimeFrame()
+    let thisWeek = WeekTimeFrame(
+        starts: Weekdays.Monday.rawValue,
+        contains: Date()
+    )
+    let lastWeek = WeekTimeFrame(preceding: WeekTimeFrame(
+        starts: Weekdays.Monday.rawValue,
+        contains: Date()
+    ))
+    
+    // represents what time frame is shown
+    enum frameState {
+        case pastSeven
+        case thisWeek
+        case lastWeek
+        // any other past week
+        case distantPast
+    }
+    
+    func frameState() -> frameState {
+        if frame == pastSeven { return .pastSeven }
+        if frame == thisWeek { return .thisWeek }
+        if frame == lastWeek { return .lastWeek }
+        return .distantPast
+    }
+    
     // default to 1 week before end of today
-    @Published var date:Date = Calendar.current.date(bySettingHour: 23, minute: 59, second: 59, of: Date())!
-        .addingTimeInterval(-7 * 24 * 60 * 60)
+    @Published var frame = WeekTimeFrame(
+        starts: Weekdays.Monday.rawValue,
+        contains: Date()
+    )
 }

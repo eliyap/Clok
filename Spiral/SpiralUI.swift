@@ -9,34 +9,24 @@ import SwiftUI
 
 struct SpiralUI: View {
     @ObservedObject var report = Report()
-    @State var zero:Date = Date().addingTimeInterval(TimeInterval(-86400 * 7))
-    @State var dummy = 10
+    @EnvironmentObject var zero:ZeroDate
     
     var body: some View {
-        GeometryReader { geo in
-            
-            ZStack {
-                ForEach(self.report.entries, id: \.id) { entry in
-                    EntrySpiral(
-                        entry,
-                        zeroTo:self.zero
-                    )
-                }
-            }
-            .border(Color.black)
-            .frame(width: frame_size, height: frame_size)
-            .scaleEffect(min(geo.size.width / frame_size, geo.size.height / frame_size))
-            .onAppear(){
-                
-                var timer = Timer.scheduledTimer(
-                    withTimeInterval: 0.5,
-                    repeats: true,
-                    block: { _ in
-                        self.zero = self.zero.addingTimeInterval(-10000)
+        VStack (alignment: .center, spacing: 0) {
+            GeometryReader { geo in
+                ZStack {
+                    ForEach(self.report.entries, id: \.id) { entry in
+                        EntrySpiral(
+                            entry,
+                            zeroTo:self.zero.frame.start
+                        )
                     }
-                )
-                RunLoop.main.add(timer, forMode: .common)
+                }
+                .frame(width: frame_size, height: frame_size)
+                .scaleEffect(min(geo.size.width / frame_size, geo.size.height / frame_size))
             }
+            DateBar()
+            .padding()
         }
     }
     
