@@ -22,13 +22,13 @@ struct EntrySpiral: View {
             Spiral(theta1: entry.startTheta, theta2: entry.endTheta)
             // fill in with the provided color, or black by default
             // TODO: accomodate dark mode with an adaptive color here
-                .stroke(entry.project_hex_color, style: StrokeStyle(
-                    lineWidth: 3,
-                    lineCap: .round,
-                    lineJoin: .round,
-                    miterLimit: 0,
-                    dash: [],
-                    dashPhase: 0)
+            .stroke(entry.project_hex_color, style: StrokeStyle(
+                lineWidth: stroke_weight,
+                lineCap: .round,
+                lineJoin: .round,
+                miterLimit: 0,
+                dash: [],
+                dashPhase: 0)
             )
         }
         .gesture(TapGesture().onEnded(){_ in

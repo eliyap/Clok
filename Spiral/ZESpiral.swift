@@ -12,6 +12,8 @@ struct Spiral: Shape {
     var theta1: Double
     var theta2: Double
     
+    let extra_width = Double(stroke_weight)
+    
     public var animatableData: AnimatablePair<Double, Double> {
         get {
             AnimatablePair(theta1, theta2)
@@ -28,8 +30,12 @@ struct Spiral: Shape {
     }
     
     func path(in rect: CGRect) -> Path {
+        /// calculate the angle subtended by the stroke (drops off further from the center)
+        let del1 = (theta1 < 0.5) ? (extra_width) : (extra_width / theta1)
+        let del2 = (theta2 < 0.5) ? (extra_width) : (extra_width / theta2)
+        
         /// do not draw if theta's are equal or don't make sense
-        guard (theta2 > theta1) else {
+        guard (theta2 - theta1 > 0) else {
             return Path()
         }
         
@@ -40,16 +46,9 @@ struct Spiral: Shape {
         
         var firstSlope = true
         
-        /// calculate the angle subtended by the rounded corners (drops off further from the center)
-        let del1 = (theta1 == 0) ? (corner_radius) : (corner_radius / theta1)
-        let del2 = (theta2 == 0) ? (corner_radius) : (corner_radius / theta2)
-        
         /// approximate small arcs by rounded rectangles
         guard
-            /// fails if arc is outside 2 PI and under 1/20 rad
-            (theta2 > 2 * Double.pi && theta2 - theta1 > 0.05 * Double.pi) ||
-            /// or inside 2 PI and under 1 rad
-            (theta2 < 2 * Double.pi && theta2 - theta1 > 0.5)
+            theta2 - theta1 > del1
         else {
             return Path.init(
             CGRect(
@@ -60,7 +59,7 @@ struct Spiral: Shape {
                 size: CGSize(width: thiccness, height: (theta2 - theta1) * (theta2 + theta1) / 2))
             )
             // rotate it into place
-            .applying(CGAffineTransform(rotationAngle: CGFloat(theta1)))
+            .applying(CGAffineTransform(rotationAngle: CGFloat((theta1 + theta2) / 2)))
             // center it
             .applying(CGAffineTransform(translationX: frame_size/2, y: frame_size/2))
         }
@@ -68,14 +67,14 @@ struct Spiral: Shape {
         var thetas: [Double] = []
         // iterate from start to end theta (accounting for small variation due to round cap)
         // to create a list of angles
-        for t in stride(from: theta1 + del1, to: theta2 - del2, by: thetaStep){
+        for t in stride(from: theta1, to: theta2 - del2, by: thetaStep){
             thetas.append(t)
         }
         thetas.append(theta2 - del2)
         
         return Path { path in
             /// draw initial quarter circle
-            path.move(to: center(spiralPoint(theta: theta1 + del1, thicc: 0)))
+            path.move(to: center(spiralPoint(theta: theta1, thicc: 0)))
             
             // draw arcs out to theta2
             for idx in stride(from: 0, to: thetas.count - 1, by: +1) {
