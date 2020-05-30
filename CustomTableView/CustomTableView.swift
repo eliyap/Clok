@@ -21,6 +21,9 @@ class TimeEntryDataSource: TableViewDataSource, ObservableObject {
     func subtitleForRow(row: Int) -> String? {
         return mutableData[row].project
     }
+    func colorForRow(row: Int) -> UIColor {
+        return mutableData[row].project_hex_color.uiColor()
+    }
     init(_ someData: [TimeEntry]) {
         mutableData.append(contentsOf: someData)
     }

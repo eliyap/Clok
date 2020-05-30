@@ -36,17 +36,16 @@ extension Color {
 // https://stackoverflow.com/questions/57257704/how-can-i-change-a-swiftui-color-to-uicolor
 extension Color {
 
-    func cgColor() -> CGColor {
-
+    func uiColor() -> UIColor {
         let components = self.components()
         return UIColor(
             red: components.r,
             green: components.g,
             blue: components.b,
             alpha: components.a
-        ).cgColor
+        )
     }
-
+    
     private func components() -> (r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat) {
 
         let scanner = Scanner(string: self.description.trimmingCharacters(in: CharacterSet.alphanumerics.inverted))

@@ -12,6 +12,7 @@ protocol TableViewDataSource {
     func count() -> Int
     func titleForRow(row: Int) -> String
     func subtitleForRow(row: Int) -> String?
+    func colorForRow(row: Int) -> UIColor
 }
 
 protocol TableViewDelegate {
@@ -45,6 +46,10 @@ struct TableView: UIViewRepresentable {
         // restore the saved scroll position
         tableView.setContentOffset(CGPoint(x: 0.0, y: listPosition.position), animated: false)
         
+        // determines the offset of the thin grey line separating cells
+        // currently the line completely cuts the tabs
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        
         return tableView
     }
     
@@ -67,7 +72,11 @@ struct TableView: UIViewRepresentable {
     
     //MARK: - Coordinator
     
-    class Coordinator: NSObject, UITableViewDelegate, UITableViewDataSource {
+    class Coordinator:
+        NSObject,
+        UITableViewDelegate,
+        UITableViewDataSource
+    {
         
         var parent: TableView
 
@@ -94,21 +103,27 @@ struct TableView: UIViewRepresentable {
         }
         
         func numberOfSections(in tableView: UITableView) -> Int {
+            // we only have 1 section
             return 1
         }
         
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            // tells how many rows we have in the 1 and only section
             return mydata?.count() ?? 0
         }
         
+        // returns the cell at the provided index
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: "CellIdentifier", for: indexPath) as! TableViewCell
 
             if let dataSource = mydata {
+                // set the text if our 2 elements
                 cell.heading.text = dataSource.titleForRow(row: indexPath.row)
                 cell.subheading.text = dataSource.subtitleForRow(row: indexPath.row)
-//                cell.bar.draw(CGRect(x: 0, y: 0, width: 100, height: 200))
-                cell.accessoryType = .disclosureIndicator
+                // set the color to the project color
+                cell.tab.backgroundColor = dataSource.colorForRow(row: indexPath.row)                
+                
+                // no idea what this does
                 delegate?.onAppear(parent, at: indexPath.row)
             }
             return cell
@@ -120,7 +135,9 @@ struct TableView: UIViewRepresentable {
         }
         
         func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            return self.delegate?.heightForRow(parent, at: indexPath.row) ?? 56.0
+            // hardcoded height removes bottom padding
+            // to make tabs unbroken
+            return 55
         }
         
         func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {

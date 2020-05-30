@@ -12,7 +12,8 @@ class TableViewCell: UITableViewCell {
     
     @IBOutlet weak var heading: UILabel!
     @IBOutlet weak var subheading: UILabel!
-
+    @IBOutlet weak var tab: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
