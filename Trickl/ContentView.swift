@@ -18,16 +18,13 @@ struct ContentView: View {
                 // landscape mode
                 if geo.size.width > geo.size.height {
                     SpiralUI(self.report)
-                    .onDisappear() {
-                        print("poof")
-                    }
-//                    CustomTableView(self.zero.frame.within(self.report.entries))
+                    CustomTableView(self.zero.frame.within(self.report.entries))
                 } else {
                     // portrait mode
                     // switch to a VStack (HStack with only 1 element has no effect)
                     VStack(alignment: .center) {
                         SpiralUI(self.report)
-//                        CustomTableView(self.zero.frame.within(self.report.entries))
+                        CustomTableView(self.zero.frame.within(self.report.entries))
                     }
                 }
             } .onAppear { // load data immediately

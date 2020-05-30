@@ -10,11 +10,14 @@ import SwiftUI
 
 
 class TimeEntryDataSource: TableViewDataSource, ObservableObject {
+    
     @Published var mutableData = [TimeEntry]()
     
     func count() -> Int {
         return mutableData.count
     }
+    
+    //MARK: Cell Details
     func titleForRow(row: Int) -> String {
         return mutableData[row].description
     }
@@ -24,6 +27,13 @@ class TimeEntryDataSource: TableViewDataSource, ObservableObject {
     func colorForRow(row: Int) -> UIColor {
         return mutableData[row].project_hex_color.uiColor()
     }
+    
+    //MARK: Cell Lookup
+    /// find the row holding this cell
+    func rowForEntry(entry: TimeEntry?) -> Int {
+        return mutableData.firstIndex(of: entry ?? TimeEntry()) ?? NSNotFound
+    }
+    
     init(_ someData: [TimeEntry]) {
         mutableData.append(contentsOf: someData)
     }
@@ -81,9 +91,12 @@ struct CustomTableView: View, TableViewDelegate {
                     dataSource: self.mutableData as TableViewDataSource,
                     delegate: self,
                     row: self.$myRow
-                ).onReceive(listRow.$row, perform: {
-                    self.myRow = $0
+                ).onReceive(listRow.$entry, perform: {
+                    self.myRow = self.mutableData.rowForEntry(entry: $0)
                 })
+                .onDisappear() {
+                    print("poof")
+                }
                 
                 VStack{
                     Text("\(listPosition.position)") // debug
@@ -132,7 +145,7 @@ struct CustomTableView: View, TableViewDelegate {
         print("Tapped on record \(index)")
         self.detailViewRow = index
         self.detailViewActive.toggle()
-    }    
+    }
 }
 
 struct CustomTableView_Previews: PreviewProvider {

@@ -18,7 +18,6 @@ struct SpiralUI: View {
                     ForEach(self.report.entries, id: \.id) { entry in
                         EntrySpiral(
                             entry,
-                            idx: self.report.entries.firstIndex(of: entry) ?? -1,
                             zeroTo:self.zero.frame.start
                         )
                     }

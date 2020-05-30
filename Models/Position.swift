@@ -14,5 +14,5 @@ class ListPosition: ObservableObject {
 }
 
 class ListRow: ObservableObject {
-    @Published var row:Int = NSNotFound
+    @Published var entry:TimeEntry? = nil
 }

@@ -24,9 +24,7 @@ struct Spiral: Shape {
     init(theta1: Angle, theta2: Angle){
         /// cap angles at the end of the spiral
         self.theta1 = min(MAX_RADIUS, theta1.radians)
-        self.theta1 = max(0, self.theta1)
         self.theta2 = min(MAX_RADIUS, theta2.radians)
-        self.theta2 = max(0, self.theta2)
     }
     
     func path(in rect: CGRect) -> Path {
@@ -54,13 +52,12 @@ struct Spiral: Shape {
             (theta2 < 2 * Double.pi && theta2 - theta1 > 0.5)
         else {
             return Path.init(
-                roundedRect: CGRect(
-                    origin: CGPoint(
-                        x:theta1,
-                        y:0
-                    ),
-                    size: CGSize(width: thiccness, height: (theta2 - theta1) * (theta2 + theta1) / 2)),
-                cornerRadius: CGFloat(corner_radius)
+            CGRect(
+                origin: CGPoint(
+                    x:theta1,
+                    y:0
+                ),
+                size: CGSize(width: thiccness, height: (theta2 - theta1) * (theta2 + theta1) / 2))
             )
             // rotate it into place
             .applying(CGAffineTransform(rotationAngle: CGFloat(theta1)))
@@ -78,14 +75,8 @@ struct Spiral: Shape {
         
         return Path { path in
             /// draw initial quarter circle
-            path.move(to: center(spiralPoint(theta: theta1, thicc: corner_radius)))
-            path.addRelativeArc(
-                center: center(spiralPoint(theta: theta1 + del1, thicc: corner_radius)),
-                radius: CGFloat(corner_radius),
-                startAngle: Angle(radians: theta1 - Double.pi / 2),
-                delta: Angle(radians: -Double.pi / 2)
-            )
-                
+            path.move(to: center(spiralPoint(theta: theta1 + del1, thicc: 0)))
+            
             // draw arcs out to theta2
             for idx in stride(from: 0, to: thetas.count - 1, by: +1) {
                 oldT = thetas[idx]
@@ -113,21 +104,7 @@ struct Spiral: Shape {
                 )
             }
             
-            // quarter circle out
-            path.addRelativeArc(
-                center: center(spiralPoint(theta: theta2 - del2, thicc: corner_radius)),
-                radius: CGFloat(corner_radius),
-                startAngle: Angle(radians: theta2 + Double.pi),
-                delta: Angle(radians: -Double.pi / 2)
-            )
-            
-            // quarter circle out
-            path.addRelativeArc(
-                center: center(spiralPoint(theta: theta2 - del2, thicc: thiccness - corner_radius)),
-                radius: CGFloat(corner_radius),
-                startAngle: Angle(radians: theta2 + Double.pi / 2),
-                delta: Angle(radians: -Double.pi / 2)
-            )
+            path.addLine(to: center(spiralPoint(theta: thetas.last!, thicc: thiccness)))
             
             // draw wider arcs back to theta1
             firstSlope = true
@@ -159,14 +136,6 @@ struct Spiral: Shape {
                     ))
                 )
             }
-            
-            // draw final quarter curve
-            path.addRelativeArc(
-                center: center(spiralPoint(theta: theta1 + del1, thicc: thiccness - corner_radius)),
-                radius: CGFloat(corner_radius),
-                startAngle: Angle(radians: theta1 + del1),
-                delta: Angle(radians: -Double.pi / 2)
-            )
             
             // close it up
             path.closeSubpath()

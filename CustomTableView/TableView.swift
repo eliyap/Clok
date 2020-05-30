@@ -48,7 +48,6 @@ struct TableView: UIViewRepresentable {
         // determines the offset of the thin grey line separating cells
         // currently the line completely cuts the tabs
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        
         return tableView
     }
     
@@ -67,7 +66,7 @@ struct TableView: UIViewRepresentable {
             uiView.selectRow(at: idx, animated: true, scrollPosition: .top)
             uiView.deselectRow(at: idx, animated: true)
             // prevent table from infinitely updating itself
-            listRow.row = NSNotFound
+            listRow.entry = nil
         }
     }
     
