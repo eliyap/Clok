@@ -10,7 +10,7 @@ import Foundation
 import SwiftUI
 
 
-class TimeEntry : ObservableObject {
+class TimeEntry : ObservableObject, Equatable {
     let id:Int
     
     // time parameters
@@ -122,4 +122,14 @@ class TimeEntry : ObservableObject {
             self.endTheta = Angle(degrees: endInt! * degreesPerSec)
         }
     }
+    
+    static func == (lhs: TimeEntry, rhs: TimeEntry) -> Bool {
+        /// we could check everything, but unless the data is corrupted we really only need to check task ID
+        /// NOTE: if in future we support editing of time entries, this check will need to be more rigorous
+        return
+            lhs.id == rhs.id &&
+            lhs.start == rhs.start &&
+            lhs.end == rhs.end &&
+            lhs.tid == rhs.tid
+       }
 }

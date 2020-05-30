@@ -132,8 +132,7 @@ struct CustomTableView: View, TableViewDelegate {
         print("Tapped on record \(index)")
         self.detailViewRow = index
         self.detailViewActive.toggle()
-    }
-    
+    }    
 }
 
 struct CustomTableView_Previews: PreviewProvider {

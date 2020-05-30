@@ -62,8 +62,10 @@ struct TableView: UIViewRepresentable {
         
         // move to selected row, or none if out of bounds (NSNotFound is always out of bounds)
         if row < uiView.numberOfRows(inSection: 0){
-            uiView.scrollToRow(at: IndexPath(row: row, section: 0), at: .top, animated: true)
-            
+            let idx = IndexPath(row: row, section: 0)
+//            uiView.scrollToRow(at: idx, at: .top, animated: true)
+            uiView.selectRow(at: idx, animated: true, scrollPosition: .top)
+            uiView.deselectRow(at: idx, animated: true)
             // prevent table from infinitely updating itself
             listRow.row = NSNotFound
         }

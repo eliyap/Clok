@@ -11,6 +11,7 @@ import SwiftUI
 struct EntrySpiral: View {
     @ObservedObject var entry:TimeEntry = TimeEntry()
     @EnvironmentObject var listRow: ListRow
+    var entryIndex:Int
     
     var body: some View {
         Spiral(theta1: entry.startTheta, theta2: entry.endTheta)
@@ -18,13 +19,14 @@ struct EntrySpiral: View {
             // TODO: accomodate dark mode with an adaptive color here
             .fill(entry.project_hex_color)
             .gesture(TapGesture().onEnded(){_ in
-                self.listRow.row = 1 // to be replaced by it's real index
+                self.listRow.row = self.entryIndex // to be replaced by it's real index
                 print("\(self.entry.description) - \(self.entry.project ?? "none")")
             })
     }
     
-    init (_ entry:TimeEntry, zeroTo zeroDate:Date) {
+    init (_ entry:TimeEntry, idx:Int, zeroTo zeroDate:Date) {
         self.entry = entry
+        self.entryIndex = idx
         self.entry.zero(zeroDate)
     }
 }
@@ -33,6 +35,7 @@ struct EntrySpiral_Previews: PreviewProvider {
     static var previews: some View {
         EntrySpiral(
             TimeEntry(),
+            idx: 0,
             zeroTo: Date()
         )
     }

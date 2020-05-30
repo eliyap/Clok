@@ -22,14 +22,16 @@ struct Spiral: Shape {
     }
     
     init(theta1: Angle, theta2: Angle){
-        // cap angles at the end of the spiral so that later events are not rendered
+        /// cap angles at the end of the spiral
         self.theta1 = min(MAX_RADIUS, theta1.radians)
+        self.theta1 = max(0, self.theta1)
         self.theta2 = min(MAX_RADIUS, theta2.radians)
+        self.theta2 = max(0, self.theta2)
     }
     
     func path(in rect: CGRect) -> Path {
+        /// do not draw if theta's are equal or don't make sense
         guard (theta2 > theta1) else {
-//            print("invalid thetas!")
             return Path()
         }
         
@@ -40,16 +42,16 @@ struct Spiral: Shape {
         
         var firstSlope = true
         
-        // angles subtended by rounded corner sections
+        /// calculate the angle subtended by the rounded corners (drops off further from the center)
         let del1 = (theta1 == 0) ? (corner_radius) : (corner_radius / theta1)
         let del2 = (theta2 == 0) ? (corner_radius) : (corner_radius / theta2)
         
-        // approximate small arcs by simply returning rounded rects
+        /// approximate small arcs by rounded rectangles
         guard
-            // arc is not too thin a sliver
-            (theta2 > 3 && theta2 - theta1 > 0.05 * Double.pi)
-                // and is not too close to the center
-                || (theta2 < 3 && theta2 - theta1 > 1)
+            /// fails if arc is outside 2 PI and under 1/20 rad
+            (theta2 > 2 * Double.pi && theta2 - theta1 > 0.05 * Double.pi) ||
+            /// or inside 2 PI and under 1 rad
+            (theta2 < 2 * Double.pi && theta2 - theta1 > 0.5)
         else {
             return Path.init(
                 roundedRect: CGRect(
@@ -75,7 +77,7 @@ struct Spiral: Shape {
         thetas.append(theta2 - del2)
         
         return Path { path in
-            // draw initial quarter curve
+            /// draw initial quarter circle
             path.move(to: center(spiralPoint(theta: theta1, thicc: corner_radius)))
             path.addRelativeArc(
                 center: center(spiralPoint(theta: theta1 + del1, thicc: corner_radius)),
@@ -152,8 +154,8 @@ struct Spiral: Shape {
                         b1: -(oldSlope * xCosX(oldT) - xSinX(oldT)),
                         b2: -(newSlope * xCosX(newT) - xSinX(newT))
                     ),
-                                                theta: (oldT + newT) / 2,
-                                                phi: newT - oldT
+                                                   theta: (oldT + newT) / 2,
+                                                   phi: newT - oldT
                     ))
                 )
             }
