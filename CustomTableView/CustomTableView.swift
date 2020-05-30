@@ -106,10 +106,10 @@ struct CustomTableView: View, TableViewDelegate {
         }
     }
     
-    // called when scrollDidEnd
+    /// called when scrollDidEnd
     func scrollFinished(_ tableView: TableView, _ target: UnsafeMutablePointer<CGPoint>) {
-        // save the scroll position in case the user rotates
-        // which causes the view to be re-initialized
+        /// save the scroll position in case the user rotates
+        /// which causes the view to be re-initialized
         listPosition.position = max(target.pointee.y, 0)
     }
     
@@ -124,7 +124,7 @@ struct CustomTableView: View, TableViewDelegate {
 //        {
 //            print("*** NEED TO SUPPLY MORE DATA ***")
 //            // might not need this method
-////            self.supplyMoreData()
+//            self.supplyMoreData()
 //        }
     }
     
@@ -134,11 +134,6 @@ struct CustomTableView: View, TableViewDelegate {
         self.detailViewActive.toggle()
     }
     
-    // this could be a view modifier but I do not think there is a way to read the view modifier
-    // from a UIViewRepresentable (yet).
-    func heightForRow(_ tableView: TableView, at index: Int) -> CGFloat {
-        return 64.0
-    }
 }
 
 struct CustomTableView_Previews: PreviewProvider {

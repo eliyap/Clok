@@ -16,7 +16,6 @@ protocol TableViewDataSource {
 }
 
 protocol TableViewDelegate {
-    func heightForRow(_ tableView: TableView, at index: Int) -> CGFloat
     func onScroll(_ tableView: TableView, isScrolling: Bool) -> Void
     func onAppear(_ tableView: TableView, at index: Int) -> Void
     func onTapped(_ tableView: TableView, at index: Int) -> Void
@@ -61,7 +60,7 @@ struct TableView: UIViewRepresentable {
             uiView.reloadData()
         }
         
-        // move to selected row, or none if out of bounds (including if NSNotFound)
+        // move to selected row, or none if out of bounds (NSNotFound is always out of bounds)
         if row < uiView.numberOfRows(inSection: 0){
             uiView.scrollToRow(at: IndexPath(row: row, section: 0), at: .top, animated: true)
             
