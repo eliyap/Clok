@@ -39,6 +39,7 @@ struct EntrySpiral: View {
             self.listRow.entry = self.entry
             
             /// brief bounce animation
+            /// per Zero Punctuation advice, peak quickly then drop off slowly
             withAnimation(.linear(duration: 0.1)){
                 self.scale += CGFloat(1 / self.entry.endTheta.radians)
                 self.bright += 0.25
@@ -53,8 +54,6 @@ struct EntrySpiral: View {
         })
         .scaleEffect(scale)
         .brightness(bright)
-//        .animation(.linear(duration: 0.15))
-        
     }
     
     init (_ entry:TimeEntry, zeroTo zeroDate:Date) {

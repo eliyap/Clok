@@ -11,30 +11,40 @@ import SwiftUI
 
 struct ContentView: View {
     @State var report = Report()
+    /// indicates whether we are finished loading data
+    @State var loaded = false
     @EnvironmentObject var zero:ZeroDate
     
     var body : some View {
-        GeometryReader {geo in
-            if geo.size.width > geo.size.height {
-                // landscape mode
-                HStack {
-                    SpiralUI(self.report)
-                        .frame(width: geo.size.width * 0.60)
-                        .border(Color.black)
-                    CustomTableView(self.zero.frame.within(self.report.entries))
+        ZStack {
+            GeometryReader {geo in
+                if geo.size.width > geo.size.height {
+                    // landscape mode
+                    HStack {
+                        SpiralUI(self.report)
+                            .frame(width: geo.size.width * 0.60)
+                            .border(Color.black)
+                        CustomTableView(self.zero.frame.within(self.report.entries))
+                    }
+                } else {
+                    // portrait mode
+                    VStack(alignment: .center) {
+                        SpiralUI(self.report)
+                            .frame(height: geo.size.height * 0.60)
+                            .border(Color.black)
+                        CustomTableView(self.zero.frame.within(self.report.entries))
+                    }
                 }
-            } else {
-                // portrait mode
-                VStack(alignment: .center) {
-                    SpiralUI(self.report)
-                        .frame(height: geo.size.height * 0.60)
-                        .border(Color.black)
-                    CustomTableView(self.zero.frame.within(self.report.entries))
-                }
+            }.onAppear { // load data immediately
+                self.loadData()
             }
-        }.onAppear { // load data immediately
-            self.loadData()
+            /// fade out loading screen when data is finished being requested
+            ProgressIndicator()
+                .opacity(self.loaded ? 0.0 : 1.0)
+                .animation(.linear)
+            
         }
+        
     }
     
     func loadData() {
@@ -61,7 +71,11 @@ struct ContentView: View {
                 DispatchQueue.main.async {
                     switch result {
                     case let .success(myReport):
+                        /// hand back the complete report
                         self.report = myReport
+                        /// and remove the loading screen
+                        self.loaded = true
+                        
                         #if DEBUG
                         print("Fetched \(self.report.entries.count) entries in total")
     //                    print(report.entries.max(){$0.start > $1.start}?.start)
