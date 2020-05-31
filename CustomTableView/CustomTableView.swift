@@ -17,15 +17,8 @@ class TimeEntryDataSource: TableViewDataSource, ObservableObject {
         return mutableData.count
     }
     
-    //MARK: Cell Details
-    func titleForRow(row: Int) -> String {
-        return mutableData[row].description
-    }
-    func subtitleForRow(row: Int) -> String? {
-        return mutableData[row].project
-    }
-    func colorForRow(row: Int) -> UIColor {
-        return mutableData[row].project_hex_color.uiColor()
+    func entryAt(_ path:IndexPath) -> TimeEntry {
+        mutableData[path.row]
     }
     
     //MARK: Cell Lookup
@@ -52,7 +45,7 @@ struct CustomTableView: View, TableViewDelegate {
     @State var isScrolling: Bool = false
     
     @State var detailViewActive = false
-    @State var detailViewRow = 0
+    @State var selectedEntry = TimeEntry()
     @State var isLoading = false
     
     @State var myRow:Int = 0
@@ -80,7 +73,7 @@ struct CustomTableView: View, TableViewDelegate {
         NavigationView {
             ZStack {
                 // makes the whole thing clickable
-                NavigationLink(destination: DetailView(rowIndex: self.detailViewRow), isActive: self.$detailViewActive) {
+                NavigationLink(destination: DetailView(entry: self.selectedEntry), isActive: self.$detailViewActive) {
                     EmptyView()
                 }
                 .frame(width: 0, height: 0)
@@ -94,21 +87,14 @@ struct CustomTableView: View, TableViewDelegate {
                 ).onReceive(listRow.$entry, perform: {
                     self.myRow = self.mutableData.rowForEntry(entry: $0)
                 })
-                .onDisappear() {
-                    print("poof")
-                }
-                
-                VStack{
-                    Text("\(listPosition.position)") // debug
-                    Text("\(self.myRow)")
-                }
                 
                 }
-            .navigationBarTitle("Entries")
+            .navigationBarTitle("Entries", displayMode: .inline)
+            .navigationBarHidden(true)
             // prevents a weird white space when the title contracts when scrolling down
             .edgesIgnoringSafeArea(.top)
         }
-        .navigationViewStyle(StackNavigationViewStyle())
+        .navigationViewStyle(DoubleColumnNavigationViewStyle())
     }
     
     //MARK: - TableViewDelegate Functions
@@ -141,10 +127,9 @@ struct CustomTableView: View, TableViewDelegate {
 //        }
     }
     
-    func onTapped(_ tableView: TableView, at index: Int) {
-        print("Tapped on record \(index)")
-        self.detailViewRow = index
-        self.detailViewActive.toggle()
+    func onTapped(_ tableView: TableView, selected entry:TimeEntry?) {
+        self.selectedEntry = entry ?? TimeEntry()
+        self.detailViewActive = true
     }
 }
 

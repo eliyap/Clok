@@ -54,8 +54,8 @@ func center(
     _ pt:CGPoint
 ) -> CGPoint{
     return CGPoint(
-        x:pt.x + CGFloat(MAX_RADIUS + thiccness),
-        y:pt.y + CGFloat(MAX_RADIUS + thiccness)
+        x:pt.x + (frame_size / 2),
+        y:pt.y + (frame_size / 2)
     )
 }
 

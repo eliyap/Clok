@@ -22,11 +22,11 @@ let thiccness = Double.pi * 1.0
 // corresponds to 7 turns of the spiral for 7 days
 let MAX_RADIUS = 7 * 2 * Double.pi
 
-// core graphics representation of the size of an unscaled spiral
-let frame_size = CGFloat(2 * (MAX_RADIUS + thiccness))
-
 // radius of the corners, increase to make rounder corners
 let stroke_weight = CGFloat(1)
+
+// core graphics representation of the size of an unscaled spiral
+let frame_size = CGFloat(2 * (MAX_RADIUS + thiccness + Double(stroke_weight)))
 
 
 // MARK: - API components

@@ -10,15 +10,13 @@ import SwiftUI
 
 protocol TableViewDataSource {
     func count() -> Int
-    func titleForRow(row: Int) -> String
-    func subtitleForRow(row: Int) -> String?
-    func colorForRow(row: Int) -> UIColor
+    func entryAt(_ path:IndexPath) -> TimeEntry
 }
 
 protocol TableViewDelegate {
     func onScroll(_ tableView: TableView, isScrolling: Bool) -> Void
     func onAppear(_ tableView: TableView, at index: Int) -> Void
-    func onTapped(_ tableView: TableView, at index: Int) -> Void
+    func onTapped(_ tableView: TableView, selected entry:TimeEntry?) -> Void
     func scrollFinished(_ tableView:TableView, _ target: UnsafeMutablePointer<CGPoint>) -> Void
 }
 
@@ -118,10 +116,11 @@ struct TableView: UIViewRepresentable {
 
             if let dataSource = mydata {
                 // set the text if our 2 elements
-                cell.heading.text = dataSource.titleForRow(row: indexPath.row)
-                cell.subheading.text = dataSource.subtitleForRow(row: indexPath.row)
+                let entry = dataSource.entryAt(indexPath)
+                cell.heading.text = entry.description
+                cell.subheading.text = entry.project
                 // set the color to the project color
-                cell.tab.backgroundColor = dataSource.colorForRow(row: indexPath.row)                
+                cell.tab.backgroundColor = entry.project_hex_color.uiColor()
                 
                 // no idea what this does
                 delegate?.onAppear(parent, at: indexPath.row)
@@ -131,7 +130,8 @@ struct TableView: UIViewRepresentable {
         
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             tableView.deselectRow(at: indexPath, animated: true)
-            delegate?.onTapped(parent, at: indexPath.row)
+//            print(mydata?.titleForRow(row: indexPath.row))
+            delegate?.onTapped(parent, selected: mydata?.entryAt(indexPath))
         }
         
         func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

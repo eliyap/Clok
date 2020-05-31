@@ -30,10 +30,11 @@ struct EntrySpiral: View {
                 dash: [],
                 dashPhase: 0)
             )
+            
         }
         .gesture(TapGesture().onEnded(){_ in
-            self.listRow.entry = self.entry // to be replaced by it's real index
-            print("\(self.entry.description) - \(self.entry.project ?? "none")")
+            /// pass selection to global variable
+            self.listRow.entry = self.entry
         })
         
     }
