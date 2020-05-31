@@ -10,7 +10,7 @@ import SwiftUI
 
 enum weekLabels : String {
     case current = "This Week"
-    case pastSeven = "Last 7d"
+    case pastSeven = "Last 7 Days"
     case last = "Last Week"
     case next = "Next"
     case prev = "Prev"

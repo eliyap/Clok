@@ -61,15 +61,14 @@ struct TableView: UIViewRepresentable {
         // move to selected row, or none if out of bounds (NSNotFound is always out of bounds)
         if row < uiView.numberOfRows(inSection: 0){
             let idx = IndexPath(row: row, section: 0)
-//            uiView.scrollToRow(at: idx, at: .top, animated: true)
             uiView.selectRow(at: idx, animated: true, scrollPosition: .top)
             
             /// deselect after .5s, gives time for scroll to occur before fade out
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                print("executed")
                 uiView.deselectRow(at: idx, animated: true)
             }
-            // prevent table from infinitely updating itself
+            
+            /// prevent table from infinitely updating itself
             listRow.entry = nil
         }
     }
@@ -135,6 +134,7 @@ struct TableView: UIViewRepresentable {
         }
         
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            tableView.deselectRow(at: indexPath, animated: true)
             delegate?.onTapped(parent, selected: mydata?.entryAt(indexPath))
         }
         
