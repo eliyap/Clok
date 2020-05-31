@@ -39,17 +39,21 @@ struct EntrySpiral: View {
             self.listRow.entry = self.entry
             
             /// brief bounce animation
-            self.scale += CGFloat(1 / self.entry.endTheta.radians)
-            self.bright += 0.25
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-                self.scale = 1
-                self.bright = 0
+            withAnimation(.linear(duration: 0.1)){
+                self.scale += CGFloat(1 / self.entry.endTheta.radians)
+                self.bright += 0.25
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                withAnimation(.linear(duration: 0.3)){
+                    self.scale = 1
+                    self.bright = 0
+                }
             }
             
         })
         .scaleEffect(scale)
         .brightness(bright)
-        .animation(.linear(duration: 0.25))
+//        .animation(.linear(duration: 0.15))
         
     }
     
