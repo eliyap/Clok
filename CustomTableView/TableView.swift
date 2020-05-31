@@ -44,8 +44,9 @@ struct TableView: UIViewRepresentable {
         tableView.setContentOffset(CGPoint(x: 0.0, y: listPosition.position), animated: false)
         
         // determines the offset of the thin grey line separating cells
-        // currently the line completely cuts the tabs
-        tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        // this makes the line completely cuts the tabs
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
+        
         return tableView
     }
     
@@ -62,7 +63,12 @@ struct TableView: UIViewRepresentable {
             let idx = IndexPath(row: row, section: 0)
 //            uiView.scrollToRow(at: idx, at: .top, animated: true)
             uiView.selectRow(at: idx, animated: true, scrollPosition: .top)
-            uiView.deselectRow(at: idx, animated: true)
+            
+            /// deselect after .5s, gives time for scroll to occur before fade out
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                print("executed")
+                uiView.deselectRow(at: idx, animated: true)
+            }
             // prevent table from infinitely updating itself
             listRow.entry = nil
         }
@@ -129,8 +135,6 @@ struct TableView: UIViewRepresentable {
         }
         
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            tableView.deselectRow(at: indexPath, animated: true)
-//            print(mydata?.titleForRow(row: indexPath.row))
             delegate?.onTapped(parent, selected: mydata?.entryAt(indexPath))
         }
         

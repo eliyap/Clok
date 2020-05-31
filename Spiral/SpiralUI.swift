@@ -23,10 +23,9 @@ struct SpiralUI: View {
                     }
                 }
                 .frame(width: frame_size, height: frame_size)
+                .border(Color.black)
                 .scaleEffect(min(geo.size.width / frame_size, geo.size.height / frame_size))
             }
-            DateBar()
-            .padding()
         }
     }
     

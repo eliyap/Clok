@@ -10,7 +10,7 @@ import Foundation
 import SwiftUI
 
 class ListPosition: ObservableObject {
-    @Published var position:CGFloat = 0 
+    @Published var position:CGFloat = 0
 }
 
 class ListRow: ObservableObject {

@@ -15,6 +15,8 @@ struct DetailView: View {
         
         Text("\(entry.description)")
         .navigationBarTitle("Back")
+        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+
     }
 }
 

@@ -52,8 +52,9 @@ struct CustomTableView: View, TableViewDelegate {
     
     @EnvironmentObject var listRow:ListRow
     @EnvironmentObject var listPosition: ListPosition
+    @EnvironmentObject private var zero:ZeroDate
     
-    let total = 100
+    private let df = DateFormatter()
     
 //    func supplyMoreData() {
 //        isLoading = true
@@ -67,9 +68,14 @@ struct CustomTableView: View, TableViewDelegate {
     
     init(_ entries:[TimeEntry]) {
         self.mutableData.append(contentsOf: entries)
+        
+        // using method from
+        // https://stackoverflow.com/questions/51267284/ios-swift-how-to-have-dateformatter-without-year-for-any-locale
+        df.setLocalizedDateFormatFromTemplate("MMMdd")
     }
     
     var body: some View {
+        
         NavigationView {
             ZStack {
                 // makes the whole thing clickable
@@ -84,17 +90,32 @@ struct CustomTableView: View, TableViewDelegate {
                     dataSource: self.mutableData as TableViewDataSource,
                     delegate: self,
                     row: self.$myRow
-                ).onReceive(listRow.$entry, perform: {
+                ).onReceive(self.listRow.$entry, perform: {
                     self.myRow = self.mutableData.rowForEntry(entry: $0)
                 })
                 
-                }
-            .navigationBarTitle("Entries", displayMode: .inline)
-            .navigationBarHidden(true)
-            // prevents a weird white space when the title contracts when scrolling down
-            .edgesIgnoringSafeArea(.top)
+            }
+            .navigationBarTitle(
+                Text(
+                    // poor man's switch statement
+                    self.zero.frame == self.zero.pastSeven ?
+                        weekLabels.pastSeven.rawValue :
+                    self.zero.frame == self.zero.thisWeek ?
+                        weekLabels.current.rawValue :
+                    self.zero.frame == self.zero.lastWeek ?
+                        weekLabels.last.rawValue :
+                        self.df.string(from: self.zero.frame.start) +
+                        " – " +
+                        self.df.string(from: self.zero.frame.end)
+                ),
+                displayMode: .inline
+            )
+            .navigationBarItems(
+                leading:prevWeekBtn().environmentObject(self.zero),
+                trailing: nextWeekBtn().environmentObject(self.zero)
+            )
         }
-        .navigationViewStyle(DoubleColumnNavigationViewStyle())
+        .navigationViewStyle(StackNavigationViewStyle())
     }
     
     //MARK: - TableViewDelegate Functions
