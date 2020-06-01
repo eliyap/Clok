@@ -26,7 +26,7 @@ struct ContentView: View {
                         SpiralUI(self.report)
                             .frame(width: geo.size.width * 0.60)
                             .border(Color.black)
-                        CustomTableView(self.zero.frame.within(self.report.entries))
+//                        CustomTableView(self.zero.frame.within(self.report.entries))
                     }
                 } else {
                     /// portrait mode

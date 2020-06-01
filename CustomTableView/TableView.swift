@@ -60,6 +60,7 @@ struct TableView: UIViewRepresentable {
         
         // move to selected row, or none if out of bounds (NSNotFound is always out of bounds)
         if row < uiView.numberOfRows(inSection: 0){
+            print(row)
             let idx = IndexPath(row: row, section: 0)
             uiView.selectRow(at: idx, animated: true, scrollPosition: .top)
             

@@ -48,7 +48,7 @@ struct CustomTableView: View, TableViewDelegate {
     @State var selectedEntry = TimeEntry()
     @State var isLoading = false
     
-    @State var myRow:Int = 0
+    @State var myRow:Int = NSNotFound
     
     @EnvironmentObject var listRow:ListRow
     @EnvironmentObject var listPosition: ListPosition
