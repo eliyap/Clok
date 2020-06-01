@@ -50,6 +50,8 @@ struct prevWeekBtn : View {
                     .font(.subheadline)
                     .foregroundColor(.primary)
             }
+            /// increase the size of the touch target
+            .padding()
         }
     }
 }
@@ -92,6 +94,8 @@ struct nextWeekBtn : View {
                     .font(.subheadline)
                     .foregroundColor(.primary)
             }
+            /// increase the size of the touch target
+            .padding()
         }
         // do not allow clicks when in the This Week time frame
         .disabled(self.zero.frame == self.zero.thisWeek)

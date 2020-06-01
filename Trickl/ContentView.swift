@@ -11,15 +11,17 @@ import SwiftUI
 
 struct ContentView: View {
     @State var report = Report()
+    
     /// indicates whether we are finished loading data
     @State var loaded = false
+    
     @EnvironmentObject var zero:ZeroDate
     
     var body : some View {
         ZStack {
             GeometryReader {geo in
                 if geo.size.width > geo.size.height {
-                    // landscape mode
+                    /// landscape mode
                     HStack {
                         SpiralUI(self.report)
                             .frame(width: geo.size.width * 0.60)
@@ -27,7 +29,7 @@ struct ContentView: View {
                         CustomTableView(self.zero.frame.within(self.report.entries))
                     }
                 } else {
-                    // portrait mode
+                    /// portrait mode
                     VStack(alignment: .center) {
                         SpiralUI(self.report)
                             .frame(height: geo.size.height * 0.60)
@@ -35,14 +37,14 @@ struct ContentView: View {
                         CustomTableView(self.zero.frame.within(self.report.entries))
                     }
                 }
-            }.onAppear { // load data immediately
+            }.onAppear {
+                /// load data immediately
                 self.loadData()
             }
             /// fade out loading screen when data is finished being requested
             ProgressIndicator()
                 .opacity(self.loaded ? 0.0 : 1.0)
                 .animation(.linear)
-            
         }
         
     }
