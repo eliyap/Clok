@@ -27,10 +27,8 @@ struct TableView: UIViewRepresentable {
     
     let tableView = UITableView()
     
-    @EnvironmentObject var listPosition: ListPosition
-    // receives updates on the clicked time Entry from SpiralUI
-    @Binding var row:Int
-    @EnvironmentObject var listRow: ListRow
+    // receives updates on the clicked time Entry from parent
+    @ObservedObject var tableRow : TableRow
     
     func makeCoordinator() -> TableView.Coordinator {
         Coordinator(self, delegate: self.delegate)
@@ -39,9 +37,6 @@ struct TableView: UIViewRepresentable {
     func makeUIView(context: Context) -> UITableView {
         
         tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "CellIdentifier")
-        
-        // restore the saved scroll position
-        tableView.setContentOffset(CGPoint(x: 0.0, y: listPosition.position), animated: false)
         
         // determines the offset of the thin grey line separating cells
         // this makes the line completely cuts the tabs
@@ -59,9 +54,9 @@ struct TableView: UIViewRepresentable {
         }
         
         // move to selected row, or none if out of bounds (NSNotFound is always out of bounds)
-        if row < uiView.numberOfRows(inSection: 0){
-            print(row)
-            let idx = IndexPath(row: row, section: 0)
+        if tableRow.row < uiView.numberOfRows(inSection: 0){
+            print(tableRow.row)
+            let idx = IndexPath(row: tableRow.row, section: 0)
             uiView.selectRow(at: idx, animated: true, scrollPosition: .top)
             
             /// deselect after .5s, gives time for scroll to occur before fade out
@@ -70,7 +65,7 @@ struct TableView: UIViewRepresentable {
             }
             
             /// prevent table from infinitely updating itself
-            listRow.entry = nil
+//            listRow.entry = nil
         }
     }
     

@@ -8,6 +8,9 @@
 
 import SwiftUI
 
+class TableRow : ObservableObject {
+    @Published var row:Int = NSNotFound
+}
 
 class TimeEntryDataSource: TableViewDataSource, ObservableObject {
     
@@ -48,10 +51,9 @@ struct CustomTableView: View, TableViewDelegate {
     @State var selectedEntry = TimeEntry()
     @State var isLoading = false
     
-    @State var myRow:Int = NSNotFound
+    @State var tableRow = TableRow()
     
     @EnvironmentObject var listRow:ListRow
-    @EnvironmentObject var listPosition: ListPosition
     @EnvironmentObject private var zero:ZeroDate
     
     private let df = DateFormatter()
@@ -89,9 +91,9 @@ struct CustomTableView: View, TableViewDelegate {
                 TableView(
                     dataSource: self.mutableData as TableViewDataSource,
                     delegate: self,
-                    row: self.$myRow
+                    tableRow: self.tableRow
                 ).onReceive(self.listRow.$entry, perform: {
-                    self.myRow = self.mutableData.rowForEntry(entry: $0)
+                    self.tableRow.row = self.mutableData.rowForEntry(entry: $0)
                 })
                 
             }
@@ -110,10 +112,6 @@ struct CustomTableView: View, TableViewDelegate {
                 ),
                 displayMode: .inline
             )
-            .navigationBarItems(
-                leading:prevWeekBtn().environmentObject(self.zero),
-                trailing: nextWeekBtn().environmentObject(self.zero)
-            )
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
@@ -130,7 +128,7 @@ struct CustomTableView: View, TableViewDelegate {
     func scrollFinished(_ tableView: TableView, _ target: UnsafeMutablePointer<CGPoint>) {
         /// save the scroll position in case the user rotates
         /// which causes the view to be re-initialized
-        listPosition.position = max(target.pointee.y, 0)
+//        listPosition.position = max(target.pointee.y, 0)
     }
     
     func onAppear(_ tableView: TableView, at index: Int) {

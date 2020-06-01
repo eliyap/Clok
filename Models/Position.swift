@@ -9,9 +9,9 @@
 import Foundation
 import SwiftUI
 
-class ListPosition: ObservableObject {
-    @Published var position:CGFloat = 0
-}
+//class ListPosition: ObservableObject {
+//    @Published var position:CGFloat = 0
+//}
 
 class ListRow: ObservableObject {
     @Published var entry:TimeEntry? = nil

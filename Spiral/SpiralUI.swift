@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct SpiralUI: View {
-    @ObservedObject var report = Report()
+    @ObservedObject var report:Report
     @EnvironmentObject var zero:ZeroDate
     
     var body: some View {
-        VStack (alignment: .center, spacing: 0) {
+        ZStack{
             GeometryReader { geo in
                 ZStack {
                     ForEach(self.report.entries, id: \.id) { entry in
@@ -26,11 +26,16 @@ struct SpiralUI: View {
                 .border(Color.black)
                 .scaleEffect(min(geo.size.width / frame_size, geo.size.height / frame_size))
             }
+            HStack {
+                prevWeekBtn()
+                nextWeekBtn()
+            }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
         }
+        
     }
     
-    init(_ report:Report) {
-        self.report = report
+    init(_ _report:Report) {
+        report = _report
     }
     
 }

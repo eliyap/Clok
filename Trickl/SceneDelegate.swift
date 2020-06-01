@@ -12,7 +12,7 @@ import SwiftUI
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    var listPosition = ListPosition()
+//    var listPosition = ListPosition()
     var listRow = ListRow()
     var zero = ZeroDate()
 
@@ -23,7 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // Create the SwiftUI view that provides the window contents.
         let contentView = ContentView()
-            .environmentObject(listPosition)
+//            .environmentObject(listPosition)
             .environmentObject(listRow)
             .environmentObject(zero)
             

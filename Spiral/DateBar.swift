@@ -19,7 +19,6 @@ enum weekLabels : String {
 /// click to roll back to the previous week
 struct prevWeekBtn : View {
     @EnvironmentObject private var zero:ZeroDate
-    @Environment(\.verticalSizeClass) var vSize
     
     var body : some View {
         /// logic for "previous" week
@@ -35,18 +34,6 @@ struct prevWeekBtn : View {
         }) {
             HStack {
                 Image(systemName: "chevron.left")
-                    .font(.subheadline)
-                    .foregroundColor(.primary)
-                Text(
-                    // if a phone is in landscape mode, show no label
-                    self.vSize == .compact ?
-                        "" :
-                    self.zero.frame == self.zero.thisWeek ?
-                        weekLabels.pastSeven.rawValue :
-                    self.zero.frame == self.zero.pastSeven ?
-                        weekLabels.last.rawValue :
-                        weekLabels.prev.rawValue
-                )
                     .font(.subheadline)
                     .foregroundColor(.primary)
             }
@@ -75,27 +62,13 @@ struct nextWeekBtn : View {
                 self.zero.frame = WeekTimeFrame(succeeding: self.zero.frame)
             }
         }) {
-            HStack {
-                Text(
-                    // if a phone is in landscape mode, show no label
-                    self.vSize == .compact ?
-                        "" :
-                    self.zero.frame == self.zero.thisWeek ?
-                        "Future" :
-                    self.zero.frame == self.zero.pastSeven ?
-                        weekLabels.current.rawValue :
-                    self.zero.frame == self.zero.lastWeek ?
-                        weekLabels.pastSeven.rawValue :
-                        weekLabels.next.rawValue
-                )
-                    .font(.subheadline)
-                    .foregroundColor(.primary)
+            ZStack{
+                Circle()
+                    .path(in: CGRect(x: 0, y: 0, width: 50, height: 50))
                 Image(systemName: "chevron.right")
                     .font(.subheadline)
                     .foregroundColor(.primary)
             }
-            /// increase the size of the touch target
-            .padding()
         }
         // do not allow clicks when in the This Week time frame
         .disabled(self.zero.frame == self.zero.thisWeek)

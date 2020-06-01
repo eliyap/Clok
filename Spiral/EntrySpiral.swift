@@ -37,6 +37,10 @@ struct EntrySpiral: View {
         .gesture(TapGesture().onEnded(){_ in
             /// pass selection to global variable
             self.listRow.entry = self.entry
+            /// then deselect immediately
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+                self.listRow.entry = nil
+            }
             
             /// brief bounce animation
             /// per Zero Punctuation advice, peak quickly then drop off slowly
