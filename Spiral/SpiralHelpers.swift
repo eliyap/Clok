@@ -49,16 +49,20 @@ func moveOutControl(
     )
 }
 
-let centerTransform = CGAffineTransform(
-    translationX: (frame_size / 2) - 1,
-    y: (frame_size / 2) + 1
-)
 
-// adjust the spiral to the center of frame
+
+/// adjust point to the center of frame
 func center(
-    _ pt:CGPoint
+    frame: CGRect,
+    pt:CGPoint
 ) -> CGPoint{
-    return pt.applying(centerTransform)
+    CGPoint(
+        x: pt.x * frame.size.width / frame_size,
+        y: pt.y * frame.size.height / frame_size
+    ).applying(CGAffineTransform(
+        translationX: (frame.size.width / 2),
+        y: (frame.size.height / 2)
+    ))
 }
 
 

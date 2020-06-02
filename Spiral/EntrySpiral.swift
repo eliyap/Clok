@@ -17,14 +17,10 @@ struct EntrySpiral: View {
     var body: some View {
         ZStack{
             Spiral(theta1: entry.startTheta, theta2: entry.endTheta)
-                // fill in with the provided color, or black by default
-                // TODO: accomodate dark mode with an adaptive color here
                 .fill(entry.project_hex_color)
                 
             Spiral(theta1: entry.startTheta, theta2: entry.endTheta)
-            // fill in with the provided color, or black by default
-            // TODO: accomodate dark mode with an adaptive color here
-                .stroke(entry.project_hex_color, style: StrokeStyle(
+                .stroke(Color.black, style: StrokeStyle(
                 lineWidth: stroke_weight,
                 lineCap: .round,
                 lineJoin: .round,

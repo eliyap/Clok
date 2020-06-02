@@ -13,25 +13,16 @@ struct SpiralUI: View {
     
     var body: some View {
         ZStack{
-            GeometryReader { geo in
-                ZStack {
-                    ForEach(self.report.entries, id: \.id) { entry in
-                        EntrySpiral(
-                            entry,
-                            zeroTo:self.zero.frame.start
-                        )
-                    }
-                }
-                .frame(width: frame_size, height: frame_size)
-                .border(Color.black)
-                .scaleEffect(min(geo.size.width / frame_size, geo.size.height / frame_size))
+            ForEach(self.report.entries, id: \.id) { entry in
+                EntrySpiral(
+                    entry,
+                    zeroTo:self.zero.frame.start
+                )
             }
-            HStack {
-                prevWeekBtn()
-                nextWeekBtn()
-            }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
-        }
         
+        }
+        .border(Color.black)
+        .aspectRatio(1, contentMode: .fit)
     }
     
     init(_ _report:Report) {

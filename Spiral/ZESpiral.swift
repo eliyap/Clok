@@ -12,8 +12,6 @@ struct Spiral: Shape {
     var theta1: Double
     var theta2: Double
     
-    let extra_width = Double(stroke_weight)
-    
     public var animatableData: AnimatablePair<Double, Double> {
         get {
             AnimatablePair(theta1, theta2)
@@ -30,11 +28,14 @@ struct Spiral: Shape {
     }
     
     func path(in rect: CGRect) -> Path {
+        
+        let scaleFactor = Double(rect.size.width / frame_size)
+        let extra_width = Double(stroke_weight) / scaleFactor
         /// calculate the angle subtended by the stroke (drops off further from the center)
         let del1 = (theta1 < 0.5) ? (extra_width) : (extra_width / theta1)
         let del2 = (theta2 < 0.5) ? (extra_width) : (extra_width / theta2)
         
-        /// do not draw if theta's are equal or don't make sense
+        /// do not draw if theta's are equal or misordered
         guard (theta2 - theta1 > 0) else {
             return Path()
         }
@@ -50,18 +51,28 @@ struct Spiral: Shape {
         guard
             theta2 - theta1 > del1
         else {
-            return Path.init(
-            CGRect(
-                origin: CGPoint(
-                    x:theta1,
-                    y:0
-                ),
-                size: CGSize(width: thiccness, height: (theta2 - theta1) * (theta2 + theta1) / 2))
+            let size = CGSize(
+                width: scaleFactor * thiccness,
+                height: scaleFactor * (theta2 - theta1) * (theta2 + theta1) / 2
             )
-            // rotate it into place
+            let path = Path.init(
+                CGRect(
+                    origin: CGPoint(
+                        x: scaleFactor * theta1,
+                        y: 0
+                    ),
+                    size: size
+                )
+            )
+            
+            return path
+            /// rotate it into place
             .applying(CGAffineTransform(rotationAngle: CGFloat((theta1 + theta2) / 2)))
-            // center it
-            .applying(centerTransform)
+            /// center it
+            .applying(CGAffineTransform(
+                translationX: (rect.size.width / 2),
+                y: (rect.size.height / 2)
+            ))
         }
         
         var thetas: [Double] = []
@@ -74,7 +85,7 @@ struct Spiral: Shape {
         
         return Path { path in
             /// draw initial quarter circle
-            path.move(to: center(spiralPoint(theta: theta1, thicc: 0)))
+            path.move(to: center(frame: rect, pt: spiralPoint(theta: theta1, thicc: 0)))
             
             // draw arcs out to theta2
             for idx in stride(from: 0, to: thetas.count - 1, by: +1) {
@@ -93,8 +104,8 @@ struct Spiral: Shape {
                            (cos(newT) - xSinX(newT))
                 
                 path.addQuadCurve(
-                    to: center(spiralPoint(theta: newT, thicc: 0)),
-                    control: center(intersect(
+                    to: center(frame: rect, pt: spiralPoint(theta: newT, thicc: 0)),
+                    control: center(frame: rect, pt: intersect(
                         m1: oldSlope,
                         m2: newSlope,
                         b1: -(oldSlope * xCosX(oldT) - xSinX(oldT)),
@@ -103,7 +114,7 @@ struct Spiral: Shape {
                 )
             }
             
-            path.addLine(to: center(spiralPoint(theta: thetas.last!, thicc: thiccness)))
+            path.addLine(to: center(frame: rect, pt: spiralPoint(theta: thetas.last!, thicc: thiccness)))
             
             // draw wider arcs back to theta1
             firstSlope = true
@@ -123,8 +134,8 @@ struct Spiral: Shape {
                            (cos(newT) - xSinX(newT))
                 
                 path.addQuadCurve(
-                    to: center(spiralPoint(theta: newT, thicc: thiccness)),
-                    control: center(moveOutControl(pt: intersect(
+                    to: center(frame: rect, pt: spiralPoint(theta: newT, thicc: thiccness)),
+                    control: center(frame: rect, pt: moveOutControl(pt: intersect(
                         m1: oldSlope,
                         m2: newSlope,
                         b1: -(oldSlope * xCosX(oldT) - xSinX(oldT)),

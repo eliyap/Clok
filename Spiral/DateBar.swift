@@ -44,7 +44,7 @@ struct prevWeekBtn : View {
                 .shadow(color: Color.primary.opacity(0.2), radius: 10, x: 10, y: 10)
                 .shadow(color: Color(UIColor.systemBackground).opacity(0.7), radius: 10, x: -5, y: -5)
             )
-            .padding()
+            .border(Color.red)
         }
     }
 }
@@ -80,7 +80,7 @@ struct nextWeekBtn : View {
                 .shadow(color: Color.primary.opacity(0.2), radius: 10, x: 10, y: 10)
                 .shadow(color: Color(UIColor.systemBackground).opacity(0.7), radius: 10, x: -5, y: -5)
             )
-            .padding()
+            .border(Color.red)
         }
         // do not allow clicks when in the This Week time frame
         .disabled(self.zero.frame == self.zero.thisWeek)
