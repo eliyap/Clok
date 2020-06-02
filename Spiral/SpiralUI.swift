@@ -23,6 +23,7 @@ struct SpiralUI: View {
         }
         .border(Color.black)
         .aspectRatio(1, contentMode: .fit)
+    .drawingGroup()
     }
     
     init(_ _report:Report) {

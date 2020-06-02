@@ -49,6 +49,20 @@ struct WeekTimeFrame: Equatable {
         end = weekEnd(trying: dayStart, contains: contains)
     }
     
+    init(starts:Date, ends:Date, first:Int) {
+        start = starts
+        end = ends
+        firstDay = first
+    }
+    
+    func addingTimeInterval(_ interval:TimeInterval) -> WeekTimeFrame {
+        WeekTimeFrame (
+            starts: start + interval,
+            ends: end + interval,
+            first: firstDay
+        )
+    }
+    
     // get the prior week
     init(preceding:WeekTimeFrame) {
         firstDay = preceding.firstDay
@@ -77,6 +91,7 @@ struct WeekTimeFrame: Equatable {
             lhs.end == rhs.end &&
             lhs.firstDay == rhs.firstDay
     }
+    
     
     // filters Time Entries down to only those which fall
     // at least partially within the week

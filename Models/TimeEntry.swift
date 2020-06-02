@@ -113,14 +113,14 @@ class TimeEntry : ObservableObject, Equatable {
     // sets the start and end angles based on the provided start datetime
     // similar to "zeroing" a graph or weighing scale
     // NOTE: max angle does not need to be set, capped by ZESpiral
-    let degreesPerSec: Double = 360.0 / (24 * 60 * 60)
+    let degreesPerSec: Double = 360.0 / dayLength
     func zero (_ zeroDate:Date) {
         let startInt = (start > zeroDate) ? (start - zeroDate) : TimeInterval(exactly: 0)
         let endInt = (end > zeroDate) ? (end - zeroDate) : TimeInterval(exactly: 0)
-        withAnimation(.easeInOut(duration: 2)) {
+//        withAnimation(.easeInOut(duration: 2)) {
             self.startTheta = Angle(degrees: startInt! * degreesPerSec)
             self.endTheta = Angle(degrees: endInt! * degreesPerSec)
-        }
+//        }
     }
     
     static func == (lhs: TimeEntry, rhs: TimeEntry) -> Bool {
