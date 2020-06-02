@@ -61,7 +61,7 @@ struct Spiral: Shape {
             // rotate it into place
             .applying(CGAffineTransform(rotationAngle: CGFloat((theta1 + theta2) / 2)))
             // center it
-            .applying(CGAffineTransform(translationX: frame_size/2, y: frame_size/2))
+            .applying(centerTransform)
         }
         
         var thetas: [Double] = []

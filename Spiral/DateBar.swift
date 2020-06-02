@@ -32,12 +32,18 @@ struct prevWeekBtn : View {
                 self.zero.frame = WeekTimeFrame(preceding: self.zero.frame)
             }
         }) {
-            HStack {
+            ZStack{
                 Image(systemName: "chevron.left")
                     .font(.subheadline)
                     .foregroundColor(.primary)
             }
-            /// increase the size of the touch target
+            .padding()
+            .background(
+                Circle()
+                .fill(Color(UIColor.systemBackground))
+                .shadow(color: Color.primary.opacity(0.2), radius: 10, x: 10, y: 10)
+                .shadow(color: Color(UIColor.systemBackground).opacity(0.7), radius: 10, x: -5, y: -5)
+            )
             .padding()
         }
     }
@@ -63,12 +69,18 @@ struct nextWeekBtn : View {
             }
         }) {
             ZStack{
-                Circle()
-                    .path(in: CGRect(x: 0, y: 0, width: 50, height: 50))
                 Image(systemName: "chevron.right")
                     .font(.subheadline)
                     .foregroundColor(.primary)
             }
+            .padding()
+            .background(
+                Circle()
+                .fill(Color(UIColor.systemBackground))
+                .shadow(color: Color.primary.opacity(0.2), radius: 10, x: 10, y: 10)
+                .shadow(color: Color(UIColor.systemBackground).opacity(0.7), radius: 10, x: -5, y: -5)
+            )
+            .padding()
         }
         // do not allow clicks when in the This Week time frame
         .disabled(self.zero.frame == self.zero.thisWeek)

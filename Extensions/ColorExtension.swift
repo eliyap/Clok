@@ -33,7 +33,7 @@ extension Color {
     }
 }
 
-// https://stackoverflow.com/questions/57257704/how-can-i-change-a-swiftui-color-to-uicolor
+/// https://stackoverflow.com/questions/57257704/how-can-i-change-a-swiftui-color-to-uicolor
 extension Color {
 
     func uiColor() -> UIColor {
@@ -60,5 +60,30 @@ extension Color {
             a = CGFloat(hexNumber & 0x000000ff) / 255
         }
         return (r, g, b, a)
+    }
+}
+
+
+/// my custom colors
+extension Color {
+
+    static let offWhite = Color(
+        red: 235 / 255,
+        green: 235 / 255,
+        blue: 245 / 255
+    )
+    
+    static let offBlack = Color(
+        red: 235 / 255,
+        green: 235 / 255,
+        blue: 245 / 255
+    )
+
+}
+
+struct offBG : View {
+    @Environment(\.colorScheme) var mode
+    var body : some View {
+        return mode == .light ? Color.offWhite : Color.offBlack
     }
 }
