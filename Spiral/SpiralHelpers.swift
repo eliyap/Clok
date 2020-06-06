@@ -34,23 +34,6 @@ func spiralPoint(theta:Double, thicc: Double) -> CGPoint {
     )
 }
 
-// moves control point out by some radius
-// theta: the direction to move the point
-// phi: the angle subtended by the arc, larger phi requires a greater adjustment in control point
-func moveOutControl(
-    pt: CGPoint,
-    theta: Double,
-    phi: Double
-) -> CGPoint {
-    let tPrime = thiccness * 2 * sin(phi / 2) / sin(phi)
-    return CGPoint(
-        x: Double(pt.x) + cos(theta) * tPrime,
-        y: Double(pt.y) + sin(theta) * tPrime
-    )
-}
-
-
-
 /// adjust point to the center of frame
 func center(
     frame: CGRect,
