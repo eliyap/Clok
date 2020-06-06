@@ -10,19 +10,23 @@ import SwiftUI
 struct SpiralUI: View {
     @ObservedObject var report:Report
     @EnvironmentObject var zero:ZeroDate
+    @State var rotation = Angle()
     
     var body: some View {
         ZStack{
-            ForEach(self.report.entries, id: \.id) { entry in
-                EntrySpiral(
-                    entry,
-                    zeroTo:self.zero.frame.start
-                )
+            ZStack{
+                ForEach(self.report.entries, id: \.id) { entry in
+                    EntrySpiral(
+                        entry,
+                        zeroTo:self.zero.frame.start
+                    )
+                }
             }
+            .aspectRatio(1, contentMode: .fit)
+            .drawingGroup()
+            .rotationEffect(-self.rotation)
+            KnobView(rotation: self.$rotation)
         }
-        .border(Color.black)
-        .aspectRatio(1, contentMode: .fit)
-    .drawingGroup()
     }
     
     init(_ _report:Report) {
