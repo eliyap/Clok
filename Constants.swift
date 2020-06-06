@@ -15,18 +15,12 @@ import SwiftUI
 // smaller angles lead to more complex paths
 let thetaStep = Double.pi / 4
 
-// the width of a spiral arc, increasing this will leave less space between spirals
-let thiccness = Double.pi * 1.0
-
 // the maximum theta & radius allowed in the spiral,
 // corresponds to 7 turns of the spiral for 7 days
 let MAX_RADIUS = 7 * 2 * Double.pi
 
-// radius of the corners, increase to make rounder corners
-let stroke_weight = CGFloat(17)
-
 // core graphics representation of the size of an unscaled spiral
-let frame_size = CGFloat(2 * (MAX_RADIUS + thiccness + Double(stroke_weight)))
+let frame_size = CGFloat(2.2 * MAX_RADIUS)
 
 
 // MARK: - API components
