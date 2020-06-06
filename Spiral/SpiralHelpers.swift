@@ -34,14 +34,7 @@ func spiralPoint(theta:Double, thicc: Double) -> CGPoint {
     )
 }
 
-/// adjust the spiral slightly off center to account for its asymmetry
-let offCenter = CGPoint(
-    x: -1.5 / 100.0,
-    y: +2 / 100.0
-)
-
 /// adjust point to the center of frame
-/// taking into account offCenter factor
 func center(
     frame: CGRect,
     pt:CGPoint
@@ -50,8 +43,8 @@ func center(
         x: pt.x * frame.size.width / frame_size,
         y: pt.y * frame.size.height / frame_size
     ).applying(CGAffineTransform(
-        translationX: frame.size.width * (0.5 + offCenter.x),
-        y: frame.size.height * (0.5 + offCenter.y)
+        translationX: frame.size.width * 0.5,
+        y: frame.size.height * 0.5
     ))
 }
 
