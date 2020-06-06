@@ -17,7 +17,7 @@ let thetaStep = Double.pi / 4
 
 // the maximum theta & radius allowed in the spiral,
 // corresponds to 7 turns of the spiral for 7 days
-let MAX_RADIUS = 7 * 2 * Double.pi
+let MAX_RADIUS = 31 * 2 * Double.pi
 
 // core graphics representation of the size of an unscaled spiral
 let frame_size = CGFloat(2.2 * MAX_RADIUS)
@@ -39,7 +39,7 @@ let myWorkspace = "3109909"
 // MARK: - Time Constants
 
 let dayLength = TimeInterval(24 * 60 * 60)
-let weekLength: TimeInterval = 7 * dayLength
+let monthLength: TimeInterval = 31 * dayLength
 
 // the length of an Archimedean Spiral with a = 0, b = 1, from 0 to 14 pi
 // https://www.wolframalpha.com/input/?i=integrate+sqrt%28x%5E2%2B1%29dx+from+0+to+14pi

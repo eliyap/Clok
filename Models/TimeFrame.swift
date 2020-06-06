@@ -66,23 +66,23 @@ struct WeekTimeFrame: Equatable {
     // get the prior week
     init(preceding:WeekTimeFrame) {
         firstDay = preceding.firstDay
-        start = preceding.start.addingTimeInterval(-weekLength)
-        end = preceding.end.addingTimeInterval(-weekLength)
+        start = preceding.start.addingTimeInterval(-monthLength)
+        end = preceding.end.addingTimeInterval(-monthLength)
     }
     
     // get the next week
     init(succeeding:WeekTimeFrame) {
         firstDay = succeeding.firstDay
-        start = succeeding.start.addingTimeInterval(+weekLength)
-        end = succeeding.end.addingTimeInterval(+weekLength)
+        start = succeeding.start.addingTimeInterval(+monthLength)
+        end = succeeding.end.addingTimeInterval(+monthLength)
     }
     
     // returns the week covering the past 7 days (including today)
     init() {
         firstDay = -1
         start = Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: Date())!
-                .addingTimeInterval(-6 * dayLength)
-        end = start.addingTimeInterval(weekLength)
+                .addingTimeInterval(-30 * dayLength)
+        end = start.addingTimeInterval(monthLength)
     }
     
     static func == (lhs: WeekTimeFrame, rhs: WeekTimeFrame) -> Bool {

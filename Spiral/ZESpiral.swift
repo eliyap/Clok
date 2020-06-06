@@ -80,7 +80,7 @@ struct Spiral: Shape {
             }
         }
         .strokedPath(StrokeStyle(
-            lineWidth: rect.width / 20,
+            lineWidth: rect.width / 80,
             lineCap: .butt
         ))
     }
