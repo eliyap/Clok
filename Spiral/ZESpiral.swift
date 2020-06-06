@@ -29,9 +29,6 @@ struct Spiral: Shape {
     
     func path(in rect: CGRect) -> Path {
         
-        let scaleFactor = Double(rect.size.width / frame_size)
-        let extra_width = Double(stroke_weight) / scaleFactor
-        
         /// do not draw if theta's are equal or misordered
         guard (theta2 - theta1 > 0) else {
             return Path()
@@ -82,6 +79,10 @@ struct Spiral: Shape {
                 )
             }
         }
+        .strokedPath(StrokeStyle(
+            lineWidth: rect.width / 15,
+            lineCap: .butt
+        ))
     }
 }
 
