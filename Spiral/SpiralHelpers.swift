@@ -40,12 +40,9 @@ func center(
     pt:CGPoint
 ) -> CGPoint{
     CGPoint(
-        x: pt.x * frame.size.width / frame_size,
-        y: pt.y * frame.size.height / frame_size
-    ).applying(CGAffineTransform(
-        translationX: frame.size.width * 0.5,
-        y: frame.size.height * 0.5
-    ))
+        x: (0.5 + pt.x / frame_size) * frame.size.width,
+        y: (0.5 + pt.y / frame_size) * frame.size.height
+    )
 }
 
 
