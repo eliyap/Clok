@@ -12,7 +12,7 @@ struct EntrySpiral: View {
     @ObservedObject var entry:TimeEntry = TimeEntry()
     @EnvironmentObject var listRow: ListRow
     @State private var scale:CGFloat = 1
-    @State private var bright:Double = 0.0
+    @State private var opacity:Double = 1
     
     var body: some View {
         ZStack{
@@ -42,18 +42,19 @@ struct EntrySpiral: View {
             /// per Zero Punctuation advice, peak quickly then drop off slowly
             withAnimation(.linear(duration: 0.1)){
                 self.scale += CGFloat(1 / self.entry.endTheta.radians)
-                self.bright += 0.25
+                // drop the opacity to take on more BG color
+                self.opacity -= 0.25
             }
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                 withAnimation(.linear(duration: 0.3)){
                     self.scale = 1
-                    self.bright = 0
+                    self.opacity = 1
                 }
             }
-            
+        // EXAMPLE CHANGE FOR GIT
         })
         .scaleEffect(scale)
-        .brightness(bright)
+        .opacity(opacity)
     }
     
     init (_ entry:TimeEntry, zeroTo zeroDate:Date) {
