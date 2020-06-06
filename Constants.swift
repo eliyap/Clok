@@ -23,7 +23,7 @@ let thiccness = Double.pi * 1.0
 let MAX_RADIUS = 7 * 2 * Double.pi
 
 // radius of the corners, increase to make rounder corners
-let stroke_weight = CGFloat(1)
+let stroke_weight = CGFloat(17)
 
 // core graphics representation of the size of an unscaled spiral
 let frame_size = CGFloat(2 * (MAX_RADIUS + thiccness + Double(stroke_weight)))

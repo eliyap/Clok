@@ -19,7 +19,6 @@ struct SpiralUI: View {
                     zeroTo:self.zero.frame.start
                 )
             }
-        
         }
         .border(Color.black)
         .aspectRatio(1, contentMode: .fit)

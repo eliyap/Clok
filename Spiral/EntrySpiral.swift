@@ -15,21 +15,14 @@ struct EntrySpiral: View {
     @State private var opacity:Double = 1
     
     var body: some View {
-        ZStack{
-            Spiral(theta1: entry.startTheta, theta2: entry.endTheta)
-                .fill(entry.project_hex_color)
                 
-            Spiral(theta1: entry.startTheta, theta2: entry.endTheta)
-                .stroke(Color.black, style: StrokeStyle(
-                lineWidth: stroke_weight,
-                lineCap: .round,
-                lineJoin: .round,
-                miterLimit: 0,
-                dash: [],
-                dashPhase: 0)
+        Spiral(theta1: entry.startTheta, theta2: entry.endTheta)
+            .stroke(entry.project_hex_color, style: StrokeStyle(
+            lineWidth: stroke_weight,
+            lineCap: .butt
             )
+        )
             
-        }
         .gesture(TapGesture().onEnded(){_ in
             /// pass selection to global variable
             self.listRow.entry = self.entry
