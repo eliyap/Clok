@@ -21,10 +21,10 @@ struct Spiral: Shape {
         }
     }
     
-    init(theta1: Angle, theta2: Angle){
+    init(theta1: Double, theta2: Double){
         /// cap angles at the end of the spiral
-        self.theta1 = min(MAX_RADIUS, theta1.radians)
-        self.theta2 = min(MAX_RADIUS, theta2.radians)
+        self.theta1 = min(MAX_RADIUS, theta1)
+        self.theta2 = min(MAX_RADIUS, theta2)
     }
     
     func path(in rect: CGRect) -> Path {
