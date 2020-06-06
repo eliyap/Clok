@@ -51,7 +51,6 @@ struct EntrySpiral: View {
                     self.opacity = 1
                 }
             }
-        // EXAMPLE CHANGE FOR GIT
         })
         .scaleEffect(scale)
         .opacity(opacity)
