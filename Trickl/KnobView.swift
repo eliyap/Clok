@@ -51,7 +51,7 @@ struct KnobAngle {
         /// +y being up and +x being rightwards,
         CGPoint(x:
             value.location.x - geo.size.width / 2,
-            y: geo.size.width / 2 - value.location.y
+                y: geo.size.width / 2 - value.location.y
         )
     }
     
@@ -69,7 +69,7 @@ struct KnobAngle {
             0 :
             /// 2nd & 3rd quadrant, add pi
             (x < 0) ?
-            Double.pi :
+                Double.pi :
             /// 4th quardrant, add 2 pi
             2 * Double.pi
         return Angle(radians: angle)
@@ -78,7 +78,8 @@ struct KnobAngle {
     mutating func updateFrame(_ frame:WeekTimeFrame) -> WeekTimeFrame {
         var days:Double = (lead - lag).degrees / 360.0
         days += Double(rotations)
-        days *= dayLength
+        // - to invert time flow direction
+        days *= -dayLength
         
         /// bring lag up to date
         lag = lead
@@ -86,65 +87,60 @@ struct KnobAngle {
         
         return frame.addingTimeInterval(days)
     }
-
+    
     
 }
 
 
 struct KnobView: View {
     @State var angleTracker = KnobAngle()
+    @Binding var rotation:Angle
     @EnvironmentObject var zero:ZeroDate
     
     var body: some View {
         
         GeometryReader { geo in
-            ZStack {
-                Circle()
-                    .stroke(Color.primary)
-                
-                Circle()
-                    .foregroundColor(Color(UIColor.systemBackground))
-                    /// keeps the coordinates centred on the circle's bounding square
-                    
-                Circle()
-                    .path(in: CGRect(
-                        origin: CGPoint(
-                            x: geo.size.width * 0.90,
-                            y: geo.size.width * 0.40
-                        ),
-                        size: CGSize(
-                            width: geo.size.width * 0.20,
-                            height: geo.size.width * 0.20
-                        )
-                    ))
-                    .fill(Color.red)
-                    /// maintain rotating while dragging & while released
-                    .rotationEffect(-self.angleTracker.lead)
-                    .gesture(DragGesture()
-                        .onChanged { value in
-                            /// find cursor's angle
-                            self.angleTracker.update(geo: geo, value: value)
-                            
-                            /// adjust zero date
-                            self.zero.frame = self.angleTracker.updateFrame(self.zero.frame)
-                            
-                            print(self.zero.frame.end)
-                            /// reset rotations
-                            self.angleTracker.rotations = 0
-                        }
-                        .onEnded { value in
-                            /// reset cancelled indicator
-                            self.angleTracker.cancelled = false
-                            
-                            /// reset rotation count
-                            self.angleTracker.rotations = 0
-                        }
+            Circle()
+                .path(in: CGRect(
+                    origin: CGPoint(
+                        x: geo.size.width * 0.90,
+                        y: geo.size.width * 0.40
+                    ),
+                    size: CGSize(
+                        width: geo.size.width * 0.20,
+                        height: geo.size.width * 0.20
                     )
-            }
+                ))
+                .fill(Color.red)
+                /// maintain rotating while dragging & while released
+                .rotationEffect(
+                    withAnimation(.linear(duration: 0.25), {
+                        -self.angleTracker.lead
+                    })
+                )
+                .gesture(DragGesture()
+                    .onChanged { value in
+                        /// find cursor's angle
+                        self.angleTracker.update(geo: geo, value: value)
+                        
+                        /// update parent rotation
+                        self.rotation = self.angleTracker.lead
+                        
+                        /// adjust zero date
+                        self.zero.frame = self.angleTracker.updateFrame(self.zero.frame)
+                        
+                        /// reset rotations
+                        self.angleTracker.rotations = 0
+                }
+                .onEnded { value in
+                    /// reset cancelled indicator
+                    self.angleTracker.cancelled = false
+                    
+                    /// reset rotation count
+                    self.angleTracker.rotations = 0
+                }
+            )
         }
-            
-            
-        
         .aspectRatio(1, contentMode: .fit)
     }
 }
