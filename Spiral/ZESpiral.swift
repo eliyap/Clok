@@ -11,6 +11,7 @@ import SwiftUI
 struct Spiral: Shape {
     var theta1: Double
     var theta2: Double
+    var rotate: Angle
     
     public var animatableData: AnimatablePair<Double, Double> {
         get {
@@ -21,10 +22,11 @@ struct Spiral: Shape {
         }
     }
     
-    init(theta1: Double, theta2: Double){
+    init(theta1: Double, theta2: Double, rotation: Angle){
         /// cap angles at the end of the spiral
         self.theta1 = min(MAX_RADIUS, theta1)
         self.theta2 = min(MAX_RADIUS, theta2)
+        self.rotate = rotation
     }
     
     func path(in rect: CGRect) -> Path {
@@ -79,6 +81,7 @@ struct Spiral: Shape {
                 )
             }
         }
+        .rotation(rotate).path(in: rect)
         .strokedPath(StrokeStyle(
             lineWidth: rect.width / 20,
             lineCap: .butt

@@ -16,7 +16,11 @@ struct EntrySpiral: View {
     
     var body: some View {
                 
-        Spiral(theta1: entry.startTheta, theta2: entry.endTheta)
+        Spiral(
+            theta1: entry.startTheta,
+            theta2: entry.endTheta,
+            rotation: entry.rotate
+        )
             .fill(entry.project_hex_color)
             
         .gesture(TapGesture().onEnded(){_ in

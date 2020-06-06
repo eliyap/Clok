@@ -94,7 +94,6 @@ struct KnobAngle {
 
 struct KnobView: View {
     @State var angleTracker = KnobAngle()
-    @Binding var rotation:Angle
     @EnvironmentObject var zero:ZeroDate
     
     var body: some View {
@@ -122,9 +121,6 @@ struct KnobView: View {
                     .onChanged { value in
                         /// find cursor's angle
                         self.angleTracker.update(geo: geo, value: value)
-                        
-                        /// update parent rotation
-                        self.rotation = self.angleTracker.lead
                         
                         /// adjust zero date
                         self.zero.frame = self.angleTracker.updateFrame(self.zero.frame)

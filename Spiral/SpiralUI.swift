@@ -10,7 +10,6 @@ import SwiftUI
 struct SpiralUI: View {
     @ObservedObject var report:Report
     @EnvironmentObject var zero:ZeroDate
-    @State var rotation = Angle()
     
     var body: some View {
         ZStack{
@@ -24,8 +23,8 @@ struct SpiralUI: View {
             }
             .aspectRatio(1, contentMode: .fit)
             .drawingGroup()
-            .rotationEffect(-self.rotation)
-            KnobView(rotation: self.$rotation)
+//            .rotationEffect(-self.rotation)
+            KnobView()
         }
     }
     
