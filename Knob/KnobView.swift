@@ -13,7 +13,8 @@ struct KnobAngle {
     var originalFrame = WeekTimeFrame()
     var lead = Angle()
     var lag = Angle()
-    var rotations = 0
+    var turns = Angle()
+    var dayDiff = 0.0
     
     /// min angle jump to register a complete rotation
     private let threshold = Angle(degrees: 270)
@@ -23,26 +24,28 @@ struct KnobAngle {
         lead = CGPoint(x:
             value.location.x - geo.size.width / 2,
             y: geo.size.width / 2 - value.location.y
-        ).angle()
+        ).angle() + turns
         
         /// Lead - Lag comparison allows us to detect rollover (i.e. complete rotations)
         /// if angle dramatically increases, deduct 1 clockwise turn
-        if lead - lag > threshold { rotations -= 1 }
+        if lead - lag > threshold {
+            turns -= Angle(degrees: 360)
+            lead -= Angle(degrees: 360)
+        }
         /// if angle dramatically decreases, add 1 clockwise turn
-        if lead - lag < -threshold { rotations += 1 }
+        if lead - lag < -threshold {
+            turns += Angle(degrees: 360)
+            lead += Angle(degrees: 360)
+        }
+        
+        dayDiff -= (lead - lag).degrees / 360.0
+        
+        lag = lead
     }
     
-    mutating func updateFrame(_ frame:WeekTimeFrame) -> WeekTimeFrame {
-        var days:Double = (lead - lag).degrees / 360.0
-        days += Double(rotations)
-        // - to invert time flow direction
-        days *= -dayLength
-        
-        /// bring lag up to date
-        lag = lead
-        rotations = 0
-        
-        return frame.addingTimeInterval(days)
+    mutating func harvest() -> Double {
+        defer { dayDiff = 0 }
+        return dayDiff
     }
     
     
@@ -78,18 +81,16 @@ struct KnobView: View {
                 .gesture(DragGesture()
                     .onChanged { value in
                         /// find cursor's angle
-                        self.angleTracker.update(geo: geo, value: value)
-                        
-                        /// adjust zero date
                         self.needsDraw.toggle()
                         if self.needsDraw {
-                            self.zero.frame = self.angleTracker.updateFrame(self.zero.frame)
+                            self.zero.frame = self.zero.frame.addingTimeInterval(dayLength * self.angleTracker.harvest())
                         }
-                        
+                        self.angleTracker.update(geo: geo, value: value)
+                        print(self.angleTracker.lead)
                     }
                     .onEnded { value in
                         /// reset rotation count
-                        self.angleTracker.rotations = 0
+                        self.angleTracker.turns = Angle()
                     }
             )
         }
