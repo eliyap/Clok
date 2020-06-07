@@ -48,9 +48,10 @@ struct EntrySpiral: View {
         .opacity(opacity)
     }
     
-    init (_ entry:TimeEntry, zeroTo zeroDate:Date) {
+    init? (_ entry:TimeEntry, zeroTo zeroDate:Date) {
         self.entry = entry
         self.entry.zero(zeroDate)
+        guard self.entry.endTheta > 0 && self.entry.startTheta < MAX_RADIUS else { return nil }
     }
 }
 
