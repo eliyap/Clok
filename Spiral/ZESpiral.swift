@@ -52,7 +52,7 @@ struct Spiral: Shape {
         
         return Path { path in
             /// draw initial quarter circle
-            path.move(to: center(frame: rect, pt: spiralPoint(theta: theta1, thicc: 0)))
+            path.move(to: spiralPoint(theta: theta1, thicc: 0))
             
             // draw arcs out to theta2
             for idx in stride(from: 0, to: thetas.count - 1, by: +1) {
@@ -71,17 +71,21 @@ struct Spiral: Shape {
                            (cos(newT) - xSinX(newT))
                 
                 path.addQuadCurve(
-                    to: center(frame: rect, pt: spiralPoint(theta: newT, thicc: 0)),
-                    control: center(frame: rect, pt: intersect(
+                    to: spiralPoint(theta: newT, thicc: 0),
+                    control: intersect(
                         m1: oldSlope,
                         m2: newSlope,
                         b1: -(oldSlope * xCosX(oldT) - xSinX(oldT)),
                         b2: -(newSlope * xCosX(newT) - xSinX(newT))
-                    ))
+                    )
                 )
             }
         }
-        .rotation(rotate).path(in: rect)
+        ///apply various transforms, then return stroked shape
+        .offset(x: rect.size.width / 2, y: rect.size.height / 2)
+        .scale(rect.size.width / frame_size)
+        .rotation(rotate)
+        .path(in: rect)
         .strokedPath(StrokeStyle(
             lineWidth: rect.width / 20,
             lineCap: .butt

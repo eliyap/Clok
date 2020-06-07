@@ -34,17 +34,6 @@ func spiralPoint(theta:Double, thicc: Double) -> CGPoint {
     )
 }
 
-/// adjust point to the center of frame
-func center(
-    frame: CGRect,
-    pt:CGPoint
-) -> CGPoint{
-    CGPoint(
-        x: (0.5 + pt.x / frame_size) * frame.size.width,
-        y: (0.5 + pt.y / frame_size) * frame.size.height
-    )
-}
-
 
 // helper functions
 func xCosX(_ x:Double)->Double{x * cos(x)}
