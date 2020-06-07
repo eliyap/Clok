@@ -11,8 +11,8 @@ import SwiftUI
 struct EntrySpiral: View {
     @ObservedObject var entry:TimeEntry = TimeEntry()
     @EnvironmentObject var listRow: ListRow
-//    @State private var stroke:CGFloat = stroke_weight
-    @State private var opacity:Double = 1
+    @State private var opacity = 0.8
+    @State private var scale = 1.0
     
     var body: some View {
         
@@ -21,31 +21,38 @@ struct EntrySpiral: View {
             thetaEnd: entry.endTheta,
             rotation: entry.rotate
         )?
+//            .stroke(entry.project_hex_color, style: StrokeStyle(
+//                lineWidth: 8.1,
+//                lineCap: .round,
+//                lineJoin: .round
+//
+//            ))
             .fill(entry.project_hex_color)
-            
-        .gesture(TapGesture().onEnded(){_ in
-            /// pass selection to global variable
-            self.listRow.entry = self.entry
-            /// then deselect immediately
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
-                self.listRow.entry = nil
-            }
-            
-            /// brief bounce animation
-            /// per Zero Punctuation advice, peak quickly then drop off slowly
-            withAnimation(.linear(duration: 0.1)){
-//                self.stroke += 2
-                // drop the opacity to take on more BG color
-                self.opacity -= 0.25
-            }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                withAnimation(.linear(duration: 0.3)){
-//                    self.stroke = stroke_weight
-                    self.opacity = 1
+            .gesture(TapGesture().onEnded() {_ in
+                /// pass selection to global variable
+                self.listRow.entry = self.entry
+                /// then deselect immediately
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+                    self.listRow.entry = nil
                 }
-            }
-        })
-        .opacity(opacity)
+                
+                /// brief bounce animation
+                /// per Zero Punctuation advice, peak quickly then drop off slowly
+                withAnimation(.linear(duration: 0.1)){
+                    // drop the opacity to take on more BG color
+                    self.opacity -= 0.25
+                    /// make scale more pronounced closer to the center
+                    self.scale += 1 / self.entry.endTheta
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    withAnimation(.linear(duration: 0.3)){
+                        self.opacity = 1
+                        self.scale = 1
+                    }
+                }
+            })
+            .opacity(opacity)
+        .scaleEffect(CGFloat(scale))
     }
     
     init? (_ entry:TimeEntry, zeroTo zeroDate:Date) {
