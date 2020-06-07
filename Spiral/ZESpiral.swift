@@ -51,7 +51,6 @@ struct Spiral: Shape {
         return Path { path in
             /// draw initial quarter circle
             path.move(to: spiralPoint(theta: theta1, thicc: 0))
-            
             // draw arcs out to theta2
             for idx in stride(from: 0, to: thetas.count - 1, by: +1) {
                 oldT = thetas[idx]
