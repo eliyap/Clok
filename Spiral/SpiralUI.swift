@@ -12,16 +12,17 @@ struct SpiralUI: View {
     @EnvironmentObject var zero:ZeroDate
     
     var body: some View {
-            ZStack{
-                ForEach(self.report.entries, id: \.id) { entry in
-                    EntrySpiral(
-                        entry,
-                        zeroTo:self.zero.frame.start
-                    )
-                }
+        ZStack {
+            ForEach(self.report.entries, id: \.id) {
+                entry in
+                EntrySpiral(
+                    entry,
+                    zeroTo:self.zero.frame.start
+                )
             }
-            .aspectRatio(1, contentMode: .fit)
-            .drawingGroup()
+        }
+        .aspectRatio(1, contentMode: .fit)
+        .drawingGroup()
     }
     
     init(_ _report:Report) {
