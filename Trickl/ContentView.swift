@@ -23,13 +23,14 @@ struct ContentView: View {
                 if geo.size.width > geo.size.height {
                     /// landscape mode
                     HStack(spacing: 0) {
-                        SpiralUI(self.report)
+                        ZStack{
+                            SpiralUI(self.report)
+                            KnobView()
+                        }
+                        
                             .frame(width: geo.size.width * 0.60)
                             .border(Color.black)
                         CustomTableView(self.zero.frame.within(self.report.entries))
-                        
-                        
-                        KnobView()
                     }
                 } else {
                     /// portrait mode

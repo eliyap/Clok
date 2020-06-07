@@ -14,8 +14,9 @@ class TimeEntry : ObservableObject, Equatable {
     let id:Int
     
     // time parameters
-    @Published var startTheta = Angle(degrees: 0)
-    @Published var endTheta = Angle(degrees: 0)
+    @Published var startTheta = 0.0
+    @Published var endTheta = 0.0
+    @Published var rotate = Angle()
     let start: Date // needs to be coerced from ISO 8601 date / time format (YYYY - MM - DDTHH: MM: SS)
     let end: Date   // needs to be coerced from ISO 8601 date / time format (YYYY - MM - DDTHH: MM: SS)
     let dur: TimeInterval
@@ -113,14 +114,21 @@ class TimeEntry : ObservableObject, Equatable {
     // sets the start and end angles based on the provided start datetime
     // similar to "zeroing" a graph or weighing scale
     // NOTE: max angle does not need to be set, capped by ZESpiral
-    let degreesPerSec: Double = 360.0 / dayLength
+    let radPerSec: Double = (2 * Double.pi) / dayLength
     func zero (_ zeroDate:Date) {
         let startInt = (start > zeroDate) ? (start - zeroDate) : TimeInterval(exactly: 0)
         let endInt = (end > zeroDate) ? (end - zeroDate) : TimeInterval(exactly: 0)
-        withAnimation(.easeInOut(duration: 0.5)) {
-            self.startTheta = Angle(degrees: startInt! * degreesPerSec)
-            self.endTheta = Angle(degrees: endInt! * degreesPerSec)
-        }
+//        withAnimation(.easeInOut(duration: 0.25)) {
+
+            self.startTheta = startInt! * radPerSec
+            self.endTheta = endInt! * radPerSec
+            
+            let cal = Calendar.current
+            let mins = Double(cal.component(.hour, from: zeroDate) * 60 + cal.component(.minute, from: zeroDate))
+            /// 360 degrees / 1440 mins = 1/4
+            self.rotate = Angle(degrees: mins / 4.0)
+        
+//        }
     }
     
     static func == (lhs: TimeEntry, rhs: TimeEntry) -> Bool {

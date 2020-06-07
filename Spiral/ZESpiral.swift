@@ -11,6 +11,7 @@ import SwiftUI
 struct Spiral: Shape {
     var theta1: Double
     var theta2: Double
+    var rotate: Angle
     
     public var animatableData: AnimatablePair<Double, Double> {
         get {
@@ -21,19 +22,14 @@ struct Spiral: Shape {
         }
     }
     
-    init(theta1: Angle, theta2: Angle){
+    init(theta1: Double, theta2: Double, rotation: Angle){
         /// cap angles at the end of the spiral
-        self.theta1 = min(MAX_RADIUS, theta1.radians)
-        self.theta2 = min(MAX_RADIUS, theta2.radians)
+        self.theta1 = min(MAX_RADIUS, theta1)
+        self.theta2 = min(MAX_RADIUS, theta2)
+        self.rotate = rotation
     }
     
     func path(in rect: CGRect) -> Path {
-        
-        let scaleFactor = Double(rect.size.width / frame_size)
-        let extra_width = Double(stroke_weight) / scaleFactor
-        /// calculate the angle subtended by the stroke (drops off further from the center)
-        let del1 = (theta1 < 0.5) ? (extra_width) : (extra_width / theta1)
-        let del2 = (theta2 < 0.5) ? (extra_width) : (extra_width / theta2)
         
         /// do not draw if theta's are equal or misordered
         guard (theta2 - theta1 > 0) else {
@@ -46,46 +42,17 @@ struct Spiral: Shape {
         var newSlope = 0.0
         
         var firstSlope = true
-        
-        /// approximate small arcs by rounded rectangles
-        guard
-            theta2 - theta1 > del1
-        else {
-            let size = CGSize(
-                width: scaleFactor * thiccness,
-                height: scaleFactor * (theta2 - theta1) * (theta2 + theta1) / 2
-            )
-            let path = Path.init(
-                CGRect(
-                    origin: CGPoint(
-                        x: scaleFactor * theta1,
-                        y: 0
-                    ),
-                    size: size
-                )
-            )
-            
-            return path
-            /// rotate it into place
-            .applying(CGAffineTransform(rotationAngle: CGFloat((theta1 + theta2) / 2)))
-            /// center it
-            .applying(CGAffineTransform(
-                translationX: (rect.size.width / 2),
-                y: (rect.size.height / 2)
-            ))
-        }
-        
         var thetas: [Double] = []
         // iterate from start to end theta (accounting for small variation due to round cap)
         // to create a list of angles
-        for t in stride(from: theta1, to: theta2 - del2, by: thetaStep){
+        for t in stride(from: theta1, to: theta2, by: thetaStep){
             thetas.append(t)
         }
-        thetas.append(theta2 - del2)
+        thetas.append(theta2)
         
         return Path { path in
             /// draw initial quarter circle
-            path.move(to: center(frame: rect, pt: spiralPoint(theta: theta1, thicc: 0)))
+            path.move(to: spiralPoint(theta: theta1, thicc: 0))
             
             // draw arcs out to theta2
             for idx in stride(from: 0, to: thetas.count - 1, by: +1) {
@@ -104,52 +71,25 @@ struct Spiral: Shape {
                            (cos(newT) - xSinX(newT))
                 
                 path.addQuadCurve(
-                    to: center(frame: rect, pt: spiralPoint(theta: newT, thicc: 0)),
-                    control: center(frame: rect, pt: intersect(
+                    to: spiralPoint(theta: newT, thicc: 0),
+                    control: intersect(
                         m1: oldSlope,
                         m2: newSlope,
                         b1: -(oldSlope * xCosX(oldT) - xSinX(oldT)),
                         b2: -(newSlope * xCosX(newT) - xSinX(newT))
-                    ))
+                    )
                 )
             }
-            
-            path.addLine(to: center(frame: rect, pt: spiralPoint(theta: thetas.last!, thicc: thiccness)))
-            
-            // draw wider arcs back to theta1
-            firstSlope = true
-            for idx in stride(from: thetas.count - 1, to: 0, by: -1) {
-                oldT = thetas[idx]
-                newT = thetas[idx - 1]
-                
-                if (firstSlope){
-                    oldSlope = (sin(oldT) + newT * cos(oldT)) /
-                               (cos(oldT) - newT * sin(oldT))
-                    firstSlope = false
-                }
-                else{
-                    oldSlope = newSlope
-                }
-                newSlope = (sin(newT) + xCosX(newT)) /
-                           (cos(newT) - xSinX(newT))
-                
-                path.addQuadCurve(
-                    to: center(frame: rect, pt: spiralPoint(theta: newT, thicc: thiccness)),
-                    control: center(frame: rect, pt: moveOutControl(pt: intersect(
-                        m1: oldSlope,
-                        m2: newSlope,
-                        b1: -(oldSlope * xCosX(oldT) - xSinX(oldT)),
-                        b2: -(newSlope * xCosX(newT) - xSinX(newT))
-                    ),
-                                                   theta: (oldT + newT) / 2,
-                                                   phi: newT - oldT
-                    ))
-                )
-            }
-            
-            // close it up
-            path.closeSubpath()
         }
+        ///apply various transforms, then return stroked shape
+        .offset(x: rect.size.width / 2, y: rect.size.height / 2)
+        .scale(rect.size.width / frame_size)
+        .rotation(rotate)
+        .path(in: rect)
+        .strokedPath(StrokeStyle(
+            lineWidth: rect.width / 20,
+            lineCap: .butt
+        ))
     }
 }
 
