@@ -12,7 +12,6 @@ struct SpiralUI: View {
     @EnvironmentObject var zero:ZeroDate
     
     var body: some View {
-        ZStack{
             ZStack{
                 ForEach(self.report.entries, id: \.id) { entry in
                     EntrySpiral(
@@ -23,9 +22,6 @@ struct SpiralUI: View {
             }
             .aspectRatio(1, contentMode: .fit)
             .drawingGroup()
-//            .rotationEffect(-self.rotation)
-            KnobView()
-        }
     }
     
     init(_ _report:Report) {
