@@ -38,6 +38,7 @@ struct KnobAngle {
             lead += Angle(degrees: 360)
         }
         
+        /// update the tracked time difference
         dayDiff -= (lead - lag).degrees / 360.0
         
         lag = lead
@@ -73,11 +74,7 @@ struct KnobView: View {
                 ))
                 .fill(Color.red)
                 /// maintain rotating while dragging & while released
-                .rotationEffect(
-                    withAnimation(.easeInOut(duration: 0.5), {
-                        -self.angleTracker.lead
-                    })
-                )
+                .rotationEffect(-self.angleTracker.lead)
                 .gesture(DragGesture()
                     .onChanged { value in
                         /// find cursor's angle
@@ -86,13 +83,9 @@ struct KnobView: View {
                             self.zero.frame = self.zero.frame.addingTimeInterval(dayLength * self.angleTracker.harvest())
                         }
                         self.angleTracker.update(geo: geo, value: value)
-                        print(self.angleTracker.lead)
                     }
-                    .onEnded { value in
-                        /// reset rotation count
-                        self.angleTracker.turns = Angle()
-                    }
-            )
+                )
+                .animation(.spring())
         }
         .aspectRatio(1, contentMode: .fit)
     }
