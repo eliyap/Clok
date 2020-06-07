@@ -32,18 +32,17 @@ struct KnobAngle {
         if lead - lag < -threshold { rotations += 1 }
     }
     
-    /**
-     return the days change since the last time zerodate was updated
-     days change is determined by the change in angle
-     */
-    mutating func harvest() -> Double {
-        defer {
-            /// bring lag up to date
-            lag = lead
-            rotations = 0
-        }
-        /// invert time flow direction
-        return -Double(rotations) - (lead - lag).degrees / 360.0
+    mutating func updateFrame(_ frame:WeekTimeFrame) -> WeekTimeFrame {
+        var days:Double = (lead - lag).degrees / 360.0
+        days += Double(rotations)
+        // - to invert time flow direction
+        days *= -dayLength
+        
+        /// bring lag up to date
+        lag = lead
+        rotations = 0
+        
+        return frame.addingTimeInterval(days)
     }
     
     
@@ -84,7 +83,7 @@ struct KnobView: View {
                         /// adjust zero date
                         self.needsDraw.toggle()
                         if self.needsDraw {
-                            self.zero.frame = self.zero.frame.addingTimeInterval(dayLength * self.angleTracker.harvest())
+                            self.zero.frame = self.angleTracker.updateFrame(self.zero.frame)
                         }
                         
                     }
