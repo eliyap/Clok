@@ -13,7 +13,7 @@ import SwiftUI
 
 // controls the angle of spiral being approximated by Bezier curves
 // smaller angles lead to more complex paths
-let thetaStep = Double.pi / 4
+let thetaStep = Double.pi / 8
 
 // the maximum theta & radius allowed in the spiral,
 // corresponds to 7 turns of the spiral for 7 days
@@ -43,7 +43,7 @@ let weekLength: TimeInterval = 7 * dayLength
 
 // the length of an Archimedean Spiral with a = 0, b = 1, from 0 to 14 pi
 // https://www.wolframalpha.com/input/?i=integrate+sqrt%28x%5E2%2B1%29dx+from+0+to+14pi
-let weekSpiralLength = NSNumber(969.7)
+let weekSpiralLength = CGFloat(969.7)
 
 // follows the same pattern as Calendar.current.weekdaySymbols
 enum Weekdays: Int {

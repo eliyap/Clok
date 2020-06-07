@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		C615CD57245F332300D62B87 /* Toggl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C615CD56245F332300D62B87 /* Toggl.swift */; };
 		C615CD59245F33F100D62B87 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = C615CD58245F33F100D62B87 /* Report.swift */; };
+		C63C0D45248D3C0D00163E20 /* SpiralTrimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63C0D44248D3C0D00163E20 /* SpiralTrimmer.swift */; };
 		C6428DDC2470A6FE00A02A9B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C6428DDB2470A6FE00A02A9B /* Default-568h@2x.png */; };
 		C64385F32485DC4900CCF47E /* KnobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64385F22485DC4900CCF47E /* KnobView.swift */; };
 		C64385F52485F46A00CCF47E /* CGPointExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64385F42485F46A00CCF47E /* CGPointExtension.swift */; };
@@ -61,6 +62,7 @@
 /* Begin PBXFileReference section */
 		C615CD56245F332300D62B87 /* Toggl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toggl.swift; sourceTree = "<group>"; };
 		C615CD58245F33F100D62B87 /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
+		C63C0D44248D3C0D00163E20 /* SpiralTrimmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiralTrimmer.swift; sourceTree = "<group>"; };
 		C6428DDB2470A6FE00A02A9B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		C64385F22485DC4900CCF47E /* KnobView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnobView.swift; sourceTree = "<group>"; };
 		C64385F42485F46A00CCF47E /* CGPointExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPointExtension.swift; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 			isa = PBXGroup;
 			children = (
 				C6C18D7A244BB76F000345D5 /* ZESpiral.swift */,
+				C63C0D44248D3C0D00163E20 /* SpiralTrimmer.swift */,
 				C6C18D7F244CD7D2000345D5 /* SpiralHelpers.swift */,
 				C6C18D7424493EC8000345D5 /* SpiralUI.swift */,
 				C68842AF247B3D5300DC5C42 /* DateBar.swift */,
@@ -390,6 +393,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6C18D452448F96C000345D5 /* AppDelegate.swift in Sources */,
+				C63C0D45248D3C0D00163E20 /* SpiralTrimmer.swift in Sources */,
 				C6751D8C24723182002965CC /* ZeroDate.swift in Sources */,
 				C6F605AF246C6B1700D0FE82 /* DateExtension.swift in Sources */,
 				C6C18D7B244BB76F000345D5 /* ZESpiral.swift in Sources */,

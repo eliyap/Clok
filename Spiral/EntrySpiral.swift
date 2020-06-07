@@ -15,12 +15,12 @@ struct EntrySpiral: View {
     @State private var opacity:Double = 1
     
     var body: some View {
-                
-        Spiral(
-            theta1: entry.startTheta,
-            theta2: entry.endTheta,
+        
+        SpiralPart(
+            thetaStart: entry.startTheta,
+            thetaEnd: entry.endTheta,
             rotation: entry.rotate
-        )
+        )?
             .fill(entry.project_hex_color)
             
         .gesture(TapGesture().onEnded(){_ in
@@ -48,9 +48,10 @@ struct EntrySpiral: View {
         .opacity(opacity)
     }
     
-    init (_ entry:TimeEntry, zeroTo zeroDate:Date) {
+    init? (_ entry:TimeEntry, zeroTo zeroDate:Date) {
         self.entry = entry
         self.entry.zero(zeroDate)
+        guard self.entry.endTheta > 0 && self.entry.startTheta < MAX_RADIUS else { return nil }
     }
 }
 
