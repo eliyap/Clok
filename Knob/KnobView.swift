@@ -94,6 +94,7 @@ struct KnobAngle {
 
 struct KnobView: View {
     @State var angleTracker = KnobAngle()
+    @State var needsDraw = false
     @EnvironmentObject var zero:ZeroDate
     
     var body: some View {
@@ -113,7 +114,7 @@ struct KnobView: View {
                 .fill(Color.red)
                 /// maintain rotating while dragging & while released
                 .rotationEffect(
-                    withAnimation(.linear(duration: 0.25), {
+                    withAnimation(.easeInOut(duration: 0.5), {
                         -self.angleTracker.lead
                     })
                 )
@@ -123,18 +124,19 @@ struct KnobView: View {
                         self.angleTracker.update(geo: geo, value: value)
                         
                         /// adjust zero date
-                        self.zero.frame = self.angleTracker.updateFrame(self.zero.frame)
+                        self.needsDraw.toggle()
+                        if self.needsDraw {
+                            self.zero.frame = self.angleTracker.updateFrame(self.zero.frame)
+                        }
                         
-                        /// reset rotations
+                    }
+                    .onEnded { value in
+                        /// reset cancelled indicator
+                        self.angleTracker.cancelled = false
+                        
+                        /// reset rotation count
                         self.angleTracker.rotations = 0
-                }
-                .onEnded { value in
-                    /// reset cancelled indicator
-                    self.angleTracker.cancelled = false
-                    
-                    /// reset rotation count
-                    self.angleTracker.rotations = 0
-                }
+                    }
             )
         }
         .aspectRatio(1, contentMode: .fit)
