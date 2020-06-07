@@ -15,12 +15,12 @@ struct EntrySpiral: View {
     @State private var opacity:Double = 1
     
     var body: some View {
-                
-        Spiral(
-            theta1: entry.startTheta,
-            theta2: entry.endTheta,
+        
+        SpiralPart(
+            thetaStart: entry.startTheta,
+            thetaEnd: entry.endTheta,
             rotation: entry.rotate
-        )
+        )?
             .fill(entry.project_hex_color)
             
         .gesture(TapGesture().onEnded(){_ in
