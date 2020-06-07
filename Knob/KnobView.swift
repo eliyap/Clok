@@ -14,27 +14,12 @@ struct KnobAngle {
     var lead = Angle()
     var lag = Angle()
     var rotations = 0
-    var cancelled = false
     
     /// min angle jump to register a complete rotation
     private let threshold = Angle(degrees: 270)
     
-    /// detects if the cursor strays outside the bounds
-    /// and cancels the gesture if it does
-    mutating func checkBounds(pos: CGPoint, geo: GeometryProxy) -> Bool {
-        return cancelled ||
-            geo.size.width * 0.4 > pos.magnitude() ||
-            pos.magnitude() > geo.size.width * 0.6
-    }
-    
     mutating func update(geo: GeometryProxy, value: DragGesture.Value) -> Void {
         let pos = localPosition(geo: geo, value: value)
-        
-        /// bounds checking not enforced, see if buggy behaviour emerges
-        //cancelled = checkBounds(pos: pos, geo: geo)
-        
-        /// refuse to respond if gesture is ended
-        if cancelled { return }
         
         /// get angle
         lead = getDegrees(pos: pos)
@@ -131,9 +116,6 @@ struct KnobView: View {
                         
                     }
                     .onEnded { value in
-                        /// reset cancelled indicator
-                        self.angleTracker.cancelled = false
-                        
                         /// reset rotation count
                         self.angleTracker.rotations = 0
                     }
