@@ -10,6 +10,7 @@
 		C615CD57245F332300D62B87 /* Toggl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C615CD56245F332300D62B87 /* Toggl.swift */; };
 		C615CD59245F33F100D62B87 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = C615CD58245F33F100D62B87 /* Report.swift */; };
 		C63C0D45248D3C0D00163E20 /* SpiralTrimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63C0D44248D3C0D00163E20 /* SpiralTrimmer.swift */; };
+		C63C0D47248D9F1E00163E20 /* Knob2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63C0D46248D9F1E00163E20 /* Knob2.swift */; };
 		C6428DDC2470A6FE00A02A9B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C6428DDB2470A6FE00A02A9B /* Default-568h@2x.png */; };
 		C64385F32485DC4900CCF47E /* KnobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64385F22485DC4900CCF47E /* KnobView.swift */; };
 		C64385F52485F46A00CCF47E /* CGPointExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64385F42485F46A00CCF47E /* CGPointExtension.swift */; };
@@ -63,6 +64,7 @@
 		C615CD56245F332300D62B87 /* Toggl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toggl.swift; sourceTree = "<group>"; };
 		C615CD58245F33F100D62B87 /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
 		C63C0D44248D3C0D00163E20 /* SpiralTrimmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiralTrimmer.swift; sourceTree = "<group>"; };
+		C63C0D46248D9F1E00163E20 /* Knob2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Knob2.swift; sourceTree = "<group>"; };
 		C6428DDB2470A6FE00A02A9B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		C64385F22485DC4900CCF47E /* KnobView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnobView.swift; sourceTree = "<group>"; };
 		C64385F42485F46A00CCF47E /* CGPointExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPointExtension.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				C64385F22485DC4900CCF47E /* KnobView.swift */,
+				C63C0D46248D9F1E00163E20 /* Knob2.swift */,
 			);
 			path = Knob;
 			sourceTree = "<group>";
@@ -397,6 +400,7 @@
 				C6751D8C24723182002965CC /* ZeroDate.swift in Sources */,
 				C6F605AF246C6B1700D0FE82 /* DateExtension.swift in Sources */,
 				C6C18D7B244BB76F000345D5 /* ZESpiral.swift in Sources */,
+				C63C0D47248D9F1E00163E20 /* Knob2.swift in Sources */,
 				C6751D8E247235FB002965CC /* TimePeriod.swift in Sources */,
 				C688A8882479A8D6003260CE /* TimeFrame.swift in Sources */,
 				C6751D8624719AF7002965CC /* TableViewCell.swift in Sources */,

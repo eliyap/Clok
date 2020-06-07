@@ -31,6 +31,7 @@ struct ContentView: View {
                             .frame(width: geo.size.width * 0.60)
                             .border(Color.black)
                         CustomTableView(self.zero.frame.within(self.report.entries))
+                        KnobView2()
                     }
                 } else {
                     /// portrait mode
