@@ -35,6 +35,12 @@ struct SpiralPart : Shape {
         start = archimedianSpiralLength(thetaStart) / weekSpiralLength
         end = archimedianSpiralLength(thetaEnd) / weekSpiralLength
         rotate = rotation
+        
+        /// adjust for the stroke cap
+        end -= stroke_width / weekSpiralLength
+        
+        /// if that adjustment is too big, just make the spiral a sliver
+        if (end < start) { end = start + 0.0001 }
     }
     
     func path (in rect:CGRect) -> Path {
@@ -54,7 +60,7 @@ func archimedianSpiralLength(_ radians:Double) -> CGFloat {
     guard radians > 0 else { return CGFloat.zero }
     
     let theta = CGFloat(radians)
-    return 0.5 * (theta * (theta * theta + 1).squareRoot() + asinh(theta))
+    return 0.5 * (theta * (theta * theta + 1.0).squareRoot() + asinh(theta))
 }
 
 extension Path {
@@ -66,8 +72,13 @@ extension Path {
     func multiTransform(rect:CGRect, rotate: Angle) -> Path {
         self
             .strokedPath(StrokeStyle(
-                lineWidth: 3,
+                lineWidth: stroke_width,
                 lineCap: .butt
+            ))
+            .strokedPath(StrokeStyle(
+                lineWidth: stroke_width,
+                lineCap: .round,
+                lineJoin: .round
             ))
             .offset(x: rect.size.width / 2, y: rect.size.height / 2)
             .scale(rect.size.width / frame_size)
