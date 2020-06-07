@@ -137,7 +137,8 @@ struct KnobView: View {
                         /// reset rotation count
                         self.angleTracker.rotations = 0
                     }
-            )
+                )
+                .animation(.spring())
         }
         .aspectRatio(1, contentMode: .fit)
     }

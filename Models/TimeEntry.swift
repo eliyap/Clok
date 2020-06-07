@@ -118,7 +118,7 @@ class TimeEntry : ObservableObject, Equatable {
     func zero (_ zeroDate:Date) {
         let startInt = (start > zeroDate) ? (start - zeroDate) : TimeInterval(exactly: 0)
         let endInt = (end > zeroDate) ? (end - zeroDate) : TimeInterval(exactly: 0)
-//        withAnimation(.easeInOut(duration: 0.25)) {
+        withAnimation(.spring()) {
 
             self.startTheta = startInt! * radPerSec
             self.endTheta = endInt! * radPerSec
@@ -128,7 +128,7 @@ class TimeEntry : ObservableObject, Equatable {
             /// 360 degrees / 1440 mins = 1/4
             self.rotate = Angle(degrees: mins / 4.0)
         
-//        }
+        }
     }
     
     static func == (lhs: TimeEntry, rhs: TimeEntry) -> Bool {
