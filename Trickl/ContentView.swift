@@ -25,6 +25,7 @@ struct ContentView: View {
                     HStack(spacing: 0) {
                         ZStack{
                             SpiralUI(self.report)
+                            FocusedEntry()
                             KnobView()
                         }
                             .frame(width: geo.size.width * 0.60)
@@ -45,8 +46,8 @@ struct ContentView: View {
                 /// load data immediately
                 self.loadData()
             }
-            /// fade out loading screen when data is finished being requested
             ProgressIndicator()
+                /// fade out loading screen when data is finished being requested
                 .opacity(self.loaded ? 0.0 : 1.0)
                 .animation(.linear)
         }

@@ -17,7 +17,7 @@ struct SpiralUI: View {
                 
                 EntrySpiral(
                     entry,
-                    zeroTo:self.zero.frame.start
+                    zeroTo: self.zero.frame.start
                 )
             }
         }
