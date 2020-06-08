@@ -61,17 +61,7 @@ struct KnobView: View {
     var body: some View {
         
         GeometryReader { geo in
-            Circle()
-                .path(in: CGRect(
-                    origin: CGPoint(
-                        x: geo.size.width * 0.90,
-                        y: geo.size.width * 0.40
-                    ),
-                    size: CGSize(
-                        width: geo.size.width * 0.20,
-                        height: geo.size.width * 0.20
-                    )
-                ))
+            Handle()
                 .fill(Color.red)
                 /// maintain rotating while dragging & while released
                 .rotationEffect(-self.angleTracker.lead)
@@ -88,6 +78,10 @@ struct KnobView: View {
                 .animation(.spring())
         }
         .aspectRatio(1, contentMode: .fit)
+        .onAppear {
+            self.angleTracker.lead = -self.zero.frame.end.clockAngle24()
+            self.angleTracker.lag = self.angleTracker.lead
+        }
     }
 }
 
