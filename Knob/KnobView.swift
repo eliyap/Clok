@@ -78,6 +78,10 @@ struct KnobView: View {
                 .animation(.spring())
         }
         .aspectRatio(1, contentMode: .fit)
+        .onAppear {
+            self.angleTracker.lead = -self.zero.frame.end.clockAngle24()
+            self.angleTracker.lag = self.angleTracker.lead
+        }
     }
 }
 

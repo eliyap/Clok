@@ -15,7 +15,7 @@ struct Handle : Shape {
     // based on a 100 x 100 bounding rect
     private let arcLength = Angle(degrees: 30.0)
     private let thiccness = 10
-    private let innerRadius = CGFloat(42)
+    private let innerRadius = CGFloat(45)
     
     func path(in rect: CGRect) -> Path {
         let center = CGPoint(x: rect.size.width / 2, y: rect.size.height / 2)
