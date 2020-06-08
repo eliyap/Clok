@@ -26,15 +26,15 @@ struct SpiralPart : Shape {
             height: 100
         ))
     
-    init?(thetaStart: Double, thetaEnd: Double, rotation: Angle){
+    init?(_ entry: TimeEntry){
         // do not draw spirals that are out of bounds
-        guard thetaEnd > 0 else { return nil }
-        guard thetaStart < MAX_RADIUS else { return nil }
+        guard entry.endTheta > 0 else { return nil }
+        guard entry.startTheta < MAX_RADIUS else { return nil }
         
         /// cap angles at the end of the spiral
-        start = archimedianSpiralLength(thetaStart) / weekSpiralLength
-        end = archimedianSpiralLength(thetaEnd) / weekSpiralLength
-        rotate = rotation
+        start = archimedianSpiralLength(entry.startTheta) / weekSpiralLength
+        end = archimedianSpiralLength(entry.endTheta) / weekSpiralLength
+        rotate = entry.rotate
         
         /// adjust for the stroke cap
         end -= stroke_width / weekSpiralLength
@@ -81,7 +81,7 @@ extension Path {
                 lineJoin: .round
             ))
             .offset(x: rect.size.width / 2, y: rect.size.height / 2)
-            .scale(rect.size.width / frame_size)
+            .scale(rect.size.width / 100)
             .rotation(rotate)
             .path(in: rect)
     }

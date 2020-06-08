@@ -27,17 +27,17 @@ struct ContentView: View {
                             SpiralUI(self.report)
                             KnobView()
                         }
-                        
                             .frame(width: geo.size.width * 0.60)
-                            .border(Color.black)
                         CustomTableView(self.zero.frame.within(self.report.entries))
                     }
                 } else {
                     /// portrait mode
                     VStack(alignment: .center, spacing: 0) {
-                        SpiralUI(self.report)
+                        ZStack{
+                            SpiralUI(self.report)
+                            KnobView()
+                        }
                             .frame(height: geo.size.height * 0.60)
-                            .border(Color.black)
                         CustomTableView(self.zero.frame.within(self.report.entries))
                     }
                 }

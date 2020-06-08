@@ -26,7 +26,7 @@ class TimeEntryDataSource: TableViewDataSource, ObservableObject {
     
     //MARK: Cell Lookup
     /// find the row holding this cell
-    func rowForEntry(entry: TimeEntry?) -> Int {
+    func rowForEntry(_ entry: TimeEntry?) -> Int {
         return mutableData.firstIndex(of: entry ?? TimeEntry()) ?? NSNotFound
     }
     
@@ -53,7 +53,7 @@ struct CustomTableView: View, TableViewDelegate {
     
     @State var tableRow = TableRow()
     
-    @EnvironmentObject var listRow:ListRow
+    @EnvironmentObject private var listRow:ListRow
     @EnvironmentObject private var zero:ZeroDate
     
     private let df = DateFormatter()
@@ -93,7 +93,7 @@ struct CustomTableView: View, TableViewDelegate {
                     delegate: self,
                     tableRow: self.tableRow
                 ).onReceive(self.listRow.$entry, perform: {
-                    self.tableRow.row = self.mutableData.rowForEntry(entry: $0)
+                    self.tableRow.row = self.mutableData.rowForEntry($0)
                 })
                 
             }
