@@ -126,7 +126,7 @@ class TimeEntry : ObservableObject, Equatable {
             let cal = Calendar.current
             let mins = Double(cal.component(.hour, from: zeroDate) * 60 + cal.component(.minute, from: zeroDate))
             /// 360 degrees / 1440 mins = 1/4
-            self.rotate = Angle(degrees: mins / 4.0)
+            self.rotate = Angle(degrees: -90) + Angle(degrees: mins / 4.0)
         
 //        }
     }
