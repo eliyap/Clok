@@ -16,11 +16,7 @@ struct EntrySpiral: View {
     
     var body: some View {
         
-        SpiralPart(
-            thetaStart: entry.startTheta,
-            thetaEnd: entry.endTheta,
-            rotation: entry.rotate
-        )?
+        SpiralPart(entry)?
 //            .stroke(entry.project_hex_color, style: StrokeStyle(
 //                lineWidth: 8.1,
 //                lineCap: .round,
@@ -36,12 +32,11 @@ struct EntrySpiral: View {
                     self.listRow.entry = nil
                 }
                 
-                /// brief bounce animation
-                /// per Zero Punctuation advice, peak quickly then drop off slowly
+                /// brief bounce animation, per Zero Punctuation advice, peak quickly then drop off slowly
                 withAnimation(.linear(duration: 0.1)){
-                    // drop the opacity to take on more BG color
+                    /// drop the opacity to take on more BG color
                     self.opacity -= 0.25
-                    /// make scale more pronounced closer to the center
+                    /// scale more when closer to the center
                     self.scale += 1 / self.entry.endTheta
                 }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
@@ -52,7 +47,7 @@ struct EntrySpiral: View {
                 }
             })
             .opacity(opacity)
-        .scaleEffect(CGFloat(scale))
+            .scaleEffect(CGFloat(scale))
     }
     
     init? (_ entry:TimeEntry, zeroTo zeroDate:Date) {
