@@ -15,6 +15,15 @@ struct SpiralPart : Shape {
     var end: CGFloat
     var rotate: Angle
     
+    public var animatableData: AnimatablePair<CGFloat, CGFloat> {
+        get {
+            AnimatablePair(start, end)
+        }
+        set {
+            (self.start, self.end) = (newValue.first, newValue.second)
+        }
+    }
+    
     let wholeSpiral = Spiral(
         theta1: 0,
         theta2: MAX_RADIUS

@@ -45,6 +45,7 @@ struct EntrySpiral: View {
             
     }
     
+    /// do not render view if it is outside 1 week range
     init? (_ entry:TimeEntry, zeroTo zeroDate:Date) {
         self.entry = entry
         self.entry.zero(zeroDate)
