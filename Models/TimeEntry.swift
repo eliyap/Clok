@@ -26,19 +26,8 @@ class TimeEntry : ObservableObject, Equatable {
     let project: String?
     let project_hex_color: Color
     let tid: Int?
-    let task: String? // might not be a string???
+    let task: String?
     let description: String // not nullable
-    
-    // businessy parameters
-    let client: String=""
-//    let billable: Bool?
-    // let is_billable
-    // let cur // currency
-    
-    // as yet unhandled
-    let uid: Int = 0
-    let user: String = ""
-    // let tags
     
     // used to create a TimeEntry from data parsed from JSON
     init?(

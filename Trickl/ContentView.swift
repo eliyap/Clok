@@ -28,7 +28,7 @@ struct ContentView: View {
                             KnobView()
                         }
                             .frame(width: geo.size.width * 0.60)
-                        CustomTableView(self.zero.frame.within(self.report.entries))
+//                        CustomTableView(self.zero.frame.within(self.report.entries))
                     }
                 } else {
                     /// portrait mode
@@ -38,7 +38,7 @@ struct ContentView: View {
                             KnobView()
                         }
                             .frame(height: geo.size.height * 0.60)
-                        CustomTableView(self.zero.frame.within(self.report.entries))
+//                        CustomTableView(self.zero.frame.within(self.report.entries))
                     }
                 }
             }.onAppear {
