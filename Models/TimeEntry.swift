@@ -10,7 +10,7 @@ import Foundation
 import SwiftUI
 
 
-class TimeEntry : ObservableObject, Equatable {
+final class TimeEntry : ObservableObject, Equatable {
     let id:Int
     
     // time parameters

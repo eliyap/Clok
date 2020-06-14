@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ZeroDate: ObservableObject {
+final class ZeroDate: ObservableObject {
     let pastSeven = WeekTimeFrame()
     let thisWeek = WeekTimeFrame(
         starts: Weekdays.Monday.rawValue,

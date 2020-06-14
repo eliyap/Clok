@@ -17,13 +17,9 @@ struct EntrySpiral: View {
     var body: some View {
         
         SpiralPart(entry)?
-//            .stroke(entry.project_hex_color, style: StrokeStyle(
-//                lineWidth: 8.1,
-//                lineCap: .round,
-//                lineJoin: .round
-//
-//            ))
             .fill(entry.project_hex_color)
+            .opacity(opacity)
+            .scaleEffect(CGFloat(scale))
             .gesture(TapGesture().onEnded() {_ in
                 /// pass selection to global variable
                 self.listRow.entry = self.entry
@@ -41,13 +37,12 @@ struct EntrySpiral: View {
                 }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     withAnimation(.linear(duration: 0.3)){
-                        self.opacity = 1
+                        self.opacity = 0.8
                         self.scale = 1
                     }
                 }
             })
-            .opacity(opacity)
-            .scaleEffect(CGFloat(scale))
+            
     }
     
     init? (_ entry:TimeEntry, zeroTo zeroDate:Date) {

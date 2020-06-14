@@ -14,7 +14,6 @@ struct SpiralUI: View {
     var body: some View {
         ZStack {
             ForEach(self.report.entries, id: \.id) { entry in
-                
                 EntrySpiral(
                     entry,
                     zeroTo:self.zero.frame.start

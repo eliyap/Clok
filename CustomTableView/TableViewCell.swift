@@ -19,10 +19,26 @@ class TableViewCell: UITableViewCell {
         // Initialization code
     }
 
-//    override func setSelected(_ selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
-//
-//        // Configure the view for the selected state
-//    }
-    
+    /**
+     fills cell with time entry data
+     */
+    func populate(entry:TimeEntry) -> Void {
+        if entry.description != "" {
+            heading.text = entry.description
+            heading.isHidden = false
+        } else {
+            heading.isHidden = true
+        }
+        
+        if let project = entry.project {
+            subheading.text = project
+            subheading.isHidden = false
+        } else {
+            subheading.isHidden = true
+        }
+        
+        
+        // set the color to the project color
+        tab.backgroundColor = entry.project_hex_color.uiColor()
+    }
 }

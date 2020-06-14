@@ -116,12 +116,9 @@ struct TableView: UIViewRepresentable {
             let cell = tableView.dequeueReusableCell(withIdentifier: "CellIdentifier", for: indexPath) as! TableViewCell
 
             if let dataSource = mydata {
-                // set the text if our 2 elements
                 let entry = dataSource.entryAt(indexPath)
-                cell.heading.text = entry.description
-                cell.subheading.text = entry.project
-                // set the color to the project color
-                cell.tab.backgroundColor = entry.project_hex_color.uiColor()
+                
+                cell.populate(entry: entry)
                 
                 // no idea what this does
                 delegate?.onAppear(parent, at: indexPath.row)
