@@ -10,35 +10,48 @@ import UIKit
 
 class TableViewCell: UITableViewCell {
     
-    @IBOutlet weak var heading: UILabel!
-    @IBOutlet weak var subheading: UILabel!
+    @IBOutlet weak var description_: UILabel!
+    @IBOutlet weak var project: UILabel!
     @IBOutlet weak var tab: UIView!
+    @IBOutlet weak var duration: UILabel!
+    @IBOutlet weak var startEnd: UILabel!
     
+    private let df = DateFormatter()
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        df.timeStyle = .short
     }
 
     /**
      fills cell with time entry data
      */
     func populate(entry:TimeEntry) -> Void {
+        /// hide empty labels
         if entry.description != "" {
-            heading.text = entry.description
-            heading.isHidden = false
+            description_.text = entry.description
+            description_.isHidden = false
         } else {
-            heading.isHidden = true
+            description_.isHidden = true
         }
         
-        if let project = entry.project {
-            subheading.text = project
-            subheading.isHidden = false
+        if let projectText = entry.project {
+            project.text = projectText
+            project.isHidden = false
         } else {
-            subheading.isHidden = true
+            project.isHidden = true
         }
         
+        /// failsafe for missing description AND project
+        if entry.project == nil && entry.description == "" {
+            description_.text = NSLocalizedString("No Description", comment: "Placeholder description for time entries without description or project")
+            description_.isHidden = false
+        }
         
-        // set the color to the project color
+        duration.text = entry.dur.toString()
+        startEnd.text = "\(df.string(from: entry.start)) – \(df.string(from: entry.end))"
+        
+        /// set project color
         tab.backgroundColor = entry.project_hex_color.uiColor()
     }
 }
