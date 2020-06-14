@@ -25,7 +25,7 @@ struct ContentView: View {
                     HStack(spacing: 0) {
                         ZStack{
                             SpiralUI(self.report)
-                            KnobView()
+                            SpiralControls()
                         }
                             .frame(width: geo.size.width * 0.60)
                         CustomTableView(self.zero.frame.within(self.report.entries))
@@ -35,7 +35,7 @@ struct ContentView: View {
                     VStack(alignment: .center, spacing: 0) {
                         ZStack{
                             SpiralUI(self.report)
-                            KnobView()
+                            SpiralControls()
                         }
                             .frame(height: geo.size.height * 0.60)
                         CustomTableView(self.zero.frame.within(self.report.entries))

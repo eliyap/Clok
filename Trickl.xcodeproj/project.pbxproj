@@ -23,6 +23,7 @@
 		C6751D8C24723182002965CC /* ZeroDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6751D8B24723182002965CC /* ZeroDate.swift */; };
 		C6751D8E247235FB002965CC /* TimePeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6751D8D247235FB002965CC /* TimePeriod.swift */; };
 		C67EAAB5244D0FF3008D4982 /* TimeEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67EAAB3244D04F0008D4982 /* TimeEntry.swift */; };
+		C6855DE72496E7050050F8D4 /* SpiralControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6855DE62496E7050050F8D4 /* SpiralControls.swift */; };
 		C68842B0247B3D5300DC5C42 /* DateBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68842AF247B3D5300DC5C42 /* DateBar.swift */; };
 		C688A8882479A8D6003260CE /* TimeFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = C688A8872479A8D6003260CE /* TimeFrame.swift */; };
 		C69F02782496AFA200D1C650 /* TimeIntervalExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69F02772496AFA200D1C650 /* TimeIntervalExtension.swift */; };
@@ -78,6 +79,7 @@
 		C6751D8B24723182002965CC /* ZeroDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZeroDate.swift; sourceTree = "<group>"; };
 		C6751D8D247235FB002965CC /* TimePeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePeriod.swift; sourceTree = "<group>"; };
 		C67EAAB3244D04F0008D4982 /* TimeEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntry.swift; sourceTree = "<group>"; };
+		C6855DE62496E7050050F8D4 /* SpiralControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiralControls.swift; sourceTree = "<group>"; };
 		C68842AF247B3D5300DC5C42 /* DateBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateBar.swift; sourceTree = "<group>"; };
 		C688A8872479A8D6003260CE /* TimeFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFrame.swift; sourceTree = "<group>"; };
 		C69F02772496AFA200D1C650 /* TimeIntervalExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervalExtension.swift; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 		C6C18D7E244CD7AA000345D5 /* Spiral */ = {
 			isa = PBXGroup;
 			children = (
+				C6855DE62496E7050050F8D4 /* SpiralControls.swift */,
 				C6C18D7A244BB76F000345D5 /* ZESpiral.swift */,
 				C63C0D44248D3C0D00163E20 /* SpiralTrimmer.swift */,
 				C6C18D7F244CD7D2000345D5 /* SpiralHelpers.swift */,
@@ -424,6 +427,7 @@
 				C63C0D4B248DBDDB00163E20 /* Handle.swift in Sources */,
 				C6751D8524719AF7002965CC /* TableView.swift in Sources */,
 				C6C18D80244CD7D2000345D5 /* SpiralHelpers.swift in Sources */,
+				C6855DE72496E7050050F8D4 /* SpiralControls.swift in Sources */,
 				C615CD57245F332300D62B87 /* Toggl.swift in Sources */,
 				C615CD59245F33F100D62B87 /* Report.swift in Sources */,
 			);

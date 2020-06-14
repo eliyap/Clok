@@ -12,7 +12,7 @@ struct SpiralUI: View {
     @EnvironmentObject var zero:ZeroDate
     
     var body: some View {
-        ZStack {
+        Group {
             ForEach(self.report.entries, id: \.id) { entry in
                 EntrySpiral(
                     entry,

@@ -17,7 +17,7 @@ enum weekLabels : String {
 }
 
 /// click to roll back to the previous week
-struct prevWeekBtn : View {
+struct prevWeekButton : View {
     @EnvironmentObject private var zero:ZeroDate
     
     var body : some View {
@@ -50,7 +50,7 @@ struct prevWeekBtn : View {
 }
 
 /// click to roll forwards to the next week
-struct nextWeekBtn : View {
+struct nextWeekButton : View {
     @EnvironmentObject private var zero:ZeroDate
     @Environment(\.verticalSizeClass) var vSize
     
