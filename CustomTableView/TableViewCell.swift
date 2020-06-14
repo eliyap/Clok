@@ -27,24 +27,20 @@ class TableViewCell: UITableViewCell {
      fills cell with time entry data
      */
     func populate(entry:TimeEntry) -> Void {
-        /// hide empty labels
+        /// placeholder empty labels
         if entry.description != "" {
             description_.text = entry.description
-            description_.isHidden = false
+            description_.textColor = UIColor.label
         } else {
-            description_.isHidden = true
+            description_.text = NSLocalizedString("No Description", comment: "Placeholder for time entries without description")
+            description_.textColor = UIColor.placeholderText
         }
         
-        if let projectText = entry.project {
-            project.text = projectText
-            project.isHidden = false
-        } else {
-            project.isHidden = true
-        }
+        project.text = entry.project
         
         /// failsafe for missing description AND project
         if entry.project == nil && entry.description == "" {
-            description_.text = NSLocalizedString("No Description", comment: "Placeholder description for time entries without description or project")
+            
             description_.isHidden = false
         }
         
