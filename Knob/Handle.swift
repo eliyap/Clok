@@ -47,10 +47,10 @@ struct HandleView : View {
     var body: some View {
         ZStack {
             Handle()
-                .fill(Color.secondary)
+                .fill(Color(UIColor.secondaryLabel))
             Handle()
-                .stroke(Color.primary, style: StrokeStyle (
-                    lineWidth: 3
+                .stroke(Color(UIColor.secondarySystemFill), style: StrokeStyle (
+                    lineWidth: 4
                 ))
         }
         .drawingGroup()
