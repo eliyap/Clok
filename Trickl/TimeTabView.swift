@@ -15,9 +15,14 @@ struct TimeTabView: View {
     var body: some View {
         TabView {
             CustomTableView(self.zero.date.withinWeekOf(self.report.entries))
-                .tabItem() {
+                .tabItem {
                     Image(systemName: "list.bullet")
                     Text("Entries")
+                }
+            StatView()
+                .tabItem {
+                    Image(systemName: "magnifyingglass")
+                    Text("Summary")
                 }
         }
     }
