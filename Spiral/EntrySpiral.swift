@@ -33,7 +33,7 @@ struct EntrySpiral: View {
                     /// drop the opacity to take on more BG color
                     self.opacity -= 0.25
                     /// scale more when closer to the center
-                    self.scale += 0.05 / Double(self.entry.spiralEnd)
+                    self.scale += 0.025 / Double(self.entry.spiralEnd)
                 }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     withAnimation(.linear(duration: 0.3)){
