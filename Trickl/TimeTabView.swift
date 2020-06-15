@@ -21,7 +21,7 @@ struct TimeTabView: View {
                 }
             StatView()
                 .tabItem {
-                    Image(systemName: "magnifyingglass")
+                    Image(systemName: "chart.bar.fill")
                     Text("Summary")
                 }
         }

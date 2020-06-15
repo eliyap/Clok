@@ -145,6 +145,14 @@
 			path = Knob;
 			sourceTree = "<group>";
 		};
+		C65B7D282497D1C100EED981 /* Statistics */ = {
+			isa = PBXGroup;
+			children = (
+				C62F7B8724970E530076F64C /* StatView.swift */,
+			);
+			path = Statistics;
+			sourceTree = "<group>";
+		};
 		C6751D70247197EE002965CC /* CustomTableView */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,6 +204,7 @@
 				C6751D70247197EE002965CC /* CustomTableView */,
 				C6C18D7E244CD7AA000345D5 /* Spiral */,
 				C6D448ED248471250072E7D4 /* Activity */,
+				C65B7D282497D1C100EED981 /* Statistics */,
 				C63C0D43248D3B5000163E20 /* Knob */,
 			);
 			sourceTree = "<group>";
@@ -217,7 +226,6 @@
 				C6C18D462448F96C000345D5 /* SceneDelegate.swift */,
 				C6C18D482448F96C000345D5 /* ContentView.swift */,
 				C62F7B8524970CC40076F64C /* TimeTabView.swift */,
-				C62F7B8724970E530076F64C /* StatView.swift */,
 				C6C18D4A2448F96F000345D5 /* Assets.xcassets */,
 				C6C18D4F2448F96F000345D5 /* LaunchScreen.storyboard */,
 				C6C18D522448F96F000345D5 /* Info.plist */,
