@@ -16,6 +16,21 @@ enum weekLabels : String {
     case prev = "Prev"
 }
 
+struct weekButtonStyle : ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .padding()
+            .background(
+                Circle()
+                .fill(Color(UIColor.systemBackground))
+                .shadow(color: Color.primary.opacity(0.2), radius: 10, x: 10, y: 10)
+                .shadow(color: Color(UIColor.systemBackground).opacity(0.7), radius: 10, x: -5, y: -5)
+            )
+            .padding()
+            .border(Color.red)
+    }
+}
+
 /// click to roll back to the previous week
 struct prevWeekButton : View {
     @EnvironmentObject private var zero:ZeroDate
@@ -32,19 +47,10 @@ struct prevWeekButton : View {
                 self.zero.frame = WeekTimeFrame(preceding: self.zero.frame)
             }
         }) {
-            ZStack{
-                Image(systemName: "chevron.left")
-                    .font(.subheadline)
-                    .foregroundColor(.primary)
-            }
-            .padding()
-            .background(
-                Circle()
-                .fill(Color(UIColor.systemBackground))
-                .shadow(color: Color.primary.opacity(0.2), radius: 10, x: 10, y: 10)
-                .shadow(color: Color(UIColor.systemBackground).opacity(0.7), radius: 10, x: -5, y: -5)
-            )
-            .border(Color.red)
+            Image(systemName: "chevron.left")
+                .font(.subheadline)
+                .foregroundColor(.primary)
+            .modifier(weekButtonStyle())
         }
     }
 }
@@ -68,19 +74,10 @@ struct nextWeekButton : View {
                 self.zero.frame = WeekTimeFrame(succeeding: self.zero.frame)
             }
         }) {
-            ZStack{
-                Image(systemName: "chevron.right")
-                    .font(.subheadline)
-                    .foregroundColor(.primary)
-            }
-            .padding()
-            .background(
-                Circle()
-                .fill(Color(UIColor.systemBackground))
-                .shadow(color: Color.primary.opacity(0.2), radius: 10, x: 10, y: 10)
-                .shadow(color: Color(UIColor.systemBackground).opacity(0.7), radius: 10, x: -5, y: -5)
-            )
-            .border(Color.red)
+            Image(systemName: "chevron.right")
+                .font(.subheadline)
+                .foregroundColor(.primary)
+            .modifier(weekButtonStyle())
         }
         // do not allow clicks when in the This Week time frame
         .disabled(self.zero.frame == self.zero.thisWeek)
