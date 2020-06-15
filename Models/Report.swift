@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Report : ObservableObject {
+final class Report : ObservableObject {
     // unpacked from Toggl JSON
     var total_grand:Int          // total seconds tracked
     var total_count:Int          // total number of time entries in the report

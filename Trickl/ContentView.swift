@@ -15,33 +15,33 @@ struct ContentView: View {
     /// indicates whether we are finished loading data
     @State var loaded = false
     
-    @EnvironmentObject var zero:ZeroDate
-    
     var body : some View {
         ZStack {
-            GeometryReader {geo in
+            GeometryReader { geo in
                 if geo.size.width > geo.size.height {
                     /// landscape mode
                     HStack(spacing: 0) {
                         ZStack{
                             SpiralUI(self.report)
-                            KnobView()
+                            SpiralControls()
                         }
                             .frame(width: geo.size.width * 0.60)
-                        CustomTableView(self.zero.frame.within(self.report.entries))
+                        TimeTabView(report:self.report)
                     }
                 } else {
                     /// portrait mode
                     VStack(alignment: .center, spacing: 0) {
                         ZStack{
                             SpiralUI(self.report)
-                            KnobView()
+                            SpiralControls()
                         }
                             .frame(height: geo.size.height * 0.60)
-                        CustomTableView(self.zero.frame.within(self.report.entries))
+                        TimeTabView(report:self.report)
                     }
                 }
-            }.onAppear {
+            }
+            .background(offBG())
+            .onAppear {
                 /// load data immediately
                 self.loadData()
             }

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		C615CD57245F332300D62B87 /* Toggl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C615CD56245F332300D62B87 /* Toggl.swift */; };
 		C615CD59245F33F100D62B87 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = C615CD58245F33F100D62B87 /* Report.swift */; };
+		C62F7B8624970CC40076F64C /* TimeTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62F7B8524970CC40076F64C /* TimeTabView.swift */; };
+		C62F7B8824970E530076F64C /* StatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62F7B8724970E530076F64C /* StatView.swift */; };
 		C63C0D45248D3C0D00163E20 /* SpiralTrimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63C0D44248D3C0D00163E20 /* SpiralTrimmer.swift */; };
 		C63C0D4B248DBDDB00163E20 /* Handle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63C0D4A248DBDDB00163E20 /* Handle.swift */; };
 		C6428DDC2470A6FE00A02A9B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C6428DDB2470A6FE00A02A9B /* Default-568h@2x.png */; };
@@ -23,8 +25,10 @@
 		C6751D8C24723182002965CC /* ZeroDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6751D8B24723182002965CC /* ZeroDate.swift */; };
 		C6751D8E247235FB002965CC /* TimePeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6751D8D247235FB002965CC /* TimePeriod.swift */; };
 		C67EAAB5244D0FF3008D4982 /* TimeEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67EAAB3244D04F0008D4982 /* TimeEntry.swift */; };
+		C6855DE72496E7050050F8D4 /* SpiralControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6855DE62496E7050050F8D4 /* SpiralControls.swift */; };
 		C68842B0247B3D5300DC5C42 /* DateBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68842AF247B3D5300DC5C42 /* DateBar.swift */; };
 		C688A8882479A8D6003260CE /* TimeFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = C688A8872479A8D6003260CE /* TimeFrame.swift */; };
+		C69F02782496AFA200D1C650 /* TimeIntervalExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69F02772496AFA200D1C650 /* TimeIntervalExtension.swift */; };
 		C6B0FF9C246F124300DED011 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B0FF9B246F124300DED011 /* ColorExtension.swift */; };
 		C6C18D452448F96C000345D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C18D442448F96C000345D5 /* AppDelegate.swift */; };
 		C6C18D472448F96C000345D5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C18D462448F96C000345D5 /* SceneDelegate.swift */; };
@@ -63,6 +67,8 @@
 /* Begin PBXFileReference section */
 		C615CD56245F332300D62B87 /* Toggl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toggl.swift; sourceTree = "<group>"; };
 		C615CD58245F33F100D62B87 /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
+		C62F7B8524970CC40076F64C /* TimeTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTabView.swift; sourceTree = "<group>"; };
+		C62F7B8724970E530076F64C /* StatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatView.swift; sourceTree = "<group>"; };
 		C63C0D44248D3C0D00163E20 /* SpiralTrimmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiralTrimmer.swift; sourceTree = "<group>"; };
 		C63C0D4A248DBDDB00163E20 /* Handle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Handle.swift; sourceTree = "<group>"; };
 		C6428DDB2470A6FE00A02A9B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -77,8 +83,10 @@
 		C6751D8B24723182002965CC /* ZeroDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZeroDate.swift; sourceTree = "<group>"; };
 		C6751D8D247235FB002965CC /* TimePeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePeriod.swift; sourceTree = "<group>"; };
 		C67EAAB3244D04F0008D4982 /* TimeEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntry.swift; sourceTree = "<group>"; };
+		C6855DE62496E7050050F8D4 /* SpiralControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiralControls.swift; sourceTree = "<group>"; };
 		C68842AF247B3D5300DC5C42 /* DateBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateBar.swift; sourceTree = "<group>"; };
 		C688A8872479A8D6003260CE /* TimeFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFrame.swift; sourceTree = "<group>"; };
+		C69F02772496AFA200D1C650 /* TimeIntervalExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervalExtension.swift; sourceTree = "<group>"; };
 		C6B0FF9B246F124300DED011 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		C6C18D412448F96C000345D5 /* Trickl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trickl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6C18D442448F96C000345D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -169,6 +177,7 @@
 				C6B0FF9B246F124300DED011 /* ColorExtension.swift */,
 				C6F605AE246C6B1700D0FE82 /* DateExtension.swift */,
 				C64385F42485F46A00CCF47E /* CGPointExtension.swift */,
+				C69F02772496AFA200D1C650 /* TimeIntervalExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -207,6 +216,8 @@
 				C6C18D442448F96C000345D5 /* AppDelegate.swift */,
 				C6C18D462448F96C000345D5 /* SceneDelegate.swift */,
 				C6C18D482448F96C000345D5 /* ContentView.swift */,
+				C62F7B8524970CC40076F64C /* TimeTabView.swift */,
+				C62F7B8724970E530076F64C /* StatView.swift */,
 				C6C18D4A2448F96F000345D5 /* Assets.xcassets */,
 				C6C18D4F2448F96F000345D5 /* LaunchScreen.storyboard */,
 				C6C18D522448F96F000345D5 /* Info.plist */,
@@ -244,6 +255,7 @@
 		C6C18D7E244CD7AA000345D5 /* Spiral */ = {
 			isa = PBXGroup;
 			children = (
+				C6855DE62496E7050050F8D4 /* SpiralControls.swift */,
 				C6C18D7A244BB76F000345D5 /* ZESpiral.swift */,
 				C63C0D44248D3C0D00163E20 /* SpiralTrimmer.swift */,
 				C6C18D7F244CD7D2000345D5 /* SpiralHelpers.swift */,
@@ -402,7 +414,9 @@
 				C6C18D7B244BB76F000345D5 /* ZESpiral.swift in Sources */,
 				C6751D8E247235FB002965CC /* TimePeriod.swift in Sources */,
 				C688A8882479A8D6003260CE /* TimeFrame.swift in Sources */,
+				C69F02782496AFA200D1C650 /* TimeIntervalExtension.swift in Sources */,
 				C6751D8624719AF7002965CC /* TableViewCell.swift in Sources */,
+				C62F7B8824970E530076F64C /* StatView.swift in Sources */,
 				C6C18D7524493EC8000345D5 /* SpiralUI.swift in Sources */,
 				C67EAAB5244D0FF3008D4982 /* TimeEntry.swift in Sources */,
 				C6751D8424719AF7002965CC /* CustomTableView.swift in Sources */,
@@ -413,6 +427,7 @@
 				C68842B0247B3D5300DC5C42 /* DateBar.swift in Sources */,
 				C64385F32485DC4900CCF47E /* KnobView.swift in Sources */,
 				C64385F52485F46A00CCF47E /* CGPointExtension.swift in Sources */,
+				C62F7B8624970CC40076F64C /* TimeTabView.swift in Sources */,
 				C6D448EC2484710E0072E7D4 /* ActivityIndicator.swift in Sources */,
 				C6751D8724719AF7002965CC /* DetailView.swift in Sources */,
 				C6751D8A2471E39F002965CC /* Position.swift in Sources */,
@@ -420,6 +435,7 @@
 				C63C0D4B248DBDDB00163E20 /* Handle.swift in Sources */,
 				C6751D8524719AF7002965CC /* TableView.swift in Sources */,
 				C6C18D80244CD7D2000345D5 /* SpiralHelpers.swift in Sources */,
+				C6855DE72496E7050050F8D4 /* SpiralControls.swift in Sources */,
 				C615CD57245F332300D62B87 /* Toggl.swift in Sources */,
 				C615CD59245F33F100D62B87 /* Report.swift in Sources */,
 			);

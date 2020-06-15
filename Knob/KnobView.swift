@@ -61,8 +61,7 @@ struct KnobView: View {
     var body: some View {
         
         GeometryReader { geo in
-            Handle()
-                .fill(Color.red)
+            HandleView()
                 /// maintain rotating while dragging & while released
                 .rotationEffect(-self.angleTracker.lead)
                 .gesture(DragGesture()
@@ -70,16 +69,21 @@ struct KnobView: View {
                         /// find cursor's angle
                         self.needsDraw.toggle()
                         if self.needsDraw {
-                            self.zero.frame = self.zero.frame.addingTimeInterval(dayLength * self.angleTracker.harvest())
+                            self.zero.date += dayLength * self.angleTracker.harvest()
                         }
                         self.angleTracker.update(geo: geo, value: value)
+                    }
+                    .onEnded { value in
+                        /// update once more on end
+                        self.angleTracker.update(geo: geo, value: value)
+                        self.zero.date += dayLength * self.angleTracker.harvest()
                     }
                 )
                 .animation(.spring())
         }
         .aspectRatio(1, contentMode: .fit)
         .onAppear {
-            self.angleTracker.lead = -self.zero.frame.end.clockAngle24()
+            self.angleTracker.lead = -self.zero.date.clockAngle24()
             self.angleTracker.lag = self.angleTracker.lead
         }
     }

@@ -11,19 +11,15 @@ import SwiftUI
 struct EntrySpiral: View {
     @ObservedObject var entry:TimeEntry = TimeEntry()
     @EnvironmentObject var listRow: ListRow
-    @State private var opacity = 0.8
+    @State private var opacity = 0.9
     @State private var scale = 1.0
     
     var body: some View {
         
         SpiralPart(entry)?
-//            .stroke(entry.project_hex_color, style: StrokeStyle(
-//                lineWidth: 8.1,
-//                lineCap: .round,
-//                lineJoin: .round
-//
-//            ))
             .fill(entry.project_hex_color)
+            .opacity(opacity)
+            .scaleEffect(CGFloat(scale))
             .gesture(TapGesture().onEnded() {_ in
                 /// pass selection to global variable
                 self.listRow.entry = self.entry
@@ -37,23 +33,23 @@ struct EntrySpiral: View {
                     /// drop the opacity to take on more BG color
                     self.opacity -= 0.25
                     /// scale more when closer to the center
-                    self.scale += 1 / self.entry.endTheta
+                    self.scale += 0.075 / Double(self.entry.spiralEnd.squareRoot())
                 }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     withAnimation(.linear(duration: 0.3)){
-                        self.opacity = 1
+                        self.opacity = 0.9
                         self.scale = 1
                     }
                 }
             })
-            .opacity(opacity)
-            .scaleEffect(CGFloat(scale))
+            
     }
     
+    /// do not render view if it is outside 1 week range
     init? (_ entry:TimeEntry, zeroTo zeroDate:Date) {
         self.entry = entry
         self.entry.zero(zeroDate)
-        guard self.entry.endTheta > 0 && self.entry.startTheta < MAX_RADIUS else { return nil }
+        guard self.entry.spiralEnd > 0 && self.entry.spiralStart < 1 else { return nil }
     }
 }
 
