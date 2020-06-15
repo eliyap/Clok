@@ -62,7 +62,7 @@ struct KnobView: View {
         
         GeometryReader { geo in
             Handle()
-                .fill(Color.red)
+                .fill(Color(UIColor.systemGray2))
                 /// maintain rotating while dragging & while released
                 .rotationEffect(-self.angleTracker.lead)
                 .gesture(DragGesture()

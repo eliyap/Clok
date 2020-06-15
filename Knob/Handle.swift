@@ -13,9 +13,14 @@ import SwiftUI
  */
 struct Handle : Shape {
     // based on a 100 x 100 bounding rect
+    /// determines the length of our handle
     private let arcLength = Angle(degrees: 30.0)
-    private let thiccness = 10
-    private let innerRadius = CGFloat(45)
+    
+    /// determines the stroke of our handle
+    private let thiccness = CGFloat(7)
+    
+    /// determines distance from the center
+    private let innerRadius = CGFloat(43)
     
     func path(in rect: CGRect) -> Path {
         let center = CGPoint(x: rect.size.width / 2, y: rect.size.height / 2)
@@ -30,14 +35,18 @@ struct Handle : Shape {
             )
         }
         .strokedPath(StrokeStyle(
-            lineWidth: 5,
+            lineWidth: thiccness,
             lineCap: .round
-        ))
-        .strokedPath(StrokeStyle(
-            lineWidth: 2,
-            lineJoin: .round
         ))
         .scale(rect.size.height / 100)
         .path(in: rect)
+    }
+}
+
+struct HandleStyle : ViewModifier {
+    func body(content:Content) -> some View {
+        content
+            .shadow(color: Color.primary.opacity(0.2), radius: 10, x: 10, y: 10)
+            .shadow(color: Color(UIColor.systemBackground).opacity(0.7), radius: 10, x: -5, y: -5)
     }
 }

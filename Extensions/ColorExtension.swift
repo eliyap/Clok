@@ -74,9 +74,9 @@ extension Color {
     )
     
     static let offBlack = Color(
-        red: 235 / 255,
-        green: 235 / 255,
-        blue: 245 / 255
+        red: 15 / 255,
+        green: 15 / 255,
+        blue: 30 / 255
     )
 
 }
