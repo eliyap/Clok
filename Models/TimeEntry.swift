@@ -60,21 +60,9 @@ final class TimeEntry : ObservableObject, Equatable {
             let endString = data["end"] as? String,
             let end = df.date(from: endString),
             let dur = data["dur"] as? Int
-        else {
-            #if DEBUG
-            print("Entry initialization failed!")
-            print(data)
-            #endif
-            return nil
-        }
+        else { return nil }
         // sanity check, make sure end time is after start time
-        guard start < end else {
-            #if DEBUG
-            print("Start cannot be after end!")
-            print(data)
-            #endif
-            return nil
-        }
+        guard start < end else { return nil }
         
         self.id = id
         self.pid = pid

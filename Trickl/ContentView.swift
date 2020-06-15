@@ -82,11 +82,6 @@ struct ContentView: View {
                         /// and remove the loading screen
                         self.loaded = true
                         
-                        #if DEBUG
-                        print("Fetched \(self.report.entries.count) entries in total")
-    //                    print(report.entries.max(){$0.start > $1.start}?.start)
-    //                    print(report.entries.min(){$0.start > $1.start}?.start)
-                        #endif
                     case .failure(.request):
                         // temporary micro-copy
                         print("We weren't able to fetch your data. Maybe the internet is down?")

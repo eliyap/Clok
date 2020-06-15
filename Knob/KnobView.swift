@@ -10,7 +10,6 @@ import Foundation
 import SwiftUI
 
 struct KnobAngle {
-    var originalFrame = WeekTimeFrame()
     var lead = Angle()
     var lag = Angle()
     var turns = Angle()
