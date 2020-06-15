@@ -38,14 +38,8 @@ struct prevWeekButton : View {
     var body : some View {
         /// logic for "previous" week
         Button(action: {
-            switch self.zero.frameState() {
-            case .thisWeek:
-                self.zero.frame = self.zero.pastSeven
-            case .pastSeven:
-                self.zero.frame = self.zero.lastWeek
-            default:
-                self.zero.frame = WeekTimeFrame(preceding: self.zero.frame)
-            }
+            withAnimation { self.zero.date -= weekLength }
+            self.zero.weekSkip = .back
         }) {
             Image(systemName: "chevron.left")
                 .font(.subheadline)
@@ -63,25 +57,17 @@ struct nextWeekButton : View {
     var body : some View {
         /// logic for "next" week
         Button(action: {
-            switch self.zero.frameState() {
-            case .thisWeek:
-                fatalError() /// should be disabled
-            case .pastSeven:
-                self.zero.frame = self.zero.thisWeek
-            case .lastWeek:
-                self.zero.frame = self.zero.pastSeven
-            default:
-                self.zero.frame = WeekTimeFrame(succeeding: self.zero.frame)
-            }
+            withAnimation { self.zero.date += weekLength }
+            self.zero.weekSkip = .fwrd
         }) {
             Image(systemName: "chevron.right")
                 .font(.subheadline)
                 .foregroundColor(.primary)
             .modifier(weekButtonStyle())
         }
-        // do not allow clicks when in the This Week time frame
-        .disabled(self.zero.frame == self.zero.thisWeek)
-        // go translucent when disabled
-        .opacity(self.zero.frame == self.zero.thisWeek ? 0.5 : 1)
+//        // do not allow clicks when in the This Week time frame
+//        .disabled(self.zero.frame == self.zero.thisWeek)
+//        // go translucent when disabled
+//        .opacity(self.zero.frame == self.zero.thisWeek ? 0.5 : 1)
     }
 }

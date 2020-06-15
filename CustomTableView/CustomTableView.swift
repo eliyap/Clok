@@ -99,16 +99,9 @@ struct CustomTableView: View, TableViewDelegate {
             }
             .navigationBarTitle(
                 Text(
-                    // poor man's switch statement
-                    self.zero.frame == self.zero.pastSeven ?
-                        weekLabels.pastSeven.rawValue :
-                    self.zero.frame == self.zero.thisWeek ?
-                        weekLabels.current.rawValue :
-                    self.zero.frame == self.zero.lastWeek ?
-                        weekLabels.last.rawValue :
-                        self.df.string(from: self.zero.frame.start) +
-                        " – " +
-                        self.df.string(from: self.zero.frame.end)
+                    self.df.string(from: self.zero.date) +
+                    " – " +
+                    self.df.string(from: self.zero.date.addingTimeInterval(weekLength))
                 ),
                 displayMode: .inline
             )

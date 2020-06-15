@@ -70,7 +70,7 @@ struct KnobView: View {
                         /// find cursor's angle
                         self.needsDraw.toggle()
                         if self.needsDraw {
-                            self.zero.frame = self.zero.frame.addingTimeInterval(dayLength * self.angleTracker.harvest())
+                            self.zero.date += dayLength * self.angleTracker.harvest()
                         }
                         self.angleTracker.update(geo: geo, value: value)
                     }
@@ -79,7 +79,7 @@ struct KnobView: View {
         }
         .aspectRatio(1, contentMode: .fit)
         .onAppear {
-            self.angleTracker.lead = -self.zero.frame.end.clockAngle24()
+            self.angleTracker.lead = -self.zero.date.clockAngle24()
             self.angleTracker.lag = self.angleTracker.lead
         }
     }
