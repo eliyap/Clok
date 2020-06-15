@@ -15,8 +15,6 @@ struct ContentView: View {
     /// indicates whether we are finished loading data
     @State var loaded = false
     
-    @EnvironmentObject var zero:ZeroDate
-    
     var body : some View {
         ZStack {
             GeometryReader { geo in
@@ -28,7 +26,7 @@ struct ContentView: View {
                             SpiralControls()
                         }
                             .frame(width: geo.size.width * 0.60)
-                        CustomTableView(self.zero.date.withinWeekOf(self.report.entries))
+                        TimeTabView(report:self.report)
                     }
                 } else {
                     /// portrait mode
@@ -38,7 +36,7 @@ struct ContentView: View {
                             SpiralControls()
                         }
                             .frame(height: geo.size.height * 0.60)
-                        CustomTableView(self.zero.date.withinWeekOf(self.report.entries))
+                        TimeTabView(report:self.report)
                     }
                 }
             }

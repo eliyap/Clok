@@ -25,7 +25,7 @@ struct weekButtonStyle : ViewModifier {
                 Circle()
                     .fill(Color(UIColor.systemBackground))
                     .shadow(color: Color(UIColor.black).opacity(0.2), radius: 10, x: +10, y: +10)
-                    .shadow(color: Color(UIColor.white).opacity(0.1), radius: 10, x: -10, y: -10)
+                    .shadow(color: Color(UIColor.white).opacity(0.1), radius: 10, x: -5, y: -5)
             )
             .padding()
     }
