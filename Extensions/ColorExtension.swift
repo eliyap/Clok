@@ -84,6 +84,8 @@ extension Color {
 struct offBG : View {
     @Environment(\.colorScheme) var mode
     var body : some View {
-        return mode == .light ? Color.offWhite : Color.offBlack
+        return (mode == .light ? Color.offWhite : Color.offBlack)
+            /// needs to cover the status bar
+            .edgesIgnoringSafeArea(.all)
     }
 }
