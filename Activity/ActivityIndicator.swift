@@ -14,6 +14,7 @@ struct ProgressIndicator: View {
         ActivityIndicator()
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
             .background(Color(UIColor.systemBackground))
+            .edgesIgnoringSafeArea(.all)
     }
 }
 
