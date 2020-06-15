@@ -61,8 +61,7 @@ struct KnobView: View {
     var body: some View {
         
         GeometryReader { geo in
-            Handle()
-                .fill(Color(UIColor.systemGray2))
+            HandleView()
                 /// maintain rotating while dragging & while released
                 .rotationEffect(-self.angleTracker.lead)
                 .gesture(DragGesture()
@@ -73,6 +72,11 @@ struct KnobView: View {
                             self.zero.date += dayLength * self.angleTracker.harvest()
                         }
                         self.angleTracker.update(geo: geo, value: value)
+                    }
+                    .onEnded { value in
+                        /// update once more on end
+                        self.angleTracker.update(geo: geo, value: value)
+                        self.zero.date += dayLength * self.angleTracker.harvest()
                     }
                 )
                 .animation(.spring())
