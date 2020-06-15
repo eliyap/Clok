@@ -19,7 +19,7 @@ struct ContentView: View {
     
     var body : some View {
         ZStack {
-            GeometryReader {geo in
+            GeometryReader { geo in
                 if geo.size.width > geo.size.height {
                     /// landscape mode
                     HStack(spacing: 0) {
@@ -41,7 +41,9 @@ struct ContentView: View {
                         CustomTableView(self.zero.frame.within(self.report.entries))
                     }
                 }
-            }.onAppear {
+            }
+            .background(offBG())
+            .onAppear {
                 /// load data immediately
                 self.loadData()
             }
