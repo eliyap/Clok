@@ -33,7 +33,7 @@ struct EntrySpiral: View {
                     /// drop the opacity to take on more BG color
                     self.opacity -= 0.25
                     /// scale more when closer to the center
-                    self.scale += 1 / self.entry.endTheta
+                    self.scale += 0.05 / Double(self.entry.spiralEnd)
                 }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     withAnimation(.linear(duration: 0.3)){
@@ -49,7 +49,7 @@ struct EntrySpiral: View {
     init? (_ entry:TimeEntry, zeroTo zeroDate:Date) {
         self.entry = entry
         self.entry.zero(zeroDate)
-        guard self.entry.endTheta > 0 && self.entry.startTheta < MAX_RADIUS else { return nil }
+        guard self.entry.spiralEnd > 0 && self.entry.spiralStart < 1 else { return nil }
     }
 }
 

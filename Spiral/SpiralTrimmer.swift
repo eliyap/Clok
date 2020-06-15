@@ -13,14 +13,16 @@ struct SpiralPart : Shape {
     
     var start: CGFloat
     var end: CGFloat
-    var rotate: Angle
+    var rotate: Double
     
-    public var animatableData: AnimatablePair<CGFloat, CGFloat> {
+    public var animatableData: AnimatablePair<CGFloat, AnimatablePair<CGFloat, Double>> {
         get {
-            AnimatablePair(start, end)
+            AnimatablePair(start, AnimatablePair(end, rotate))
         }
         set {
-            (self.start, self.end) = (newValue.first, newValue.second)
+            start = newValue.first
+            end = newValue.second.first
+            rotate = newValue.second.second
         }
     }
     
@@ -37,13 +39,13 @@ struct SpiralPart : Shape {
     
     init?(_ entry: TimeEntry){
         // do not draw spirals that are out of bounds
-        guard entry.endTheta > 0 else { return nil }
-        guard entry.startTheta < MAX_RADIUS else { return nil }
+        guard entry.spiralEnd > 0 else { return nil }
+        guard entry.spiralStart < 1 else { return nil }
         
         /// cap angles at the end of the spiral
-        start = archimedianSpiralLength(entry.startTheta) / weekSpiralLength
-        end = archimedianSpiralLength(entry.endTheta) / weekSpiralLength
-        rotate = entry.rotate
+        start = entry.spiralStart
+        end = entry.spiralEnd
+        rotate = entry.rotate.degrees
         
         /// adjust for the stroke cap
         end -= stroke_width / weekSpiralLength
@@ -55,7 +57,7 @@ struct SpiralPart : Shape {
     func path (in rect:CGRect) -> Path {
         wholeSpiral
             .trimmedPath(from: start, to: end)
-            .multiTransform(rect: rect, rotate: rotate)
+            .multiTransform(rect: rect, rotate: Angle(degrees: rotate))
     }
     
 }

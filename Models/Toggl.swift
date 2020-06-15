@@ -7,10 +7,6 @@
 //
 
 import Foundation
-let entry = [TimeEntry( // placeholder var until things are hooked up properly
-    [:] // Feb 2, 1997, 10:26 AM
-    //    end: Date(timeIntervalSinceReferenceDate: -123355789.0) // Feb 2, 1997, 10:26 AM
-    )]
 
 enum NetworkError: Error {
     case url

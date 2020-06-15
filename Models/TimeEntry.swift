@@ -14,8 +14,10 @@ final class TimeEntry : ObservableObject, Equatable {
     let id:Int
     
     // time parameters
-    @Published var startTheta = 0.0
-    @Published var endTheta = 0.0
+    /// normalized length, from 0 at the center of the spiral, to 1 at the end
+    @Published var spiralStart:CGFloat = 0
+    @Published var spiralEnd:CGFloat = 0
+    
     @Published var rotate = Angle()
     let start: Date // needs to be coerced from ISO 8601 date / time format (YYYY - MM - DDTHH: MM: SS)
     let end: Date   // needs to be coerced from ISO 8601 date / time format (YYYY - MM - DDTHH: MM: SS)
@@ -107,13 +109,13 @@ final class TimeEntry : ObservableObject, Equatable {
     func zero (_ zeroDate:Date) {
         let startInt = (start > zeroDate) ? (start - zeroDate) : TimeInterval(exactly: 0)
         let endInt = (end > zeroDate) ? (end - zeroDate) : TimeInterval(exactly: 0)
-//        withAnimation(.easeInOut(duration: 0.25)) {
+        withAnimation(.spring()) {
 
-            self.startTheta = startInt! * radPerSec
-            self.endTheta = endInt! * radPerSec
+            self.spiralStart = archimedianSpiralLength(startInt! * radPerSec) / weekSpiralLength
+            self.spiralEnd = archimedianSpiralLength(endInt! * radPerSec) / weekSpiralLength
             
-            self.rotate = zeroDate.clockAngle24()
-//        }
+            self.rotate = zeroDate.unboundedClockAngle24()
+        }
     }
     
     static func == (lhs: TimeEntry, rhs: TimeEntry) -> Bool {
