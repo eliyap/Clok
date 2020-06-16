@@ -53,15 +53,7 @@ struct WeekTimeFrame {
         /// get the day time frames
         var days = daySlices(start: frame.start, end: frame.end)
         
-        e.forEach{
-            print(df.string(from: $0.start))
-        }
-        print("days")
-        days.forEach{
-            print(df.string(from: $0.frame.start))
-        }
-        
-        // iterate over list, only adding the first entry in a day that hasn't yet been filled
+        /// iterate over list, only adding the *first started* entry in a day frame that hasn't yet been filled
         e.forEach { entry in
             for idx in 0..<days.count {
                 if days[idx].frame.containsStartOf(entry) {
@@ -72,11 +64,11 @@ struct WeekTimeFrame {
                 }
             }
         }
-        firstStarts.forEach{
-            print(df.string(from: $0.start))
-        }
         
-        return ""
+        let avg = firstStarts
+            .map{$0.start}
+            .averageTime()
+        return df.string(from: avg)
     }
 }
 
@@ -98,4 +90,36 @@ struct DayFrame {
         }
         frame = TimeFrame(start: start, end: end)
     }
+}
+
+/**
+ provided a start and end date, returns an array with all midnights between those dates
+ (as well as the dates themselves)
+ striding over adjacent dates in resulting array gives all "day intervals" between the 2 dates,
+ with non-midnight inputs resulting in partial days at the start and end (this is intentional)
+ 
+ For testing:
+ - providing 2 midnight dates should not result in duplicate values
+ - 7 days (not midnight) should return a partial day, 6 full days, and a partial day (9 dates)
+ - 7 days (midnight) should return 7 full days (8 dates)
+ */
+func daySlices(start:Date, end:Date) -> [DayFrame] {
+    guard start < end else { fatalError("Invalid date range!") }
+    
+    var frames = [DayFrame]()
+    var slices = [Date]()
+    let cal = Calendar.current
+    
+    for d in stride(from: cal.startOfDay(for: start), through: cal.startOfDay(for: end), by: dayLength) {
+        slices.append(d)
+    }
+    slices.remove(at: 0)
+    slices.insert(start, at: 0)
+    if slices.last != end { slices.append(end) }
+    
+    for idx in 0..<(slices.count - 1) {
+        frames.append(DayFrame(start: slices[idx], end:slices[idx + 1]))
+    }
+    
+    return frames
 }

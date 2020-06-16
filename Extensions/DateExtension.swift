@@ -73,34 +73,25 @@ extension Date {
     }
 }
 
-/**
- provided a start and end date, returns an array with all midnights between those dates
- (as well as the dates themselves)
- striding over adjacent dates in resulting array gives all "day intervals" between the 2 dates,
- with non-midnight inputs resulting in partial days at the start and end (this is intentional)
- 
- For testing:
- - providing 2 midnight dates should not result in duplicate values
- - 7 days (not midnight) should return a partial day, 6 full days, and a partial day (9 dates)
- - 7 days (midnight) should return 7 full days (8 dates)
- */
-func daySlices(start:Date, end:Date) -> [DayFrame] {
-    guard start < end else { fatalError("Invalid date range!") }
-    
-    var frames = [DayFrame]()
-    var slices = [Date]()
-    let cal = Calendar.current
-    
-    for d in stride(from: cal.startOfDay(for: start), through: cal.startOfDay(for: end), by: dayLength) {
-        slices.append(d)
+extension Array where Element == Date {
+    /**
+     returns average time of day, discarding all day, month, year information
+     time zone taken into account
+     */
+    func averageTime() -> Date {
+        let cal = Calendar.current
+        let midnight:Date = cal.startOfDay(for: Date())
+        
+        guard self.count > 0 else {
+            return midnight
+        }
+        
+        let avg:TimeInterval = self.reduce(0, {
+            /// sum time since start of day
+            $0 + $1.timeIntervalSince(cal.startOfDay(for: $1))
+        }) / Double(self.count) /// divide to get average time
+        
+        /// return avg time of day for today
+        return midnight + avg
     }
-    slices.remove(at: 0)
-    slices.insert(start, at: 0)
-    if slices.last != end { slices.append(end) }
-    
-    for idx in 0..<(slices.count - 1) {
-        frames.append(DayFrame(start: slices[idx], end:slices[idx + 1]))
-    }
-    
-    return frames
 }

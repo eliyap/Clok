@@ -35,7 +35,7 @@ struct SpiralUI: View {
             
             /// DEBUG
             let w = WeekTimeFrame(zero: self.zero.date, entries: self.zero.date.withinWeekOf(self.report.entries))
-            w.avgStartTime(SearchTerm(project: "Sleep", description: "", byProject: true, byDescription: false))
+            print(w.avgStartTime(SearchTerm(project: "Sleep", description: "", byProject: true, byDescription: false)))
 
         })
         .rotationEffect(self.rotate)
