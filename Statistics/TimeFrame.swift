@@ -46,9 +46,6 @@ struct WeekTimeFrame {
      based on "modified midnight" metric
      */
     func avgStartTime(_ terms:SearchTerm) -> Date {
-        df.dateStyle = .short
-        df.timeStyle = .short
-        
         /// filter and sort in chronological order by start
         var e = entries.matching(terms)
         e.sort(by: {$0.start < $1.start})
@@ -62,20 +59,20 @@ struct WeekTimeFrame {
             e.map{ $0.end   }.meanTime()
         ].meanTime() + (dayLength / 2)
         
-        print("Mod Midnight is \(df.string(from: modMN))")
-        
         /// list of the time entries that were the first started of their day
         var firstStarts = [TimeEntry]()
         
-        /// get the day time frames
-        var modStart = frame.start
-        modStart.roundDown(to: modMN)
-        var days = daySlices(start: modStart, end: frame.end)
+        /// find day time frames, using modified midnight
+        var days = daySlices(
+            start: roundDown(frame.start, to: modMN),
+            end: frame.end
+        )
         
         /// iterate over list, only adding the *first started* entry in a day frame that hasn't yet been filled
         e.forEach { entry in
             for idx in 0..<days.count {
                 if days[idx].frame.containsStartOf(entry) {
+                    /// add the *first started* entry in a day frame
                     firstStarts.append(entry)
         
                     /// pop this day, so no other entries starting on this day can be added
@@ -89,7 +86,7 @@ struct WeekTimeFrame {
         let avg = firstStarts
             .map{$0.start}
             .meanTime()
-        print("Avg is \(df.string(from: avg))")
+        
         return avg
     }
 }
@@ -107,30 +104,3 @@ struct DayFrame {
     }
 }
 
-/**
- provided a start and end date, returns an array with all midnights between those dates
- (as well as the dates themselves)
- striding over adjacent dates in resulting array gives all "day intervals" between the 2 dates,
- with non-midnight inputs resulting in partial days at the start and end (this is intentional)
- 
- For testing:
- - providing 2 midnight dates should not result in duplicate values
- - 7 days (not midnight) should return a partial day, 6 full days, and a partial day (9 dates)
- - 7 days (midnight) should return 7 full days (8 dates)
- */
-func daySlices(start:Date, end:Date) -> [DayFrame] {
-    guard start < end else { fatalError("Invalid date range!") }
-    
-    var frames = [DayFrame]()
-    var slices = [Date]()
-    
-    for d in stride(from: start, through: end, by: dayLength) {
-        slices.append(d)
-    }
-    
-    for idx in 0..<(slices.count - 1) {
-        frames.append(DayFrame(start: slices[idx], end:slices[idx + 1]))
-    }
-    
-    return frames
-}

@@ -79,25 +79,25 @@ extension Date {
     }
 }
 
-
-extension Date {
-    /// move back in time until self shares 24 hour time with provided date
-    mutating func roundDown(to other: Date) -> Void {
-        guard self != other else { return }
-        if other > self {
-            let timeOffset = (other - self).truncatingRemainder(dividingBy: dayLength)
-            self -= dayLength - timeOffset
-        } else {
-            let timeOffset = (self - other).truncatingRemainder(dividingBy: dayLength)
-            self -= timeOffset
-        }
+/// move back in time until date shares 24 hour time with other date
+func roundDown(_ date: Date, to other: Date) -> Date {
+    guard date != other else { return date }
+    
+    var date = date
+    if other > date {
+        let timeOffset = (other - date).truncatingRemainder(dividingBy: dayLength)
+        date -= dayLength - timeOffset
+    } else {
+        let timeOffset = (date - other).truncatingRemainder(dividingBy: dayLength)
+        date -= timeOffset
     }
+    return date
 }
 
 extension Array where Element == Date {
     /**
      using the method detailed at https://en.m.wikipedia.org/wiki/Mean_of_circular_quantities
-     average the time of day in this array
+     averages the time of day for dates in this array
      thanks to Teoh Jing Yang and Ashwin Kumar for doing the hard googling
      time is relative to midnight today
      */
