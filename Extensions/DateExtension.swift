@@ -107,6 +107,6 @@ extension Array where Element == Date {
         let meanY = self.map{$0.angle().sine()}.mean()
         
         /// find time represented by coordinates
-        return Angle(radians: atan(meanY / meanX)).time24h()
+        return Angle(x: meanX, y: meanY).time24h()
     }
 }

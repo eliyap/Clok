@@ -31,3 +31,46 @@ extension Angle {
         return cal.startOfDay(for: Date()) + time
     }
 }
+
+extension Angle {
+    /**
+     initialize angle from cartesian coordinates (x,y)
+     */
+    init(x:Double,y:Double) {
+        self.init()
+        
+        /// should never happen, but handle an angle at (0, 0)
+        guard x != 0 || y != 0 else {
+            /// should probably add runtime warning message here
+            self.radians = 0.0
+            return
+        }
+        
+        /// check div / 0
+        guard x != 0 else {
+            if y > 0 {
+                /// 90 deg, on the +y axis
+                self.radians = Double.pi / 2
+            } else if y < 0 {
+                /// 270 deg, on the -y axis
+                self.radians = -Double.pi / 2
+            }
+            return
+        }
+        
+        /// check ambiguous case where y/x=0
+        guard y != 0 else {
+            if x > 0 {
+                /// 0 deg, on the +x axis
+                self.radians = 0
+            } else if x < 0 {
+                /// 180 deg, on the -x axis
+                self.radians = Double.pi
+            }
+            return
+        }
+        
+        /// normal case, simply assign calculated arctan
+        self.radians = atan(y / x)
+    }
+}
