@@ -23,26 +23,32 @@ extension Date: Strideable {
 }
 
 extension Date {
-    /**
-     returns the angle this date would show on a 24 hour clock, with 0000h being vertically up,
-     bounded 0 to 360 degrees
-     */
-    public func clockAngle24() -> Angle {
+    
+    public func angle() -> Angle {
         let cal = Calendar.current
         
         let mins = Double(
             cal.component(.hour, from: self) * 60 +
             cal.component(.minute, from: self) +
-            cal.component(.minute, from: self) / 60
+            cal.component(.second, from: self) / 60
         )
+        
         /// 1440 mins in a day / 360 deg = 1/4
-        /// 90 degree deduction to bring 0000h up to vertical
-        return Angle(degrees: mins / 4.0) - Angle(degrees: 90)
+        return Angle(degrees: mins / 4.0)
     }
     
     /**
-     similar to above, but produces values outside the 0 to 360 degree range
-     this is so rotations based on date do not snap between 0 and 360 degrees
+     returns the angle this date would show on a 24 hour clock, with 0000h being vertically up,
+     bounded 0 to 360 degrees
+     */
+    public func clockAngle24() -> Angle {
+        /// 90 degree deduction to bring 0000h up to vertical
+        self.angle() - Angle(degrees: 90)
+    }
+    
+    /**
+     similar to above, but produces values > 360 degrees
+     this is so date based rotations do not snap when crossing 0 -> 360 degrees
      */
     public func unboundedClockAngle24() -> Angle {
         /// get reference time in current time zone
@@ -73,25 +79,34 @@ extension Date {
     }
 }
 
+
+extension Date {
+    /// move back in time until self shares 24 hour time with provided date
+    mutating func roundDown(to other: Date) -> Void {
+        guard self != other else { return }
+        if other > self {
+            let timeOffset = (other - self).truncatingRemainder(dividingBy: dayLength)
+            self -= dayLength - timeOffset
+        } else {
+            let timeOffset = (self - other).truncatingRemainder(dividingBy: dayLength)
+            self -= timeOffset
+        }
+    }
+}
+
 extension Array where Element == Date {
     /**
-     returns average time of day, discarding all day, month, year information
-     time zone taken into account
+     using the method detailed at https://en.m.wikipedia.org/wiki/Mean_of_circular_quantities
+     average the time of day in this array
+     thanks to Teoh Jing Yang and Ashwin Kumar for doing the hard googling
+     time is relative to midnight today
      */
-    func averageTime() -> Date {
-        let cal = Calendar.current
-        let midnight:Date = cal.startOfDay(for: Date())
+    public func meanTime() -> Date {
+        /// find average coordinates on a unit circle
+        let meanX = self.map{$0.angle().cosine()}.mean()
+        let meanY = self.map{$0.angle().sine()}.mean()
         
-        guard self.count > 0 else {
-            return midnight
-        }
-        
-        let avg:TimeInterval = self.reduce(0, {
-            /// sum time since start of day
-            $0 + $1.timeIntervalSince(cal.startOfDay(for: $1))
-        }) / Double(self.count) /// divide to get average time
-        
-        /// return avg time of day for today
-        return midnight + avg
+        /// find time represented by coordinates
+        return Angle(radians: atan(meanY / meanX)).time24h()
     }
 }
