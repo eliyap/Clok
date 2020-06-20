@@ -22,6 +22,9 @@ struct SpiralUI: View {
             }
         }
         .onReceive(self.zero.$weekSkip, perform: { dxn in
+            /// when a week skip command is received,
+            /// perform a 360 degree barell roll animation,
+            /// then reset the flag
             switch dxn {
             case .fwrd:
                 self.rotate += Angle(degrees: 360)
@@ -32,11 +35,6 @@ struct SpiralUI: View {
             default:
                 return
             }
-            
-            /// DEBUG
-            let w = WeekTimeFrame(zero: self.zero.date, entries: self.zero.date.withinWeekOf(self.report.entries))
-            print(w.avgStartTime(SearchTerm(project: "Sleep", description: "", byProject: true, byDescription: false)))
-
         })
         .rotationEffect(self.rotate)
         .animation(.spring())

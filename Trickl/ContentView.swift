@@ -10,6 +10,7 @@ import SwiftUI
 
 
 struct ContentView: View {
+    @EnvironmentObject var zero:ZeroDate
     @State var report = Report()
     
     /// indicates whether we are finished loading data
@@ -27,6 +28,7 @@ struct ContentView: View {
                         }
                             .frame(width: geo.size.width * 0.60)
                         TimeTabView(report:self.report)
+                            .environmentObject(self.zero)
                     }
                 } else {
                     /// portrait mode
@@ -37,6 +39,7 @@ struct ContentView: View {
                         }
                             .frame(height: geo.size.height * 0.60)
                         TimeTabView(report:self.report)
+                            .environmentObject(self.zero)
                     }
                 }
             }

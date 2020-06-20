@@ -19,7 +19,7 @@ struct TimeTabView: View {
                     Image(systemName: "list.bullet")
                     Text("Entries")
                 }
-            StatView()
+            StatView(week: WeekTimeFrame(zero: zero.date, entries: zero.date.withinWeekOf(self.report.entries)))
                 .tabItem {
                     Image(systemName: "chart.bar.fill")
                     Text("Summary")

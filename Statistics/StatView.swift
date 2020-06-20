@@ -9,13 +9,30 @@
 import SwiftUI
 
 struct StatView: View {
+    var week: WeekTimeFrame
+    private let df = DateFormatter()
+    private var avgStart = Date()
+    private var avgEnd = Date()
+    @State private var terms = SearchTerm(
+        project: "School",
+        description: "",
+        byProject: true,
+        byDescription: false
+    )
+    
     var body: some View {
-        Text("Coming Soon!")
+        VStack {
+            Text("\(df.string(from: avgStart))")
+            Text("\(df.string(from: avgEnd))")
+        }
+        
     }
-}
-
-struct StatView_Previews: PreviewProvider {
-    static var previews: some View {
-        StatView()
+    
+    init(week week_: WeekTimeFrame) {
+        week = week_
+        avgStart = week.avgStartTime(for: terms)
+        avgEnd   = week.avgEndTime(for: terms)
+        df.timeStyle = .short
+        df.dateStyle = .short
     }
 }
