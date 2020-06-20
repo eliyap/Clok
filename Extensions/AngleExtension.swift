@@ -70,7 +70,10 @@ extension Angle {
             return
         }
         
-        /// normal case, simply assign calculated arctan
+        /// calculate arctan, which only works for 1st and 4th quadrant
         self.radians = atan(y / x)
+        
+        /// if in 2nd or 3rd quadrant, adjust angle
+        if x < 0 { self.radians += Double.pi }
     }
 }
