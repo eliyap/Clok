@@ -95,7 +95,7 @@ struct WeekTimeFrame {
 /**
  period of time that covers a 24 hour period, or part thereof
  */
-struct DayFrame {
+struct DayTimeFrame {
     var frame:TimeFrame
     init(start:Date, end:Date) {
         guard start < end else { fatalError("End Not After Start!")}
