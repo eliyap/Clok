@@ -56,6 +56,7 @@ struct KnobView: View {
     @State var angleTracker = KnobAngle()
     @State var needsDraw = false
     @EnvironmentObject var zero:ZeroDate
+    @State var rotate = Angle()
     
     var body: some View {
         
@@ -85,6 +86,23 @@ struct KnobView: View {
             self.angleTracker.lead = -self.zero.date.clockAngle24()
             self.angleTracker.lag = self.angleTracker.lead
         }
+        
+        /// mirror the spiral's rotation effect
+        .rotationEffect(self.rotate)
+        .animation(.spring())
+        .onReceive(self.zero.$weekSkip, perform: { dxn in
+            /// when a week skip command is received,
+            /// perform a 360 degree barell roll animation,
+            /// then reset the flag
+            switch dxn {
+            case .fwrd:
+                self.rotate += Angle(degrees: 360)
+            case .back:
+                self.rotate -= Angle(degrees: 360)
+            default:
+                return
+            }
+        })
     }
 }
 
