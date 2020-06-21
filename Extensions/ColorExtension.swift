@@ -78,7 +78,13 @@ extension Color {
         green: 15 / 255,
         blue: 30 / 255
     )
-
+    
+    // middle of the road grey, replace with dark mode sensitive color later
+    static let noProject = Color(
+        red: 0.5,
+        green: 0.5,
+        blue: 0.5
+    )
 }
 
 struct offBG : View {
