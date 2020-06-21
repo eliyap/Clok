@@ -33,11 +33,11 @@ struct WeekTimeFrame {
     let df = DateFormatter()
     
     /**
-     we expect time entries to already be filtered down between some date range
+     filter time entries down to between date range
      */
     init (zero: Date, entries entries_: [TimeEntry]) {
         frame = TimeFrame(start: zero, end: zero + weekLength)
-        entries = entries_
+        entries = entries_.within(interval: weekLength, of: zero)
         df.timeStyle = .short
     }
     
@@ -70,16 +70,16 @@ struct WeekTimeFrame {
      a smart measure of what time each day you start an activity
      */
     func avgStartTime(for terms: SearchTerm) -> Date {
+        var entries = self.entries
         /// filter and sort in chronological order by start
-        var e = entries.matching(terms)
-        e.sort(by: {$0.start < $1.start})
-        var days = modifiedDays(for: e)
+        entries.sort(by: {$0.start < $1.start})
+        var days = modifiedDays(for: entries)
         
         /// list of the time entries that were the first started of their day
         var firstStarts = [TimeEntry]()
         
         /// iterate over list, adding the entry that *first started* that Day frame
-        e.forEach { entry in
+        entries.forEach { entry in
             for idx in 0..<days.count {
                 if days[idx].frame.containsStartOf(entry) {
                     firstStarts.append(entry)
@@ -97,16 +97,16 @@ struct WeekTimeFrame {
      a smart measure of what time each day you end an activity
      */
     func avgEndTime(for terms: SearchTerm) -> Date {
+        var entries = self.entries
         /// filter and sort in reverse chronological order by end
-        var e = entries.matching(terms)
-        e.sort(by: {$0.end > $1.end})
-        var days = modifiedDays(for: e)
+        entries.sort(by: {$0.end > $1.end})
+        var days = modifiedDays(for: entries)
         
         /// list of the time entries that were the first ended of their day
         var lastEnds = [TimeEntry]()
         
         /// iterate over list backwards, adding the entry that *last ended* that Day frame
-        e.forEach { entry in
+        entries.forEach { entry in
             for idx in stride(from: days.count - 1, through: 0, by: -1) {
                 if days[idx].frame.containsEndOf(entry) {
                     lastEnds.append(entry)
@@ -119,6 +119,18 @@ struct WeekTimeFrame {
         return lastEnds
             .map{$0.end}
             .meanTime()
+    }
+    
+    /**
+     find the average time each day spent on some activity
+     NOTE: I could restrict this average to only days where you log at least 1 instance of the activity (e.g. average work only over weekdays)
+     but I think people expect a 7 day average
+     */
+    func avgDuration(for terms: SearchTerm) -> TimeInterval {
+        // calculate total time interval / 7, taking care to cap at week boundaries
+        return entries
+            .map{min(self.frame.end, $0.end) - max(self.frame.start, $0.start)}
+            .reduce(0, {$0 + $1}) / 7
     }
 }
 

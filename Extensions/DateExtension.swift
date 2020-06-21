@@ -58,16 +58,6 @@ extension Date {
         /// 90 degree deduction to bring 0000h up to vertical
         return Angle(degrees: secs/240.0) - Angle(degrees: 90)
     }
-    
-    /**
-     filters to only time entries that occured within a week of this date
-     */
-    func withinWeekOf(_ entries:[TimeEntry]) -> [TimeEntry] {
-        entries.filter {
-            self < $0.start && $0.start < self + weekLength ||
-            self < $0.end   && $0.end   < self + weekLength
-        }
-    }
 }
 
 extension Date {

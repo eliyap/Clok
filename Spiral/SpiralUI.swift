@@ -46,7 +46,6 @@ struct SpiralUI: View {
         report = _report
     }
     
-    
 }
 
 

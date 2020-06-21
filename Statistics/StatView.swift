@@ -13,26 +13,23 @@ struct StatView: View {
     private let df = DateFormatter()
     private var avgStart = Date()
     private var avgEnd = Date()
-    @State private var terms = SearchTerm(
-        project: "School",
-        description: "",
-        byProject: true,
-        byDescription: false
-    )
+    private var avgDur: TimeInterval = 0
     
     var body: some View {
         VStack {
-            Text("\(df.string(from: avgStart))")
-            Text("\(df.string(from: avgEnd))")
+            Text("Starts Around: " + df.string(from: avgStart))
+            Text("Ends Around: " + df.string(from: avgEnd))
+            Text("Time / day: " + avgDur.toString())
         }
         
     }
     
-    init(week week_: WeekTimeFrame) {
+    init(over week_: WeekTimeFrame, for terms: SearchTerm) {
         week = week_
         avgStart = week.avgStartTime(for: terms)
         avgEnd   = week.avgEndTime(for: terms)
+        
         df.timeStyle = .short
-        df.dateStyle = .short
+        df.dateStyle = .none
     }
 }

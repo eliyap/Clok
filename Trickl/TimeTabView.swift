@@ -14,12 +14,24 @@ struct TimeTabView: View {
     
     var body: some View {
         TabView {
-            CustomTableView(self.zero.date.withinWeekOf(self.report.entries))
+            CustomTableView(self.report.entries.within(interval: weekLength, of: self.zero.date))
                 .tabItem {
                     Image(systemName: "list.bullet")
                     Text("Entries")
                 }
-            StatView(week: WeekTimeFrame(zero: zero.date, entries: zero.date.withinWeekOf(self.report.entries)))
+            StatView(
+                over: WeekTimeFrame(
+                    zero: self.zero.date,
+                    entries: self.report.entries
+                ),
+                for: SearchTerm(
+                    project: "School",
+                    description: "",
+                    byProject: true,
+                    byDescription: false
+                )
+            )
+        
                 .tabItem {
                     Image(systemName: "chart.bar.fill")
                     Text("Summary")
