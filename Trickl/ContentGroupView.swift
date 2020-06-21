@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct ContentGroupView: View {
-    var width: CGFloat
+    var limit: CGFloat
     
     var body: some View {
         Group {
@@ -17,7 +17,7 @@ struct ContentGroupView: View {
                 SpiralUI()
                 SpiralControls()
             }
-            .frame(width: self.width * 0.60)
+            .frame(width: self.limit, height: self.limit)
             TimeTabView()
         }
     }
