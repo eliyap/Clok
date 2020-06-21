@@ -19,19 +19,16 @@ struct TimeTabView: View {
                     Image(systemName: "list.bullet")
                     Text("Entries")
                 }
-            StatView(
-                over: WeekTimeFrame(
-                    zero: self.zero.date,
-                    entries: self.report.entries
-                ),
-                for: SearchTerm(
-                    project: "School",
+            StatView(for: WeekTimeFrame(
+                start: self.zero.date,
+                entries: self.report.entries,
+                terms: SearchTerm(
+                    project: "Sleep",
                     description: "",
                     byProject: true,
                     byDescription: false
                 )
-            )
-        
+            ))
                 .tabItem {
                     Image(systemName: "chart.bar.fill")
                     Text("Summary")

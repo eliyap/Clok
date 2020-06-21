@@ -35,9 +35,11 @@ struct WeekTimeFrame {
     /**
      filter time entries down to between date range
      */
-    init (zero: Date, entries entries_: [TimeEntry]) {
-        frame = TimeFrame(start: zero, end: zero + weekLength)
-        entries = entries_.within(interval: weekLength, of: zero)
+    init (start start_: Date, entries entries_: [TimeEntry], terms: SearchTerm) {
+        frame = TimeFrame(start: start_, end: start_ + weekLength)
+        entries = entries_
+            .matching(terms)
+            .within(interval: weekLength, of: start_)
         df.timeStyle = .short
     }
     
@@ -69,7 +71,7 @@ struct WeekTimeFrame {
     /**
      a smart measure of what time each day you start an activity
      */
-    func avgStartTime(for terms: SearchTerm) -> Date {
+    func avgStartTime() -> Date {
         var entries = self.entries
         /// filter and sort in chronological order by start
         entries.sort(by: {$0.start < $1.start})
@@ -96,7 +98,7 @@ struct WeekTimeFrame {
     /**
      a smart measure of what time each day you end an activity
      */
-    func avgEndTime(for terms: SearchTerm) -> Date {
+    func avgEndTime() -> Date {
         var entries = self.entries
         /// filter and sort in reverse chronological order by end
         entries.sort(by: {$0.end > $1.end})
@@ -126,7 +128,7 @@ struct WeekTimeFrame {
      NOTE: I could restrict this average to only days where you log at least 1 instance of the activity (e.g. average work only over weekdays)
      but I think people expect a 7 day average
      */
-    func avgDuration(for terms: SearchTerm) -> TimeInterval {
+    func avgDuration() -> TimeInterval {
         // calculate total time interval / 7, taking care to cap at week boundaries
         return entries
             .map{min(self.frame.end, $0.end) - max(self.frame.start, $0.start)}

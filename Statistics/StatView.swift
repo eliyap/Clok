@@ -24,10 +24,11 @@ struct StatView: View {
         
     }
     
-    init(over week_: WeekTimeFrame, for terms: SearchTerm) {
+    init(for week_: WeekTimeFrame) {
         week = week_
-        avgStart = week.avgStartTime(for: terms)
-        avgEnd   = week.avgEndTime(for: terms)
+        avgStart = week.avgStartTime()
+        avgEnd   = week.avgEndTime()
+        avgDur   = week.avgDuration()
         
         df.timeStyle = .short
         df.dateStyle = .none
