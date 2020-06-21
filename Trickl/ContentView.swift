@@ -10,8 +10,8 @@ import SwiftUI
 
 
 struct ContentView: View {
-    @EnvironmentObject var zero:ZeroDate
-    @State var report = Report()
+    @EnvironmentObject var zero: ZeroDate
+    @EnvironmentObject var data: TimeData
     
     /// indicates whether we are finished loading data
     @State var loaded = false
@@ -22,24 +22,12 @@ struct ContentView: View {
                 if geo.size.width > geo.size.height {
                     /// landscape mode
                     HStack(spacing: 0) {
-                        ZStack{
-                            SpiralUI(self.report)
-                            SpiralControls()
-                        }
-                            .frame(width: geo.size.width * 0.60)
-                        TimeTabView(report:self.report)
-                            .environmentObject(self.zero)
+                        ContentGroupView(width: geo.size.width)
                     }
                 } else {
                     /// portrait mode
                     VStack(alignment: .center, spacing: 0) {
-                        ZStack{
-                            SpiralUI(self.report)
-                            SpiralControls()
-                        }
-                            .frame(height: geo.size.height * 0.60)
-                        TimeTabView(report:self.report)
-                            .environmentObject(self.zero)
+                        ContentGroupView(width: geo.size.width)
                     }
                 }
             }
@@ -79,9 +67,9 @@ struct ContentView: View {
                 
                 DispatchQueue.main.async {
                     switch result {
-                    case let .success(myReport):
+                    case let .success(report):
                         /// hand back the complete report
-                        self.report = myReport
+                        self.data.report = report
                         /// and remove the loading screen
                         self.loaded = true
                         
