@@ -32,7 +32,7 @@ struct ProjectListView: View {
         }) {
             HStack{
                 Rectangle()
-                    .frame(width: 15)
+                    .frame(width: listLineInset)
                     .foregroundColor(project.color)
                 if (project.name == chosen.name) {
                     Text(project.name)
