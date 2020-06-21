@@ -11,37 +11,47 @@ import SwiftUI
 struct StatView: View {
     @EnvironmentObject var data: TimeData
     @EnvironmentObject var zero: ZeroDate
-    
-    var colors = ["Red", "Green", "Blue", "Tartan"]
-    @State private var selectedColor = 0
+    @State private var project = Project.any
     
     var body: some View {
         NavigationView {
             VStack {
-                NavigationLink(destination: Text("Second View")) {
-                    Text("Hello, World!")
+                List{
+                    NavigationLink(destination: ProjectListView(
+                        chosen: self.$project,
+                        projects: self.data.projects().sorted()
+                    )
+                        .navigationBarTitle("Projects", displayMode: .inline)
+                        .navigationBarHidden(false)
+                    ) {
+                        HStack{
+                            Rectangle()
+                                .frame(width: 15)
+                                .foregroundColor(project.color)
+                            Text(project.name)
+                                .bold()
+                        }
+                        
+                    }
+                    .modifier(fillRow())
                 }
-                Picker(selection: $selectedColor, label: Text("Please choose a color")) {
-                   ForEach(0 ..< colors.count) {
-                      Text(self.colors[$0])
-                   }
-                }
-                .pickerStyle(DefaultPickerStyle())
-                Text("You selected: \(colors[selectedColor])")
+                .modifier(roundedList())
+                
+                
                 StatDisplayView(for: WeekTimeFrame(
                     start: self.zero.date,
                     entries: self.data.report.entries,
                     terms: SearchTerm(
-                        project: "Sleep",
+                        project: .noProject,
                         description: "",
                         byProject: true,
                         byDescription: false
                     )
                 ))
-            }
-                /// hide nav bar
-                .navigationBarTitle("")
                 .navigationBarHidden(true)
+                .navigationBarTitle("Summary", displayMode: .inline)
+            }
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }

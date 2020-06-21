@@ -17,3 +17,7 @@ final class TimeData: ObservableObject {
     }
 }
 
+struct WithID<T>: Identifiable {
+    var id = UUID()
+    var val: T
+}
