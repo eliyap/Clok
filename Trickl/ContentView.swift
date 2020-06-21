@@ -22,12 +22,18 @@ struct ContentView: View {
                 if geo.size.width > geo.size.height {
                     /// landscape mode
                     HStack(spacing: 0) {
-                        ContentGroupView(limit: min(geo.size.width, geo.size.height))
+                        ContentGroupView(limit: min(
+                            geo.size.width,
+                            geo.size.height
+                        ))
                     }
                 } else {
                     /// portrait mode
                     VStack(alignment: .center, spacing: 0) {
-                        ContentGroupView(limit: min(geo.size.width, geo.size.height))
+                        ContentGroupView(limit: min(
+                            geo.size.width,
+                            geo.size.height * 0.6
+                        ))
                     }
                 }
             }
