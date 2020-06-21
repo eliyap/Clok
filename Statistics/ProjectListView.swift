@@ -11,6 +11,9 @@ import SwiftUI
 struct ProjectListView: View {
     @EnvironmentObject var data: TimeData
     @Binding var chosen: Project
+    @Environment(\.presentationMode) var mode
+    
+    
     let projects: [Project]
     
     var body: some View {
@@ -28,6 +31,7 @@ struct ProjectListView: View {
     
     func button(for project: Project) -> some View {
         Button(action: {
+            self.mode.wrappedValue.dismiss()
             self.chosen = project
         }) {
             HStack{

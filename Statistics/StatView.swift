@@ -31,7 +31,6 @@ struct StatView: View {
                             Text(project.name)
                                 .bold()
                         }
-                        
                     }
                     .modifier(fillRow())
                 }
