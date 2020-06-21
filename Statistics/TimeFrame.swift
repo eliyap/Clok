@@ -2,7 +2,7 @@ import Foundation
 
 struct SearchTerm {
     /// nil indicates "without project" or "no description"
-    var project:String?
+    var project:Project
     var description:String
     
     /// if you *do not wish* to search by project or description, toggle to false

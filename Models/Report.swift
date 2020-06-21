@@ -49,6 +49,7 @@ final class Report : ObservableObject {
             print("could not coerce!")
         }
     }
+    
     // initializes an empty Report for convenience
     init () {
         self.total_grand = -1

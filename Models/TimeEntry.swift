@@ -25,8 +25,7 @@ final class TimeEntry : ObservableObject, Equatable {
 
     // categorization parameters
     let pid: Int?
-    let project: String?
-    let project_hex_color: Color
+    let project: Project
     let tid: Int?
     let task: String?
     let description: String // not nullable
@@ -66,8 +65,14 @@ final class TimeEntry : ObservableObject, Equatable {
         
         self.id = id
         self.pid = pid
-        self.project = project
-        self.project_hex_color = Color(hex: project_hex_color ?? "#888888") // middle of the road grey, replace with dark mode sensitive color later
+        if let name = project {
+            self.project = Project(
+                name: name,
+                color: Color(hex: project_hex_color!)
+            )
+        } else {
+            self.project = .noProject
+        }
         self.tid = tid
         self.task = task
         self.description = description
@@ -79,8 +84,7 @@ final class TimeEntry : ObservableObject, Equatable {
     // empty initializer for convenience
     init () {
         self.pid = nil
-        self.project = nil
-        self.project_hex_color = Color.black
+        self.project = .noProject
         self.tid = nil
         self.task = nil
         self.description = ""

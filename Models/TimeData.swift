@@ -7,7 +7,13 @@
 //
 
 import Foundation
+import SwiftUI
 
 final class TimeData: ObservableObject {
     @Published var report = Report()
+    
+    func projects() -> Set<Project> {
+        Set(self.report.entries.map{$0.project})
+    }
 }
+

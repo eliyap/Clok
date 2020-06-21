@@ -17,7 +17,7 @@ struct EntrySpiral: View {
     var body: some View {
         
         SpiralPart(entry)?
-            .fill(entry.project_hex_color)
+            .fill(entry.project.color)
             .opacity(opacity)
             .scaleEffect(CGFloat(scale))
             .gesture(TapGesture().onEnded() {_ in
