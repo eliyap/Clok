@@ -9,16 +9,27 @@
 import Foundation
 import SwiftUI
 
-struct Project: Hashable, Comparable {
+struct Project: Hashable, Comparable, Identifiable {
     var name: String
     var color: Color
+    var id: Int
     
     static func < (lhs: Project, rhs: Project) -> Bool {
+        /// No Project should always be first
+        if lhs == .noProject { return true }
+        if rhs == .noProject { return false }
         return lhs.name < rhs.name
     }
     
     static let noProject = Project(
         name: "No Project",
-        color: Color.noProject
+        color: Color.noProject,
+        id: NSNotFound
+    )
+    
+    static let any = Project(
+        name: "Any Project",
+        color: Color(UIColor.systemBackground),
+        id: Int.zero
     )
 }

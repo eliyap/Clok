@@ -24,7 +24,6 @@ final class TimeEntry : ObservableObject, Equatable {
     let dur: TimeInterval
 
     // categorization parameters
-    let pid: Int?
     let project: Project
     let tid: Int?
     let task: String?
@@ -64,11 +63,11 @@ final class TimeEntry : ObservableObject, Equatable {
         guard start < end else { return nil }
         
         self.id = id
-        self.pid = pid
-        if let name = project {
+        if let name = project, let id = pid {
             self.project = Project(
                 name: name,
-                color: Color(hex: project_hex_color!)
+                color: Color(hex: project_hex_color!),
+                id: id
             )
         } else {
             self.project = .noProject
@@ -83,7 +82,6 @@ final class TimeEntry : ObservableObject, Equatable {
     
     // empty initializer for convenience
     init () {
-        self.pid = nil
         self.project = .noProject
         self.tid = nil
         self.task = nil
