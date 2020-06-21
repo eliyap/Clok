@@ -53,8 +53,8 @@ struct CustomTableView: View, TableViewDelegate {
     
     @State var tableRow = TableRow()
     
-    @EnvironmentObject private var listRow:ListRow
-    @EnvironmentObject private var zero:ZeroDate
+    @EnvironmentObject private var listRow: ListRow
+    @EnvironmentObject private var zero: ZeroDate
     
     private let df = DateFormatter()
     

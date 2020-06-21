@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct SpiralUI: View {
-    @ObservedObject var report:Report
-    @EnvironmentObject var zero:ZeroDate
+    @EnvironmentObject private var data: TimeData
+    @EnvironmentObject private var zero: ZeroDate
     @State private var rotate = Angle()
     
     var body: some View {
         ZStack {
-            ForEach(self.report.entries, id: \.id) { entry in
+            ForEach(self.data.report.entries, id: \.id) { entry in
                 EntrySpiral(
                     entry,
                     zeroTo:self.zero.date
@@ -40,17 +40,5 @@ struct SpiralUI: View {
         .animation(.spring())
         .aspectRatio(1, contentMode: .fit)
         .drawingGroup()
-    }
-    
-    init(_ _report:Report) {
-        report = _report
-    }
-    
-}
-
-
-struct Badge_Previews: PreviewProvider {
-    static var previews: some View {
-        SpiralUI(Report())
     }
 }
