@@ -9,28 +9,39 @@
 import SwiftUI
 
 struct StatView: View {
-    var week: WeekTimeFrame
-    private let df = DateFormatter()
-    private var avgStart = Date()
-    private var avgEnd = Date()
-    private var avgDur: TimeInterval = 0
+    @EnvironmentObject var data: TimeData
+    @EnvironmentObject var zero: ZeroDate
+    
+    var colors = ["Red", "Green", "Blue", "Tartan"]
+    @State private var selectedColor = 0
     
     var body: some View {
-        VStack {
-            Text("Starts Around: " + df.string(from: avgStart))
-            Text("Ends Around: " + df.string(from: avgEnd))
-            Text("Time / day: " + avgDur.toString())
+        NavigationView {
+            VStack {
+                NavigationLink(destination: Text("Second View")) {
+                    Text("Hello, World!")
+                }
+                Picker(selection: $selectedColor, label: Text("Please choose a color")) {
+                   ForEach(0 ..< colors.count) {
+                      Text(self.colors[$0])
+                   }
+                }
+                .pickerStyle(DefaultPickerStyle())
+                Text("You selected: \(colors[selectedColor])")
+                StatDisplayView(for: WeekTimeFrame(
+                    start: self.zero.date,
+                    entries: self.data.report.entries,
+                    terms: SearchTerm(
+                        project: "Sleep",
+                        description: "",
+                        byProject: true,
+                        byDescription: false
+                    )
+                ))
+            }
+                /// hide nav bar
+                .navigationBarTitle("")
+                .navigationBarHidden(true)
         }
-        
-    }
-    
-    init(for week_: WeekTimeFrame) {
-        week = week_
-        avgStart = week.avgStartTime()
-        avgEnd   = week.avgEndTime()
-        avgDur   = week.avgDuration()
-        
-        df.timeStyle = .short
-        df.dateStyle = .none
     }
 }
