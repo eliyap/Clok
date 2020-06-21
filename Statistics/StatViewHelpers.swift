@@ -31,6 +31,6 @@ struct fillRow : ViewModifier {
     func body(content: Content) -> some View {
         content
             .edgesIgnoringSafeArea([.top, .bottom])
-            .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+            .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: listLineInset))
     }
 }

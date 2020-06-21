@@ -26,7 +26,7 @@ struct StatView: View {
                     ) {
                         HStack{
                             Rectangle()
-                                .frame(width: 15)
+                                .frame(width: listLineInset)
                                 .foregroundColor(project.color)
                             Text(project.name)
                                 .bold()

@@ -57,3 +57,10 @@ enum Weekdays: Int {
     case Friday = 5
     case Saturday = 6
 }
+/**
+ List Rows are separated by a thin grey line that runs
+ from the right edge to just before the left edge
+ placing rectangles in this inset gives our lists the "paper tab" look
+ */
+let listLineInset = CGFloat(15)
+
