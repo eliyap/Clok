@@ -47,11 +47,23 @@ struct SearchView: View {
             TextField(
                 "No Description",
                 text: self.$descriptionField,
+                onEditingChanged: { _ in
+                    self.search.byDescription = true
+                },
                 onCommit: {
                     /// only change description when user presses return
                     self.search.description = self.descriptionField
                 }
             )
+                .foregroundColor(
+                    self.search.byDescription ?
+                    Color.primary :
+                    Color(UIColor.placeholderText
+                ))
+            Toggle(isOn: self.$search.byDescription) {
+                EmptyView()
+            }
+            .border(Color.red)
         }
         .modifier(fillRow())
     }

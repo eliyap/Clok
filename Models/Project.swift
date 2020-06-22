@@ -29,7 +29,7 @@ struct Project: Hashable, Comparable, Identifiable {
     
     static let any = Project(
         name: "Any Project",
-        color: Color(UIColor.systemBackground),
+        color: Color.black.opacity(0.0),
         id: Int.zero
     )
 }
