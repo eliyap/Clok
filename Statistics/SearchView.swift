@@ -36,6 +36,7 @@ struct SearchView: View {
             HStack {
                 Tab()
                 Text(self.search.project.name)
+                    .bold()
             }
         }
         .modifier(fillRow())
@@ -44,26 +45,28 @@ struct SearchView: View {
     func DescriptionField() -> some View {
         HStack {
             Tab()
-            TextField(
-                "No Description",
-                text: self.$descriptionField,
-                onEditingChanged: { _ in
-                    self.search.byDescription = true
-                },
-                onCommit: {
-                    /// only change description when user presses return
-                    self.search.description = self.descriptionField
-                }
-            )
-                .foregroundColor(
-                    self.search.byDescription ?
-                    Color.primary :
-                    Color(UIColor.placeholderText
-                ))
+            /// toggle is designed to be beside some text, hence the nesting
             Toggle(isOn: self.$search.byDescription) {
-                EmptyView()
+                TextField(
+                    /// placeholder text
+                    "No Description",
+                    text: self.$descriptionField,
+                    onEditingChanged: { _ in
+                        /// if user edits description, turn on filtering for them
+                        self.search.byDescription = true
+                    },
+                    onCommit: {
+                        /// only change description when user presses return, instead of every keystroke (direct binding)
+                        self.search.description = self.descriptionField
+                    }
+                )
+                    /// grey out when description search is disabled
+                    .foregroundColor(
+                        self.search.byDescription ?
+                        Color.primary :
+                        Color(UIColor.placeholderText
+                    ))
             }
-            .border(Color.red)
         }
         .modifier(fillRow())
     }
