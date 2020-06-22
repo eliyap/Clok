@@ -14,6 +14,8 @@ struct SpiralUI: View {
     
     var body: some View {
         ZStack {
+            /// dummy shape prevents janky animation when there are no entries
+            Circle().stroke(style: StrokeStyle(lineWidth: 0))
             ForEach(self.data.report.entries, id: \.id) { entry in
                 EntrySpiral(
                     entry,
@@ -22,9 +24,12 @@ struct SpiralUI: View {
             }
         }
         .onReceive(self.zero.$weekSkip, perform: { dxn in
-            /// when a week skip command is received,
-            /// perform a 360 degree barell roll animation,
-            /// then reset the flag
+            /**
+             when a week skip command is received,
+             perform a 360 degree barell roll animation,
+             then reset the flag
+             */
+            
             switch dxn {
             case .fwrd:
                 self.rotate += Angle(degrees: 360)
