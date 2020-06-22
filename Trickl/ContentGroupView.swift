@@ -13,9 +13,13 @@ struct ContentGroupView: View {
     
     var body: some View {
         Group {
-            ZStack{
-                SpiralUI()
-                SpiralControls()
+            VStack(spacing: 0) {
+                TimeStripView()
+                    .padding(Edge.Set.bottom, -30)
+                ZStack{
+                    SpiralUI()
+                    SpiralControls()
+                }
             }
             .frame(width: self.limit, height: self.limit)
             TimeTabView()

@@ -34,6 +34,8 @@
 		C6855DE72496E7050050F8D4 /* SpiralControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6855DE62496E7050050F8D4 /* SpiralControls.swift */; };
 		C68842B0247B3D5300DC5C42 /* DateBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68842AF247B3D5300DC5C42 /* DateBar.swift */; };
 		C688A8882479A8D6003260CE /* TimeFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = C688A8872479A8D6003260CE /* TimeFrame.swift */; };
+		C68F8C8B24A03DB4000D249B /* TimeStripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68F8C8A24A03DB4000D249B /* TimeStripView.swift */; };
+		C68F8C8D24A04CE8000D249B /* IceCreamStick.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68F8C8C24A04CE8000D249B /* IceCreamStick.swift */; };
 		C69F02782496AFA200D1C650 /* TimeIntervalExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69F02772496AFA200D1C650 /* TimeIntervalExtension.swift */; };
 		C6AAB3EA249EF26800DFBA36 /* TimeEntryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AAB3E9249EF26800DFBA36 /* TimeEntryExtension.swift */; };
 		C6AAB3EC249F003100DFBA36 /* StatDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AAB3EB249F003100DFBA36 /* StatDisplayView.swift */; };
@@ -103,6 +105,8 @@
 		C6855DE62496E7050050F8D4 /* SpiralControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiralControls.swift; sourceTree = "<group>"; };
 		C68842AF247B3D5300DC5C42 /* DateBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateBar.swift; sourceTree = "<group>"; };
 		C688A8872479A8D6003260CE /* TimeFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFrame.swift; sourceTree = "<group>"; };
+		C68F8C8A24A03DB4000D249B /* TimeStripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeStripView.swift; sourceTree = "<group>"; };
+		C68F8C8C24A04CE8000D249B /* IceCreamStick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IceCreamStick.swift; sourceTree = "<group>"; };
 		C69F02772496AFA200D1C650 /* TimeIntervalExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervalExtension.swift; sourceTree = "<group>"; };
 		C6AAB3E9249EF26800DFBA36 /* TimeEntryExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntryExtension.swift; sourceTree = "<group>"; };
 		C6AAB3EB249F003100DFBA36 /* StatDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatDisplayView.swift; sourceTree = "<group>"; };
@@ -303,6 +307,8 @@
 				C6C18D7424493EC8000345D5 /* SpiralUI.swift */,
 				C68842AF247B3D5300DC5C42 /* DateBar.swift */,
 				C6F605AC246C520D00D0FE82 /* EntrySpiral.swift */,
+				C68F8C8A24A03DB4000D249B /* TimeStripView.swift */,
+				C68F8C8C24A04CE8000D249B /* IceCreamStick.swift */,
 			);
 			path = Spiral;
 			sourceTree = "<group>";
@@ -451,7 +457,9 @@
 				C6C18D452448F96C000345D5 /* AppDelegate.swift in Sources */,
 				C63C0D45248D3C0D00163E20 /* SpiralTrimmer.swift in Sources */,
 				C6751D8C24723182002965CC /* ZeroDate.swift in Sources */,
+				C68F8C8B24A03DB4000D249B /* TimeStripView.swift in Sources */,
 				C6F605AF246C6B1700D0FE82 /* DateExtension.swift in Sources */,
+				C68F8C8D24A04CE8000D249B /* IceCreamStick.swift in Sources */,
 				C6C18D7B244BB76F000345D5 /* ZESpiral.swift in Sources */,
 				C65B7D2C2497DE4A00EED981 /* EntryOperations.swift in Sources */,
 				C688A8882479A8D6003260CE /* TimeFrame.swift in Sources */,
