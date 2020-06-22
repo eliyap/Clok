@@ -10,12 +10,18 @@ import SwiftUI
 
 struct ContentGroupView: View {
     var limit: CGFloat
+    /**
+     Permits Spiral to edge into the strip's area, increasing available size for the spiral.
+     - Important: ZStacking did *not* work, as the Time Strip layer grabbed touch focus,
+     preventing the user from manipulating the handle
+     */
+    private let negativePadding = CGFloat(-30)
     
     var body: some View {
         Group {
             VStack(spacing: 0) {
                 TimeStripView()
-                    .padding(Edge.Set.bottom, -30)
+                    .padding(Edge.Set.bottom, negativePadding)
                 ZStack{
                     SpiralUI()
                     SpiralControls()
