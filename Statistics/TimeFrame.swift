@@ -1,12 +1,11 @@
 import Foundation
 
 struct SearchTerm {
-    /// nil indicates "without project" or "no description"
+    /// May remove project restriction by choosing Any Project
     var project:Project
     var description:String
     
-    /// if you *do not wish* to search by project or description, toggle to false
-    var byProject = true
+    /// if you *do not wish* to search by description, toggle to false
     var byDescription = true
 }
 

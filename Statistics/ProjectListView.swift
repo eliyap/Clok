@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ProjectListView: View {
     @EnvironmentObject var data: TimeData
-    @Binding var chosen: Project
+    @Binding var search: SearchTerm
     @Environment(\.presentationMode) var mode
     
     
@@ -32,13 +32,14 @@ struct ProjectListView: View {
     func button(for project: Project) -> some View {
         Button(action: {
             self.mode.wrappedValue.dismiss()
-            self.chosen = project
+            self.search.project = project
         }) {
             HStack{
                 Rectangle()
                     .frame(width: listLineInset)
                     .foregroundColor(project.color)
-                if (project.name == chosen.name) {
+                /// bold the chosen project
+                if (project.name == search.project.name) {
                     Text(project.name)
                         .bold()
                 } else {

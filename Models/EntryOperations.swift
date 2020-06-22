@@ -24,14 +24,18 @@ extension TimeEntry {
 }
 
 extension Array where Element == TimeEntry {
-    func matching(_ terms:SearchTerm) -> [TimeEntry] {
+    func matching(_ terms: SearchTerm) -> [TimeEntry] {
         var result = self
+        
         if terms.byDescription {
             result = result.filter { $0.description == terms.description }
         }
-        if terms.byProject {
+        
+        /// if Any Project is not selected, filter by project
+        if terms.project != .any {
             result = result.filter { $0.project == terms.project }
         }
+        
         return result
     }
 }
