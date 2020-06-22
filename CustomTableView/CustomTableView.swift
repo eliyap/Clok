@@ -56,8 +56,6 @@ struct CustomTableView: View, TableViewDelegate {
     @EnvironmentObject private var listRow: ListRow
     @EnvironmentObject private var zero: ZeroDate
     
-    private let df = DateFormatter()
-    
 //    func supplyMoreData() {
 //        isLoading = true
 //        var temp = [TimeEntry]()
@@ -73,7 +71,6 @@ struct CustomTableView: View, TableViewDelegate {
         
         // using method from
         // https://stackoverflow.com/questions/51267284/ios-swift-how-to-have-dateformatter-without-year-for-any-locale
-        df.setLocalizedDateFormatFromTemplate("MMMdd")
     }
     
     var body: some View {
@@ -97,14 +94,8 @@ struct CustomTableView: View, TableViewDelegate {
                 })
                 
             }
-            .navigationBarTitle(
-                Text(
-                    self.df.string(from: self.zero.date) +
-                    " – " +
-                    self.df.string(from: self.zero.date.addingTimeInterval(weekLength))
-                ),
-                displayMode: .inline
-            )
+            .navigationBarTitle("")
+            .navigationBarHidden(true)
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
