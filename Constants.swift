@@ -24,6 +24,10 @@ let stroke_width = CGFloat(2)
 // core graphics representation of the size of an unscaled spiral
 let frame_size = CGFloat(2.2 * MAX_RADIUS)
 
+extension CGFloat {
+    static let nearZero = CGFloat(0.001)
+}
+
 // MARK: - API components
 
 // lets Toggle know who I am

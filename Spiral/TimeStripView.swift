@@ -15,7 +15,7 @@ struct TimeStripView: View {
     private let tf = DateFormatter()
     
     /// use raw values so we can animate them
-    @State var widthLimit: CGFloat? = .leastNonzeroMagnitude
+    @State var widthLimit: CGFloat? = .nearZero
     @State var scale: CGFloat = 1
     
     private let padding = CGFloat(7)
@@ -27,18 +27,18 @@ struct TimeStripView: View {
                     if self.widthLimit != nil {
                         self.widthLimit = nil
                         /// scaling to .zero causes `CGAffineTransformInvert: singular matrix.` warning
-                        self.scale = .leastNonzeroMagnitude
+                        self.scale = .nearZero
                     } else {
-                        self.widthLimit = .zero
+                        self.widthLimit = .nearZero
                         self.scale = 1
                     }
                 }
             }) {
                 HStack(spacing: 0) {
                     /// scale animates disappearance
-                    /// frame prevents it bloating the stack
+                    /// frame prevents it bloating stack width
                     Image(systemName: "chevron.left")
-                        .scaleEffect(1 - scale + .leastNonzeroMagnitude)
+                        .scaleEffect(1 - scale + .nearZero)
                         .padding([.trailing], padding)
                         .frame(maxWidth: widthLimit)
                     
@@ -53,7 +53,7 @@ struct TimeStripView: View {
                     Image(systemName: "chevron.right")
                         .padding([.leading], padding)
                         .scaleEffect(scale)
-                        .frame(maxWidth: widthLimit == nil ? .zero : nil)
+                        .frame(maxWidth: widthLimit == nil ? .nearZero : nil)
                 }
             }
                 .buttonStyle(PlainButtonStyle())
