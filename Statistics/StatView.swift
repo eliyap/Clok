@@ -20,7 +20,6 @@ struct StatView: View {
         NavigationView {
             VStack {
                 SearchView(search: self.$search)
-                
                 StatDisplayView(for: WeekTimeFrame(
                     start: self.zero.date,
                     entries: self.data.report.entries,

@@ -31,7 +31,7 @@ struct SearchView: View {
             projects: self.data.projects().sorted()
         )
             .navigationBarTitle("Projects", displayMode: .inline)
-            .navigationBarHidden(false)
+            .navigationBarHidden(true)
         ) {
             HStack {
                 Tab()
