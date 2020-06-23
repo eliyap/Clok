@@ -34,6 +34,7 @@
 		C6855DE72496E7050050F8D4 /* SpiralControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6855DE62496E7050050F8D4 /* SpiralControls.swift */; };
 		C68842B0247B3D5300DC5C42 /* DateBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68842AF247B3D5300DC5C42 /* DateBar.swift */; };
 		C688A8882479A8D6003260CE /* TimeFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = C688A8872479A8D6003260CE /* TimeFrame.swift */; };
+		C688BFCA24A18BF00077CECF /* RaisedShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = C688BFC924A18BF00077CECF /* RaisedShape.swift */; };
 		C68F8C8B24A03DB4000D249B /* TimeStripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68F8C8A24A03DB4000D249B /* TimeStripView.swift */; };
 		C68F8C8D24A04CE8000D249B /* IceCreamStick.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68F8C8C24A04CE8000D249B /* IceCreamStick.swift */; };
 		C69F02782496AFA200D1C650 /* TimeIntervalExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69F02772496AFA200D1C650 /* TimeIntervalExtension.swift */; };
@@ -105,6 +106,7 @@
 		C6855DE62496E7050050F8D4 /* SpiralControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiralControls.swift; sourceTree = "<group>"; };
 		C68842AF247B3D5300DC5C42 /* DateBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateBar.swift; sourceTree = "<group>"; };
 		C688A8872479A8D6003260CE /* TimeFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFrame.swift; sourceTree = "<group>"; };
+		C688BFC924A18BF00077CECF /* RaisedShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaisedShape.swift; sourceTree = "<group>"; };
 		C68F8C8A24A03DB4000D249B /* TimeStripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeStripView.swift; sourceTree = "<group>"; };
 		C68F8C8C24A04CE8000D249B /* IceCreamStick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IceCreamStick.swift; sourceTree = "<group>"; };
 		C69F02772496AFA200D1C650 /* TimeIntervalExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervalExtension.swift; sourceTree = "<group>"; };
@@ -197,6 +199,14 @@
 			path = CustomTableView;
 			sourceTree = "<group>";
 		};
+		C688BFC624A18BA00077CECF /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				C688BFC924A18BF00077CECF /* RaisedShape.swift */,
+			);
+			path = Misc;
+			sourceTree = "<group>";
+		};
 		C6B0FFA0246F52A700DED011 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -242,6 +252,7 @@
 				C6D448ED248471250072E7D4 /* Activity */,
 				C65B7D282497D1C100EED981 /* Statistics */,
 				C63C0D43248D3B5000163E20 /* Knob */,
+				C688BFC624A18BA00077CECF /* Misc */,
 			);
 			sourceTree = "<group>";
 		};
@@ -494,6 +505,7 @@
 				C6751D8524719AF7002965CC /* TableView.swift in Sources */,
 				C6C18D80244CD7D2000345D5 /* SpiralHelpers.swift in Sources */,
 				C6AAB3F4249F079F00DFBA36 /* ContentGroupView.swift in Sources */,
+				C688BFCA24A18BF00077CECF /* RaisedShape.swift in Sources */,
 				C6855DE72496E7050050F8D4 /* SpiralControls.swift in Sources */,
 				C6AAB3F2249F061D00DFBA36 /* TimeData.swift in Sources */,
 				C615CD57245F332300D62B87 /* Toggl.swift in Sources */,
