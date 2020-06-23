@@ -24,6 +24,9 @@ let stroke_width = CGFloat(2)
 // core graphics representation of the size of an unscaled spiral
 let frame_size = CGFloat(2.2 * MAX_RADIUS)
 
+extension CGFloat {
+    static let nearZero = CGFloat(0.001)
+}
 
 // MARK: - API components
 
@@ -57,3 +60,10 @@ enum Weekdays: Int {
     case Friday = 5
     case Saturday = 6
 }
+/**
+ List Rows are separated by a thin grey line that runs
+ from the right edge to just before the left edge
+ placing rectangles in this inset gives our lists the "paper tab" look
+ */
+let listLineInset = CGFloat(15)
+

@@ -10,7 +10,8 @@ import SwiftUI
 
 
 struct ContentView: View {
-    @State var report = Report()
+    @EnvironmentObject var zero: ZeroDate
+    @EnvironmentObject var data: TimeData
     
     /// indicates whether we are finished loading data
     @State var loaded = false
@@ -21,22 +22,18 @@ struct ContentView: View {
                 if geo.size.width > geo.size.height {
                     /// landscape mode
                     HStack(spacing: 0) {
-                        ZStack{
-                            SpiralUI(self.report)
-                            SpiralControls()
-                        }
-                            .frame(width: geo.size.width * 0.60)
-                        TimeTabView(report:self.report)
+                        ContentGroupView(limit: min(
+                            geo.size.width,
+                            geo.size.height
+                        ))
                     }
                 } else {
                     /// portrait mode
                     VStack(alignment: .center, spacing: 0) {
-                        ZStack{
-                            SpiralUI(self.report)
-                            SpiralControls()
-                        }
-                            .frame(height: geo.size.height * 0.60)
-                        TimeTabView(report:self.report)
+                        ContentGroupView(limit: min(
+                            geo.size.width,
+                            geo.size.height * 0.6
+                        ))
                     }
                 }
             }
@@ -46,9 +43,9 @@ struct ContentView: View {
                 self.loadData()
             }
             /// fade out loading screen when data is finished being requested
-            ProgressIndicator()
-                .opacity(self.loaded ? 0.0 : 1.0)
-                .animation(.linear)
+//            ProgressIndicator()
+//                .opacity(self.loaded ? 0.0 : 1.0)
+//                .animation(.linear)
         }
         
     }
@@ -76,17 +73,12 @@ struct ContentView: View {
                 
                 DispatchQueue.main.async {
                     switch result {
-                    case let .success(myReport):
+                    case let .success(report):
                         /// hand back the complete report
-                        self.report = myReport
+                        self.data.report = report
                         /// and remove the loading screen
                         self.loaded = true
                         
-                        #if DEBUG
-                        print("Fetched \(self.report.entries.count) entries in total")
-    //                    print(report.entries.max(){$0.start > $1.start}?.start)
-    //                    print(report.entries.min(){$0.start > $1.start}?.start)
-                        #endif
                     case .failure(.request):
                         // temporary micro-copy
                         print("We weren't able to fetch your data. Maybe the internet is down?")

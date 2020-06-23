@@ -24,9 +24,7 @@ final class TimeEntry : ObservableObject, Equatable {
     let dur: TimeInterval
 
     // categorization parameters
-    let pid: Int?
-    let project: String?
-    let project_hex_color: Color
+    let project: Project
     let tid: Int?
     let task: String?
     let description: String // not nullable
@@ -60,26 +58,20 @@ final class TimeEntry : ObservableObject, Equatable {
             let endString = data["end"] as? String,
             let end = df.date(from: endString),
             let dur = data["dur"] as? Int
-        else {
-            #if DEBUG
-            print("Entry initialization failed!")
-            print(data)
-            #endif
-            return nil
-        }
+        else { return nil }
         // sanity check, make sure end time is after start time
-        guard start < end else {
-            #if DEBUG
-            print("Start cannot be after end!")
-            print(data)
-            #endif
-            return nil
-        }
+        guard start < end else { return nil }
         
         self.id = id
-        self.pid = pid
-        self.project = project
-        self.project_hex_color = Color(hex: project_hex_color ?? "#888888") // middle of the road grey, replace with dark mode sensitive color later
+        if let name = project, let id = pid {
+            self.project = Project(
+                name: name,
+                color: Color(hex: project_hex_color!),
+                id: id
+            )
+        } else {
+            self.project = .noProject
+        }
         self.tid = tid
         self.task = task
         self.description = description
@@ -90,9 +82,7 @@ final class TimeEntry : ObservableObject, Equatable {
     
     // empty initializer for convenience
     init () {
-        self.pid = nil
-        self.project = nil
-        self.project_hex_color = Color.black
+        self.project = .noProject
         self.tid = nil
         self.task = nil
         self.description = ""

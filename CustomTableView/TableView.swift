@@ -53,9 +53,8 @@ struct TableView: UIViewRepresentable {
             uiView.reloadData()
         }
         
-        // move to selected row, or none if out of bounds (NSNotFound is always out of bounds)
+        // move to selected row, or none if out of bounds (NSNotFound will always be always out of bounds)
         if tableRow.row < uiView.numberOfRows(inSection: 0){
-            print(tableRow.row)
             let idx = IndexPath(row: tableRow.row, section: 0)
             uiView.selectRow(at: idx, animated: true, scrollPosition: .top)
             
@@ -63,9 +62,6 @@ struct TableView: UIViewRepresentable {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 uiView.deselectRow(at: idx, animated: true)
             }
-            
-            /// prevent table from infinitely updating itself
-//            listRow.entry = nil
         }
     }
     

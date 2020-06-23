@@ -8,13 +8,15 @@
 import SwiftUI
 
 struct SpiralUI: View {
-    @ObservedObject var report:Report
-    @EnvironmentObject var zero:ZeroDate
+    @EnvironmentObject private var data: TimeData
+    @EnvironmentObject private var zero: ZeroDate
     @State private var rotate = Angle()
     
     var body: some View {
         ZStack {
-            ForEach(self.report.entries, id: \.id) { entry in
+            /// dummy shape prevents janky animation when there are no entries
+            Circle().stroke(style: StrokeStyle(lineWidth: 0))
+            ForEach(self.data.report.entries, id: \.id) { entry in
                 EntrySpiral(
                     entry,
                     zeroTo:self.zero.date
@@ -22,6 +24,12 @@ struct SpiralUI: View {
             }
         }
         .onReceive(self.zero.$weekSkip, perform: { dxn in
+            /**
+             when a week skip command is received,
+             perform a 360 degree barell roll animation,
+             then reset the flag
+             */
+            
             switch dxn {
             case .fwrd:
                 self.rotate += Angle(degrees: 360)
@@ -37,18 +45,5 @@ struct SpiralUI: View {
         .animation(.spring())
         .aspectRatio(1, contentMode: .fit)
         .drawingGroup()
-    }
-    
-    init(_ _report:Report) {
-        report = _report
-    }
-    
-    
-}
-
-
-struct Badge_Previews: PreviewProvider {
-    static var previews: some View {
-        SpiralUI(Report())
     }
 }

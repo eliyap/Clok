@@ -32,22 +32,20 @@ class TableViewCell: UITableViewCell {
             description_.text = entry.description
             description_.textColor = UIColor.label
         } else {
-            description_.text = NSLocalizedString("No Description", comment: "Placeholder for time entries without description")
+            description_.text = NSLocalizedString(
+                "No Description",
+                comment: "Placeholder for time entries without description"
+            )
             description_.textColor = UIColor.placeholderText
         }
         
-        project.text = entry.project
-        
-        /// failsafe for missing description AND project
-        if entry.project == nil && entry.description == "" {
-            
-            description_.isHidden = false
-        }
+        project.text = entry.project.name
+        project.isHidden = (entry.project == .noProject)
         
         duration.text = entry.dur.toString()
         startEnd.text = "\(df.string(from: entry.start)) – \(df.string(from: entry.end))"
         
         /// set project color
-        tab.backgroundColor = entry.project_hex_color.uiColor()
+        tab.backgroundColor = entry.project.color.uiColor()
     }
 }
