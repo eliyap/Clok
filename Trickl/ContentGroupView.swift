@@ -17,16 +17,25 @@ struct ContentGroupView: View {
      */
     private let negativePadding = CGFloat(-30)
     
+    /**
+     this unforgivably bad hack allows us to place the Time Strip *after* the Spiral
+     while still keeping it vertically above, so that it renders over the spiral
+     */
+    private let flip = Angle(degrees: 180)
+    
     var body: some View {
         Group {
             VStack(spacing: 0) {
-                TimeStripView()
-                    .padding(Edge.Set.bottom, negativePadding)
                 ZStack{
                     SpiralUI()
                     SpiralControls()
                 }
+                    .rotationEffect(flip)
+                TimeStripView()
+                    .padding(Edge.Set.bottom, negativePadding)
+                    .rotationEffect(flip)
             }
+            .rotationEffect(flip)
             .frame(width: self.limit, height: self.limit)
             TimeTabView()
         }
