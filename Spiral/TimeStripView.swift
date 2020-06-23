@@ -88,11 +88,7 @@ struct cornerLabelStyle : ViewModifier {
     func body(content: Content) -> some View {
         content
             .padding(padding)
-            .background(
-                IceCreamStick(round: round)
-                    .fill(Color(UIColor.systemBackground))
-                    .opacity(0.8)
-            )
+            .background(RaisedShape(radius: padding / 2){ IceCreamStick(round: round) })
             .padding([.top], padding / 2)
     }
 }
