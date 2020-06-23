@@ -116,7 +116,7 @@
 		C6AAB3F1249F061D00DFBA36 /* TimeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeData.swift; sourceTree = "<group>"; };
 		C6AAB3F3249F079F00DFBA36 /* ContentGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentGroupView.swift; sourceTree = "<group>"; };
 		C6B0FF9B246F124300DED011 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
-		C6C18D412448F96C000345D5 /* Trickl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trickl.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6C18D412448F96C000345D5 /* Clok.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clok.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6C18D442448F96C000345D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C6C18D462448F96C000345D5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		C6C18D482448F96C000345D5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -124,10 +124,10 @@
 		C6C18D4D2448F96F000345D5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C6C18D502448F96F000345D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C6C18D522448F96F000345D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C6C18D572448F96F000345D5 /* TricklTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TricklTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6C18D572448F96F000345D5 /* ClokTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClokTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6C18D5B2448F96F000345D5 /* LandwarksTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandwarksTests.swift; sourceTree = "<group>"; };
 		C6C18D5D2448F96F000345D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C6C18D622448F96F000345D5 /* TricklUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TricklUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6C18D622448F96F000345D5 /* ClokUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClokUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6C18D662448F96F000345D5 /* LandwarksUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandwarksUITests.swift; sourceTree = "<group>"; };
 		C6C18D682448F96F000345D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C6C18D7424493EC8000345D5 /* SpiralUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiralUI.swift; sourceTree = "<group>"; };
@@ -241,10 +241,10 @@
 			children = (
 				C6428DDB2470A6FE00A02A9B /* Default-568h@2x.png */,
 				C6C18D7C244BE891000345D5 /* Constants.swift */,
-				C6C18D5A2448F96F000345D5 /* LandwarksTests */,
-				C6C18D652448F96F000345D5 /* LandwarksUITests */,
+				C6C18D5A2448F96F000345D5 /* ClokTests */,
+				C6C18D652448F96F000345D5 /* ClokUITests */,
 				C6C18D422448F96C000345D5 /* Products */,
-				C6C18D432448F96C000345D5 /* Trickl */,
+				C6C18D432448F96C000345D5 /* Clok */,
 				C6B0FFA1246F52B600DED011 /* Extensions */,
 				C6B0FFA0246F52A700DED011 /* Models */,
 				C6751D70247197EE002965CC /* CustomTableView */,
@@ -259,14 +259,14 @@
 		C6C18D422448F96C000345D5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C6C18D412448F96C000345D5 /* Trickl.app */,
-				C6C18D572448F96F000345D5 /* TricklTests.xctest */,
-				C6C18D622448F96F000345D5 /* TricklUITests.xctest */,
+				C6C18D412448F96C000345D5 /* Clok.app */,
+				C6C18D572448F96F000345D5 /* ClokTests.xctest */,
+				C6C18D622448F96F000345D5 /* ClokUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C6C18D432448F96C000345D5 /* Trickl */ = {
+		C6C18D432448F96C000345D5 /* Clok */ = {
 			isa = PBXGroup;
 			children = (
 				C6C18D442448F96C000345D5 /* AppDelegate.swift */,
@@ -279,7 +279,7 @@
 				C6C18D522448F96F000345D5 /* Info.plist */,
 				C6C18D4C2448F96F000345D5 /* Preview Content */,
 			);
-			path = Trickl;
+			path = Clok;
 			sourceTree = "<group>";
 		};
 		C6C18D4C2448F96F000345D5 /* Preview Content */ = {
@@ -290,22 +290,22 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		C6C18D5A2448F96F000345D5 /* LandwarksTests */ = {
+		C6C18D5A2448F96F000345D5 /* ClokTests */ = {
 			isa = PBXGroup;
 			children = (
 				C6C18D5B2448F96F000345D5 /* LandwarksTests.swift */,
 				C6C18D5D2448F96F000345D5 /* Info.plist */,
 			);
-			path = LandwarksTests;
+			path = ClokTests;
 			sourceTree = "<group>";
 		};
-		C6C18D652448F96F000345D5 /* LandwarksUITests */ = {
+		C6C18D652448F96F000345D5 /* ClokUITests */ = {
 			isa = PBXGroup;
 			children = (
 				C6C18D662448F96F000345D5 /* LandwarksUITests.swift */,
 				C6C18D682448F96F000345D5 /* Info.plist */,
 			);
-			path = LandwarksUITests;
+			path = ClokUITests;
 			sourceTree = "<group>";
 		};
 		C6C18D7E244CD7AA000345D5 /* Spiral */ = {
@@ -335,9 +335,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C6C18D402448F96C000345D5 /* Trickl */ = {
+		C6C18D402448F96C000345D5 /* Clok */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C6C18D6B2448F96F000345D5 /* Build configuration list for PBXNativeTarget "Trickl" */;
+			buildConfigurationList = C6C18D6B2448F96F000345D5 /* Build configuration list for PBXNativeTarget "Clok" */;
 			buildPhases = (
 				C6C18D3D2448F96C000345D5 /* Sources */,
 				C6C18D3E2448F96C000345D5 /* Frameworks */,
@@ -347,14 +347,14 @@
 			);
 			dependencies = (
 			);
-			name = Trickl;
+			name = Clok;
 			productName = Landwarks;
-			productReference = C6C18D412448F96C000345D5 /* Trickl.app */;
+			productReference = C6C18D412448F96C000345D5 /* Clok.app */;
 			productType = "com.apple.product-type.application";
 		};
-		C6C18D562448F96F000345D5 /* TricklTests */ = {
+		C6C18D562448F96F000345D5 /* ClokTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C6C18D6E2448F96F000345D5 /* Build configuration list for PBXNativeTarget "TricklTests" */;
+			buildConfigurationList = C6C18D6E2448F96F000345D5 /* Build configuration list for PBXNativeTarget "ClokTests" */;
 			buildPhases = (
 				C6C18D532448F96F000345D5 /* Sources */,
 				C6C18D542448F96F000345D5 /* Frameworks */,
@@ -365,14 +365,14 @@
 			dependencies = (
 				C6C18D592448F96F000345D5 /* PBXTargetDependency */,
 			);
-			name = TricklTests;
+			name = ClokTests;
 			productName = LandwarksTests;
-			productReference = C6C18D572448F96F000345D5 /* TricklTests.xctest */;
+			productReference = C6C18D572448F96F000345D5 /* ClokTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		C6C18D612448F96F000345D5 /* TricklUITests */ = {
+		C6C18D612448F96F000345D5 /* ClokUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C6C18D712448F96F000345D5 /* Build configuration list for PBXNativeTarget "TricklUITests" */;
+			buildConfigurationList = C6C18D712448F96F000345D5 /* Build configuration list for PBXNativeTarget "ClokUITests" */;
 			buildPhases = (
 				C6C18D5E2448F96F000345D5 /* Sources */,
 				C6C18D5F2448F96F000345D5 /* Frameworks */,
@@ -383,9 +383,9 @@
 			dependencies = (
 				C6C18D642448F96F000345D5 /* PBXTargetDependency */,
 			);
-			name = TricklUITests;
+			name = ClokUITests;
 			productName = LandwarksUITests;
-			productReference = C6C18D622448F96F000345D5 /* TricklUITests.xctest */;
+			productReference = C6C18D622448F96F000345D5 /* ClokUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -411,7 +411,7 @@
 					};
 				};
 			};
-			buildConfigurationList = C6C18D3C2448F96C000345D5 /* Build configuration list for PBXProject "Trickl" */;
+			buildConfigurationList = C6C18D3C2448F96C000345D5 /* Build configuration list for PBXProject "Clok" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -424,9 +424,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C6C18D402448F96C000345D5 /* Trickl */,
-				C6C18D562448F96F000345D5 /* TricklTests */,
-				C6C18D612448F96F000345D5 /* TricklUITests */,
+				C6C18D402448F96C000345D5 /* Clok */,
+				C6C18D562448F96F000345D5 /* ClokTests */,
+				C6C18D612448F96F000345D5 /* ClokUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -534,12 +534,12 @@
 /* Begin PBXTargetDependency section */
 		C6C18D592448F96F000345D5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = C6C18D402448F96C000345D5 /* Trickl */;
+			target = C6C18D402448F96C000345D5 /* Clok */;
 			targetProxy = C6C18D582448F96F000345D5 /* PBXContainerItemProxy */;
 		};
 		C6C18D642448F96F000345D5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = C6C18D402448F96C000345D5 /* Trickl */;
+			target = C6C18D402448F96C000345D5 /* Clok */;
 			targetProxy = C6C18D632448F96F000345D5 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -675,16 +675,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"Trickl/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Clok/Preview Content\"";
 				DEVELOPMENT_TEAM = 949D776DFQ;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = Trickl/Info.plist;
+				INFOPLIST_FILE = Clok/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "-.Landwarks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				MARKETING_VERSION = 2020.06;
+				PRODUCT_BUNDLE_IDENTIFIER = sam.clok;
+				PRODUCT_NAME = Clok;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -695,16 +697,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"Trickl/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Clok/Preview Content\"";
 				DEVELOPMENT_TEAM = 949D776DFQ;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = Trickl/Info.plist;
+				INFOPLIST_FILE = Clok/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "-.Landwarks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				MARKETING_VERSION = 2020.06;
+				PRODUCT_BUNDLE_IDENTIFIER = sam.clok;
+				PRODUCT_NAME = Clok;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -727,7 +731,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Trickl.app/Trickl";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Clok.app/Clok";
 			};
 			name = Debug;
 		};
@@ -748,7 +752,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Trickl.app/Trickl";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Clok.app/Clok";
 			};
 			name = Release;
 		};
@@ -793,7 +797,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C6C18D3C2448F96C000345D5 /* Build configuration list for PBXProject "Trickl" */ = {
+		C6C18D3C2448F96C000345D5 /* Build configuration list for PBXProject "Clok" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C6C18D692448F96F000345D5 /* Debug */,
@@ -802,7 +806,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C6C18D6B2448F96F000345D5 /* Build configuration list for PBXNativeTarget "Trickl" */ = {
+		C6C18D6B2448F96F000345D5 /* Build configuration list for PBXNativeTarget "Clok" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C6C18D6C2448F96F000345D5 /* Debug */,
@@ -811,7 +815,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C6C18D6E2448F96F000345D5 /* Build configuration list for PBXNativeTarget "TricklTests" */ = {
+		C6C18D6E2448F96F000345D5 /* Build configuration list for PBXNativeTarget "ClokTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C6C18D6F2448F96F000345D5 /* Debug */,
@@ -820,7 +824,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C6C18D712448F96F000345D5 /* Build configuration list for PBXNativeTarget "TricklUITests" */ = {
+		C6C18D712448F96F000345D5 /* Build configuration list for PBXNativeTarget "ClokUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C6C18D722448F96F000345D5 /* Debug */,

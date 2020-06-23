@@ -10,6 +10,7 @@ import SwiftUI
 
 struct EntrySpiral: View {
     @ObservedObject var entry:TimeEntry = TimeEntry()
+    @EnvironmentObject var data: TimeData
     @EnvironmentObject var listRow: ListRow
     @State private var opacity = 0.9
     @State private var scale = 1.0
@@ -18,7 +19,7 @@ struct EntrySpiral: View {
         
         SpiralPart(entry)?
             .fill(entry.project.color)
-            .opacity(opacity)
+            .opacity(opacity * (self.data.chosenProject == entry.project ? 1 : 0.5) )
             .scaleEffect(CGFloat(scale))
             .gesture(TapGesture().onEnded() {_ in
                 /// pass selection to global variable

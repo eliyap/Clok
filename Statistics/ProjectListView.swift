@@ -31,8 +31,11 @@ struct ProjectListView: View {
     
     func button(for project: Project) -> some View {
         Button(action: {
-            self.mode.wrappedValue.dismiss()
+            self.data.chosenProject = project
             self.search.project = project
+            
+            /// dismiss this view after project is selected
+            self.mode.wrappedValue.dismiss()
         }) {
             HStack{
                 Rectangle()

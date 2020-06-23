@@ -16,8 +16,11 @@ struct SearchView: View {
     
     var body: some View {
         List{
-            ProjectListLink()
-            DescriptionField()
+            Section(header: Text("Filters")) {
+                ProjectListLink()
+                DescriptionField()
+            }
+            
         }
         .modifier(roundedList())
     }

@@ -43,9 +43,9 @@ struct ContentView: View {
                 self.loadData()
             }
             /// fade out loading screen when data is finished being requested
-            ProgressIndicator()
-                .opacity(self.loaded ? 0.0 : 1.0)
-                .animation(.linear)
+//            ProgressIndicator()
+//                .opacity(self.loaded ? 0.0 : 1.0)
+//                .animation(.linear)
         }
         
     }
