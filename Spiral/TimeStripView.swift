@@ -18,6 +18,9 @@ struct TimeStripView: View {
     @State var widthLimit: CGFloat? = .nearZero
     @State var scale: CGFloat = 1
     
+    @State var dateStart = ""
+    @State var dateEnd = ""
+    
     private let padding = CGFloat(7)
     
     var body: some View {
@@ -42,8 +45,8 @@ struct TimeStripView: View {
                         .padding([.trailing], padding)
                         .frame(maxWidth: widthLimit)
                     
-                    Text(self.df.string(from: self.zero.date))
-                    Text(" – " + self.df.string(from: self.zero.date + weekLength))
+                    Text(dateStart)
+                    Text(dateEnd)
                         .frame(maxWidth: widthLimit)
                         /// forces text to truncate, instead of expanding to infinite height
                         .lineLimit(1)
@@ -55,6 +58,11 @@ struct TimeStripView: View {
                         .scaleEffect(scale)
                         .frame(maxWidth: widthLimit == nil ? .nearZero : nil)
                 }
+                .onReceive(self.zero.$date, perform: { date in
+                    /// set labels programatically so that ellipsis animation does NOT play when changing date
+                    self.dateStart = self.df.string(from: self.zero.date)
+                    self.dateEnd = " – " + self.df.string(from: self.zero.date + weekLength)
+                })
             }
                 .buttonStyle(PlainButtonStyle())
                 .modifier(cornerLabelStyle(round: .right))
