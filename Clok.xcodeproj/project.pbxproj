@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		227C613724A3F557006F8168 /* FilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227C613624A3F557006F8168 /* FilterButton.swift */; };
 		C615CD57245F332300D62B87 /* Toggl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C615CD56245F332300D62B87 /* Toggl.swift */; };
 		C615CD59245F33F100D62B87 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = C615CD58245F33F100D62B87 /* Report.swift */; };
 		C61D2658249BE1990056C9FA /* StatHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61D2657249BE1990056C9FA /* StatHelpers.swift */; };
@@ -32,7 +33,7 @@
 		C67F47D5249FEA0000FD2E6E /* StatViewHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67F47D4249FEA0000FD2E6E /* StatViewHelpers.swift */; };
 		C67F47DC24A0304000FD2E6E /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67F47DB24A0304000FD2E6E /* SearchView.swift */; };
 		C6855DE72496E7050050F8D4 /* SpiralControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6855DE62496E7050050F8D4 /* SpiralControls.swift */; };
-		C68842B0247B3D5300DC5C42 /* DateBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68842AF247B3D5300DC5C42 /* DateBar.swift */; };
+		C68842B0247B3D5300DC5C42 /* WeekButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68842AF247B3D5300DC5C42 /* WeekButtons.swift */; };
 		C688A8882479A8D6003260CE /* TimeFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = C688A8872479A8D6003260CE /* TimeFrame.swift */; };
 		C688BFCA24A18BF00077CECF /* RaisedShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = C688BFC924A18BF00077CECF /* RaisedShape.swift */; };
 		C68F8C8B24A03DB4000D249B /* TimeStripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68F8C8A24A03DB4000D249B /* TimeStripView.swift */; };
@@ -79,6 +80,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		227C613624A3F557006F8168 /* FilterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterButton.swift; sourceTree = "<group>"; };
 		C615CD56245F332300D62B87 /* Toggl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toggl.swift; sourceTree = "<group>"; };
 		C615CD58245F33F100D62B87 /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
 		C61D2657249BE1990056C9FA /* StatHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatHelpers.swift; sourceTree = "<group>"; };
@@ -104,7 +106,7 @@
 		C67F47D4249FEA0000FD2E6E /* StatViewHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatViewHelpers.swift; sourceTree = "<group>"; };
 		C67F47DB24A0304000FD2E6E /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		C6855DE62496E7050050F8D4 /* SpiralControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiralControls.swift; sourceTree = "<group>"; };
-		C68842AF247B3D5300DC5C42 /* DateBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateBar.swift; sourceTree = "<group>"; };
+		C68842AF247B3D5300DC5C42 /* WeekButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekButtons.swift; sourceTree = "<group>"; };
 		C688A8872479A8D6003260CE /* TimeFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFrame.swift; sourceTree = "<group>"; };
 		C688BFC924A18BF00077CECF /* RaisedShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaisedShape.swift; sourceTree = "<group>"; };
 		C68F8C8A24A03DB4000D249B /* TimeStripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeStripView.swift; sourceTree = "<group>"; };
@@ -164,6 +166,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		227C613824A3F5D9006F8168 /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				C63C0D43248D3B5000163E20 /* Knob */,
+				C6855DE62496E7050050F8D4 /* SpiralControls.swift */,
+				C68F8C8C24A04CE8000D249B /* IceCreamStick.swift */,
+				C68F8C8A24A03DB4000D249B /* TimeStripView.swift */,
+				C68842AF247B3D5300DC5C42 /* WeekButtons.swift */,
+				227C613624A3F557006F8168 /* FilterButton.swift */,
+			);
+			path = Controls;
+			sourceTree = "<group>";
+		};
+		227C613924A3F628006F8168 /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				C6751D892471E39F002965CC /* Position.swift */,
+				C6751D8B24723182002965CC /* ZeroDate.swift */,
+				C6AAB3F1249F061D00DFBA36 /* TimeData.swift */,
+			);
+			path = Global;
+			sourceTree = "<group>";
+		};
 		C63C0D43248D3B5000163E20 /* Knob */ = {
 			isa = PBXGroup;
 			children = (
@@ -215,9 +240,7 @@
 				C67EAAB3244D04F0008D4982 /* TimeEntry.swift */,
 				C67F47D2249FD44500FD2E6E /* Project.swift */,
 				C65B7D2B2497DE4A00EED981 /* EntryOperations.swift */,
-				C6751D892471E39F002965CC /* Position.swift */,
-				C6751D8B24723182002965CC /* ZeroDate.swift */,
-				C6AAB3F1249F061D00DFBA36 /* TimeData.swift */,
+				227C613924A3F628006F8168 /* Global */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -248,10 +271,10 @@
 				C6B0FFA1246F52B600DED011 /* Extensions */,
 				C6B0FFA0246F52A700DED011 /* Models */,
 				C6751D70247197EE002965CC /* CustomTableView */,
+				227C613824A3F5D9006F8168 /* Controls */,
 				C6C18D7E244CD7AA000345D5 /* Spiral */,
 				C6D448ED248471250072E7D4 /* Activity */,
 				C65B7D282497D1C100EED981 /* Statistics */,
-				C63C0D43248D3B5000163E20 /* Knob */,
 				C688BFC624A18BA00077CECF /* Misc */,
 			);
 			sourceTree = "<group>";
@@ -311,15 +334,11 @@
 		C6C18D7E244CD7AA000345D5 /* Spiral */ = {
 			isa = PBXGroup;
 			children = (
-				C6855DE62496E7050050F8D4 /* SpiralControls.swift */,
-				C6C18D7A244BB76F000345D5 /* ZESpiral.swift */,
-				C63C0D44248D3C0D00163E20 /* SpiralTrimmer.swift */,
-				C6C18D7F244CD7D2000345D5 /* SpiralHelpers.swift */,
 				C6C18D7424493EC8000345D5 /* SpiralUI.swift */,
-				C68842AF247B3D5300DC5C42 /* DateBar.swift */,
+				C63C0D44248D3C0D00163E20 /* SpiralTrimmer.swift */,
 				C6F605AC246C520D00D0FE82 /* EntrySpiral.swift */,
-				C68F8C8A24A03DB4000D249B /* TimeStripView.swift */,
-				C68F8C8C24A04CE8000D249B /* IceCreamStick.swift */,
+				C6C18D7A244BB76F000345D5 /* ZESpiral.swift */,
+				C6C18D7F244CD7D2000345D5 /* SpiralHelpers.swift */,
 			);
 			path = Spiral;
 			sourceTree = "<group>";
@@ -490,7 +509,7 @@
 				C63FC2FA249BCFBD00747D49 /* DoubleExtension.swift in Sources */,
 				C6F605AD246C520D00D0FE82 /* EntrySpiral.swift in Sources */,
 				C6AAB3EE249F04FF00DFBA36 /* ProjectListView.swift in Sources */,
-				C68842B0247B3D5300DC5C42 /* DateBar.swift in Sources */,
+				C68842B0247B3D5300DC5C42 /* WeekButtons.swift in Sources */,
 				C64385F32485DC4900CCF47E /* KnobView.swift in Sources */,
 				C67F47D3249FD44500FD2E6E /* Project.swift in Sources */,
 				C64385F52485F46A00CCF47E /* CGPointExtension.swift in Sources */,
@@ -506,6 +525,7 @@
 				C6C18D80244CD7D2000345D5 /* SpiralHelpers.swift in Sources */,
 				C6AAB3F4249F079F00DFBA36 /* ContentGroupView.swift in Sources */,
 				C688BFCA24A18BF00077CECF /* RaisedShape.swift in Sources */,
+				227C613724A3F557006F8168 /* FilterButton.swift in Sources */,
 				C6855DE72496E7050050F8D4 /* SpiralControls.swift in Sources */,
 				C6AAB3F2249F061D00DFBA36 /* TimeData.swift in Sources */,
 				C615CD57245F332300D62B87 /* Toggl.swift in Sources */,

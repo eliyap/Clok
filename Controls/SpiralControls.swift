@@ -14,10 +14,10 @@ struct SpiralControls: View {
             TimeStripView()
             Spacer()
             HStack {
-                prevWeekButton()
+                EmptyView()
                 Spacer()
-                nextWeekButton()
             }
+            WeekButtons()
         }
     }
 }
