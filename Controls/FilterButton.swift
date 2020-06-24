@@ -15,13 +15,8 @@ struct FilterButton: View {
         Button(action: {
             
         }) {
-            Image(systemName: "line.horizontal.3.decrease.circle")
-                .foregroundColor(.primary)
-                .padding()
-                .background(RaisedShape(radius: radius) { Circle() })
-                .border(Color.red)
-                .padding([.leading, .trailing])
-
+            WeekButtonGlyph(name: "line.horizontal.3.decrease.circle")
+                .padding([.leading, .trailing], buttonPadding)
         }
     }
 }

@@ -10,7 +10,7 @@ import SwiftUI
 
 struct SpiralControls: View {
     var body: some View {
-        VStack {
+        VStack(spacing: .zero) {
             TimeStripView()
             Spacer()
             HStack {

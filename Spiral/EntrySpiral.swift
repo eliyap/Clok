@@ -12,7 +12,7 @@ struct EntrySpiral: View {
     @ObservedObject var entry:TimeEntry = TimeEntry()
     @EnvironmentObject var data: TimeData
     @EnvironmentObject var listRow: ListRow
-    @State private var opacity = 0.9
+    @State private var opacity = 1.0
     @State private var scale = 1.0
     
     var body: some View {
@@ -38,7 +38,7 @@ struct EntrySpiral: View {
                 }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     withAnimation(.linear(duration: 0.3)){
-                        self.opacity = 0.9
+                        self.opacity = 1
                         self.scale = 1
                     }
                 }

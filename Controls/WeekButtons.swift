@@ -20,13 +20,19 @@ struct WeekButtonGlyph: View {
     let name: String
     let radius = CGFloat(10)
     
+    // though hard coded size is undesirable
+    // this was the only way I could think of to enforce width
+    let size = CGFloat(10)
+    
     var body: some View {
         Image(systemName: name)
+            .font(.system(size: size * 2))
+            // enforce square images so that SF symbols align vertically
+            .frame(width: size, height: size)
+            // adapts to dark mode
             .foregroundColor(.primary)
             .padding()
             .background(RaisedShape(radius: radius) { Circle() })
-            .border(Color.red)
-            .padding()
     }
 }
 
@@ -38,12 +44,18 @@ struct WeekButtons: View {
             Button(action: {
                 withAnimation { self.zero.date -= weekLength }
                 self.zero.weekSkip = .back
-            }) { WeekButtonGlyph(name: "chevron.left") }
+            }) {
+                WeekButtonGlyph(name: "chevron.left")
+                .padding(buttonPadding)
+            }
             Spacer()
             Button(action: {
                 withAnimation { self.zero.date += weekLength }
                 self.zero.weekSkip = .fwrd
-            }) { WeekButtonGlyph(name: "chevron.right") }
+            }) {
+                WeekButtonGlyph(name: "chevron.right")
+                .padding(buttonPadding)
+            }
         }
     }
 }
