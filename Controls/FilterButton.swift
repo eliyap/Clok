@@ -9,8 +9,20 @@
 import SwiftUI
 
 struct FilterButton: View {
+    let radius = CGFloat(10)
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Button(action: {
+            
+        }) {
+            Image(systemName: "line.horizontal.3.decrease.circle")
+                .foregroundColor(.primary)
+                .padding()
+                .background(RaisedShape(radius: radius) { Circle() })
+                .border(Color.red)
+                .padding([.leading, .trailing])
+
+        }
     }
 }
 

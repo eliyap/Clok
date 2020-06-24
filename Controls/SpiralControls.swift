@@ -14,7 +14,7 @@ struct SpiralControls: View {
             TimeStripView()
             Spacer()
             HStack {
-                EmptyView()
+                FilterButton()
                 Spacer()
             }
             WeekButtons()

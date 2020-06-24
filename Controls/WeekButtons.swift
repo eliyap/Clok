@@ -22,21 +22,10 @@ struct WeekButtonGlyph: View {
     
     var body: some View {
         Image(systemName: name)
-            .font(.subheadline)
             .foregroundColor(.primary)
             .padding()
             .background(RaisedShape(radius: radius) { Circle() })
-            .padding()
-    }
-}
-
-
-struct weekButtonStyle : ViewModifier {
-    let radius = CGFloat(10)
-    func body(content: Content) -> some View {
-        content
-            .padding()
-            .background(RaisedShape(radius: radius) { Circle() })
+            .border(Color.red)
             .padding()
     }
 }
