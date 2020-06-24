@@ -28,6 +28,8 @@ extension CGFloat {
     static let nearZero = CGFloat(0.001)
 }
 
+let buttonPadding = CGFloat(7)
+
 // MARK: - API components
 
 // lets Toggle know who I am
