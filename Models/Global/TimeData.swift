@@ -11,7 +11,15 @@ import SwiftUI
 
 final class TimeData: ObservableObject {
     @Published var report = Report()
-    @Published var chosenProject = Project.any
+    
+    // the Project and Descriptions the user is filtering for
+    @Published var terms = SearchTerm(
+        project: .any,
+        description: ""
+    )
+    
+    // true when user is changing the search terms
+    @Published var searching = false
     
     func projects() -> Set<Project> {
         Set(self.report.entries.map{$0.project})

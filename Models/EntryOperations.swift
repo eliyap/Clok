@@ -27,8 +27,8 @@ extension Array where Element == TimeEntry {
     func matching(_ terms: SearchTerm) -> [TimeEntry] {
         var result = self
         
-        if terms.byDescription {
-            result = result.filter { $0.description == terms.description }
+        if let description = terms.description {
+            result = result.filter { $0.description == description }
         }
         
         /// if Any Project is not selected, filter by project

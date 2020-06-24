@@ -13,8 +13,7 @@ struct StatView: View {
     @EnvironmentObject var zero: ZeroDate
     @State private var search = SearchTerm(
         project: .any,
-        description: "",
-        byDescription: false
+        description: nil
     )
     var body: some View {
         NavigationView {

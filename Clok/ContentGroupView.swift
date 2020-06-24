@@ -9,6 +9,9 @@ import SwiftUI
 struct ContentGroupView: View {
     var heightLimit: CGFloat
     var widthLimit: CGFloat
+    @State var blurRadius = CGFloat.zero
+    
+    @EnvironmentObject private var data:TimeData
     
     var body: some View {
         Group {
@@ -17,7 +20,12 @@ struct ContentGroupView: View {
                     SpiralUI()
                     KnobView()
                 }
-                    .blur(radius: buttonPadding)
+                    .blur(radius: blurRadius)
+                    .onReceive(data.$searching, perform: { searching in
+                        withAnimation{
+                            self.blurRadius = searching ? 5 : .zero
+                        }
+                    })
                     .frame(
                         width: min(self.widthLimit, self.heightLimit),
                         height: min(self.widthLimit, self.heightLimit)
@@ -28,7 +36,8 @@ struct ContentGroupView: View {
                      preventing the user from manipulating the handle
                      */
                     .padding(Edge.Set.bottom, -heightLimit)
-                    
+                    /// turn off interaction when user is filtering
+                    .disabled(data.searching)
                 SpiralControls()
             }
             .frame(width: self.widthLimit, height: self.heightLimit)

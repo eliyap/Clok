@@ -9,14 +9,23 @@
 import SwiftUI
 
 struct FilterButton: View {
+    @EnvironmentObject private var data: TimeData
+    
     let radius = CGFloat(10)
 
+    
+    
     var body: some View {
-        Button(action: {
-            
-        }) {
-            WeekButtonGlyph(name: "line.horizontal.3.decrease.circle")
-                .padding([.leading, .trailing], buttonPadding)
+        VStack {
+            Button(action: {
+                self.data.searching.toggle()
+            }) {
+                WeekButtonGlyph(
+                    /// change icons when toggled
+                    name: "line.horizontal.3.decrease.circle" + (self.data.searching ? ".fill" : "")
+                )
+                    .padding([.leading, .trailing], buttonPadding)
+            }
         }
     }
 }

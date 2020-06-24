@@ -38,7 +38,7 @@ struct WeekButtonGlyph: View {
 
 struct WeekButtons: View {
     @EnvironmentObject private var zero:ZeroDate
-
+    
     var body: some View {
         HStack {
             Button(action: {
@@ -46,7 +46,7 @@ struct WeekButtons: View {
                 self.zero.weekSkip = .back
             }) {
                 WeekButtonGlyph(name: "chevron.left")
-                .padding(buttonPadding)
+                    .padding(buttonPadding)
             }
             Spacer()
             Button(action: {
@@ -54,7 +54,7 @@ struct WeekButtons: View {
                 self.zero.weekSkip = .fwrd
             }) {
                 WeekButtonGlyph(name: "chevron.right")
-                .padding(buttonPadding)
+                    .padding(buttonPadding)
             }
         }
     }

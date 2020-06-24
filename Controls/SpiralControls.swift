@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct SpiralControls: View {
+    @EnvironmentObject private var data: TimeData
+    
     var body: some View {
         VStack(spacing: .zero) {
             TimeStripView()
@@ -18,6 +20,8 @@ struct SpiralControls: View {
                 Spacer()
             }
             WeekButtons()
+                /// disable week cycling when filtering
+                .disabled(data.searching)
         }
     }
 }

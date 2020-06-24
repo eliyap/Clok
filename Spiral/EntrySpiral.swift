@@ -19,17 +19,23 @@ struct EntrySpiral: View {
         
         SpiralPart(entry)?
             .fill(entry.project.color)
-            .opacity(opacity * (self.data.chosenProject == entry.project ? 1 : 0.5) )
+            // goes transparent when filtered out
+            .opacity(opacity * (self.data.terms.project == entry.project ? 1 : 0.5) )
             .scaleEffect(CGFloat(scale))
+            
+            // MARK: - Tap Handler
             .gesture(TapGesture().onEnded() {_ in
+                // scroll to this entry on the entry list
                 /// pass selection to global variable
                 self.listRow.entry = self.entry
+                
                 /// then deselect immediately
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
                     self.listRow.entry = nil
                 }
                 
-                /// brief bounce animation, per Zero Punctuation advice, peak quickly then drop off slowly
+                /// brief bounce animation,
+                /// per Zero Punctuation advice, peak quickly & drop off slowly
                 withAnimation(.linear(duration: 0.1)){
                     /// drop the opacity to take on more BG color
                     self.opacity -= 0.25

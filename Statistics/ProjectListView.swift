@@ -31,7 +31,7 @@ struct ProjectListView: View {
     
     func button(for project: Project) -> some View {
         Button(action: {
-            self.data.chosenProject = project
+            self.data.terms.project = project
             self.search.project = project
             
             /// dismiss this view after project is selected

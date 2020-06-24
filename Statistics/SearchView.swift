@@ -49,27 +49,27 @@ struct SearchView: View {
         HStack {
             Tab()
             /// toggle is designed to be beside some text, hence the nesting
-            Toggle(isOn: self.$search.byDescription) {
-                TextField(
-                    /// placeholder text
-                    "No Description",
-                    text: self.$descriptionField,
-                    onEditingChanged: { _ in
-                        /// if user edits description, turn on filtering for them
-                        self.search.byDescription = true
-                    },
-                    onCommit: {
-                        /// only change description when user presses return, instead of every keystroke (direct binding)
-                        self.search.description = self.descriptionField
-                    }
-                )
-                    /// grey out when description search is disabled
-                    .foregroundColor(
-                        self.search.byDescription ?
-                        Color.primary :
-                        Color(UIColor.placeholderText
-                    ))
-            }
+//            Toggle(isOn: self.$search.byDescription) {
+//                TextField(
+//                    /// placeholder text
+//                    "No Description",
+//                    text: self.$descriptionField,
+//                    onEditingChanged: { _ in
+//                        /// if user edits description, turn on filtering for them
+//                        self.search.byDescription = true
+//                    },
+//                    onCommit: {
+//                        /// only change description when user presses return, instead of every keystroke (direct binding)
+//                        self.search.description = self.descriptionField
+//                    }
+//                )
+//                    /// grey out when description search is disabled
+//                    .foregroundColor(
+//                        self.search.byDescription ?
+//                        Color.primary :
+//                        Color(UIColor.placeholderText
+//                    ))
+//            }
         }
         .modifier(fillRow())
     }
