@@ -9,20 +9,11 @@ import SwiftUI
 struct ContentGroupView: View {
     var heightLimit: CGFloat
     var widthLimit: CGFloat
-    /**
-     Permits Spiral to edge into the strip's area, increasing available size for the spiral.
-     - Important: ZStacking did *not* work, as the Time Strip layer grabbed touch focus,
-     preventing the user from manipulating the handle
-     */
-    private let negativePadding = CGFloat(-30)
-    
     
     var body: some View {
         Group {
             VStack(spacing: 0) {
                 SpiralControls()
-                    
-                    .border(Color.red)
                 ZStack{
                     SpiralUI()
                     KnobView()
@@ -31,9 +22,12 @@ struct ContentGroupView: View {
                         width: min(self.widthLimit, self.heightLimit),
                         height: min(self.widthLimit, self.heightLimit)
                     )
+                    /**
+                     Permits overlap of areas
+                     - Important: ZStacking did *not* work, as the Time Strip layer grabbed touch focus,
+                     preventing the user from manipulating the handle
+                     */
                     .padding(Edge.Set.top, -heightLimit)
-                    .border(Color.red)
-                
             }
             .frame(width: self.widthLimit, height: self.heightLimit)
             TimeTabView()

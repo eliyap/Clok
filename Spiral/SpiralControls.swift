@@ -12,15 +12,12 @@ struct SpiralControls: View {
     var body: some View {
         VStack {
             TimeStripView()
-                .border(Color.red)
-            /// send to the bottom
             Spacer()
             HStack {
                 prevWeekButton()
                 Spacer()
                 nextWeekButton()
             }
-            .border(Color.red)
         }
     }
 }

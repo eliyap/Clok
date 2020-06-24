@@ -47,7 +47,6 @@ struct prevWeekButton : View {
 /// click to roll forwards to the next week
 struct nextWeekButton : View {
     @EnvironmentObject private var zero:ZeroDate
-    @Environment(\.verticalSizeClass) var vSize
     
     var body : some View {
         /// logic for "next" week
