@@ -24,6 +24,8 @@ struct Handle : Shape {
     
     func path(in rect: CGRect) -> Path {
         let center = CGPoint(x: rect.size.width / 2, y: rect.size.height / 2)
+        var offCenter = UnitPoint.center
+        offCenter.x += innerRadius / rect.size.width
         
         return Path { path in
             path.addArc(
@@ -34,6 +36,9 @@ struct Handle : Shape {
                 clockwise: true
             )
         }
+        // very slight rotation to bring handle in line with spiral
+        .rotation(Angle(degrees: -1.5), anchor: offCenter)
+        .path(in: rect)
         .strokedPath(StrokeStyle(
             lineWidth: thiccness,
             lineCap: .round

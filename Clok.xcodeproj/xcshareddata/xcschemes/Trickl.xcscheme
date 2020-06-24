@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C6C18D402448F96C000345D5"
-               BuildableName = "Trickl.app"
-               BlueprintName = "Trickl"
-               ReferencedContainer = "container:Trickl.xcodeproj">
+               BuildableName = "Clok.app"
+               BlueprintName = "Clok"
+               ReferencedContainer = "container:Clok.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C6C18D562448F96F000345D5"
-               BuildableName = "TricklTests.xctest"
-               BlueprintName = "TricklTests"
-               ReferencedContainer = "container:Trickl.xcodeproj">
+               BuildableName = "ClokTests.xctest"
+               BlueprintName = "ClokTests"
+               ReferencedContainer = "container:Clok.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C6C18D612448F96F000345D5"
-               BuildableName = "TricklUITests.xctest"
-               BlueprintName = "TricklUITests"
-               ReferencedContainer = "container:Trickl.xcodeproj">
+               BuildableName = "ClokUITests.xctest"
+               BlueprintName = "ClokUITests"
+               ReferencedContainer = "container:Clok.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -65,9 +65,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C6C18D402448F96C000345D5"
-            BuildableName = "Trickl.app"
-            BlueprintName = "Trickl"
-            ReferencedContainer = "container:Trickl.xcodeproj">
+            BuildableName = "Clok.app"
+            BlueprintName = "Clok"
+            ReferencedContainer = "container:Clok.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -82,9 +82,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C6C18D402448F96C000345D5"
-            BuildableName = "Trickl.app"
-            BlueprintName = "Trickl"
-            ReferencedContainer = "container:Trickl.xcodeproj">
+            BuildableName = "Clok.app"
+            BlueprintName = "Clok"
+            ReferencedContainer = "container:Clok.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

@@ -9,13 +9,17 @@
 /* Begin PBXBuildFile section */
 		C615CD57245F332300D62B87 /* Toggl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C615CD56245F332300D62B87 /* Toggl.swift */; };
 		C615CD59245F33F100D62B87 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = C615CD58245F33F100D62B87 /* Report.swift */; };
+		C61D2658249BE1990056C9FA /* StatHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61D2657249BE1990056C9FA /* StatHelpers.swift */; };
 		C62F7B8624970CC40076F64C /* TimeTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62F7B8524970CC40076F64C /* TimeTabView.swift */; };
 		C62F7B8824970E530076F64C /* StatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62F7B8724970E530076F64C /* StatView.swift */; };
 		C63C0D45248D3C0D00163E20 /* SpiralTrimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63C0D44248D3C0D00163E20 /* SpiralTrimmer.swift */; };
 		C63C0D4B248DBDDB00163E20 /* Handle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63C0D4A248DBDDB00163E20 /* Handle.swift */; };
+		C63FC2F8249BCEB900747D49 /* AngleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63FC2F7249BCEB900747D49 /* AngleExtension.swift */; };
+		C63FC2FA249BCFBD00747D49 /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63FC2F9249BCFBD00747D49 /* DoubleExtension.swift */; };
 		C6428DDC2470A6FE00A02A9B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C6428DDB2470A6FE00A02A9B /* Default-568h@2x.png */; };
 		C64385F32485DC4900CCF47E /* KnobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64385F22485DC4900CCF47E /* KnobView.swift */; };
 		C64385F52485F46A00CCF47E /* CGPointExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64385F42485F46A00CCF47E /* CGPointExtension.swift */; };
+		C65B7D2C2497DE4A00EED981 /* EntryOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65B7D2B2497DE4A00EED981 /* EntryOperations.swift */; };
 		C6751D8424719AF7002965CC /* CustomTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6751D7F24719AF7002965CC /* CustomTableView.swift */; };
 		C6751D8524719AF7002965CC /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6751D8024719AF7002965CC /* TableView.swift */; };
 		C6751D8624719AF7002965CC /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6751D8124719AF7002965CC /* TableViewCell.swift */; };
@@ -23,12 +27,22 @@
 		C6751D8824719AF7002965CC /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C6751D8324719AF7002965CC /* TableViewCell.xib */; };
 		C6751D8A2471E39F002965CC /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6751D892471E39F002965CC /* Position.swift */; };
 		C6751D8C24723182002965CC /* ZeroDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6751D8B24723182002965CC /* ZeroDate.swift */; };
-		C6751D8E247235FB002965CC /* TimePeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6751D8D247235FB002965CC /* TimePeriod.swift */; };
 		C67EAAB5244D0FF3008D4982 /* TimeEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67EAAB3244D04F0008D4982 /* TimeEntry.swift */; };
+		C67F47D3249FD44500FD2E6E /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67F47D2249FD44500FD2E6E /* Project.swift */; };
+		C67F47D5249FEA0000FD2E6E /* StatViewHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67F47D4249FEA0000FD2E6E /* StatViewHelpers.swift */; };
+		C67F47DC24A0304000FD2E6E /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67F47DB24A0304000FD2E6E /* SearchView.swift */; };
 		C6855DE72496E7050050F8D4 /* SpiralControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6855DE62496E7050050F8D4 /* SpiralControls.swift */; };
 		C68842B0247B3D5300DC5C42 /* DateBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68842AF247B3D5300DC5C42 /* DateBar.swift */; };
 		C688A8882479A8D6003260CE /* TimeFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = C688A8872479A8D6003260CE /* TimeFrame.swift */; };
+		C688BFCA24A18BF00077CECF /* RaisedShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = C688BFC924A18BF00077CECF /* RaisedShape.swift */; };
+		C68F8C8B24A03DB4000D249B /* TimeStripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68F8C8A24A03DB4000D249B /* TimeStripView.swift */; };
+		C68F8C8D24A04CE8000D249B /* IceCreamStick.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68F8C8C24A04CE8000D249B /* IceCreamStick.swift */; };
 		C69F02782496AFA200D1C650 /* TimeIntervalExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69F02772496AFA200D1C650 /* TimeIntervalExtension.swift */; };
+		C6AAB3EA249EF26800DFBA36 /* TimeEntryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AAB3E9249EF26800DFBA36 /* TimeEntryExtension.swift */; };
+		C6AAB3EC249F003100DFBA36 /* StatDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AAB3EB249F003100DFBA36 /* StatDisplayView.swift */; };
+		C6AAB3EE249F04FF00DFBA36 /* ProjectListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AAB3ED249F04FF00DFBA36 /* ProjectListView.swift */; };
+		C6AAB3F2249F061D00DFBA36 /* TimeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AAB3F1249F061D00DFBA36 /* TimeData.swift */; };
+		C6AAB3F4249F079F00DFBA36 /* ContentGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AAB3F3249F079F00DFBA36 /* ContentGroupView.swift */; };
 		C6B0FF9C246F124300DED011 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B0FF9B246F124300DED011 /* ColorExtension.swift */; };
 		C6C18D452448F96C000345D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C18D442448F96C000345D5 /* AppDelegate.swift */; };
 		C6C18D472448F96C000345D5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C18D462448F96C000345D5 /* SceneDelegate.swift */; };
@@ -67,13 +81,17 @@
 /* Begin PBXFileReference section */
 		C615CD56245F332300D62B87 /* Toggl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toggl.swift; sourceTree = "<group>"; };
 		C615CD58245F33F100D62B87 /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
+		C61D2657249BE1990056C9FA /* StatHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatHelpers.swift; sourceTree = "<group>"; };
 		C62F7B8524970CC40076F64C /* TimeTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTabView.swift; sourceTree = "<group>"; };
 		C62F7B8724970E530076F64C /* StatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatView.swift; sourceTree = "<group>"; };
 		C63C0D44248D3C0D00163E20 /* SpiralTrimmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiralTrimmer.swift; sourceTree = "<group>"; };
 		C63C0D4A248DBDDB00163E20 /* Handle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Handle.swift; sourceTree = "<group>"; };
+		C63FC2F7249BCEB900747D49 /* AngleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AngleExtension.swift; sourceTree = "<group>"; };
+		C63FC2F9249BCFBD00747D49 /* DoubleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
 		C6428DDB2470A6FE00A02A9B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		C64385F22485DC4900CCF47E /* KnobView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnobView.swift; sourceTree = "<group>"; };
 		C64385F42485F46A00CCF47E /* CGPointExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPointExtension.swift; sourceTree = "<group>"; };
+		C65B7D2B2497DE4A00EED981 /* EntryOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryOperations.swift; sourceTree = "<group>"; };
 		C6751D7F24719AF7002965CC /* CustomTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableView.swift; sourceTree = "<group>"; };
 		C6751D8024719AF7002965CC /* TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
 		C6751D8124719AF7002965CC /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
@@ -81,14 +99,24 @@
 		C6751D8324719AF7002965CC /* TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		C6751D892471E39F002965CC /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
 		C6751D8B24723182002965CC /* ZeroDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZeroDate.swift; sourceTree = "<group>"; };
-		C6751D8D247235FB002965CC /* TimePeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePeriod.swift; sourceTree = "<group>"; };
 		C67EAAB3244D04F0008D4982 /* TimeEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntry.swift; sourceTree = "<group>"; };
+		C67F47D2249FD44500FD2E6E /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		C67F47D4249FEA0000FD2E6E /* StatViewHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatViewHelpers.swift; sourceTree = "<group>"; };
+		C67F47DB24A0304000FD2E6E /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		C6855DE62496E7050050F8D4 /* SpiralControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiralControls.swift; sourceTree = "<group>"; };
 		C68842AF247B3D5300DC5C42 /* DateBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateBar.swift; sourceTree = "<group>"; };
 		C688A8872479A8D6003260CE /* TimeFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFrame.swift; sourceTree = "<group>"; };
+		C688BFC924A18BF00077CECF /* RaisedShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaisedShape.swift; sourceTree = "<group>"; };
+		C68F8C8A24A03DB4000D249B /* TimeStripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeStripView.swift; sourceTree = "<group>"; };
+		C68F8C8C24A04CE8000D249B /* IceCreamStick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IceCreamStick.swift; sourceTree = "<group>"; };
 		C69F02772496AFA200D1C650 /* TimeIntervalExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervalExtension.swift; sourceTree = "<group>"; };
+		C6AAB3E9249EF26800DFBA36 /* TimeEntryExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntryExtension.swift; sourceTree = "<group>"; };
+		C6AAB3EB249F003100DFBA36 /* StatDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatDisplayView.swift; sourceTree = "<group>"; };
+		C6AAB3ED249F04FF00DFBA36 /* ProjectListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListView.swift; sourceTree = "<group>"; };
+		C6AAB3F1249F061D00DFBA36 /* TimeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeData.swift; sourceTree = "<group>"; };
+		C6AAB3F3249F079F00DFBA36 /* ContentGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentGroupView.swift; sourceTree = "<group>"; };
 		C6B0FF9B246F124300DED011 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
-		C6C18D412448F96C000345D5 /* Trickl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trickl.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6C18D412448F96C000345D5 /* Clok.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clok.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6C18D442448F96C000345D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C6C18D462448F96C000345D5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		C6C18D482448F96C000345D5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -96,10 +124,10 @@
 		C6C18D4D2448F96F000345D5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C6C18D502448F96F000345D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C6C18D522448F96F000345D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C6C18D572448F96F000345D5 /* TricklTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TricklTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6C18D572448F96F000345D5 /* ClokTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClokTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6C18D5B2448F96F000345D5 /* LandwarksTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandwarksTests.swift; sourceTree = "<group>"; };
 		C6C18D5D2448F96F000345D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C6C18D622448F96F000345D5 /* TricklUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TricklUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6C18D622448F96F000345D5 /* ClokUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClokUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6C18D662448F96F000345D5 /* LandwarksUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandwarksUITests.swift; sourceTree = "<group>"; };
 		C6C18D682448F96F000345D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C6C18D7424493EC8000345D5 /* SpiralUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiralUI.swift; sourceTree = "<group>"; };
@@ -145,6 +173,20 @@
 			path = Knob;
 			sourceTree = "<group>";
 		};
+		C65B7D282497D1C100EED981 /* Statistics */ = {
+			isa = PBXGroup;
+			children = (
+				C688A8872479A8D6003260CE /* TimeFrame.swift */,
+				C62F7B8724970E530076F64C /* StatView.swift */,
+				C6AAB3ED249F04FF00DFBA36 /* ProjectListView.swift */,
+				C6AAB3EB249F003100DFBA36 /* StatDisplayView.swift */,
+				C61D2657249BE1990056C9FA /* StatHelpers.swift */,
+				C67F47DB24A0304000FD2E6E /* SearchView.swift */,
+				C67F47D4249FEA0000FD2E6E /* StatViewHelpers.swift */,
+			);
+			path = Statistics;
+			sourceTree = "<group>";
+		};
 		C6751D70247197EE002965CC /* CustomTableView */ = {
 			isa = PBXGroup;
 			children = (
@@ -157,16 +199,25 @@
 			path = CustomTableView;
 			sourceTree = "<group>";
 		};
+		C688BFC624A18BA00077CECF /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				C688BFC924A18BF00077CECF /* RaisedShape.swift */,
+			);
+			path = Misc;
+			sourceTree = "<group>";
+		};
 		C6B0FFA0246F52A700DED011 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				C615CD56245F332300D62B87 /* Toggl.swift */,
 				C615CD58245F33F100D62B87 /* Report.swift */,
 				C67EAAB3244D04F0008D4982 /* TimeEntry.swift */,
-				C6751D8D247235FB002965CC /* TimePeriod.swift */,
-				C688A8872479A8D6003260CE /* TimeFrame.swift */,
+				C67F47D2249FD44500FD2E6E /* Project.swift */,
+				C65B7D2B2497DE4A00EED981 /* EntryOperations.swift */,
 				C6751D892471E39F002965CC /* Position.swift */,
 				C6751D8B24723182002965CC /* ZeroDate.swift */,
+				C6AAB3F1249F061D00DFBA36 /* TimeData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -176,8 +227,11 @@
 			children = (
 				C6B0FF9B246F124300DED011 /* ColorExtension.swift */,
 				C6F605AE246C6B1700D0FE82 /* DateExtension.swift */,
+				C63FC2F9249BCFBD00747D49 /* DoubleExtension.swift */,
 				C64385F42485F46A00CCF47E /* CGPointExtension.swift */,
 				C69F02772496AFA200D1C650 /* TimeIntervalExtension.swift */,
+				C63FC2F7249BCEB900747D49 /* AngleExtension.swift */,
+				C6AAB3E9249EF26800DFBA36 /* TimeEntryExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -187,43 +241,45 @@
 			children = (
 				C6428DDB2470A6FE00A02A9B /* Default-568h@2x.png */,
 				C6C18D7C244BE891000345D5 /* Constants.swift */,
-				C6C18D5A2448F96F000345D5 /* LandwarksTests */,
-				C6C18D652448F96F000345D5 /* LandwarksUITests */,
+				C6C18D5A2448F96F000345D5 /* ClokTests */,
+				C6C18D652448F96F000345D5 /* ClokUITests */,
 				C6C18D422448F96C000345D5 /* Products */,
-				C6C18D432448F96C000345D5 /* Trickl */,
+				C6C18D432448F96C000345D5 /* Clok */,
 				C6B0FFA1246F52B600DED011 /* Extensions */,
 				C6B0FFA0246F52A700DED011 /* Models */,
 				C6751D70247197EE002965CC /* CustomTableView */,
 				C6C18D7E244CD7AA000345D5 /* Spiral */,
 				C6D448ED248471250072E7D4 /* Activity */,
+				C65B7D282497D1C100EED981 /* Statistics */,
 				C63C0D43248D3B5000163E20 /* Knob */,
+				C688BFC624A18BA00077CECF /* Misc */,
 			);
 			sourceTree = "<group>";
 		};
 		C6C18D422448F96C000345D5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C6C18D412448F96C000345D5 /* Trickl.app */,
-				C6C18D572448F96F000345D5 /* TricklTests.xctest */,
-				C6C18D622448F96F000345D5 /* TricklUITests.xctest */,
+				C6C18D412448F96C000345D5 /* Clok.app */,
+				C6C18D572448F96F000345D5 /* ClokTests.xctest */,
+				C6C18D622448F96F000345D5 /* ClokUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C6C18D432448F96C000345D5 /* Trickl */ = {
+		C6C18D432448F96C000345D5 /* Clok */ = {
 			isa = PBXGroup;
 			children = (
 				C6C18D442448F96C000345D5 /* AppDelegate.swift */,
 				C6C18D462448F96C000345D5 /* SceneDelegate.swift */,
 				C6C18D482448F96C000345D5 /* ContentView.swift */,
+				C6AAB3F3249F079F00DFBA36 /* ContentGroupView.swift */,
 				C62F7B8524970CC40076F64C /* TimeTabView.swift */,
-				C62F7B8724970E530076F64C /* StatView.swift */,
 				C6C18D4A2448F96F000345D5 /* Assets.xcassets */,
 				C6C18D4F2448F96F000345D5 /* LaunchScreen.storyboard */,
 				C6C18D522448F96F000345D5 /* Info.plist */,
 				C6C18D4C2448F96F000345D5 /* Preview Content */,
 			);
-			path = Trickl;
+			path = Clok;
 			sourceTree = "<group>";
 		};
 		C6C18D4C2448F96F000345D5 /* Preview Content */ = {
@@ -234,22 +290,22 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		C6C18D5A2448F96F000345D5 /* LandwarksTests */ = {
+		C6C18D5A2448F96F000345D5 /* ClokTests */ = {
 			isa = PBXGroup;
 			children = (
 				C6C18D5B2448F96F000345D5 /* LandwarksTests.swift */,
 				C6C18D5D2448F96F000345D5 /* Info.plist */,
 			);
-			path = LandwarksTests;
+			path = ClokTests;
 			sourceTree = "<group>";
 		};
-		C6C18D652448F96F000345D5 /* LandwarksUITests */ = {
+		C6C18D652448F96F000345D5 /* ClokUITests */ = {
 			isa = PBXGroup;
 			children = (
 				C6C18D662448F96F000345D5 /* LandwarksUITests.swift */,
 				C6C18D682448F96F000345D5 /* Info.plist */,
 			);
-			path = LandwarksUITests;
+			path = ClokUITests;
 			sourceTree = "<group>";
 		};
 		C6C18D7E244CD7AA000345D5 /* Spiral */ = {
@@ -262,6 +318,8 @@
 				C6C18D7424493EC8000345D5 /* SpiralUI.swift */,
 				C68842AF247B3D5300DC5C42 /* DateBar.swift */,
 				C6F605AC246C520D00D0FE82 /* EntrySpiral.swift */,
+				C68F8C8A24A03DB4000D249B /* TimeStripView.swift */,
+				C68F8C8C24A04CE8000D249B /* IceCreamStick.swift */,
 			);
 			path = Spiral;
 			sourceTree = "<group>";
@@ -277,9 +335,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C6C18D402448F96C000345D5 /* Trickl */ = {
+		C6C18D402448F96C000345D5 /* Clok */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C6C18D6B2448F96F000345D5 /* Build configuration list for PBXNativeTarget "Trickl" */;
+			buildConfigurationList = C6C18D6B2448F96F000345D5 /* Build configuration list for PBXNativeTarget "Clok" */;
 			buildPhases = (
 				C6C18D3D2448F96C000345D5 /* Sources */,
 				C6C18D3E2448F96C000345D5 /* Frameworks */,
@@ -289,14 +347,14 @@
 			);
 			dependencies = (
 			);
-			name = Trickl;
+			name = Clok;
 			productName = Landwarks;
-			productReference = C6C18D412448F96C000345D5 /* Trickl.app */;
+			productReference = C6C18D412448F96C000345D5 /* Clok.app */;
 			productType = "com.apple.product-type.application";
 		};
-		C6C18D562448F96F000345D5 /* TricklTests */ = {
+		C6C18D562448F96F000345D5 /* ClokTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C6C18D6E2448F96F000345D5 /* Build configuration list for PBXNativeTarget "TricklTests" */;
+			buildConfigurationList = C6C18D6E2448F96F000345D5 /* Build configuration list for PBXNativeTarget "ClokTests" */;
 			buildPhases = (
 				C6C18D532448F96F000345D5 /* Sources */,
 				C6C18D542448F96F000345D5 /* Frameworks */,
@@ -307,14 +365,14 @@
 			dependencies = (
 				C6C18D592448F96F000345D5 /* PBXTargetDependency */,
 			);
-			name = TricklTests;
+			name = ClokTests;
 			productName = LandwarksTests;
-			productReference = C6C18D572448F96F000345D5 /* TricklTests.xctest */;
+			productReference = C6C18D572448F96F000345D5 /* ClokTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		C6C18D612448F96F000345D5 /* TricklUITests */ = {
+		C6C18D612448F96F000345D5 /* ClokUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C6C18D712448F96F000345D5 /* Build configuration list for PBXNativeTarget "TricklUITests" */;
+			buildConfigurationList = C6C18D712448F96F000345D5 /* Build configuration list for PBXNativeTarget "ClokUITests" */;
 			buildPhases = (
 				C6C18D5E2448F96F000345D5 /* Sources */,
 				C6C18D5F2448F96F000345D5 /* Frameworks */,
@@ -325,9 +383,9 @@
 			dependencies = (
 				C6C18D642448F96F000345D5 /* PBXTargetDependency */,
 			);
-			name = TricklUITests;
+			name = ClokUITests;
 			productName = LandwarksUITests;
-			productReference = C6C18D622448F96F000345D5 /* TricklUITests.xctest */;
+			productReference = C6C18D622448F96F000345D5 /* ClokUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -353,7 +411,7 @@
 					};
 				};
 			};
-			buildConfigurationList = C6C18D3C2448F96C000345D5 /* Build configuration list for PBXProject "Trickl" */;
+			buildConfigurationList = C6C18D3C2448F96C000345D5 /* Build configuration list for PBXProject "Clok" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -366,9 +424,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C6C18D402448F96C000345D5 /* Trickl */,
-				C6C18D562448F96F000345D5 /* TricklTests */,
-				C6C18D612448F96F000345D5 /* TricklUITests */,
+				C6C18D402448F96C000345D5 /* Clok */,
+				C6C18D562448F96F000345D5 /* ClokTests */,
+				C6C18D612448F96F000345D5 /* ClokUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -410,32 +468,46 @@
 				C6C18D452448F96C000345D5 /* AppDelegate.swift in Sources */,
 				C63C0D45248D3C0D00163E20 /* SpiralTrimmer.swift in Sources */,
 				C6751D8C24723182002965CC /* ZeroDate.swift in Sources */,
+				C68F8C8B24A03DB4000D249B /* TimeStripView.swift in Sources */,
 				C6F605AF246C6B1700D0FE82 /* DateExtension.swift in Sources */,
+				C68F8C8D24A04CE8000D249B /* IceCreamStick.swift in Sources */,
 				C6C18D7B244BB76F000345D5 /* ZESpiral.swift in Sources */,
-				C6751D8E247235FB002965CC /* TimePeriod.swift in Sources */,
+				C65B7D2C2497DE4A00EED981 /* EntryOperations.swift in Sources */,
 				C688A8882479A8D6003260CE /* TimeFrame.swift in Sources */,
 				C69F02782496AFA200D1C650 /* TimeIntervalExtension.swift in Sources */,
+				C67F47D5249FEA0000FD2E6E /* StatViewHelpers.swift in Sources */,
 				C6751D8624719AF7002965CC /* TableViewCell.swift in Sources */,
+				C67F47DC24A0304000FD2E6E /* SearchView.swift in Sources */,
 				C62F7B8824970E530076F64C /* StatView.swift in Sources */,
 				C6C18D7524493EC8000345D5 /* SpiralUI.swift in Sources */,
 				C67EAAB5244D0FF3008D4982 /* TimeEntry.swift in Sources */,
 				C6751D8424719AF7002965CC /* CustomTableView.swift in Sources */,
+				C63FC2F8249BCEB900747D49 /* AngleExtension.swift in Sources */,
+				C6AAB3EA249EF26800DFBA36 /* TimeEntryExtension.swift in Sources */,
 				C6C18D472448F96C000345D5 /* SceneDelegate.swift in Sources */,
 				C6C18D492448F96C000345D5 /* ContentView.swift in Sources */,
 				C6B0FF9C246F124300DED011 /* ColorExtension.swift in Sources */,
+				C63FC2FA249BCFBD00747D49 /* DoubleExtension.swift in Sources */,
 				C6F605AD246C520D00D0FE82 /* EntrySpiral.swift in Sources */,
+				C6AAB3EE249F04FF00DFBA36 /* ProjectListView.swift in Sources */,
 				C68842B0247B3D5300DC5C42 /* DateBar.swift in Sources */,
 				C64385F32485DC4900CCF47E /* KnobView.swift in Sources */,
+				C67F47D3249FD44500FD2E6E /* Project.swift in Sources */,
 				C64385F52485F46A00CCF47E /* CGPointExtension.swift in Sources */,
 				C62F7B8624970CC40076F64C /* TimeTabView.swift in Sources */,
 				C6D448EC2484710E0072E7D4 /* ActivityIndicator.swift in Sources */,
+				C6AAB3EC249F003100DFBA36 /* StatDisplayView.swift in Sources */,
 				C6751D8724719AF7002965CC /* DetailView.swift in Sources */,
 				C6751D8A2471E39F002965CC /* Position.swift in Sources */,
 				C6C18D7D244BE891000345D5 /* Constants.swift in Sources */,
+				C61D2658249BE1990056C9FA /* StatHelpers.swift in Sources */,
 				C63C0D4B248DBDDB00163E20 /* Handle.swift in Sources */,
 				C6751D8524719AF7002965CC /* TableView.swift in Sources */,
 				C6C18D80244CD7D2000345D5 /* SpiralHelpers.swift in Sources */,
+				C6AAB3F4249F079F00DFBA36 /* ContentGroupView.swift in Sources */,
+				C688BFCA24A18BF00077CECF /* RaisedShape.swift in Sources */,
 				C6855DE72496E7050050F8D4 /* SpiralControls.swift in Sources */,
+				C6AAB3F2249F061D00DFBA36 /* TimeData.swift in Sources */,
 				C615CD57245F332300D62B87 /* Toggl.swift in Sources */,
 				C615CD59245F33F100D62B87 /* Report.swift in Sources */,
 			);
@@ -462,12 +534,12 @@
 /* Begin PBXTargetDependency section */
 		C6C18D592448F96F000345D5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = C6C18D402448F96C000345D5 /* Trickl */;
+			target = C6C18D402448F96C000345D5 /* Clok */;
 			targetProxy = C6C18D582448F96F000345D5 /* PBXContainerItemProxy */;
 		};
 		C6C18D642448F96F000345D5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = C6C18D402448F96C000345D5 /* Trickl */;
+			target = C6C18D402448F96C000345D5 /* Clok */;
 			targetProxy = C6C18D632448F96F000345D5 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -603,16 +675,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"Trickl/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Clok/Preview Content\"";
 				DEVELOPMENT_TEAM = 949D776DFQ;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = Trickl/Info.plist;
+				INFOPLIST_FILE = Clok/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "-.Landwarks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				MARKETING_VERSION = 2020.06;
+				PRODUCT_BUNDLE_IDENTIFIER = sam.clok;
+				PRODUCT_NAME = Clok;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -623,16 +697,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"Trickl/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Clok/Preview Content\"";
 				DEVELOPMENT_TEAM = 949D776DFQ;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = Trickl/Info.plist;
+				INFOPLIST_FILE = Clok/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "-.Landwarks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				MARKETING_VERSION = 2020.06;
+				PRODUCT_BUNDLE_IDENTIFIER = sam.clok;
+				PRODUCT_NAME = Clok;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -655,7 +731,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Trickl.app/Trickl";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Clok.app/Clok";
 			};
 			name = Debug;
 		};
@@ -676,7 +752,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Trickl.app/Trickl";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Clok.app/Clok";
 			};
 			name = Release;
 		};
@@ -721,7 +797,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C6C18D3C2448F96C000345D5 /* Build configuration list for PBXProject "Trickl" */ = {
+		C6C18D3C2448F96C000345D5 /* Build configuration list for PBXProject "Clok" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C6C18D692448F96F000345D5 /* Debug */,
@@ -730,7 +806,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C6C18D6B2448F96F000345D5 /* Build configuration list for PBXNativeTarget "Trickl" */ = {
+		C6C18D6B2448F96F000345D5 /* Build configuration list for PBXNativeTarget "Clok" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C6C18D6C2448F96F000345D5 /* Debug */,
@@ -739,7 +815,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C6C18D6E2448F96F000345D5 /* Build configuration list for PBXNativeTarget "TricklTests" */ = {
+		C6C18D6E2448F96F000345D5 /* Build configuration list for PBXNativeTarget "ClokTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C6C18D6F2448F96F000345D5 /* Debug */,
@@ -748,7 +824,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C6C18D712448F96F000345D5 /* Build configuration list for PBXNativeTarget "TricklUITests" */ = {
+		C6C18D712448F96F000345D5 /* Build configuration list for PBXNativeTarget "ClokUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C6C18D722448F96F000345D5 /* Debug */,

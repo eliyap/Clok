@@ -9,27 +9,21 @@
 import SwiftUI
 
 struct TimeTabView: View {
-    @ObservedObject var report:Report
-    @EnvironmentObject var zero:ZeroDate
+    @EnvironmentObject private var data: TimeData
+    @EnvironmentObject private var zero: ZeroDate
     
     var body: some View {
         TabView {
-            CustomTableView(self.zero.date.withinWeekOf(self.report.entries))
+            CustomTableView(self.data.report.entries.within(interval: weekLength, of: self.zero.date))
                 .tabItem {
                     Image(systemName: "list.bullet")
                     Text("Entries")
                 }
             StatView()
                 .tabItem {
-                    Image(systemName: "magnifyingglass")
+                    Image(systemName: "chart.bar.fill")
                     Text("Summary")
                 }
         }
-    }
-}
-
-struct TimeTabView_Previews: PreviewProvider {
-    static var previews: some View {
-        TimeTabView(report: Report())
     }
 }

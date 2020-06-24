@@ -53,6 +53,10 @@ func toggl_request(
             return
         }
         guard http_response.statusCode == 200 else {
+            #if DEBUG
+            print("Status Code \(http_response.statusCode)")
+            print("\(http_response.allHeaderFields)")
+            #endif
             result = .failure(.statusCode)
             return
         }

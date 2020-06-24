@@ -20,45 +20,83 @@ extension Date: Strideable {
     public func distance(to other: Date) -> TimeInterval {
         return other - self
     }
+}
+
+extension Date {
     
-    /**
-     on  a 24 hour clock, with 0000h being the +y direction,
-     what angle does this time translate to
-     bounded from 0 to 360 degrees
-     */
-    public func clockAngle24() -> Angle {
+    public func angle() -> Angle {
         let cal = Calendar.current
         
         let mins = Double(
             cal.component(.hour, from: self) * 60 +
             cal.component(.minute, from: self) +
-            cal.component(.minute, from: self) / 60
+            cal.component(.second, from: self) / 60
         )
+        
         /// 1440 mins in a day / 360 deg = 1/4
-        /// 90 degree deduction to bring 0000h up to vertical
-        return Angle(degrees: mins / 4.0) - Angle(degrees: 90)
+        return Angle(degrees: mins / 4.0)
     }
     
     /**
-     similar to the above, but produces values outside the 0 to 360 degree range
-     this is so that the rotation does not snap between 0 and 360 degrees
+     returns the angle this date would show on a 24 hour clock, with 0000h being vertically up,
+     bounded 0 to 360 degrees
+     */
+    public func clockAngle24() -> Angle {
+        /// 90 degree deduction to bring 0000h up to vertical
+        self.angle() - Angle(degrees: 90)
+    }
+    
+    /**
+     similar to above, but produces values > 360 degrees
+     this is so date based rotations do not snap when crossing 0 -> 360 degrees
      */
     public func unboundedClockAngle24() -> Angle {
-        // get reference time since in current time zone
+        /// get reference time in current time zone
         let secs = self.timeIntervalSince1970 + Double(TimeZone.current.secondsFromGMT())
     
         /// 360 deg / 24 * 60 * 60 = 1/240
         /// 90 degree deduction to bring 0000h up to vertical
         return Angle(degrees: secs/240.0) - Angle(degrees: 90)
     }
-    
+}
+
+extension Date {
     /**
-     filters to only time entries that occured within a week of this date
+     whether this date falls between the 2 provided dates (inclusive)
      */
-    func withinWeekOf(_ entries:[TimeEntry]) -> [TimeEntry] {
-        entries.filter {
-            self < $0.start && $0.start < self + weekLength ||
-            self < $0.end   && $0.end   < self + weekLength
-        }
+    func between(_ start:Date,_ end:Date) -> Bool {
+        start <= self && self <= end
+    }
+}
+
+/// move back in time until date shares 24 hour time with other date
+func roundDown(_ date: Date, to other: Date) -> Date {
+    guard date != other else { return date }
+    
+    var date = date
+    if other > date {
+        let timeOffset = (other - date).truncatingRemainder(dividingBy: dayLength)
+        date -= dayLength - timeOffset
+    } else {
+        let timeOffset = (date - other).truncatingRemainder(dividingBy: dayLength)
+        date -= timeOffset
+    }
+    return date
+}
+
+extension Array where Element == Date {
+    /**
+     using the method detailed at https://en.m.wikipedia.org/wiki/Mean_of_circular_quantities
+     averages the time of day for dates in this array
+     thanks to Teoh Jing Yang and Ashwin Kumar for doing the hard googling
+     time is relative to midnight today
+     */
+    public func meanTime() -> Date {
+        /// find average coordinates on a unit circle
+        let meanX = self.map{$0.angle().cosine()}.mean()
+        let meanY = self.map{$0.angle().sine()}.mean()
+        
+        /// find time represented by coordinates
+        return Angle(x: meanX, y: meanY).time24h()
     }
 }
