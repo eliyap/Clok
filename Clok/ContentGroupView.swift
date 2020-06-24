@@ -7,7 +7,8 @@
 import SwiftUI
 
 struct ContentGroupView: View {
-    var limit: CGFloat
+    var heightLimit: CGFloat
+    var widthLimit: CGFloat
     /**
      Permits Spiral to edge into the strip's area, increasing available size for the spiral.
      - Important: ZStacking did *not* work, as the Time Strip layer grabbed touch focus,
@@ -15,26 +16,26 @@ struct ContentGroupView: View {
      */
     private let negativePadding = CGFloat(-30)
     
-    /**
-     this unforgivably bad hack allows us to place the Time Strip *after* the Spiral
-     while still keeping it vertically above, so that it renders over the spiral
-     */
-    private let flip = Angle(degrees: 180)
     
     var body: some View {
         Group {
             VStack(spacing: 0) {
+                SpiralControls()
+                    
+                    .border(Color.red)
                 ZStack{
                     SpiralUI()
-                    SpiralControls()
+                    KnobView()
                 }
-                    .rotationEffect(flip)
-                TimeStripView()
-                    .padding(Edge.Set.bottom, negativePadding)
-                    .rotationEffect(flip)
+                    .frame(
+                        width: min(self.widthLimit, self.heightLimit),
+                        height: min(self.widthLimit, self.heightLimit)
+                    )
+                    .padding(Edge.Set.top, -heightLimit)
+                    .border(Color.red)
+                
             }
-            .rotationEffect(flip)
-            .frame(width: self.limit, height: self.limit)
+            .frame(width: self.widthLimit, height: self.heightLimit)
             TimeTabView()
         }
     }

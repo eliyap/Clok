@@ -10,17 +10,17 @@ import SwiftUI
 
 struct SpiralControls: View {
     var body: some View {
-        Group {
-            KnobView()
-            VStack {
-                /// send to the bottom
+        VStack {
+            TimeStripView()
+                .border(Color.red)
+            /// send to the bottom
+            Spacer()
+            HStack {
+                prevWeekButton()
                 Spacer()
-                HStack {
-                    prevWeekButton()
-                    Spacer()
-                    nextWeekButton()
-                }
+                nextWeekButton()
             }
+            .border(Color.red)
         }
     }
 }

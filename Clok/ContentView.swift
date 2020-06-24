@@ -22,25 +22,29 @@ struct ContentView: View {
                 if geo.size.width > geo.size.height {
                     /// landscape mode
                     HStack(spacing: 0) {
-                        ContentGroupView(limit: min(
-                            geo.size.width,
-                            geo.size.height
-                        ))
+                        ContentGroupView(
+                            heightLimit: geo.size.height,
+                            widthLimit:geo.size.height
+                        )
                     }
                 } else {
                     /// portrait mode
                     VStack(alignment: .center, spacing: 0) {
-                        ContentGroupView(limit: min(
-                            geo.size.width,
-                            geo.size.height * 0.6
-                        ))
+                        ContentGroupView(
+                            heightLimit: min(
+                                geo.size.width,
+                                /// consume at most 60% of height (otherwise it crushes lower elements)
+                                geo.size.height * 0.6
+                            ),
+                            widthLimit:geo.size.width
+                        )
                     }
                 }
             }
             .background(offBG())
             .onAppear {
                 /// load data immediately
-                self.loadData()
+//                self.loadData()
             }
             /// fade out loading screen when data is finished being requested
 //            ProgressIndicator()
