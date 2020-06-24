@@ -13,11 +13,11 @@ struct ContentGroupView: View {
     var body: some View {
         Group {
             VStack(spacing: 0) {
-                SpiralControls()
                 ZStack{
                     SpiralUI()
                     KnobView()
                 }
+                    .blur(radius: buttonPadding)
                     .frame(
                         width: min(self.widthLimit, self.heightLimit),
                         height: min(self.widthLimit, self.heightLimit)
@@ -27,7 +27,9 @@ struct ContentGroupView: View {
                      - Important: ZStacking did *not* work, as the Time Strip layer grabbed touch focus,
                      preventing the user from manipulating the handle
                      */
-                    .padding(Edge.Set.top, -heightLimit)
+                    .padding(Edge.Set.bottom, -heightLimit)
+                    
+                SpiralControls()
             }
             .frame(width: self.widthLimit, height: self.heightLimit)
             TimeTabView()
