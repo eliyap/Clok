@@ -15,3 +15,17 @@ extension Array where Element == TimeEntry {
             .filter { $0.start.between(start, end) || $0.start.between(start, end) }
     }
 }
+
+extension TimeEntry {
+    func matches(_ terms: SearchTerm) -> Bool {
+        if terms.byDescription && self.description != terms.description {
+            return false
+        }
+        
+        if !terms.project.matches(self.project) {
+            return false
+        }
+        
+        return true
+    }
+}

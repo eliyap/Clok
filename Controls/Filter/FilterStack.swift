@@ -15,14 +15,22 @@ struct FilterStack: View {
     @State private var spacing = CGFloat.zero
     
     var body: some View {
-        VStack(spacing: .zero) {
-            ProjectButton()
-                .padding(.bottom, spacing)
-            Circle()
-                .frame(width: buttonSize, height: buttonSize)
-                .padding(.bottom, spacing)
+        VStack(alignment: .leading, spacing: .zero) {
+            if data.searching {
+                ProjectButton()
+                    .padding(.bottom, spacing)
+                    .transition(.opacity)
+                ByDescriptionButton()
+                    .padding(.bottom, spacing)
+                    .transition(.opacity)
+                DescriptionButton()
+                    .padding(.bottom, spacing)
+                    .transition(.opacity)
+            }
             FilterButton()
         }
+        /// don't pad vertically, week button already does that
+        .padding([.leading, .trailing], buttonPadding)
         .onReceive(data.$searching, perform: { searching in
             withAnimation(.linear(duration: 0.1)) {
                 self.spacing = searching ? buttonPadding : -self.buttonSize

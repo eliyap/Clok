@@ -3,8 +3,11 @@ import Foundation
 struct SearchTerm {
     /// May remove project restriction by choosing Any Project
     var project:Project
-    /// if you *do not wish* to search by description, set to nil
-    var description:String?
+    /// don't use optional to denote no preference, as we wish to retain the user's last description
+    var description:String
+    
+    /// if you *do not wish* to search by description, set to false
+    var byDescription = false
 }
 
 /**

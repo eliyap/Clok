@@ -15,14 +15,14 @@ struct FilterButton: View {
     
     var body: some View {
         Button(action: {
-            self.data.searching.toggle()
+            withAnimation {
+                self.data.searching.toggle()
+            }
         }) {
             WeekButtonGlyph(
                 /// fill icon when searching
                 name: "line.horizontal.3.decrease.circle" + (self.data.searching ? ".fill" : "")
             )
-                /// don't pad vertically, week button already does that
-                .padding([.leading, .trailing], buttonPadding)
         }
     }
 }

@@ -20,7 +20,7 @@ struct EntrySpiral: View {
         SpiralPart(entry)?
             .fill(entry.project.color)
             // goes transparent when filtered out
-            .opacity(opacity * (self.data.terms.project == entry.project ? 1 : 0.5) )
+            .opacity(opacity * (entry.matches(self.data.terms) ? 1 : 0.5) )
             .scaleEffect(CGFloat(scale))
             
             // MARK: - Tap Handler

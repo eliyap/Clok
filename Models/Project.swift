@@ -14,10 +14,9 @@ struct Project: Hashable, Comparable, Identifiable {
     var color: Color
     var id: Int
     
-    static func == (lhs: Project, rhs: Project) -> Bool {
-        /// all projects are equal to Any Project
-        if lhs.id == Project.any.id || rhs.id == Project.any.id { return true }
-        else { return lhs.id == rhs.id }
+    func matches(_ other: Project) -> Bool {
+        /// Any Project matches all other projects
+        self == other || other == .any || self == .any
     }
     
     static func < (lhs: Project, rhs: Project) -> Bool {

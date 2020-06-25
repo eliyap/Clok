@@ -11,18 +11,13 @@ import SwiftUI
 struct StatView: View {
     @EnvironmentObject var data: TimeData
     @EnvironmentObject var zero: ZeroDate
-    @State private var search = SearchTerm(
-        project: .any,
-        description: nil
-    )
     var body: some View {
         NavigationView {
             VStack {
-                SearchView(search: self.$search)
                 StatDisplayView(for: WeekTimeFrame(
                     start: self.zero.date,
                     entries: self.data.report.entries,
-                    terms: self.search
+                    terms: self.data.terms
                 ))
                 .navigationBarHidden(true)
                 .navigationBarTitle("Summary", displayMode: .inline)
