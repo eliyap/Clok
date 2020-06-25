@@ -16,7 +16,7 @@ struct DescriptionButton: View {
     let radius = CGFloat(10)
     
     var body: some View {
-        HStack(spacing: .zero) {
+        HStack {
             Image(systemName:
                 /// no preference for description: wildcard!
                 self.data.terms.byDescription == .any ? "asterisk.circle" :
@@ -30,19 +30,21 @@ struct DescriptionButton: View {
                 .modifier(ButtonGlyph())
                 .onTapGesture { self.data.terms.byDescription.cycle() }
             
-            Text("Description is ")
-                .onTapGesture { self.data.terms.byDescription.cycle() }
-            
-            if data.terms.byDescription == .any {
-                Text("Anything")
-            } else if data.terms.byDescription == .empty {
-                Text("Empty")
-            } else if data.terms.byDescription == .specific {
-                TextField("Description", text: self.$data.terms.description)
-                    .padding(3)
-                    .overlay(RoundedRectangle(cornerRadius: 5)
-                        .stroke(Color.secondary, lineWidth: 2)
-                    )
+            HStack(spacing: .zero) {
+                Text("Description is ")
+                    .onTapGesture { self.data.terms.byDescription.cycle() }
+                
+                if data.terms.byDescription == .any {
+                    Text("Anything")
+                } else if data.terms.byDescription == .empty {
+                    Text("Empty")
+                } else if data.terms.byDescription == .specific {
+                    TextField("Description", text: self.$data.terms.description)
+                        .padding(3)
+                        .overlay(RoundedRectangle(cornerRadius: 5)
+                            .stroke(Color.secondary, lineWidth: 2)
+                        )
+                }
             }
         }
     }
