@@ -33,8 +33,9 @@ struct ProjectButton: View {
     }
     
     func makeSheet() -> ActionSheet {
+        let projects = [Project.any] + self.data.projects()
         /// make a button for each project
-        let projectBtns = self.data.projects().map { project in
+        let projectBtns = projects.map { project in
             ActionSheet.Button.default(Text(project.name)) { () -> Void in
                 self.data.terms.project = project
             }
@@ -43,8 +44,7 @@ struct ProjectButton: View {
         
         
         return ActionSheet(
-            title: Text("Change background"),
-            message: Text("Select a new color"),
+            title: Text("Project"),
             buttons: projectBtns
         )
     }
