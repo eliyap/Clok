@@ -17,10 +17,11 @@ struct FilterStack: View {
     var body: some View {
         VStack(alignment: .leading, spacing: .zero) {
             if data.searching {
-                ProjectButton()
+                Text("Filter Entries where")
+                    .font(.title)
                     .padding(.bottom, spacing)
                     .transition(.opacity)
-                ByDescriptionButton()
+                ProjectButton()
                     .padding(.bottom, spacing)
                     .transition(.opacity)
                 DescriptionButton()
@@ -32,7 +33,7 @@ struct FilterStack: View {
         /// don't pad vertically, week button already does that
         .padding([.leading, .trailing], buttonPadding)
         .onReceive(data.$searching, perform: { searching in
-            withAnimation(.linear(duration: 0.1)) {
+            withAnimation(.linear(duration: 0.15)) {
                 self.spacing = searching ? buttonPadding : -self.buttonSize
             }
         })

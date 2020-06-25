@@ -44,7 +44,7 @@ struct ContentView: View {
             .background(offBG())
             .onAppear {
                 /// load data immediately
-                self.loadData()
+//                self.loadData()
             }
             /// fade out loading screen when data is finished being requested
 //            ProgressIndicator()

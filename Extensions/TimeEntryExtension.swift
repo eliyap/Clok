@@ -20,7 +20,10 @@ extension TimeEntry {
     func matches(_ terms: SearchTerm) -> Bool {
         /// perform case insensitive comparison
         /// NOTE: search can be significantly improved (stemming, fuzzy matching, etc.)
-        if terms.byDescription && self.description.caseInsensitiveCompare(terms.description) != .orderedSame  {
+        if terms.byDescription == .empty && self.description != "" {
+            return false
+        }
+        else if terms.byDescription == .specific && self.description.caseInsensitiveCompare(terms.description) != .orderedSame {
             return false
         }
         
