@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		227C613724A3F557006F8168 /* FilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227C613624A3F557006F8168 /* FilterButton.swift */; };
+		22928AC524A4207E00DC9EC5 /* FilterStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22928AC424A4207E00DC9EC5 /* FilterStack.swift */; };
+		22928AC724A423AA00DC9EC5 /* WeekButtonGlyph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22928AC624A423AA00DC9EC5 /* WeekButtonGlyph.swift */; };
+		22928AC924A429F700DC9EC5 /* ProjectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22928AC824A429F700DC9EC5 /* ProjectButton.swift */; };
 		C615CD57245F332300D62B87 /* Toggl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C615CD56245F332300D62B87 /* Toggl.swift */; };
 		C615CD59245F33F100D62B87 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = C615CD58245F33F100D62B87 /* Report.swift */; };
 		C61D2658249BE1990056C9FA /* StatHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61D2657249BE1990056C9FA /* StatHelpers.swift */; };
@@ -81,6 +84,9 @@
 
 /* Begin PBXFileReference section */
 		227C613624A3F557006F8168 /* FilterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterButton.swift; sourceTree = "<group>"; };
+		22928AC424A4207E00DC9EC5 /* FilterStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FilterStack.swift; path = Controls/Filter/FilterStack.swift; sourceTree = SOURCE_ROOT; };
+		22928AC624A423AA00DC9EC5 /* WeekButtonGlyph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WeekButtonGlyph.swift; path = Controls/WeekButtonGlyph.swift; sourceTree = "<group>"; };
+		22928AC824A429F700DC9EC5 /* ProjectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProjectButton.swift; path = Controls/Filter/ProjectButton.swift; sourceTree = SOURCE_ROOT; };
 		C615CD56245F332300D62B87 /* Toggl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toggl.swift; sourceTree = "<group>"; };
 		C615CD58245F33F100D62B87 /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
 		C61D2657249BE1990056C9FA /* StatHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatHelpers.swift; sourceTree = "<group>"; };
@@ -170,11 +176,11 @@
 			isa = PBXGroup;
 			children = (
 				C63C0D43248D3B5000163E20 /* Knob */,
+				22928ACA24A42A0600DC9EC5 /* Filter */,
 				C6855DE62496E7050050F8D4 /* SpiralControls.swift */,
 				C68F8C8C24A04CE8000D249B /* IceCreamStick.swift */,
 				C68F8C8A24A03DB4000D249B /* TimeStripView.swift */,
 				C68842AF247B3D5300DC5C42 /* WeekButtons.swift */,
-				227C613624A3F557006F8168 /* FilterButton.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -187,6 +193,16 @@
 				C6AAB3F1249F061D00DFBA36 /* TimeData.swift */,
 			);
 			path = Global;
+			sourceTree = "<group>";
+		};
+		22928ACA24A42A0600DC9EC5 /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				22928AC424A4207E00DC9EC5 /* FilterStack.swift */,
+				227C613624A3F557006F8168 /* FilterButton.swift */,
+				22928AC824A429F700DC9EC5 /* ProjectButton.swift */,
+			);
+			path = Filter;
 			sourceTree = "<group>";
 		};
 		C63C0D43248D3B5000163E20 /* Knob */ = {
@@ -262,6 +278,7 @@
 		C6C18D382448F96C000345D5 = {
 			isa = PBXGroup;
 			children = (
+				22928AC624A423AA00DC9EC5 /* WeekButtonGlyph.swift */,
 				C6428DDB2470A6FE00A02A9B /* Default-568h@2x.png */,
 				C6C18D7C244BE891000345D5 /* Constants.swift */,
 				C6C18D5A2448F96F000345D5 /* ClokTests */,
@@ -500,6 +517,7 @@
 				C62F7B8824970E530076F64C /* StatView.swift in Sources */,
 				C6C18D7524493EC8000345D5 /* SpiralUI.swift in Sources */,
 				C67EAAB5244D0FF3008D4982 /* TimeEntry.swift in Sources */,
+				22928AC924A429F700DC9EC5 /* ProjectButton.swift in Sources */,
 				C6751D8424719AF7002965CC /* CustomTableView.swift in Sources */,
 				C63FC2F8249BCEB900747D49 /* AngleExtension.swift in Sources */,
 				C6AAB3EA249EF26800DFBA36 /* TimeEntryExtension.swift in Sources */,
@@ -519,6 +537,7 @@
 				C6751D8724719AF7002965CC /* DetailView.swift in Sources */,
 				C6751D8A2471E39F002965CC /* Position.swift in Sources */,
 				C6C18D7D244BE891000345D5 /* Constants.swift in Sources */,
+				22928AC524A4207E00DC9EC5 /* FilterStack.swift in Sources */,
 				C61D2658249BE1990056C9FA /* StatHelpers.swift in Sources */,
 				C63C0D4B248DBDDB00163E20 /* Handle.swift in Sources */,
 				C6751D8524719AF7002965CC /* TableView.swift in Sources */,
@@ -527,6 +546,7 @@
 				C688BFCA24A18BF00077CECF /* RaisedShape.swift in Sources */,
 				227C613724A3F557006F8168 /* FilterButton.swift in Sources */,
 				C6855DE72496E7050050F8D4 /* SpiralControls.swift in Sources */,
+				22928AC724A423AA00DC9EC5 /* WeekButtonGlyph.swift in Sources */,
 				C6AAB3F2249F061D00DFBA36 /* TimeData.swift in Sources */,
 				C615CD57245F332300D62B87 /* Toggl.swift in Sources */,
 				C615CD59245F33F100D62B87 /* Report.swift in Sources */,

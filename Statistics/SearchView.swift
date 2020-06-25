@@ -31,7 +31,7 @@ struct SearchView: View {
     func ProjectListLink() -> some View {
         NavigationLink(destination: ProjectListView(
             search: self.$search,
-            projects: self.data.projects().sorted()
+            projects: self.data.projects()
         )
             .navigationBarTitle("Projects", displayMode: .inline)
             .navigationBarHidden(true)

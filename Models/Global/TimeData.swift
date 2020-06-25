@@ -21,8 +21,10 @@ final class TimeData: ObservableObject {
     // true when user is changing the search terms
     @Published var searching = false
     
-    func projects() -> Set<Project> {
+    func projects() -> [Project] {
+        /// use set to make unique
         Set(self.report.entries.map{$0.project})
+            .sorted()
     }
 }
 

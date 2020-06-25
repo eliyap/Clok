@@ -12,20 +12,17 @@ struct FilterButton: View {
     @EnvironmentObject private var data: TimeData
     
     let radius = CGFloat(10)
-
-    
     
     var body: some View {
-        VStack {
-            Button(action: {
-                self.data.searching.toggle()
-            }) {
-                WeekButtonGlyph(
-                    /// change icons when toggled
-                    name: "line.horizontal.3.decrease.circle" + (self.data.searching ? ".fill" : "")
-                )
-                    .padding([.leading, .trailing], buttonPadding)
-            }
+        Button(action: {
+            self.data.searching.toggle()
+        }) {
+            WeekButtonGlyph(
+                /// fill icon when searching
+                name: "line.horizontal.3.decrease.circle" + (self.data.searching ? ".fill" : "")
+            )
+                /// don't pad vertically, week button already does that
+                .padding([.leading, .trailing], buttonPadding)
         }
     }
 }
