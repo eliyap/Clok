@@ -18,7 +18,9 @@ extension Array where Element == TimeEntry {
 
 extension TimeEntry {
     func matches(_ terms: SearchTerm) -> Bool {
-        if terms.byDescription && self.description != terms.description {
+        /// perform case insensitive comparison
+        /// NOTE: search can be significantly improved (stemming, fuzzy matching, etc.)
+        if terms.byDescription && self.description.caseInsensitiveCompare(terms.description) != .orderedSame  {
             return false
         }
         
