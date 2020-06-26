@@ -17,9 +17,9 @@ class TableViewCell: UITableViewCell {
     @IBOutlet weak var startEnd: UILabel!
     
     private let df = DateFormatter()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         df.timeStyle = .short
     }
 
