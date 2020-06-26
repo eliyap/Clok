@@ -14,7 +14,7 @@ class TableRow : ObservableObject {
 
 class TimeEntryDataSource: TableViewDataSource, ObservableObject {
     
-    @ObservedObject var zero: ZeroDate
+    @ObservedObject private var zero: ZeroDate
     @Published var mutableData = [TimeEntry]()
     private let df = DateFormatter()
     
@@ -67,7 +67,8 @@ class TimeEntryDataSource: TableViewDataSource, ObservableObject {
     
     /// number of rows in specified section (zero indexed)
     func rowsIn(section: Int) -> Int {
-        mutableData.within(
+        print("section MN is \(midnightFor(section: section))")
+        return mutableData.within(
             interval: dayLength,
             of: midnightFor(section: section)
         ).count
@@ -89,7 +90,11 @@ class TimeEntryDataSource: TableViewDataSource, ObservableObject {
     
     init(data someData: [TimeEntry], zero zero_ : ZeroDate) {
         zero = zero_
-        mutableData.append(contentsOf: someData)
+        mutableData.append(contentsOf: someData
+            .within(interval: weekLength, of: zero.date)
+            /// - IMPORTANT: entries must be sorted chronologically by start date (earliest start -> latest start)
+            .sorted(by: {$0.start < $1.start})
+        )
         df.setLocalizedDateFormatFromTemplate("MMMdd")
     }
     func append(contentsOf data: [TimeEntry]) {
@@ -103,10 +108,6 @@ class TimeEntryDataSource: TableViewDataSource, ObservableObject {
 struct CustomTableView: View, TableViewDelegate {
     
     @ObservedObject var mutableData = TimeEntryDataSource(data: [], zero: ZeroDate())
-    
-    /// clone of environment object that we pass to the tableview
-    @State private var zeroClone = ZeroDate()
-    
     @State var inputField: String = ""
     @State var isScrolling: Bool = false
     
@@ -114,21 +115,15 @@ struct CustomTableView: View, TableViewDelegate {
     @State var selectedEntry = TimeEntry()
     @State var isLoading = false
     
+    /// clone of environment object that we pass to the tableview
+    @State private var zeroClone = ZeroDate()
     @State var tableRow = TableRow()
     
     @EnvironmentObject private var listRow: ListRow
     @EnvironmentObject private var zero: ZeroDate
+    @EnvironmentObject private var data: TimeData
         
     init(_ entries:[TimeEntry]) {
-        /// - IMPORTANT: entries must be sorted chronologically by start date (earliest start -> latest start)
-        mutableData = TimeEntryDataSource(
-            data: entries.sorted(by: {$0.start < $1.start}),
-            zero: zeroClone
-        )
-        self.mutableData.append(contentsOf: entries)
-        
-        // using method from
-        // https://stackoverflow.com/questions/51267284/ios-swift-how-to-have-dateformatter-without-year-for-any-locale
     }
     
     var body: some View {
@@ -144,7 +139,10 @@ struct CustomTableView: View, TableViewDelegate {
                 .hidden()
                 
                 TableView(
-                    dataSource: self.mutableData as TableViewDataSource,
+                    dataSource: TimeEntryDataSource(
+                        data: self.data.report.entries,
+                        zero: zeroClone
+                    ) as TableViewDataSource,
                     delegate: self,
                     tableRow: self.tableRow
                 )

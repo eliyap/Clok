@@ -95,10 +95,10 @@ struct TableView: UIViewRepresentable {
             self.parent = parent
         }
         
-        // This function determines if the table should refresh. It keeps track of the count of items and
-        // returns true if the new data has a different count. Ideally, you'd compare the count but also
-        // compare the items. This is crucial to avoid redrawing the screen whenever it scrolls.
+        /// This function determines if the table should refresh.
+        /// This is crucial to avoid redrawing the screen whenever it scrolls.
         func updateData(newData: TableViewDataSource) -> Bool {
+            print("new bounds \(newData.boundIDs()), old \(previousBounds)")
             if newData.boundIDs() != previousBounds {
                 mydata = newData
                 previousBounds = newData.boundIDs()
