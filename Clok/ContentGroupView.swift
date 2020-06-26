@@ -19,6 +19,12 @@ struct ContentGroupView: View {
                 ZStack{
                     SpiralUI()
                     KnobView()
+                    if self.data.searching {
+                        Rectangle()
+                        .foregroundColor(Color(UIColor.systemBackground))
+                        .opacity(0.4)
+                        .edgesIgnoringSafeArea(.all)
+                    }
                 }
                     .blur(radius: blurRadius)
                     .onReceive(data.$searching, perform: { searching in
