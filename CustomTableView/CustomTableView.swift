@@ -16,6 +16,7 @@ class TimeEntryDataSource: TableViewDataSource, ObservableObject {
     
     @ObservedObject var zero: ZeroDate
     @Published var mutableData = [TimeEntry]()
+    private let df = DateFormatter()
     
     func midnightFor(section: Int) -> Date {
         let cal = Calendar.current
@@ -64,6 +65,7 @@ class TimeEntryDataSource: TableViewDataSource, ObservableObject {
         return IndexPath(row: row - firstRowOfSection, section: section)
     }
     
+    /// number of rows in specified section (zero indexed)
     func rowsIn(section: Int) -> Int {
         mutableData.within(
             interval: dayLength,
@@ -71,9 +73,26 @@ class TimeEntryDataSource: TableViewDataSource, ObservableObject {
         ).count
     }
     
+    func headerFor(section: Int) -> String {
+        let cal = Calendar.current
+        let currentYear = cal.component(.year, from: Date())
+        let zeroYear = cal.component(.year, from: zero.date)
+        
+        let weekdayName = df.shortWeekdaySymbols[cal.component(.weekday, from: midnightFor(section: section)) - 1]
+
+        /// day of week, day of month, MMM
+        return [
+            weekdayName,
+            df.string(from: midnightFor(section: section)),
+            /// plus optional YYYY if it is not current year
+            ((currentYear == zeroYear) ? "" : "\(zeroYear)")
+        ].joined(separator: " ")
+    }
+    
     init(data someData: [TimeEntry], zero zero_ : ZeroDate) {
         zero = zero_
         mutableData.append(contentsOf: someData)
+        df.setLocalizedDateFormatFromTemplate("MMMdd")
     }
     func append(contentsOf data: [TimeEntry]) {
         mutableData.append(contentsOf: data)

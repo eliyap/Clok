@@ -14,6 +14,7 @@ protocol TableViewDataSource {
     func boundIDs() -> (Int, Int)
     func pathFor(entry: TimeEntry?, relativeTo zero: Date) -> IndexPath
     func rowsIn(section: Int) -> Int
+    func headerFor(section: Int) -> String
 }
 
 protocol TableViewDelegate {
@@ -160,7 +161,7 @@ struct TableView: UIViewRepresentable {
         }
         
         func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-            return "Section \(section)"
+            return mydata?.headerFor(section: section)
         }
         
     }
