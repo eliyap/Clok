@@ -18,10 +18,17 @@ enum weekLabels : String {
 
 struct WeekButtons: View {
     @EnvironmentObject private var zero:ZeroDate
+    @EnvironmentObject private var data: TimeData
     
     var body: some View {
         HStack {
             Button(action: {
+                /// break out of search if tapped
+                guard !self.data.searching else {
+                    self.data.searching = false
+                    return
+                }
+                
                 withAnimation { self.zero.date -= weekLength }
                 self.zero.weekSkip = .back
             }) {
@@ -30,6 +37,12 @@ struct WeekButtons: View {
             }
             Spacer()
             Button(action: {
+                /// break out of search if tapped
+                guard !self.data.searching else {
+                    self.data.searching = false
+                    return
+                }
+                
                 withAnimation { self.zero.date += weekLength }
                 self.zero.weekSkip = .fwrd
             }) {
