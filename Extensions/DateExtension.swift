@@ -100,3 +100,16 @@ extension Array where Element == Date {
         return Angle(x: meanX, y: meanY).time24h()
     }
 }
+
+extension Date {
+    /// get the short weekday name
+    /// uses "Mon" to "Sun" in EN, hopefully translates well to other languages
+    public func shortWeekday() -> String {
+        DateFormatter()
+            .shortWeekdaySymbols[Calendar.current.component(
+                .weekday,
+                from: self
+            /// fix offset from 1 indexed components to zero indexed name array
+            ) - 1]
+    }
+}

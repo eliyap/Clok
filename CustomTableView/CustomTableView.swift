@@ -78,11 +78,9 @@ class TimeEntryDataSource: TableViewDataSource, ObservableObject {
         let currentYear = cal.component(.year, from: Date())
         let zeroYear = cal.component(.year, from: zero.date)
         
-        let weekdayName = df.shortWeekdaySymbols[cal.component(.weekday, from: midnightFor(section: section)) - 1]
-
         /// day of week, day of month, MMM
         return [
-            weekdayName,
+            midnightFor(section: section).shortWeekday(),
             df.string(from: midnightFor(section: section)),
             /// plus optional YYYY if it is not current year
             ((currentYear == zeroYear) ? "" : "\(zeroYear)")
