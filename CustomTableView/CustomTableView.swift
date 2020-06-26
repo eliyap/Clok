@@ -24,6 +24,11 @@ class TimeEntryDataSource: TableViewDataSource, ObservableObject {
         mutableData[path.row]
     }
     
+    /// for reloading purposes, check the first and last ID for changes
+    func boundIDs() -> (Int, Int) {
+        (mutableData.first?.id ?? NSNotFound, mutableData.last?.id ?? NSNotFound)
+    }
+    
     //MARK: Cell Lookup
     /// find the row holding this cell
     func rowForEntry(_ entry: TimeEntry?) -> Int {
@@ -55,17 +60,7 @@ struct CustomTableView: View, TableViewDelegate {
     
     @EnvironmentObject private var listRow: ListRow
     @EnvironmentObject private var zero: ZeroDate
-    
-//    func supplyMoreData() {
-//        isLoading = true
-//        var temp = [TimeEntry]()
-//        for i in 0..<20 {
-//            temp.append("New Item \(mutableData.count() + i)")
-//        }
-//        mutableData.append(contentsOf: temp)
-//        isLoading = false
-//    }
-    
+        
     init(_ entries:[TimeEntry]) {
         self.mutableData.append(contentsOf: entries)
         
@@ -116,18 +111,6 @@ struct CustomTableView: View, TableViewDelegate {
     }
     
     func onAppear(_ tableView: TableView, at index: Int) {
-//        if
-//            // item loaded is within the last 5 items
-//            index + 5 > self.mutableData.count() &&
-//            // there is still more data to load
-//            self.mutableData.count() < self.total &&
-//            // not already loading something
-//            !self.isLoading
-//        {
-//            print("*** NEED TO SUPPLY MORE DATA ***")
-//            // might not need this method
-//            self.supplyMoreData()
-//        }
     }
     
     func onTapped(_ tableView: TableView, selected entry:TimeEntry?) {

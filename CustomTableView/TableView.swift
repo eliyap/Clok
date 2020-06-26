@@ -11,6 +11,7 @@ import SwiftUI
 protocol TableViewDataSource {
     func count() -> Int
     func entryAt(_ path:IndexPath) -> TimeEntry
+    func boundIDs() -> (Int, Int)
 }
 
 protocol TableViewDelegate {
@@ -78,7 +79,8 @@ struct TableView: UIViewRepresentable {
         var mydata: TableViewDataSource?
         var delegate: TableViewDelegate?
         
-        var previousCount = 0
+        /// save most recent first and last entry ID, so we can see if the data changed
+        var previousBounds = (0, 0)
         
         init(_ parent: TableView, delegate: TableViewDelegate?) {
             self.delegate = delegate
@@ -89,9 +91,9 @@ struct TableView: UIViewRepresentable {
         // returns true if the new data has a different count. Ideally, you'd compare the count but also
         // compare the items. This is crucial to avoid redrawing the screen whenever it scrolls.
         func updateData(newData: TableViewDataSource) -> Bool {
-            if newData.count() != previousCount {
+            if newData.boundIDs() != previousBounds {
                 mydata = newData
-                previousCount = newData.count()
+                previousBounds = newData.boundIDs()
                 return true
             }
             return false
