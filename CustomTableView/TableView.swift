@@ -63,11 +63,13 @@ struct TableView: UIViewRepresentable {
             
         // move to selected row, or none if out of bounds (NSNotFound will always be always out of bounds)
         if tableRow.path.row != NSNotFound {
-            uiView.selectRow(at: tableRow.path, animated: true, scrollPosition: .top)
+            /// copy path value to lock it in, otherwise it will have changed by the time the async deselect fires
+            let cellPath = tableRow.path
+            uiView.selectRow(at: cellPath, animated: true, scrollPosition: .top)
             
             /// deselect after .5s, gives time for scroll to occur before fade out
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                uiView.deselectRow(at: self.tableRow.path, animated: true)
+                uiView.deselectRow(at: cellPath, animated: true)
             }
         }
     }
@@ -105,20 +107,24 @@ struct TableView: UIViewRepresentable {
         }
         
         func numberOfSections(in tableView: UITableView) -> Int {
-            // 7 days in 1 week
-            return 7
+            // 7 days in 1 week, + 1 because we can bridge midnight
+            return 8
         }
         
         /// how many rows in this section (1 section being 1 day)
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             /// default to 0 rows (may not be reasonable!)
+            print("section \(section) has \(mydata?.rowsIn(section: section)) rows")
             return mydata?.rowsIn(section: section) ?? 0
         }
         
         // returns the cell at the provided index
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "CellIdentifier", for: indexPath) as! TableViewCell
-
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: "CellIdentifier",
+                for: indexPath
+            ) as! TableViewCell
+            
             if let dataSource = mydata {
                 let entry = dataSource.entryAt(indexPath)
                 

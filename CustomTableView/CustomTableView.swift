@@ -103,7 +103,11 @@ struct CustomTableView: View, TableViewDelegate {
     @EnvironmentObject private var zero: ZeroDate
         
     init(_ entries:[TimeEntry]) {
-        mutableData = TimeEntryDataSource(data: entries, zero: zeroClone)
+        /// - IMPORTANT: entries must be sorted chronologically by start date (earliest start -> latest start)
+        mutableData = TimeEntryDataSource(
+            data: entries.sorted(by: {$0.start < $1.start}),
+            zero: zeroClone
+        )
         self.mutableData.append(contentsOf: entries)
         
         // using method from
