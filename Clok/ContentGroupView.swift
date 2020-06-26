@@ -20,10 +20,15 @@ struct ContentGroupView: View {
                     SpiralUI()
                     KnobView()
                     if self.data.searching {
+                        /// increase contrast with filter text so it is more readable
                         Rectangle()
-                        .foregroundColor(Color(UIColor.systemBackground))
-                        .opacity(0.4)
-                        .edgesIgnoringSafeArea(.all)
+                            .foregroundColor(Color(UIColor.systemBackground))
+                            .opacity(0.4)
+                            .transition(.opacity)
+                            .edgesIgnoringSafeArea(.all)
+                            .onTapGesture {
+                                self.data.searching = false
+                            }
                     }
                 }
                     .blur(radius: blurRadius)

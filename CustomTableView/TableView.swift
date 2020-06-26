@@ -12,6 +12,8 @@ protocol TableViewDataSource {
     func count() -> Int
     func entryAt(_ path:IndexPath) -> TimeEntry
     func boundIDs() -> (Int, Int)
+    func pathFor(entry: TimeEntry?, relativeTo zero: Date) -> IndexPath
+    func rowsIn(section: Int) -> Int
 }
 
 protocol TableViewDelegate {
@@ -54,14 +56,18 @@ struct TableView: UIViewRepresentable {
             uiView.reloadData()
         }
         
+        var rows = 0
+        for idx in 0..<7 {
+            rows += uiView.numberOfRows(inSection: idx)
+        }
+            
         // move to selected row, or none if out of bounds (NSNotFound will always be always out of bounds)
-        if tableRow.row < uiView.numberOfRows(inSection: 0){
-            let idx = IndexPath(row: tableRow.row, section: 0)
-            uiView.selectRow(at: idx, animated: true, scrollPosition: .top)
+        if tableRow.path.row != NSNotFound {
+            uiView.selectRow(at: tableRow.path, animated: true, scrollPosition: .top)
             
             /// deselect after .5s, gives time for scroll to occur before fade out
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                uiView.deselectRow(at: idx, animated: true)
+                uiView.deselectRow(at: self.tableRow.path, animated: true)
             }
         }
     }
@@ -73,7 +79,6 @@ struct TableView: UIViewRepresentable {
         UITableViewDelegate,
         UITableViewDataSource
     {
-        
         var parent: TableView
 
         var mydata: TableViewDataSource?
@@ -100,13 +105,14 @@ struct TableView: UIViewRepresentable {
         }
         
         func numberOfSections(in tableView: UITableView) -> Int {
-            // we only have 1 section
-            return 1
+            // 7 days in 1 week
+            return 7
         }
         
+        /// how many rows in this section (1 section being 1 day)
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            // tells how many rows we have in the 1 and only section
-            return mydata?.count() ?? 0
+            /// default to 0 rows (may not be reasonable!)
+            return mydata?.rowsIn(section: section) ?? 0
         }
         
         // returns the cell at the provided index
@@ -136,7 +142,6 @@ struct TableView: UIViewRepresentable {
         }
         
         func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-            // something here?
         }
         
         func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
@@ -149,7 +154,7 @@ struct TableView: UIViewRepresentable {
         }
         
         func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-            return nil
+            return "Section \(section)"
         }
         
     }

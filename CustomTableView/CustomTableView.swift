@@ -9,19 +9,28 @@
 import SwiftUI
 
 class TableRow : ObservableObject {
-    @Published var row:Int = NSNotFound
+    @Published var path = IndexPath(row: NSNotFound, section: 0)
 }
 
 class TimeEntryDataSource: TableViewDataSource, ObservableObject {
     
+    @ObservedObject var zero: ZeroDate
     @Published var mutableData = [TimeEntry]()
+    
+    func midnightFor(section: Int) -> Date {
+        let cal = Calendar.current
+        /// get n'th day from zero date (set to midnight)
+        return cal.startOfDay(for: zero.date) + Double(section) * dayLength
+    }
     
     func count() -> Int {
         return mutableData.count
     }
     
     func entryAt(_ path:IndexPath) -> TimeEntry {
-        mutableData[path.row]
+        let idx = path.row +
+        (mutableData.firstIndex(where: {$0.start > midnightFor(section: path.section)}) ?? 0)
+        return mutableData[idx]
     }
     
     /// for reloading purposes, check the first and last ID for changes
@@ -31,11 +40,39 @@ class TimeEntryDataSource: TableViewDataSource, ObservableObject {
     
     //MARK: Cell Lookup
     /// find the row holding this cell
-    func rowForEntry(_ entry: TimeEntry?) -> Int {
-        return mutableData.firstIndex(of: entry ?? TimeEntry()) ?? NSNotFound
+    func pathFor(entry: TimeEntry?, relativeTo zero: Date) -> IndexPath {
+        guard
+            let entry = entry,
+            let row = mutableData.firstIndex(of: entry)
+        else {
+            return IndexPath(row: NSNotFound, section: 0)
+        }
+        
+        let cal = Calendar.current
+        let zeroMN = cal.startOfDay(for: zero)
+        
+        /// find which day section this falls under
+        let section = Int((entry.start - zeroMN) / dayLength)
+        
+        /// and the first entry to fall on that day
+        guard let firstRowOfSection = mutableData.firstIndex(where: {
+            $0.start > cal.startOfDay(for: entry.start)
+        }) else {
+            return IndexPath(row: NSNotFound, section: 0)
+        }
+        
+        return IndexPath(row: row - firstRowOfSection, section: section)
     }
     
-    init(_ someData: [TimeEntry]) {
+    func rowsIn(section: Int) -> Int {
+        mutableData.within(
+            interval: dayLength,
+            of: midnightFor(section: section)
+        ).count
+    }
+    
+    init(data someData: [TimeEntry], zero zero_ : ZeroDate) {
+        zero = zero_
         mutableData.append(contentsOf: someData)
     }
     func append(contentsOf data: [TimeEntry]) {
@@ -48,7 +85,11 @@ class TimeEntryDataSource: TableViewDataSource, ObservableObject {
 
 struct CustomTableView: View, TableViewDelegate {
     
-    @ObservedObject var mutableData = TimeEntryDataSource([])
+    @ObservedObject var mutableData = TimeEntryDataSource(data: [], zero: ZeroDate())
+    
+    /// clone of environment object that we pass to the tableview
+    @State private var zeroClone = ZeroDate()
+    
     @State var inputField: String = ""
     @State var isScrolling: Bool = false
     
@@ -62,6 +103,7 @@ struct CustomTableView: View, TableViewDelegate {
     @EnvironmentObject private var zero: ZeroDate
         
     init(_ entries:[TimeEntry]) {
+        mutableData = TimeEntryDataSource(data: entries, zero: zeroClone)
         self.mutableData.append(contentsOf: entries)
         
         // using method from
@@ -84,9 +126,16 @@ struct CustomTableView: View, TableViewDelegate {
                     dataSource: self.mutableData as TableViewDataSource,
                     delegate: self,
                     tableRow: self.tableRow
-                ).onReceive(self.listRow.$entry, perform: {
-                    self.tableRow.row = self.mutableData.rowForEntry($0)
+                )
+                /// abuse onReceive to pass environment row information down
+                .onReceive(self.listRow.$entry, perform: {
+                    self.tableRow.path = self.mutableData.pathFor(entry: $0, relativeTo: self.zero.date)
                 })
+                /// abuse onReceive to pass zeroDate down
+                .onReceive(self.zero.$date, perform: {
+                    self.zeroClone.date = $0
+                })
+            
                 
             }
             .navigationBarTitle("")
