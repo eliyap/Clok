@@ -41,7 +41,7 @@ class TimeEntryDataSource: TableViewDataSource, ObservableObject {
     
     //MARK: Cell Lookup
     /// find the row holding this cell
-    func pathFor(entry: TimeEntry?, relativeTo zero: Date) -> IndexPath {
+    func pathFor(entry: TimeEntry?) -> IndexPath {
         guard
             let entry = entry,
             let row = mutableData.firstIndex(of: entry)
@@ -50,11 +50,10 @@ class TimeEntryDataSource: TableViewDataSource, ObservableObject {
         }
         
         let cal = Calendar.current
-        let zeroMN = cal.startOfDay(for: zero)
+        let zeroMN = cal.startOfDay(for: zero.date)
         
         /// find which day section this falls under
         let section = Int((entry.start - zeroMN) / dayLength)
-        
         /// and the first entry to fall on that day
         guard let firstRowOfSection = mutableData.firstIndex(where: {
             $0.start > cal.startOfDay(for: entry.start)
@@ -67,7 +66,6 @@ class TimeEntryDataSource: TableViewDataSource, ObservableObject {
     
     /// number of rows in specified section (zero indexed)
     func rowsIn(section: Int) -> Int {
-        print("section MN is \(midnightFor(section: section))")
         return mutableData.within(
             interval: dayLength,
             of: midnightFor(section: section)
@@ -86,6 +84,17 @@ class TimeEntryDataSource: TableViewDataSource, ObservableObject {
             /// plus optional YYYY if it is not current year
             ((currentYear == zeroYear) ? "" : "\(zeroYear)")
         ].joined(separator: " ")
+    }
+    
+    func numberOfSections() -> Int {
+        let cal = Calendar.current
+        guard let first = mutableData.first?.start, let last = mutableData.last?.start else {
+            return 0
+        }
+        /// if everything is on the same day, 1 section, etc.
+        return Int((
+            cal.startOfDay(for: last) - cal.startOfDay(for: first)
+        ) / dayLength) + 1
     }
     
     init(data someData: [TimeEntry], zero zero_ : ZeroDate) {
@@ -107,7 +116,6 @@ class TimeEntryDataSource: TableViewDataSource, ObservableObject {
 
 struct CustomTableView: View, TableViewDelegate {
     
-    @ObservedObject var mutableData = TimeEntryDataSource(data: [], zero: ZeroDate())
     @State var inputField: String = ""
     @State var isScrolling: Bool = false
     
@@ -144,12 +152,8 @@ struct CustomTableView: View, TableViewDelegate {
                         zero: zeroClone
                     ) as TableViewDataSource,
                     delegate: self,
-                    tableRow: self.tableRow
+                    row: self.listRow
                 )
-                /// abuse onReceive to pass environment row information down
-                .onReceive(self.listRow.$entry, perform: {
-                    self.tableRow.path = self.mutableData.pathFor(entry: $0, relativeTo: self.zero.date)
-                })
                 /// abuse onReceive to pass zeroDate down
                 .onReceive(self.zero.$date, perform: {
                     self.zeroClone.date = $0

@@ -12,9 +12,10 @@ protocol TableViewDataSource {
     func count() -> Int
     func entryAt(_ path:IndexPath) -> TimeEntry
     func boundIDs() -> (Int, Int)
-    func pathFor(entry: TimeEntry?, relativeTo zero: Date) -> IndexPath
+    func pathFor(entry: TimeEntry?) -> IndexPath
     func rowsIn(section: Int) -> Int
     func headerFor(section: Int) -> String
+    func numberOfSections() -> Int
 }
 
 protocol TableViewDelegate {
@@ -32,7 +33,7 @@ struct TableView: UIViewRepresentable {
     let tableView = UITableView()
     
     // receives updates on the clicked time Entry from parent
-    @ObservedObject var tableRow : TableRow
+    @ObservedObject var row: ListRow
     
     func makeCoordinator() -> TableView.Coordinator {
         Coordinator(self, delegate: self.delegate)
@@ -57,15 +58,10 @@ struct TableView: UIViewRepresentable {
             uiView.reloadData()
         }
         
-        var rows = 0
-        for idx in 0..<7 {
-            rows += uiView.numberOfRows(inSection: idx)
-        }
-            
         // move to selected row, or none if out of bounds (NSNotFound will always be always out of bounds)
-        if tableRow.path.row != NSNotFound {
+        if let entry = row.entry {
             /// copy path value to lock it in, otherwise it will have changed by the time the async deselect fires
-            let cellPath = tableRow.path
+            let cellPath = dataSource.pathFor(entry: entry)
             uiView.selectRow(at: cellPath, animated: true, scrollPosition: .top)
             
             /// deselect after .5s, gives time for scroll to occur before fade out
@@ -98,7 +94,6 @@ struct TableView: UIViewRepresentable {
         /// This function determines if the table should refresh.
         /// This is crucial to avoid redrawing the screen whenever it scrolls.
         func updateData(newData: TableViewDataSource) -> Bool {
-            print("new bounds \(newData.boundIDs()), old \(previousBounds)")
             if newData.boundIDs() != previousBounds {
                 mydata = newData
                 previousBounds = newData.boundIDs()
@@ -108,14 +103,12 @@ struct TableView: UIViewRepresentable {
         }
         
         func numberOfSections(in tableView: UITableView) -> Int {
-            // 7 days in 1 week, + 1 because we can bridge midnight
-            return 8
+            return mydata?.numberOfSections() ?? 1
         }
         
         /// how many rows in this section (1 section being 1 day)
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             /// default to 0 rows (may not be reasonable!)
-            print("section \(section) has \(mydata?.rowsIn(section: section)) rows")
             return mydata?.rowsIn(section: section) ?? 0
         }
         
