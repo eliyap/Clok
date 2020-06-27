@@ -11,6 +11,7 @@ import SwiftUI
 struct StatView: View {
     @EnvironmentObject var data: TimeData
     @EnvironmentObject var zero: ZeroDate
+    @State private var dateString = ""
     private var df = DateFormatter()
     
     var body: some View {
@@ -19,9 +20,13 @@ struct StatView: View {
                 Text("Summary")
                     .font(.title)
                     .bold()
-                Text("\(df.string(from: zero.date)) – \(df.string(from: zero.date + weekLength))")
+                Text(dateString)
                     .font(.subheadline)
                     .bold()
+                    .onReceive(self.zero.$date, perform: { date in
+                        /// set labels programatically so that ellipsis animation does NOT play when changing date
+                        self.dateString = "\(self.df.string(from: date)) – \(self.df.string(from: date + weekLength))"
+                    })
                     
                 VStack(alignment: .leading) {
                     HStack {

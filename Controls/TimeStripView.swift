@@ -60,8 +60,8 @@ struct TimeStripView: View {
                 }
                 .onReceive(self.zero.$date, perform: { date in
                     /// set labels programatically so that ellipsis animation does NOT play when changing date
-                    self.dateStart = self.df.string(from: self.zero.date)
-                    self.dateEnd = " – " + self.df.string(from: self.zero.date + weekLength)
+                    self.dateStart = self.df.string(from: date)
+                    self.dateEnd = " – " + self.df.string(from: date + weekLength)
                 })
             }
                 .buttonStyle(PlainButtonStyle())
