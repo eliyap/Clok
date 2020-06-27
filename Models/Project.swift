@@ -34,7 +34,7 @@ struct Project: Hashable, Comparable, Identifiable {
     
     static let any = Project(
         name: "Any Project",
-        color: Color.black.opacity(0.0),
+        color: Color.secondary,
         id: Int.zero
     )
 }

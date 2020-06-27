@@ -79,6 +79,18 @@ extension Color {
         blue: 30 / 255
     )
     
+    static let slightWhite = Color(
+        red: 245 / 255,
+        green: 245 / 255,
+        blue: 250 / 255
+    )
+    
+    static let slightBlack = Color(
+        red: 5 / 255,
+        green: 5 / 255,
+        blue: 15 / 255
+    )
+    
     // middle of the road grey, replace with dark mode sensitive color later
     static let noProject = Color(
         red: 0.5,
@@ -91,6 +103,15 @@ struct offBG : View {
     @Environment(\.colorScheme) var mode
     var body : some View {
         return (mode == .light ? Color.offWhite : Color.offBlack)
+            /// needs to cover the status bar
+            .edgesIgnoringSafeArea(.all)
+    }
+}
+
+struct slightBG : View {
+    @Environment(\.colorScheme) var mode
+    var body : some View {
+        return (mode == .light ? Color.slightWhite : Color.slightBlack)
             /// needs to cover the status bar
             .edgesIgnoringSafeArea(.all)
     }
