@@ -87,14 +87,11 @@ class TimeEntryDataSource: TableViewDataSource, ObservableObject {
     }
     
     func numberOfSections() -> Int {
-        let cal = Calendar.current
-        guard let first = mutableData.first?.start, let last = mutableData.last?.start else {
-            return 0
-        }
-        /// if everything is on the same day, 1 section, etc.
-        return Int((
-            cal.startOfDay(for: last) - cal.startOfDay(for: first)
-        ) / dayLength) + 1
+        /// 7 days in a week + 1 for crossing the midnight boundary
+        /// - NOTE: while it is more elegant to only show sections which have at least 1 row,
+        /// the function pathFor(entry) relies on counting days since zero Date to determine the section.
+        /// It will throw a bounds error if we hide some of the sections -> there needs to be 8 days
+        return 8
     }
     
     init(data someData: [TimeEntry], zero zero_ : ZeroDate) {
