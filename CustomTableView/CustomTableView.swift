@@ -138,17 +138,9 @@ struct CustomTableView: View, TableViewDelegate {
         
         NavigationView {
             ZStack {
-                // makes the whole thing clickable
-                NavigationLink(destination: DetailView(entry: self.selectedEntry), isActive: self.$detailViewActive) {
-                    EmptyView()
-                }
-                .frame(width: 0, height: 0)
-                .disabled(true)
-                .hidden()
-                
                 TableView(
                     dataSource: TimeEntryDataSource(
-                        data: self.data.report.entries,
+                        data: self.data.report.entries.matching(data.terms),
                         zero: zeroClone
                     ) as TableViewDataSource,
                     delegate: self,
@@ -158,8 +150,6 @@ struct CustomTableView: View, TableViewDelegate {
                 .onReceive(self.zero.$date, perform: {
                     self.zeroClone.date = $0
                 })
-            
-                
             }
             .navigationBarTitle("")
             .navigationBarHidden(true)
