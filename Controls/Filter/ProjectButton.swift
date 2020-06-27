@@ -17,18 +17,15 @@ struct ProjectButton: View {
     
     var body: some View {
         HStack {
-            Button(action: { self.showSheet.toggle() }) {
-                Image(systemName:
-                    /// show Any as an empty circle
-                    data.terms.project == .any ? "circle" : "largecircle.fill.circle"
-                )
-                    .foregroundColor(
-                        data.terms.project == .any ? Color.primary : data.terms.project.color
-                )
-                    .modifier(ButtonGlyph())
-            }
-            .actionSheet(isPresented: $showSheet) { makeSheet() }
+            /// show Any Project as an empty circle
+            Image(systemName: data.terms.project == .any ? "circle" : "largecircle.fill.circle")
+                .foregroundColor(data.terms.project == .any ? Color.primary : data.terms.project.color)
+                .modifier(ButtonGlyph())
+                .actionSheet(isPresented: $showSheet) { makeSheet() }
             Text(data.terms.project.name)
+        }
+        .onTapGesture {
+            self.showSheet.toggle()
         }
     }
     

@@ -19,6 +19,7 @@ struct FilterStack: View {
             if data.searching {
                 Text("Filter Entries where")
                     .font(.title)
+                    .bold()
                     .padding(.bottom, spacing)
                     .transition(.opacity)
                 ProjectButton()
