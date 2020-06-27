@@ -94,6 +94,7 @@ struct TableView: UIViewRepresentable {
         /// This function determines if the table should refresh.
         /// This is crucial to avoid redrawing the screen whenever it scrolls.
         func updateData(newData: TableViewDataSource) -> Bool {
+            
             if newData.boundIDs() != previousBounds {
                 mydata = newData
                 previousBounds = newData.boundIDs()
