@@ -86,8 +86,8 @@ extension Color {
     )
     
     static let slightBlack = Color(
-        red: 5 / 255,
-        green: 5 / 255,
+        red: 10 / 255,
+        green: 10 / 255,
         blue: 15 / 255
     )
     

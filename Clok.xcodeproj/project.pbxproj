@@ -12,6 +12,7 @@
 		22928AC524A4207E00DC9EC5 /* FilterStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22928AC424A4207E00DC9EC5 /* FilterStack.swift */; };
 		22928AC724A423AA00DC9EC5 /* WeekButtonGlyph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22928AC624A423AA00DC9EC5 /* WeekButtonGlyph.swift */; };
 		22928AC924A429F700DC9EC5 /* ProjectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22928AC824A429F700DC9EC5 /* ProjectButton.swift */; };
+		22ADD98024A80DD40015DD04 /* Stat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ADD97F24A80DD40015DD04 /* Stat.swift */; };
 		C615CD57245F332300D62B87 /* Toggl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C615CD56245F332300D62B87 /* Toggl.swift */; };
 		C615CD59245F33F100D62B87 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = C615CD58245F33F100D62B87 /* Report.swift */; };
 		C61D2658249BE1990056C9FA /* StatHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61D2657249BE1990056C9FA /* StatHelpers.swift */; };
@@ -89,6 +90,7 @@
 		22928AC424A4207E00DC9EC5 /* FilterStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FilterStack.swift; path = Controls/Filter/FilterStack.swift; sourceTree = SOURCE_ROOT; };
 		22928AC624A423AA00DC9EC5 /* WeekButtonGlyph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WeekButtonGlyph.swift; path = Controls/WeekButtonGlyph.swift; sourceTree = "<group>"; };
 		22928AC824A429F700DC9EC5 /* ProjectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProjectButton.swift; path = Controls/Filter/ProjectButton.swift; sourceTree = SOURCE_ROOT; };
+		22ADD97F24A80DD40015DD04 /* Stat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stat.swift; sourceTree = "<group>"; };
 		C615CD56245F332300D62B87 /* Toggl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toggl.swift; sourceTree = "<group>"; };
 		C615CD58245F33F100D62B87 /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
 		C61D2657249BE1990056C9FA /* StatHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatHelpers.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 			children = (
 				C688A8872479A8D6003260CE /* TimeFrame.swift */,
 				C62F7B8724970E530076F64C /* StatView.swift */,
+				22ADD97F24A80DD40015DD04 /* Stat.swift */,
 				C6AAB3ED249F04FF00DFBA36 /* ProjectListView.swift */,
 				C6AAB3EB249F003100DFBA36 /* StatDisplayView.swift */,
 				C61D2657249BE1990056C9FA /* StatHelpers.swift */,
@@ -531,6 +534,7 @@
 				C63FC2FA249BCFBD00747D49 /* DoubleExtension.swift in Sources */,
 				C6F605AD246C520D00D0FE82 /* EntrySpiral.swift in Sources */,
 				C6AAB3EE249F04FF00DFBA36 /* ProjectListView.swift in Sources */,
+				22ADD98024A80DD40015DD04 /* Stat.swift in Sources */,
 				C68842B0247B3D5300DC5C42 /* WeekButtons.swift in Sources */,
 				C64385F32485DC4900CCF47E /* KnobView.swift in Sources */,
 				C67F47D3249FD44500FD2E6E /* Project.swift in Sources */,

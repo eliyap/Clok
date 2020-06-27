@@ -20,9 +20,21 @@ struct StatDisplayView: View {
     
     var body: some View {
         Group {
-            Text("Starts Around: " + df.string(from: avgStart))
-            Text("Ends Around: " + df.string(from: avgEnd))
-            Text("Time / day: " + avgDur.toString())
+            Stat(
+                label: "Started Around",
+                symbol: "sun.dust.fill",
+                text: Text(df.string(from: avgStart))
+            )
+            Stat(
+                label: "Ended Around",
+                symbol: "moon.stars.fill",
+                text: Text(df.string(from: avgEnd))
+            )
+            Stat(
+                label: "Hours Logged",
+                symbol: "hourglass.tophalf.fill",
+                text: Text(avgDur.toString())
+            )
         }
     }
     

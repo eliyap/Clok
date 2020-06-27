@@ -27,52 +27,33 @@ struct StatView: View {
                         /// set labels programatically so that ellipsis animation does NOT play when changing date
                         self.dateString = "\(self.df.string(from: date)) – \(self.df.string(from: date + weekLength))"
                     })
-                    
-                VStack(alignment: .leading) {
-                    HStack {
-                        Tab()
-                        Text(data.terms.project.name)
-                            .bold()
-                        Spacer()
-                    }
-                    HStack {
-                        Tab()
-                        if data.terms.byDescription == .any {
-                            Text("Any Description")
-                                .foregroundColor(.secondary)
-                        } else if data.terms.byDescription == .empty {
-                            Text("No Description")
-                                .foregroundColor(.secondary)
-                        } else {
-                            Text(data.terms.description)
-                        }
-                        Spacer()
-                        
+                HStack {
+                    /// show Any Project as an empty circle
+                    Image(systemName: data.terms.project == .any ? "circle" : "largecircle.fill.circle")
+                        .foregroundColor(data.terms.project == .any ? Color.primary : data.terms.project.color)
+                    Text(data.terms.project.name)
+                        .bold()
+                    if data.terms.byDescription == .any {
+                        Text("Any Description")
+                            .foregroundColor(.secondary)
+                    } else if data.terms.byDescription == .empty {
+                        Text("No Description")
+                            .foregroundColor(.secondary)
+                    } else {
+                        Text(data.terms.description)
                     }
                 }
-                HStack{
-                    Text("Started Around")
-                    Spacer()
-                    Image(systemName: "sun.dust.fill")
+                .onTapGesture {
+                    self.data.searching = true
                 }
-                HStack{
-                    Text("Ended Around")
-                    Spacer()
-                    Image(systemName: "moon.stars.fill")
-                }
-                HStack{
-                    Text("Hours Logged")
-                    Spacer()
-                    Image(systemName: "hourglass.tophalf.fill")
-                }
-                Text("XX Total")
-                Text("XX Per Day")
+                Divider()
                 StatDisplayView(for: WeekTimeFrame(
                     start: self.zero.date,
                     entries: self.data.report.entries,
                     terms: self.data.terms
                 ))
-
+                Text("XX Total")
+                Text("XX Per Day")
             }
             .padding()
         }
@@ -87,5 +68,16 @@ struct StatView: View {
         Rectangle()
             .frame(width: listLineInset)
             .foregroundColor(data.terms.project.color)
+    }
+    
+    func Stat(label: String, symbol: String, text: Text) -> some View {
+        Group {
+            HStack{
+                Text(label)
+                Spacer()
+                Image(systemName: symbol)
+            }
+            text
+        }
     }
 }
