@@ -12,12 +12,16 @@ struct Stat: View {
     var label: String
     var symbol: String
     var text: Text
+    
+    private let glyphSize = CGFloat(30)
     var body: some View {
         Group {
             HStack{
                 Text(label)
                 Spacer()
-                Image(systemName: symbol)
+                Image(systemName: self.symbol)
+                    /// hardcoded values are bad practice, but only way I could align the glyphs
+                    .frame(width: glyphSize, height: glyphSize)
             }
             text
         }
