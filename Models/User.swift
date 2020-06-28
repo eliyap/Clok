@@ -40,5 +40,10 @@ struct User {
                 workspaces.append(Workspace(id: id))
             }
         }
+        
+        /// must have at least 1 workspace ID to function!
+        guard workspaces.count > 0 else {
+            return nil
+        }
     }
 }

@@ -6,10 +6,4 @@
 //  Copyright © 2020 Secret Asian Man 3. All rights reserved.
 //
 
-import SwiftUI
-
-struct APIKeyHandler: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
+import Foundation
