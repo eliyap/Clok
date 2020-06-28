@@ -19,6 +19,7 @@ enum weekLabels : String {
 struct WeekButtons: View {
     @EnvironmentObject private var zero:ZeroDate
     @EnvironmentObject private var data: TimeData
+    @EnvironmentObject private var settings: Settings
     
     var body: some View {
         HStack {
@@ -35,6 +36,7 @@ struct WeekButtons: View {
                 WeekButtonGlyph(name: "chevron.left")
                     .padding(buttonPadding)
             }
+            .disabled(settings.tab == .settings)
             Spacer()
             Button(action: {
                 /// break out of search if tapped
@@ -49,6 +51,7 @@ struct WeekButtons: View {
                 WeekButtonGlyph(name: "chevron.right")
                     .padding(buttonPadding)
             }
+            .disabled(settings.tab == .settings)
         }
     }
 }

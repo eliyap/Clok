@@ -7,5 +7,5 @@
 import Foundation
 
 final class Settings: ObservableObject {
-    @Published var open = false
+    @Published var tab = TimeTabView.tabs.summary
 }
