@@ -27,8 +27,6 @@ struct ContentView: View {
                 TimeTabView()
             }
             .background(offBG())
-            APIKeyHandler()
-                .edgesIgnoringSafeArea(.all)
             /// fade out loading screen when data is finished being requested
 //            if !loaded {
 //                ProgressIndicator()
@@ -38,10 +36,10 @@ struct ContentView: View {
         .onAppear {
             /// load data immediately
 //            self.loadData()
-            self.getWorkspaceIDs()
-            let saveSuccessful: Bool = KeychainWrapper.standard.set("thisisatestkey", forKey: "TogglAPIKey")
-            let retrievedString: String? = KeychainWrapper.standard.string(forKey: "TogglAPIKey")
-            print(retrievedString)
+//            self.getWorkspaceIDs()
+//            let saveSuccessful: Bool = KeychainWrapper.standard.set("thisisatestkey", forKey: "TogglAPIKey")
+//            let retrievedString: String? = KeychainWrapper.standard.string(forKey: "TogglAPIKey")
+//            print(retrievedString)
         }
     }
 }
