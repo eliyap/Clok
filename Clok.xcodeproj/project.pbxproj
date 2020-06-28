@@ -18,6 +18,7 @@
 		22928AC924A429F700DC9EC5 /* ProjectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22928AC824A429F700DC9EC5 /* ProjectButton.swift */; };
 		22ADD98024A80DD40015DD04 /* Stat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ADD97F24A80DD40015DD04 /* Stat.swift */; };
 		22BE1FEA24A921B200A9A739 /* SpiralView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BE1FE924A921B200A9A739 /* SpiralView.swift */; };
+		22BE1FED24A9247800A9A739 /* LoadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BE1FEC24A9247800A9A739 /* LoadData.swift */; };
 		22CBD84624A84CA400ED6FA3 /* WeekDateString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CBD84524A84CA400ED6FA3 /* WeekDateString.swift */; };
 		C615CD57245F332300D62B87 /* Toggl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C615CD56245F332300D62B87 /* Toggl.swift */; };
 		C615CD59245F33F100D62B87 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = C615CD58245F33F100D62B87 /* Report.swift */; };
@@ -99,6 +100,7 @@
 		22928AC824A429F700DC9EC5 /* ProjectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProjectButton.swift; path = Controls/Filter/ProjectButton.swift; sourceTree = SOURCE_ROOT; };
 		22ADD97F24A80DD40015DD04 /* Stat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stat.swift; sourceTree = "<group>"; };
 		22BE1FE924A921B200A9A739 /* SpiralView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiralView.swift; sourceTree = "<group>"; };
+		22BE1FEC24A9247800A9A739 /* LoadData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadData.swift; sourceTree = "<group>"; };
 		22CBD84524A84CA400ED6FA3 /* WeekDateString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDateString.swift; sourceTree = "<group>"; };
 		C615CD56245F332300D62B87 /* Toggl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toggl.swift; sourceTree = "<group>"; };
 		C615CD58245F33F100D62B87 /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
@@ -226,6 +228,14 @@
 			path = Filter;
 			sourceTree = "<group>";
 		};
+		22BE1FEB24A9246400A9A739 /* NetCode */ = {
+			isa = PBXGroup;
+			children = (
+				22BE1FEC24A9247800A9A739 /* LoadData.swift */,
+			);
+			path = NetCode;
+			sourceTree = "<group>";
+		};
 		C63C0D43248D3B5000163E20 /* Knob */ = {
 			isa = PBXGroup;
 			children = (
@@ -316,6 +326,7 @@
 				227C613824A3F5D9006F8168 /* Controls */,
 				C6C18D7E244CD7AA000345D5 /* Spiral */,
 				C65B7D282497D1C100EED981 /* Statistics */,
+				22BE1FEB24A9246400A9A739 /* NetCode */,
 				C688BFC624A18BA00077CECF /* Misc */,
 			);
 			sourceTree = "<group>";
@@ -566,6 +577,7 @@
 				C61D2658249BE1990056C9FA /* StatHelpers.swift in Sources */,
 				22BE1FEA24A921B200A9A739 /* SpiralView.swift in Sources */,
 				22CBD84624A84CA400ED6FA3 /* WeekDateString.swift in Sources */,
+				22BE1FED24A9247800A9A739 /* LoadData.swift in Sources */,
 				C63C0D4B248DBDDB00163E20 /* Handle.swift in Sources */,
 				C6751D8524719AF7002965CC /* TableView.swift in Sources */,
 				C6C18D80244CD7D2000345D5 /* SpiralHelpers.swift in Sources */,
