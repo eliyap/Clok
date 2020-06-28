@@ -53,9 +53,10 @@ struct ContentView: View {
             APIKeyHandler()
                 .edgesIgnoringSafeArea(.all)
             /// fade out loading screen when data is finished being requested
-//            ProgressIndicator()
-                .hidden(self.loaded)
-//                .animation(.linear)
+//            if !loaded {
+//                ProgressIndicator()
+//                    .transition(.opacity)
+//            }
         }
         
     }
