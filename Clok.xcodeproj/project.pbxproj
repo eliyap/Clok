@@ -22,7 +22,6 @@
 		C63C0D4B248DBDDB00163E20 /* Handle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63C0D4A248DBDDB00163E20 /* Handle.swift */; };
 		C63FC2F8249BCEB900747D49 /* AngleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63FC2F7249BCEB900747D49 /* AngleExtension.swift */; };
 		C63FC2FA249BCFBD00747D49 /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63FC2F9249BCFBD00747D49 /* DoubleExtension.swift */; };
-		C6428DDC2470A6FE00A02A9B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C6428DDB2470A6FE00A02A9B /* Default-568h@2x.png */; };
 		C64385F32485DC4900CCF47E /* KnobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64385F22485DC4900CCF47E /* KnobView.swift */; };
 		C64385F52485F46A00CCF47E /* CGPointExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64385F42485F46A00CCF47E /* CGPointExtension.swift */; };
 		C65B7D2C2497DE4A00EED981 /* EntryOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65B7D2B2497DE4A00EED981 /* EntryOperations.swift */; };
@@ -100,7 +99,6 @@
 		C63C0D4A248DBDDB00163E20 /* Handle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Handle.swift; sourceTree = "<group>"; };
 		C63FC2F7249BCEB900747D49 /* AngleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AngleExtension.swift; sourceTree = "<group>"; };
 		C63FC2F9249BCFBD00747D49 /* DoubleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
-		C6428DDB2470A6FE00A02A9B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		C64385F22485DC4900CCF47E /* KnobView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnobView.swift; sourceTree = "<group>"; };
 		C64385F42485F46A00CCF47E /* CGPointExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPointExtension.swift; sourceTree = "<group>"; };
 		C65B7D2B2497DE4A00EED981 /* EntryOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryOperations.swift; sourceTree = "<group>"; };
@@ -285,7 +283,6 @@
 			isa = PBXGroup;
 			children = (
 				22928AC624A423AA00DC9EC5 /* WeekButtonGlyph.swift */,
-				C6428DDB2470A6FE00A02A9B /* Default-568h@2x.png */,
 				C6C18D7C244BE891000345D5 /* Constants.swift */,
 				C6C18D5A2448F96F000345D5 /* ClokTests */,
 				C6C18D652448F96F000345D5 /* ClokUITests */,
@@ -480,7 +477,6 @@
 			files = (
 				C6C18D512448F96F000345D5 /* LaunchScreen.storyboard in Resources */,
 				C6751D8824719AF7002965CC /* TableViewCell.xib in Resources */,
-				C6428DDC2470A6FE00A02A9B /* Default-568h@2x.png in Resources */,
 				C6C18D4E2448F96F000345D5 /* Preview Assets.xcassets in Resources */,
 				C6C18D4B2448F96F000345D5 /* Assets.xcassets in Resources */,
 			);
