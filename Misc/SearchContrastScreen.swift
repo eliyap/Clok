@@ -16,9 +16,6 @@ struct SearchContrastScreen: View {
             .opacity(0.4)
             .transition(.opacity)
             .edgesIgnoringSafeArea(.all)
-            .onTapGesture {
-                self.data.searching = false
-            }
     }
 }
 

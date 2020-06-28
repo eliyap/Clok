@@ -25,7 +25,7 @@ struct WeekButtons: View {
             Button(action: {
                 /// break out of search if tapped
                 guard !self.data.searching else {
-                    self.data.searching = false
+                    withAnimation { self.data.searching = false }
                     return
                 }
                 
@@ -39,7 +39,7 @@ struct WeekButtons: View {
             Button(action: {
                 /// break out of search if tapped
                 guard !self.data.searching else {
-                    self.data.searching = false
+                    withAnimation { self.data.searching = false }
                     return
                 }
                 

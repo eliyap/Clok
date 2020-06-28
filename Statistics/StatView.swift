@@ -36,7 +36,7 @@ struct StatView: View {
                     }
                 }
                 .onTapGesture {
-                    self.data.searching = true
+                    withAnimation { self.data.searching = true }
                 }
                 StatDisplayView(
                     for: WeekTimeFrame(
