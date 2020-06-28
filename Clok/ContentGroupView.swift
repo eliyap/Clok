@@ -14,7 +14,7 @@ struct ContentGroupView: View {
     @EnvironmentObject private var data:TimeData
     
     var body: some View {
-        Group {
+        HStack(spacing: 0) {
             VStack(spacing: 0) {
                 ZStack{
                     SpiralUI()
