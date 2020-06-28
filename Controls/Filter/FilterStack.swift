@@ -9,12 +9,16 @@
 import SwiftUI
 
 extension AnyTransition {
+    
+    static let fastLinear = Animation.linear(duration: 0.25)
     static var upAndDown: AnyTransition {
-        let insertion = AnyTransition.move(edge: .bottom)
-            .combined(with: .opacity)
-        let removal = AnyTransition.move(edge: .bottom)
-            .combined(with: .opacity)
-        return .asymmetric(insertion: insertion, removal: removal)
+        return AnyTransition
+            .move(edge: .bottom)
+            .animation(fastLinear)
+            .combined(with: AnyTransition
+                .opacity
+                .animation(fastLinear)
+            )
     }
 }
 
