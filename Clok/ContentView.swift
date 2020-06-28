@@ -19,27 +19,10 @@ struct ContentView: View {
     var body : some View {
         ZStack {
             GeometryReader { geo in
-                if geo.size.width > geo.size.height {
-                    /// landscape mode
-                    HStack(spacing: 0) {
-                        ContentGroupView(
-                            heightLimit: geo.size.height,
-                            widthLimit:geo.size.height
-                        )
-                    }
-                } else {
-                    /// portrait mode
-                    VStack(alignment: .center, spacing: 0) {
-                        ContentGroupView(
-                            heightLimit: min(
-                                geo.size.width,
-                                /// consume at most 60% of height (otherwise it crushes lower elements)
-                                geo.size.height * 0.6
-                            ),
-                            widthLimit:geo.size.width
-                        )
-                    }
-                }
+                ContentGroupView(
+                    heightLimit: geo.size.height,
+                    widthLimit:geo.size.height
+                )
             }
             .background(offBG())
             .onAppear {
@@ -58,7 +41,6 @@ struct ContentView: View {
 //                    .transition(.opacity)
 //            }
         }
-        
     }
     
     func loadData() {
@@ -99,10 +81,4 @@ struct ContentView: View {
                 }
             }
         }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
 }
