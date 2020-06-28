@@ -26,8 +26,8 @@ struct TimeTabView: View {
                 }
             SettingsView()
                 .tabItem {
-                    Image(systemName: "chart.bar.fill")
-                    Text("Summary")
+                    Image(systemName: "gear")
+                    Text("Settings")
                 }
         }
     }
