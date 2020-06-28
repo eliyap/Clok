@@ -63,6 +63,10 @@ enum Weekdays: Int {
     case Saturday = 6
 }
 
+extension UIScreen {
+    static let height = UIScreen.main.bounds.size.height
+}
+
 // MARK: - Misc
 /**
  List Rows are separated by a thin grey line that runs

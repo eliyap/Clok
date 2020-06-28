@@ -18,16 +18,15 @@ struct ContentView: View {
     
     var body : some View {
         ZStack {
-            ContentGroupView()
-            .background(offBG())
-            .onAppear {
-                /// load data immediately
-//                self.loadData()
-                
-                let saveSuccessful: Bool = KeychainWrapper.standard.set("thisisatestkey", forKey: "TogglAPIKey")
-                let retrievedString: String? = KeychainWrapper.standard.string(forKey: "TogglAPIKey")
-                print(retrievedString)
+            HStack(spacing: 0) {
+                VStack(spacing: 0) {
+                    SpiralView()
+                    SpiralControls()
+                }
+                .frame(width: UIScreen.height, height: UIScreen.height)
+                TimeTabView()
             }
+            .background(offBG())
             APIKeyHandler()
                 .edgesIgnoringSafeArea(.all)
             /// fade out loading screen when data is finished being requested
@@ -35,6 +34,14 @@ struct ContentView: View {
 //                ProgressIndicator()
 //                    .transition(.opacity)
 //            }
+        }
+        .onAppear {
+            /// load data immediately
+//                self.loadData()
+            
+            let saveSuccessful: Bool = KeychainWrapper.standard.set("thisisatestkey", forKey: "TogglAPIKey")
+            let retrievedString: String? = KeychainWrapper.standard.string(forKey: "TogglAPIKey")
+            print(retrievedString)
         }
     }
     
