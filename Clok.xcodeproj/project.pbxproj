@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		221C3C5524A93C0F006995C5 /* GetUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221C3C5424A93C0F006995C5 /* GetUserData.swift */; };
+		221C3C5724A93C57006995C5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221C3C5624A93C57006995C5 /* User.swift */; };
 		221D963A24A90C3500C84F57 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221D963924A90C3500C84F57 /* KeychainWrapper.swift */; };
 		221D963C24A912B900C84F57 /* APIKeyHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221D963B24A912B900C84F57 /* APIKeyHandler.swift */; };
 		221D963E24A917C200C84F57 /* KeychainAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221D963D24A917C200C84F57 /* KeychainAccessibility.swift */; };
@@ -92,6 +94,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		221C3C5424A93C0F006995C5 /* GetUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserData.swift; sourceTree = "<group>"; };
+		221C3C5624A93C57006995C5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		221D963924A90C3500C84F57 /* KeychainWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
 		221D963B24A912B900C84F57 /* APIKeyHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeyHandler.swift; sourceTree = "<group>"; };
 		221D963D24A917C200C84F57 /* KeychainAccessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainAccessibility.swift; sourceTree = "<group>"; };
@@ -239,7 +243,9 @@
 			isa = PBXGroup;
 			children = (
 				22BE1FEC24A9247800A9A739 /* LoadData.swift */,
+				C615CD56245F332300D62B87 /* Toggl.swift */,
 				22BE1FF024A92C1F00A9A739 /* GetWorkspace.swift */,
+				221C3C5424A93C0F006995C5 /* GetUserData.swift */,
 			);
 			path = NetCode;
 			sourceTree = "<group>";
@@ -303,11 +309,11 @@
 		C6B0FFA0246F52A700DED011 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				C615CD56245F332300D62B87 /* Toggl.swift */,
 				C615CD58245F33F100D62B87 /* Report.swift */,
 				C67EAAB3244D04F0008D4982 /* TimeEntry.swift */,
 				C67F47D2249FD44500FD2E6E /* Project.swift */,
 				C65B7D2B2497DE4A00EED981 /* EntryOperations.swift */,
+				221C3C5624A93C57006995C5 /* User.swift */,
 				227C613924A3F628006F8168 /* Global */,
 			);
 			path = Models;
@@ -592,11 +598,13 @@
 				C6AAB3EC249F003100DFBA36 /* StatDisplayView.swift in Sources */,
 				C6751D8724719AF7002965CC /* DetailView.swift in Sources */,
 				C6751D8A2471E39F002965CC /* Position.swift in Sources */,
+				221C3C5524A93C0F006995C5 /* GetUserData.swift in Sources */,
 				C6C18D7D244BE891000345D5 /* Constants.swift in Sources */,
 				22928AC524A4207E00DC9EC5 /* FilterStack.swift in Sources */,
 				C61D2658249BE1990056C9FA /* StatHelpers.swift in Sources */,
 				22BE1FEA24A921B200A9A739 /* SpiralView.swift in Sources */,
 				22CBD84624A84CA400ED6FA3 /* WeekDateString.swift in Sources */,
+				221C3C5724A93C57006995C5 /* User.swift in Sources */,
 				22BE1FED24A9247800A9A739 /* LoadData.swift in Sources */,
 				C63C0D4B248DBDDB00163E20 /* Handle.swift in Sources */,
 				C6751D8524719AF7002965CC /* TableView.swift in Sources */,
