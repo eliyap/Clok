@@ -92,8 +92,13 @@ struct WeekTimeFrame {
     /**
      a smart measure of what time each day you start an activity
      */
-    func avgStartTime() -> Date {
+    func avgStartTime() -> Date? {
+        guard entries.count > 0 else {
+            return nil
+        }
+        
         var entries = self.entries
+        
         /// filter and sort in chronological order by start
         entries.sort(by: {$0.start < $1.start})
         var days = modifiedDays(for: entries)
@@ -119,7 +124,11 @@ struct WeekTimeFrame {
     /**
      a smart measure of what time each day you end an activity
      */
-    func avgEndTime() -> Date {
+    func avgEndTime() -> Date? {
+        guard entries.count > 0 else {
+            return nil
+        }
+        
         var entries = self.entries
         /// filter and sort in reverse chronological order by end
         entries.sort(by: {$0.end > $1.end})
