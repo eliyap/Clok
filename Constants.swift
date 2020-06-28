@@ -62,6 +62,8 @@ enum Weekdays: Int {
     case Friday = 5
     case Saturday = 6
 }
+
+// MARK: - Misc
 /**
  List Rows are separated by a thin grey line that runs
  from the right edge to just before the left edge
@@ -69,3 +71,4 @@ enum Weekdays: Int {
  */
 let listLineInset = CGFloat(15)
 
+let placeholderTime = "--:--"

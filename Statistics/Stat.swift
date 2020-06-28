@@ -17,13 +17,13 @@ struct Stat: View {
     var body: some View {
         Group {
             HStack{
-                Text(label)
-                Spacer()
                 Image(systemName: self.symbol)
                     /// hardcoded values are bad practice, but only way I could align the glyphs
                     .frame(width: glyphSize, height: glyphSize)
+                Text(label)
+                Spacer()
+                text
             }
-            text
         }
     }
 }

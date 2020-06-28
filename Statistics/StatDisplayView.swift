@@ -8,17 +8,39 @@
 
 import SwiftUI
 
+
+
 struct StatDisplayView: View {
     
-    var week: WeekTimeFrame
-    
     private let df = DateFormatter()
-    private var avgStart = ""
-    private var avgEnd = ""
-    private var avgDur: TimeInterval = 0
     
+    private var avgStart = placeholderTime
+    private var avgEnd = placeholderTime
+    private var avgDur = TimeInterval.zero
+    
+    private var deltaStart = TimeInterval.zero
+    private var deltaEnd = TimeInterval.zero
+    private var deltaAvgDur = TimeInterval.zero
     
     var body: some View {
+        Group {
+            Divider()
+            WeekDateString()
+            thisWeek
+            
+            Divider()
+            HStack {
+                Text("Since Previous Week")
+                    .font(.headline)
+                    .bold()
+                Spacer()
+            }
+            weekChange
+        }
+        
+    }
+    
+    var thisWeek: some View {
         Group {
             Stat(
                 label: "Started Around",
@@ -33,30 +55,70 @@ struct StatDisplayView: View {
             Stat(
                 label: "Hours Logged",
                 symbol: "hourglass.tophalf.fill",
+                text: Text((avgDur*7).toString())
+            )
+            Stat(
+                label: "Per Day",
+                symbol: "", // triggers a runtime warning for "No Image named ''", should be ignorable
                 text: Text(avgDur.toString())
+            )
+                /// good ol negative padding hack to bring it closer up
+                .padding(.top, -10)
+            Stat(
+                label: "Percentage of Week",
+                symbol: "chart.pie.fill",
+                text: Text("\(Int((avgDur / dayLength) * 100.0))%")
             )
         }
     }
     
-    init(for week_: WeekTimeFrame) {
+    var weekChange: some View {
+        Group {
+            Stat(
+                label: "Started",
+                symbol: (deltaStart > 0 ? "forward" : "backward") + ".end.fill",
+                text: Text(abs(deltaStart).toString() + " " + (deltaStart > 0 ? "later" : "earlier"))
+            )
+            Stat(
+                label: "Ended",
+                symbol: (deltaStart > 0 ? "forward" : "backward") + ".end.fill",
+                text: Text(abs(deltaEnd).toString() + " " + (deltaStart > 0 ? "later" : "earlier"))
+            )
+            Stat(
+                label: "\(deltaAvgDur > 0 ? "Increased" : "Decreased") by",
+                symbol: "chart.bar.fill",
+                text: Text(abs(deltaAvgDur * 7).toString() + " total")
+            )
+            Stat(
+                label: "",
+                symbol: "",
+                text: Text(abs(deltaAvgDur).toString() + " per day")
+            )
+                /// good ol negative padding hack to bring it closer up
+                .padding(.top, -10)
+        }
+    }
+    
+    init(for week: WeekTimeFrame, prev: WeekTimeFrame) {
         df.timeStyle = .short
         df.dateStyle = .none
-        
-        week = week_
         
         /// handle cases where there are no entries
         if let start = week.avgStartTime() {
             avgStart = df.string(from: start)
-        } else {
-            avgStart = "--:--"
+            if let prevStart = prev.avgStartTime() {
+                deltaStart = start - prevStart
+            }
         }
         
         if let end = week.avgEndTime() {
             avgEnd = df.string(from: end)
-        } else {
-            avgEnd = "--:--"
+            if let prevEnd = prev.avgEndTime() {
+                deltaEnd = end - prevEnd
+            }
         }
         
-        avgDur   = week.avgDuration()
+        avgDur = week.avgDuration()
+        deltaAvgDur = prev.avgDuration() - avgDur
     }
 }
