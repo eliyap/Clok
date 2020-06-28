@@ -286,7 +286,8 @@ open class KeychainWrapper {
     /// - parameter withAccessibility: Optional accessibility to use when setting the keychain item.
     /// - returns: True if the save was successful, false otherwise.
     @discardableResult open func set(_ value: NSCoding, forKey key: String, withAccessibility accessibility: KeychainItemAccessibility? = nil) -> Bool {
-        let data = NSKeyedArchiver.archivedData(withRootObject: value)
+        
+        let data = try! NSKeyedArchiver.archivedData(withRootObject: value, requiringSecureCoding: true)
         
         return set(data, forKey: key, withAccessibility: accessibility)
     }
