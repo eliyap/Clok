@@ -6,8 +6,9 @@ https://github.com/jrendel/SwiftKeychainWrapper
 https://github.com/ZevEisenberg/ZESpiral
 
 Test Account Set up with Email:
-ipskiipersonal@gmail.com
-AccountForTesting1
+Email:     ipskiipersonal@gmail.com
+Password:  AccountForTesting1
+API Token: a2e9485ad8781d84441e085fffeef2df
 
 Toggl's Privacy Policy
 https://toggl.com/legal/privacy/

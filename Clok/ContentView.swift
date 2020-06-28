@@ -37,8 +37,8 @@ struct ContentView: View {
         }
         .onAppear {
             /// load data immediately
-                self.loadData()
-            
+//            self.loadData()
+            self.getWorkspaceIDs()
             let saveSuccessful: Bool = KeychainWrapper.standard.set("thisisatestkey", forKey: "TogglAPIKey")
             let retrievedString: String? = KeychainWrapper.standard.string(forKey: "TogglAPIKey")
             print(retrievedString)

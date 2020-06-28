@@ -20,15 +20,15 @@ enum NetworkError: Error {
 
 // makes HTTP-requests and parses data from the Toggl API
 // utilizing semaphore method from https://medium.com/@michaellong/swift-5-async-await-result-gcd-and-timeout-1f1652d7adcf
-func toggl_request(
-    api_string: String,
-    token: String
-) -> Result<Report, NetworkError> {
+func toggl_request(api_string: String, token: String) -> Result<Report, NetworkError> {
+    
     var page = 1 // pages are indexed from 1
     var result: Result<Report, NetworkError>!
     var emptyReq = false // flag for when a request returns no entries
+    
     // initialize as empty to prevent crashes when offline
     var report: Report = Report([:])
+    
     // semaphore for API call
     let sem = DispatchSemaphore(value: 0)
     
@@ -100,14 +100,12 @@ func toggl_request(
         URLSession.shared.dataTask(with: request, completionHandler: myHandler).resume()
         
         // wait for call to complete
-        if sem.wait(timeout: .now() + 15) == .timedOut {
-            // abort if call takes too long
-            return .failure(.timeout)
-        }
-        if emptyReq {
-            // if nothing was found, stop requesting!
-            break page_loop
-        }
+        // abort if call takes too long
+        if sem.wait(timeout: .now() + 15) == .timedOut { return .failure(.timeout) }
+        
+        // if nothing was found, stop requesting!
+        if emptyReq { break page_loop }
+        
         // request next page of data
         page += 1
     } while(report.entries.count < report.total_count)
@@ -119,5 +117,4 @@ func toggl_request(
     default:
         return .success(report)
     }
-    
 }

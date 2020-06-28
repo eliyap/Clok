@@ -24,6 +24,11 @@ struct TimeTabView: View {
                     Image(systemName: "chart.bar.fill")
                     Text("Summary")
                 }
+            SettingsView()
+                .tabItem {
+                    Image(systemName: "chart.bar.fill")
+                    Text("Summary")
+                }
         }
     }
 }

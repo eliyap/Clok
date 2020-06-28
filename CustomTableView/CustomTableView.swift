@@ -36,7 +36,7 @@ class TimeEntryDataSource: TableViewDataSource, ObservableObject {
     
     /// for reloading purposes, check the first and last ID for changes
     func boundIDs() -> (Int, Int) {
-        (mutableData.first?.id ?? NSNotFound, mutableData.last?.id ?? NSNotFound)
+        return (mutableData.first?.id ?? NSNotFound, mutableData.last?.id ?? NSNotFound)
     }
     
     //MARK: Cell Lookup
