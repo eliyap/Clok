@@ -10,14 +10,15 @@ import SwiftUI
 
 struct SpiralView: View {
     
-    @EnvironmentObject private var data:TimeData
+    @EnvironmentObject private var data: TimeData
+    @EnvironmentObject private var settings: Settings
     @State var blurRadius = CGFloat.zero
     
     var body: some View {
         ZStack{
             SpiralUI()
             KnobView()
-            if self.data.searching {
+            if data.searching || settings.tab == .settings {
                 /// increase contrast with filter text so it is more readable
                 SearchContrastScreen()
             }
@@ -38,8 +39,8 @@ struct SpiralView: View {
              preventing the user from manipulating the handle
              */
             .padding(Edge.Set.bottom, -UIScreen.height)
-            /// turn off interaction when user is filtering
-            .disabled(data.searching)
+            /// turn off interaction when user is filtering / using settings
+            .disabled(data.searching || settings.tab == .settings)
     }
 }
 

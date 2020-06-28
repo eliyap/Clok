@@ -20,6 +20,8 @@
 		22BE1FEA24A921B200A9A739 /* SpiralView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BE1FE924A921B200A9A739 /* SpiralView.swift */; };
 		22BE1FED24A9247800A9A739 /* LoadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BE1FEC24A9247800A9A739 /* LoadData.swift */; };
 		22BE1FEF24A92B2300A9A739 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BE1FEE24A92B2300A9A739 /* SettingsView.swift */; };
+		22BE1FF124A92C1F00A9A739 /* GetWorkspace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BE1FF024A92C1F00A9A739 /* GetWorkspace.swift */; };
+		22BE1FF424A92DE500A9A739 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BE1FF324A92DE500A9A739 /* Settings.swift */; };
 		22CBD84624A84CA400ED6FA3 /* WeekDateString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CBD84524A84CA400ED6FA3 /* WeekDateString.swift */; };
 		C615CD57245F332300D62B87 /* Toggl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C615CD56245F332300D62B87 /* Toggl.swift */; };
 		C615CD59245F33F100D62B87 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = C615CD58245F33F100D62B87 /* Report.swift */; };
@@ -103,6 +105,8 @@
 		22BE1FE924A921B200A9A739 /* SpiralView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiralView.swift; sourceTree = "<group>"; };
 		22BE1FEC24A9247800A9A739 /* LoadData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadData.swift; sourceTree = "<group>"; };
 		22BE1FEE24A92B2300A9A739 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		22BE1FF024A92C1F00A9A739 /* GetWorkspace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetWorkspace.swift; sourceTree = "<group>"; };
+		22BE1FF324A92DE500A9A739 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		22CBD84524A84CA400ED6FA3 /* WeekDateString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDateString.swift; sourceTree = "<group>"; };
 		C615CD56245F332300D62B87 /* Toggl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toggl.swift; sourceTree = "<group>"; };
 		C615CD58245F33F100D62B87 /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
@@ -215,6 +219,7 @@
 				C6751D892471E39F002965CC /* Position.swift */,
 				C6751D8B24723182002965CC /* ZeroDate.swift */,
 				C6AAB3F1249F061D00DFBA36 /* TimeData.swift */,
+				22BE1FF324A92DE500A9A739 /* Settings.swift */,
 			);
 			path = Global;
 			sourceTree = "<group>";
@@ -234,8 +239,17 @@
 			isa = PBXGroup;
 			children = (
 				22BE1FEC24A9247800A9A739 /* LoadData.swift */,
+				22BE1FF024A92C1F00A9A739 /* GetWorkspace.swift */,
 			);
 			path = NetCode;
+			sourceTree = "<group>";
+		};
+		22BE1FF224A92CAE00A9A739 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				22BE1FEE24A92B2300A9A739 /* SettingsView.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		C63C0D43248D3B5000163E20 /* Knob */ = {
@@ -316,7 +330,6 @@
 		C6C18D382448F96C000345D5 = {
 			isa = PBXGroup;
 			children = (
-				22BE1FEE24A92B2300A9A739 /* SettingsView.swift */,
 				22BE1FE924A921B200A9A739 /* SpiralView.swift */,
 				C6C18D7C244BE891000345D5 /* Constants.swift */,
 				C6C18D5A2448F96F000345D5 /* ClokTests */,
@@ -329,6 +342,7 @@
 				227C613824A3F5D9006F8168 /* Controls */,
 				C6C18D7E244CD7AA000345D5 /* Spiral */,
 				C65B7D282497D1C100EED981 /* Statistics */,
+				22BE1FF224A92CAE00A9A739 /* Settings */,
 				22BE1FEB24A9246400A9A739 /* NetCode */,
 				C688BFC624A18BA00077CECF /* Misc */,
 			);
@@ -545,6 +559,7 @@
 				C68F8C8D24A04CE8000D249B /* IceCreamStick.swift in Sources */,
 				221D963C24A912B900C84F57 /* APIKeyHandler.swift in Sources */,
 				C6C18D7B244BB76F000345D5 /* ZESpiral.swift in Sources */,
+				22BE1FF124A92C1F00A9A739 /* GetWorkspace.swift in Sources */,
 				C65B7D2C2497DE4A00EED981 /* EntryOperations.swift in Sources */,
 				C688A8882479A8D6003260CE /* TimeFrame.swift in Sources */,
 				C69F02782496AFA200D1C650 /* TimeIntervalExtension.swift in Sources */,
@@ -566,6 +581,7 @@
 				C63FC2FA249BCFBD00747D49 /* DoubleExtension.swift in Sources */,
 				C6F605AD246C520D00D0FE82 /* EntrySpiral.swift in Sources */,
 				C6AAB3EE249F04FF00DFBA36 /* ProjectListView.swift in Sources */,
+				22BE1FF424A92DE500A9A739 /* Settings.swift in Sources */,
 				22ADD98024A80DD40015DD04 /* Stat.swift in Sources */,
 				C68842B0247B3D5300DC5C42 /* WeekButtons.swift in Sources */,
 				C64385F32485DC4900CCF47E /* KnobView.swift in Sources */,
