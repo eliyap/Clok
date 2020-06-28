@@ -50,11 +50,9 @@ struct StatView: View {
                         terms: self.data.terms
                     )
                 )
-                Text("XX Total")
             }
             .padding()
         }
-        .background(slightBG())
     }
     
     func Tab() -> some View {
