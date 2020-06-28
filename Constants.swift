@@ -33,7 +33,7 @@ let buttonPadding = CGFloat(7)
 // MARK: - API components
 
 // lets Toggle know who I am
-let user_agent = "trickl.app"
+let user_agent = "emlyap99@gmail.com"
 
 // API token needs to be provided by the User
 let myToken = "cfae5db4249b8509ca7671259598c2fb"
