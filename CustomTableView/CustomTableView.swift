@@ -132,20 +132,18 @@ struct CustomTableView: View, TableViewDelegate {
     }
     
     var body: some View {
-        
-                TableView(
-                    dataSource: TimeEntryDataSource(
-                        data: self.data.report.entries.matching(data.terms),
-                        zero: zeroClone
-                    ) as TableViewDataSource,
-                    delegate: self,
-                    row: self.listRow
-                )
-                /// abuse onReceive to pass zeroDate down
-                .onReceive(self.zero.$date, perform: {
-                    self.zeroClone.date = $0
-                })
-        
+        TableView(
+            dataSource: TimeEntryDataSource(
+                data: self.data.report.entries.matching(data.terms),
+                zero: zeroClone
+            ) as TableViewDataSource,
+            delegate: self,
+            row: self.listRow
+        )
+        /// abuse onReceive to pass zeroDate down
+        .onReceive(self.zero.$date, perform: {
+            self.zeroClone.date = $0
+        })
     }
     
     //MARK: - TableViewDelegate Functions
