@@ -18,12 +18,7 @@ struct ContentView: View {
     
     var body : some View {
         ZStack {
-            GeometryReader { geo in
-                ContentGroupView(
-                    heightLimit: geo.size.height,
-                    widthLimit:geo.size.height
-                )
-            }
+            ContentGroupView()
             .background(offBG())
             .onAppear {
                 /// load data immediately
