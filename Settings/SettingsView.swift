@@ -11,10 +11,19 @@ import SwiftUI
 struct SettingsView: View {
     var body: some View {
         NavigationView {
-            NavigationLink(destination: Text("Second View")) {
-                Text("Hello, World!")
+            List {
+                Section(header: Text("Account")) {
+                    Text("Logged in as")
+                    Text("Workspace")
+                    
+                }
+                
             }
-            .navigationBarTitle("Navigation")
+            .modifier(roundedList())
+//            NavigationLink(destination: Text("Second View")) {
+//                
+//            }
+            .navigationBarTitle("Settings")
         }
     }
 }
