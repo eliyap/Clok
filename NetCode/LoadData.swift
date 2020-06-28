@@ -8,7 +8,7 @@
 
 import Foundation
 extension ContentView {
-    func loadData() {
+    func loadData(token: String, workspaceID: Int) {
         DispatchQueue.global(qos: .utility).async {
             
             // assemble request URL (page is added later)
@@ -22,12 +22,12 @@ extension ContentView {
             let base_url = "https://toggl.com/reports/api/v2/"
             let api_string = "\(base_url)details?" + [
                 "user_agent=\(user_agent)",    // identifies my app
-                "workspace_id=\(myWorkspace)", // provided by the User
+                "workspace_id=\(workspaceID)", // provided by the User
                 "since=\(since)",
                 "until=\(until)"
             ].joined(separator: "&")
             
-            let result = toggl_request(api_string: api_string, token: myToken)
+            let result = toggl_request(api_string: api_string, token: token)
             
             DispatchQueue.main.async {
                 switch result {
