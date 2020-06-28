@@ -2,7 +2,6 @@ Toggl Test Account API Key:
 3302cfeeaf4aa0920422ee8f0a139fd7
 
 Dependencies & Thanks:
-https://github.com/jrendel/SwiftKeychainWrapper
 https://github.com/ZevEisenberg/ZESpiral
 
 Test Account Set up with Email:
