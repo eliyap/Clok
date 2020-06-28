@@ -36,7 +36,7 @@ let buttonPadding = CGFloat(7)
 let user_agent = "emlyap99@gmail.com"
 
 // API token needs to be provided by the User
-let myToken = "cfae5db4249b8509ca7671259598c2fb"
+let myToken = "a2e9485ad8781d84441e085fffeef2df"
 
 
 let myUsername = "TricklTest"
