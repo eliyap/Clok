@@ -133,8 +133,6 @@ struct CustomTableView: View, TableViewDelegate {
     
     var body: some View {
         
-        NavigationView {
-            ZStack {
                 TableView(
                     dataSource: TimeEntryDataSource(
                         data: self.data.report.entries.matching(data.terms),
@@ -147,11 +145,7 @@ struct CustomTableView: View, TableViewDelegate {
                 .onReceive(self.zero.$date, perform: {
                     self.zeroClone.date = $0
                 })
-            }
-            .navigationBarTitle("")
-            .navigationBarHidden(true)
-        }
-        .navigationViewStyle(StackNavigationViewStyle())
+        
     }
     
     //MARK: - TableViewDelegate Functions

@@ -4,3 +4,10 @@ Toggl Test Account API Key:
 Dependencies & Thanks:
 https://github.com/jrendel/SwiftKeychainWrapper
 https://github.com/ZevEisenberg/ZESpiral
+
+Test Account Set up with Email:
+ipskiipersonal@gmail.com
+AccountForTesting1
+
+Toggl's Privacy Policy
+https://toggl.com/legal/privacy/
