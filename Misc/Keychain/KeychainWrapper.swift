@@ -199,7 +199,7 @@ open class KeychainWrapper {
         guard let keychainData = data(forKey: key, withAccessibility: accessibility) else {
             return nil
         }
-        
+    
         return NSKeyedUnarchiver.unarchiveObject(with: keychainData) as? NSCoding
     }
 

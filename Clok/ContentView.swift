@@ -50,9 +50,11 @@ struct ContentView: View {
                 let retrievedString: String? = KeychainWrapper.standard.string(forKey: "TogglAPIKey")
                 print(retrievedString)
             }
+            APIKeyHandler()
+                .edgesIgnoringSafeArea(.all)
             /// fade out loading screen when data is finished being requested
 //            ProgressIndicator()
-//                .opacity(self.loaded ? 0.0 : 1.0)
+                .hidden(self.loaded)
 //                .animation(.linear)
         }
         
