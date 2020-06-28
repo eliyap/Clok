@@ -8,25 +8,37 @@
 
 import Foundation
 
+struct Workspace: Identifiable {
+    var id: Int
+}
+
 struct User {
     var token: String
-    var workspaces: [String]
+    var email: String
+    var fullName: String
+    var workspaces = [Workspace]()
     
-    init(_ json:Dictionary<String, AnyObject>){
-        token = ""
-        workspaces = []
-        
+    init?(_ json:Dictionary<String, AnyObject>) {
+    
         // unwrap optionals
         guard
-            let data = json["data"] as? [String: AnyObject]
+            let data = json["data"] as? [String: AnyObject],
+            let _token = data["api_token"] as? String,
+            let _email = data["email"] as? String,
+            let _name = data["fullname"] as? String,
+            let _spaces = data["workspaces"] as? [[String: AnyObject]]
         else {
-            // this should probably be an error
-            // but I don't know how to do that yet
-            token = ""
-            workspaces = []
-            return
+            return nil
         }
-        print(data)
         
+        token = _token
+        email = _email
+        fullName = _name
+        
+        _spaces.forEach {
+            if let id = $0["id"] as? Int {
+                workspaces.append(Workspace(id: id))
+            }
+        }
     }
 }

@@ -8,7 +8,8 @@
 
 import Foundation
 
-func getUserData() -> Void {
+func getUserData() -> User? {
+    var user: User? = nil
     
     //define completionHandler
     let handler = {(data: Data?, resp: URLResponse?, error: Error?) -> Void in
@@ -35,10 +36,9 @@ func getUserData() -> Void {
             return
         }
         
-        // all checks passed
         do {
             let json = try JSONSerialization.jsonObject(with: data, options: [])
-            User(json)
+            user = User(json as! Dictionary<String, AnyObject>)
         } catch {
             return
         }
@@ -62,4 +62,6 @@ func getUserData() -> Void {
         with: request,
         completionHandler: handler
     ).resume()
+    
+    return user
 }
