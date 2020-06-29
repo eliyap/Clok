@@ -20,28 +20,56 @@ struct TokenView: View {
     @State var password = ""
     @State var key = ""
     @State private var pref: loginPreference = .email
-    
+    @State var pushup = false
     var body: some View {
-        VStack {
+        HStack {
             Image("Icon")
-//            app icon here?
-            Text("Welcome")
-            Text("Log in to Toggl")
+                .resizable()
+                .clipShape(RoundedRectangle(cornerRadius: 20))
+                .frame(width: 100, height: 100)
+
+            VStack {
                 
-            Picker(selection: $pref, label: EmptyView()) {
-                Text("Email").tag(loginPreference.email)
-                Text("Token").tag(loginPreference.token)
+                Text("Welcome")
+                Text("Log in to Toggl")
+                    
+                Picker(selection: $pref, label: EmptyView()) {
+                    Text("Email").tag(loginPreference.email)
+                    Text("Token").tag(loginPreference.token)
+                }
+                .pickerStyle(SegmentedPickerStyle())
+                if pref == .email {
+                    TextField(
+                        "Email",
+                        text: $email,
+                        onEditingChanged: { isEditing in
+                            withAnimation {
+                                self.pushup = isEditing
+                            }
+                        }
+                    )
+                    TextField(
+                        "Password",
+                        text: $password,
+                        onEditingChanged: { isEditing in
+                            withAnimation {
+                                self.pushup = isEditing
+                            }
+                        }
+                    )
+                } else if pref == .token {
+                    TextField("API Token", text: $key)
+                }
+                if pushup {
+                    /// dummy view, EmptyView didn't work
+                    Text(" ")
+                        .frame(maxHeight: UIScreen.height / 2)
+                        .transition(.scale)
+                }
             }
-            
-            if pref == .email {
-                TextField("Email", text: $key)
-                TextField("Password", text: $key)
-            } else if pref == .token {
-                TextField("API Token", text: $key)
-            }
-            
+            .frame(maxWidth: UIScreen.main.bounds.size.width / 2)
+            .padding()
+
         }
-        .frame(maxWidth: UIScreen.height)
-        
     }
 }
