@@ -17,6 +17,7 @@
 		22928AC524A4207E00DC9EC5 /* FilterStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22928AC424A4207E00DC9EC5 /* FilterStack.swift */; };
 		22928AC724A423AA00DC9EC5 /* WeekButtonGlyph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22928AC624A423AA00DC9EC5 /* WeekButtonGlyph.swift */; };
 		22928AC924A429F700DC9EC5 /* ProjectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22928AC824A429F700DC9EC5 /* ProjectButton.swift */; };
+		2296F15924A96FB800AF38B5 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2296F15824A96FB800AF38B5 /* Icon.png */; };
 		22ADD98024A80DD40015DD04 /* Stat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ADD97F24A80DD40015DD04 /* Stat.swift */; };
 		22BE1FEA24A921B200A9A739 /* SpiralView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BE1FE924A921B200A9A739 /* SpiralView.swift */; };
 		22BE1FED24A9247800A9A739 /* LoadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BE1FEC24A9247800A9A739 /* LoadData.swift */; };
@@ -103,6 +104,7 @@
 		22928AC424A4207E00DC9EC5 /* FilterStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FilterStack.swift; path = Controls/Filter/FilterStack.swift; sourceTree = SOURCE_ROOT; };
 		22928AC624A423AA00DC9EC5 /* WeekButtonGlyph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekButtonGlyph.swift; sourceTree = "<group>"; };
 		22928AC824A429F700DC9EC5 /* ProjectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProjectButton.swift; path = Controls/Filter/ProjectButton.swift; sourceTree = SOURCE_ROOT; };
+		2296F15824A96FB800AF38B5 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = Icon/Icon.png; sourceTree = SOURCE_ROOT; };
 		22ADD97F24A80DD40015DD04 /* Stat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stat.swift; sourceTree = "<group>"; };
 		22BE1FE924A921B200A9A739 /* SpiralView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiralView.swift; sourceTree = "<group>"; };
 		22BE1FEC24A9247800A9A739 /* LoadData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadData.swift; sourceTree = "<group>"; };
@@ -371,6 +373,7 @@
 				C6C18D4A2448F96F000345D5 /* Assets.xcassets */,
 				C6C18D4F2448F96F000345D5 /* LaunchScreen.storyboard */,
 				C6C18D522448F96F000345D5 /* Info.plist */,
+				2296F15824A96FB800AF38B5 /* Icon.png */,
 				C6C18D4C2448F96F000345D5 /* Preview Content */,
 			);
 			path = Clok;
@@ -528,6 +531,7 @@
 			files = (
 				C6C18D512448F96F000345D5 /* LaunchScreen.storyboard in Resources */,
 				C6751D8824719AF7002965CC /* TableViewCell.xib in Resources */,
+				2296F15924A96FB800AF38B5 /* Icon.png in Resources */,
 				C6C18D4E2448F96F000345D5 /* Preview Assets.xcassets in Resources */,
 				C6C18D4B2448F96F000345D5 /* Assets.xcassets in Resources */,
 			);
