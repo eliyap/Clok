@@ -35,6 +35,9 @@ let buttonPadding = CGFloat(7)
 // lets Toggle know who I am
 let user_agent = "emlyap99@gmail.com"
 
+// https://github.com/toggl/toggl_api_docs/blob/master/chapters/users.md#get-current-user-data 
+let userDataURL = URL(string:"https://www.toggl.com/api/v8/me?user_agent=\(user_agent)")!
+
 // API token needs to be provided by the User
 let myToken = "a2e9485ad8781d84441e085fffeef2df"
 
