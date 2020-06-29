@@ -8,18 +8,20 @@
 
 import Foundation
 
-func getUserData() -> User? {
-    var user: User? = nil
+func getUserData(with request: URLRequest) -> Result<User, NetworkError> {
+    var result: Result<User, NetworkError>!
+    var user: User!
+    
+    // semaphore for API call
+    let sem = DispatchSemaphore(value: 0)
     
     //define completionHandler
     let handler = {(data: Data?, resp: URLResponse?, error: Error?) -> Void in
+        defer{ sem.signal() }
         
+        print("canary2")
         guard error == nil else {
-            #if DEBUG
-            // could put more detailed error handling here, nut unsure how to do so
-            // use NSError.code to to get reason for failure? e.g. I think -1009 is "no internet"
-            print(error! as NSError)
-            #endif
+            result = .failure(.request(error: error! as NSError))
             return
         }
         guard
@@ -29,39 +31,33 @@ func getUserData() -> User? {
             return
         }
         guard http_response.statusCode == 200 else {
-            #if DEBUG
-            print("Status Code \(http_response.statusCode)")
-            print("\(http_response.allHeaderFields)")
-            #endif
+            result = .failure(.statusCode(code: http_response.statusCode))
             return
         }
-        
+        print("canary3")
         do {
             let json = try JSONSerialization.jsonObject(with: data, options: [])
-            user = User(json as! Dictionary<String, AnyObject>)
+            user = User(json as! Dictionary<String, AnyObject>)!
         } catch {
-            return
+            result = .failure(.serialization)
         }
     }
-    
-    
-    // documented at https://github.com/toggl/toggl_api_docs/blob/master/reports.md
-    let base_url = "https://www.toggl.com/api/v8/me"
-    let api_string = "\(base_url)?user_agent=\(user_agent)"
-    
-    // append page no. to URL
-    let page_url = URL(string: api_string)!
-    var request = URLRequest(url: page_url)
-    
-    // set headers
-    let auth = Data("\(myToken):api_token".utf8).base64EncodedString()
-    request.setValue("Basic \(auth)", forHTTPHeaderField: "Authorization")
-    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    print("canary1")
     
     URLSession.shared.dataTask(
         with: request,
         completionHandler: handler
     ).resume()
     
-    return user
+    /// wait here until call returns, or timeout if it took too long
+    if sem.wait(timeout: .now() + 15) == .timedOut { return .failure(.timeout) }
+    
+    print("canaryX")
+    // only return success if there is no failure
+    switch result {
+    case .failure(_):
+        return result
+    default:
+        return .success(user)
+    }
 }
