@@ -27,13 +27,11 @@ struct TokenView: View {
                 .resizable()
                 .clipShape(RoundedRectangle(cornerRadius: 20))
                 .frame(width: 100, height: 100)
-
+                .padding()
             VStack {
-                
-                Text("Welcome")
                 Text("Log in to Toggl")
                     
-                Picker(selection: $pref, label: EmptyView()) {
+                Picker(selection: $pref.animation(), label: EmptyView()) {
                     Text("Email").tag(loginPreference.email)
                     Text("Token").tag(loginPreference.token)
                 }
@@ -43,20 +41,18 @@ struct TokenView: View {
                         "Email",
                         text: $email,
                         onEditingChanged: { isEditing in
-                            withAnimation {
-                                self.pushup = isEditing
-                            }
+                            withAnimation { self.pushup = isEditing }
                         }
                     )
+                    .transition(.upAndDown)
                     TextField(
                         "Password",
                         text: $password,
                         onEditingChanged: { isEditing in
-                            withAnimation {
-                                self.pushup = isEditing
-                            }
+                            withAnimation { self.pushup = isEditing }
                         }
                     )
+                    .transition(.opacity)
                 } else if pref == .token {
                     TextField("API Token", text: $key)
                 }
@@ -64,12 +60,10 @@ struct TokenView: View {
                     /// dummy view, EmptyView didn't work
                     Text(" ")
                         .frame(maxHeight: UIScreen.height / 2)
-                        .transition(.scale)
+                        .transition(.upAndDown)
                 }
             }
             .frame(maxWidth: UIScreen.main.bounds.size.width / 2)
-            .padding()
-
         }
     }
 }
