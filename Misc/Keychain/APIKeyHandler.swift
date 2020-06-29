@@ -29,20 +29,25 @@ func getCredentials() -> (String, Int)? {
     return nil
 }
 
-func saveKey(workspace: Workspace, key: String) throws -> Void {
-    let keychainItem = [kSecValueData: key.data(using: .utf8)!,
-                        kSecAttrAccount: workspace.id,
-                        kSecAttrServer: service,
-                        kSecClass: kSecClassInternetPassword,
-                        kSecReturnData: true
-        ] as CFDictionary
+func saveKeys(user: User) throws -> Void {
+    try user.workspaces.forEach {
+        let keychainItem = [kSecAttrType: $0.id,
+                            kSecAttrServer: service,
+                            kSecAttrAccount: user.email,
+                            kSecAttrCreator: user.fullName,
+                            kSecValueData: user.token.data(using: .utf8)!,
+                            kSecClass: kSecClassInternetPassword,
+                            kSecReturnData: true
+            ] as CFDictionary
 
-    var ref: AnyObject?
+        var ref: AnyObject?
 
-    let status = SecItemAdd(keychainItem, &ref)
-    guard status == 0 else {
-        throw KeychainError.unhandledError(code: status)
+        let status = SecItemAdd(keychainItem, &ref)
+        guard status == 0 else {
+            throw KeychainError.unhandledError(code: status)
+        }
     }
+    
 }
 
 func getKey() throws -> (String, Int) {
