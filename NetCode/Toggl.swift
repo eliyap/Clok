@@ -10,10 +10,11 @@ import Foundation
 
 enum NetworkError: Error {
     case url
-    case request
+    case request(error: NSError)
     case server
     case timeout
-    case statusCode
+    case serialization
+    case statusCode(code: Int)
     case other // bad practice, in future try to figure out how I can have some
     // generic error for handling non-network errors
 }
@@ -37,12 +38,7 @@ func toggl_request(api_string: String, token: String) -> Result<Report, NetworkE
         // release semaphore whether or not code fails
         defer{ sem.signal() }
         guard error == nil else {
-            #if DEBUG
-            // could put more detailed error handling here, nut unsure how to do so
-            // use NSError.code to to get reason for failure? e.g. I think -1009 is "no internet"
-            print(error! as NSError)
-            #endif
-            result = .failure(.request)
+            result = .failure(.request(error: error! as NSError))
             return
         }
         guard
@@ -53,11 +49,7 @@ func toggl_request(api_string: String, token: String) -> Result<Report, NetworkE
             return
         }
         guard http_response.statusCode == 200 else {
-            #if DEBUG
-            print("Status Code \(http_response.statusCode)")
-            print("\(http_response.allHeaderFields)")
-            #endif
-            result = .failure(.statusCode)
+            result = .failure(.statusCode(code: http_response.statusCode))
             return
         }
         
