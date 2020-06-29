@@ -116,16 +116,7 @@ struct TokenView: View {
             user = newUser
         }
         
-        print("user data get!")
-        print("Name: \(user.fullName)")
-        user.workspaces.forEach{
-            do {
-                try saveKey(workspace: $0, key: user.token)
-                print("Saved a key!")
-            } catch {
-                print("Error saving key")
-            }
-        }
-        print("Successfully logged in!")
+        try! saveKeys(user: user)
+        
     }
 }
