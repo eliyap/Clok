@@ -10,11 +10,14 @@ import SwiftUI
 
 
 struct ContentView: View {
-    @EnvironmentObject var zero: ZeroDate
     @EnvironmentObject var data: TimeData
+    @EnvironmentObject var settings: Settings
     
-    /// indicates whether we are finished loading data
+    /// whether we're finished loading data
     @State var loaded = false
+    
+    /// whether we need user's token
+    @State var needToken = false
     
     var body : some View {
         ZStack {
@@ -28,6 +31,14 @@ struct ContentView: View {
             }
             .background(offBG())
             /// fade out loading screen when data is finished being requested
+            if needToken {
+                TokenView()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(Color(UIColor.systemBackground))
+                    .edgesIgnoringSafeArea(.all)
+                    .transition(.opacity)
+            }
+            
 //            if !loaded {
 //                ProgressIndicator()
 //                    .transition(.opacity)
@@ -35,7 +46,23 @@ struct ContentView: View {
         }
         .onAppear {
             /// load data immediately
-            getUserData()
+//            do {
+//                try saveKey(workspace: Workspace(id: 9001), key: "thisisatestkey")
+//            } catch KeychainError.unhandledError(code: errSecDuplicateItem) {
+//                print("Key already added")
+//            } catch KeychainError.unhandledError(code: let status) {
+//                print(status)
+//            } catch {
+//
+//            }
+            
+            if let (apiKey, workspaceID) = getCredentials() {
+                self.loadData(token: apiKey, workspaceID: workspaceID)
+            } else {
+                self.needToken = true
+            }
+                
+            
 //            self.loadData()
 //            self.getWorkspaceIDs()
 //            let saveSuccessful: Bool = KeychainWrapper.standard.set("thisisatestkey", forKey: "TogglAPIKey")
