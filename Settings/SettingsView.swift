@@ -17,12 +17,16 @@ struct SettingsView: View {
                     Text("Workspace")
                     
                 }
-                
+                Section(header: EmptyView()) {
+                    Text("Log Out")
+                        .foregroundColor(.red)
+                        .onTapGesture {
+                            // perform logout here
+                        }
+                    
+                }
             }
             .modifier(roundedList())
-//            NavigationLink(destination: Text("Second View")) {
-//                
-//            }
             .navigationBarTitle("Settings")
         }
     }
