@@ -9,7 +9,6 @@
 import Foundation
 import SwiftUI
 
-
 struct TokenView: View {
     
     enum loginPreference {
@@ -17,14 +16,23 @@ struct TokenView: View {
         case token
     }
     
-    @State var email: String
-    @State var password: String
-    @State var key: String
-    private var pref = loginPreference.email
+    @State var email = ""
+    @State var password = ""
+    @State var key = ""
+    @State private var pref: loginPreference = .email
     
     var body: some View {
         VStack {
+            Image("")
+//            app icon here?
             Text("Welcome")
+            Text("Log in to Toggl")
+                
+            Picker(selection: $pref, label: EmptyView()) {
+                Text("Email").tag(loginPreference.email)
+                Text("Token").tag(loginPreference.token)
+            }
+            
             if pref == .email {
                 TextField("Email", text: $key)
                 TextField("Password", text: $key)
@@ -33,6 +41,7 @@ struct TokenView: View {
             }
             
         }
+        .frame(maxWidth: UIScreen.height)
         
     }
 }
