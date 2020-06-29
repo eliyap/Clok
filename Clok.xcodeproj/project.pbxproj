@@ -371,9 +371,9 @@
 				C6C18D482448F96C000345D5 /* ContentView.swift */,
 				C62F7B8524970CC40076F64C /* TimeTabView.swift */,
 				C6C18D4A2448F96F000345D5 /* Assets.xcassets */,
+				2296F15824A96FB800AF38B5 /* Icon.png */,
 				C6C18D4F2448F96F000345D5 /* LaunchScreen.storyboard */,
 				C6C18D522448F96F000345D5 /* Info.plist */,
-				2296F15824A96FB800AF38B5 /* Icon.png */,
 				C6C18D4C2448F96F000345D5 /* Preview Content */,
 			);
 			path = Clok;

@@ -23,7 +23,7 @@ struct TokenView: View {
     
     var body: some View {
         VStack {
-            Image("AppIcon")
+            Image("Icon")
 //            app icon here?
             Text("Welcome")
             Text("Log in to Toggl")
