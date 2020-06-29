@@ -46,28 +46,12 @@ struct ContentView: View {
         }
         .onAppear {
             /// load data immediately
-//            do {
-//                try saveKey(workspace: Workspace(id: 9001), key: "thisisatestkey")
-//            } catch KeychainError.unhandledError(code: errSecDuplicateItem) {
-//                print("Key already added")
-//            } catch KeychainError.unhandledError(code: let status) {
-//                print(status)
-//            } catch {
-//
-//            }
-            
             if let (apiKey, workspaceID) = getCredentials() {
                 self.loadData(token: apiKey, workspaceID: workspaceID)
             } else {
                 self.needToken = true
             }
-                
             
-//            self.loadData()
-//            self.getWorkspaceIDs()
-//            let saveSuccessful: Bool = KeychainWrapper.standard.set("thisisatestkey", forKey: "TogglAPIKey")
-//            let retrievedString: String? = KeychainWrapper.standard.string(forKey: "TogglAPIKey")
-//            print(retrievedString)
         }
     }
 }
