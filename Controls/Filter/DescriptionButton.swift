@@ -41,9 +41,7 @@ struct DescriptionButton: View {
                 } else if data.terms.byDescription == .specific {
                     TextField("Description", text: self.$data.terms.description)
                         .padding(3)
-                        .overlay(RoundedRectangle(cornerRadius: 5)
-                            .stroke(Color.secondary, lineWidth: 2)
-                        )
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
                 }
             }
         }

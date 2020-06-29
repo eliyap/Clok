@@ -34,6 +34,5 @@ struct ButtonGlyph : ViewModifier {
             .foregroundColor(.primary)
             .padding(backgroundPadding)
             .background(RaisedShape(radius: radius) { Circle() })
-
     }
 }

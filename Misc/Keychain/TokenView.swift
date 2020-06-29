@@ -10,6 +10,8 @@ import Foundation
 import SwiftUI
 
 struct TokenView: View {
+    /// direct users to their profile, where they can copy the API Token
+    static let profileURL = URL(string: "https://toggl.com/app/profile")!
     
     enum loginPreference {
         case email
@@ -30,7 +32,6 @@ struct TokenView: View {
                 .padding()
             VStack {
                 Text("Log in to Toggl")
-                    
                 Picker(selection: $pref.animation(), label: EmptyView()) {
                     Text("Email").tag(loginPreference.email)
                     Text("Token").tag(loginPreference.token)
@@ -40,30 +41,91 @@ struct TokenView: View {
                     TextField(
                         "Email",
                         text: $email,
-                        onEditingChanged: { isEditing in
-                            withAnimation { self.pushup = isEditing }
-                        }
+                        onEditingChanged: edit
                     )
-                    .transition(.upAndDown)
-                    TextField(
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .transition(.upAndDown)
+                    SecureField(
                         "Password",
                         text: $password,
-                        onEditingChanged: { isEditing in
-                            withAnimation { self.pushup = isEditing }
+                        onCommit: {
+                            self.loginWith(auth: auth(email: self.email, password: self.password))
                         }
                     )
-                    .transition(.opacity)
-                } else if pref == .token {
-                    TextField("API Token", text: $key)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .transition(.upAndDown)
                 }
+                else if pref == .token {
+                    TextField(
+                        "API Token",
+                        text: $key,
+                        onEditingChanged: edit,
+                        onCommit: {
+                            self.loginWith(auth: auth(token: self.key))
+                        }
+                    )
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .transition(.upAndDown)
+                    TokenLink()
+                        .transition(.upAndDown)
+                }
+                /// dummy view that ensures textField isn't masked by keyboard on iOS
+                /// EmptyView didn't work
                 if pushup {
-                    /// dummy view, EmptyView didn't work
                     Text(" ")
                         .frame(maxHeight: UIScreen.height / 2)
                         .transition(.upAndDown)
                 }
             }
+            /// prevent 's picker from munching the whole screen
             .frame(maxWidth: UIScreen.main.bounds.size.width / 2)
         }
+    }
+    
+    /// when user starts / stops editing text field, raise / lower the pushup view
+    func edit(_ editing: Bool) -> () {
+        withAnimation {
+            pushup = editing
+        }
+    }
+    
+    func TokenLink() -> some View {
+        HStack(spacing: .zero) {
+            Text("Find Toggl's API Token on your ")
+            Text("Profile")
+                .foregroundColor(Color.blue)
+                .onTapGesture {
+                    UIApplication.shared.open(TokenView.profileURL)
+                }
+        }
+    }
+    
+    func loginWith(auth: String) -> Void {
+        print("attempting login")
+        let request = formRequest(
+            url: userDataURL,
+            auth: auth
+        )
+        
+        let result = getUserData(with: request)
+        var user: User!
+        switch result {
+        case let .failure(error):
+            print(error)
+        case let .success(newUser):
+            user = newUser
+        }
+        
+        print("user data get!")
+        print("Name: \(user.fullName)")
+        user.workspaces.forEach{
+            do {
+                try saveKey(workspace: $0, key: user.token)
+                print("Saved a key!")
+            } catch {
+                print("Error saving key")
+            }
+        }
+        print("Successfully logged in!")
     }
 }

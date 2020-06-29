@@ -19,7 +19,7 @@ struct User {
     var workspaces = [Workspace]()
     
     init?(_ json:Dictionary<String, AnyObject>) {
-    
+        print("received json")
         // unwrap optionals
         guard
             let data = json["data"] as? [String: AnyObject],
@@ -40,10 +40,11 @@ struct User {
                 workspaces.append(Workspace(id: id))
             }
         }
-        
+        print("created user")
         /// must have at least 1 workspace ID to function!
         guard workspaces.count > 0 else {
             return nil
         }
+        print("found workspace")
     }
 }
