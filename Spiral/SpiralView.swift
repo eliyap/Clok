@@ -13,7 +13,6 @@ struct SpiralView: View {
     @EnvironmentObject private var data: TimeData
     @EnvironmentObject private var settings: Settings
     @State var blurRadius = CGFloat.zero
-    var size: CGFloat
     var body: some View {
         ZStack {
             SpiralUI()
@@ -29,13 +28,6 @@ struct SpiralView: View {
                     self.blurRadius = searching ? 5 : .zero
                 }
             })
-            .frame(width: size, height:size)
-            /**
-             Permits overlap of areas
-             - Important: ZStacking did *not* work, as the Time Strip layer grabbed touch focus,
-             preventing the user from manipulating the handle
-             */
-            .padding(Edge.Set.bottom, -size)
             /// turn off interaction when user is filtering / using settings
             .disabled(data.searching || settings.tab == .settings)
 

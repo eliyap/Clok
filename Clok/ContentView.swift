@@ -22,14 +22,7 @@ struct ContentView: View {
     var body : some View {
         ZStack {
             HStack(spacing: 0) {
-                GeometryReader { geo in
-                    VStack(spacing: 0) {
-                        SpiralView(size: geo.size.height)
-                        SpiralControls()
-                            .frame(width: geo.size.height, height: geo.size.height)
-                    }
-                }
-                
+                SpiralStack()
                 CustomTabView()
             }
             .background(offBG())
@@ -53,10 +46,10 @@ struct ContentView: View {
             
             // load user data
             let workspaceID: Int = WorkspaceManager.getChosen()!
-            self.loadData(
-                token: token,
-                workspaceID: workspaceID
-            )
+//            self.loadData(
+//                token: token,
+//                workspaceID: workspaceID
+//            )
         })
         .onAppear {
             /// try to find user credentials

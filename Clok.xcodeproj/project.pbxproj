@@ -22,6 +22,7 @@
 		2264CB3924AD33D900ECBF2B /* EmailFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264CB3824AD33D900ECBF2B /* EmailFields.swift */; };
 		2264CB3B24AD344F00ECBF2B /* TokenFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264CB3A24AD344F00ECBF2B /* TokenFields.swift */; };
 		227C613724A3F557006F8168 /* FilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227C613624A3F557006F8168 /* FilterButton.swift */; };
+		228B0FFF24AEA47C0026AD4B /* SpiralStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228B0FFE24AEA47C0026AD4B /* SpiralStack.swift */; };
 		22928AC524A4207E00DC9EC5 /* FilterStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22928AC424A4207E00DC9EC5 /* FilterStack.swift */; };
 		22928AC724A423AA00DC9EC5 /* WeekButtonGlyph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22928AC624A423AA00DC9EC5 /* WeekButtonGlyph.swift */; };
 		22928AC924A429F700DC9EC5 /* ProjectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22928AC824A429F700DC9EC5 /* ProjectButton.swift */; };
@@ -116,6 +117,7 @@
 		2264CB3824AD33D900ECBF2B /* EmailFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailFields.swift; sourceTree = "<group>"; };
 		2264CB3A24AD344F00ECBF2B /* TokenFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenFields.swift; sourceTree = "<group>"; };
 		227C613624A3F557006F8168 /* FilterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterButton.swift; sourceTree = "<group>"; };
+		228B0FFE24AEA47C0026AD4B /* SpiralStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiralStack.swift; sourceTree = "<group>"; };
 		22928AC424A4207E00DC9EC5 /* FilterStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FilterStack.swift; path = Controls/Filter/FilterStack.swift; sourceTree = SOURCE_ROOT; };
 		22928AC624A423AA00DC9EC5 /* WeekButtonGlyph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekButtonGlyph.swift; sourceTree = "<group>"; };
 		22928AC824A429F700DC9EC5 /* ProjectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProjectButton.swift; path = Controls/Filter/ProjectButton.swift; sourceTree = SOURCE_ROOT; };
@@ -437,6 +439,7 @@
 			isa = PBXGroup;
 			children = (
 				22BE1FE924A921B200A9A739 /* SpiralView.swift */,
+				228B0FFE24AEA47C0026AD4B /* SpiralStack.swift */,
 				C6C18D7424493EC8000345D5 /* SpiralUI.swift */,
 				C63C0D44248D3C0D00163E20 /* SpiralTrimmer.swift */,
 				C6F605AC246C520D00D0FE82 /* EntrySpiral.swift */,
@@ -612,6 +615,7 @@
 				2264CB3524AD330500ECBF2B /* IconView.swift in Sources */,
 				C63FC2F8249BCEB900747D49 /* AngleExtension.swift in Sources */,
 				C6AAB3EA249EF26800DFBA36 /* TimeEntryExtension.swift in Sources */,
+				228B0FFF24AEA47C0026AD4B /* SpiralStack.swift in Sources */,
 				C6C18D492448F96C000345D5 /* ContentView.swift in Sources */,
 				C6B0FF9C246F124300DED011 /* ColorExtension.swift in Sources */,
 				C63FC2FA249BCFBD00747D49 /* DoubleExtension.swift in Sources */,
