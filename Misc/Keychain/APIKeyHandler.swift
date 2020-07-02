@@ -18,6 +18,10 @@ enum KeychainError: Error {
 func getCredentials() -> User? {
     do {
         let (email, fullname, apiKey) = try getKey()
+        print("retrieved from keychain")
+        if WorkspaceManager.getSpaces() == nil {
+            print("but no workspace")
+        }
         return User(
             token: apiKey,
             email: email,
@@ -65,8 +69,7 @@ func saveKeys(user: User) throws -> Void {
     switch status {
     case 0:
         break
-    case -25299:
-        // duplicate item found
+    case -25299: // duplicate item found
         break
     default:
         throw KeychainError.unhandledError(code: status)
