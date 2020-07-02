@@ -8,32 +8,26 @@
 
 import Foundation
 
-class Workspace: NSObject, Identifiable, NSSecureCoding {
+class Workspace: NSObject, NSSecureCoding {
+    static var supportsSecureCoding: Bool = true
+    
     var id: Int
     var name: String
     
-    static var supportsSecureCoding = true
-    
+    init(id: Int, name: String) {
+        self.id = id
+        self.name = name
+    }
+
+    // MARK: - NSCoding
+    required init(coder: NSCoder) {
+        id = coder.decodeObject(forKey: "id") as? Int ?? coder.decodeInteger(forKey: "id")
+        name = coder.decodeObject(forKey: "name") as! String
+    }
+
     func encode(with coder: NSCoder) {
         coder.encode(id, forKey: "id")
         coder.encode(name, forKey: "name")
-    }
-    
-    required init?(coder: NSCoder) {
-        guard
-            let id = coder.decodeObject(of: [NSString.self], forKey: "id") as? Int,
-            let name = coder.decodeObject(of: [NSString.self], forKey: "name") as? String
-        else {
-            return nil
-        }
-
-        self.id = id
-        self.name = name
-    }
-    
-    init(id: Int, name: String){
-        self.id = id
-        self.name = name
     }
 }
 
@@ -44,7 +38,6 @@ struct User {
     var workspaces = [Workspace]()
     
     init?(_ json:Dictionary<String, AnyObject>) {
-        print("received json")
         // unwrap optionals
         guard
             let data = json["data"] as? [String: AnyObject],
@@ -61,17 +54,13 @@ struct User {
         fullName = _name
         
         _spaces.forEach {
-            print($0)
             if let id = $0["id"] as? Int, let name = $0["name"] as? String {
                 workspaces.append(Workspace(id: id, name: name))
             }
         }
-        print("created user")
+        
         /// must have at least 1 workspace ID to function!
-        guard workspaces.count > 0 else {
-            return nil
-        }
-        print("found workspace")
+        guard workspaces.count > 0 else { return nil }
     }
     
     init?(token token_: String, email email_: String, name: String, spaces: [Workspace]?){
