@@ -31,11 +31,10 @@ struct IceCreamStick: Shape {
             path.addLine(to: CGPoint(x: 0, y: rect.height))
             path.closeSubpath()
         }
-        if round == .right { return shapePath }
-        else {
+        if round == .right {
+            return shapePath
+        } else {
             return shapePath.rotation(Angle(radians: Double.pi)).path(in: rect)
         }
     }
-    
-    
 }
