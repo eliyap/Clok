@@ -22,10 +22,9 @@ struct WorkspaceManager {
     static let defaults = UserDefaults.standard
     
     static func saveSpaces(_ spaces: [Workspace]) -> Void {
-        
         try! WorkspaceManager.defaults.setValue(
             NSKeyedArchiver.archivedData(
-                withRootObject: spaces as NSArray,
+                withRootObject: spaces,
                 requiringSecureCoding: false
             ),
             forKey: WorkspaceManager.spacesKey
@@ -37,7 +36,15 @@ struct WorkspaceManager {
     }
     
     static func getSpaces() -> [Workspace]? {
-        WorkspaceManager.defaults.object(forKey: WorkspaceManager.spacesKey) as? [Workspace]
+        let decoded  = WorkspaceManager.defaults.object(forKey: WorkspaceManager.spacesKey) as! Data
+        return try? NSKeyedUnarchiver.unarchivedObject(ofClasses: [NSArray.self, Workspace.self], from: decoded) as? [Workspace]
+        
+//        NSCoder().decodeData()
+//        guard let data = WorkspaceManager.defaults.data(forKey: WorkspaceManager.spacesKey) else { return nil }
+////        try! NSKeyedUnarchiver.unarchivedObject(ofClass: Workspace.self, from: data)
+//        NSCoder().deco
+//        return try! NSKeyedUnarchiver.unarchivedObject(ofClasses: [NSArray.self, Workspace.self], from: data) as! [Workspace]
+//        return WorkspaceManager.defaults.object(forKey: WorkspaceManager.spacesKey) as? [Workspace]
     }
 
     // the value UserDefaults returns if nothing was found
