@@ -22,10 +22,14 @@ struct ContentView: View {
     var body : some View {
         ZStack {
             HStack(spacing: 0) {
-                VStack(spacing: 0) {
-                    SpiralView()
-                    SpiralControls()
+                GeometryReader { geo in
+                    VStack(spacing: 0) {
+                        SpiralView(size: geo.size.height)
+                        SpiralControls()
+                            .frame(width: geo.size.height, height: geo.size.height)
+                    }
                 }
+                
                 CustomTabView()
             }
             .background(offBG())

@@ -21,9 +21,3 @@ struct SpiralControls: View {
         }
     }
 }
-
-struct SpiralControls_Previews: PreviewProvider {
-    static var previews: some View {
-        SpiralControls()
-    }
-}
