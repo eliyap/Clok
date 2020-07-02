@@ -19,14 +19,13 @@ extension TokenView {
             
             switch result {
             case let .failure(.statusCode(code: errorCode)):
-                break
+                print("StatusCode Error \(errorCode)")
             case let .failure(error):
                 print(error)
                 fatalError() // no error screen yet implemented
             case let .success(newUser):
                 user = newUser
             }
-            print("first")
             
             try! saveKeys(user: user)
             
