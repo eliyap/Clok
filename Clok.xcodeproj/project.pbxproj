@@ -23,6 +23,7 @@
 		2264CB3B24AD344F00ECBF2B /* TokenFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264CB3A24AD344F00ECBF2B /* TokenFields.swift */; };
 		227C613724A3F557006F8168 /* FilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227C613624A3F557006F8168 /* FilterButton.swift */; };
 		228B0FFF24AEA47C0026AD4B /* SpiralStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228B0FFE24AEA47C0026AD4B /* SpiralStack.swift */; };
+		228B100224AEA6E50026AD4B /* RoundBottomRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228B100124AEA6E50026AD4B /* RoundBottomRect.swift */; };
 		22928AC524A4207E00DC9EC5 /* FilterStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22928AC424A4207E00DC9EC5 /* FilterStack.swift */; };
 		22928AC724A423AA00DC9EC5 /* WeekButtonGlyph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22928AC624A423AA00DC9EC5 /* WeekButtonGlyph.swift */; };
 		22928AC924A429F700DC9EC5 /* ProjectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22928AC824A429F700DC9EC5 /* ProjectButton.swift */; };
@@ -32,7 +33,6 @@
 		22BE1FEA24A921B200A9A739 /* SpiralView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BE1FE924A921B200A9A739 /* SpiralView.swift */; };
 		22BE1FED24A9247800A9A739 /* LoadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BE1FEC24A9247800A9A739 /* LoadData.swift */; };
 		22BE1FEF24A92B2300A9A739 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BE1FEE24A92B2300A9A739 /* SettingsView.swift */; };
-		22BE1FF124A92C1F00A9A739 /* GetWorkspace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BE1FF024A92C1F00A9A739 /* GetWorkspace.swift */; };
 		22BE1FF424A92DE500A9A739 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BE1FF324A92DE500A9A739 /* Settings.swift */; };
 		22CBD84624A84CA400ED6FA3 /* WeekDateString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CBD84524A84CA400ED6FA3 /* WeekDateString.swift */; };
 		C615CD57245F332300D62B87 /* Toggl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C615CD56245F332300D62B87 /* Toggl.swift */; };
@@ -118,6 +118,7 @@
 		2264CB3A24AD344F00ECBF2B /* TokenFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenFields.swift; sourceTree = "<group>"; };
 		227C613624A3F557006F8168 /* FilterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterButton.swift; sourceTree = "<group>"; };
 		228B0FFE24AEA47C0026AD4B /* SpiralStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiralStack.swift; sourceTree = "<group>"; };
+		228B100124AEA6E50026AD4B /* RoundBottomRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundBottomRect.swift; sourceTree = "<group>"; };
 		22928AC424A4207E00DC9EC5 /* FilterStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FilterStack.swift; path = Controls/Filter/FilterStack.swift; sourceTree = SOURCE_ROOT; };
 		22928AC624A423AA00DC9EC5 /* WeekButtonGlyph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekButtonGlyph.swift; sourceTree = "<group>"; };
 		22928AC824A429F700DC9EC5 /* ProjectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProjectButton.swift; path = Controls/Filter/ProjectButton.swift; sourceTree = SOURCE_ROOT; };
@@ -127,7 +128,6 @@
 		22BE1FE924A921B200A9A739 /* SpiralView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiralView.swift; sourceTree = "<group>"; };
 		22BE1FEC24A9247800A9A739 /* LoadData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadData.swift; sourceTree = "<group>"; };
 		22BE1FEE24A92B2300A9A739 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		22BE1FF024A92C1F00A9A739 /* GetWorkspace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetWorkspace.swift; sourceTree = "<group>"; };
 		22BE1FF324A92DE500A9A739 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		22CBD84524A84CA400ED6FA3 /* WeekDateString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDateString.swift; sourceTree = "<group>"; };
 		C615CD56245F332300D62B87 /* Toggl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toggl.swift; sourceTree = "<group>"; };
@@ -236,7 +236,6 @@
 				C63C0D43248D3B5000163E20 /* Knob */,
 				22928ACA24A42A0600DC9EC5 /* Filter */,
 				C6855DE62496E7050050F8D4 /* SpiralControls.swift */,
-				C68F8C8C24A04CE8000D249B /* IceCreamStick.swift */,
 				C68F8C8A24A03DB4000D249B /* TimeStripView.swift */,
 				C68842AF247B3D5300DC5C42 /* WeekButtons.swift */,
 			);
@@ -252,6 +251,15 @@
 				22BE1FF324A92DE500A9A739 /* Settings.swift */,
 			);
 			path = Global;
+			sourceTree = "<group>";
+		};
+		228B100024AEA6CA0026AD4B /* Shapes */ = {
+			isa = PBXGroup;
+			children = (
+				C68F8C8C24A04CE8000D249B /* IceCreamStick.swift */,
+				228B100124AEA6E50026AD4B /* RoundBottomRect.swift */,
+			);
+			path = Shapes;
 			sourceTree = "<group>";
 		};
 		22928ACA24A42A0600DC9EC5 /* Filter */ = {
@@ -272,7 +280,6 @@
 				C615CD56245F332300D62B87 /* Toggl.swift */,
 				2296F15A24A994A400AF38B5 /* FormRequest.swift */,
 				2264CB3624AD338500ECBF2B /* LoginWith.swift */,
-				22BE1FF024A92C1F00A9A739 /* GetWorkspace.swift */,
 				221C3C5424A93C0F006995C5 /* GetUserData.swift */,
 			);
 			path = NetCode;
@@ -326,6 +333,7 @@
 		C688BFC624A18BA00077CECF /* Misc */ = {
 			isa = PBXGroup;
 			children = (
+				228B100024AEA6CA0026AD4B /* Shapes */,
 				221D963624A90BF100C84F57 /* Keychain */,
 				C6D448ED248471250072E7D4 /* Activity */,
 				22928AC624A423AA00DC9EC5 /* WeekButtonGlyph.swift */,
@@ -599,7 +607,7 @@
 				C68F8C8D24A04CE8000D249B /* IceCreamStick.swift in Sources */,
 				221D963C24A912B900C84F57 /* APIKeyHandler.swift in Sources */,
 				C6C18D7B244BB76F000345D5 /* ZESpiral.swift in Sources */,
-				22BE1FF124A92C1F00A9A739 /* GetWorkspace.swift in Sources */,
+				228B100224AEA6E50026AD4B /* RoundBottomRect.swift in Sources */,
 				C65B7D2C2497DE4A00EED981 /* EntryOperations.swift in Sources */,
 				C688A8882479A8D6003260CE /* TimeFrame.swift in Sources */,
 				C69F02782496AFA200D1C650 /* TimeIntervalExtension.swift in Sources */,

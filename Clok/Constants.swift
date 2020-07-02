@@ -38,14 +38,6 @@ let user_agent = "emlyap99@gmail.com"
 // https://github.com/toggl/toggl_api_docs/blob/master/chapters/users.md#get-current-user-data 
 let userDataURL = URL(string:"https://www.toggl.com/api/v8/me?user_agent=\(user_agent)")!
 
-// API token needs to be provided by the User
-let myToken = "a2e9485ad8781d84441e085fffeef2df"
-
-
-let myUsername = "TricklTest"
-let myWorkspace = "3109909"
-
-
 // MARK: - Time Constants
 
 let dayLength = TimeInterval(24 * 60 * 60)
@@ -75,3 +67,14 @@ enum Weekdays: Int {
 let listLineInset = CGFloat(15)
 
 let placeholderTime = "--:--"
+
+// MARK: - Device
+
+// https://medium.com/@cafielo/how-to-detect-notch-screen-in-swift-56271827625d
+extension UIDevice {
+    static var hasNotch: Bool {
+        let bottom = UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0
+        return bottom > 0
+    }
+}
+
