@@ -15,7 +15,7 @@ enum KeychainError: Error {
     case unhandledError(code: OSStatus)
 }
 
-func getCredentials() -> (String, Int)? {
+func getCredentials() -> User? {
     do {
         return try getKey()
     } catch KeychainError.unhandledError(code: errSecItemNotFound) {
@@ -30,27 +30,44 @@ func getCredentials() -> (String, Int)? {
 }
 
 func saveKeys(user: User) throws -> Void {
-    try user.workspaces.forEach {
-        let keychainItem = [kSecAttrType: $0.id,
-                            kSecAttrServer: service,
-                            kSecAttrAccount: user.email,
-                            kSecAttrCreator: user.fullName,
-                            kSecValueData: user.token.data(using: .utf8)!,
-                            kSecClass: kSecClassInternetPassword,
-                            kSecReturnData: true
-            ] as CFDictionary
-
-        var ref: AnyObject?
-
-        let status = SecItemAdd(keychainItem, &ref)
-        guard status == 0 else {
-            throw KeychainError.unhandledError(code: status)
-        }
+    
+    // User constructor guarantees >0 workspaces, but check anyway
+    if user.workspaces.count <= 0 {
+        fatalError("Tried to save no workspaces!")
     }
     
+    // save workspaces in user defaults
+    WorkspaceManager.saveIDs(user.workspaces.map{$0.id})
+    
+    // choose 1st workspace by default.
+    WorkspaceManager.saveChosen(id: user.workspaces.first!.id)
+    print("workspaces ok")
+    
+    let keychainItem = [kSecAttrServer: service,       // secure Toggl login items:
+        kSecAttrAccount: user.email,                   // email
+        kSecAttrCreator: user.fullName,                // full name
+        kSecValueData: user.token.data(using: .utf8)!, // token
+        kSecClass: kSecClassInternetPassword,
+        kSecReturnData: true
+        ] as CFDictionary
+
+    var ref: AnyObject?
+
+    let status = SecItemAdd(keychainItem, &ref)
+    
+    // handle result of operation
+    switch status {
+    case 0:
+        break
+    case -25299:
+        // duplicate item found
+        break
+    default:
+        throw KeychainError.unhandledError(code: status)
+    }
 }
 
-func getKey() throws -> (String, Int) {
+func getKey() throws -> User {
     let query = [kSecClass: kSecClassInternetPassword,
                  kSecAttrServer: service,
                  kSecReturnAttributes: true,
@@ -66,10 +83,11 @@ func getKey() throws -> (String, Int) {
     
     // convert and return data
     let dic = result as! NSDictionary
-    let workspaceID = dic[kSecAttrAccount] as! Int
+    let email = dic[kSecAttrAccount] as! String
     let keyData = dic[kSecValueData] as! Data
+    let fullName = dic[kSecAttrCreator] as! String
     let apiKey = String(data: keyData, encoding: .utf8)!
-    return (apiKey, workspaceID)
+    return User(token: apiKey, email: email, name: fullName)
 }
 
 /// when user logs out, remove token from the keychain
