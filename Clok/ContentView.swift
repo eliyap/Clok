@@ -26,8 +26,7 @@ struct ContentView: View {
                     SpiralView()
                     SpiralControls()
                 }
-                .frame(width: UIScreen.height, height: UIScreen.height)
-                TimeTabView()
+                CustomTabView()
             }
             .background(offBG())
             /// fade out loading screen when data is finished being requested

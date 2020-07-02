@@ -27,7 +27,6 @@ struct CustomTabView: View {
             case .settings:
                 Text("Settings")
             }
-            Text("Hello World")
             VStack {
                 TabButton(select: .entries, glyph: "list.bullet")
                 TabButton(select: .summary, glyph: "chart.bar.fill")

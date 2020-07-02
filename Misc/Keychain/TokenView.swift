@@ -38,10 +38,10 @@ struct TokenView: View {
                 }
                 .pickerStyle(SegmentedPickerStyle())
                 
-                if pref == .email {
+                switch pref {
+                case .email:
                     EmailFields()
-                }
-                else if pref == .token {
+                case .token :
                     TokenFields()
                 }
                 
@@ -49,7 +49,7 @@ struct TokenView: View {
                 /// EmptyView didn't work
                 if pushup {
                     Text(" ")
-                        .frame(maxHeight: UIScreen.height / 2)
+                        .frame(maxHeight: UIScreen.main.bounds.size.height / 2)
                         .transition(.upAndDown)
                 }
             }
