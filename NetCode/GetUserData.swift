@@ -19,7 +19,6 @@ func getUserData(with request: URLRequest) -> Result<User, NetworkError> {
     let handler = {(data: Data?, resp: URLResponse?, error: Error?) -> Void in
         defer{ sem.signal() }
         
-        print("canary2")
         guard error == nil else {
             result = .failure(.request(error: error! as NSError))
             return
@@ -34,7 +33,6 @@ func getUserData(with request: URLRequest) -> Result<User, NetworkError> {
             result = .failure(.statusCode(code: http_response.statusCode))
             return
         }
-        print("canary3")
         do {
             let json = try JSONSerialization.jsonObject(with: data, options: [])
             user = User(json as! Dictionary<String, AnyObject>)!
@@ -42,7 +40,6 @@ func getUserData(with request: URLRequest) -> Result<User, NetworkError> {
             result = .failure(.serialization)
         }
     }
-    print("canary1")
     
     URLSession.shared.dataTask(
         with: request,
@@ -52,8 +49,7 @@ func getUserData(with request: URLRequest) -> Result<User, NetworkError> {
     /// wait here until call returns, or timeout if it took too long
     if sem.wait(timeout: .now() + 15) == .timedOut { return .failure(.timeout) }
     
-    print("canaryX")
-    // only return success if there is no failure
+    /// only return success if there is no failure
     switch result {
     case .failure(_):
         return result

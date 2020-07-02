@@ -47,4 +47,11 @@ struct User {
         }
         print("found workspace")
     }
+    
+    init(token token_: String, email email_: String, name: String){
+        token = token_
+        email = email_
+        fullName = name
+        workspaces = []
+    }
 }
