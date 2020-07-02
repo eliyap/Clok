@@ -23,6 +23,7 @@ struct ClokApp: App {
                 .environmentObject(zero)
                 .environmentObject(data)
                 .environmentObject(settings)
+                .border(Color.red)
         }
         
     }
