@@ -31,7 +31,7 @@ extension TokenView {
             try! saveKeys(user: user)
             
             // bind token, also dismisses login screen
-            self.settings.token = user.token
+            self.settings.user = user
         }
     }
 }

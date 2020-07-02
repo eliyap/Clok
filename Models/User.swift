@@ -8,8 +8,33 @@
 
 import Foundation
 
-struct Workspace: Identifiable {
+class Workspace: NSObject, Identifiable, NSSecureCoding {
     var id: Int
+    var name: String
+    
+    static var supportsSecureCoding = true
+    
+    func encode(with coder: NSCoder) {
+        coder.encode(id, forKey: "id")
+        coder.encode(name, forKey: "name")
+    }
+    
+    required init?(coder: NSCoder) {
+        guard
+            let id = coder.decodeObject(of: [NSString.self], forKey: "id") as? Int,
+            let name = coder.decodeObject(of: [NSString.self], forKey: "name") as? String
+        else {
+            return nil
+        }
+
+        self.id = id
+        self.name = name
+    }
+    
+    init(id: Int, name: String){
+        self.id = id
+        self.name = name
+    }
 }
 
 struct User {
@@ -36,8 +61,9 @@ struct User {
         fullName = _name
         
         _spaces.forEach {
-            if let id = $0["id"] as? Int {
-                workspaces.append(Workspace(id: id))
+            print($0)
+            if let id = $0["id"] as? Int, let name = $0["name"] as? String {
+                workspaces.append(Workspace(id: id, name: name))
             }
         }
         print("created user")
@@ -48,10 +74,11 @@ struct User {
         print("found workspace")
     }
     
-    init(token token_: String, email email_: String, name: String){
+    init?(token token_: String, email email_: String, name: String, spaces: [Workspace]?){
         token = token_
         email = email_
         fullName = name
-        workspaces = []
+        guard let spaces = spaces else { return nil }
+        workspaces = spaces
     }
 }

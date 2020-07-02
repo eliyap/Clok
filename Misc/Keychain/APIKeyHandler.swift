@@ -17,7 +17,13 @@ enum KeychainError: Error {
 
 func getCredentials() -> User? {
     do {
-        return try getKey()
+        let (email, fullname, apiKey) = try getKey()
+        return User(
+            token: apiKey,
+            email: email,
+            name: fullname,
+            spaces: WorkspaceManager.getSpaces()
+        )
     } catch KeychainError.unhandledError(code: errSecItemNotFound) {
         print("No Key Found")
     } catch KeychainError.unhandledError(code: let status) {
@@ -37,7 +43,7 @@ func saveKeys(user: User) throws -> Void {
     }
     
     // save workspaces in user defaults
-    WorkspaceManager.saveIDs(user.workspaces.map{$0.id})
+    WorkspaceManager.saveSpaces(user.workspaces)
     
     // choose 1st workspace by default.
     WorkspaceManager.saveChosen(id: user.workspaces.first!.id)
@@ -67,7 +73,7 @@ func saveKeys(user: User) throws -> Void {
     }
 }
 
-func getKey() throws -> User {
+func getKey() throws -> (String, String, String) {
     let query = [kSecClass: kSecClassInternetPassword,
                  kSecAttrServer: service,
                  kSecReturnAttributes: true,
@@ -87,7 +93,7 @@ func getKey() throws -> User {
     let keyData = dic[kSecValueData] as! Data
     let fullName = dic[kSecAttrCreator] as! String
     let apiKey = String(data: keyData, encoding: .utf8)!
-    return User(token: apiKey, email: email, name: fullName)
+    return (email, fullName, apiKey)
 }
 
 /// when user logs out, remove token from the keychain

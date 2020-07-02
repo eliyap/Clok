@@ -22,7 +22,7 @@ struct TimeTabView: View {
     
     var body: some View {
         TabView(selection: $settings.tab) {
-            CustomTableView(self.data.report.entries.within(interval: weekLength, of: self.zero.date))
+            EntryList()
                 .tabItem {
                     Image(systemName: "list.bullet")
                     Text("Entries")

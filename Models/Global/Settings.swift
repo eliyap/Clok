@@ -8,5 +8,5 @@ import Foundation
 
 final class Settings: ObservableObject {
     @Published var tab = TimeTabView.tabs.summary
-    @Published var token:String? = nil
+    @Published var user: User? = nil
 }

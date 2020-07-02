@@ -21,16 +21,23 @@ struct WorkspaceManager {
     
     static let defaults = UserDefaults.standard
     
-    static func saveIDs(_ ids: [Int]) -> Void {
-        WorkspaceManager.defaults.setValue(ids, forKey: WorkspaceManager.spacesKey)
+    static func saveSpaces(_ spaces: [Workspace]) -> Void {
+        
+        try! WorkspaceManager.defaults.setValue(
+            NSKeyedArchiver.archivedData(
+                withRootObject: spaces as NSArray,
+                requiringSecureCoding: false
+            ),
+            forKey: WorkspaceManager.spacesKey
+        )
     }
 
     static func saveChosen(id: Int) -> Void {
         WorkspaceManager.defaults.setValue(id, forKey: WorkspaceManager.spaceChosenKey)
     }
     
-    static func getIDs() -> [Int]? {
-        WorkspaceManager.defaults.object(forKey: WorkspaceManager.spacesKey) as? [Int]
+    static func getSpaces() -> [Workspace]? {
+        WorkspaceManager.defaults.object(forKey: WorkspaceManager.spacesKey) as? [Workspace]
     }
 
     // the value UserDefaults returns if nothing was found

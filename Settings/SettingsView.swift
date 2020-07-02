@@ -17,9 +17,8 @@ struct SettingsView: View {
         NavigationView {
             List {
                 Section(header: Text("Account")) {
-                    Text("Logged in as")
-                    Text("Workspace")
-                    
+                    Text("Logged in as \(settings.user?.fullName ?? "No One")")
+                    Text("Workspace id?")
                 }
                 Section(header: EmptyView()) {
                     Text("Log Out")
@@ -32,10 +31,10 @@ struct SettingsView: View {
                             try! dropKey()
                             
                             // destroy workspace records
-                            WorkspaceManager.saveIDs([])
+                            WorkspaceManager.saveSpaces([])
                             WorkspaceManager.saveChosen(id: 0)
                             
-                            self.settings.token = nil
+                            self.settings.user = nil
                             print("logged out!")
                         }
                 }

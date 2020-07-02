@@ -12,6 +12,8 @@
 		221D963C24A912B900C84F57 /* APIKeyHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221D963B24A912B900C84F57 /* APIKeyHandler.swift */; };
 		221D964424A9207600C84F57 /* SearchContrastScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221D964324A9207600C84F57 /* SearchContrastScreen.swift */; };
 		22232B8B24A9532000F3C378 /* TokenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22232B8A24A9532000F3C378 /* TokenView.swift */; };
+		225F69B424AD8CE70012B5DB /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225F69B324AD8CE70012B5DB /* AppView.swift */; };
+		225F69B724AD8EF50012B5DB /* EntryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225F69B624AD8EF50012B5DB /* EntryList.swift */; };
 		2264B82A24A437F800FA4F08 /* DescriptionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264B82924A437F800FA4F08 /* DescriptionButton.swift */; };
 		2264CB3124AD250600ECBF2B /* DefaultWorkspace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264CB3024AD250600ECBF2B /* DefaultWorkspace.swift */; };
 		2264CB3524AD330500ECBF2B /* IconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264CB3424AD330500ECBF2B /* IconView.swift */; };
@@ -65,8 +67,6 @@
 		C6AAB3EE249F04FF00DFBA36 /* ProjectListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AAB3ED249F04FF00DFBA36 /* ProjectListView.swift */; };
 		C6AAB3F2249F061D00DFBA36 /* TimeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AAB3F1249F061D00DFBA36 /* TimeData.swift */; };
 		C6B0FF9C246F124300DED011 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B0FF9B246F124300DED011 /* ColorExtension.swift */; };
-		C6C18D452448F96C000345D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C18D442448F96C000345D5 /* AppDelegate.swift */; };
-		C6C18D472448F96C000345D5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C18D462448F96C000345D5 /* SceneDelegate.swift */; };
 		C6C18D492448F96C000345D5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C18D482448F96C000345D5 /* ContentView.swift */; };
 		C6C18D4B2448F96F000345D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6C18D4A2448F96F000345D5 /* Assets.xcassets */; };
 		C6C18D4E2448F96F000345D5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6C18D4D2448F96F000345D5 /* Preview Assets.xcassets */; };
@@ -105,6 +105,8 @@
 		221D963B24A912B900C84F57 /* APIKeyHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeyHandler.swift; sourceTree = "<group>"; };
 		221D964324A9207600C84F57 /* SearchContrastScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchContrastScreen.swift; sourceTree = "<group>"; };
 		22232B8A24A9532000F3C378 /* TokenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenView.swift; sourceTree = "<group>"; };
+		225F69B324AD8CE70012B5DB /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
+		225F69B624AD8EF50012B5DB /* EntryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryList.swift; sourceTree = "<group>"; };
 		2264B82924A437F800FA4F08 /* DescriptionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionButton.swift; sourceTree = "<group>"; };
 		2264CB3024AD250600ECBF2B /* DefaultWorkspace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultWorkspace.swift; sourceTree = "<group>"; };
 		2264CB3424AD330500ECBF2B /* IconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconView.swift; sourceTree = "<group>"; };
@@ -159,8 +161,6 @@
 		C6AAB3F1249F061D00DFBA36 /* TimeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeData.swift; sourceTree = "<group>"; };
 		C6B0FF9B246F124300DED011 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		C6C18D412448F96C000345D5 /* Clok.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clok.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C6C18D442448F96C000345D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C6C18D462448F96C000345D5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		C6C18D482448F96C000345D5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C6C18D4A2448F96F000345D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C6C18D4D2448F96F000345D5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -216,6 +216,14 @@
 				2264CB3A24AD344F00ECBF2B /* TokenFields.swift */,
 			);
 			path = Keychain;
+			sourceTree = "<group>";
+		};
+		225F69B524AD8EE20012B5DB /* EntryList */ = {
+			isa = PBXGroup;
+			children = (
+				225F69B624AD8EF50012B5DB /* EntryList.swift */,
+			);
+			path = EntryList;
 			sourceTree = "<group>";
 		};
 		227C613824A3F5D9006F8168 /* Controls */ = {
@@ -360,6 +368,7 @@
 				C6B0FFA1246F52B600DED011 /* Extensions */,
 				C6B0FFA0246F52A700DED011 /* Models */,
 				C6751D70247197EE002965CC /* CustomTableView */,
+				225F69B524AD8EE20012B5DB /* EntryList */,
 				227C613824A3F5D9006F8168 /* Controls */,
 				C6C18D7E244CD7AA000345D5 /* Spiral */,
 				C65B7D282497D1C100EED981 /* Statistics */,
@@ -382,8 +391,7 @@
 		C6C18D432448F96C000345D5 /* Clok */ = {
 			isa = PBXGroup;
 			children = (
-				C6C18D442448F96C000345D5 /* AppDelegate.swift */,
-				C6C18D462448F96C000345D5 /* SceneDelegate.swift */,
+				225F69B324AD8CE70012B5DB /* AppView.swift */,
 				C6C18D482448F96C000345D5 /* ContentView.swift */,
 				C62F7B8524970CC40076F64C /* TimeTabView.swift */,
 				C6C18D7C244BE891000345D5 /* Constants.swift */,
@@ -576,7 +584,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C6C18D452448F96C000345D5 /* AppDelegate.swift in Sources */,
 				C63C0D45248D3C0D00163E20 /* SpiralTrimmer.swift in Sources */,
 				2264CB3B24AD344F00ECBF2B /* TokenFields.swift in Sources */,
 				22232B8B24A9532000F3C378 /* TokenView.swift in Sources */,
@@ -602,7 +609,6 @@
 				2264CB3524AD330500ECBF2B /* IconView.swift in Sources */,
 				C63FC2F8249BCEB900747D49 /* AngleExtension.swift in Sources */,
 				C6AAB3EA249EF26800DFBA36 /* TimeEntryExtension.swift in Sources */,
-				C6C18D472448F96C000345D5 /* SceneDelegate.swift in Sources */,
 				C6C18D492448F96C000345D5 /* ContentView.swift in Sources */,
 				C6B0FF9C246F124300DED011 /* ColorExtension.swift in Sources */,
 				C63FC2FA249BCFBD00747D49 /* DoubleExtension.swift in Sources */,
@@ -610,6 +616,7 @@
 				C6AAB3EE249F04FF00DFBA36 /* ProjectListView.swift in Sources */,
 				22BE1FF424A92DE500A9A739 /* Settings.swift in Sources */,
 				22ADD98024A80DD40015DD04 /* Stat.swift in Sources */,
+				225F69B724AD8EF50012B5DB /* EntryList.swift in Sources */,
 				C68842B0247B3D5300DC5C42 /* WeekButtons.swift in Sources */,
 				2264CB3924AD33D900ECBF2B /* EmailFields.swift in Sources */,
 				2264CB3124AD250600ECBF2B /* DefaultWorkspace.swift in Sources */,
@@ -638,6 +645,7 @@
 				22928AC724A423AA00DC9EC5 /* WeekButtonGlyph.swift in Sources */,
 				C6AAB3F2249F061D00DFBA36 /* TimeData.swift in Sources */,
 				C615CD57245F332300D62B87 /* Toggl.swift in Sources */,
+				225F69B424AD8CE70012B5DB /* AppView.swift in Sources */,
 				2296F15B24A994A400AF38B5 /* FormRequest.swift in Sources */,
 				C615CD59245F33F100D62B87 /* Report.swift in Sources */,
 				221D964424A9207600C84F57 /* SearchContrastScreen.swift in Sources */,
@@ -811,7 +819,7 @@
 				DEVELOPMENT_TEAM = 949D776DFQ;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Clok/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -833,7 +841,7 @@
 				DEVELOPMENT_TEAM = 949D776DFQ;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Clok/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
