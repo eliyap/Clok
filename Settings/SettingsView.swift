@@ -9,6 +9,10 @@
 import SwiftUI
 
 struct SettingsView: View {
+    
+    @EnvironmentObject var data: TimeData
+    @EnvironmentObject var settings: Settings
+    
     var body: some View {
         NavigationView {
             List {
@@ -21,9 +25,19 @@ struct SettingsView: View {
                     Text("Log Out")
                         .foregroundColor(.red)
                         .onTapGesture {
-                            // perform logout here
+                            // destroy local data
+                            self.data.report = Report()
+                            
+                            // destroy credentials
+                            try! dropKey()
+                            
+                            // destroy workspace records
+                            WorkspaceManager.saveIDs([])
+                            WorkspaceManager.saveChosen(id: 0)
+                            
+                            self.settings.token = nil
+                            print("logged out!")
                         }
-                    
                 }
             }
             .modifier(roundedList())
