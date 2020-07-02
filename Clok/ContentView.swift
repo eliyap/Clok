@@ -31,7 +31,7 @@ struct ContentView: View {
             }
             .background(offBG())
             /// fade out loading screen when data is finished being requested
-            if needToken {
+            if settings.token == nil {
                 TokenView()
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .background(Color(UIColor.systemBackground))
@@ -44,14 +44,22 @@ struct ContentView: View {
 //                    .transition(.opacity)
 //            }
         }
-        .onAppear {
-            /// load data immediately
-            if let (apiKey, workspaceID) = getCredentials() {
-                self.loadData(token: apiKey, workspaceID: workspaceID)
-            } else {
-                self.needToken = true
-            }
+        .onReceive(self.settings.$token, perform: {
+            // do nothing if token is nil (user is not logged in)
+            guard let token = $0 else { return }
             
+            // load user data
+            let workspaceID: Int = (WorkspaceManager.getChosen() ?? WorkspaceManager.getIDs()?.first!)!
+            self.loadData(
+                token: token,
+                workspaceID: workspaceID
+            )
+        })
+        .onAppear {
+            /// try to find user credentials
+            if let user = getCredentials() {
+                self.settings.token = user.token
+            }
         }
     }
 }
