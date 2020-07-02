@@ -8,25 +8,24 @@
 
 import SwiftUI
 
+/**
+ Negative Padding permits complete overlap of areas, where ZStack failed
+ - Important: ZStacking did *not* work, as the Time Strip layer grabbed touch focus,
+ preventing the user from manipulating the handle
+ */
 struct SpiralStack: View {
     var body: some View {
         GeometryReader { geo in
             VStack(spacing: 0) {
                 SpiralView()
                     .frame(width: geo.size.height, height:geo.size.height)
-                    /**
-                     Permits overlap of areas
-                     - Important: ZStacking did *not* work, as the Time Strip layer grabbed touch focus,
-                     preventing the user from manipulating the handle
-                     */
                     .padding(Edge.Set.bottom, -geo.size.height)
-                    
                 SpiralControls()
                     .frame(width: geo.size.height, height: geo.size.height)
             }
         }
         /// keep it square
-        .aspectRatio(1, contentMode: .fill)
+        .aspectRatio(1, contentMode: .fit)
     }
 }
 
