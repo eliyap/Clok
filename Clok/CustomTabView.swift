@@ -18,19 +18,26 @@ struct CustomTabView: View {
     @State private var selection = Tabs.summary
     
     var body: some View {
-        HStack {
+        HStack(spacing: 0) {
             switch selection {
             case .entries:
-                Text("Entries")
+                EntryList()
             case .summary:
-                Text("Summary")
+                StatView()
             case .settings:
-                Text("Settings")
+                SettingsView()
             }
             VStack {
+                Spacer()
                 TabButton(select: .entries, glyph: "list.bullet")
+                    
+                Spacer()
                 TabButton(select: .summary, glyph: "chart.bar.fill")
+                    
+                Spacer()
                 TabButton(select: .settings, glyph: "gear")
+                    
+                Spacer()
             }
         }
     }
@@ -39,8 +46,9 @@ struct CustomTabView: View {
         Button {
             selection = select
         } label: {
-            Image(systemName: glyph)
+            Label("", systemImage: glyph)
         }
+        .frame(alignment: .leading)
     }
 }
 
