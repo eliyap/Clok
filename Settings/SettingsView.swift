@@ -17,8 +17,17 @@ struct SettingsView: View {
         NavigationView {
             List {
                 Section(header: Text("Account")) {
-                    Text("Logged in as \(settings.user?.fullName ?? "No One")")
-                    Text("Workspace id?")
+                    HStack {
+                        Text("Logged in as")
+                        Spacer()
+                        Text(settings.user?.fullName ?? "No One")
+                    }
+                    HStack {
+                        Text("Workspace")
+                        Spacer()
+                        Text(settings.space?.name ?? "No Space")
+                    }
+                    
                 }
                 Section(header: EmptyView()) {
                     Text("Log Out")
@@ -32,7 +41,7 @@ struct SettingsView: View {
                             
                             // destroy workspace records
                             WorkspaceManager.saveSpaces([])
-                            WorkspaceManager.saveChosen(id: 0)
+                            WorkspaceManager.saveChosen(Workspace(wid: 0, name: ""))
                             
                             self.settings.user = nil
                             print("logged out!")
