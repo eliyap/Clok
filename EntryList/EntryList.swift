@@ -23,7 +23,8 @@ struct EntryList: View {
     var body: some View {
         ScrollView {
             ScrollViewReader { value in
-                Text("I am a placeholder")
+                Text("Time Entries")
+                    .font(.title)
                     .onReceive(listRow.$entry, perform: { entry in
                         withAnimation {
                             value.scrollTo(entry?.id)

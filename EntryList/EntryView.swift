@@ -11,7 +11,7 @@ import SwiftUI
 struct EntryView: View {
     var entry: TimeEntry
     private let df = DateFormatter()
-    
+    private let padding = CGFloat(10)
     init(entry: TimeEntry) {
         self.entry = entry
         df.timeStyle = .short
@@ -30,6 +30,12 @@ struct EntryView: View {
                 Text("\(df.string(from: entry.start)) – \(df.string(from: entry.end))")
             }
         }
+        .padding(padding)
+        .background(
+            RoundedRectangle(cornerRadius: padding)
+                .foregroundColor(Color(UIColor.systemBackground))
+        )
+        .padding([.bottom], padding)
     }
 }
 

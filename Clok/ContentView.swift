@@ -46,12 +46,15 @@ struct ContentView: View {
             // do nothing if token is nil (user is not logged in)
             guard let token = $0?.token else { return }
             
-            // load user data
-            let workspaceID: Int = WorkspaceManager.getChosen()!
-//            self.loadData(
-//                token: token,
-//                workspaceID: workspaceID
-//            )
+            
+            // get workspace
+            settings.space = WorkspaceManager.getChosen()!
+            
+            // request user data
+            self.loadData(
+                token: token,
+                workspaceID: settings.space!.wid
+            )
         })
         .onAppear {
             /// try to find user credentials

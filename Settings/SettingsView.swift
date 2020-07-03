@@ -27,7 +27,6 @@ struct SettingsView: View {
                         Spacer()
                         Text(settings.space?.name ?? "No Space")
                     }
-                    
                 }
                 Section(header: EmptyView()) {
                     Text("Log Out")

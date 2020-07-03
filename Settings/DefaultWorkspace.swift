@@ -50,6 +50,6 @@ struct WorkspaceManager {
     
     static func getChosen() -> Workspace? {
         let decoded  = WorkspaceManager.defaults.object(forKey: WorkspaceManager.spaceChosenKey) as! Data
-        return try? NSKeyedUnarchiver.unarchivedObject(ofClass: Workspace.self, from: decoded) as? Workspace
+        return try? NSKeyedUnarchiver.unarchivedObject(ofClass: Workspace.self, from: decoded)
     }
 }
