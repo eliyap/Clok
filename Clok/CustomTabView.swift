@@ -18,7 +18,30 @@ struct CustomTabView: View {
     @State private var selection = Tabs.summary
     
     var body: some View {
-        HStack(spacing: 0) {
+        Group {
+            if UIDevice.hasNotch {
+                HStack(spacing: 0) {
+                    Views()
+                    VStack {
+                        Buttons()
+                    }
+                }
+            } else {
+                VStack(spacing: 0) {
+                    Views()
+                    HStack {
+                        Buttons()
+                    }
+                }
+            }
+        }
+        
+        
+    }
+    
+    func Views() -> some View {
+        /// group prevents warning about underlying types
+        Group {
             switch selection {
             case .entries:
                 EntryList()
@@ -27,18 +50,18 @@ struct CustomTabView: View {
             case .settings:
                 SettingsView()
             }
-            VStack {
-                Spacer()
-                TabButton(select: .entries, glyph: "list.bullet")
-                    
-                Spacer()
-                TabButton(select: .summary, glyph: "chart.bar.fill")
-                    
-                Spacer()
-                TabButton(select: .settings, glyph: "gear")
-                    
-                Spacer()
-            }
+        }
+    }
+    
+    func Buttons() -> some View {
+        Group {
+            Spacer()
+            TabButton(select: .entries, glyph: "list.bullet")
+            Spacer()
+            TabButton(select: .summary, glyph: "chart.bar.fill")
+            Spacer()
+            TabButton(select: .settings, glyph: "gear")
+            Spacer()
         }
     }
     

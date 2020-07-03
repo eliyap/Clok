@@ -25,7 +25,7 @@ struct SpiralStack: View {
             }
         }
         /// keep it square
-        .aspectRatio(1, contentMode: .fit)
+        .aspectRatio(1, contentMode: UIDevice.hasNotch ? .fit : .fill)
     }
 }
 

@@ -23,7 +23,7 @@ struct WeekButtons: View {
     
     var body: some View {
         HStack {
-            Button(action: {
+            Button {
                 /// break out of search if tapped
                 guard !self.data.searching else {
                     withAnimation { self.data.searching = false }
@@ -32,13 +32,13 @@ struct WeekButtons: View {
                 
                 withAnimation { self.zero.date -= weekLength }
                 self.zero.weekSkip = .back
-            }) {
+            } label: {
                 WeekButtonGlyph(name: "chevron.left")
                     .padding(buttonPadding)
             }
-            .disabled(settings.tab == .settings)
+            
             Spacer()
-            Button(action: {
+            Button {
                 /// break out of search if tapped
                 guard !self.data.searching else {
                     withAnimation { self.data.searching = false }
@@ -47,11 +47,11 @@ struct WeekButtons: View {
                 
                 withAnimation { self.zero.date += weekLength }
                 self.zero.weekSkip = .fwrd
-            }) {
+            } label: {
                 WeekButtonGlyph(name: "chevron.right")
                     .padding(buttonPadding)
             }
-            .disabled(settings.tab == .settings)
         }
+        .disabled(settings.tab == .settings)
     }
 }
