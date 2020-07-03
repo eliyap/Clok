@@ -24,14 +24,14 @@ struct CustomTabView: View {
                 HStack(spacing: 0) {
                     Views()
                     VStack {
-                        Buttons()
+                        Buttons(edge: .leading)
                     }
                 }
             } else {
                 VStack(spacing: 0) {
                     Views()
                     HStack {
-                        Buttons()
+                        Buttons(edge: .top)
                     }
                 }
             }
@@ -52,17 +52,17 @@ struct CustomTabView: View {
         }
     }
     
-    func Buttons() -> some View {
-        Group {
+    func Buttons(edge: Edge.Set) -> some View {
+        return Group {
             Spacer()
             TabButton(select: .entries, glyph: "list.bullet")
-                .padding([.leading])
+                .padding(edge)
             Spacer()
             TabButton(select: .summary, glyph: "chart.bar.fill")
-                .padding([.leading])
+                .padding(edge)
             Spacer()
             TabButton(select: .settings, glyph: "gear")
-                .padding([.leading])
+                .padding(edge)
             Spacer()
         }
     }
