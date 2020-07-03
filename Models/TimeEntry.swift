@@ -117,4 +117,17 @@ final class TimeEntry : ObservableObject, Equatable {
             lhs.end == rhs.end &&
             lhs.tid == rhs.tid
        }
+    
+    /// Headlining description,
+    /// or project if there's no description,
+    /// or placeholder if no info whatsoever
+    func descriptionString() -> String {
+        if description == "" && project == .noProject {
+            return "No Description"
+        } else if description == "" {
+            return project.name
+        } else {
+            return description
+        }
+    }
 }
