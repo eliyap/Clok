@@ -25,6 +25,7 @@ struct EntryList: View {
                 Section(header: Text(df.string(from: day.start))) {
                     ForEach(day.entries, id: \.id) { entry in
                         EntryView(entry: entry)
+                            .listRowBackground(offBG())
                     }
                 }
             }
