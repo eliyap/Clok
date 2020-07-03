@@ -11,3 +11,6 @@ API Token: a2e9485ad8781d84441e085fffeef2df
 
 Toggl's Privacy Policy
 https://toggl.com/legal/privacy/
+
+Support Email
+clok.sam.dev@gmail.com
