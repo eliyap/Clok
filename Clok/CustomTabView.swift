@@ -9,13 +9,14 @@
 import SwiftUI
 
 struct CustomTabView: View {
+    
     enum Tabs {
         case entries
         case summary
         case settings
     }
     
-    @State private var selection = Tabs.summary
+    @EnvironmentObject private var settings: Settings
     
     var body: some View {
         Group {
@@ -35,14 +36,12 @@ struct CustomTabView: View {
                 }
             }
         }
-        
-        
     }
     
     func Views() -> some View {
         /// group prevents warning about underlying types
         Group {
-            switch selection {
+            switch settings.tab {
             case .entries:
                 EntryList()
             case .summary:
@@ -57,19 +56,24 @@ struct CustomTabView: View {
         Group {
             Spacer()
             TabButton(select: .entries, glyph: "list.bullet")
+                .padding([.leading])
             Spacer()
             TabButton(select: .summary, glyph: "chart.bar.fill")
+                .padding([.leading])
             Spacer()
             TabButton(select: .settings, glyph: "gear")
+                .padding([.leading])
             Spacer()
         }
     }
     
     func TabButton(select: Tabs, glyph: String) -> some View {
         Button {
-            selection = select
+            settings.tab = select
         } label: {
             Label("", systemImage: glyph)
+                .foregroundColor(settings.tab == select ? .primary : .secondary)
+                .font(Font.body.weight(settings.tab == select ? .bold : .regular))
         }
         .frame(alignment: .leading)
     }
