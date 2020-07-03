@@ -31,8 +31,14 @@ struct WorkspaceManager {
         )
     }
 
-    static func saveChosen(id: Int) -> Void {
-        WorkspaceManager.defaults.setValue(id, forKey: WorkspaceManager.spaceChosenKey)
+    static func saveChosen(_ space: Workspace) -> Void {
+        try! WorkspaceManager.defaults.setValue(
+            NSKeyedArchiver.archivedData(
+                withRootObject: space,
+                requiringSecureCoding: false
+            ),
+            forKey: WorkspaceManager.spaceChosenKey
+        )
     }
     
     // unarchive previously stored data objects
@@ -41,13 +47,9 @@ struct WorkspaceManager {
         return try? NSKeyedUnarchiver.unarchivedObject(ofClasses: [NSArray.self, Workspace.self], from: decoded) as? [Workspace]
     }
 
-    // the value UserDefaults returns if nothing was found
-    static let defaultInt = 0
-    static func getChosen() -> Int? {
-        let id = WorkspaceManager.defaults.integer(forKey: WorkspaceManager.spaceChosenKey)
-        guard id != 0 else {
-            return nil
-        }
-        return id
+    
+    static func getChosen() -> Workspace? {
+        let decoded  = WorkspaceManager.defaults.object(forKey: WorkspaceManager.spaceChosenKey) as! Data
+        return try? NSKeyedUnarchiver.unarchivedObject(ofClass: Workspace.self, from: decoded) as? Workspace
     }
 }
