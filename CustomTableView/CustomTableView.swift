@@ -36,7 +36,7 @@ class TimeEntryDataSource: TableViewDataSource, ObservableObject {
     
     /// for reloading purposes, check the first and last ID for changes
     func boundIDs() -> (Int, Int) {
-        (mutableData.first?.id ?? NSNotFound, mutableData.last?.id ?? NSNotFound)
+        return (mutableData.first?.id ?? NSNotFound, mutableData.last?.id ?? NSNotFound)
     }
     
     //MARK: Cell Lookup
@@ -132,26 +132,18 @@ struct CustomTableView: View, TableViewDelegate {
     }
     
     var body: some View {
-        
-        NavigationView {
-            ZStack {
-                TableView(
-                    dataSource: TimeEntryDataSource(
-                        data: self.data.report.entries.matching(data.terms),
-                        zero: zeroClone
-                    ) as TableViewDataSource,
-                    delegate: self,
-                    row: self.listRow
-                )
-                /// abuse onReceive to pass zeroDate down
-                .onReceive(self.zero.$date, perform: {
-                    self.zeroClone.date = $0
-                })
-            }
-            .navigationBarTitle("")
-            .navigationBarHidden(true)
-        }
-        .navigationViewStyle(StackNavigationViewStyle())
+        TableView(
+            dataSource: TimeEntryDataSource(
+                data: self.data.report.entries.matching(data.terms),
+                zero: zeroClone
+            ) as TableViewDataSource,
+            delegate: self,
+            row: self.listRow
+        )
+        /// abuse onReceive to pass zeroDate down
+        .onReceive(self.zero.$date, perform: {
+            self.zeroClone.date = $0
+        })
     }
     
     //MARK: - TableViewDelegate Functions

@@ -17,13 +17,19 @@ struct Stat: View {
     var body: some View {
         Group {
             HStack{
+                // avoid runtime warning for symbol name ""
+                if symbol != "" {
+                    Image(systemName: symbol)
+                        /// hardcoded values are bad practice, but only way I could align the glyphs
+                        .frame(width: glyphSize, height: glyphSize)
+                } else {
+                    EmptyView()
+                        .frame(width: glyphSize, height: glyphSize)
+                }
                 Text(label)
                 Spacer()
-                Image(systemName: self.symbol)
-                    /// hardcoded values are bad practice, but only way I could align the glyphs
-                    .frame(width: glyphSize, height: glyphSize)
+                text
             }
-            text
         }
     }
 }

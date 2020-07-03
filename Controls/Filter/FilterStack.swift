@@ -8,6 +8,20 @@
 
 import SwiftUI
 
+extension AnyTransition {
+    
+    static let fastLinear = Animation.linear(duration: 0.25)
+    static var upAndDown: AnyTransition {
+        return AnyTransition
+            .move(edge: .bottom)
+            .animation(fastLinear)
+            .combined(with: AnyTransition
+                .opacity
+                .animation(fastLinear)
+            )
+    }
+}
+
 struct FilterStack: View {
     @EnvironmentObject private var data: TimeData
     
@@ -20,24 +34,16 @@ struct FilterStack: View {
                 Text("Filter Entries where")
                     .font(.title)
                     .bold()
-                    .padding(.bottom, spacing)
-                    .transition(.opacity)
+                    .transition(.upAndDown)
                 ProjectButton()
-                    .padding(.bottom, spacing)
-                    .transition(.opacity)
+                    .transition(.upAndDown)
                 DescriptionButton()
-                    .padding(.bottom, spacing)
-                    .transition(.opacity)
+                    .transition(.upAndDown)
             }
             FilterButton()
         }
         /// don't pad vertically, week button already does that
         .padding([.leading, .trailing], buttonPadding)
-        .onReceive(data.$searching, perform: { searching in
-            withAnimation(.linear(duration: 0.15)) {
-                self.spacing = searching ? buttonPadding : -self.buttonSize
-            }
-        })
     }
 }
 

@@ -11,19 +11,32 @@ import SwiftUI
 struct TimeTabView: View {
     @EnvironmentObject private var data: TimeData
     @EnvironmentObject private var zero: ZeroDate
+    @EnvironmentObject private var settings: Settings
+    @State private var openTab = 2
+    
+    enum tabs: Int {
+        case entries = 1
+        case summary = 2
+        case settings = 3
+    }
     
     var body: some View {
-        TabView {
+        TabView(selection: $settings.tab) {
             CustomTableView(self.data.report.entries.within(interval: weekLength, of: self.zero.date))
                 .tabItem {
                     Image(systemName: "list.bullet")
                     Text("Entries")
-                }
+                }.tag(tabs.entries)
             StatView()
                 .tabItem {
                     Image(systemName: "chart.bar.fill")
                     Text("Summary")
-                }
+                }.tag(tabs.summary)
+            SettingsView()
+                .tabItem {
+                    Image(systemName: "gear")
+                    Text("Settings")
+                }.tag(tabs.settings)
         }
     }
 }

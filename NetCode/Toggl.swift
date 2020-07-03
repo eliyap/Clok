@@ -10,25 +10,26 @@ import Foundation
 
 enum NetworkError: Error {
     case url
-    case request
+    case request(error: NSError)
     case server
     case timeout
-    case statusCode
+    case serialization
+    case statusCode(code: Int)
     case other // bad practice, in future try to figure out how I can have some
     // generic error for handling non-network errors
 }
 
 // makes HTTP-requests and parses data from the Toggl API
 // utilizing semaphore method from https://medium.com/@michaellong/swift-5-async-await-result-gcd-and-timeout-1f1652d7adcf
-func toggl_request(
-    api_string: String,
-    token: String
-) -> Result<Report, NetworkError> {
+func toggl_request(api_string: String, token: String) -> Result<Report, NetworkError> {
+    
     var page = 1 // pages are indexed from 1
     var result: Result<Report, NetworkError>!
     var emptyReq = false // flag for when a request returns no entries
+    
     // initialize as empty to prevent crashes when offline
     var report: Report = Report([:])
+    
     // semaphore for API call
     let sem = DispatchSemaphore(value: 0)
     
@@ -37,12 +38,7 @@ func toggl_request(
         // release semaphore whether or not code fails
         defer{ sem.signal() }
         guard error == nil else {
-            #if DEBUG
-            // could put more detailed error handling here, nut unsure how to do so
-            // use NSError.code to to get reason for failure? e.g. I think -1009 is "no internet"
-            print(error! as NSError)
-            #endif
-            result = .failure(.request)
+            result = .failure(.request(error: error! as NSError))
             return
         }
         guard
@@ -53,11 +49,7 @@ func toggl_request(
             return
         }
         guard http_response.statusCode == 200 else {
-            #if DEBUG
-            print("Status Code \(http_response.statusCode)")
-            print("\(http_response.allHeaderFields)")
-            #endif
-            result = .failure(.statusCode)
+            result = .failure(.statusCode(code: http_response.statusCode))
             return
         }
         
@@ -100,14 +92,12 @@ func toggl_request(
         URLSession.shared.dataTask(with: request, completionHandler: myHandler).resume()
         
         // wait for call to complete
-        if sem.wait(timeout: .now() + 15) == .timedOut {
-            // abort if call takes too long
-            return .failure(.timeout)
-        }
-        if emptyReq {
-            // if nothing was found, stop requesting!
-            break page_loop
-        }
+        // abort if call takes too long
+        if sem.wait(timeout: .now() + 15) == .timedOut { return .failure(.timeout) }
+        
+        // if nothing was found, stop requesting!
+        if emptyReq { break page_loop }
+        
         // request next page of data
         page += 1
     } while(report.entries.count < report.total_count)
@@ -119,5 +109,4 @@ func toggl_request(
     default:
         return .success(report)
     }
-    
 }

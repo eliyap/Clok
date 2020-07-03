@@ -10,92 +10,56 @@ import SwiftUI
 
 
 struct ContentView: View {
-    @EnvironmentObject var zero: ZeroDate
     @EnvironmentObject var data: TimeData
+    @EnvironmentObject var settings: Settings
     
-    /// indicates whether we are finished loading data
+    /// whether we're finished loading data
     @State var loaded = false
+    
+    /// whether we need user's token
+    @State var needToken = false
     
     var body : some View {
         ZStack {
-            GeometryReader { geo in
-                if geo.size.width > geo.size.height {
-                    /// landscape mode
-                    HStack(spacing: 0) {
-                        ContentGroupView(
-                            heightLimit: geo.size.height,
-                            widthLimit:geo.size.height
-                        )
-                    }
-                } else {
-                    /// portrait mode
-                    VStack(alignment: .center, spacing: 0) {
-                        ContentGroupView(
-                            heightLimit: min(
-                                geo.size.width,
-                                /// consume at most 60% of height (otherwise it crushes lower elements)
-                                geo.size.height * 0.6
-                            ),
-                            widthLimit:geo.size.width
-                        )
-                    }
+            HStack(spacing: 0) {
+                VStack(spacing: 0) {
+                    SpiralView()
+                    SpiralControls()
                 }
+                .frame(width: UIScreen.height, height: UIScreen.height)
+                TimeTabView()
             }
             .background(offBG())
-            .onAppear {
-                /// load data immediately
-                self.loadData()
-            }
             /// fade out loading screen when data is finished being requested
-//            ProgressIndicator()
-//                .opacity(self.loaded ? 0.0 : 1.0)
-//                .animation(.linear)
+            if settings.token == nil {
+                TokenView()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(Color(UIColor.systemBackground))
+                    .edgesIgnoringSafeArea(.all)
+                    .transition(.opacity)
+            }
+            
+//            if !loaded {
+//                ProgressIndicator()
+//                    .transition(.opacity)
+//            }
         }
-        
-    }
-    
-    func loadData() {
-            DispatchQueue.global(qos: .utility).async {
-                
-                // assemble request URL (page is added later)
-                let df = DateFormatter()
-                df.dateFormat = "yyyy-MM-dd" // ISO 8601 format, day precision
-                
-                let since = df.string(from: Date().addingTimeInterval(TimeInterval(-86400 * 365))) // grab 365 days...
-                let until = df.string(from: Date())                                                // ...from today
-                
-                // documented at https://github.com/toggl/toggl_api_docs/blob/master/reports.md
-                let base_url = "https://toggl.com/reports/api/v2/"
-                let api_string = "\(base_url)details?" + [
-                    "user_agent=\(user_agent)",    // identifies my app
-                    "workspace_id=\(myWorkspace)", // provided by the User
-                    "since=\(since)",
-                    "until=\(until)"
-                    ].joined(separator: "&")
-                
-                let result = toggl_request(api_string: api_string, token: myToken)
-                
-                DispatchQueue.main.async {
-                    switch result {
-                    case let .success(report):
-                        /// hand back the complete report
-                        self.data.report = report
-                        /// and remove the loading screen
-                        self.loaded = true
-                        
-                    case .failure(.request):
-                        // temporary micro-copy
-                        print("We weren't able to fetch your data. Maybe the internet is down?")
-                    case let .failure(error):
-                        print(error)
-                    }
-                }
+        .onReceive(self.settings.$token, perform: {
+            // do nothing if token is nil (user is not logged in)
+            guard let token = $0 else { return }
+            
+            // load user data
+            let workspaceID: Int = (WorkspaceManager.getChosen() ?? WorkspaceManager.getIDs()?.first!)!
+            self.loadData(
+                token: token,
+                workspaceID: workspaceID
+            )
+        })
+        .onAppear {
+            /// try to find user credentials
+            if let user = getCredentials() {
+                self.settings.token = user.token
             }
         }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
     }
 }

@@ -19,13 +19,14 @@ enum weekLabels : String {
 struct WeekButtons: View {
     @EnvironmentObject private var zero:ZeroDate
     @EnvironmentObject private var data: TimeData
+    @EnvironmentObject private var settings: Settings
     
     var body: some View {
         HStack {
             Button(action: {
                 /// break out of search if tapped
                 guard !self.data.searching else {
-                    self.data.searching = false
+                    withAnimation { self.data.searching = false }
                     return
                 }
                 
@@ -35,11 +36,12 @@ struct WeekButtons: View {
                 WeekButtonGlyph(name: "chevron.left")
                     .padding(buttonPadding)
             }
+            .disabled(settings.tab == .settings)
             Spacer()
             Button(action: {
                 /// break out of search if tapped
                 guard !self.data.searching else {
-                    self.data.searching = false
+                    withAnimation { self.data.searching = false }
                     return
                 }
                 
@@ -49,6 +51,7 @@ struct WeekButtons: View {
                 WeekButtonGlyph(name: "chevron.right")
                     .padding(buttonPadding)
             }
+            .disabled(settings.tab == .settings)
         }
     }
 }

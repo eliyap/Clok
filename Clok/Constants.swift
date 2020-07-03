@@ -33,10 +33,13 @@ let buttonPadding = CGFloat(7)
 // MARK: - API components
 
 // lets Toggle know who I am
-let user_agent = "trickl.app"
+let user_agent = "emlyap99@gmail.com"
+
+// https://github.com/toggl/toggl_api_docs/blob/master/chapters/users.md#get-current-user-data 
+let userDataURL = URL(string:"https://www.toggl.com/api/v8/me?user_agent=\(user_agent)")!
 
 // API token needs to be provided by the User
-let myToken = "cfae5db4249b8509ca7671259598c2fb"
+let myToken = "a2e9485ad8781d84441e085fffeef2df"
 
 
 let myUsername = "TricklTest"
@@ -62,6 +65,12 @@ enum Weekdays: Int {
     case Friday = 5
     case Saturday = 6
 }
+
+extension UIScreen {
+    static let height = UIScreen.main.bounds.size.height
+}
+
+// MARK: - Misc
 /**
  List Rows are separated by a thin grey line that runs
  from the right edge to just before the left edge
@@ -69,3 +78,4 @@ enum Weekdays: Int {
  */
 let listLineInset = CGFloat(15)
 
+let placeholderTime = "--:--"

@@ -10,6 +10,7 @@ import SwiftUI
 
 struct FilterButton: View {
     @EnvironmentObject private var data: TimeData
+    @EnvironmentObject private var settings: Settings
     
     let radius = CGFloat(10)
     
@@ -24,6 +25,7 @@ struct FilterButton: View {
                 name: "line.horizontal.3.decrease.circle" + (self.data.searching ? ".fill" : "")
             )
         }
+        .disabled(settings.tab == .settings)
     }
 }
 

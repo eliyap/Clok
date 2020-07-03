@@ -12,7 +12,6 @@ struct StatView: View {
     @EnvironmentObject var data: TimeData
     @EnvironmentObject var zero: ZeroDate
     @State private var dateString = ""
-    private var df = DateFormatter()
     
     var body: some View {
         ScrollView {
@@ -20,13 +19,6 @@ struct StatView: View {
                 Text("Summary")
                     .font(.title)
                     .bold()
-                Text(dateString)
-                    .font(.subheadline)
-                    .bold()
-                    .onReceive(self.zero.$date, perform: { date in
-                        /// set labels programatically so that ellipsis animation does NOT play when changing date
-                        self.dateString = "\(self.df.string(from: date)) – \(self.df.string(from: date + weekLength))"
-                    })
                 HStack {
                     /// show Any Project as an empty circle
                     Image(systemName: data.terms.project == .any ? "circle" : "largecircle.fill.circle")
@@ -44,24 +36,23 @@ struct StatView: View {
                     }
                 }
                 .onTapGesture {
-                    self.data.searching = true
+                    withAnimation { self.data.searching = true }
                 }
-                Divider()
-                StatDisplayView(for: WeekTimeFrame(
-                    start: self.zero.date,
-                    entries: self.data.report.entries,
-                    terms: self.data.terms
-                ))
-                Text("XX Total")
-                Text("XX Per Day")
+                StatDisplayView(
+                    for: WeekTimeFrame(
+                        start: self.zero.date,
+                        entries: self.data.report.entries,
+                        terms: self.data.terms
+                    ),
+                    prev: WeekTimeFrame(
+                        start: self.zero.date - weekLength,
+                        entries: self.data.report.entries,
+                        terms: self.data.terms
+                    )
+                )
             }
             .padding()
         }
-        .background(slightBG())
-    }
-    
-    init() {
-        df.setLocalizedDateFormatFromTemplate("MMMdd")
     }
     
     func Tab() -> some View {
