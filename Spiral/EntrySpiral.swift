@@ -27,25 +27,25 @@ struct EntrySpiral: View {
             .gesture(TapGesture().onEnded() {_ in
                 // scroll to this entry on the entry list
                 /// pass selection to global variable
-                self.listRow.entry = self.entry
-                
-                /// then deselect immediately
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
-                    self.listRow.entry = nil
-                }
+                listRow.entry = entry
+                print("Selecting \(entry.id)")
+//                /// then deselect immediately
+//                DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+//                    self.listRow.entry = nil
+//                }
                 
                 /// brief bounce animation,
                 /// per Zero Punctuation advice, peak quickly & drop off slowly
                 withAnimation(.linear(duration: 0.1)){
                     /// drop the opacity to take on more BG color
-                    self.opacity -= 0.25
+                    opacity -= 0.25
                     /// scale more when closer to the center
-                    self.scale += 0.075 / Double(self.entry.spiralEnd.squareRoot())
+                    scale += 0.075 / Double(entry.spiralEnd.squareRoot())
                 }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     withAnimation(.linear(duration: 0.3)){
-                        self.opacity = 1
-                        self.scale = 1
+                        opacity = 1
+                        scale = 1
                     }
                 }
             })

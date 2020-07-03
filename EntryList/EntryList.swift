@@ -12,6 +12,7 @@ struct EntryList: View {
     
     @EnvironmentObject var data: TimeData
     @EnvironmentObject var zero: ZeroDate
+    @EnvironmentObject var listRow: ListRow
     
     private let df = DateFormatter()
     
@@ -20,12 +21,23 @@ struct EntryList: View {
     }
     
     var body: some View {
-        List {
-            ForEach(Days(), id: \.id) { day in
-                Section(header: Text(df.string(from: day.start))) {
-                    ForEach(day.entries, id: \.id) { entry in
-                        EntryView(entry: entry)
-                            .listRowBackground(offBG())
+        ScrollView {
+            ScrollViewReader { value in
+                Text("I am a placeholder")
+                    .onReceive(listRow.$entry, perform: { entry in
+                        withAnimation {
+                            value.scrollTo(entry?.id)
+                        }
+                        
+                    })
+                ForEach(Days(), id: \.id) { day in
+                    Section(header: Text(df.string(from: day.start))) {
+                        LazyVStack {
+                            ForEach(day.entries, id: \.id) { entry in
+                                EntryView(entry: entry)
+                                    .id(entry.id)
+                            }
+                        }
                     }
                 }
             }
