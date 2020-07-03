@@ -7,6 +7,6 @@
 import Foundation
 
 final class Settings: ObservableObject {
-    @Published var tab = TimeTabView.tabs.summary
+    @Published var tab = CustomTabView.Tabs.summary
     @Published var user: User? = nil
 }
