@@ -22,7 +22,9 @@ struct ContentView: View {
     var body : some View {
         ZStack {
             HStack(spacing: 0) {
-                SpiralStack()
+                if settings.tab != .settings {
+                    SpiralStack()
+                }
                 CustomTabView()
             }
             .background(offBG())
