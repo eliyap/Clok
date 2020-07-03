@@ -9,4 +9,5 @@ import Foundation
 final class Settings: ObservableObject {
     @Published var tab = CustomTabView.Tabs.summary
     @Published var user: User? = nil
+    @Published var space: Workspace? = nil
 }
