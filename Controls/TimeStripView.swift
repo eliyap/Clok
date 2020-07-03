@@ -24,10 +24,12 @@ struct TimeStripView: View {
             if UIDevice.hasNotch {
                 WeekDateButton()
                     .modifier(TabStyle())
-                
+                    .padding([.leading], padding)
                 Spacer()
                 Text(self.tf.string(from: self.zero.date))
                     .modifier(TabStyle())
+                    /// extra space here
+                    .padding([.trailing], padding)
             } else {
                 WeekDateButton()
                     .modifier(StickStyle(round: .right))
@@ -63,7 +65,8 @@ struct TabStyle: ViewModifier {
     
     func body(content: Content) -> some View {
         content
-            .padding(padding)
+            .padding([.leading, .trailing, .bottom], padding)
+            .padding([.top], padding / 2)
             .background(
                RaisedShape(radius: padding / 2){ RoundBottomRect() }
             )
