@@ -9,7 +9,7 @@
 import Foundation
 import SwiftUI
 
-extension TokenView {
+extension LoginView {
     func EmailFields() -> some View {
         Group {
             TextField(

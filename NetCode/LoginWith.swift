@@ -7,7 +7,7 @@
 //
 
 import Foundation
-extension TokenView {
+extension LoginView {
     func loginWith(auth: String) -> Void {
         let request = formRequest(
             url: userDataURL,

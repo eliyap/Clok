@@ -9,7 +9,7 @@
 import Foundation
 import SwiftUI
 
-extension TokenView {
+extension LoginView {
     func TokenFields() -> some View {
         Group {
             TextField(
@@ -30,7 +30,7 @@ extension TokenView {
                 Text("Profile")
                     .foregroundColor(Color.blue)
                     .onTapGesture {
-                        UIApplication.shared.open(TokenView.profileURL)
+                        UIApplication.shared.open(LoginView.profileURL)
                     }
             }
                 .transition(.upAndDown)
