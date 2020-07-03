@@ -24,7 +24,7 @@ struct EntryList: View {
             ForEach(Days(), id: \.id) { day in
                 Section(header: Text(df.string(from: day.start))) {
                     ForEach(day.entries, id: \.id) { entry in
-                        Text(entry.description)
+                        EntryView(entry: entry)
                     }
                 }
             }
