@@ -60,15 +60,4 @@ struct StatView: View {
             .frame(width: listLineInset)
             .foregroundColor(data.terms.project.color)
     }
-    
-    func Stat(label: String, symbol: String, text: Text) -> some View {
-        Group {
-            HStack{
-                Text(label)
-                Spacer()
-                Image(systemName: symbol)
-            }
-            text
-        }
-    }
 }
