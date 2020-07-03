@@ -29,7 +29,7 @@ struct FilterStack: View {
     @State private var spacing = CGFloat.zero
     
     var body: some View {
-        VStack(alignment: .leading, spacing: .zero) {
+        VStack(alignment: .leading) {
             if data.searching {
                 Text("Filter Entries where")
                     .font(.title)
