@@ -27,7 +27,7 @@ struct EntryList: View {
                     .font(.title)
                     .onReceive(listRow.$entry, perform: { entry in
                         withAnimation {
-                            value.scrollTo(entry?.id)
+                            value.scrollTo(entry?.id, anchor: .top)
                         }
                         
                     })
@@ -53,7 +53,10 @@ struct EntryList: View {
     
     func Days() -> [Day] {
         /// restrict to current week
-        let entries = data.report.entries.within(interval: weekLength, of: zero.date)
+        let entries = data.report.entries
+            .within(interval: weekLength, of: zero.date)
+            .matching(data.terms)
+            .sorted(by: {$0.start < $1.start} )
         
         var days = [Day]()
         let cal = Calendar.current
