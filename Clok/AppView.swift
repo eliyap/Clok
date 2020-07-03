@@ -15,6 +15,7 @@ struct ClokApp: App {
     var zero = ZeroDate()
     var data = TimeData()
     var settings = Settings()
+    var bounds = Bounds()
     
     var body: some Scene {
         WindowGroup {
@@ -23,6 +24,7 @@ struct ClokApp: App {
                 .environmentObject(zero)
                 .environmentObject(data)
                 .environmentObject(settings)
+                .environmentObject(bounds)
         }
         
     }

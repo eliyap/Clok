@@ -9,8 +9,9 @@
 import SwiftUI
 
 struct TimeStripView: View {
-    @EnvironmentObject private var zero: ZeroDate
     
+    @EnvironmentObject private var zero: ZeroDate
+    @EnvironmentObject private var bounds: Bounds
     
     private let padding = CGFloat(7)
     private let tf = DateFormatter()
@@ -21,7 +22,7 @@ struct TimeStripView: View {
     
     var body: some View {
         HStack {
-            if UIDevice.hasNotch {
+            if UIDevice.hasNotch && bounds.mode == .landscape {
                 WeekDateButton()
                     .modifier(TabStyle())
                     .padding([.leading], padding)

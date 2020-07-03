@@ -17,10 +17,11 @@ struct CustomTabView: View {
     }
     
     @EnvironmentObject private var settings: Settings
+    @EnvironmentObject private var bounds: Bounds
     
     var body: some View {
         Group {
-            if UIDevice.hasNotch {
+            if UIDevice.hasNotch && bounds.mode == .landscape {
                 HStack(spacing: 0) {
                     Views()
                     VStack {
