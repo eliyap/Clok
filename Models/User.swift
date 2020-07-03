@@ -11,22 +11,22 @@ import Foundation
 class Workspace: NSObject, NSSecureCoding {
     static var supportsSecureCoding: Bool = true
     
-    var id: Int
+    var wid: Int
     var name: String
     
-    init(id: Int, name: String) {
-        self.id = id
+    init(wid: Int, name: String) {
+        self.wid = wid
         self.name = name
     }
 
     // MARK: - NSCoding
     required init(coder: NSCoder) {
-        id = coder.decodeObject(forKey: "id") as? Int ?? coder.decodeInteger(forKey: "id")
+        wid = coder.decodeObject(forKey: "wid") as? Int ?? coder.decodeInteger(forKey: "wid")
         name = coder.decodeObject(forKey: "name") as! String
     }
 
     func encode(with coder: NSCoder) {
-        coder.encode(id, forKey: "id")
+        coder.encode(wid, forKey: "wid")
         coder.encode(name, forKey: "name")
     }
 }
@@ -54,8 +54,8 @@ struct User {
         fullName = _name
         
         _spaces.forEach {
-            if let id = $0["id"] as? Int, let name = $0["name"] as? String {
-                workspaces.append(Workspace(id: id, name: name))
+            if let wid = $0["id"] as? Int, let name = $0["name"] as? String {
+                workspaces.append(Workspace(wid: wid, name: name))
             }
         }
         
