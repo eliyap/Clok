@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		22027DD024AFF63F00C0BA90 /* ContentGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22027DCF24AFF63F00C0BA90 /* ContentGroupView.swift */; };
+		22027DD224AFF7ED00C0BA90 /* TopFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22027DD124AFF7ED00C0BA90 /* TopFunctions.swift */; };
+		22027DD424AFF92000C0BA90 /* Fullscreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22027DD324AFF92000C0BA90 /* Fullscreen.swift */; };
 		221C3C5524A93C0F006995C5 /* GetUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221C3C5424A93C0F006995C5 /* GetUserData.swift */; };
 		221C3C5724A93C57006995C5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221C3C5624A93C57006995C5 /* User.swift */; };
 		221D963C24A912B900C84F57 /* APIKeyHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221D963B24A912B900C84F57 /* APIKeyHandler.swift */; };
@@ -97,6 +100,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		22027DCF24AFF63F00C0BA90 /* ContentGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentGroupView.swift; sourceTree = "<group>"; };
+		22027DD124AFF7ED00C0BA90 /* TopFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopFunctions.swift; sourceTree = "<group>"; };
+		22027DD324AFF92000C0BA90 /* Fullscreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fullscreen.swift; sourceTree = "<group>"; };
 		221C3C5424A93C0F006995C5 /* GetUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserData.swift; sourceTree = "<group>"; };
 		221C3C5624A93C57006995C5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		221D963B24A912B900C84F57 /* APIKeyHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeyHandler.swift; sourceTree = "<group>"; };
@@ -327,6 +333,7 @@
 				22928AC624A423AA00DC9EC5 /* WeekButtonGlyph.swift */,
 				221D964324A9207600C84F57 /* SearchContrastScreen.swift */,
 				C688BFC924A18BF00077CECF /* RaisedShape.swift */,
+				22027DD324AFF92000C0BA90 /* Fullscreen.swift */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -389,6 +396,8 @@
 			children = (
 				225F69B324AD8CE70012B5DB /* AppView.swift */,
 				C6C18D482448F96C000345D5 /* ContentView.swift */,
+				22027DD124AFF7ED00C0BA90 /* TopFunctions.swift */,
+				22027DCF24AFF63F00C0BA90 /* ContentGroupView.swift */,
 				222305AD24AE807000711031 /* CustomTabView.swift */,
 				C6C18D7C244BE891000345D5 /* Constants.swift */,
 				C6C18D4A2448F96F000345D5 /* Assets.xcassets */,
@@ -591,6 +600,7 @@
 				C6F605AF246C6B1700D0FE82 /* DateExtension.swift in Sources */,
 				C68F8C8D24A04CE8000D249B /* IceCreamStick.swift in Sources */,
 				221D963C24A912B900C84F57 /* APIKeyHandler.swift in Sources */,
+				22027DD024AFF63F00C0BA90 /* ContentGroupView.swift in Sources */,
 				C6C18D7B244BB76F000345D5 /* ZESpiral.swift in Sources */,
 				228B100224AEA6E50026AD4B /* RoundBottomRect.swift in Sources */,
 				C65B7D2C2497DE4A00EED981 /* EntryOperations.swift in Sources */,
@@ -613,6 +623,7 @@
 				C6F605AD246C520D00D0FE82 /* EntrySpiral.swift in Sources */,
 				C6AAB3EE249F04FF00DFBA36 /* ProjectListView.swift in Sources */,
 				22BE1FF424A92DE500A9A739 /* Settings.swift in Sources */,
+				22027DD424AFF92000C0BA90 /* Fullscreen.swift in Sources */,
 				225F69B724AD8EF50012B5DB /* EntryList.swift in Sources */,
 				C68842B0247B3D5300DC5C42 /* WeekButtons.swift in Sources */,
 				2264CB3924AD33D900ECBF2B /* EmailFields.swift in Sources */,
@@ -643,6 +654,7 @@
 				C615CD57245F332300D62B87 /* Toggl.swift in Sources */,
 				225F69B424AD8CE70012B5DB /* AppView.swift in Sources */,
 				2296F15B24A994A400AF38B5 /* FormRequest.swift in Sources */,
+				22027DD224AFF7ED00C0BA90 /* TopFunctions.swift in Sources */,
 				C615CD59245F33F100D62B87 /* Report.swift in Sources */,
 				228B100624AECDFF0026AD4B /* EntryView.swift in Sources */,
 				221D964424A9207600C84F57 /* SearchContrastScreen.swift in Sources */,
