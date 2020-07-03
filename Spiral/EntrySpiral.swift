@@ -28,11 +28,6 @@ struct EntrySpiral: View {
                 // scroll to this entry on the entry list
                 /// pass selection to global variable
                 listRow.entry = entry
-                print("Selecting \(entry.id)")
-//                /// then deselect immediately
-//                DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
-//                    self.listRow.entry = nil
-//                }
                 
                 /// brief bounce animation,
                 /// per Zero Punctuation advice, peak quickly & drop off slowly
