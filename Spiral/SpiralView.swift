@@ -17,7 +17,7 @@ struct SpiralView: View {
         ZStack {
             SpiralUI()
             KnobView()
-            if data.searching || settings.tab == .settings {
+            if data.searching {
                 /// increase contrast with filter text so it is more readable
                 SearchContrastScreen()
             }
@@ -28,8 +28,8 @@ struct SpiralView: View {
                     self.blurRadius = searching ? 5 : .zero
                 }
             })
-            /// turn off interaction when user is filtering / using settings
-            .disabled(data.searching || settings.tab == .settings)
+            /// turn off interaction when user is filtering
+            .disabled(data.searching)
 
     }
 }
