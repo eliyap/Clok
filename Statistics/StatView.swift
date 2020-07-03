@@ -36,18 +36,18 @@ struct StatView: View {
                     }
                 }
                 .onTapGesture {
-                    withAnimation { self.data.searching = true }
+                    withAnimation { data.searching = true }
                 }
                 StatDisplayView(
                     for: WeekTimeFrame(
-                        start: self.zero.date,
-                        entries: self.data.report.entries,
-                        terms: self.data.terms
+                        start: zero.date,
+                        entries: data.report.entries,
+                        terms: data.terms
                     ),
                     prev: WeekTimeFrame(
-                        start: self.zero.date - weekLength,
-                        entries: self.data.report.entries,
-                        terms: self.data.terms
+                        start: zero.date - weekLength,
+                        entries: data.report.entries,
+                        terms: data.terms
                     )
                 )
             }
