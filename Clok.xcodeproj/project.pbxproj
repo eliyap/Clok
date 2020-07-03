@@ -372,7 +372,6 @@
 				C6751D70247197EE002965CC /* CustomTableView */,
 				227C613824A3F5D9006F8168 /* Controls */,
 				C6C18D7E244CD7AA000345D5 /* Spiral */,
-				C6D448ED248471250072E7D4 /* Activity */,
 				22289D0524AFE9CE00ED1B32 /* Netcode */,
 				C65B7D282497D1C100EED981 /* Statistics */,
 				C688BFC624A18BA00077CECF /* Misc */,
@@ -446,13 +445,6 @@
 				2279541924AFEBD4008C6806 /* SpiralView.swift */,
 			);
 			path = Spiral;
-			sourceTree = "<group>";
-		};
-		C6D448ED248471250072E7D4 /* Activity */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Activity;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
