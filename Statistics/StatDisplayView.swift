@@ -22,6 +22,8 @@ struct StatDisplayView: View {
     private var deltaEnd = TimeInterval.zero
     private var deltaAvgDur = TimeInterval.zero
     
+    @Environment(\.colorScheme) var mode
+    
     var body: some View {
         Group {
             Divider()
@@ -59,7 +61,7 @@ struct StatDisplayView: View {
             )
             Stat(
                 label: "Per Day",
-                symbol: "", // triggers a runtime warning for "No Image named ''", should be ignorable
+                symbol: nil,
                 text: Text(avgDur.toString())
             )
                 /// good ol negative padding hack to bring it closer up
@@ -91,7 +93,7 @@ struct StatDisplayView: View {
             )
             Stat(
                 label: "",
-                symbol: "",
+                symbol: nil,
                 text: Text(abs(deltaAvgDur).toString() + " per day")
             )
                 /// good ol negative padding hack to bring it closer up
@@ -120,5 +122,19 @@ struct StatDisplayView: View {
         
         avgDur = week.avgDuration()
         deltaAvgDur = prev.avgDuration() - avgDur
+    }
+    
+    
+    func Stat(label: String, symbol: String?, text: Text) -> some View {
+        HStack{
+            Label {
+                Text(label)
+            } icon: {
+                Image(systemName: symbol ?? "circle.fill")
+                    .foregroundColor(symbol == nil ? (mode == .light ? .offWhite : .offBlack) : .primary)
+            }
+            Spacer()
+            text
+        }
     }
 }
