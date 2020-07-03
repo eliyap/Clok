@@ -50,7 +50,7 @@ func saveKeys(user: User) throws -> Void {
     WorkspaceManager.saveSpaces(user.workspaces)
     
     // choose 1st workspace by default.
-    WorkspaceManager.saveChosen(id: user.workspaces.first!.id)
+    WorkspaceManager.saveChosen(user.workspaces.first!)
     print("workspaces ok")
     
     let keychainItem = [kSecAttrServer: service,       // secure Toggl login items:
