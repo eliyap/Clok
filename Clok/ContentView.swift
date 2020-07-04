@@ -24,11 +24,7 @@ struct ContentView: View {
             ContentGroupView()
             /// fade out loading screen when data is finished being requested
             if settings.user?.token == nil { LoginView() }
-            
-//            if !loaded {
-//                ProgressIndicator()
-//                    
-//            }
+//            if !loaded { ProgressIndicator() }
         }
         .onReceive(self.settings.$user, perform: { fetchData($0) })
         .onAppear { tryLoadUserFromDisk() }
