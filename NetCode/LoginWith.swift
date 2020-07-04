@@ -7,7 +7,7 @@
 //
 
 import Foundation
-extension TokenView {
+extension LoginView {
     func loginWith(auth: String) -> Void {
         let request = formRequest(
             url: userDataURL,
@@ -18,11 +18,16 @@ extension TokenView {
             var user: User!
             
             switch result {
+            case .failure(.statusCode(code: 403)):
+                errorText = "Wrong Token / Password"
+                return
             case let .failure(.statusCode(code: errorCode)):
-                print("StatusCode Error \(errorCode)")
+                errorText = "Error \(errorCode): Could not login to Toggl"
+                return
             case let .failure(error):
                 print(error)
-                fatalError() // no error screen yet implemented
+                errorText = "Unknown Error \(error)"
+                return
             case let .success(newUser):
                 user = newUser
             }

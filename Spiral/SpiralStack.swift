@@ -14,6 +14,9 @@ import SwiftUI
  preventing the user from manipulating the handle
  */
 struct SpiralStack: View {
+    
+    @EnvironmentObject private var bounds: Bounds
+    
     var body: some View {
         GeometryReader { geo in
             VStack(spacing: 0) {

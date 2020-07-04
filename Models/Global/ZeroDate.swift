@@ -19,4 +19,7 @@ final class ZeroDate: ObservableObject {
     }
     
     @Published var weekSkip : dateChange? = nil
+    
+    /// whether the time indicating clock hands should be on screen
+    @Published var showHands = false
 }

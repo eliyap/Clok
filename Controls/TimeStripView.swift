@@ -9,8 +9,9 @@
 import SwiftUI
 
 struct TimeStripView: View {
-    @EnvironmentObject private var zero: ZeroDate
     
+    @EnvironmentObject private var zero: ZeroDate
+    @EnvironmentObject private var bounds: Bounds
     
     private let padding = CGFloat(7)
     private let tf = DateFormatter()
@@ -21,22 +22,28 @@ struct TimeStripView: View {
     
     var body: some View {
         HStack {
-            if UIDevice.hasNotch {
+            if UIDevice.hasNotch && bounds.mode == .landscape {
                 WeekDateButton()
                     .modifier(TabStyle())
                     .padding([.leading], padding)
                 Spacer()
-                Text(self.tf.string(from: self.zero.date))
-                    .modifier(TabStyle())
-                    /// extra space here
-                    .padding([.trailing], padding)
+                Button { withAnimation { zero.showHands.toggle() } } label: {
+                    Text(self.tf.string(from: self.zero.date))
+                        .modifier(TabStyle())
+                        /// extra space here
+                        .padding([.trailing], padding)
+                }
+                .buttonStyle(PlainButtonStyle())
             } else {
                 WeekDateButton()
                     .modifier(StickStyle(round: .right))
                 
                 Spacer()
-                Text(self.tf.string(from: self.zero.date))
-                    .modifier(StickStyle(round: .left))
+                Button { withAnimation { zero.showHands.toggle() } } label: {
+                    Text(self.tf.string(from: self.zero.date))
+                        .modifier(StickStyle(round: .left))
+                }
+                .buttonStyle(PlainButtonStyle())
             }
             
         }

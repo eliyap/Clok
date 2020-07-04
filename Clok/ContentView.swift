@@ -18,51 +18,14 @@ struct ContentView: View {
     
     /// whether we need user's token
     @State var needToken = false
-    
     var body : some View {
         ZStack {
-            HStack(spacing: 0) {
-                if settings.tab != .settings {
-                    SpiralStack()
-                }
-                CustomTabView()
-            }
-            .background(offBG())
+            ContentGroupView()
             /// fade out loading screen when data is finished being requested
-            if settings.user?.token == nil {
-                TokenView()
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .background(Color(UIColor.systemBackground))
-                    .edgesIgnoringSafeArea(.all)
-                    .transition(.opacity)
-            }
-            
-//            if !loaded {
-//                ProgressIndicator()
-//                    .transition(.opacity)
-//            }
+            if settings.user?.token == nil { LoginView() }
+//            if !loaded { ProgressIndicator() }
         }
-        .onReceive(self.settings.$user, perform: {
-            // do nothing if token is nil (user is not logged in)
-            guard let token = $0?.token else { return }
-            
-            
-            // get workspace
-            settings.space = WorkspaceManager.getChosen()!
-            
-            // request user data
-            self.loadData(
-                token: token,
-                workspaceID: settings.space!.wid
-            )
-        })
-        .onAppear {
-            /// try to find user credentials
-            if let user = getCredentials() {
-                self.settings.user = user
-            } else {
-                print("could not retrieve user from disk")
-            }
-        }
+        .onReceive(self.settings.$user, perform: { fetchData($0) })
+        .onAppear { tryLoadUserFromDisk() }
     }
 }

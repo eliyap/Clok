@@ -9,7 +9,7 @@
 import Foundation
 import SwiftUI
 
-extension TokenView {
+extension LoginView {
     func TokenFields() -> some View {
         Group {
             TextField(
@@ -17,23 +17,28 @@ extension TokenView {
                 text: $key,
                 onEditingChanged: edit,
                 onCommit: {
+                    guard key != "" else {
+                        errorText = "Please enter your API token"
+                        return
+                    }
+                    
                     self.loginWith(auth: auth(
                         token: self.key
                     ))
                 }
             )
                 .textFieldStyle(RoundedBorderTextFieldStyle())
-                .transition(.upAndDown)
+                .transition(.inAndOut(edge: .bottom))
             
             HStack(spacing: .zero) {
                 Text("Find Toggl's API Token on your ")
                 Text("Profile")
                     .foregroundColor(Color.blue)
                     .onTapGesture {
-                        UIApplication.shared.open(TokenView.profileURL)
+                        UIApplication.shared.open(LoginView.profileURL)
                     }
             }
-                .transition(.upAndDown)
+                .transition(.inAndOut(edge: .bottom))
         }
     }
 }

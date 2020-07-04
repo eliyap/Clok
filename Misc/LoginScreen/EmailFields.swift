@@ -9,7 +9,7 @@
 import Foundation
 import SwiftUI
 
-extension TokenView {
+extension LoginView {
     func EmailFields() -> some View {
         Group {
             TextField(
@@ -18,20 +18,25 @@ extension TokenView {
                 onEditingChanged: edit
             )
                 .textFieldStyle(RoundedBorderTextFieldStyle())
-                .transition(.upAndDown)
+                .transition(.inAndOut(edge: .bottom))
             
             SecureField(
                 "Password",
                 text: $password,
                 onCommit: {
+                    guard email != "" && password != "" else {
+                        errorText = "Please both your email and password"
+                        return
+                    }
+                    
                     self.loginWith(auth: auth(
-                        email: self.email,
-                        password: self.password
+                        email: email,
+                        password: password
                     ))
                 }
             )
                 .textFieldStyle(RoundedBorderTextFieldStyle())
-                .transition(.upAndDown)
+                .transition(.inAndOut(edge: .bottom))
         }
     }
 }

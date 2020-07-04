@@ -9,7 +9,7 @@
 import Foundation
 import SwiftUI
 
-struct TokenView: View {
+struct LoginView: View {
     
     /// allow this view to dismiss itself after user logs in
     @EnvironmentObject var settings: Settings
@@ -25,8 +25,10 @@ struct TokenView: View {
     @State var email = ""
     @State var password = ""
     @State var key = ""
+    @State var errorText = ""
     @State private var pref: loginPreference = .email
     @State var pushup = false
+    
     var body: some View {
         HStack {
             IconView()
@@ -37,6 +39,11 @@ struct TokenView: View {
                     Text("Token").tag(loginPreference.token)
                 }
                 .pickerStyle(SegmentedPickerStyle())
+                
+                if errorText != "" {
+                    Text(errorText)
+                        .foregroundColor(.red)
+                }
                 
                 switch pref {
                 case .email:
@@ -50,12 +57,13 @@ struct TokenView: View {
                 if pushup {
                     Text(" ")
                         .frame(maxHeight: UIScreen.main.bounds.size.height / 2)
-                        .transition(.upAndDown)
+                        .transition(.inAndOut(edge: .bottom))
                 }
             }
             /// prevent 's picker from munching the whole screen
             .frame(maxWidth: UIScreen.main.bounds.size.width / 2)
         }
+        .modifier(FullscreenModifier())
     }
     
     /// when user starts / stops editing text field, raise / lower the pushup view
