@@ -11,36 +11,82 @@ import SwiftUI
 
 
 struct Clockhands: View {
+    
     @EnvironmentObject var zero: ZeroDate
+    
+    private let size = CGFloat(50)
+    
     var body: some View {
-        GeometryReader { geo in
-            VStack(spacing: .zero) {
-                HStack{
-                    Spacer()
-                    if zero.showHands {
-                        Circle().frame(width:30, height: 30).transition(.inAndOut(edge: .top))
-                    }
-                    Spacer()
+        VStack(spacing: .zero) {
+            HStack{
+                Spacer()
+                if zero.showHands {
+                    Encircle(h2400())
+                        .transition(.inAndOut(edge: .top))
+                        .padding(.top, -size/3)
                 }
                 Spacer()
-                HStack{
-                    if zero.showHands {
-                    Circle().frame(width:30, height: 30).transition(.inAndOut(edge: .leading))
-                    }
-                    Spacer()
-                    if zero.showHands {
-                        Circle().frame(width:30, height: 30).transition(.inAndOut(edge: .trailing))
-                    }
+            }
+            Spacer()
+            HStack{
+                if zero.showHands {
+                    Encircle(h1800())
+                        .transition(.inAndOut(edge: .leading))
+                        .padding(.leading, -size/3)
                 }
                 Spacer()
-                HStack{
-                    Spacer()
-                    if zero.showHands {
-                        Circle().frame(width:30, height: 30).transition(.inAndOut(edge: .bottom))
-                    }
-                    Spacer()
+                if zero.showHands {
+                    Encircle(h0600())
+                        .transition(.inAndOut(edge: .trailing))
+                        .padding(.trailing, -size/3)
                 }
+            }
+            Spacer()
+            HStack{
+                Spacer()
+                if zero.showHands {
+                    Encircle(h1200())
+                        .transition(.inAndOut(edge: .bottom))
+                        .padding(.bottom, -size/3)
+                }
+                Spacer()
             }
         }
     }
+    func h2400() -> Text {
+        if is24hour() {
+            return Text("24")
+        } else {
+            return Text("12MN")
+        }
+    }
+    func h0600() -> Text {
+        if is24hour() {
+            return Text("06")
+        } else {
+            return Text("6AM")
+        }
+    }
+    func h1200() -> Text {
+        if is24hour() {
+            return Text("12")
+        } else {
+            return Text("12NN")
+        }
+    }
+    func h1800() -> Text {
+        if is24hour() {
+            return Text("18")
+        } else {
+            return Text("6PM")
+        }
+    }
+    
+    func Encircle(_ text: Text) -> some View {
+        text
+            .font(.caption)
+            .padding()
+            .background(Circle().foregroundColor(Color(UIColor.systemBackground)))
+    }
+
 }

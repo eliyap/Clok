@@ -33,7 +33,7 @@ struct TimeStripView: View {
                         /// extra space here
                         .padding([.trailing], padding)
                 }
-                
+                .buttonStyle(PlainButtonStyle())
             } else {
                 WeekDateButton()
                     .modifier(StickStyle(round: .right))
@@ -43,7 +43,7 @@ struct TimeStripView: View {
                     Text(self.tf.string(from: self.zero.date))
                         .modifier(StickStyle(round: .left))
                 }
-                
+                .buttonStyle(PlainButtonStyle())
             }
             
         }
