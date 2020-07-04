@@ -26,9 +26,9 @@ extension ContentView {
         settings.space = WorkspaceManager.getChosen()!
         
         // request user data
-        self.loadData(
-            token: token,
-            workspaceID: settings.space!.wid
-        )
+//        self.loadData(
+//            token: token,
+//            workspaceID: settings.space!.wid
+//        )
     }
 }
