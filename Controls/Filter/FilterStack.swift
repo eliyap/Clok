@@ -8,20 +8,6 @@
 
 import SwiftUI
 
-extension AnyTransition {
-    
-    static let fastLinear = Animation.linear(duration: 0.25)
-    static var upAndDown: AnyTransition {
-        return AnyTransition
-            .move(edge: .bottom)
-            .animation(fastLinear)
-            .combined(with: AnyTransition
-                .opacity
-                .animation(fastLinear)
-            )
-    }
-}
-
 struct FilterStack: View {
     @EnvironmentObject private var data: TimeData
     
@@ -34,11 +20,11 @@ struct FilterStack: View {
                 Text("Filter Entries where")
                     .font(.title)
                     .bold()
-                    .transition(.upAndDown)
+                    .transition(.inAndOut(edge: .bottom))
                 ProjectButton()
-                    .transition(.upAndDown)
+                    .transition(.inAndOut(edge: .bottom))
                 DescriptionButton()
-                    .transition(.upAndDown)
+                    .transition(.inAndOut(edge: .bottom))
             }
             FilterButton()
         }

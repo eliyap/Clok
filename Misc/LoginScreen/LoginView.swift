@@ -57,7 +57,7 @@ struct LoginView: View {
                 if pushup {
                     Text(" ")
                         .frame(maxHeight: UIScreen.main.bounds.size.height / 2)
-                        .transition(.upAndDown)
+                        .transition(.inAndOut(edge: .bottom))
                 }
             }
             /// prevent 's picker from munching the whole screen

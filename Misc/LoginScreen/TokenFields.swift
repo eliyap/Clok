@@ -28,7 +28,7 @@ extension LoginView {
                 }
             )
                 .textFieldStyle(RoundedBorderTextFieldStyle())
-                .transition(.upAndDown)
+                .transition(.inAndOut(edge: .bottom))
             
             HStack(spacing: .zero) {
                 Text("Find Toggl's API Token on your ")
@@ -38,7 +38,7 @@ extension LoginView {
                         UIApplication.shared.open(LoginView.profileURL)
                     }
             }
-                .transition(.upAndDown)
+                .transition(.inAndOut(edge: .bottom))
         }
     }
 }

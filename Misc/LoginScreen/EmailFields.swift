@@ -18,7 +18,7 @@ extension LoginView {
                 onEditingChanged: edit
             )
                 .textFieldStyle(RoundedBorderTextFieldStyle())
-                .transition(.upAndDown)
+                .transition(.inAndOut(edge: .bottom))
             
             SecureField(
                 "Password",
@@ -36,7 +36,7 @@ extension LoginView {
                 }
             )
                 .textFieldStyle(RoundedBorderTextFieldStyle())
-                .transition(.upAndDown)
+                .transition(.inAndOut(edge: .bottom))
         }
     }
 }
