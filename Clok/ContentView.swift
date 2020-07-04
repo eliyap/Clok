@@ -18,7 +18,6 @@ struct ContentView: View {
     
     /// whether we need user's token
     @State var needToken = false
-    
     var body : some View {
         ZStack {
             ContentGroupView()
