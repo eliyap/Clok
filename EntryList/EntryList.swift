@@ -8,6 +8,8 @@
 
 import SwiftUI
 
+let listPadding = CGFloat(7)
+
 struct EntryList: View {
     
     @EnvironmentObject var data: TimeData
@@ -23,17 +25,10 @@ struct EntryList: View {
     var body: some View {
         ScrollView {
             ScrollViewReader { value in
-                Text("Time Entries")
-                    .font(.title)
-                    .onReceive(listRow.$entry, perform: { entry in
-                        withAnimation {
-                            value.scrollTo(entry?.id, anchor: .top)
-                        }
-                        
-                    })
+                Title(value)
                 ForEach(Days(), id: \.id) { day in
-                    Section(header: Text(df.string(from: day.start))) {
-                        LazyVStack {
+                    Section(header: Header(day)) {
+                        LazyVStack(spacing: 0) {
                             ForEach(day.entries, id: \.id) { entry in
                                 EntryView(entry: entry)
                                     .id(entry.id)
@@ -42,7 +37,48 @@ struct EntryList: View {
                     }
                 }
             }
+            if zero.date > Date() + weekLength {
+                Text("What does the future hold?")
+            }
         }
+    }
+    
+    func Title(_ value: ScrollViewProxy) -> some View {
+        HStack {
+            Text("Time Entries")
+                .font(Font.title.weight(.bold))
+                .onReceive(listRow.$entry, perform: { entry in
+                    withAnimation {
+                        value.scrollTo(entry?.id, anchor: .top)
+                    }
+                })
+            Spacer()
+        }
+        .padding(listPadding)
+    }
+    
+    func Header(_ day: Day) -> some View {
+        let cal = Calendar.current
+        let currentYear = cal.component(.year, from: Date())
+        let zeroYear = cal.component(.year, from: zero.date)
+                
+        /// day of week, day of month, MMM
+        let dateString =  [
+            day.start.shortWeekday(),
+            df.string(from: day.start),
+            /// plus optional YYYY if it is not current year
+            ((currentYear == zeroYear) ? "" : "\(zeroYear)")
+        ].joined(separator: " ")
+        
+        return VStack {
+            HStack {
+                Text(dateString)
+                    .font(Font.title2.weight(.bold))
+                Spacer()
+            }
+            Divider()
+        }
+        .padding([.leading, .trailing], listPadding)
     }
     
     struct Day {
@@ -71,7 +107,7 @@ struct EntryList: View {
                 entries: entries.within(interval: dayLength, of: mn)
             ))
         }
-        return days
+        return days.filter{ $0.entries.count > 0 }
     }
     
     func HeaderFor(section: Day) -> String {

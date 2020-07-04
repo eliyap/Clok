@@ -11,31 +11,40 @@ import SwiftUI
 struct EntryView: View {
     var entry: TimeEntry
     private let df = DateFormatter()
-    private let padding = CGFloat(10)
+    private let radius = CGFloat(10)
     init(entry: TimeEntry) {
         self.entry = entry
         df.timeStyle = .short
     }
     
     var body: some View {
-        VStack {
-            HStack {
-                Text(entry.descriptionString())
-                Spacer()
-                Text(entry.dur.toString())
+        HStack {
+            EntryTab(cornerRadius: radius)
+                .foregroundColor(entry.project.color)
+                .frame(width: listPadding * 1.5)
+            VStack {
+                HStack {
+                    Text(entry.descriptionString())
+                        .font(.title3)
+                    Spacer()
+                    Text(entry.dur.toString())
+                        .font(.title3)
+                }
+                HStack {
+                    Text(entry.project.name)
+                        .font(.caption)
+                    Spacer()
+                    Text("\(df.string(from: entry.start)) – \(df.string(from: entry.end))")
+                        .font(.caption)
+                }
             }
-            HStack {
-                Text(entry.project.name)
-                Spacer()
-                Text("\(df.string(from: entry.start)) – \(df.string(from: entry.end))")
-            }
+            .padding(listPadding)
         }
-        .padding(padding)
         .background(
-            RoundedRectangle(cornerRadius: padding)
+            RoundedRectangle(cornerRadius: radius)
                 .foregroundColor(Color(UIColor.systemBackground))
         )
-        .padding([.bottom], padding)
+        .padding([.leading, .trailing, .bottom], listPadding)
     }
 }
 
