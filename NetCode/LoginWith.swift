@@ -26,7 +26,8 @@ extension LoginView {
                 return
             case let .failure(error):
                 print(error)
-                fatalError() // no error screen yet implemented
+                errorText = "Unknown Error \(error)"
+                return
             case let .success(newUser):
                 user = newUser
             }
