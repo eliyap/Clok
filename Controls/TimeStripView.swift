@@ -27,7 +27,7 @@ struct TimeStripView: View {
                     .modifier(TabStyle())
                     .padding([.leading], padding)
                 Spacer()
-                Button { zero.showHands.toggle() } label: {
+                Button { withAnimation { zero.showHands.toggle() } } label: {
                     Text(self.tf.string(from: self.zero.date))
                         .modifier(TabStyle())
                         /// extra space here
@@ -39,7 +39,7 @@ struct TimeStripView: View {
                     .modifier(StickStyle(round: .right))
                 
                 Spacer()
-                Button { zero.showHands.toggle() } label: {
+                Button { withAnimation { zero.showHands.toggle() } } label: {
                     Text(self.tf.string(from: self.zero.date))
                         .modifier(StickStyle(round: .left))
                 }

@@ -11,28 +11,33 @@ import SwiftUI
 
 
 struct Clockhands: View {
+    @EnvironmentObject var zero: ZeroDate
     var body: some View {
         GeometryReader { geo in
             VStack(spacing: .zero) {
                 HStack{
                     Spacer()
-                    Circle().frame(width:30, height: 30)
-                        .transition(.inAndOut(edge: .top))
+                    if zero.showHands {
+                        Circle().frame(width:30, height: 30).transition(.inAndOut(edge: .top))
+                    }
                     Spacer()
                 }
                 Spacer()
                 HStack{
-                    Circle().frame(width:30, height: 30)
-                        .transition(.inAndOut(edge: .leading))
+                    if zero.showHands {
+                    Circle().frame(width:30, height: 30).transition(.inAndOut(edge: .leading))
+                    }
                     Spacer()
-                    Circle().frame(width:30, height: 30)
-                        .transition(.inAndOut(edge: .trailing))
+                    if zero.showHands {
+                        Circle().frame(width:30, height: 30).transition(.inAndOut(edge: .trailing))
+                    }
                 }
                 Spacer()
                 HStack{
                     Spacer()
-                    Circle().frame(width:30, height: 30)
-                        .transition(.inAndOut(edge: .bottom))
+                    if zero.showHands {
+                        Circle().frame(width:30, height: 30).transition(.inAndOut(edge: .bottom))
+                    }
                     Spacer()
                 }
             }
