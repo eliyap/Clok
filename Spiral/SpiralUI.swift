@@ -22,6 +22,7 @@ struct SpiralUI: View {
                     zeroTo:self.zero.date
                 )
             }
+            Clockhands()
         }
         .onReceive(self.zero.$weekSkip, perform: { dxn in
             /**
