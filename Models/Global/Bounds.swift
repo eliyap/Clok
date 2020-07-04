@@ -19,7 +19,13 @@ extension GeometryProxy {
     }
 }
 
+enum Device {
+    case iPhone
+    case iPad
+}
+
 final class Bounds: ObservableObject {
     @Published var mode =  GeometryProxy.orientation.portrait
     @Published var notch = false
+    @Published var device = Device.iPhone
 }
