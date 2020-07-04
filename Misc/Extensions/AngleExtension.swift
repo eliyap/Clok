@@ -36,7 +36,7 @@ extension Angle {
     /**
      initialize angle from cartesian coordinates (x,y)
      */
-    init(x:Double,y:Double) {
+    init(x:Double, y:Double) {
         self.init()
         
         /// should never happen, but handle an angle at (0, 0)
