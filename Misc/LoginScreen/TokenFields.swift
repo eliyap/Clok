@@ -17,6 +17,11 @@ extension LoginView {
                 text: $key,
                 onEditingChanged: edit,
                 onCommit: {
+                    guard key != "" else {
+                        errorText = "Please enter your API token"
+                        return
+                    }
+                    
                     self.loginWith(auth: auth(
                         token: self.key
                     ))

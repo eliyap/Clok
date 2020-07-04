@@ -222,7 +222,6 @@
 		221D963624A90BF100C84F57 /* Keychain */ = {
 			isa = PBXGroup;
 			children = (
-				22027DCD24AFF5D000C0BA90 /* LoginScreen */,
 				221D963B24A912B900C84F57 /* APIKeyHandler.swift */,
 			);
 			path = Keychain;
@@ -331,6 +330,7 @@
 			children = (
 				C6B0FFA1246F52B600DED011 /* Extensions */,
 				228B100024AEA6CA0026AD4B /* Shapes */,
+				22027DCD24AFF5D000C0BA90 /* LoginScreen */,
 				221D963624A90BF100C84F57 /* Keychain */,
 				C6D448ED248471250072E7D4 /* Activity */,
 				22928AC624A423AA00DC9EC5 /* WeekButtonGlyph.swift */,
