@@ -24,9 +24,14 @@ extension LoginView {
                 "Password",
                 text: $password,
                 onCommit: {
+                    guard email != "" && password != "" else {
+                        errorText = "Please both your email and password"
+                        return
+                    }
+                    
                     self.loginWith(auth: auth(
-                        email: self.email,
-                        password: self.password
+                        email: email,
+                        password: password
                     ))
                 }
             )

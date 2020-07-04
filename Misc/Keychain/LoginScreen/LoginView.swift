@@ -25,8 +25,10 @@ struct LoginView: View {
     @State var email = ""
     @State var password = ""
     @State var key = ""
+    @State var errorText = ""
     @State private var pref: loginPreference = .email
     @State var pushup = false
+    
     var body: some View {
         HStack {
             IconView()
@@ -37,6 +39,11 @@ struct LoginView: View {
                     Text("Token").tag(loginPreference.token)
                 }
                 .pickerStyle(SegmentedPickerStyle())
+                
+                if errorText != "" {
+                    Text(errorText)
+                        .foregroundColor(.red)
+                }
                 
                 switch pref {
                 case .email:
