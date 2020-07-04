@@ -27,17 +27,23 @@ struct TimeStripView: View {
                     .modifier(TabStyle())
                     .padding([.leading], padding)
                 Spacer()
-                Text(self.tf.string(from: self.zero.date))
-                    .modifier(TabStyle())
-                    /// extra space here
-                    .padding([.trailing], padding)
+                Button { zero.showHands.toggle() } label: {
+                    Text(self.tf.string(from: self.zero.date))
+                        .modifier(TabStyle())
+                        /// extra space here
+                        .padding([.trailing], padding)
+                }
+                
             } else {
                 WeekDateButton()
                     .modifier(StickStyle(round: .right))
                 
                 Spacer()
-                Text(self.tf.string(from: self.zero.date))
-                    .modifier(StickStyle(round: .left))
+                Button { zero.showHands.toggle() } label: {
+                    Text(self.tf.string(from: self.zero.date))
+                        .modifier(StickStyle(round: .left))
+                }
+                
             }
             
         }
