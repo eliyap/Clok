@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct EntrySpiral: View {
-    @ObservedObject var entry:TimeEntry = TimeEntry()
+    @ObservedObject var entry: TimeEntry
     @EnvironmentObject var data: TimeData
     @EnvironmentObject var listRow: ListRow
     @State private var opacity = 1.0
@@ -52,14 +52,5 @@ struct EntrySpiral: View {
         self.entry = entry
         self.entry.zero(zeroDate)
         guard self.entry.spiralEnd > 0 && self.entry.spiralStart < 1 else { return nil }
-    }
-}
-
-struct EntrySpiral_Previews: PreviewProvider {
-    static var previews: some View {
-        EntrySpiral(
-            TimeEntry(),
-            zeroTo: Date()
-        )
     }
 }

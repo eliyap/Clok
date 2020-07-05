@@ -80,17 +80,17 @@ final class TimeEntry : ObservableObject, Equatable {
         self.dur = TimeInterval(exactly: dur/1000)!
     }
     
-    // empty initializer for convenience
-    init () {
-        self.project = .noProject
-        self.tid = nil
-        self.task = nil
-        self.description = ""
-        self.start = Date()
-        self.end = Date()
-        self.id = -1
-        self.dur = -1
-    }
+//    // empty initializer for convenience
+//    init () {
+//        self.project = .noProject
+//        self.tid = nil
+//        self.task = nil
+//        self.description = ""
+//        self.start = Date()
+//        self.end = Date()
+//        self.id = -1
+//        self.dur = -1
+//    }
     
     // sets the start and end angles based on the provided start datetime
     // similar to "zeroing" a graph or weighing scale
