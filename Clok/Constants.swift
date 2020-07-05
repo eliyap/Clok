@@ -35,8 +35,13 @@ let buttonPadding = CGFloat(7)
 // lets Toggle know who I am
 let user_agent = "emlyap99@gmail.com"
 
+let API_URL = "https://www.toggl.com/api/v8"
+
 // https://github.com/toggl/toggl_api_docs/blob/master/chapters/users.md#get-current-user-data 
-let userDataURL = URL(string:"https://www.toggl.com/api/v8/me?user_agent=\(user_agent)")!
+let userDataURL = URL(string:"\(API_URL)/me?user_agent=\(user_agent)")!
+
+// https://github.com/toggl/toggl_api_docs/blob/master/chapters/time_entries.md#get-running-time-entry
+let runningURL = URL(string: "\(API_URL)/time_entries/current?user_agent=\(user_agent)")!
 
 // MARK: - Time Constants
 
