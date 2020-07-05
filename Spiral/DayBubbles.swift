@@ -18,7 +18,7 @@ struct DayBubbles: View {
         GeometryReader { geo in
             ZStack() {
                 ForEach(weekMN(), id: \.timeIntervalSince1970) { date in
-                    Text((date.shortWeekday()).uppercased())
+                    Text(date.shortWeekday().uppercased())
                         .font(Font.system(size: ptSize(within: geo)))
                         .padding(ptSize(within: geo) / 5)
                         .background(
@@ -27,13 +27,15 @@ struct DayBubbles: View {
                             ).foregroundColor(Color(UIColor.systemBackground))
                         )
                         .position(mnPos(for: cal.startOfDay(for: date), within: geo))
-                        
+                        .transition(.opacity)
                 }
             }
             
         }
     }
     
+    /// calculates appropriate point size for display
+    /// so that the text fits inside the spiral
     func ptSize(within geo: GeometryProxy) -> CGFloat {
         0.75 * stroke_width * (geo.size.width / frame_size)
     }
@@ -67,6 +69,8 @@ struct DayBubbles: View {
             scaleX: geo.size.width / CGFloat(frame_size),
             y: geo.size.width / CGFloat(frame_size)
         ))
+        /// slight downscale ensures all day bubbles are visually centered on the spiral
+        /// literally just a lucky magic number
         .applying(CGAffineTransform(scaleX: 0.97, y: 0.97))
         .applying(CGAffineTransform(rotationAngle: CGFloat(zero.date.clockAngle24().radians)))
         .applying(CGAffineTransform(
