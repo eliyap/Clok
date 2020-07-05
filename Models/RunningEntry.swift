@@ -17,6 +17,21 @@ struct RunningEntry {
     let description: String // not nullable
     let df = DateFormatter()
     
+    /// signals that no entry is currently running
+    static let noEntry = RunningEntry(
+        id: 0,
+        start: Date(),
+        project: .noProject,
+        description: "No Entry Running"
+    )
+    
+    private init(id: Int, start: Date, project: Project, description: String){
+        self.id = id
+        self.start = start
+        self.project = project
+        self.description = description
+    }
+    
     // parse from JSON
     init?(from data: [String : AnyObject], project: Project){
         // initialize DateFormatter to handle ISO8601 strings
