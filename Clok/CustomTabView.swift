@@ -24,16 +24,12 @@ struct CustomTabView: View {
             if bounds.notch && bounds.mode == .landscape {
                 HStack(spacing: 0) {
                     Views()
-                    VStack {
-                        Buttons(edge: .leading)
-                    }
+                    VStack(spacing: 0) { Buttons(edge: .leading) }
                 }
             } else {
                 VStack(spacing: 0) {
                     Views()
-                    HStack {
-                        Buttons(edge: .top)
-                    }
+                    HStack(spacing: 0) { Buttons(edge: .top) }
                 }
             }
         }
@@ -55,28 +51,27 @@ struct CustomTabView: View {
     
     func Buttons(edge: Edge.Set) -> some View {
         return Group {
-            Spacer()
             TabButton(select: .entries, glyph: "list.bullet")
                 .padding(edge)
-            Spacer()
             TabButton(select: .summary, glyph: "chart.bar.fill")
                 .padding(edge)
-            Spacer()
             TabButton(select: .settings, glyph: "gear")
                 .padding(edge)
-            Spacer()
         }
     }
     
+    private let buttonPadding = CGFloat(7)
     func TabButton(select: Tabs, glyph: String) -> some View {
-        Button {
-            settings.tab = select
-        } label: {
+        Button { settings.tab = select } label: {
             Label("", systemImage: glyph)
                 .foregroundColor(settings.tab == select ? .primary : .secondary)
                 .font(Font.body.weight(settings.tab == select ? .bold : .regular))
+                .padding(buttonPadding)
+                .frame(
+                    maxWidth: (bounds.notch && bounds.mode == .landscape) ? nil : .infinity,
+                    maxHeight: (bounds.notch && bounds.mode == .landscape) ? .infinity : nil
+                )
         }
-        .frame(alignment: .leading)
     }
 }
 
