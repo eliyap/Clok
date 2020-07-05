@@ -88,7 +88,7 @@ struct StatDisplayView: View {
             )
             Stat(
                 label: "\(deltaAvgDur > 0 ? "Increased" : "Decreased") by",
-                symbol: "chart.bar.fill",
+                symbol: "arrow.\(deltaStart > 0 ? "up" : "down").right",
                 text: Text(abs(deltaAvgDur * 7).toString() + " total")
             )
             Stat(
