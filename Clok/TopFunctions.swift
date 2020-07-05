@@ -23,12 +23,19 @@ extension ContentView {
         guard let token = user?.token else { return }
         
         // get workspace
-        settings.space = WorkspaceManager.getChosen()!
-        
+        guard let space = WorkspaceManager.getChosen() else { return }
+        settings.space = space
         // request user data
         self.loadData(
             token: token,
             workspaceID: settings.space!.wid
         )
     }
+    
+    
+//    SANDBOX FOR URL REQUESTS
+    func testRunning() -> Void {
+        /// currently unused
+    }
+    
 }
