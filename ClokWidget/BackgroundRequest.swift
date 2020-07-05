@@ -9,11 +9,15 @@
 import Foundation
 
 func loadUserData(completion:@escaping (User?, Error?) -> Void) {
-    // save a faux API to the temporary directory and fetch it
-    // in your app you'll fetch it from a real API
+    
+    /// load user API token from keychain
+    guard let user = getCredentials() else {
+        completion(nil, KeychainError.noData)
+        return
+    }
     let request = formRequest(
-        url: userDataURL,
-        auth: auth(token: "3302cfeeaf4aa0920422ee8f0a139fd7")
+        url: runningURL,
+        auth: auth(token: user.token)
     )
     URLSession.shared.dataTask(with: request) {(data: Data?, resp: URLResponse?, error: Error?) -> Void in
         guard error == nil else {
