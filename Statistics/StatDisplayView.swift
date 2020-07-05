@@ -89,7 +89,8 @@ struct StatDisplayView: View {
             Stat(
                 label: "\(deltaAvgDur > 0 ? "Increased" : "Decreased") by",
                 symbol: "arrow.\(deltaStart > 0 ? "up" : "down").right",
-                text: Text(abs(deltaAvgDur * 7).toString() + " total")
+                text: Text(abs(deltaAvgDur * 7).toString() + " total"),
+                weight: .heavy
             )
             Stat(
                 label: "",
@@ -125,13 +126,14 @@ struct StatDisplayView: View {
     }
     
     
-    func Stat(label: String, symbol: String?, text: Text) -> some View {
+    func Stat(label: String, symbol: String?, text: Text, weight: Font.Weight = .regular) -> some View {
         HStack{
             Label {
                 Text(label)
             } icon: {
                 Image(systemName: symbol ?? "circle.fill")
                     .foregroundColor(symbol == nil ? (mode == .light ? .offWhite : .offBlack) : .primary)
+                    .font(Font.body.weight(weight))
             }
             Spacer()
             text
