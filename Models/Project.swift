@@ -37,4 +37,24 @@ struct Project: Hashable, Comparable, Identifiable {
         color: Color.secondary,
         id: Int.zero
     )
+    
+    init(name: String, color: Color, id: Int){
+        self.name = name
+        self.color = color
+        self.id = id
+    }
+    
+    // parse from JSON
+    init?(from data: [String : AnyObject]){
+        // check that these properties are not nil
+        guard
+            let id = data["id"] as? Int,
+            let project_hex_color = data["hex_color"] as? String,
+            let name = data["name"] as? String
+        else { return nil }
+        
+        self.id = id
+        self.color = Color(hex: project_hex_color)
+        self.name = name
+    }
 }
