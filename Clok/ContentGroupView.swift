@@ -66,7 +66,6 @@ struct ContentGroupView: View {
     }
     
     func hasNotch(_ geo: GeometryProxy) -> Bool {
-        print("Notch: \(geo.safeAreaInsets.bottom > 0)")
         return geo.safeAreaInsets.bottom > 0
     }
 }
