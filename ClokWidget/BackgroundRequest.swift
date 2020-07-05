@@ -37,7 +37,7 @@ func loadUserData(completion:@escaping (User?, Error?) -> Void) {
         }
         do {
             let json = try JSONSerialization.jsonObject(with: data, options: [])
-            completion(User(json as! Dictionary<String, AnyObject>)!, error)
+            completion(User(json as! [String: AnyObject])!, error)
         } catch {
             completion(nil, NetworkError.serialization)
         }

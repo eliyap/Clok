@@ -35,7 +35,7 @@ func getUserData(with request: URLRequest) -> Result<User, NetworkError> {
         }
         do {
             let json = try JSONSerialization.jsonObject(with: data, options: [])
-            user = User(json as! Dictionary<String, AnyObject>)!
+            user = User(json as! [String: AnyObject])!
         } catch {
             result = .failure(.serialization)
         }

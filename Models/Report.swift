@@ -19,7 +19,7 @@ final class Report : ObservableObject {
     var minDate = Date() // used as zeroDate to cut off entries that are too early
     var maxDate = Date() // cuts off entries that are too late
     
-    init(_ json:Dictionary<String, AnyObject>){
+    init(_ json: [String : AnyObject]){
         // unwrap optionals
         guard
             let total_grand = json["total_grand"] as? Int,
@@ -38,7 +38,7 @@ final class Report : ObservableObject {
         self.total_count = total_count
         self.per_page = per_page
         
-        if let data = json["data"] as? [Dictionary<String, AnyObject>] {
+        if let data = json["data"] as? [[String : AnyObject]] {
             data.forEach { i in
 //              if init fails, do not append
                 if let newEntry = TimeEntry(i) {

@@ -48,10 +48,10 @@ func toggl_request(api_string: String, token: String) -> Result<Report, NetworkE
             switch page {
             case 1:
                 // first call gets meta-data (number of Entry's to expect)
-                report = Report(json as! Dictionary<String, AnyObject>)
+                report = Report(json as! [String: AnyObject])
             default:
                 // subsequent calls simply append results to report
-                let new_entries = Report(json as! Dictionary<String, AnyObject>).entries
+                let new_entries = Report(json as! [String: AnyObject]).entries
                 guard new_entries.count > 0 else {
                     // return expression had nothing!
                     // causes requests to stop, this prevents infinite polling of the API

@@ -37,7 +37,7 @@ struct User {
     var fullName: String
     var workspaces = [Workspace]()
     
-    init?(_ json:Dictionary<String, AnyObject>) {
+    init?(_ json: [String: AnyObject]) {
         // unwrap optionals
         guard
             let data = json["data"] as? [String: AnyObject],
