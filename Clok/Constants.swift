@@ -67,14 +67,3 @@ enum Weekdays: Int {
 let listLineInset = CGFloat(15)
 
 let placeholderTime = "--:--"
-
-// MARK: - Device
-
-// https://medium.com/@cafielo/how-to-detect-notch-screen-in-swift-56271827625d
-extension UIDevice {
-    static var hasNotch: Bool {
-        let bottom = UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0
-        return bottom > 0
-    }
-}
-

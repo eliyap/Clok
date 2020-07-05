@@ -26,7 +26,10 @@ struct ContentGroupView: View {
                     }
                     CustomTabView()
                 }
-                .onAppear { bounds.mode = .landscape }
+                .onAppear {
+                    bounds.mode = .landscape
+                    bounds.notch = hasNotch(geo)
+                }
             } else {
                 VStack(spacing: 0) {
                     if settings.tab != .settings {
@@ -35,7 +38,10 @@ struct ContentGroupView: View {
                     }
                     CustomTabView()
                 }
-                .onAppear { bounds.mode = .portrait }
+                .onAppear {
+                    bounds.mode = .portrait
+                    bounds.notch = hasNotch(geo)
+                }
             }
         }
         .background(offBG())
@@ -57,6 +63,11 @@ struct ContentGroupView: View {
                 geo.size.height * 0.6
             )
         }
+    }
+    
+    func hasNotch(_ geo: GeometryProxy) -> Bool {
+        print("Notch: \(geo.safeAreaInsets.bottom > 0)")
+        return geo.safeAreaInsets.bottom > 0
     }
 }
 

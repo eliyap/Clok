@@ -21,7 +21,7 @@ struct CustomTabView: View {
     
     var body: some View {
         Group {
-            if UIDevice.hasNotch && bounds.mode == .landscape {
+            if bounds.notch && bounds.mode == .landscape {
                 HStack(spacing: 0) {
                     Views()
                     VStack {
