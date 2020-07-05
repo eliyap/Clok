@@ -19,37 +19,39 @@ struct WorkspaceManager {
     static let spacesKey = "Clok.WorkspaceIDs"
     static let spaceChosenKey = "Clok.ChosenID"
     
-    static let defaults = UserDefaults.standard
+    static let suiteName = "group.sam.clok"
+    
+    static let suite = UserDefaults(suiteName: suiteName)
     
     static func saveSpaces(_ spaces: [Workspace]) -> Void {
-        try! WorkspaceManager.defaults.setValue(
+        try! suite?.setValue(
             NSKeyedArchiver.archivedData(
                 withRootObject: spaces,
                 requiringSecureCoding: false
             ),
-            forKey: WorkspaceManager.spacesKey
+            forKey: spacesKey
         )
     }
 
     static func saveChosen(_ space: Workspace) -> Void {
-        try! WorkspaceManager.defaults.setValue(
+        try! suite?.setValue(
             NSKeyedArchiver.archivedData(
                 withRootObject: space,
                 requiringSecureCoding: false
             ),
-            forKey: WorkspaceManager.spaceChosenKey
+            forKey: spaceChosenKey
         )
     }
     
     // unarchive previously stored data objects
     static func getSpaces() -> [Workspace]? {
-        let decoded  = WorkspaceManager.defaults.object(forKey: WorkspaceManager.spacesKey) as! Data
+        guard let decoded = suite?.object(forKey: spacesKey) as? Data else { return nil }
         return try? NSKeyedUnarchiver.unarchivedObject(ofClasses: [NSArray.self, Workspace.self], from: decoded) as? [Workspace]
     }
 
     
     static func getChosen() -> Workspace? {
-        let decoded  = WorkspaceManager.defaults.object(forKey: WorkspaceManager.spaceChosenKey) as! Data
+        guard let decoded  = suite?.object(forKey: spaceChosenKey) as? Data else { return nil }
         return try? NSKeyedUnarchiver.unarchivedObject(ofClass: Workspace.self, from: decoded)
     }
 }
