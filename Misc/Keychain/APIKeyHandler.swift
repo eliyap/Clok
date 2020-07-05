@@ -16,6 +16,23 @@ enum KeychainError: Error {
     case unhandledError(code: OSStatus)
 }
 
+/// primarily for widget to get API Key only
+/// note: I couldn't get a shared data container to work, hence workspace request always failed.
+func getToken() -> String? {
+    do {
+        let (_, _, apiKey) = try getKey()
+        return apiKey
+    } catch KeychainError.unhandledError(code: errSecItemNotFound) {
+        print("No Key Found")
+    } catch KeychainError.unhandledError(code: let status) {
+        print("Keychain error with OSStatus: \(status)")
+    } catch {
+        // no other error type should come through!
+        fatalError()
+    }
+    return nil
+}
+
 func getCredentials() -> User? {
     do {
         let (email, fullname, apiKey) = try getKey()

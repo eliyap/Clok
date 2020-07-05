@@ -10,18 +10,14 @@ func getRunningEntry(completion:@escaping (RunningEntry?, Error?) -> Void) {
     let sem = DispatchSemaphore(value: 0)
     var project = Project.noProject
     var runningData: [String: AnyObject]!
-    guard let user = getCredentials() else {
+    
+    guard let token = getToken() else {
         completion(nil, KeychainError.noData)
         return
     }
-    
-//    DEBUG
-    completion(RunningEntry.noEntry, nil)
-    return;
-        
     URLSession.shared.dataTask(with: formRequest(
         url: runningURL,
-        auth: auth(token: user.token)
+        auth: auth(token: token)
     )) {(data: Data?, resp: URLResponse?, error: Error?) -> Void in
         // release semaphore on exit
         defer{ sem.signal() }
@@ -65,7 +61,7 @@ func getRunningEntry(completion:@escaping (RunningEntry?, Error?) -> Void) {
     
     URLSession.shared.dataTask(with: formRequest(
         url: URL(string: "\(API_URL)/projects/\(pid)\(agentSuffix)")!,
-        auth: auth(token: user.token)
+        auth: auth(token: token)
     )) {(data: Data?, resp: URLResponse?, error: Error?) -> Void in
         // release process when complete
         defer{ sem.signal() }
