@@ -14,7 +14,7 @@ struct SpiralUI: View {
     
     var body: some View {
         ZStack {
-            Clockhands()
+            Clockhands().allowsHitTesting(false)
             /// dummy shape prevents janky animation when there are no entries
             Circle().stroke(style: StrokeStyle(lineWidth: 0))
             ForEach(self.data.report.entries, id: \.id) { entry in
