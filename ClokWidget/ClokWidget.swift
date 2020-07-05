@@ -11,56 +11,22 @@ import SwiftUI
 import Foundation
 import Intents
 
-struct Provider: IntentTimelineProvider {
-    public func snapshot(for configuration: ConfigurationIntent, with context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date(), data: "100")
-        completion(entry)
-    }
-
-    public func timeline(for configuration: ConfigurationIntent, with context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-        getRunningEntry { (running, error) in
-            guard let running = running else {
-                var entries: [SimpleEntry] = [
-                    SimpleEntry(date: Date(), data: "0"),
-                    SimpleEntry(date: Date() + 1.0, data: "1"),
-                    SimpleEntry(date: Date() + 5.0, data: "2")
-                ]
-                let timeline = Timeline(
-                    entries: entries,
-                    policy: .never
-                )
-                completion(timeline)
-                return
-            }
-            
-            let timeline = Timeline(
-                entries: [SimpleEntry(date: Date(), data: running.description)],
-                policy: .never
-            )
-            completion(timeline)
-            return
-        }
-    }
-}
-
-struct SimpleEntry: TimelineEntry {
-    public let date: Date
-    public let data: String
-}
-
 struct PlaceholderView : View {
     var entry: SimpleEntry
     var body: some View {
-        Text("Placeholder View \(entry.data)")
+        Text("Placeholder View \(entry.running.description)")
     }
 }
 
 struct ClokWidgetEntryView : View {
     var entry: SimpleEntry
     var body: some View {
-        Text("Actual View \(entry.data)")
+        VStack {
+            Text("\(entry.running.description)")
+            Text("\(entry.running.project.name)")
+            Text(entry.running.start, style: .timer)
+        }
     }
-    
     @Environment(\.widgetFamily) var family
 }
 
@@ -69,11 +35,18 @@ struct ClokWidget: Widget {
     private let kind: String = "ClokWidget"
 
     public var body: some WidgetConfiguration {
-        IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider(), placeholder: PlaceholderView(entry: SimpleEntry(date: Date(), data: "-1"))) { entry in
-            ClokWidgetEntryView(entry: entry)
-        }
-        .configurationDisplayName("My Widget")
-        .description("This is an example widget.")
-        .supportedFamilies([.systemSmall])
+        IntentConfiguration(
+            kind: kind,
+            intent: ConfigurationIntent.self,
+            provider: Provider(),
+            placeholder: PlaceholderView(
+                entry: SimpleEntry(
+                    date: Date(),
+                    running: .noEntry))) { entry in
+                        ClokWidgetEntryView(entry: entry)
+                    }
+                .configurationDisplayName("My Widget")
+            .description("This is an example widget.")
+            .supportedFamilies([.systemSmall])
     }
 }
