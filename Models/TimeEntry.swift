@@ -104,8 +104,8 @@ final class TimeEntry : ObservableObject, Equatable {
             lhs.start == rhs.start &&
             lhs.end == rhs.end &&
             lhs.tid == rhs.tid
-       }
-    
+   }
+
     /// Headlining description,
     /// or project if there's no description,
     /// or placeholder if no info whatsoever
