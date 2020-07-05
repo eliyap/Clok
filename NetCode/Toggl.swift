@@ -8,17 +8,6 @@
 
 import Foundation
 
-enum NetworkError: Error {
-    case url
-    case request(error: NSError)
-    case server
-    case timeout
-    case serialization
-    case statusCode(code: Int)
-    case other // bad practice, in future try to figure out how I can have some
-    // generic error for handling non-network errors
-}
-
 // makes HTTP-requests and parses data from the Toggl API
 // utilizing semaphore method from https://medium.com/@michaellong/swift-5-async-await-result-gcd-and-timeout-1f1652d7adcf
 func toggl_request(api_string: String, token: String) -> Result<Report, NetworkError> {
