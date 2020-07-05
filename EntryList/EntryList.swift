@@ -42,6 +42,7 @@ struct EntryList: View {
                 Text("What does the future hold?")
             }
         }
+        .allowsHitTesting(false)
     }
     
     func Title(_ value: ScrollViewProxy) -> some View {
