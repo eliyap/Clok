@@ -9,7 +9,7 @@
 import Foundation
 import SwiftUI
 
-struct RunningEntry {
+struct RunningEntry: Equatable {
 
     let id:Int
     let start: Date // needs to be coerced from ISO 8601 date / time format (YYYY - MM - DDTHH: MM: SS)
@@ -19,8 +19,8 @@ struct RunningEntry {
     
     /// signals that no entry is currently running
     static let noEntry = RunningEntry(
-        id: 0,
-        start: Date(),
+        id: NSNotFound,
+        start: .distantFuture,
         project: .noProject,
         description: "No Entry Running"
     )
@@ -67,4 +67,13 @@ struct RunningEntry {
         }
     }
 
+    static func == (lhs: RunningEntry, rhs: RunningEntry) -> Bool {
+        /// we could check everything, but unless the data is corrupted we really only need to check task ID
+        /// NOTE: if in future we support editing of time entries, this check will need to be more rigorous
+        return
+            lhs.id == rhs.id &&
+            lhs.start == rhs.start &&
+            lhs.project == rhs.project &&
+            lhs.description == rhs.description
+       }
 }
