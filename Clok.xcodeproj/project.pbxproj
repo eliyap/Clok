@@ -191,6 +191,8 @@
 		22B0783A24B15B2E00256EB8 /* ReloadPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReloadPolicy.swift; sourceTree = "<group>"; };
 		22B0783C24B1630800256EB8 /* BackgroundRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundRequest.swift; sourceTree = "<group>"; };
 		22B0784124B17BEC00256EB8 /* RunningEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningEntry.swift; sourceTree = "<group>"; };
+		22B0784624B247D500256EB8 /* ClokWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ClokWidgetExtension.entitlements; sourceTree = "<group>"; };
+		22B0784724B249BA00256EB8 /* Clok.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Clok.entitlements; sourceTree = "<group>"; };
 		22BE1FE924A921B200A9A739 /* SpiralView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiralView.swift; sourceTree = "<group>"; };
 		22BE1FEC24A9247800A9A739 /* LoadData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadData.swift; sourceTree = "<group>"; };
 		22BE1FEE24A92B2300A9A739 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -469,6 +471,7 @@
 		C6C18D382448F96C000345D5 = {
 			isa = PBXGroup;
 			children = (
+				22B0784624B247D500256EB8 /* ClokWidgetExtension.entitlements */,
 				C6C18D432448F96C000345D5 /* Clok */,
 				C6B0FFA0246F52A700DED011 /* Models */,
 				225F69B524AD8EE20012B5DB /* EntryList */,
@@ -498,6 +501,7 @@
 		C6C18D432448F96C000345D5 /* Clok */ = {
 			isa = PBXGroup;
 			children = (
+				22B0784724B249BA00256EB8 /* Clok.entitlements */,
 				225F69B324AD8CE70012B5DB /* AppView.swift */,
 				C6C18D482448F96C000345D5 /* ContentView.swift */,
 				22027DD124AFF7ED00C0BA90 /* TopFunctions.swift */,
@@ -881,6 +885,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = ClokWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 949D776DFQ;
 				INFOPLIST_FILE = ClokWidget/Info.plist;
@@ -902,6 +907,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = ClokWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 949D776DFQ;
 				INFOPLIST_FILE = ClokWidget/Info.plist;
@@ -1039,6 +1045,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Clok/Clok.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"Clok/Preview Content\"";
@@ -1063,6 +1070,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Clok/Clok.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"Clok/Preview Content\"";
