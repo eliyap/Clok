@@ -12,43 +12,45 @@ struct DayBubbles: View {
     
     @EnvironmentObject private var zero: ZeroDate
     private let cal = Calendar.current
-    private let radius = CGFloat(7)
+    private let radius = CGFloat(3)
     
     var body: some View {
         GeometryReader { geo in
-            ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)) {
+            ZStack() {
                 ForEach(weekMN(), id: \.timeIntervalSince1970) { date in
                     Text((date.shortWeekday()).uppercased())
-                        .font(.footnote)
-                        .padding(radius / 2)
-                        .background(RoundedRectangle(cornerRadius: radius)
-                            .foregroundColor(Color(UIColor.systemBackground))
+                        .font(Font.system(size: ptSize(within: geo)))
+                        .padding(ptSize(within: geo) / 5)
+                        .background(
+                            RoundedRectangle(
+                                cornerRadius: ptSize(within: geo) / 2
+                            ).foregroundColor(Color(UIColor.systemBackground))
                         )
-                        .offset(mnPos(for: cal.startOfDay(for: date), within: geo))
-                        .alignmentGuide(HorizontalAlignment.leading, computeValue: { d in
-                            return d[HorizontalAlignment.center] + d.width
-                        })
-                        .alignmentGuide(VerticalAlignment.top, computeValue: { d in
-                            return d[VerticalAlignment.top]
-                        })
+                        .position(mnPos(for: cal.startOfDay(for: date), within: geo))
+                        
                 }
             }
             
         }
     }
     
-    /// generates the 7 midnights covered by the past week
+    func ptSize(within geo: GeometryProxy) -> CGFloat {
+        0.75 * stroke_width * (geo.size.width / frame_size)
+    }
+    
+    /// generates the 6 midnights
+    /// 7th one omitted because it covers too much of the center
     func weekMN() -> [Date] {
         var midnights = [Date]()
         let zeroMN = cal.startOfDay(for: zero.date)
-        for date in stride(from: zeroMN, to: zeroMN - weekLength, by: -dayLength){
+        for date in stride(from: zeroMN, to: zeroMN - 6*dayLength, by: -dayLength){
             midnights.append(date)
         }
         return midnights
     }
     
     /// calculates the position of the given date on the spiral view
-    func mnPos(for date: Date, within geo: GeometryProxy) -> CGSize {
+    func mnPos(for date: Date, within geo: GeometryProxy) -> CGPoint {
         /// calculate angle of date
         let weekAgo = zero.date - weekLength
         let theta = ((date - weekAgo) / dayLength) * (2*Double.pi)
@@ -60,17 +62,18 @@ struct DayBubbles: View {
          center the point
          convert to CGSize to satisfy offset type requirements
         */
-        let pt = spiralPoint(theta: theta, thicc: Double(stroke_width))
+        return spiralPoint(theta: theta, thicc: 0)
         .applying(CGAffineTransform(
             scaleX: geo.size.width / CGFloat(frame_size),
             y: geo.size.width / CGFloat(frame_size)
         ))
+        .applying(CGAffineTransform(scaleX: 0.97, y: 0.97))
         .applying(CGAffineTransform(rotationAngle: CGFloat(zero.date.clockAngle24().radians)))
         .applying(CGAffineTransform(
             translationX: geo.size.width / 2,
             y: geo.size.height / 2
         ))
-        return CGSize(width: pt.x, height: pt.y)
+//        return CGSize(width: pt.x, height: pt.y)
     }
 }
 
