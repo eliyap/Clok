@@ -125,16 +125,15 @@ struct StatDisplayView: View {
         deltaAvgDur = prev.avgDuration() - avgDur
     }
     
-    
+    private let size = CGFloat(30)
     func Stat(label: String, symbol: String?, text: Text, weight: Font.Weight = .regular) -> some View {
         HStack{
-            Label {
-                Text(label)
-            } icon: {
-                Image(systemName: symbol ?? "circle.fill")
-                    .foregroundColor(symbol == nil ? (mode == .light ? .offWhite : .offBlack) : .primary)
-                    .font(Font.body.weight(weight))
-            }
+            Image(systemName: symbol ?? "circle.fill")
+                .foregroundColor(symbol == nil ? (mode == .light ? .offWhite : .offBlack) : .primary)
+                .font(Font.body.weight(weight))
+                /// hardcoded size until Label is fixed
+                .frame(width: size, height: size)
+            Text(label)
             Spacer()
             text
         }
