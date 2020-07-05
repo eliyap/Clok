@@ -19,7 +19,7 @@ let thetaStep = Double.pi / 8
 // corresponds to 7 turns of the spiral for 7 days
 let MAX_RADIUS = 7 * 2 * Double.pi
 
-let stroke_width = CGFloat(2)
+let stroke_width = CGFloat(2.5)
 
 // core graphics representation of the size of an unscaled spiral
 let frame_size = CGFloat(2.2 * MAX_RADIUS)
