@@ -23,7 +23,9 @@ struct SpiralUI: View {
                     zeroTo:self.zero.date
                 )
             }
-            DayBubbles().allowsHitTesting(false)
+            if zero.showTime{
+                DayBubbles().allowsHitTesting(false)
+            }
         }
         .onReceive(self.zero.$weekSkip, perform: { dxn in
             /**

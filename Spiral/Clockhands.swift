@@ -20,7 +20,7 @@ struct Clockhands: View {
         VStack(spacing: .zero) {
             HStack{
                 Spacer()
-                if zero.showHands {
+                if zero.showTime {
                     Encircle(h2400())
                         .transition(.inAndOut(edge: .top))
                         .padding(.top, -size/3)
@@ -29,13 +29,13 @@ struct Clockhands: View {
             }
             Spacer()
             HStack{
-                if zero.showHands {
+                if zero.showTime {
                     Encircle(h1800())
                         .transition(.inAndOut(edge: .leading))
                         .padding(.leading, -size/3)
                 }
                 Spacer()
-                if zero.showHands {
+                if zero.showTime {
                     Encircle(h0600())
                         .transition(.inAndOut(edge: .trailing))
                         .padding(.trailing, -size/3)
@@ -44,7 +44,7 @@ struct Clockhands: View {
             Spacer()
             HStack{
                 Spacer()
-                if zero.showHands {
+                if zero.showTime {
                     Encircle(h1200())
                         .transition(.inAndOut(edge: .bottom))
                         .padding(.bottom, -size/3)
