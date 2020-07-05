@@ -18,36 +18,28 @@ struct Provider: IntentTimelineProvider {
     }
 
     public func timeline(for configuration: ConfigurationIntent, with context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-        loadUserData { (user, error) in
-            guard let user = user else {
+        getRunningEntry { (running, error) in
+            guard let running = running else {
                 var entries: [SimpleEntry] = [
                     SimpleEntry(date: Date(), data: "0"),
                     SimpleEntry(date: Date() + 1.0, data: "1"),
                     SimpleEntry(date: Date() + 5.0, data: "2")
                 ]
-                let timeline = Timeline(entries: entries, policy: .atEnd)
+                let timeline = Timeline(
+                    entries: entries,
+                    policy: .never
+                )
                 completion(timeline)
                 return
             }
             
             let timeline = Timeline(
-                entries: [SimpleEntry(date: Date(), data: user.email)],
-                policy: .atEnd
+                entries: [SimpleEntry(date: Date(), data: running.description)],
+                policy: .never
             )
             completion(timeline)
             return
         }
-        
-
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-        let currentDate = Date()
-//        for hourOffset in 0 ..< 5 {
-//            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-//            let entry = SimpleEntry(date: entryDate, configuration: configuration)
-//            entries.append(entry)
-//        }
-
-        
     }
 }
 
@@ -66,7 +58,7 @@ struct PlaceholderView : View {
 struct ClokWidgetEntryView : View {
     var entry: SimpleEntry
     var body: some View {
-        Text("Placeholder View \(entry.data)")
+        Text("Actual View \(entry.data)")
     }
     
     @Environment(\.widgetFamily) var family
@@ -83,8 +75,5 @@ struct ClokWidget: Widget {
         .configurationDisplayName("My Widget")
         .description("This is an example widget.")
         .supportedFamilies([.systemSmall])
-        .onBackgroundURLSessionEvents { (sessionID, completion) in
-            
-        }
     }
 }
