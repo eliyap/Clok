@@ -39,6 +39,19 @@
 		22928AC924A429F700DC9EC5 /* ProjectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22928AC824A429F700DC9EC5 /* ProjectButton.swift */; };
 		2296F15924A96FB800AF38B5 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2296F15824A96FB800AF38B5 /* Icon.png */; };
 		2296F15B24A994A400AF38B5 /* FormRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2296F15A24A994A400AF38B5 /* FormRequest.swift */; };
+		22AD5F7D24B1467D006EF7FB /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22AD5F7C24B1467D006EF7FB /* WidgetKit.framework */; };
+		22AD5F7F24B1467D006EF7FB /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22AD5F7E24B1467D006EF7FB /* SwiftUI.framework */; };
+		22AD5F8524B1467E006EF7FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22AD5F8424B1467E006EF7FB /* Assets.xcassets */; };
+		22AD5F8724B1467E006EF7FB /* ClokWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 22AD5F8324B1467D006EF7FB /* ClokWidget.intentdefinition */; };
+		22AD5F8824B1467E006EF7FB /* ClokWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 22AD5F8324B1467D006EF7FB /* ClokWidget.intentdefinition */; };
+		22AD5F8B24B1467E006EF7FB /* ClokWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 22AD5F7A24B1467D006EF7FB /* ClokWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		22B0783124B150C300256EB8 /* GetUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221C3C5424A93C0F006995C5 /* GetUserData.swift */; };
+		22B0783224B150C300256EB8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C18D7C244BE891000345D5 /* Constants.swift */; };
+		22B0783324B150C300256EB8 /* FormRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2296F15A24A994A400AF38B5 /* FormRequest.swift */; };
+		22B0783524B1513A00256EB8 /* ClokWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AD5F8124B1467D006EF7FB /* ClokWidget.swift */; };
+		22B0783624B1513A00256EB8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221C3C5624A93C57006995C5 /* User.swift */; };
+		22B0783824B1519600256EB8 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B0783724B1519600256EB8 /* NetworkError.swift */; };
+		22B0783924B1519D00256EB8 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B0783724B1519600256EB8 /* NetworkError.swift */; };
 		22BE1FEA24A921B200A9A739 /* SpiralView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BE1FE924A921B200A9A739 /* SpiralView.swift */; };
 		22BE1FED24A9247800A9A739 /* LoadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BE1FEC24A9247800A9A739 /* LoadData.swift */; };
 		22BE1FEF24A92B2300A9A739 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BE1FEE24A92B2300A9A739 /* SettingsView.swift */; };
@@ -88,6 +101,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		22AD5F8924B1467E006EF7FB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C6C18D392448F96C000345D5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 22AD5F7924B1467D006EF7FB;
+			remoteInfo = ClokWidgetExtension;
+		};
 		C6C18D582448F96F000345D5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C6C18D392448F96C000345D5 /* Project object */;
@@ -103,6 +123,20 @@
 			remoteInfo = Landwarks;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		22AD5F8C24B1467E006EF7FB /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				22AD5F8B24B1467E006EF7FB /* ClokWidgetExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		22027DCF24AFF63F00C0BA90 /* ContentGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentGroupView.swift; sourceTree = "<group>"; };
@@ -137,6 +171,14 @@
 		22928AC824A429F700DC9EC5 /* ProjectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProjectButton.swift; path = Controls/Filter/ProjectButton.swift; sourceTree = SOURCE_ROOT; };
 		2296F15824A96FB800AF38B5 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = Icon/Icon.png; sourceTree = SOURCE_ROOT; };
 		2296F15A24A994A400AF38B5 /* FormRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormRequest.swift; sourceTree = "<group>"; };
+		22AD5F7A24B1467D006EF7FB /* ClokWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ClokWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		22AD5F7C24B1467D006EF7FB /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		22AD5F7E24B1467D006EF7FB /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		22AD5F8124B1467D006EF7FB /* ClokWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClokWidget.swift; sourceTree = "<group>"; };
+		22AD5F8324B1467D006EF7FB /* ClokWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = ClokWidget.intentdefinition; sourceTree = "<group>"; };
+		22AD5F8424B1467E006EF7FB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		22AD5F8624B1467E006EF7FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		22B0783724B1519600256EB8 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		22BE1FE924A921B200A9A739 /* SpiralView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiralView.swift; sourceTree = "<group>"; };
 		22BE1FEC24A9247800A9A739 /* LoadData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadData.swift; sourceTree = "<group>"; };
 		22BE1FEE24A92B2300A9A739 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -192,6 +234,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		22AD5F7724B1467D006EF7FB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22AD5F7F24B1467D006EF7FB /* SwiftUI.framework in Frameworks */,
+				22AD5F7D24B1467D006EF7FB /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C6C18D3E2448F96C000345D5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -290,10 +341,31 @@
 			path = Filter;
 			sourceTree = "<group>";
 		};
+		22AD5F7B24B1467D006EF7FB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				22AD5F7C24B1467D006EF7FB /* WidgetKit.framework */,
+				22AD5F7E24B1467D006EF7FB /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		22AD5F8024B1467D006EF7FB /* ClokWidget */ = {
+			isa = PBXGroup;
+			children = (
+				22AD5F8124B1467D006EF7FB /* ClokWidget.swift */,
+				22AD5F8324B1467D006EF7FB /* ClokWidget.intentdefinition */,
+				22AD5F8424B1467E006EF7FB /* Assets.xcassets */,
+				22AD5F8624B1467E006EF7FB /* Info.plist */,
+			);
+			path = ClokWidget;
+			sourceTree = "<group>";
+		};
 		22BE1FEB24A9246400A9A739 /* NetCode */ = {
 			isa = PBXGroup;
 			children = (
 				22BE1FEC24A9247800A9A739 /* LoadData.swift */,
+				22B0783724B1519600256EB8 /* NetworkError.swift */,
 				C615CD56245F332300D62B87 /* Toggl.swift */,
 				2296F15A24A994A400AF38B5 /* FormRequest.swift */,
 				2264CB3624AD338500ECBF2B /* LoginWith.swift */,
@@ -391,6 +463,8 @@
 				22BE1FF224A92CAE00A9A739 /* Settings */,
 				22BE1FEB24A9246400A9A739 /* NetCode */,
 				C688BFC624A18BA00077CECF /* Misc */,
+				22AD5F8024B1467D006EF7FB /* ClokWidget */,
+				22AD5F7B24B1467D006EF7FB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -400,6 +474,7 @@
 				C6C18D412448F96C000345D5 /* Clok.app */,
 				C6C18D572448F96F000345D5 /* ClokTests.xctest */,
 				C6C18D622448F96F000345D5 /* ClokUITests.xctest */,
+				22AD5F7A24B1467D006EF7FB /* ClokWidgetExtension.appex */,
 			);
 			name = Products;
 			path = ..;
@@ -478,6 +553,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		22AD5F7924B1467D006EF7FB /* ClokWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 22AD5F8F24B1467E006EF7FB /* Build configuration list for PBXNativeTarget "ClokWidgetExtension" */;
+			buildPhases = (
+				22AD5F7624B1467D006EF7FB /* Sources */,
+				22AD5F7724B1467D006EF7FB /* Frameworks */,
+				22AD5F7824B1467D006EF7FB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ClokWidgetExtension;
+			productName = ClokWidgetExtension;
+			productReference = 22AD5F7A24B1467D006EF7FB /* ClokWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		C6C18D402448F96C000345D5 /* Clok */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C6C18D6B2448F96F000345D5 /* Build configuration list for PBXNativeTarget "Clok" */;
@@ -485,10 +577,12 @@
 				C6C18D3D2448F96C000345D5 /* Sources */,
 				C6C18D3E2448F96C000345D5 /* Frameworks */,
 				C6C18D3F2448F96C000345D5 /* Resources */,
+				22AD5F8C24B1467E006EF7FB /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				22AD5F8A24B1467E006EF7FB /* PBXTargetDependency */,
 			);
 			name = Clok;
 			productName = Landwarks;
@@ -537,10 +631,13 @@
 		C6C18D392448F96C000345D5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1140;
+				LastSwiftUpdateCheck = 1200;
 				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Secret Asian Man 3";
 				TargetAttributes = {
+					22AD5F7924B1467D006EF7FB = {
+						CreatedOnToolsVersion = 12.0;
+					};
 					C6C18D402448F96C000345D5 = {
 						CreatedOnToolsVersion = 11.4.1;
 					};
@@ -570,11 +667,20 @@
 				C6C18D402448F96C000345D5 /* Clok */,
 				C6C18D562448F96F000345D5 /* ClokTests */,
 				C6C18D612448F96F000345D5 /* ClokUITests */,
+				22AD5F7924B1467D006EF7FB /* ClokWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		22AD5F7824B1467D006EF7FB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22AD5F8524B1467E006EF7FB /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C6C18D3F2448F96C000345D5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -603,6 +709,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		22AD5F7624B1467D006EF7FB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22B0783524B1513A00256EB8 /* ClokWidget.swift in Sources */,
+				22B0783924B1519D00256EB8 /* NetworkError.swift in Sources */,
+				22B0783324B150C300256EB8 /* FormRequest.swift in Sources */,
+				22B0783624B1513A00256EB8 /* User.swift in Sources */,
+				22AD5F8724B1467E006EF7FB /* ClokWidget.intentdefinition in Sources */,
+				22B0783124B150C300256EB8 /* GetUserData.swift in Sources */,
+				22B0783224B150C300256EB8 /* Constants.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C6C18D3D2448F96C000345D5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -643,6 +763,7 @@
 				22027DD424AFF92000C0BA90 /* Fullscreen.swift in Sources */,
 				225F69B724AD8EF50012B5DB /* EntryList.swift in Sources */,
 				221810E424B01AAC00B63ECA /* InAndOut.swift in Sources */,
+				22AD5F8824B1467E006EF7FB /* ClokWidget.intentdefinition in Sources */,
 				C68842B0247B3D5300DC5C42 /* WeekButtons.swift in Sources */,
 				2264CB3924AD33D900ECBF2B /* EmailFields.swift in Sources */,
 				2264CB3124AD250600ECBF2B /* DefaultWorkspace.swift in Sources */,
@@ -659,6 +780,7 @@
 				22928AC524A4207E00DC9EC5 /* FilterStack.swift in Sources */,
 				C61D2658249BE1990056C9FA /* StatHelpers.swift in Sources */,
 				22BE1FEA24A921B200A9A739 /* SpiralView.swift in Sources */,
+				22B0783824B1519600256EB8 /* NetworkError.swift in Sources */,
 				22CBD84624A84CA400ED6FA3 /* WeekDateString.swift in Sources */,
 				221C3C5724A93C57006995C5 /* User.swift in Sources */,
 				22BE1FED24A9247800A9A739 /* LoadData.swift in Sources */,
@@ -701,6 +823,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		22AD5F8A24B1467E006EF7FB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 22AD5F7924B1467D006EF7FB /* ClokWidgetExtension */;
+			targetProxy = 22AD5F8924B1467E006EF7FB /* PBXContainerItemProxy */;
+		};
 		C6C18D592448F96F000345D5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = C6C18D402448F96C000345D5 /* Clok */;
@@ -725,6 +852,48 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		22AD5F8D24B1467E006EF7FB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 949D776DFQ;
+				INFOPLIST_FILE = ClokWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = sam.clok.ClokWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		22AD5F8E24B1467E006EF7FB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 949D776DFQ;
+				INFOPLIST_FILE = ClokWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = sam.clok.ClokWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		C6C18D692448F96F000345D5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -844,6 +1013,7 @@
 		C6C18D6C2448F96F000345D5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
@@ -867,6 +1037,7 @@
 		C6C18D6D2448F96F000345D5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
@@ -970,6 +1141,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		22AD5F8F24B1467E006EF7FB /* Build configuration list for PBXNativeTarget "ClokWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22AD5F8D24B1467E006EF7FB /* Debug */,
+				22AD5F8E24B1467E006EF7FB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C6C18D3C2448F96C000345D5 /* Build configuration list for PBXProject "Clok" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
