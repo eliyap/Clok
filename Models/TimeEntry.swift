@@ -30,9 +30,7 @@ final class TimeEntry : ObservableObject, Equatable {
     let description: String // not nullable
     
     // used to create a TimeEntry from data parsed from JSON
-    init?(
-        _ data:Dictionary<String,AnyObject>
-    ){
+    init?(_ data: [String : AnyObject]){
         // initialize DateFormatter to handle ISO8601 strings
         let df = DateFormatter()
         df.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
@@ -77,24 +75,14 @@ final class TimeEntry : ObservableObject, Equatable {
         self.description = description
         self.start = start
         self.end = end
+        
+        /// convert milliseconds to seconds
         self.dur = TimeInterval(exactly: dur/1000)!
     }
     
-//    // empty initializer for convenience
-//    init () {
-//        self.project = .noProject
-//        self.tid = nil
-//        self.task = nil
-//        self.description = ""
-//        self.start = Date()
-//        self.end = Date()
-//        self.id = -1
-//        self.dur = -1
-//    }
-    
     // sets the start and end angles based on the provided start datetime
     // similar to "zeroing" a graph or weighing scale
-    // NOTE: max angle does not need to be set, capped by ZESpiral
+    // NOTE: max angle is capped by ZESpiral
     let radPerSec: Double = (2 * Double.pi) / dayLength
     func zero (_ zeroDate:Date) {
         let startInt = (start > zeroDate) ? (start - zeroDate) : TimeInterval(exactly: 0)
