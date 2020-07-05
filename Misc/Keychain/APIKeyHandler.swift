@@ -11,6 +11,7 @@ import Foundation
 let service = "https://toggl.com/"
 
 enum KeychainError: Error {
+    case noData
     case unexpectedData
     case unhandledError(code: OSStatus)
 }
