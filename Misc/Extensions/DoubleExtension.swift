@@ -13,3 +13,8 @@ extension Array where Element == Double {
         self.reduce(0.0, {$0 + $1}) / Double(self.count)
     }
 }
+
+extension Double {
+    /// got sick of writing out 2 * Pi
+    static let tau = 2 * pi
+}

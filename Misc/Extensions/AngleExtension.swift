@@ -77,3 +77,12 @@ extension Angle {
         if x < 0 { self.radians += Double.pi }
     }
 }
+
+extension Angle {
+    /// allow subtraction of 2 angles (nothing fancy)
+    static func -(lhs: Angle, rhs: Angle) -> Angle {
+        Angle(radians: lhs.radians - rhs.radians)
+    }
+    
+    static let fullCircle = Angle(radians: 2 * Double.pi)
+}

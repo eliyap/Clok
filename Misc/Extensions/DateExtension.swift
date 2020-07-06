@@ -24,6 +24,10 @@ extension Date: Strideable {
 
 extension Date {
     
+    /**
+     returns the angle this date would show on a 24 hour clock, with 0000h being +x direction,
+     bounded 0 to 360 degrees
+     */
     public func angle() -> Angle {
         let cal = Calendar.current
         
@@ -39,7 +43,7 @@ extension Date {
     
     /**
      returns the angle this date would show on a 24 hour clock, with 0000h being vertically up,
-     bounded 0 to 360 degrees
+     bounded -90 to 270 degrees
      */
     public func clockAngle24() -> Angle {
         /// 90 degree deduction to bring 0000h up to vertical
