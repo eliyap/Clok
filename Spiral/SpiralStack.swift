@@ -19,13 +19,14 @@ struct SpiralStack: View {
     
     var body: some View {
         GeometryReader { geo in
-            VStack(spacing: 0) {
-                SpiralView()
-                    .frame(width: geo.size.height, height:geo.size.height)
-                    .padding(Edge.Set.bottom, -geo.size.height)
-                SpiralControls()
-                    .frame(width: geo.size.height, height: geo.size.height)
-            }
+//            VStack(spacing: 0) {
+//                SpiralView()
+//                    .frame(width: geo.size.height, height:geo.size.height)
+//                    .padding(Edge.Set.bottom, -geo.size.height)
+//                SpiralControls()
+//                    .frame(width: geo.size.height, height: geo.size.height)
+//            }
+            LineGraph()
         }
         /// keep it square
         .aspectRatio(1, contentMode: bounds.notch ? .fit : .fill)

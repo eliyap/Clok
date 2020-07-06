@@ -12,14 +12,22 @@ struct LineGraph: View {
     
     @EnvironmentObject private var data: TimeData
     @EnvironmentObject private var zero: ZeroDate
-    @State private var Interval: TimeInterval = dayLength / 2
+    @State private var length: TimeInterval = dayLength
     /// for now, show 7 days
-    private let dayCount = 7.0
+    static let dayCount = 7
     
     var body: some View {
-        ForEach(data.report.entries.within(interval: dayCount * dayLength, of: zero.date), id: \.id) { entry in
-            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        /// check whether the provided time entry coincides with a particular *date* range
+        /// if our entry ends before the interval even began
+        /// or started after the interval finished, it cannot possibly fall coincide
+        GeometryReader { geo in
+            ZStack {
+                ForEach(data.report.entries.filter {$0.end > zero.date && $0.start < zero.date + weekLength}, id: \.id) { entry in
+                    LineBar(with: entry, interval: length, geo: geo)
+                }
+            }
         }
+        .border(Color.red)
         
     }
     
