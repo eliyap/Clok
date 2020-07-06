@@ -27,5 +27,8 @@ struct ContentView: View {
         }
         .onReceive(self.settings.$user, perform: { fetchData($0) })
         .onAppear { tryLoadUserFromDisk() }
+        .onAppear {
+            testRunning()
+        }
     }
 }

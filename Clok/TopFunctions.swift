@@ -26,10 +26,10 @@ extension ContentView {
         guard let space = WorkspaceManager.getChosen() else { return }
         settings.space = space
         // request user data
-//        self.loadData(
-//            token: token,
-//            workspaceID: settings.space!.wid
-//        )
+        self.loadData(
+            token: token,
+            workspaceID: settings.space!.wid
+        )
     }
     
     
