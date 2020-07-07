@@ -16,6 +16,17 @@ struct LineGraph: View {
     /// for now, show 7 days
     static let dayCount = 7
     
+    @GestureState var magnifyBy = CGFloat(1.0)
+
+    var magnification: some Gesture {
+        MagnificationGesture()
+            .updating($magnifyBy) { currentState, gestureState, transaction in
+                gestureState = currentState
+                print(gestureState - magnifyBy)
+            }
+    }
+    
+    
     var body: some View {
         /// check whether the provided time entry coincides with a particular *date* range
         /// if our entry ends before the interval even began
@@ -27,8 +38,8 @@ struct LineGraph: View {
                 }
             }
         }
+        .gesture(magnification)
         .border(Color.red)
-        
     }
     
     
