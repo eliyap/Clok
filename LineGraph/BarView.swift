@@ -17,6 +17,7 @@ struct LineBar: View {
     private var interval: TimeInterval
     private var geo: GeometryProxy
     private let radius: CGFloat
+    private let cornerScale = CGFloat(1.0/120.0);
     /// determines what proportion of available horizontal space to consume
     static let thicc = CGFloat(0.8)
     
@@ -36,7 +37,7 @@ struct LineBar: View {
         interval = interval_
         geo = geo_
         /// adapt scale to taste
-        radius = geo.size.height / 30
+        radius = geo.size.height * cornerScale
     }
     
     func Bar(from bound: Bound) -> some View {
@@ -62,7 +63,6 @@ struct LineBar: View {
         for i in 0..<LineGraph.dayCount {
             let begin = zero.date + (Double(i) * dayLength)
             guard entry.end > begin && entry.start < begin + interval else { continue }
-            print(entry.description, entry.start, entry.end)
             bounds.append(Bound(
                 max(0, (entry.start - begin) / interval),
                 min(1, (entry.end - begin) / interval),
