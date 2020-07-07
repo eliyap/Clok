@@ -12,7 +12,7 @@ struct SettingsView: View {
     
     @EnvironmentObject var data: TimeData
     @EnvironmentObject var settings: Settings
-    
+    @State var selectingWorkspace = false
     var body: some View {
         NavigationView {
             List {
@@ -22,11 +22,17 @@ struct SettingsView: View {
                         Spacer()
                         Text(settings.user?.fullName ?? "No One")
                     }
-                    HStack {
-                        Text("Workspace")
-                        Spacer()
-                        Text(settings.space?.name ?? "No Space")
+                    NavigationLink(
+                        destination: WorkspaceMenu(dismiss: $selectingWorkspace),
+                        isActive: $selectingWorkspace
+                    ){
+                        HStack {
+                            Text("Workspace")
+                            Spacer()
+                            Text(settings.user?.chosen.name ?? "No Space")
+                        }
                     }
+                    
                 }
                 Section(header: EmptyView()) {
                     Text("Log Out")
