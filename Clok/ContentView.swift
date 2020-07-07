@@ -26,7 +26,10 @@ struct ContentView: View {
 //            if !loaded { ProgressIndicator() }
             if settings.user?.token == nil { LoginView() }
         }
-        .onReceive(self.settings.$user, perform: { fetchData($0) })
+        /// update on change to either user or space
+        .onReceive(settings.$user) {
+            fetchData(user: $0)
+        }
         .onAppear { tryLoadUserFromDisk() }
         .onAppear {
             testRunning()
