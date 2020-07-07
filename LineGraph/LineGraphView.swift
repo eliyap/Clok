@@ -22,7 +22,9 @@ struct LineGraph: View {
         MagnificationGesture()
             .updating($magnifyBy) { currentState, gestureState, transaction in
                 gestureState = currentState
-                print(gestureState - magnifyBy)
+                let delta = Double(gestureState - magnifyBy) * dayLength
+                length += delta
+                zero.date += delta / 2
             }
     }
     
@@ -33,6 +35,15 @@ struct LineGraph: View {
         /// or started after the interval finished, it cannot possibly fall coincide
         GeometryReader { geo in
             ZStack {
+                Rectangle().foregroundColor(.green)
+                VStack {
+                    Text(timeOffset(for: zero.date))
+                    Spacer()
+                    Text(length.toString())
+                    Spacer()
+                    Text(timeOffset(for: zero.date + length))
+                }.allowsHitTesting(false)
+                
                 ForEach(data.report.entries.filter {$0.end > zero.date && $0.start < zero.date + weekLength}, id: \.id) { entry in
                     LineBar(with: entry, interval: length, geo: geo)
                 }
@@ -42,5 +53,9 @@ struct LineGraph: View {
         .border(Color.red)
     }
     
-    
+    func timeOffset(for date: Date) -> String {
+        (date - Calendar.current.startOfDay(for: zero.date))
+            .truncatingRemainder(dividingBy: dayLength)
+            .toString()
+    }
 }
