@@ -14,7 +14,6 @@ struct LineBar: View {
     
     @ObservedObject var entry: TimeEntry
     @EnvironmentObject private var zero: ZeroDate
-    private var interval: TimeInterval
     private var geo: GeometryProxy
     private let radius: CGFloat
     private let cornerScale = CGFloat(1.0/120.0);
@@ -30,11 +29,9 @@ struct LineBar: View {
     
     init(
         with entry_: TimeEntry,
-        interval interval_: TimeInterval,
         geo geo_: GeometryProxy
     ){
         entry = entry_
-        interval = interval_
         geo = geo_
         /// adapt scale to taste
         radius = geo.size.height * cornerScale
@@ -62,10 +59,10 @@ struct LineBar: View {
         var bounds = [Bound]()
         for i in 0..<LineGraph.dayCount {
             let begin = zero.date + (Double(i) * dayLength)
-            guard entry.end > begin && entry.start < begin + interval else { continue }
+            guard entry.end > begin && entry.start < begin + zero.interval else { continue }
             bounds.append(Bound(
-                max(0, (entry.start - begin) / interval),
-                min(1, (entry.end - begin) / interval),
+                max(0, (entry.start - begin) / zero.interval),
+                min(1, (entry.end - begin) / zero.interval),
                 col: i
             ))
         }
