@@ -8,7 +8,7 @@
 
 import XCTest
 import SwiftUI
-@testable import Trickl
+@testable import Clok
 
 class LandwarksTests: XCTestCase {
 
