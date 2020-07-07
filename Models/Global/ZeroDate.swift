@@ -22,4 +22,8 @@ final class ZeroDate: ObservableObject {
     
     /// whether the time indicating clock hands should be on screen
     @Published var showTime = false
+    
+    /// length of time interval being examined
+    /// defaults to 8 hours
+    @Published var interval: TimeInterval = dayLength / 3
 }
