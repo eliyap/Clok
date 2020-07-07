@@ -84,5 +84,5 @@ extension Angle {
         Angle(radians: lhs.radians - rhs.radians)
     }
     
-    static let fullCircle = Angle(radians: 2 * Double.pi)
+    static let tau = Angle(radians: 2 * Double.pi)
 }
