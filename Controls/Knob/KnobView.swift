@@ -63,42 +63,42 @@ struct KnobView: View {
         GeometryReader { geo in
             HandleView()
                 /// maintain rotating while dragging & while released
-                .rotationEffect(-self.angleTracker.lead)
+                .rotationEffect(-angleTracker.lead)
                 .gesture(DragGesture()
                     .onChanged { value in
                         /// find cursor's angle
-                        self.needsDraw.toggle()
-                        if self.needsDraw {
-                            self.zero.date += dayLength * self.angleTracker.harvest()
+                        needsDraw.toggle()
+                        if needsDraw {
+                            zero.date += dayLength * angleTracker.harvest()
                         }
-                        self.angleTracker.update(geo: geo, value: value)
+                        angleTracker.update(geo: geo, value: value)
                     }
                     .onEnded { value in
                         /// update once more on end
-                        self.angleTracker.update(geo: geo, value: value)
-                        self.zero.date += dayLength * self.angleTracker.harvest()
+                        angleTracker.update(geo: geo, value: value)
+                        zero.date += dayLength * angleTracker.harvest()
                     }
                 )
                 .animation(.spring())
         }
         .aspectRatio(1, contentMode: .fit)
         .onAppear {
-            self.angleTracker.lead = -self.zero.date.clockAngle24()
-            self.angleTracker.lag = self.angleTracker.lead
+            angleTracker.lead = -zero.date.clockAngle24()
+            angleTracker.lag = angleTracker.lead
         }
         
         /// mirror the spiral's rotation effect
-        .rotationEffect(self.rotate)
+        .rotationEffect(rotate)
         .animation(.spring())
-        .onReceive(self.zero.$weekSkip, perform: { dxn in
+        .onReceive(zero.$weekSkip, perform: { dxn in
             /// when a week skip command is received,
             /// perform a 360 degree barell roll animation,
             /// then reset the flag
             switch dxn {
             case .fwrd:
-                self.rotate += Angle(degrees: 360)
+                self.rotate += Angle.tau
             case .back:
-                self.rotate -= Angle(degrees: 360)
+                self.rotate -= Angle.tau
             default:
                 return
             }
