@@ -18,17 +18,14 @@ extension ContentView {
         }
     }
     
-    func fetchData(_ user: User?) {
+    func fetchData(user: User?) {
         // do nothing if token is nil (user is not logged in)
-        guard let token = user?.token else { return }
+        guard let user = user else { return }
         
-        // get workspace
-        guard let space = WorkspaceManager.getChosen() else { return }
-        settings.space = space
         // request user data
         self.loadData(
-            token: token,
-            workspaceID: settings.space!.wid
+            token: user.token,
+            workspaceID: user.chosen.wid
         )
     }
     

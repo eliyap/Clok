@@ -36,7 +36,10 @@ func getToken() -> String? {
 func getCredentials() -> User? {
     do {
         let (email, fullname, apiKey) = try getKey()
-        guard let spaces = WorkspaceManager.getSpaces() else {
+        guard
+            let spaces = WorkspaceManager.getSpaces(),
+            let chosen = WorkspaceManager.getChosen()
+        else {
             print("no workspace")
             return nil
         }
@@ -44,7 +47,8 @@ func getCredentials() -> User? {
             token: apiKey,
             email: email,
             name: fullname,
-            spaces: spaces
+            spaces: spaces,
+            chosen: chosen
         )
     } catch KeychainError.unhandledError(code: errSecItemNotFound) {
         print("No Key Found")

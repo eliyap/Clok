@@ -14,6 +14,8 @@ class Workspace: NSObject, NSSecureCoding {
     var wid: Int
     var name: String
     
+    static let none = Workspace(wid: NSNotFound, name: "None")
+    
     init(wid: Int, name: String) {
         self.wid = wid
         self.name = name
@@ -35,7 +37,8 @@ struct User {
     var token: String
     var email: String
     var fullName: String
-    var workspaces = [Workspace]()
+    var workspaces: [Workspace]
+    var chosen: Workspace
     
     init?(_ json: [String: AnyObject]) {
         // unwrap optionals
@@ -53,21 +56,30 @@ struct User {
         email = _email
         fullName = _name
         
+        /// must have at least 1 workspace
+        guard _spaces.count > 0 else { return nil }
+        workspaces = [] // initialize before capture
+        chosen = .none
         _spaces.forEach {
             if let wid = $0["id"] as? Int, let name = $0["name"] as? String {
                 workspaces.append(Workspace(wid: wid, name: name))
             }
         }
-        
-        /// must have at least 1 workspace ID to function!
-        guard workspaces.count > 0 else { return nil }
+        chosen = workspaces[0]
     }
     
-    init?(token token_: String, email email_: String, name: String, spaces: [Workspace]?){
+    init?(
+        token token_: String,
+        email email_: String,
+        name: String,
+        spaces: [Workspace]?,
+        chosen chosen_: Workspace
+    ){
         token = token_
         email = email_
         fullName = name
         guard let spaces = spaces else { return nil }
         workspaces = spaces
+        chosen = chosen_
     }
 }
