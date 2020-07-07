@@ -65,6 +65,7 @@
 		22B0784424B17CC000256EB8 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67F47D2249FD44500FD2E6E /* Project.swift */; };
 		22B0784524B17CD900256EB8 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B0FF9B246F124300DED011 /* ColorExtension.swift */; };
 		22B0784A24B262FA00256EB8 /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B0784824B2629A00256EB8 /* Timeline.swift */; };
+		22B9E05C24B4FF550040C5AC /* WorkspaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B9E05B24B4FF550040C5AC /* WorkspaceView.swift */; };
 		22BE1FEA24A921B200A9A739 /* SpiralView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BE1FE924A921B200A9A739 /* SpiralView.swift */; };
 		22BE1FED24A9247800A9A739 /* LoadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BE1FEC24A9247800A9A739 /* LoadData.swift */; };
 		22BE1FEF24A92B2300A9A739 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BE1FEE24A92B2300A9A739 /* SettingsView.swift */; };
@@ -201,6 +202,7 @@
 		22B0784624B247D500256EB8 /* ClokWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ClokWidgetExtension.entitlements; sourceTree = "<group>"; };
 		22B0784724B249BA00256EB8 /* Clok.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Clok.entitlements; sourceTree = "<group>"; };
 		22B0784824B2629A00256EB8 /* Timeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timeline.swift; sourceTree = "<group>"; };
+		22B9E05B24B4FF550040C5AC /* WorkspaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceView.swift; sourceTree = "<group>"; };
 		22BE1FE924A921B200A9A739 /* SpiralView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiralView.swift; sourceTree = "<group>"; };
 		22BE1FEC24A9247800A9A739 /* LoadData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadData.swift; sourceTree = "<group>"; };
 		22BE1FEE24A92B2300A9A739 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -412,6 +414,7 @@
 			isa = PBXGroup;
 			children = (
 				22BE1FEE24A92B2300A9A739 /* SettingsView.swift */,
+				22B9E05B24B4FF550040C5AC /* WorkspaceView.swift */,
 				2264CB3024AD250600ECBF2B /* DefaultWorkspace.swift */,
 			);
 			path = Settings;
@@ -845,6 +848,7 @@
 				22928AC724A423AA00DC9EC5 /* WeekButtonGlyph.swift in Sources */,
 				C6AAB3F2249F061D00DFBA36 /* TimeData.swift in Sources */,
 				C615CD57245F332300D62B87 /* Toggl.swift in Sources */,
+				22B9E05C24B4FF550040C5AC /* WorkspaceView.swift in Sources */,
 				225F69B424AD8CE70012B5DB /* AppView.swift in Sources */,
 				2296F15B24A994A400AF38B5 /* FormRequest.swift in Sources */,
 				22027DD224AFF7ED00C0BA90 /* TopFunctions.swift in Sources */,
