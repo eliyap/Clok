@@ -12,18 +12,25 @@ struct LineGraph: View {
     
     @EnvironmentObject private var data: TimeData
     @EnvironmentObject private var zero: ZeroDate
-    @State private var length: TimeInterval = dayLength
     /// for now, show 7 days
     static let dayCount = 7
     
     @GestureState var magnifyBy = CGFloat(1.0)
 
+    /// slows down the magnifying effect by some constant
+    private let kCoeff = 0.5
     var magnification: some Gesture {
         MagnificationGesture()
             .updating($magnifyBy) { currentState, gestureState, transaction in
                 gestureState = currentState
-                let delta = Double(gestureState - magnifyBy) * dayLength
-                length += delta
+                /// get change in time
+                let delta = Double(gestureState - magnifyBy) * dayLength * kCoeff
+                
+                /// adjust interval, but cap at reasonable quantity
+                zero.interval -= delta
+                zero.interval = max(zero.interval, 3600.0)
+                zero.interval = min(zero.interval, dayLength)
+                
                 zero.date += delta / 2
             }
     }
@@ -39,13 +46,13 @@ struct LineGraph: View {
                 VStack {
                     Text(timeOffset(for: zero.date))
                     Spacer()
-                    Text(length.toString())
+                    Text(zero.interval.toString())
                     Spacer()
-                    Text(timeOffset(for: zero.date + length))
+                    Text(timeOffset(for: zero.date + zero.interval))
                 }.allowsHitTesting(false)
                 
                 ForEach(data.report.entries.filter {$0.end > zero.date && $0.start < zero.date + weekLength}, id: \.id) { entry in
-                    LineBar(with: entry, interval: length, geo: geo)
+                    LineBar(with: entry, geo: geo)
                 }
             }
         }
