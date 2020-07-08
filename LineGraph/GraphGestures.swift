@@ -28,4 +28,24 @@ extension LineGraph {
 
         zero.date += delta / 2
     }
+    
+    
+    func dragHandler(
+        currentState: DragGesture.Value,
+        gestureState: inout CGFloat,
+        _: inout Transaction
+    ) -> Void {
+        
+        gestureState = currentState
+        
+        /// get change in time
+        let delta = Double(gestureState - magnifyBy) * dayLength * kCoeff
+
+        /// adjust interval, but cap at reasonable quantity
+        zero.interval -= delta
+        zero.interval = max(zero.interval, 3600.0)
+        zero.interval = min(zero.interval, dayLength)
+
+        zero.date += delta / 2
+    }
 }

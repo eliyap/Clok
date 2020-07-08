@@ -16,20 +16,22 @@ struct LineGraph: View {
     static let dayCount = 7
     
     @GestureState var magnifyBy = CGFloat(1.0)
+    @GestureState var dragBy = CGFloat.zero
 
     /// slows down the magnifying effect by some constant
     let kCoeff = 0.5
-    var magnification: some Gesture {
-        MagnificationGesture()
-            .updating($magnifyBy, body: magnifyHandler)
-    }
-    
     
     var body: some View {
+        let magnify = MagnificationGesture()
+            .updating($magnifyBy, body: magnifyHandler)
+        let drag = DragGesture()
+            .updating($dragBy, body: dragHandler)
+        let exclusive = ExclusiveGesture(drag, magnify)
+        
         /// check whether the provided time entry coincides with a particular *date* range
         /// if our entry ends before the interval even began
         /// or started after the interval finished, it cannot possibly fall coincide
-        GeometryReader { geo in
+        return GeometryReader { geo in
             ZStack {
                 Rectangle().foregroundColor(.green)
                 VStack {
@@ -45,7 +47,7 @@ struct LineGraph: View {
                 }
             }
         }
-        .gesture(magnification)
+        .gesture(exclusive)
         .border(Color.red)
     }
     
