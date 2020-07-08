@@ -10,29 +10,18 @@ import SwiftUI
 
 struct LineGraph: View {
     
-    @EnvironmentObject private var data: TimeData
-    @EnvironmentObject private var zero: ZeroDate
+    @EnvironmentObject var data: TimeData
+    @EnvironmentObject var zero: ZeroDate
     /// for now, show 7 days
     static let dayCount = 7
     
     @GestureState var magnifyBy = CGFloat(1.0)
 
     /// slows down the magnifying effect by some constant
-    private let kCoeff = 0.5
+    let kCoeff = 0.5
     var magnification: some Gesture {
         MagnificationGesture()
-            .updating($magnifyBy) { currentState, gestureState, transaction in
-                gestureState = currentState
-                /// get change in time
-                let delta = Double(gestureState - magnifyBy) * dayLength * kCoeff
-                
-                /// adjust interval, but cap at reasonable quantity
-                zero.interval -= delta
-                zero.interval = max(zero.interval, 3600.0)
-                zero.interval = min(zero.interval, dayLength)
-                
-                zero.date += delta / 2
-            }
+            .updating($magnifyBy, body: magnifyHandler)
     }
     
     
