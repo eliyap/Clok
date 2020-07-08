@@ -45,7 +45,7 @@ struct LineGraph: View {
                     .onChanged { value in
                         /// find cursor's
                         dragBy.update(state: value, geo: geo)
-                        zero.date += dragBy.dayDiff
+                        zero.date -= dragBy.dayDiff
                     }
                     .onEnded { value in
                         /// update once more on end
