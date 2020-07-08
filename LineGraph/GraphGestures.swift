@@ -30,22 +30,22 @@ extension LineGraph {
     }
     
     
-    func dragHandler(
-        currentState: DragGesture.Value,
-        gestureState: inout CGFloat,
-        _: inout Transaction
-    ) -> Void {
+    struct PositionTracker {
+        var lag = CGFloat.zero
+        var lead = CGFloat.zero
+        var dayDiff = TimeInterval.zero /// number of days represented by the handle's change in angle
         
-        gestureState = currentState
+        mutating func update(state: DragGesture.Value, geo: GeometryProxy) -> Void {
+            /// get change in height, normalized against view height
+            lead = (state.location.y - state.startLocation.y) / geo.size.height
+            dayDiff = Double(lead - lag) * dayLength
+            lag = lead
+        }
         
-        /// get change in time
-        let delta = Double(gestureState - magnifyBy) * dayLength * kCoeff
-
-        /// adjust interval, but cap at reasonable quantity
-        zero.interval -= delta
-        zero.interval = max(zero.interval, 3600.0)
-        zero.interval = min(zero.interval, dayLength)
-
-        zero.date += delta / 2
+        mutating func reset() -> Void {
+            lead = 0
+            lag = 0
+            dayDiff = 0
+        }
     }
 }

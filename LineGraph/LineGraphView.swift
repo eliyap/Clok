@@ -16,18 +16,12 @@ struct LineGraph: View {
     static let dayCount = 7
     
     @GestureState var magnifyBy = CGFloat(1.0)
-    @GestureState var dragBy = CGFloat.zero
-
+    @State var dragBy = PositionTracker()
+    
     /// slows down the magnifying effect by some constant
     let kCoeff = 0.5
     
     var body: some View {
-        let magnify = MagnificationGesture()
-            .updating($magnifyBy, body: magnifyHandler)
-        let drag = DragGesture()
-            .updating($dragBy, body: dragHandler)
-        let exclusive = ExclusiveGesture(drag, magnify)
-        
         /// check whether the provided time entry coincides with a particular *date* range
         /// if our entry ends before the interval even began
         /// or started after the interval finished, it cannot possibly fall coincide
@@ -46,8 +40,22 @@ struct LineGraph: View {
                     LineBar(with: entry, geo: geo)
                 }
             }
+            .gesture(ExclusiveGesture(
+                DragGesture()
+                    .onChanged { value in
+                        /// find cursor's
+                        dragBy.update(state: value, geo: geo)
+                        zero.date += dragBy.dayDiff
+                    }
+                    .onEnded { value in
+                        /// update once more on end
+                        dragBy.update(state: value, geo: geo)
+                        zero.date -= dragBy.dayDiff
+                        dragBy.reset()
+                    },
+                MagnificationGesture().updating($magnifyBy, body: magnifyHandler)
+            ))
         }
-        .gesture(exclusive)
         .border(Color.red)
     }
     

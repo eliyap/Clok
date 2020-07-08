@@ -13,7 +13,7 @@ struct KnobAngle {
     var lead = Angle()
     var lag = Angle()
     var turns = Angle()
-    var dayDiff = 0.0
+    var dayDiff = TimeInterval.zero /// number of days represented by the handle's change in angle
     
     /// min angle jump to register a complete rotation
     private let threshold = Angle(degrees: 270)
@@ -43,6 +43,7 @@ struct KnobAngle {
         lag = lead
     }
     
+    /// return, and then reset, the change in time
     mutating func harvest() -> Double {
         defer { dayDiff = 0 }
         return dayDiff
