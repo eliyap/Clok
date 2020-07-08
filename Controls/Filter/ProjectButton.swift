@@ -22,7 +22,7 @@ struct ProjectButton: View {
                 .foregroundColor(data.terms.project == .any ? Color.primary : data.terms.project.color)
                 .modifier(ButtonGlyph())
                 .actionSheet(isPresented: $showSheet) { makeSheet() }
-            Text(data.terms.project.name)
+            Text("Project is \(data.terms.project.name)")
         }
         .onTapGesture {
             self.showSheet.toggle()

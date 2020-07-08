@@ -22,7 +22,8 @@ struct TimeStripView: View {
     
     var body: some View {
         HStack {
-            if bounds.notch && bounds.mode == .landscape {
+            /// switch styles for notched iPads, and iPhones in Landscape
+            if bounds.notch && (bounds.mode == .landscape || bounds.device == .iPad) {
                 WeekDateButton()
                     .modifier(TabStyle())
                     .padding([.leading], padding)
