@@ -27,7 +27,7 @@ struct LineGraph: View {
         /// or started after the interval finished, it cannot possibly fall coincide
         return GeometryReader { geo in
             ZStack {
-                Rectangle().foregroundColor(.green)
+                Rectangle().foregroundColor(.clokBG)
                 VStack {
                     Text(timeOffset(for: zero.date))
                     Spacer()

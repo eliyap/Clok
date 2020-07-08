@@ -85,13 +85,6 @@ extension Color {
         green: 0.5,
         blue: 0.5
     )
-}
-
-struct offBG : View {
-    @Environment(\.colorScheme) var mode
-    var body : some View {
-        return (mode == .light ? Color.offWhite : Color.offBlack)
-            /// needs to cover the status bar
-            .edgesIgnoringSafeArea(.all)
-    }
+    
+    static let clokBG = Color("ClokBG")
 }

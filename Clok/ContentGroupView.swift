@@ -44,7 +44,7 @@ struct ContentGroupView: View {
                 }
             }
         }
-        .background(offBG())
+        .background(Color.clokBG.edgesIgnoringSafeArea(.all))
         .onAppear {
             /// determine device
             bounds.device = (vSize == .compact || hSize == .compact) ? .iPhone : .iPad
