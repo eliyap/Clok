@@ -23,8 +23,8 @@ extension LineGraph {
 
         /// adjust interval, but cap at reasonable quantity
         zero.interval -= delta
-        zero.interval = max(zero.interval, 3600.0)
-        zero.interval = min(zero.interval, dayLength)
+        zero.interval = max(zero.interval, 4 * 3600.0) /// min interval: 4 hours
+        zero.interval = min(zero.interval, dayLength)  /// max interval: 1 day
 
         zero.date += delta / 2
     }
@@ -33,19 +33,19 @@ extension LineGraph {
     struct PositionTracker {
         var lag = CGFloat.zero
         var lead = CGFloat.zero
-        var dayDiff = TimeInterval.zero /// number of days represented by the handle's change in angle
+        var intervalDiff = TimeInterval.zero /// number of days represented by the handle's change in angle
         
         mutating func update(state: DragGesture.Value, geo: GeometryProxy) -> Void {
             /// get change in height, normalized against view height
             lead = (state.location.y - state.startLocation.y) / geo.size.height
-            dayDiff = Double(lead - lag) * dayLength
+            intervalDiff = Double(lead - lag)
             lag = lead
         }
         
         mutating func reset() -> Void {
             lead = 0
             lag = 0
-            dayDiff = 0
+            intervalDiff = 0
         }
     }
 }

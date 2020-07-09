@@ -37,7 +37,8 @@ struct LineGraph: View {
                 }.allowsHitTesting(false)
                 
                 ForEach(data.report.entries.filter {$0.end > zero.date && $0.start < zero.date + weekLength}, id: \.id) { entry in
-                    LineBar(with: entry, geo: geo)
+                    LineBar(with: entry, geo: geo, bounds: GetBounds(zero: zero, entry: entry))
+                        .transition(.identity)
                 }
             }
             .gesture(ExclusiveGesture(
@@ -45,12 +46,12 @@ struct LineGraph: View {
                     .onChanged { value in
                         /// find cursor's
                         dragBy.update(state: value, geo: geo)
-                        zero.date -= dragBy.dayDiff
+                        zero.date -= dragBy.intervalDiff * zero.interval
                     }
                     .onEnded { value in
                         /// update once more on end
                         dragBy.update(state: value, geo: geo)
-                        zero.date -= dragBy.dayDiff
+                        zero.date -= dragBy.intervalDiff * zero.interval
                         dragBy.reset()
                     },
                 MagnificationGesture().updating($magnifyBy, body: magnifyHandler)
