@@ -11,8 +11,8 @@ import SwiftUI
 struct CustomTabView: View {
     
     enum Tabs {
-        case entries
-        case summary
+        case spiral
+        case bar
         case settings
     }
     
@@ -39,26 +39,29 @@ struct CustomTabView: View {
         /// group prevents warning about underlying types
         Group {
             switch settings.tab {
-            case .entries:
-                EntryList()
-            case .summary:
-                StatView()
             case .settings:
                 SettingsView()
+            default:
+                TabView{
+                    EntryList()
+                    StatView()
+                }
+                .tabViewStyle(PageTabViewStyle())
+                .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
             }
         }
     }
     
     func Buttons() -> some View {
         return Group {
-            TabButton(select: .entries, glyph: "list.bullet")
-            TabButton(select: .summary, glyph: "chart.bar.fill")
+            TabButton(select: .spiral, glyph: "arrow.counterclockwise")
+            TabButton(select: .bar, glyph: "chart.bar.fill")
             TabButton(select: .settings, glyph: "gear")
         }
     }
     
     private let buttonPadding = CGFloat(8)
-    func TabButton(select: Tabs, glyph: String) -> some View {
+    func TabButton(select: Settings.Tabs, glyph: String) -> some View {
         Button { settings.tab = select } label: {
             Label("", systemImage: glyph)
                 .foregroundColor(settings.tab == select ? .primary : .secondary)

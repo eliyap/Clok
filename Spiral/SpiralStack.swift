@@ -26,15 +26,8 @@ struct SpiralStack: View {
                 SpiralControls()
                     .frame(width: geo.size.height, height: geo.size.height)
             }
-//            LineGraph()
         }
         /// keep it square
         .aspectRatio(1, contentMode: bounds.notch ? .fit : .fill)
-    }
-}
-
-struct SpiralStack_Previews: PreviewProvider {
-    static var previews: some View {
-        SpiralStack()
     }
 }

@@ -7,6 +7,12 @@
 import Foundation
 
 final class Settings: ObservableObject {
-    @Published var tab = CustomTabView.Tabs.summary
+    enum Tabs {
+        case spiral
+        case bar
+        case settings
+    }
+    
+    @Published var tab: Tabs = .spiral
     @Published var user: User? = nil
 }

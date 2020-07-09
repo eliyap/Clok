@@ -20,7 +20,7 @@ struct ContentView: View {
     @State var needToken = false
     var body : some View {
         ZStack {
-            ContentGroupView()
+            OrientationView()
             /// fade out loading screen when data is finished being requested
             
 //            if !loaded { ProgressIndicator() }

@@ -15,7 +15,7 @@ extension ContentView {
             let df = DateFormatter()
             df.dateFormat = "yyyy-MM-dd" // ISO 8601 format, day precision
             
-            let since = df.string(from: Date().addingTimeInterval(TimeInterval(-86400 * 365))) // grab 365 days...
+            let since = df.string(from: Date().addingTimeInterval(TimeInterval(-86400 * 7))) // grab 365 days...
             let until = df.string(from: Date())                                                // ...from today
             
             // documented at https://github.com/toggl/toggl_api_docs/blob/master/reports.md
