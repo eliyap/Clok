@@ -22,7 +22,7 @@ struct ContentGroupView: View {
                 SpiralStack()
                     .frame(width: size(geo), height: size(geo))
             case .bar:
-                LineGraph()
+                BarStack()
                     .frame(width: size(geo), height: size(geo))
             default:
                 EmptyView()

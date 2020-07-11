@@ -12,6 +12,8 @@
 		22027DD424AFF92000C0BA90 /* Fullscreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22027DD324AFF92000C0BA90 /* Fullscreen.swift */; };
 		22027DD624AFFA6500C0BA90 /* Bounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22027DD524AFFA6500C0BA90 /* Bounds.swift */; };
 		2207B21C24B951770006748A /* OptionalRoundRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2207B21B24B951770006748A /* OptionalRoundRect.swift */; };
+		2207B21E24B952A80006748A /* BarControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2207B21D24B952A80006748A /* BarControls.swift */; };
+		2207B22024B954F40006748A /* BarStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2207B21F24B954F40006748A /* BarStack.swift */; };
 		221810DE24B00FB900B63ECA /* EntryTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221810DD24B00FB900B63ECA /* EntryTab.swift */; };
 		221810E024B0158500B63ECA /* Get24hourPref.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221810DF24B0158500B63ECA /* Get24hourPref.swift */; };
 		221810E224B0190400B63ECA /* Clockhands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221810E124B0190400B63ECA /* Clockhands.swift */; };
@@ -162,6 +164,8 @@
 		22027DD324AFF92000C0BA90 /* Fullscreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fullscreen.swift; sourceTree = "<group>"; };
 		22027DD524AFFA6500C0BA90 /* Bounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bounds.swift; sourceTree = "<group>"; };
 		2207B21B24B951770006748A /* OptionalRoundRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalRoundRect.swift; sourceTree = "<group>"; };
+		2207B21D24B952A80006748A /* BarControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarControls.swift; sourceTree = "<group>"; };
+		2207B21F24B954F40006748A /* BarStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarStack.swift; sourceTree = "<group>"; };
 		221810DD24B00FB900B63ECA /* EntryTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryTab.swift; sourceTree = "<group>"; };
 		221810DF24B0158500B63ECA /* Get24hourPref.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Get24hourPref.swift; sourceTree = "<group>"; };
 		221810E124B0190400B63ECA /* Clockhands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clockhands.swift; sourceTree = "<group>"; };
@@ -322,6 +326,7 @@
 			isa = PBXGroup;
 			children = (
 				225B044124B2A5FA00780424 /* LineGraphView.swift */,
+				2207B21F24B954F40006748A /* BarStack.swift */,
 				22B9E05D24B659D60040C5AC /* GraphGestures.swift */,
 				225ACE4E24B2A7A700FFCDF7 /* BarView.swift */,
 				22C63A9424B6AFF500369341 /* BarBounds.swift */,
@@ -344,6 +349,7 @@
 				C63C0D43248D3B5000163E20 /* Knob */,
 				22928ACA24A42A0600DC9EC5 /* Filter */,
 				C6855DE62496E7050050F8D4 /* SpiralControls.swift */,
+				2207B21D24B952A80006748A /* BarControls.swift */,
 				C68F8C8A24A03DB4000D249B /* TimeStripView.swift */,
 				228B100324AEAE3A0026AD4B /* WeekDateButton.swift */,
 				C68842AF247B3D5300DC5C42 /* WeekButtons.swift */,
@@ -797,6 +803,7 @@
 				C68F8C8B24A03DB4000D249B /* TimeStripView.swift in Sources */,
 				C6F605AF246C6B1700D0FE82 /* DateExtension.swift in Sources */,
 				C68F8C8D24A04CE8000D249B /* IceCreamStick.swift in Sources */,
+				2207B22024B954F40006748A /* BarStack.swift in Sources */,
 				221D963C24A912B900C84F57 /* APIKeyHandler.swift in Sources */,
 				22027DD024AFF63F00C0BA90 /* OrientationView.swift in Sources */,
 				221810E224B0190400B63ECA /* Clockhands.swift in Sources */,
@@ -853,6 +860,7 @@
 				22BE1FEA24A921B200A9A739 /* SpiralView.swift in Sources */,
 				22B0783824B1519600256EB8 /* NetworkError.swift in Sources */,
 				22CBD84624A84CA400ED6FA3 /* WeekDateString.swift in Sources */,
+				2207B21E24B952A80006748A /* BarControls.swift in Sources */,
 				221C3C5724A93C57006995C5 /* User.swift in Sources */,
 				22BE1FED24A9247800A9A739 /* LoadData.swift in Sources */,
 				C63C0D4B248DBDDB00163E20 /* Handle.swift in Sources */,
