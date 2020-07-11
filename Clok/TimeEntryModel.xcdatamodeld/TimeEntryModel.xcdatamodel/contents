@@ -18,7 +18,7 @@
         <attribute name="color" optional="YES" attributeType="Transformable"/>
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
-        <relationship name="tasks" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDTimeEntry" inverseName="project" inverseEntity="CDTimeEntry"/>
+        <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDTimeEntry" inverseName="project" inverseEntity="CDTimeEntry"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="id"/>
