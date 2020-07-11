@@ -1,22 +1,27 @@
 //
-//  SpiralView.swift
+//  Mask.swift
 //  Clok
 //
-//  Created by Secret Asian Man Dev on 28/6/20.
+//  Created by Secret Asian Man Dev on 10/7/20.
 //  Copyright © 2020 Secret Asian Man 3. All rights reserved.
 //
 
 import SwiftUI
 
-struct SpiralView: View {
+struct Mask<Content: View>: View {
     
     @EnvironmentObject private var data: TimeData
     @EnvironmentObject private var settings: Settings
     @State var blurRadius = CGFloat.zero
+    let content: Content
+
+    init(@ViewBuilder content: () -> Content) {
+        self.content = content()
+    }
+
     var body: some View {
         ZStack {
-            SpiralUI()
-            KnobView()
+            content
             if data.searching {
                 /// increase contrast with filter text so it is more readable
                 SearchContrastScreen()
@@ -30,6 +35,5 @@ struct SpiralView: View {
             })
             /// turn off interaction when user is filtering
             .disabled(data.searching)
-
     }
 }

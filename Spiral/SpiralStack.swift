@@ -20,7 +20,10 @@ struct SpiralStack: View {
     var body: some View {
         GeometryReader { geo in
             VStack(spacing: 0) {
-                SpiralView()
+                Mask {
+                    SpiralUI()
+                    KnobView()
+                }
                     .frame(width: geo.size.height, height:geo.size.height)
                     .padding(Edge.Set.bottom, -geo.size.height)
                 SpiralControls()
