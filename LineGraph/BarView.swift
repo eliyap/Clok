@@ -31,7 +31,7 @@ struct LineBar: View {
             Bar(from: bound)
                 .foregroundColor(entry.project.color)
         }
-        .opacity(opacity * (entry.matches(self.data.terms) ? 1 : 0.5) )
+        .opacity(opacity * (entry.matches(data.terms) ? 1 : 0.5) )
         .offset(x: .zero, y: offset)
         .onTapGesture { tapHandler() }
     }
