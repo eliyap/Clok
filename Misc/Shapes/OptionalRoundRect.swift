@@ -11,22 +11,37 @@ import SwiftUI
 
 struct OptionalRoundRect: Shape {
     
-    var clipBot: Bool /// whether the bottom should appear "clipped"
-    var clipTop: Bool /// whether the top should appear "clipped"
     var radius: CGFloat
+    var geo: GeometryProxy
+    var bound: LineBar.Bound
+    
+    func Pos() -> CGPoint {
+        /// place according to the column and with half the whitespace to center the graph
+        let factor: CGFloat = CGFloat(bound.col) + (1.0 - LineBar.thicc) / 2.0
+        return CGPoint(
+            x: geo.size.width / CGFloat(LineGraph.dayCount) * factor,
+            y: CGFloat(bound.min) * geo.size.height
+        )
+    }
     
     func path(in rect: CGRect) -> Path {
+        let pos = Pos()
         return Path { path in
+            let size = CGSize(
+                width: LineBar.thicc * geo.size.width / CGFloat(LineGraph.dayCount),
+                height: CGFloat(bound.max - bound.min) * geo.size.height
+            )
+            
             /// starts in the middle of the right edge, and draws counter clockwise
-            path.move(to: CGPoint(x: rect.width, y: rect.height / 2))
+            path.move(to: CGPoint(x: size.width, y: size.height / 2))
             
             /// top edge is clipping out -> no corner radius on top edge
-            if clipTop {
-                path.addLine(to: CGPoint(x: rect.width, y: .zero))
+            if bound.min == .zero {
+                path.addLine(to: CGPoint(x: size.width, y: .zero))
                 path.addLine(to: CGPoint.zero)
             } else {
                 path.addRelativeArc(
-                    center: CGPoint(x: rect.width - radius, y: radius),
+                    center: CGPoint(x: size.width - radius, y: radius),
                     radius: radius,
                     startAngle: Angle.zero,
                     delta: -Angle(radians: Double.pi / 2)
@@ -40,18 +55,18 @@ struct OptionalRoundRect: Shape {
             }
             
             /// similarly decide whether to round the bottom edge
-            if clipBot {
-                path.addLine(to: CGPoint(x: .zero, y: rect.height))
-                path.addLine(to: CGPoint(x: rect.width, y: rect.height))
+            if bound.max == 1 {
+                path.addLine(to: CGPoint(x: .zero, y: size.height))
+                path.addLine(to: CGPoint(x: size.width, y: size.height))
             } else {
                 path.addRelativeArc(
-                    center: CGPoint(x: radius, y: rect.height - radius),
+                    center: CGPoint(x: radius, y: size.height - radius),
                     radius: radius,
                     startAngle: Angle(radians: Double.pi),
                     delta: -Angle(radians: Double.pi / 2)
                 )
                 path.addRelativeArc(
-                    center: CGPoint(x: rect.width - radius, y: rect.height - radius),
+                    center: CGPoint(x: size.width - radius, y: size.height - radius),
                     radius: radius,
                     startAngle: Angle(radians: Double.pi / 2),
                     delta: -Angle(radians: Double.pi / 2)
@@ -59,6 +74,7 @@ struct OptionalRoundRect: Shape {
             }
             path.closeSubpath()
         }
+        .applying(CGAffineTransform(translationX: pos.x, y: pos.y))
     }
 }
 

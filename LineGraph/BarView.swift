@@ -28,7 +28,11 @@ struct LineBar: View {
     
     var body: some View {
         ForEach(bounds, id: \.col){ bound in
-            Bar(from: bound)
+            return OptionalRoundRect(
+                radius: radius,
+                geo: geo,
+                bound: bound
+            )
                 .foregroundColor(entry.project.color)
         }
         .opacity(opacity * (entry.matches(data.terms) ? 1 : 0.5) )
@@ -50,26 +54,6 @@ struct LineBar: View {
         if bounds.count == 0 {
             return nil
         }
-    }
-    
-    func Bar(from bound: Bound) -> some View {
-        let x = geo.size.width * CGFloat(Double(bound.col) / Double(LineGraph.dayCount))
-            /// add a margin to center the bars in frame
-            + (1 - LineBar.thicc) * geo.size.width / CGFloat(2 * LineGraph.dayCount)
-        let y = CGFloat(bound.min) * geo.size.height
-        return OptionalRoundRect(
-            clipBot: bound.max == .zero,
-            clipTop: bound.min == .zero,
-            radius: radius
-        )
-            .size(CGSize(
-                width: LineBar.thicc * geo.size.width / CGFloat(LineGraph.dayCount),
-                height: CGFloat(bound.max - bound.min) * geo.size.height
-            ))
-            .position(
-                x: x + geo.size.width / 2,
-                y: y + geo.size.height / 2
-            )
     }
     
     // MARK: - Tap Handler
