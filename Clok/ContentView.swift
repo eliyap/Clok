@@ -10,6 +10,13 @@ import SwiftUI
 
 
 struct ContentView: View {
+    
+    @Environment(\.managedObjectContext) var moc
+    @FetchRequest(entity: CDTimeEntry.entity(), sortDescriptors: []) var myEntries: FetchedResults<CDTimeEntry>
+    
+    
+    
+    
     @EnvironmentObject var data: TimeData
     @EnvironmentObject var settings: Settings
     
