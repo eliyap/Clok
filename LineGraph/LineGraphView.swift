@@ -19,6 +19,7 @@ struct LineGraph: View {
     @State var dragBy = PositionTracker()
     
     let tf = DateFormatter()
+    let haptic = UIImpactFeedbackGenerator(style: .light)
     init(){
         tf.timeStyle = .short
     }
@@ -71,7 +72,7 @@ struct LineGraph: View {
             zero.date -= dragBy.intervalDiff * zero.interval
             let days = dragBy.harvestDays()
             if days != 0 {
-                // HAPTIC FEEDBACK HERE
+                haptic.impactOccurred(intensity: 1)
                 zero.date -= Double(days) * dayLength
             }
         }
