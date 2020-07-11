@@ -20,17 +20,15 @@ struct EntrySpiral: View {
         SpiralPart(entry)?
             .fill(entry.project.color)
             // goes transparent when filtered out
-            .opacity(opacity * (entry.matches(self.data.terms) ? 1 : 0.5) )
+            .opacity(opacity * (entry.matches(data.terms) ? 1 : 0.5) )
             .scaleEffect(CGFloat(scale))
             
             // MARK: - Tap Handler
             .gesture(TapGesture().onEnded() {_ in
-                // scroll to this entry on the entry list
-                /// pass selection to global variable
+                /// scroll to entry in list
                 listRow.entry = entry
                 
-                /// brief bounce animation,
-                /// per Zero Punctuation advice, peak quickly & drop off slowly
+                /// brief bounce animation, peak quickly & drop off slowly
                 withAnimation(.linear(duration: 0.1)){
                     /// drop the opacity to take on more BG color
                     opacity -= 0.25
