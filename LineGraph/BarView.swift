@@ -45,36 +45,40 @@ struct LineBar: View {
     }
     
     func Bar(from bound: Bound) -> some View {
-        let width = LineBar.thicc * geo.size.width / CGFloat(LineGraph.dayCount)
-        let height = CGFloat(bound.max - bound.min) * geo.size.height
-        
         /// if rect falls below bound, drop it out to hide roundedness
         let x = geo.size.width * CGFloat(Double(bound.col) / Double(LineGraph.dayCount))
+            /// add a margin to center the bars in frame
+            + (1 - LineBar.thicc) * geo.size.width / CGFloat(2 * LineGraph.dayCount)
         let y = CGFloat(bound.min) * geo.size.height
         return OptionalRoundRect(
-            max: CGFloat(bound.max),
-            min: CGFloat(bound.min),
+            clipBot: bound.max == .zero,
+            clipTop: bound.min == .zero,
             radius: radius
         )
-            .size(CGSize(width: width, height: height))
+            .size(CGSize(
+                width: LineBar.thicc * geo.size.width / CGFloat(LineGraph.dayCount),
+                height: CGFloat(bound.max - bound.min) * geo.size.height
+            ))
             .position(
                 x: x + geo.size.width / 2,
                 y: y + geo.size.height / 2
             )
     }
-    
-    
 }
 
 struct OptionalRoundRect: Shape {
     
-    var max: CGFloat
-    var min: CGFloat
+    var clipBot: Bool
+    var clipTop: Bool
     var radius: CGFloat
+    
     func path(in rect: CGRect) -> Path {
         return Path { path in
+            /// starts in the middle of the right edge, and draws counter clockwise
             path.move(to: CGPoint(x: rect.width, y: rect.height / 2))
-            if min == .zero {
+            
+            /// top edge is clipping out -> no corner radius on top edge
+            if clipTop {
                 path.addLine(to: CGPoint(x: rect.width, y: .zero))
                 path.addLine(to: CGPoint.zero)
             } else {
@@ -91,7 +95,9 @@ struct OptionalRoundRect: Shape {
                     delta: -Angle(radians: Double.pi / 2)
                 )
             }
-            if max == 1.0 {
+            
+            /// similarly decide whether to round the bottom edge
+            if clipBot {
                 path.addLine(to: CGPoint(x: .zero, y: rect.height))
                 path.addLine(to: CGPoint(x: rect.width, y: rect.height))
             } else {
