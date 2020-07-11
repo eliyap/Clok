@@ -18,6 +18,8 @@ struct SpiralControls: View {
                 Spacer()
             }
             WeekButtons()
+                /// don't pad vertically, week button already does that
+                .padding([.leading, .trailing], buttonPadding)
         }
     }
 }

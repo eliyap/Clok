@@ -15,6 +15,7 @@ struct BarControls: View {
             Spacer()
             HStack {
                 FilterStack()
+                    .padding(buttonPadding)
                 Spacer()
             }
         }

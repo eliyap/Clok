@@ -28,8 +28,6 @@ struct FilterStack: View {
             }
             FilterButton()
         }
-        /// don't pad vertically, week button already does that
-        .padding([.leading, .trailing], buttonPadding)
     }
 }
 
