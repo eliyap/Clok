@@ -41,11 +41,19 @@ extension LineGraph {
             /// get change in position
             lead = state.location - state.startLocation
             
-            /// normalize against view height
-            intervalDiff = Double((lead.y - lag.y) / geo.size.height)
-            
-            dayDiff += Double(CGFloat(LineGraph.dayCount) * (lead.x - lag.x) / geo.size.width)
-            
+            /**
+            restrict scroll to dominant direction (whether that's vertical or horizontal)
+            this prevents crooked swipes from accidentally moving in an undesired direction
+            */
+            /// check whether recent movement was more vertical or more horizontal
+            if abs(lead.x - lag.x) > abs(lead.y - lag.y) {
+                /// normalize against view height
+                dayDiff += Double(CGFloat(LineGraph.dayCount) * (lead.x - lag.x) / geo.size.width)
+                intervalDiff = .zero
+            } else {
+                intervalDiff = Double((lead.y - lag.y) / geo.size.height)
+                dayDiff = .zero
+            }
             /// remember state for next time
             lag = lead
         }
