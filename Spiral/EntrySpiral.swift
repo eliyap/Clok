@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct EntrySpiral: View {
-    @ObservedObject var entry: TimeEntry
+    @ObservedObject var entry: OldTimeEntry
     @EnvironmentObject var data: TimeData
     @EnvironmentObject var listRow: ListRow
     @State private var opacity = 1.0
@@ -27,7 +27,7 @@ struct EntrySpiral: View {
     }
     
     /// do not render view if it is outside 1 week range
-    init? (_ entry:TimeEntry, zeroTo zeroDate:Date) {
+    init? (_ entry:OldTimeEntry, zeroTo zeroDate:Date) {
         self.entry = entry
         self.entry.zero(zeroDate)
         guard self.entry.spiralEnd > 0 && self.entry.spiralStart < 1 else { return nil }

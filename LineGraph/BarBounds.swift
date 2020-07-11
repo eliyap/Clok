@@ -8,7 +8,7 @@
 
 import Foundation
 
-func GetBounds(zero: ZeroDate, entry: TimeEntry) -> [LineBar.Bound] {
+func GetBounds(zero: ZeroDate, entry: OldTimeEntry) -> [LineBar.Bound] {
     var bounds = [LineBar.Bound]()
     for i in 0..<LineGraph.dayCount {
         let begin = zero.date + (Double(i) * dayLength)

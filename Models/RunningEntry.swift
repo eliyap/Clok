@@ -13,7 +13,7 @@ struct RunningEntry: Equatable {
 
     let id:Int
     let start: Date // needs to be coerced from ISO 8601 date / time format (YYYY - MM - DDTHH: MM: SS)
-    let project: Project
+    let project: OldProject
     let description: String // not nullable
     let df = DateFormatter()
     
@@ -25,7 +25,7 @@ struct RunningEntry: Equatable {
         description: "No Entry Running"
     )
     
-    private init(id: Int, start: Date, project: Project, description: String){
+    private init(id: Int, start: Date, project: OldProject, description: String){
         self.id = id
         self.start = start
         self.project = project
@@ -33,7 +33,7 @@ struct RunningEntry: Equatable {
     }
     
     // parse from JSON
-    init?(from data: [String : AnyObject], project: Project){
+    init?(from data: [String : AnyObject], project: OldProject){
         // initialize DateFormatter to handle ISO8601 strings
         df.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
         

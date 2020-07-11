@@ -86,7 +86,7 @@ struct EntryList: View {
     struct Day {
         var id: Int
         var start: Date
-        var entries: [TimeEntry]
+        var entries: [OldTimeEntry]
     }
     
     func Days() -> [Day] {

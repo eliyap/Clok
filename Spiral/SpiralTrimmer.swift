@@ -37,7 +37,7 @@ struct SpiralPart : Shape {
             height: 100
         ))
     
-    init?(_ entry: TimeEntry){
+    init?(_ entry: OldTimeEntry){
         // do not draw spirals that are out of bounds
         guard entry.spiralEnd > 0 else { return nil }
         guard entry.spiralStart < 1 else { return nil }

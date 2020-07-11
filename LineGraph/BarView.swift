@@ -12,7 +12,7 @@ struct LineBar: View {
     
     typealias Bound = (min: Double, max: Double, col: Int)
     
-    @ObservedObject var entry: TimeEntry
+    @ObservedObject var entry: OldTimeEntry
     @EnvironmentObject private var zero: ZeroDate
     @EnvironmentObject var data: TimeData
     @EnvironmentObject var listRow: ListRow
@@ -41,7 +41,7 @@ struct LineBar: View {
     }
     
     init?(
-        with entry_: TimeEntry,
+        with entry_: OldTimeEntry,
         geo geo_: GeometryProxy,
         bounds bounds_: [Bound]
     ){

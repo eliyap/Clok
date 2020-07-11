@@ -14,7 +14,7 @@ struct ProjectListView: View {
     @Environment(\.presentationMode) var mode
     
     
-    let projects: [Project]
+    let projects: [OldProject]
     
     var body: some View {
         List {
@@ -29,7 +29,7 @@ struct ProjectListView: View {
         .modifier(roundedList())
     }
     
-    func button(for project: Project) -> some View {
+    func button(for project: OldProject) -> some View {
         Button(action: {
             self.data.terms.project = project
             self.search.project = project

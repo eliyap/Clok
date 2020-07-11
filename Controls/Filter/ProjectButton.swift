@@ -30,7 +30,7 @@ struct ProjectButton: View {
     }
     
     func makeSheet() -> ActionSheet {
-        let projects = [Project.any] + self.data.projects()
+        let projects = [OldProject.any] + self.data.projects()
         /// make a button for each project
         let projectBtns = projects.map { project in
             ActionSheet.Button.default(Text(project.name)) { () -> Void in

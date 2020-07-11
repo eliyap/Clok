@@ -9,15 +9,15 @@
 import Foundation
 import SwiftUI
 
-extension Array where Element == TimeEntry {
-    func within(interval: TimeInterval, of start: Date) -> [TimeEntry] {
+extension Array where Element == OldTimeEntry {
+    func within(interval: TimeInterval, of start: Date) -> [OldTimeEntry] {
         let end = start + interval
         return self
             .filter { $0.start.between(start, end) || $0.start.between(start, end) }
     }
 }
 
-extension TimeEntry {
+extension OldTimeEntry {
     
     /// checks whether this time entry matches what the user is searching for
     func matches(_ terms: SearchTerm) -> Bool {

@@ -9,10 +9,10 @@
 import SwiftUI
 
 struct EntryView: View {
-    var entry: TimeEntry
+    var entry: OldTimeEntry
     private let df = DateFormatter()
     private let radius = CGFloat(10)
-    init(entry: TimeEntry) {
+    init(entry: OldTimeEntry) {
         self.entry = entry
         df.timeStyle = .short
     }

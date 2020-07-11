@@ -8,7 +8,7 @@ import Foundation
 
 func getRunningEntry(completion:@escaping (RunningEntry?, Error?) -> Void) {
     let sem = DispatchSemaphore(value: 0)
-    var project = Project.noProject
+    var project = OldProject.noProject
     var runningData: [String: AnyObject]!
     
     guard let token = getToken() else {
@@ -75,7 +75,7 @@ func getRunningEntry(completion:@escaping (RunningEntry?, Error?) -> Void) {
             guard
                 json["data"] != nil,
                 let data = json["data"] as? [String: AnyObject],
-                let proj = Project(from: data)
+                let proj = OldProject(from: data)
             else {
                 completion (nil, NetworkError.serialization)
                 return

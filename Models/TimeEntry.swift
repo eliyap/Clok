@@ -10,7 +10,7 @@ import Foundation
 import SwiftUI
 
 
-final class TimeEntry : ObservableObject, Equatable {
+final class OldTimeEntry : ObservableObject, Equatable {
     let id:Int
     
     // time parameters
@@ -24,7 +24,7 @@ final class TimeEntry : ObservableObject, Equatable {
     let dur: TimeInterval
 
     // categorization parameters
-    let project: Project
+    let project: OldProject
     let tid: Int?
     let task: String?
     let description: String // not nullable
@@ -62,7 +62,7 @@ final class TimeEntry : ObservableObject, Equatable {
         
         self.id = id
         if let name = project, let id = pid {
-            self.project = Project(
+            self.project = OldProject(
                 name: name,
                 color: Color(hex: project_hex_color!),
                 id: id
@@ -96,7 +96,7 @@ final class TimeEntry : ObservableObject, Equatable {
         }
     }
     
-    static func == (lhs: TimeEntry, rhs: TimeEntry) -> Bool {
+    static func == (lhs: OldTimeEntry, rhs: OldTimeEntry) -> Bool {
         /// we could check everything, but unless the data is corrupted we really only need to check task ID
         /// NOTE: if in future we support editing of time entries, this check will need to be more rigorous
         return

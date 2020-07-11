@@ -13,7 +13,7 @@ final class Report : ObservableObject {
     var total_grand:Int          // total seconds tracked
     var total_count:Int          // total number of time entries in the report
     var per_page:Int             // number of time entries provided per request
-    var entries:[TimeEntry] = [] // list of TimeEntry's
+    var entries:[OldTimeEntry] = [] // list of TimeEntry's
     
     // my stuff, not from the Toggl API
     var minDate = Date() // used as zeroDate to cut off entries that are too early
@@ -41,7 +41,7 @@ final class Report : ObservableObject {
         if let data = json["data"] as? [[String : AnyObject]] {
             data.forEach { i in
 //              if init fails, do not append
-                if let newEntry = TimeEntry(i) {
+                if let newEntry = OldTimeEntry(i) {
                     self.entries.append(newEntry)
                 }
             }

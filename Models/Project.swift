@@ -9,30 +9,30 @@
 import Foundation
 import SwiftUI
 
-struct Project: Hashable, Comparable, Identifiable {
+struct OldProject: Hashable, Comparable, Identifiable {
     var name: String
     var color: Color
     var id: Int
     
-    func matches(_ other: Project) -> Bool {
+    func matches(_ other: OldProject) -> Bool {
         /// Any Project matches all other projects
         self == other || other == .any || self == .any
     }
     
-    static func < (lhs: Project, rhs: Project) -> Bool {
+    static func < (lhs: OldProject, rhs: OldProject) -> Bool {
         /// No Project should always be first
         if lhs == .noProject { return true }
         if rhs == .noProject { return false }
         return lhs.name < rhs.name
     }
     
-    static let noProject = Project(
+    static let noProject = OldProject(
         name: "No Project",
         color: Color.noProject,
         id: NSNotFound
     )
     
-    static let any = Project(
+    static let any = OldProject(
         name: "Any Project",
         color: Color.secondary,
         id: Int.zero
