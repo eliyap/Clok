@@ -42,8 +42,8 @@ struct LineBar: View {
             withAnimation(.linear(duration: 0.1)){
                 /// drop the opacity to take on more BG color
                 opacity -= 0.25
-                /// scale more when closer to the center
-                offset += geo.size.height / 20
+                /// slight jump
+                offset -= geo.size.height / 40
             }
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                 withAnimation(.linear(duration: 0.3)){
