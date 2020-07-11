@@ -31,4 +31,12 @@ extension CGPoint {
             2 * Double.pi /// 4th quardrant, add 2 pi
         return Angle(radians: angle)
     }
+    
+    /// vector subtraction
+    static func - (lhs: CGPoint, rhs: CGPoint) -> CGPoint {
+        CGPoint(
+            x: lhs.x - rhs.x,
+            y: lhs.y - rhs.y
+        )
+    }
 }
