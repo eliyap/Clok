@@ -11,10 +11,10 @@ import Foundation
 import CoreData
 
 
-extension CDProject {
+extension Project {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<CDProject> {
-        return NSFetchRequest<CDProject>(entityName: "CDProject")
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<Project> {
+        return NSFetchRequest<Project>(entityName: "Project")
     }
 
     @NSManaged public var name: String?
@@ -25,13 +25,13 @@ extension CDProject {
 }
 
 // MARK: Generated accessors for tasks
-extension CDProject {
+extension Project {
 
     @objc(addTasksObject:)
-    @NSManaged public func addToTasks(_ value: CDTimeEntry)
+    @NSManaged public func addToTasks(_ value: TimeEntry)
 
     @objc(removeTasksObject:)
-    @NSManaged public func removeFromTasks(_ value: CDTimeEntry)
+    @NSManaged public func removeFromTasks(_ value: TimeEntry)
 
     @objc(addTasks:)
     @NSManaged public func addToTasks(_ values: NSSet)

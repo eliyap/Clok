@@ -10,7 +10,7 @@
 import Foundation
 import CoreData
 
-@objc(CDTimeEntry)
-public class CDTimeEntry: NSManagedObject {
+@objc(TimeEntry)
+public class TimeEntry: NSManagedObject {
 
 }

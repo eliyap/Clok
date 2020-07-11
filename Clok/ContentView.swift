@@ -12,7 +12,7 @@ import SwiftUI
 struct ContentView: View {
     
     @Environment(\.managedObjectContext) var moc
-    @FetchRequest(entity: CDTimeEntry.entity(), sortDescriptors: []) var myEntries: FetchedResults<CDTimeEntry>
+    @FetchRequest(entity: TimeEntry.entity(), sortDescriptors: []) var myEntries: FetchedResults<TimeEntry>
     
     
     

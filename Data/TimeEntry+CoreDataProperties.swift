@@ -10,11 +10,10 @@
 import Foundation
 import CoreData
 
+extension TimeEntry {
 
-extension CDTimeEntry {
-
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<CDTimeEntry> {
-        return NSFetchRequest<CDTimeEntry>(entityName: "CDTimeEntry")
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<TimeEntry> {
+        return NSFetchRequest<TimeEntry>(entityName: "TimeEntry")
     }
 
     @NSManaged public var name: String?
@@ -23,12 +22,23 @@ extension CDTimeEntry {
     @NSManaged public var dur: Double
     @NSManaged public var start: Date?
     @NSManaged public var end: Date?
-    @NSManaged public var project: CDProject?
+    @NSManaged public var project: Project?
 
     public var wrappedDescription: String {
         name ?? "No Description"
     }
     
+    public var wrappedTID: Int {
+        Int(tid)
+    }
     
+    public var wrappedStart: Date {
+        start ?? Date.distantPast
+    }
     
+    public var wrappedEnd: Date {
+        end ?? Date.distantFuture
+    }
+    
+    // default project to no project here in future
 }
