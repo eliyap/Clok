@@ -33,25 +33,7 @@ struct LineBar: View {
         }
         .opacity(opacity * (entry.matches(self.data.terms) ? 1 : 0.5) )
         .offset(x: .zero, y: offset)
-        // MARK: - Tap Handler
-        .gesture(TapGesture().onEnded() {_ in
-            /// scroll to entry in list
-            listRow.entry = entry
-            
-            /// brief bounce animation, peak quickly & drop off slowly
-            withAnimation(.linear(duration: 0.1)){
-                /// drop the opacity to take on more BG color
-                opacity -= 0.25
-                /// slight jump
-                offset -= geo.size.height / 40
-            }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                withAnimation(.linear(duration: 0.3)){
-                    opacity = 1
-                    offset = .zero
-                }
-            }
-        })
+        .onTapGesture { tapHandler() }
     }
     
     init?(
@@ -89,59 +71,24 @@ struct LineBar: View {
                 y: y + geo.size.height / 2
             )
     }
-}
-
-struct OptionalRoundRect: Shape {
     
-    var clipBot: Bool
-    var clipTop: Bool
-    var radius: CGFloat
-    
-    func path(in rect: CGRect) -> Path {
-        return Path { path in
-            /// starts in the middle of the right edge, and draws counter clockwise
-            path.move(to: CGPoint(x: rect.width, y: rect.height / 2))
-            
-            /// top edge is clipping out -> no corner radius on top edge
-            if clipTop {
-                path.addLine(to: CGPoint(x: rect.width, y: .zero))
-                path.addLine(to: CGPoint.zero)
-            } else {
-                path.addRelativeArc(
-                    center: CGPoint(x: rect.width - radius, y: radius),
-                    radius: radius,
-                    startAngle: Angle.zero,
-                    delta: -Angle(radians: Double.pi / 2)
-                )
-                path.addRelativeArc(
-                    center: CGPoint(x: radius, y: radius),
-                    radius: radius,
-                    startAngle: -Angle(radians: Double.pi / 2),
-                    delta: -Angle(radians: Double.pi / 2)
-                )
+    // MARK: - Tap Handler
+    func tapHandler() -> Void {
+        /// scroll to entry in list
+        listRow.entry = entry
+        
+        /// brief bounce animation, peak quickly & drop off slowly
+        withAnimation(.linear(duration: 0.1)){
+            /// drop the opacity to take on more BG color
+            opacity -= 0.25
+            /// slight jump
+            offset -= geo.size.height / 40
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            withAnimation(.linear(duration: 0.3)){
+                opacity = 1
+                offset = .zero
             }
-            
-            /// similarly decide whether to round the bottom edge
-            if clipBot {
-                path.addLine(to: CGPoint(x: .zero, y: rect.height))
-                path.addLine(to: CGPoint(x: rect.width, y: rect.height))
-            } else {
-                path.addRelativeArc(
-                    center: CGPoint(x: radius, y: rect.height - radius),
-                    radius: radius,
-                    startAngle: Angle(radians: Double.pi),
-                    delta: -Angle(radians: Double.pi / 2)
-                )
-                path.addRelativeArc(
-                    center: CGPoint(x: rect.width - radius, y: rect.height - radius),
-                    radius: radius,
-                    startAngle: Angle(radians: Double.pi / 2),
-                    delta: -Angle(radians: Double.pi / 2)
-                )
-            }
-            path.closeSubpath()
         }
     }
-    
-    
 }
