@@ -9,6 +9,7 @@
 import Foundation
 import SwiftUI
 extension LineGraph {
+    
     /// updates the view based on the Magnification Gesture state
     func magnifyHandler(
         currentState: CGFloat,
