@@ -14,6 +14,11 @@ struct LineBar: View {
     
     @ObservedObject var entry: TimeEntry
     @EnvironmentObject private var zero: ZeroDate
+    @EnvironmentObject var data: TimeData
+    @EnvironmentObject var listRow: ListRow
+    @State private var opacity = 1.0
+    @State private var offset = CGFloat.zero
+    
     private var geo: GeometryProxy
     private let radius: CGFloat
     private let cornerScale = CGFloat(1.0/120.0);
@@ -26,6 +31,27 @@ struct LineBar: View {
             Bar(from: bound)
                 .foregroundColor(entry.project.color)
         }
+        .opacity(opacity * (entry.matches(self.data.terms) ? 1 : 0.5) )
+        .offset(x: .zero, y: offset)
+        // MARK: - Tap Handler
+        .gesture(TapGesture().onEnded() {_ in
+            /// scroll to entry in list
+            listRow.entry = entry
+            
+            /// brief bounce animation, peak quickly & drop off slowly
+            withAnimation(.linear(duration: 0.1)){
+                /// drop the opacity to take on more BG color
+                opacity -= 0.25
+                /// scale more when closer to the center
+                offset += geo.size.height / 20
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                withAnimation(.linear(duration: 0.3)){
+                    opacity = 1
+                    offset = .zero
+                }
+            }
+        })
     }
     
     init?(
@@ -45,7 +71,6 @@ struct LineBar: View {
     }
     
     func Bar(from bound: Bound) -> some View {
-        /// if rect falls below bound, drop it out to hide roundedness
         let x = geo.size.width * CGFloat(Double(bound.col) / Double(LineGraph.dayCount))
             /// add a margin to center the bars in frame
             + (1 - LineBar.thicc) * geo.size.width / CGFloat(2 * LineGraph.dayCount)
