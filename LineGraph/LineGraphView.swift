@@ -48,18 +48,7 @@ struct LineGraph: View {
                     }
                 }
                 .gesture(ExclusiveGesture(
-                    DragGesture()
-                        .onChanged { value in
-                            /// find cursor's
-                            dragBy.update(state: value, geo: geo)
-                            zero.date -= dragBy.intervalDiff * zero.interval
-                        }
-                        .onEnded { value in
-                            /// update once more on end
-                            dragBy.update(state: value, geo: geo)
-                            zero.date -= dragBy.intervalDiff * zero.interval
-                            dragBy.reset()
-                        },
+                    Drag(geo: geo),
                     MagnificationGesture().updating($magnifyBy, body: magnifyHandler)
                 ))
             }
@@ -71,5 +60,22 @@ struct LineGraph: View {
         (date - Calendar.current.startOfDay(for: zero.date))
             .truncatingRemainder(dividingBy: dayLength)
             .toString()
+    }
+    
+    func Drag(geo: GeometryProxy) -> some Gesture {
+        func useValue(value: DragGesture.Value, geo: GeometryProxy) -> Void {
+            /// find cursor's
+            dragBy.update(state: value, geo: geo)
+            zero.date -= dragBy.intervalDiff * zero.interval
+        }
+        return DragGesture()
+            .onChanged {
+                useValue(value: $0, geo: geo)
+            }
+            .onEnded { 
+                /// update once more on end
+                useValue(value: $0, geo: geo)
+                dragBy.reset()
+            }
     }
 }
