@@ -56,6 +56,7 @@ struct SettingsView: View {
             .modifier(roundedList())
             .navigationBarTitle("Settings")
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
