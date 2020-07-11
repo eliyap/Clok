@@ -31,17 +31,19 @@ struct LineGraph: View {
         /// if our entry ends before the interval even began
         /// or started after the interval finished, it cannot possibly fall coincide
         HStack {
-            VStack {
-                Text(tf.string(from: zero.date))
-                Spacer()
-                Text(zero.interval.toString())
-                Spacer()
-                Text(tf.string(from: zero.date + zero.interval))
-            }
-            .allowsHitTesting(false)
+            
             GeometryReader { geo in
                 ZStack {
                     Rectangle().foregroundColor(.clokBG)
+                    VStack {
+                        Text(tf.string(from: zero.date))
+                        Spacer()
+                        Text(zero.interval.toString())
+                        Spacer()
+                        Text(tf.string(from: zero.date + zero.interval))
+                    }
+                    .allowsHitTesting(false)
+                    
                     ForEach(data.report.entries.filter {$0.end > zero.date && $0.start < zero.date + weekLength}, id: \.id) { entry in
                         LineBar(with: entry, geo: geo, bounds: GetBounds(zero: zero, entry: entry))
                             .transition(.identity)
@@ -67,12 +69,17 @@ struct LineGraph: View {
             /// find cursor's
             dragBy.update(state: value, geo: geo)
             zero.date -= dragBy.intervalDiff * zero.interval
+            let days = dragBy.harvestDays()
+            if days != 0 {
+                // HAPTIC FEEDBACK HERE
+                zero.date -= Double(days) * dayLength
+            }
         }
         return DragGesture()
             .onChanged {
                 useValue(value: $0, geo: geo)
             }
-            .onEnded { 
+            .onEnded {
                 /// update once more on end
                 useValue(value: $0, geo: geo)
                 dragBy.reset()

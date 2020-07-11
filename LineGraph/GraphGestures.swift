@@ -32,21 +32,42 @@ extension LineGraph {
     
     
     struct PositionTracker {
-        var lag = CGFloat.zero
-        var lead = CGFloat.zero
+        var lag = CGPoint.zero
+        var lead = CGPoint.zero
         var intervalDiff = TimeInterval.zero /// number of days represented by the handle's change in angle
+        var dayDiff = 0.0
         
         mutating func update(state: DragGesture.Value, geo: GeometryProxy) -> Void {
-            /// get change in height, normalized against view height
-            lead = (state.location.y - state.startLocation.y) / geo.size.height
-            intervalDiff = Double(lead - lag)
+            /// get change in position
+            lead = state.location - state.startLocation
+            
+            /// normalize against view height
+            intervalDiff = Double((lead.y - lag.y) / geo.size.height)
+            
+            dayDiff += Double(CGFloat(LineGraph.dayCount) * (lead.x - lag.x) / geo.size.width)
+            
+            /// remember state for next time
             lag = lead
         }
         
         mutating func reset() -> Void {
-            lead = 0
-            lag = 0
-            intervalDiff = 0
+            lead = .zero
+            lag = .zero
+            intervalDiff = .zero
+            dayDiff = .zero
+        }
+        
+        /// if gesture is more than 1 day in either direction, return that, and destroy the result
+        mutating func harvestDays() -> Int {
+            if dayDiff < -1 {
+                dayDiff += 1.0
+                return -1
+            }
+            if dayDiff > 1 {
+                dayDiff -= 1.0
+                return 1
+            }
+            return 0
         }
     }
 }
