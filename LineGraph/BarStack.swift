@@ -20,7 +20,9 @@ struct BarStack: View {
     var body: some View {
         GeometryReader { geo in
             VStack(spacing: 0) {
-                LineGraph()
+                Mask {
+                    LineGraph()
+                }
                     .frame(width: geo.size.height, height:geo.size.height)
                     .padding(Edge.Set.bottom, -geo.size.height)
                 BarControls()

@@ -325,8 +325,8 @@
 		225B044024B2A5DD00780424 /* LineGraph */ = {
 			isa = PBXGroup;
 			children = (
-				225B044124B2A5FA00780424 /* LineGraphView.swift */,
 				2207B21F24B954F40006748A /* BarStack.swift */,
+				225B044124B2A5FA00780424 /* LineGraphView.swift */,
 				22B9E05D24B659D60040C5AC /* GraphGestures.swift */,
 				225ACE4E24B2A7A700FFCDF7 /* BarView.swift */,
 				22C63A9424B6AFF500369341 /* BarBounds.swift */,
