@@ -15,17 +15,16 @@ struct OptionalRoundRect: Shape {
     var geo: GeometryProxy
     var bound: LineBar.Bound
     
-    func Pos() -> CGPoint {
+    func path(in rect: CGRect) -> Path {
         /// place according to the column and with half the whitespace to center the graph
         let factor: CGFloat = CGFloat(bound.col) + (1.0 - LineBar.thicc) / 2.0
-        return CGPoint(
+        
+        /// calculate the position of the bar
+        let pos = CGPoint(
             x: geo.size.width / CGFloat(LineGraph.dayCount) * factor,
             y: CGFloat(bound.min) * geo.size.height
         )
-    }
-    
-    func path(in rect: CGRect) -> Path {
-        let pos = Pos()
+        
         return Path { path in
             let size = CGSize(
                 width: LineBar.thicc * geo.size.width / CGFloat(LineGraph.dayCount),

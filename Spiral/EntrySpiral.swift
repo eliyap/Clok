@@ -22,26 +22,7 @@ struct EntrySpiral: View {
             // goes transparent when filtered out
             .opacity(opacity * (entry.matches(data.terms) ? 1 : 0.5) )
             .scaleEffect(CGFloat(scale))
-            
-            // MARK: - Tap Handler
-            .gesture(TapGesture().onEnded() {_ in
-                /// scroll to entry in list
-                listRow.entry = entry
-                
-                /// brief bounce animation, peak quickly & drop off slowly
-                withAnimation(.linear(duration: 0.1)){
-                    /// drop the opacity to take on more BG color
-                    opacity -= 0.25
-                    /// scale more when closer to the center
-                    scale += 0.075 / Double(entry.spiralEnd.squareRoot())
-                }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                    withAnimation(.linear(duration: 0.3)){
-                        opacity = 1
-                        scale = 1
-                    }
-                }
-            })
+            .onTapGesture { tapHandler() }
             
     }
     
@@ -50,5 +31,25 @@ struct EntrySpiral: View {
         self.entry = entry
         self.entry.zero(zeroDate)
         guard self.entry.spiralEnd > 0 && self.entry.spiralStart < 1 else { return nil }
+    }
+    
+    // MARK: - Tap Handler
+    func tapHandler() -> Void {
+        /// scroll to entry in list
+        listRow.entry = entry
+        
+        /// brief bounce animation, peak quickly & drop off slowly
+        withAnimation(.linear(duration: 0.1)){
+            /// drop the opacity to take on more BG color
+            opacity -= 0.25
+            /// scale more when closer to the center
+            scale += 0.075 / Double(entry.spiralEnd.squareRoot())
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            withAnimation(.linear(duration: 0.3)){
+                opacity = 1
+                scale = 1
+            }
+        }
     }
 }
