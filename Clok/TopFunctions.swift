@@ -33,6 +33,16 @@ extension ContentView {
         
         // TESTING
         fetchProjects(token: user.token, wid: user.chosen.wid, in: moc)
+//        if let projects =  {
+//            do {
+//                try moc.save()
+//                projects.forEach{ print($0.wrappedName) }
+//            } catch {
+//                print(error.localizedDescription)
+//            }
+//        } else {
+//            fatalError("no projects!")
+//        }
     }
     
     

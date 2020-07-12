@@ -34,6 +34,10 @@ fileprivate struct RawTimeEntry: Decodable {
 
 @objc(TimeEntry)
 public class TimeEntry: NSManagedObject, Decodable {
+    @objc
+    private override init(entity: NSEntityDescription, insertInto context: NSManagedObjectContext?) {
+        super.init(entity: entity, insertInto: context)
+    }
     
     public required init(from decoder: Decoder) throws {
         guard let context = decoder.userInfo[.context] as? NSManagedObjectContext else { fatalError("NSManagedObjectContext is missing") }
