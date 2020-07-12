@@ -23,9 +23,7 @@ struct ClokApp: App {
     init(){
         let container = NSPersistentContainer(name: "TimeEntryModel")
         container.loadPersistentStores { description, error in
-            if let error = error {
-                fatalError("persistence load failed")
-            }
+            if let error = error { fatalError("\(error)") }
         }
         self.persistentContainer = container
     }

@@ -17,20 +17,15 @@ extension TimeEntry {
     }
 
     @NSManaged public var name: String?
-    @NSManaged public var tid: Int64
     @NSManaged public var id: Int64
-    @NSManaged public var task: String?
-    @NSManaged public var dur: Double
     @NSManaged public var start: Date?
     @NSManaged public var end: Date?
+    @NSManaged public var dur: Double
+    @NSManaged public var lastUpdated: Date?
     @NSManaged public var project: Project?
 
     public var wrappedDescription: String {
         name ?? "No Description"
-    }
-    
-    public var wrappedTID: Int {
-        Int(tid)
     }
     
     public var wrappedID: Int {

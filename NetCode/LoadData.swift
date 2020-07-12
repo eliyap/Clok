@@ -32,8 +32,9 @@ extension ContentView {
             DispatchQueue.main.async {
                 switch result {
                 case let .success(report):
+                    print("\(report.count) time entries fetched")
                     /// hand back the complete report
-                    data.report = report
+//                    data.report = report
                     /// and remove the loading screen
                     loaded = true
                     

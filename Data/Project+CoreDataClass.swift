@@ -21,7 +21,7 @@ fileprivate struct RawProject: Decodable {
         var billable: Bool
         // one of these cases a coding failure, ignore for now
 //        var actual_hours: Int
-//        var color: Int
+//        var color: Int // probably an enum for toggl's default color palette
     }
     
     var data: data
@@ -38,9 +38,9 @@ public class Project: NSManagedObject, Decodable {
     public required init(from decoder: Decoder) throws {
         guard let context = decoder.userInfo[.context] as? NSManagedObjectContext else { fatalError("NSManagedObjectContext is missing") }
 //        let values = try decoder.container(keyedBy: CodingKeys.self)
-        
         super.init(entity: Project.entity(), insertInto: context)
-        print("made it this far")
+        
+        
         let rawProject = try RawProject(from: decoder)
         id = Int64(rawProject.data.id)
         color = rawProject.data.hex_color

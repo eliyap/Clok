@@ -36,7 +36,7 @@ struct ContentView: View {
         }
         .onAppear { tryLoadUserFromDisk() }
         .onAppear {
-            testRunning()
+//            testRunning()
         }
     }
 }

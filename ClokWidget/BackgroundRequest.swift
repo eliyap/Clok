@@ -58,7 +58,7 @@ func getRunningEntry(completion:@escaping (RunningEntry?, Error?) -> Void) {
         completion(RunningEntry.noEntry, nil)
         return
     }
-    
+    print(pid)
     URLSession.shared.dataTask(with: formRequest(
         url: URL(string: "\(API_URL)/projects/\(pid)\(agentSuffix)")!,
         auth: auth(token: token)

@@ -8,16 +8,30 @@
 
 import Foundation
 
+fileprivate struct RawReport: Decodable {
+    var total_count: Int
+    var per_page: Int
+    var total_grand: Int
+    var entries: [TimeEntry]
+    
+    static let empty = RawReport(
+        total_count: NSNotFound,
+        per_page: NSNotFound,
+        total_grand: NSNotFound,
+        entries: []
+    )
+}
+
 // makes HTTP-requests and parses data from the Toggl API
 // utilizing semaphore method from https://medium.com/@michaellong/swift-5-async-await-result-gcd-and-timeout-1f1652d7adcf
-func toggl_request(api_string: String, token: String) -> Result<Report, NetworkError> {
+func toggl_request(api_string: String, token: String) -> Result<[TimeEntry], NetworkError> {
     
     var page = 1 // pages are indexed from 1
-    var result: Result<Report, NetworkError>!
+    var result: Result<[TimeEntry], NetworkError>!
     var emptyReq = false // flag for when a request returns no entries
     
     // initialize as empty to prevent crashes when offline
-    var report: Report = Report([:])
+    var report = RawReport.empty
     
     // semaphore for API call
     let sem = DispatchSemaphore(value: 0)
@@ -44,24 +58,27 @@ func toggl_request(api_string: String, token: String) -> Result<Report, NetworkE
         
         // all checks passed
         do {
-            let json = try JSONSerialization.jsonObject(with: data, options: [])
+            let decoder = JSONDecoder()
+            print("now attempting to decode")
+            print(JSONSerialization())
             switch page {
             case 1:
-                // first call gets meta-data (number of Entry's to expect)
-                report = Report(json as! [String: AnyObject])
+                report = try decoder.decode(RawReport.self, from: data)
+                break
             default:
-                // subsequent calls simply append results to report
-                let new_entries = Report(json as! [String: AnyObject]).entries
+                let new_entries = try decoder.decode(RawReport.self, from: data).entries
                 guard new_entries.count > 0 else {
                     // return expression had nothing!
-                    // causes requests to stop, this prevents infinite polling of the API
+                    // causes requests to stop, preventing infinite polling of the API
                     emptyReq = true
                     return
                 }
                 report.entries += new_entries
+                break
             }
         } catch {
-            result = .failure(.other)
+            fatalError("failed to decode!")
+            result = .failure(.serialization)
             return
         }
     }
@@ -92,6 +109,6 @@ func toggl_request(api_string: String, token: String) -> Result<Report, NetworkE
     case .failure(_):
         return result
     default:
-        return .success(report)
+        return .success(report.entries)
     }
 }
