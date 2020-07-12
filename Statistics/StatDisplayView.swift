@@ -129,7 +129,7 @@ struct StatDisplayView: View {
     func Stat(label: String, symbol: String?, text: Text, weight: Font.Weight = .regular) -> some View {
         HStack{
             Image(systemName: symbol ?? "circle.fill")
-                .foregroundColor(symbol == nil ? (mode == .light ? .offWhite : .offBlack) : .primary)
+                .foregroundColor(symbol == nil ? .clokBG : .primary)
                 .font(Font.body.weight(weight))
                 /// hardcoded size until Label is fixed
                 .frame(width: size, height: size)
