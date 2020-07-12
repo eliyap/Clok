@@ -69,16 +69,13 @@ func toggl_request(api_string: String, token: String) -> Result<Report, NetworkE
     // send request
     page_loop: repeat {
         
-        // append page no. to URL
-        let page_url = URL(string: api_string + "&page=\(page)")!
-        var request = URLRequest(url: page_url)
-        
-        // set headers
-        let auth = Data("\(token):api_token".utf8).base64EncodedString()
-        request.setValue("Basic \(auth)", forHTTPHeaderField: "Authorization")
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        URLSession.shared.dataTask(with: request, completionHandler: myHandler).resume()
+        URLSession.shared.dataTask(
+            with: formRequest(
+                url: URL(string: api_string + "&page=\(page)")!,
+                auth: auth(token: token)
+            ),
+            completionHandler: myHandler
+        ).resume()
         
         // wait for call to complete, abort if it takes too long
         if sem.wait(timeout: .now() + 15) == .timedOut { return .failure(.timeout) }
@@ -90,7 +87,7 @@ func toggl_request(api_string: String, token: String) -> Result<Report, NetworkE
         page += 1
     } while(report.entries.count < report.total_count)
     
-    // only return success if there is no failure
+    // only return success containing report if nothing failed
     switch result {
     case .failure(_):
         return result
