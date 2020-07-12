@@ -29,7 +29,6 @@
 		222D992624BAB2FD00F66E0F /* DecoderExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D992524BAB2FD00F66E0F /* DecoderExtension.swift */; };
 		222D992724BAB2FD00F66E0F /* DecoderExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D992524BAB2FD00F66E0F /* DecoderExtension.swift */; };
 		222D996024BB562100F66E0F /* FetchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D995F24BB562100F66E0F /* FetchData.swift */; };
-		222D996124BB562100F66E0F /* FetchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D995F24BB562100F66E0F /* FetchData.swift */; };
 		225ACE4F24B2A7A700FFCDF7 /* BarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225ACE4E24B2A7A700FFCDF7 /* BarView.swift */; };
 		225B043F24B277FF00780424 /* DayBubbles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225B043E24B277FA00780424 /* DayBubbles.swift */; };
 		225B044224B2A5FA00780424 /* LineGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225B044124B2A5FA00780424 /* LineGraphView.swift */; };
@@ -76,7 +75,6 @@
 		22B0784A24B262FA00256EB8 /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B0784824B2629A00256EB8 /* Timeline.swift */; };
 		22B9E05C24B4FF550040C5AC /* WorkspaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B9E05B24B4FF550040C5AC /* WorkspaceView.swift */; };
 		22B9E05E24B659D60040C5AC /* GraphGestures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B9E05D24B659D60040C5AC /* GraphGestures.swift */; };
-		22BE1FED24A9247800A9A739 /* LoadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BE1FEC24A9247800A9A739 /* LoadData.swift */; };
 		22BE1FEF24A92B2300A9A739 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BE1FEE24A92B2300A9A739 /* SettingsView.swift */; };
 		22BE1FF424A92DE500A9A739 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BE1FF324A92DE500A9A739 /* Settings.swift */; };
 		22C63A9524B6AFF500369341 /* BarBounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C63A9424B6AFF500369341 /* BarBounds.swift */; };
@@ -227,7 +225,6 @@
 		22B0784824B2629A00256EB8 /* Timeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timeline.swift; sourceTree = "<group>"; };
 		22B9E05B24B4FF550040C5AC /* WorkspaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceView.swift; sourceTree = "<group>"; };
 		22B9E05D24B659D60040C5AC /* GraphGestures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphGestures.swift; sourceTree = "<group>"; };
-		22BE1FEC24A9247800A9A739 /* LoadData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadData.swift; sourceTree = "<group>"; };
 		22BE1FEE24A92B2300A9A739 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		22BE1FF324A92DE500A9A739 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		22C63A9424B6AFF500369341 /* BarBounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarBounds.swift; sourceTree = "<group>"; };
@@ -434,7 +431,6 @@
 		22BE1FEB24A9246400A9A739 /* NetCode */ = {
 			isa = PBXGroup;
 			children = (
-				22BE1FEC24A9247800A9A739 /* LoadData.swift */,
 				222D995F24BB562100F66E0F /* FetchData.swift */,
 				22B0783724B1519600256EB8 /* NetworkError.swift */,
 				C615CD56245F332300D62B87 /* FetchDetailedReport.swift */,
@@ -806,7 +802,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				22B0783524B1513A00256EB8 /* ClokWidget.swift in Sources */,
-				222D996124BB562100F66E0F /* FetchData.swift in Sources */,
 				22B0783924B1519D00256EB8 /* NetworkError.swift in Sources */,
 				22DC869B24BA7A5E00FF771F /* TimeEntryModel.xcdatamodeld in Sources */,
 				22B0783324B150C300256EB8 /* FormRequest.swift in Sources */,
@@ -901,7 +896,6 @@
 				22CBD84624A84CA400ED6FA3 /* WeekDateString.swift in Sources */,
 				2207B21E24B952A80006748A /* BarControls.swift in Sources */,
 				221C3C5724A93C57006995C5 /* User.swift in Sources */,
-				22BE1FED24A9247800A9A739 /* LoadData.swift in Sources */,
 				C63C0D4B248DBDDB00163E20 /* Handle.swift in Sources */,
 				C6C18D80244CD7D2000345D5 /* SpiralHelpers.swift in Sources */,
 				C688BFCA24A18BF00077CECF /* RaisedShape.swift in Sources */,

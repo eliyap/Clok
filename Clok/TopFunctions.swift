@@ -23,9 +23,12 @@ extension ContentView {
         guard let user = user else { return }
         
         // request user data
-        self.loadData(
+        fetchEntries(
             token: user.token,
-            workspaceID: user.chosen.wid
+            wid: user.chosen.wid,
+            from: Date(),
+            to: Date() - weekLength,
+            in: moc
         )
     }
     

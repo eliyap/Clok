@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-func fetchData(
+func fetchEntries(
     token: String,
     wid: Int,
     from start: Date,
@@ -29,22 +29,22 @@ func fetchData(
         "until=\(df.string(from: end))"
     ].joined(separator: "&")
     
-//    let result = toggl_request(api_string: api_string, token: token)
-//
-//    DispatchQueue.main.async {
-//        switch result {
-//        case let .success(report):
-//            break
-//            /// hand back the complete report
-////            data.report = report
-//            /// and remove the loading screen
-////            loaded = true
-//
-//        case .failure(.request):
-//            // temporary micro-copy
-//            print("We weren't able to fetch your data. Maybe the internet is down?")
-//        case let .failure(error):
-//            print(error)
-//        }
-//    }
+    let result = fetchDetailedReport(api_string: api_string, token: token)
+
+    DispatchQueue.main.async {
+        switch result {
+        case let .success(report):
+            print("\(report.count) entries fetched")
+            /// hand back the complete report
+//            data.report = report
+            /// and remove the loading screen
+//            loaded = true
+
+        case .failure(.request):
+            // temporary micro-copy
+            print("We weren't able to fetch your data. Maybe the internet is down?")
+        case let .failure(error):
+            print(error)
+        }
+    }
 }

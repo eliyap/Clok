@@ -12,20 +12,19 @@ fileprivate struct RawReport: Decodable {
     var total_count: Int
     var per_page: Int
     var total_grand: Int
-    var entries: [TimeEntry]
+    var data: [TimeEntry]
     
     static let empty = RawReport(
         total_count: NSNotFound,
         per_page: NSNotFound,
         total_grand: NSNotFound,
-        entries: []
+        data: []
     )
 }
 
 // makes HTTP-requests and parses data from the Toggl API
 // utilizing semaphore method from https://medium.com/@michaellong/swift-5-async-await-result-gcd-and-timeout-1f1652d7adcf
-func toggl_request(api_string: String, token: String) -> Result<[TimeEntry], NetworkError> {
-    
+func fetchDetailedReport(api_string: String, token: String) -> Result<[TimeEntry], NetworkError> {
     var page = 1 // pages are indexed from 1
     var result: Result<[TimeEntry], NetworkError>!
     var emptyReq = false // flag for when a request returns no entries
@@ -58,22 +57,21 @@ func toggl_request(api_string: String, token: String) -> Result<[TimeEntry], Net
         
         // all checks passed
         do {
+            print("beginning fetch")
             let decoder = JSONDecoder()
-            print("now attempting to decode")
-            print(JSONSerialization())
             switch page {
             case 1:
                 report = try decoder.decode(RawReport.self, from: data)
                 break
             default:
-                let new_entries = try decoder.decode(RawReport.self, from: data).entries
+                let new_entries = try decoder.decode(RawReport.self, from: data).data
                 guard new_entries.count > 0 else {
                     // return expression had nothing!
                     // causes requests to stop, preventing infinite polling of the API
                     emptyReq = true
                     return
                 }
-                report.entries += new_entries
+                report.data += new_entries
                 break
             }
         } catch {
@@ -85,7 +83,6 @@ func toggl_request(api_string: String, token: String) -> Result<[TimeEntry], Net
     
     // send request
     page_loop: repeat {
-        
         URLSession.shared.dataTask(
             with: formRequest(
                 url: URL(string: api_string + "&page=\(page)")!,
@@ -98,17 +95,25 @@ func toggl_request(api_string: String, token: String) -> Result<[TimeEntry], Net
         if sem.wait(timeout: .now() + 15) == .timedOut { return .failure(.timeout) }
         
         // if nothing was found, stop requesting!
-        if emptyReq { break page_loop }
-        
+        if emptyReq {
+            break page_loop
+        }
+        /// if some error was encountered, stop immediately
+        switch result {
+        case .failure(_):
+            break page_loop
+        default:
+            break
+        }
         // request next page of data
         page += 1
-    } while(report.entries.count < report.total_count)
+    } while(report.data.count < report.total_count)
     
     // only return success containing report if nothing failed
     switch result {
     case .failure(_):
         return result
     default:
-        return .success(report.entries)
+        return .success(report.data)
     }
 }
