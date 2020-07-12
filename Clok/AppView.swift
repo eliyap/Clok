@@ -30,17 +30,6 @@ struct ClokApp: App {
         self.persistentContainer = container
     }
     
-    mutating func saveContext () {
-        let context = persistentContainer.viewContext
-        if context.hasChanges {
-            do {
-                try context.save()
-            } catch {
-                // Show the error here
-            }
-        }
-    }
-    
     var body: some Scene {
         WindowGroup {
             ContentView()
