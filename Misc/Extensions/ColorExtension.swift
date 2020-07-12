@@ -7,6 +7,8 @@
 import Foundation
 import SwiftUI
 extension Color {
+    
+    /// extract Color from hex string
     init(hex: String) {
         let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
         var int: UInt64 = 0
@@ -30,6 +32,24 @@ extension Color {
             blue:  Double(b) / 255,
             opacity: Double(a) / 255
         )
+    }
+    
+    /// serialize Color as Hex String
+    /// https://cocoacasts.com/how-to-store-uicolor-in-core-data-persistent-store
+    var toHex: String? {
+        // Extract Components
+        let (r,g,b,a) = self.components()
+
+        // Create Hex String
+        let hex = String(
+            format: "%02lX%02lX%02lX%02lX",
+            lroundf(Float(r * 255)),
+            lroundf(Float(g * 255)),
+            lroundf(Float(b * 255)),
+            lroundf(Float(a * 255))
+        )
+
+        return hex
     }
 }
 
@@ -67,18 +87,6 @@ extension Color {
 /// my custom colors
 extension Color {
 
-    static let offWhite = Color(
-        red: 235 / 255,
-        green: 235 / 255,
-        blue: 245 / 255
-    )
-    
-    static let offBlack = Color(
-        red: 15 / 255,
-        green: 15 / 255,
-        blue: 30 / 255
-    )
-    
     // middle of the road grey, replace with dark mode sensitive color later
     static let noProject = Color(
         red: 0.5,
