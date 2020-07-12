@@ -12,19 +12,15 @@ import SwiftUI
 import CoreData
 
 fileprivate struct RawProject: Decodable {
-    struct data: Decodable {
-        var id: Int
-        var is_private: Bool
-        var wid: Int
-        var hex_color: String
-        var name: String
-        var billable: Bool
-        // one of these cases a coding failure, ignore for now
+    var id: Int
+    var is_private: Bool
+    var wid: Int
+    var hex_color: String
+    var name: String
+    var billable: Bool
+    // one of these cases a coding failure, ignore for now
 //        var actual_hours: Int
 //        var color: Int // probably an enum for toggl's default color palette
-    }
-    
-    var data: data
 }
 
 
@@ -38,9 +34,9 @@ public class Project: NSManagedObject, Decodable {
         
         
         let rawProject = try RawProject(from: decoder)
-        id = Int64(rawProject.data.id)
-        color = rawProject.data.hex_color
-        name = rawProject.data.name
+        id = Int64(rawProject.id)
+        color = rawProject.hex_color
+        name = rawProject.name
     }
     
     static let noProject = Project(

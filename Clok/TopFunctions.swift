@@ -30,6 +30,9 @@ extension ContentView {
             to: Date(),
             in: moc
         )
+        
+        // TESTING
+        fetchProjects(token: user.token, wid: user.chosen.wid, in: moc)
     }
     
     
@@ -41,45 +44,8 @@ extension ContentView {
         let token = "cfae5db4249b8509ca7671259598c2fb"
         let pid = 158395089
 
-        URLSession.shared.dataTask(with: formRequest(
-            url: URL(string: "\(API_URL)/projects/\(pid)\(agentSuffix)")!,
-            auth: auth(token: token)
-        )) {(data: Data?, resp: URLResponse?, error: Error?) -> Void in
-            // release process when complete
-            defer{ sem.signal() }
-
-            guard let data = data else {
-//                completion(nil, error)
-                return
-            }
-            do {
-                let decoder = JSONDecoder(context: moc)
-//                Project(context: moc)
-                let newProj = try decoder.decode(Project.self, from: data)
-                print(newProj.name)
-//                let json = try JSONSerialization.jsonObject(with: data, options: []) as! [String: AnyObject]
-//                guard
-//                    json["data"] != nil,
-//                    let data = json["data"] as? [String: AnyObject],
-//                    let proj = OldProject(from: data)
-//                else {
-////                    completion (nil, NetworkError.serialization)
-//                    return
-//                }
-//                print(data)
-//                project = proj
-            } catch {
-                print("project initialization failed!")
-//                completion(nil, NetworkError.serialization)
-                return
-            }
-        }.resume()
-
-        // wait for 2nd request to complete
-        if sem.wait(timeout: .now() + 15) == .timedOut {
-//            completion(nil, NetworkError.timeout)
-            return
-        }
+        
+        
     }
     
 }

@@ -36,6 +36,7 @@ let buttonPadding = CGFloat(7)
 let user_agent = "emlyap99@gmail.com"
 let agentSuffix = "?user_agent=\(user_agent)"
 let API_URL = "https://www.toggl.com/api/v8"
+let REPORT_URL = "https://toggl.com/reports/api/v2/"
 
 // https://github.com/toggl/toggl_api_docs/blob/master/chapters/users.md#get-current-user-data 
 let userDataURL = URL(string:"\(API_URL)/me\(agentSuffix)")!

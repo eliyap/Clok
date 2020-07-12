@@ -21,8 +21,7 @@ func fetchEntries(
     df.dateFormat = "yyyy-MM-dd" // ISO 8601 format, day precision
     
     // documented at https://github.com/toggl/toggl_api_docs/blob/master/reports.md
-    let base_url = "https://toggl.com/reports/api/v2/"
-    let api_string = "\(base_url)details?" + [
+    let api_string = "\(REPORT_URL)details?" + [
         "user_agent=\(user_agent)",    // identifies my app
         "workspace_id=\(wid)", // provided by the User
         "since=\(df.string(from: start))",
