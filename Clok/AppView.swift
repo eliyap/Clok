@@ -25,7 +25,8 @@ struct ClokApp: App {
         container.loadPersistentStores { description, error in
             if let error = error { fatalError("\(error)") }
         }
-        self.persistentContainer = container
+        persistentContainer = container
+        container.viewContext.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
     }
     
     var body: some Scene {
