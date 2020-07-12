@@ -459,6 +459,7 @@
 				22DC869D24BA838D00FF771F /* Project+CoreDataProperties.swift */,
 				22DC869E24BA838D00FF771F /* TimeEntry+CoreDataClass.swift */,
 				22DC869F24BA838D00FF771F /* TimeEntry+CoreDataProperties.swift */,
+				22DC869824BA7A5E00FF771F /* TimeEntryModel.xcdatamodeld */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -570,7 +571,6 @@
 			children = (
 				22B0784724B249BA00256EB8 /* Clok.entitlements */,
 				225F69B324AD8CE70012B5DB /* AppView.swift */,
-				22DC869824BA7A5E00FF771F /* TimeEntryModel.xcdatamodeld */,
 				C6C18D482448F96C000345D5 /* ContentView.swift */,
 				22027DD124AFF7ED00C0BA90 /* TopFunctions.swift */,
 				22027DCF24AFF63F00C0BA90 /* OrientationView.swift */,
