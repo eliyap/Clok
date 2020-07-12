@@ -33,9 +33,9 @@ extension ContentView {
                 switch result {
                 case let .success(report):
                     /// hand back the complete report
-                    self.data.report = report
+                    data.report = report
                     /// and remove the loading screen
-                    self.loaded = true
+                    loaded = true
                     
                 case .failure(.request):
                     // temporary micro-copy

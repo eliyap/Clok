@@ -17,21 +17,21 @@ public class Project: NSManagedObject {
     static let noProject = Project(
         in: nil,
         name: "No Project",
-        color: Color.noProject,
+        colorHex: Color.noProject.toHex,
         id: NSNotFound
     )
     
     static let any = Project(
         in: nil,
         name: "Any Project",
-        color: Color.secondary,
+        colorHex: Color.secondary.toHex,
         id: Int.zero
     )
     
-    init(in context: NSManagedObjectContext?, name: String, color: Color, id: Int){
+    init(in context: NSManagedObjectContext?, name: String, colorHex: String, id: Int){
         super.init(entity: Project.entity(), insertInto: context)
         self.name = name
         self.id = Int64(id)
-        self.color = color.toHex
+        self.color = colorHex
     }
 }

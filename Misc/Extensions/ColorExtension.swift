@@ -36,9 +36,9 @@ extension Color {
     
     /// serialize Color as Hex String
     /// https://cocoacasts.com/how-to-store-uicolor-in-core-data-persistent-store
-    var toHex: String? {
+    var toHex: String {
         // Extract Components
-        let (r,g,b,a) = self.components()
+        let (r,g,b,a) = self.components
 
         // Create Hex String
         let hex = String(
@@ -57,7 +57,7 @@ extension Color {
 extension Color {
 
     func uiColor() -> UIColor {
-        let components = self.components()
+        let components = self.components
         return UIColor(
             red: components.r,
             green: components.g,
@@ -66,7 +66,7 @@ extension Color {
         )
     }
     
-    private func components() -> (r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat) {
+    var components: (r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat) {
 
         let scanner = Scanner(string: self.description.trimmingCharacters(in: CharacterSet.alphanumerics.inverted))
         var hexNumber: UInt64 = 0

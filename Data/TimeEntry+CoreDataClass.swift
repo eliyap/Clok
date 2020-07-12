@@ -52,7 +52,7 @@ public class TimeEntry: NSManagedObject {
             self.project = Project(
                 in: context,
                 name: name,
-                color: Color(hex: project_hex_color!),
+                colorHex: project_hex_color!,
                 id: id
             )
         } else {

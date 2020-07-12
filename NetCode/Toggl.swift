@@ -80,8 +80,7 @@ func toggl_request(api_string: String, token: String) -> Result<Report, NetworkE
         
         URLSession.shared.dataTask(with: request, completionHandler: myHandler).resume()
         
-        // wait for call to complete
-        // abort if call takes too long
+        // wait for call to complete, abort if it takes too long
         if sem.wait(timeout: .now() + 15) == .timedOut { return .failure(.timeout) }
         
         // if nothing was found, stop requesting!
