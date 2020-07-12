@@ -18,6 +18,7 @@ extension TimeEntry {
 
     @NSManaged public var name: String?
     @NSManaged public var tid: Int64
+    @NSManaged public var id: Int64
     @NSManaged public var task: String?
     @NSManaged public var dur: Double
     @NSManaged public var start: Date?
@@ -30,6 +31,10 @@ extension TimeEntry {
     
     public var wrappedTID: Int {
         Int(tid)
+    }
+    
+    public var wrappedID: Int {
+        Int(id)
     }
     
     public var wrappedStart: Date {

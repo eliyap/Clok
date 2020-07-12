@@ -19,9 +19,25 @@ extension Project {
 
     @NSManaged public var name: String?
     @NSManaged public var id: Int64
-    @NSManaged public var color: NSObject?
-    @NSManaged public var tasks: NSSet?
-
+    @NSManaged public var color: String?
+    @NSManaged public var entries: NSSet?
+    
+    public var wrappedName: String {
+        name ?? "No Name"
+    }
+    
+    public var wrappedID: Int {
+        Int(id)
+    }
+    
+    // color???
+    
+    public var entryArray: [TimeEntry] {
+        let set = entries as? Set<TimeEntry> ?? []
+        return set.sorted {
+            $0.wrappedStart < $1.wrappedStart
+        }
+    }
 }
 
 // MARK: Generated accessors for tasks
