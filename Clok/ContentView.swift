@@ -14,9 +14,6 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) var moc
     @FetchRequest(entity: TimeEntry.entity(), sortDescriptors: []) var myEntries: FetchedResults<TimeEntry>
     
-    
-    
-    
     @EnvironmentObject var data: TimeData
     @EnvironmentObject var settings: Settings
     
