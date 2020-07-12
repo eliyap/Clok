@@ -34,6 +34,8 @@ fileprivate struct RawTimeEntry: Decodable {
 
 @objc(TimeEntry)
 public class TimeEntry: NSManagedObject, Decodable {
+    static let entityName = "TimeEntry"
+    
     @objc
     private override init(entity: NSEntityDescription, insertInto context: NSManagedObjectContext?) {
         super.init(entity: entity, insertInto: context)

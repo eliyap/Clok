@@ -31,6 +31,8 @@
 		222D996024BB562100F66E0F /* FetchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D995F24BB562100F66E0F /* FetchData.swift */; };
 		222D996324BB803800F66E0F /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D996224BB803800F66E0F /* Report.swift */; };
 		223863FE24BB8BB10041886B /* FetchProjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223863FD24BB8BB10041886B /* FetchProjects.swift */; };
+		2238640024BBBD030041886B /* DataFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223863FF24BBBD030041886B /* DataFetch.swift */; };
+		2238640224BBBDE40041886B /* ConditionalFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2238640124BBBDE40041886B /* ConditionalFetch.swift */; };
 		225ACE4F24B2A7A700FFCDF7 /* BarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225ACE4E24B2A7A700FFCDF7 /* BarView.swift */; };
 		225B043F24B277FF00780424 /* DayBubbles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225B043E24B277FA00780424 /* DayBubbles.swift */; };
 		225B044224B2A5FA00780424 /* LineGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225B044124B2A5FA00780424 /* LineGraphView.swift */; };
@@ -191,6 +193,8 @@
 		222D995F24BB562100F66E0F /* FetchData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchData.swift; sourceTree = "<group>"; };
 		222D996224BB803800F66E0F /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
 		223863FD24BB8BB10041886B /* FetchProjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchProjects.swift; sourceTree = "<group>"; };
+		223863FF24BBBD030041886B /* DataFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFetch.swift; sourceTree = "<group>"; };
+		2238640124BBBDE40041886B /* ConditionalFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionalFetch.swift; sourceTree = "<group>"; };
 		225ACE4E24B2A7A700FFCDF7 /* BarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarView.swift; sourceTree = "<group>"; };
 		225B043E24B277FA00780424 /* DayBubbles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayBubbles.swift; sourceTree = "<group>"; };
 		225B044124B2A5FA00780424 /* LineGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineGraphView.swift; sourceTree = "<group>"; };
@@ -433,9 +437,9 @@
 		22BE1FEB24A9246400A9A739 /* NetCode */ = {
 			isa = PBXGroup;
 			children = (
+				22B0783724B1519600256EB8 /* NetworkError.swift */,
 				222D995F24BB562100F66E0F /* FetchData.swift */,
 				223863FD24BB8BB10041886B /* FetchProjects.swift */,
-				22B0783724B1519600256EB8 /* NetworkError.swift */,
 				C615CD56245F332300D62B87 /* FetchDetailedReport.swift */,
 				2296F15A24A994A400AF38B5 /* FormRequest.swift */,
 				2264CB3624AD338500ECBF2B /* LoginWith.swift */,
@@ -461,6 +465,8 @@
 				22DC869D24BA838D00FF771F /* Project+CoreDataProperties.swift */,
 				22DC869E24BA838D00FF771F /* TimeEntry+CoreDataClass.swift */,
 				22DC869F24BA838D00FF771F /* TimeEntry+CoreDataProperties.swift */,
+				223863FF24BBBD030041886B /* DataFetch.swift */,
+				2238640124BBBDE40041886B /* ConditionalFetch.swift */,
 				222D992524BAB2FD00F66E0F /* DecoderExtension.swift */,
 				222D996224BB803800F66E0F /* Report.swift */,
 				22DC869824BA7A5E00FF771F /* TimeEntryModel.xcdatamodeld */,
@@ -838,6 +844,7 @@
 				C6F605AF246C6B1700D0FE82 /* DateExtension.swift in Sources */,
 				C68F8C8D24A04CE8000D249B /* IceCreamStick.swift in Sources */,
 				2207B22024B954F40006748A /* BarStack.swift in Sources */,
+				2238640024BBBD030041886B /* DataFetch.swift in Sources */,
 				221D963C24A912B900C84F57 /* APIKeyHandler.swift in Sources */,
 				22027DD024AFF63F00C0BA90 /* OrientationView.swift in Sources */,
 				221810E224B0190400B63ECA /* Clockhands.swift in Sources */,
@@ -873,6 +880,7 @@
 				C6AAB3EE249F04FF00DFBA36 /* ProjectListView.swift in Sources */,
 				22DC86A224BA838D00FF771F /* Project+CoreDataProperties.swift in Sources */,
 				22BE1FF424A92DE500A9A739 /* Settings.swift in Sources */,
+				2238640224BBBDE40041886B /* ConditionalFetch.swift in Sources */,
 				2207B21C24B951770006748A /* OptionalRoundRect.swift in Sources */,
 				22027DD424AFF92000C0BA90 /* Fullscreen.swift in Sources */,
 				223863FE24BB8BB10041886B /* FetchProjects.swift in Sources */,

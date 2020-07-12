@@ -11,6 +11,7 @@ import Foundation
 import SwiftUI
 import CoreData
 
+/// simplify decoding
 fileprivate struct RawProject: Decodable {
     var id: Int
     var is_private: Bool
@@ -26,6 +27,7 @@ fileprivate struct RawProject: Decodable {
 
 @objc(Project)
 public class Project: NSManagedObject, Decodable {
+    static let entityName = "Project" /// for making entity calls
     
     @objc
     private override init(entity: NSEntityDescription, insertInto context: NSManagedObjectContext?) {
@@ -50,6 +52,14 @@ public class Project: NSManagedObject, Decodable {
         colorHex: Color.noProject.toHex,
         id: NSNotFound
     )
+
+    /// should not appear, represents a project that could not be fetched from our data base
+    static let unkown = Project(
+        in: nil,
+        name: "Unknown Project",
+        colorHex: Color.noProject.toHex,
+        id: NSNotFound
+    )
     
     static let any = Project(
         in: nil,
@@ -68,4 +78,5 @@ public class Project: NSManagedObject, Decodable {
     init(context: NSManagedObjectContext){
         super.init(entity: Project.entity(), insertInto: context)
     }
+    
 }

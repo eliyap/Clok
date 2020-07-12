@@ -15,7 +15,7 @@ func fetchEntries(
     from start: Date,
     to end: Date,
     in context: NSManagedObjectContext
-) -> Void {
+) -> [TimeEntry]? {
     // assemble request URL (page is added later)
     let df = DateFormatter()
     df.dateFormat = "yyyy-MM-dd" // ISO 8601 format, day precision
@@ -33,16 +33,11 @@ func fetchEntries(
         token: token,
         context: context
     )
-
+    var entries: [TimeEntry]? = nil
     DispatchQueue.main.async {
         switch result {
-        case let .success(report):
-            print("\(report.count) entries fetched")
-            /// hand back the complete report
-//            data.report = report
-            /// and remove the loading screen
-//            loaded = true
-
+        case let .success(fetched):
+            entries = fetched
         case .failure(.request):
             // temporary micro-copy
             print("We weren't able to fetch your data. Maybe the internet is down?")
@@ -50,4 +45,5 @@ func fetchEntries(
             print(error)
         }
     }
+    return entries
 }
