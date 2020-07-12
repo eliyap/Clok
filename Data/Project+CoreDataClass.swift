@@ -1,5 +1,5 @@
 //
-//  CDProject+CoreDataClass.swift
+//  Project+CoreDataClass.swift
 //  Clok
 //
 //  Created by Secret Asian Man Dev on 11/7/20.

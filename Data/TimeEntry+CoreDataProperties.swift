@@ -1,5 +1,5 @@
 //
-//  CDTimeEntry+CoreDataProperties.swift
+//  TimeEntry+CoreDataProperties.swift
 //  Clok
 //
 //  Created by Secret Asian Man Dev on 11/7/20.
