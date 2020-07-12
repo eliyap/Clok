@@ -36,18 +36,19 @@ struct StatView: View {
                     }
                 }
                 .onTapGesture { withAnimation { data.searching.toggle() } }
-                StatDisplayView(
-                    for: WeekTimeFrame(
-                        start: zero.date,
-                        entries: data.report.entries,
-                        terms: data.terms
-                    ),
-                    prev: WeekTimeFrame(
-                        start: zero.date - weekLength,
-                        entries: data.report.entries,
-                        terms: data.terms
-                    )
-                )
+                #warning("silenced type error")
+//                StatDisplayView(
+//                    for: WeekTimeFrame(
+//                        start: zero.date,
+//                        entries: data.report.entries,
+//                        terms: data.terms
+//                    ),
+//                    prev: WeekTimeFrame(
+//                        start: zero.date - weekLength,
+//                        entries: data.report.entries,
+//                        terms: data.terms
+//                    )
+//                )
             }
             .padding()
         }

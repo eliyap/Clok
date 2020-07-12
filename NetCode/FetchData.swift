@@ -29,7 +29,11 @@ func fetchEntries(
         "until=\(df.string(from: end))"
     ].joined(separator: "&")
     
-    let result = fetchDetailedReport(api_string: api_string, token: token)
+    let result = fetchDetailedReport(
+        api_string: api_string,
+        token: token,
+        context: context
+    )
 
     DispatchQueue.main.async {
         switch result {

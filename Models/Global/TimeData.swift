@@ -10,7 +10,7 @@ import Foundation
 import SwiftUI
 
 final class TimeData: ObservableObject {
-    @Published var report = Report()
+    @Published var report = Report.empty
     
     // the Project and Descriptions the user is filtering for
     @Published var terms = SearchTerm(
@@ -23,9 +23,11 @@ final class TimeData: ObservableObject {
     @Published var searching = false
     
     func projects() -> [OldProject] {
+        #warning("Re implement with Core Data")
+        return []
         /// use set to make unique
-        Set(self.report.entries.map{$0.project})
-            .sorted()
+//        Set(self.report.entries.map{$0.project})
+//            .sorted()
     }
 }
 

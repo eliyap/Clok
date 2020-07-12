@@ -45,9 +45,10 @@ struct LineGraph: View {
                     }
                     .allowsHitTesting(false)
                     
-                    ForEach(data.report.entries.filter {$0.end > zero.date && $0.start < zero.date + weekLength}, id: \.id) { entry in
-                        LineBar(with: entry, geo: geo, bounds: GetBounds(zero: zero, entry: entry))
-                            .transition(.identity)
+                    ForEach(data.report.entries.filter {$0.wrappedEnd > zero.date && $0.wrappedStart < zero.date + weekLength}, id: \.id) { entry in
+                        #warning("silenced type error")
+//                        LineBar(with: entry, geo: geo, bounds: GetBounds(zero: zero, entry: entry))
+//                            .transition(.identity)
                     }
                 }
                 .gesture(ExclusiveGesture(

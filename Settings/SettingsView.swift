@@ -39,7 +39,7 @@ struct SettingsView: View {
                         .foregroundColor(.red)
                         .onTapGesture {
                             // destroy local data
-                            self.data.report = Report()
+                            data.report = Report.empty
                             
                             // destroy credentials
                             try! dropKey()
@@ -48,7 +48,7 @@ struct SettingsView: View {
                             WorkspaceManager.saveSpaces([])
                             WorkspaceManager.saveChosen(Workspace(wid: 0, name: ""))
                             
-                            self.settings.user = nil
+                            settings.user = nil
                             print("logged out!")
                         }
                 }

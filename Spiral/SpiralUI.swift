@@ -18,10 +18,11 @@ struct SpiralUI: View {
             /// dummy shape prevents janky animation when there are no entries
             Circle().stroke(style: StrokeStyle(lineWidth: 0))
             ForEach(self.data.report.entries, id: \.id) { entry in
-                EntrySpiral(
-                    entry,
-                    zeroTo:self.zero.date
-                )
+                #warning("silenced type error")
+//                EntrySpiral(
+//                    entry,
+//                    zeroTo:self.zero.date
+//                )
             }
             DayBubbles().allowsHitTesting(false)
         }

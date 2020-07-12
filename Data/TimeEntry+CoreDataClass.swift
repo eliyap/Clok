@@ -4,15 +4,13 @@
 //
 //  Created by Secret Asian Man Dev on 11/7/20.
 //  Copyright © 2020 Secret Asian Man 3. All rights reserved.
-//
-//
 
 import Foundation
 import SwiftUI
 import CoreData
 
 fileprivate struct RawTimeEntry: Decodable {
-    var name: String // stand in for "description", which protected in CoreData
+    var description: String
     
     var start: Date
     var end: Date
@@ -22,9 +20,9 @@ fileprivate struct RawTimeEntry: Decodable {
     var id: Int
     var is_billable: Bool
     
-    var pid: Int
-    var project: String
-    var project_hex_color: String
+    var pid: Int?
+    var project: String?
+    var project_hex_color: String?
     
     var uid: Int; // user ID
     var use_stop: Bool
@@ -32,7 +30,6 @@ fileprivate struct RawTimeEntry: Decodable {
     //    tags =     ();
     //    task = "<null>";
     //    tid = "<null>";
-
 }
 
 @objc(TimeEntry)
@@ -45,7 +42,7 @@ public class TimeEntry: NSManagedObject, Decodable {
         
         
         let rawTimeEntry = try RawTimeEntry(from: decoder)
-        name = rawTimeEntry.name
+        name = rawTimeEntry.description
         start = rawTimeEntry.start
         end = rawTimeEntry.end
         dur = rawTimeEntry.dur

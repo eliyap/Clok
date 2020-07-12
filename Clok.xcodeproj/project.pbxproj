@@ -29,6 +29,7 @@
 		222D992624BAB2FD00F66E0F /* DecoderExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D992524BAB2FD00F66E0F /* DecoderExtension.swift */; };
 		222D992724BAB2FD00F66E0F /* DecoderExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D992524BAB2FD00F66E0F /* DecoderExtension.swift */; };
 		222D996024BB562100F66E0F /* FetchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D995F24BB562100F66E0F /* FetchData.swift */; };
+		222D996324BB803800F66E0F /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D996224BB803800F66E0F /* Report.swift */; };
 		225ACE4F24B2A7A700FFCDF7 /* BarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225ACE4E24B2A7A700FFCDF7 /* BarView.swift */; };
 		225B043F24B277FF00780424 /* DayBubbles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225B043E24B277FA00780424 /* DayBubbles.swift */; };
 		225B044224B2A5FA00780424 /* LineGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225B044124B2A5FA00780424 /* LineGraphView.swift */; };
@@ -86,7 +87,6 @@
 		22DC86A424BA838D00FF771F /* TimeEntry+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC869E24BA838D00FF771F /* TimeEntry+CoreDataClass.swift */; };
 		22DC86A624BA838D00FF771F /* TimeEntry+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC869F24BA838D00FF771F /* TimeEntry+CoreDataProperties.swift */; };
 		C615CD57245F332300D62B87 /* FetchDetailedReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = C615CD56245F332300D62B87 /* FetchDetailedReport.swift */; };
-		C615CD59245F33F100D62B87 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = C615CD58245F33F100D62B87 /* Report.swift */; };
 		C61D2658249BE1990056C9FA /* StatHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61D2657249BE1990056C9FA /* StatHelpers.swift */; };
 		C62F7B8824970E530076F64C /* StatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62F7B8724970E530076F64C /* StatView.swift */; };
 		C63C0D45248D3C0D00163E20 /* SpiralTrimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63C0D44248D3C0D00163E20 /* SpiralTrimmer.swift */; };
@@ -188,6 +188,7 @@
 		22232B8A24A9532000F3C378 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		222D992524BAB2FD00F66E0F /* DecoderExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderExtension.swift; sourceTree = "<group>"; };
 		222D995F24BB562100F66E0F /* FetchData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchData.swift; sourceTree = "<group>"; };
+		222D996224BB803800F66E0F /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
 		225ACE4E24B2A7A700FFCDF7 /* BarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarView.swift; sourceTree = "<group>"; };
 		225B043E24B277FA00780424 /* DayBubbles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayBubbles.swift; sourceTree = "<group>"; };
 		225B044124B2A5FA00780424 /* LineGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineGraphView.swift; sourceTree = "<group>"; };
@@ -235,7 +236,6 @@
 		22DC869E24BA838D00FF771F /* TimeEntry+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeEntry+CoreDataClass.swift"; sourceTree = "<group>"; };
 		22DC869F24BA838D00FF771F /* TimeEntry+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeEntry+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C615CD56245F332300D62B87 /* FetchDetailedReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchDetailedReport.swift; sourceTree = "<group>"; };
-		C615CD58245F33F100D62B87 /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
 		C61D2657249BE1990056C9FA /* StatHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatHelpers.swift; sourceTree = "<group>"; };
 		C62F7B8724970E530076F64C /* StatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatView.swift; sourceTree = "<group>"; };
 		C63C0D44248D3C0D00163E20 /* SpiralTrimmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiralTrimmer.swift; sourceTree = "<group>"; };
@@ -459,6 +459,7 @@
 				22DC869E24BA838D00FF771F /* TimeEntry+CoreDataClass.swift */,
 				22DC869F24BA838D00FF771F /* TimeEntry+CoreDataProperties.swift */,
 				222D992524BAB2FD00F66E0F /* DecoderExtension.swift */,
+				222D996224BB803800F66E0F /* Report.swift */,
 				22DC869824BA7A5E00FF771F /* TimeEntryModel.xcdatamodeld */,
 			);
 			path = Data;
@@ -509,7 +510,6 @@
 		C6B0FFA0246F52A700DED011 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				C615CD58245F33F100D62B87 /* Report.swift */,
 				C67EAAB3244D04F0008D4982 /* TimeEntry.swift */,
 				22B0784124B17BEC00256EB8 /* RunningEntry.swift */,
 				C67F47D2249FD44500FD2E6E /* Project.swift */,
@@ -889,6 +889,7 @@
 				228B100424AEAE3A0026AD4B /* WeekDateButton.swift in Sources */,
 				221C3C5524A93C0F006995C5 /* GetUserData.swift in Sources */,
 				22B0783B24B15B2E00256EB8 /* ReloadPolicy.swift in Sources */,
+				222D996324BB803800F66E0F /* Report.swift in Sources */,
 				C6C18D7D244BE891000345D5 /* Constants.swift in Sources */,
 				22928AC524A4207E00DC9EC5 /* FilterStack.swift in Sources */,
 				C61D2658249BE1990056C9FA /* StatHelpers.swift in Sources */,
@@ -911,7 +912,6 @@
 				22DC86A024BA838D00FF771F /* Project+CoreDataClass.swift in Sources */,
 				2296F15B24A994A400AF38B5 /* FormRequest.swift in Sources */,
 				22027DD224AFF7ED00C0BA90 /* TopFunctions.swift in Sources */,
-				C615CD59245F33F100D62B87 /* Report.swift in Sources */,
 				22027DD624AFFA6500C0BA90 /* Bounds.swift in Sources */,
 				228B100624AECDFF0026AD4B /* EntryView.swift in Sources */,
 				222D992624BAB2FD00F66E0F /* DecoderExtension.swift in Sources */,

@@ -26,8 +26,8 @@ extension ContentView {
         fetchEntries(
             token: user.token,
             wid: user.chosen.wid,
-            from: Date(),
-            to: Date() - weekLength,
+            from: Date() - weekLength,
+            to: Date(),
             in: moc
         )
     }

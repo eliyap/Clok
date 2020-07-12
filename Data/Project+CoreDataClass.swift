@@ -31,10 +31,6 @@ fileprivate struct RawProject: Decodable {
 @objc(Project)
 public class Project: NSManagedObject, Decodable {
     
-    enum CodingKeys: String, CodingKey {
-        case data
-    }
-    
     public required init(from decoder: Decoder) throws {
         guard let context = decoder.userInfo[.context] as? NSManagedObjectContext else { fatalError("NSManagedObjectContext is missing") }
 //        let values = try decoder.container(keyedBy: CodingKeys.self)
