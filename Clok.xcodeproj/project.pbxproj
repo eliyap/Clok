@@ -26,6 +26,8 @@
 		221D964424A9207600C84F57 /* SearchContrastScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221D964324A9207600C84F57 /* SearchContrastScreen.swift */; };
 		222305AE24AE807000711031 /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222305AD24AE807000711031 /* CustomTabView.swift */; };
 		22232B8B24A9532000F3C378 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22232B8A24A9532000F3C378 /* LoginView.swift */; };
+		222D992624BAB2FD00F66E0F /* DecoderExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D992524BAB2FD00F66E0F /* DecoderExtension.swift */; };
+		222D992724BAB2FD00F66E0F /* DecoderExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D992524BAB2FD00F66E0F /* DecoderExtension.swift */; };
 		225ACE4F24B2A7A700FFCDF7 /* BarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225ACE4E24B2A7A700FFCDF7 /* BarView.swift */; };
 		225B043F24B277FF00780424 /* DayBubbles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225B043E24B277FA00780424 /* DayBubbles.swift */; };
 		225B044224B2A5FA00780424 /* LineGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225B044124B2A5FA00780424 /* LineGraphView.swift */; };
@@ -188,6 +190,7 @@
 		221D964324A9207600C84F57 /* SearchContrastScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchContrastScreen.swift; sourceTree = "<group>"; };
 		222305AD24AE807000711031 /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
 		22232B8A24A9532000F3C378 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		222D992524BAB2FD00F66E0F /* DecoderExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderExtension.swift; sourceTree = "<group>"; };
 		225ACE4E24B2A7A700FFCDF7 /* BarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarView.swift; sourceTree = "<group>"; };
 		225B043E24B277FA00780424 /* DayBubbles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayBubbles.swift; sourceTree = "<group>"; };
 		225B044124B2A5FA00780424 /* LineGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineGraphView.swift; sourceTree = "<group>"; };
@@ -459,6 +462,7 @@
 				22DC869D24BA838D00FF771F /* Project+CoreDataProperties.swift */,
 				22DC869E24BA838D00FF771F /* TimeEntry+CoreDataClass.swift */,
 				22DC869F24BA838D00FF771F /* TimeEntry+CoreDataProperties.swift */,
+				222D992524BAB2FD00F66E0F /* DecoderExtension.swift */,
 				22DC869824BA7A5E00FF771F /* TimeEntryModel.xcdatamodeld */,
 			);
 			path = Data;
@@ -537,9 +541,9 @@
 		C6C18D382448F96C000345D5 = {
 			isa = PBXGroup;
 			children = (
-				22DC86A824BA839100FF771F /* Data */,
 				22B0784624B247D500256EB8 /* ClokWidgetExtension.entitlements */,
 				C6C18D432448F96C000345D5 /* Clok */,
+				22DC86A824BA839100FF771F /* Data */,
 				C6B0FFA0246F52A700DED011 /* Models */,
 				225F69B524AD8EE20012B5DB /* EntryList */,
 				227C613824A3F5D9006F8168 /* Controls */,
@@ -813,6 +817,7 @@
 				22DC86A724BA838D00FF771F /* TimeEntry+CoreDataProperties.swift in Sources */,
 				22B0784024B17AD200256EB8 /* DefaultWorkspace.swift in Sources */,
 				22AD5F8724B1467E006EF7FB /* ClokWidget.intentdefinition in Sources */,
+				222D992724BAB2FD00F66E0F /* DecoderExtension.swift in Sources */,
 				22B0784A24B262FA00256EB8 /* Timeline.swift in Sources */,
 				22DC86A124BA838D00FF771F /* Project+CoreDataClass.swift in Sources */,
 				22B0783124B150C300256EB8 /* GetUserData.swift in Sources */,
@@ -917,6 +922,7 @@
 				C615CD59245F33F100D62B87 /* Report.swift in Sources */,
 				22027DD624AFFA6500C0BA90 /* Bounds.swift in Sources */,
 				228B100624AECDFF0026AD4B /* EntryView.swift in Sources */,
+				222D992624BAB2FD00F66E0F /* DecoderExtension.swift in Sources */,
 				221D964424A9207600C84F57 /* SearchContrastScreen.swift in Sources */,
 				2264CB3724AD338500ECBF2B /* LoginWith.swift in Sources */,
 			);

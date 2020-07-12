@@ -18,6 +18,29 @@ struct ClokApp: App {
     var settings = Settings()
     var bounds = Bounds()
     
+    var persistentContainer: NSPersistentContainer
+    
+    init(){
+        let container = NSPersistentContainer(name: "TimeEntryModel")
+        container.loadPersistentStores { description, error in
+            if let error = error {
+                fatalError("persistence load failed")
+            }
+        }
+        self.persistentContainer = container
+    }
+    
+    mutating func saveContext () {
+        let context = persistentContainer.viewContext
+        if context.hasChanges {
+            do {
+                try context.save()
+            } catch {
+                // Show the error here
+            }
+        }
+    }
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
@@ -26,6 +49,7 @@ struct ClokApp: App {
                 .environmentObject(data)
                 .environmentObject(settings)
                 .environmentObject(bounds)
+                .environment(\.managedObjectContext, persistentContainer.viewContext)
         }
         
     }
