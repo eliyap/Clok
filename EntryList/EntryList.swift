@@ -111,7 +111,7 @@ struct EntryList: View {
                 start: mn,
                 entries: entries
                     .sorted{ $0.wrappedStart < $1.wrappedStart }
-                    .within(interval: dayLength, of: mn)
+                    .filter{ $0.wrappedStart.between(mn, mn + dayLength) }
             ))
         }
         return days.filter{ $0.entries.count > 0 }
