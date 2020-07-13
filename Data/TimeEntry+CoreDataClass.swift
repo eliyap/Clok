@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import CoreData
 
-fileprivate struct RawTimeEntry: Decodable {
+struct RawTimeEntry: Decodable {
     var description: String
     
     var start: Date
@@ -33,7 +33,7 @@ fileprivate struct RawTimeEntry: Decodable {
 }
 
 @objc(TimeEntry)
-public class TimeEntry: NSManagedObject, Decodable {
+public class TimeEntry: NSManagedObject {
     static let entityName = "TimeEntry"
     
     @objc
@@ -41,27 +41,39 @@ public class TimeEntry: NSManagedObject, Decodable {
         super.init(entity: entity, insertInto: context)
     }
     
-    public required init(from decoder: Decoder) throws {
-        guard let context = decoder.userInfo[.context] as? NSManagedObjectContext else { fatalError("NSManagedObjectContext is missing") }
+    init(from raw: RawTimeEntry, context: NSManagedObjectContext, projects: [Project]) throws {
         super.init(entity: TimeEntry.entity(), insertInto: context)
 //        let values = try decoder.container(keyedBy: CodingKeys.self)
         
         
-        let rawTimeEntry = try RawTimeEntry(from: decoder)
-        name = rawTimeEntry.description
-        start = rawTimeEntry.start
-        end = rawTimeEntry.end
-        dur = rawTimeEntry.dur
-        lastUpdated = rawTimeEntry.updated
-        id = Int64(rawTimeEntry.id)
+        name = raw.description
+        start = raw.start
+        end = raw.end
+        dur = raw.dur / 1000.0
+        lastUpdated = raw.updated
+        id = Int64(raw.id)
         /// assign project ID, if any
-        if let pid = rawTimeEntry.pid {
-            let unknownProject = Project(context: context)
-            unknownProject.id = Int64(pid)
-            project = unknownProject
-        } else {
-            project = nil
-        }
+        project = projects.first(where: {$0.id == raw.pid ?? NSNotFound})
+    }
+    
+    func update(from raw: RawTimeEntry, context: NSManagedObjectContext) {
+        self.setValuesForKeys([
+            "name": raw.description,
+            "start": raw.start,
+            "end": raw.end,
+            "dur": raw.dur / 1000.0,
+            "lastUpdated": raw.updated,
+            "id": Int64(raw.id)
+        ])
+        #warning("project not updated")
+//        /// assign project ID, if any
+//        if let pid = raw.pid {
+//            let unknownProject = Project(context: context)
+//            unknownProject.id = Int64(pid)
+//            project = unknownProject
+//        } else {
+//            project = nil
+//        }
     }
     
     typealias Dimensions = (start: CGFloat, end: CGFloat)

@@ -16,9 +16,9 @@ func fetchDetailedReport(
     token: String,
     context: NSManagedObjectContext,
     projects: [Project]
-) -> Result<[TimeEntry], NetworkError> {
+) -> Result<[RawTimeEntry], NetworkError> {
     var page = 1 // pages are indexed from 1
-    var result: Result<[TimeEntry], NetworkError>!
+    var result: Result<[RawTimeEntry], NetworkError>!
     var emptyReq = false // flag for when a request returns no entries
     
     // initialize as empty to prevent crashes when offline
@@ -102,10 +102,6 @@ func fetchDetailedReport(
     case .failure(_):
         return result
     default:
-        /// assign the project matching the PID, or nil if none matches
-        report.entries.forEach { entry in
-            entry.project = projects.first(where: {$0.id == entry.project?.id})
-        }
         return .success(report.entries)
     }
 }

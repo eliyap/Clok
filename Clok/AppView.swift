@@ -26,7 +26,7 @@ struct ClokApp: App {
             if let error = error { fatalError("\(error)") }
         }
         persistentContainer = container
-        container.viewContext.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
+        container.viewContext.mergePolicy = NSOverwriteMergePolicy
     }
     
     /// keep track of the what has been fetched this session

@@ -131,9 +131,3 @@ struct EntryList: View {
         ].joined(separator: " ")
     }
 }
-
-struct EntryList_Previews: PreviewProvider {
-    static var previews: some View {
-        EntryList()
-    }
-}

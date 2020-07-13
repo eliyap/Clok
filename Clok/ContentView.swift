@@ -38,13 +38,6 @@ struct ContentView: View {
                     user: user,
                     context: moc
                 ) ?? loadProjects(context: moc) ?? []
-                _ = fetchEntries(
-                    user: user,
-                    from: Date() - weekLength,
-                    to: Date(),
-                    context: moc,
-                    projects: data.projects
-                )
             }
             
         }

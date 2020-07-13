@@ -87,15 +87,15 @@ struct StatDisplayView: View {
                 text: Text(abs(deltaEnd).toString() + " " + (deltaStart > 0 ? "later" : "earlier"))
             )
             Stat(
-                label: "\(deltaAvgDur > 0 ? "Increased" : "Decreased") by",
+                label: "\(deltaAvgDur > 0 ? "Increased" : "Decreased")",
                 symbol: "arrow.\(deltaStart > 0 ? "up" : "down").right",
-                text: Text(abs(deltaAvgDur * 7).toString() + " total"),
+                text: Text(abs(deltaAvgDur * 7).toString()),
                 weight: .heavy
             )
             Stat(
-                label: "",
+                label: "Per Day",
                 symbol: nil,
-                text: Text(abs(deltaAvgDur).toString() + " per day")
+                text: Text(abs(deltaAvgDur).toString())
             )
                 /// good ol negative padding hack to bring it closer up
                 .padding(.top, -10)

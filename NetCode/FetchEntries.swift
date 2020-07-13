@@ -39,7 +39,7 @@ func fetchEntries(
     DispatchQueue.global(qos: .background).async {
         switch result {
         case let .success(fetched):
-            entries = fetched
+            mergeEntries(context: context, entries: fetched, projects: projects)
         case .failure(.request):
             // temporary micro-copy
             print("We weren't able to fetch your data. Maybe the internet is down?")
@@ -47,7 +47,29 @@ func fetchEntries(
             print(error)
         }
     }
+    
+    
+    
+    
+    
+    
     /// save projects, return the number fetched
     try! context.save()
     return entries
+}
+
+func mergeEntries(
+    context: NSManagedObjectContext,
+    entries: [RawTimeEntry],
+    projects: [Project]
+) -> Void {
+    if let savedEntries = loadEntries(from: Date.distantPast, to: Date.distantFuture, context: context){
+        entries.forEach{ entry in
+            if let oldEntry = savedEntries.first(where: {$0.id == entry.id}) {
+                oldEntry.update(from: entry, context: context)
+            } else {
+                try! context.insert(TimeEntry(from: entry, context: context, projects: projects))
+            }
+        }
+    }
 }
