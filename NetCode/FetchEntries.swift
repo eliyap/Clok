@@ -47,5 +47,7 @@ func fetchEntries(
             print(error)
         }
     }
+    /// save projects, return the number fetched
+    try! context.save()
     return entries
 }

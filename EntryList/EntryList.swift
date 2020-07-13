@@ -31,9 +31,8 @@ struct EntryList: View {
                     Section(header: Header(day)) {
                         LazyVStack(spacing: 0) {
                             ForEach(day.entries, id: \.id) { entry in
-                                Text("\(entry.id)").id(UUID())
-//                                EntryView(entry: entry)
-//                                    .id(entry.id)
+                                EntryView(entry: entry)
+                                    .id(entry.id)
                             }
                         }
                     }
@@ -97,7 +96,6 @@ struct EntryList: View {
             .sorted(by: {$0.wrappedStart < $1.wrappedStart} )
             .within(interval: weekLength, of: zero.date)
             .matching(data.terms)
-            
         
         var days = [Day]()
         let cal = Calendar.current
@@ -109,12 +107,29 @@ struct EntryList: View {
             days.append(Day(
                 id: Int(mn.timeIntervalSince1970),
                 start: mn,
-                entries: entries
-                    .sorted{ $0.wrappedStart < $1.wrappedStart }
+                entries: validEntries
+                    /// restrict entries to those that started in this 24 hour period
+                    /// NOTE: don't user `within`, as this causes some entries to appear across 2 days, causing a crash!
                     .filter{ $0.wrappedStart.between(mn, mn + dayLength) }
             ))
         }
+        
+        let allEntries = days.reduce([], {$0 + $1.entries})
+        let crossReference = Dictionary(grouping: allEntries, by: {$0.id})
+        let duplicates = crossReference
+            .filter { $1.count > 1 }                 // filter down to only those with multiple contacts
+            .sorted { $0.1.count > $1.1.count }
+        print(days.filter{hasDuplicates(entries: $0.entries)}.map{$0.start})
+        print("")
         return days.filter{ $0.entries.count > 0 }
+    }
+    
+    func hasDuplicates(entries: [TimeEntry]) -> Bool {
+        let crossReference = Dictionary(grouping: entries, by: {$0.id})
+        let duplicates = crossReference
+            .filter { $1.count > 1 }                 // filter down to only those with multiple contacts
+            .sorted { $0.1.count > $1.1.count }
+        return duplicates.count > 0
     }
     
     func HeaderFor(section: Day) -> String {
