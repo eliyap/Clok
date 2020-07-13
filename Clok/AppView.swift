@@ -29,6 +29,10 @@ struct ClokApp: App {
         container.viewContext.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
     }
     
+    /// keep track of the what has been fetched this session
+    @State private var minLoaded = Date() - weekLength
+    @State private var maxLoaded = Date()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
@@ -38,6 +42,20 @@ struct ClokApp: App {
                 .environmentObject(settings)
                 .environmentObject(bounds)
                 .environment(\.managedObjectContext, persistentContainer.viewContext)
+                .onReceive(zero.$date, perform: { date in
+                    guard let user = settings.user else { return }
+                    if date < minLoaded {
+                        
+                        fetchEntries(
+                            user: user,
+                            from: minLoaded - weekLength,
+                            to: minLoaded, context: persistentContainer.viewContext,
+                            projects: data.projects
+                        )
+                        
+                        minLoaded -= weekLength
+                    }
+                })
         }
         
     }

@@ -43,7 +43,7 @@ struct SpiralPart : Shape {
         guard end > 0 else { return nil }
         guard start < 1 else { return nil }
         
-        rotate = zero.unboundedClockAngle24().radians
+        rotate = zero.unboundedClockAngle24().degrees
         
         /// adjust for the stroke cap
         end -= stroke_width / weekSpiralLength

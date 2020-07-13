@@ -25,9 +25,6 @@ struct EntrySpiral: View {
             .onTapGesture { tapHandler() }
     }
     
-    /// do not render view if it is outside 1 week range
-    init? (_ entry: TimeEntry) { self.entry = entry }
-    
     // MARK: - Tap Handler
     func tapHandler() -> Void {
         /// scroll to entry in list

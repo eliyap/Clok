@@ -74,5 +74,4 @@ public class Project: NSManagedObject, Decodable, ProjectLike {
     init(context: NSManagedObjectContext){
         super.init(entity: Project.entity(), insertInto: context)
     }
-    
 }

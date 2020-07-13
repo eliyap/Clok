@@ -9,9 +9,8 @@
 import Foundation
 
 final class ZeroDate: ObservableObject {
-    
     // default to 1 week before end of today
-    @Published var date = Date().addingTimeInterval(-weekLength)
+    @Published var date = Date() - weekLength
     
     enum dateChange {
         case fwrd

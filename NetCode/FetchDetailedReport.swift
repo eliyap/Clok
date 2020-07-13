@@ -102,6 +102,10 @@ func fetchDetailedReport(
     case .failure(_):
         return result
     default:
+        /// assign the project matching the PID, or nil if none matches
+        report.entries.forEach { entry in
+            entry.project = projects.first(where: {$0.id == entry.project?.id})
+        }
         return .success(report.entries)
     }
 }

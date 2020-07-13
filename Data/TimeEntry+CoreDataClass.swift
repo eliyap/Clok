@@ -54,7 +54,14 @@ public class TimeEntry: NSManagedObject, Decodable {
         dur = rawTimeEntry.dur
         lastUpdated = rawTimeEntry.updated
         id = Int64(rawTimeEntry.id)
-        // fetch project based on PID?
+        /// assign project ID, if any
+        if let pid = rawTimeEntry.pid {
+            let unknownProject = Project(context: context)
+            unknownProject.id = Int64(pid)
+            project = unknownProject
+        } else {
+            project = nil
+        }
     }
     
     typealias Dimensions = (start: CGFloat, end: CGFloat)

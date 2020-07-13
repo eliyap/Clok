@@ -9,16 +9,16 @@
 import Foundation
 
 extension TimeEntry {
-    func startsWithin(_ frame:TimeFrame) -> Bool {
+    func startsWithin(_ frame: TimeFrame) -> Bool {
         wrappedStart.between(frame.start, frame.end)
     }
     
-    func endsWithin(_ frame:TimeFrame) -> Bool {
+    func endsWithin(_ frame: TimeFrame) -> Bool {
         wrappedEnd.between(frame.start, frame.end)
     }
     
     /// whether this time entry falls completely within the provided time frame
-    func fallsWithin(_ frame:TimeFrame) -> Bool {
+    func fallsWithin(_ frame: TimeFrame) -> Bool {
         self.startsWithin(frame) && self.endsWithin(frame)
     }
 }

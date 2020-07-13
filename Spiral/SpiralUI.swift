@@ -11,9 +11,10 @@ struct SpiralUI: View {
     @EnvironmentObject private var data: TimeData
     @EnvironmentObject private var zero: ZeroDate
     @State private var rotate = Angle()
-    @FetchRequest(entity: TimeEntry.entity(), sortDescriptors: [
-//        NSSortDescriptor(key: "\(\TimeEntry.wrappedStart.timeIntervalSince1970)", ascending: true)
-    ]) var entries: FetchedResults<TimeEntry>
+    @FetchRequest(
+        entity: TimeEntry.entity(),
+        sortDescriptors: []
+    ) var entries: FetchedResults<TimeEntry>
 
     var body: some View {
         ZStack {
@@ -21,8 +22,9 @@ struct SpiralUI: View {
             /// dummy shape prevents janky animation when there are no entries
             Circle().stroke(style: StrokeStyle(lineWidth: 0))
             ForEach(entries, id: \.id) { entry in
-                if (entry.getDimensions(zero: zero.date).start < 1 && entry.getDimensions(zero: zero.date).end > 1) {
-                    EntrySpiral(entry)
+                /// ensure falls within week time frame
+                if (entry.wrappedStart < zero.date + weekLength || entry.wrappedEnd > zero.date) {
+                    EntrySpiral(entry: entry)
                 }
             }
             DayBubbles().allowsHitTesting(false)
