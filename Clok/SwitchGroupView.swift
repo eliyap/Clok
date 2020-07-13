@@ -20,9 +20,11 @@ struct ContentGroupView: View {
             switch settings.tab {
             case .spiral:
                 SpiralStack()
-                    .frame(width: size(geo), height: size(geo))
+                EmptyView()
+                .frame(width: size(geo), height: size(geo))
             case .bar:
                 BarStack()
+                EmptyView()
                     .frame(width: size(geo), height: size(geo))
             default:
                 EmptyView()

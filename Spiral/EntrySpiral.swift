@@ -26,11 +26,7 @@ struct EntrySpiral: View {
     }
     
     /// do not render view if it is outside 1 week range
-    init? (_ entry: TimeEntry) {
-        self.entry = entry
-        let (start, end) = entry.getDimensions(zero: zero.date)
-        guard end > 0 && start < 1 else { return nil }
-    }
+    init? (_ entry: TimeEntry) { self.entry = entry }
     
     // MARK: - Tap Handler
     func tapHandler() -> Void {

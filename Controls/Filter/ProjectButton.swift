@@ -16,7 +16,6 @@ struct ProjectButton: View {
     let radius = CGFloat(10)
     
     var body: some View {
-        #warning("dropped color here")
         HStack {
             /// show Any Project as an empty circle
             Image(systemName: StaticProject.any == data.terms.project ? "circle" : "largecircle.fill.circle")
@@ -31,7 +30,7 @@ struct ProjectButton: View {
     }
     
     func makeSheet() -> ActionSheet {
-        let projects: [ProjectLike] = [StaticProject.any] + data.projects()
+        let projects: [ProjectLike] = [StaticProject.any] + data.projects
         /// make a button for each project
         let projectBtns = projects.map { project in
             ActionSheet.Button.default(Text(project.wrappedName)) { () -> Void in

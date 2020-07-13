@@ -21,14 +21,7 @@ final class TimeData: ObservableObject {
     
     // true when user is changing the search terms
     @Published var searching = false
-    
-    func projects() -> [Project] {
-        #warning("Re implement with Core Data")
-        return []
-        /// use set to make unique
-//        Set(self.report.entries.map{$0.project})
-//            .sorted()
-    }
+    @Published var projects = [Project]()
 }
 
 struct WithID<T>: Identifiable {

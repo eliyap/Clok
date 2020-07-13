@@ -23,7 +23,7 @@ func loadOrFetchProjects(user: User, context: NSManagedObjectContext) -> [Projec
     }
     /// nothing loaded locally, fetch from online
     else if
-        let fetched = fetchProjects(token: user.token, wid: user.chosen.wid, in: context),
+        let fetched = fetchProjects(user: user, context: context),
         fetched.count > 0
     {
         return fetched
@@ -54,7 +54,7 @@ func loadOrFetchEntries(
     }
     /// nothing loaded locally, fetch from online
     else if
-        let fetched = fetchEntries(token: user.token, wid: user.chosen.wid, from: start, to: end, in: context),
+        let fetched = fetchEntries(user: user, from: start, to: end, context: context, projects: loadProjects(context: context) ?? []),
         fetched.count > 0
     {
         return fetched

@@ -31,11 +31,26 @@ struct ContentView: View {
 //            if !loaded { ProgressIndicator() }
             if settings.user?.token == nil { LoginView() }
         }
-        /// update on change to either user or space
-        .onReceive(settings.$user) {
-            fetchData(user: $0)
-        }
         .onAppear { tryLoadUserFromDisk() }
+        /// update on change to either user or space
+        .onReceive(settings.$user) { user in
+            if let user = user {
+                /// fetch projects when app is started
+                data.projects = fetchProjects(
+                    user: user,
+                    context: moc
+                ) ?? loadProjects(context: moc) ?? []
+                _ = fetchEntries(
+                    user: user,
+                    from: Date() - weekLength,
+                    to: Date(),
+                    context: moc,
+                    projects: data.projects
+                )
+            }
+            
+        }
+        
         .onAppear {
 //            testRunning()
         }

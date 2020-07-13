@@ -10,12 +10,13 @@ import Foundation
 import CoreData
 
 func fetchEntries(
-    token: String,
-    wid: Int,
+    user: User,
     from start: Date,
     to end: Date,
-    in context: NSManagedObjectContext
+    context: NSManagedObjectContext,
+    projects: [Project]
 ) -> [TimeEntry]? {
+    print("NOW FETCHING ENTRIES")
     // assemble request URL (page is added later)
     let df = DateFormatter()
     df.dateFormat = "yyyy-MM-dd" // ISO 8601 format, day precision
@@ -23,15 +24,16 @@ func fetchEntries(
     // documented at https://github.com/toggl/toggl_api_docs/blob/master/reports.md
     let api_string = "\(REPORT_URL)details?" + [
         "user_agent=\(user_agent)",    // identifies my app
-        "workspace_id=\(wid)", // provided by the User
+        "workspace_id=\(user.chosen.wid)", // provided by the User
         "since=\(df.string(from: start))",
         "until=\(df.string(from: end))"
     ].joined(separator: "&")
     
     let result = fetchDetailedReport(
         api_string: api_string,
-        token: token,
-        context: context
+        token: user.token,
+        context: context,
+        projects: projects
     )
     var entries: [TimeEntry]? = nil
     DispatchQueue.main.async {

@@ -74,7 +74,7 @@ public class TimeEntry: NSManagedObject, Decodable {
     /// or project if there's no description,
     /// or placeholder if no info whatsoever
     func descriptionString() -> String {
-        if wrappedDescription == "" && wrappedProject == StaticProject.noProject {
+        if wrappedDescription == "" && StaticProject.noProject == wrappedProject {
             return "No Description"
         } else if wrappedDescription == "" {
             return wrappedProject.wrappedName

@@ -10,15 +10,15 @@ import Foundation
 import CoreData
 
 func fetchProjects(
-    token: String,
-    wid: Int,
-    in context: NSManagedObjectContext
+    user: User,
+    context: NSManagedObjectContext
 ) -> [Project]? {
+    print("NOW FETCHING PROJECTS")
     /// https://github.com/toggl/toggl_api_docs/blob/master/chapters/workspaces.md#get-workspace-projects
     let result = getProjects(
         request:  formRequest(
-            url: URL(string: "\(API_URL)/workspaces/\(wid)/projects?user_agent=\(user_agent)")!,
-            auth: auth(token: token)
+            url: URL(string: "\(API_URL)/workspaces/\(user.chosen.wid)/projects?user_agent=\(user_agent)")!,
+            auth: auth(token: user.token)
         ),
         context: context
     )

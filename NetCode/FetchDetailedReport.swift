@@ -14,7 +14,8 @@ import CoreData
 func fetchDetailedReport(
     api_string: String,
     token: String,
-    context: NSManagedObjectContext
+    context: NSManagedObjectContext,
+    projects: [Project]
 ) -> Result<[TimeEntry], NetworkError> {
     var page = 1 // pages are indexed from 1
     var result: Result<[TimeEntry], NetworkError>!

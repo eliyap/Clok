@@ -45,8 +45,8 @@ extension TimeEntry {
         wrappedProject.wrappedColor
     }
     
-    public var wrappedProject: Project {
-        project!
+    var wrappedProject: ProjectLike {
+        project ?? StaticProject.unknown
     }
     // default project to no project here in future
 }

@@ -12,21 +12,22 @@ struct SpiralUI: View {
     @EnvironmentObject private var zero: ZeroDate
     @State private var rotate = Angle()
     @FetchRequest(entity: TimeEntry.entity(), sortDescriptors: [
-        NSSortDescriptor(key: "\(\TimeEntry.wrappedStart.timeIntervalSince1970)", ascending: true)
+//        NSSortDescriptor(key: "\(\TimeEntry.wrappedStart.timeIntervalSince1970)", ascending: true)
     ]) var entries: FetchedResults<TimeEntry>
-    
+
     var body: some View {
         ZStack {
             Clockhands().allowsHitTesting(false)
             /// dummy shape prevents janky animation when there are no entries
             Circle().stroke(style: StrokeStyle(lineWidth: 0))
             ForEach(entries, id: \.id) { entry in
-//                #warning("silenced type error")
-                EntrySpiral(entry)
+                if (entry.getDimensions(zero: zero.date).start < 1 && entry.getDimensions(zero: zero.date).end > 1) {
+                    EntrySpiral(entry)
+                }
             }
             DayBubbles().allowsHitTesting(false)
         }
-        .onReceive(self.zero.$weekSkip, perform: { dxn in
+        .onReceive(zero.$weekSkip, perform: { dxn in
             /**
              when a week skip command is received,
              perform a 360 degree barell roll animation,
@@ -35,16 +36,16 @@ struct SpiralUI: View {
             
             switch dxn {
             case .fwrd:
-                self.rotate += Angle(degrees: 360)
-                self.zero.weekSkip = nil
+                rotate += Angle(degrees: 360)
+                zero.weekSkip = nil
             case .back:
-                self.rotate -= Angle(degrees: 360)
-                self.zero.weekSkip = nil
+                rotate -= Angle(degrees: 360)
+                zero.weekSkip = nil
             default:
                 return
             }
         })
-        .rotationEffect(self.rotate)
+        .rotationEffect(rotate)
         .animation(.spring())
         .aspectRatio(1, contentMode: .fit)
         .drawingGroup()
