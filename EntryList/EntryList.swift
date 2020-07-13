@@ -114,22 +114,7 @@ struct EntryList: View {
             ))
         }
         
-        let allEntries = days.reduce([], {$0 + $1.entries})
-        let crossReference = Dictionary(grouping: allEntries, by: {$0.id})
-        let duplicates = crossReference
-            .filter { $1.count > 1 }                 // filter down to only those with multiple contacts
-            .sorted { $0.1.count > $1.1.count }
-        print(days.filter{hasDuplicates(entries: $0.entries)}.map{$0.start})
-        print("")
         return days.filter{ $0.entries.count > 0 }
-    }
-    
-    func hasDuplicates(entries: [TimeEntry]) -> Bool {
-        let crossReference = Dictionary(grouping: entries, by: {$0.id})
-        let duplicates = crossReference
-            .filter { $1.count > 1 }                 // filter down to only those with multiple contacts
-            .sorted { $0.1.count > $1.1.count }
-        return duplicates.count > 0
     }
     
     func HeaderFor(section: Day) -> String {
