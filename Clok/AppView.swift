@@ -46,7 +46,7 @@ struct ClokApp: App {
                     guard let user = settings.user else { return }
                     if date < minLoaded {
                         
-                        fetchEntries(
+                        _ = fetchEntries(
                             user: user,
                             from: minLoaded - weekLength,
                             to: minLoaded, context: persistentContainer.viewContext,

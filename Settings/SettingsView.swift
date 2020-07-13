@@ -13,6 +13,7 @@ struct SettingsView: View {
     @EnvironmentObject var data: TimeData
     @EnvironmentObject var settings: Settings
     @State var selectingWorkspace = false
+    
     var body: some View {
         NavigationView {
             List {
@@ -39,7 +40,8 @@ struct SettingsView: View {
                         .foregroundColor(.red)
                         .onTapGesture {
                             // destroy local data
-                            data.report = Report.empty
+                            #warning("need to destoy local storage")
+//                            data.report = Report.empty
                             
                             // destroy credentials
                             try! dropKey()

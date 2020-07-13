@@ -12,8 +12,6 @@ import SwiftUI
 struct ContentView: View {
     
     @Environment(\.managedObjectContext) var moc
-    @FetchRequest(entity: TimeEntry.entity(), sortDescriptors: []) var myEntries: FetchedResults<TimeEntry>
-    @FetchRequest(entity: Project.entity(), sortDescriptors: []) var projects: FetchedResults<Project>
     
     @EnvironmentObject var data: TimeData
     @EnvironmentObject var settings: Settings

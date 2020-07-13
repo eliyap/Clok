@@ -10,8 +10,6 @@ import Foundation
 import SwiftUI
 
 final class TimeData: ObservableObject {
-    @Published var report = Report.empty
-    
     // the Project and Descriptions the user is filtering for
     @Published var terms = SearchTerm(
         project: StaticProject.any,
@@ -22,9 +20,4 @@ final class TimeData: ObservableObject {
     // true when user is changing the search terms
     @Published var searching = false
     @Published var projects = [Project]()
-}
-
-struct WithID<T>: Identifiable {
-    var id = UUID()
-    var val: T
 }

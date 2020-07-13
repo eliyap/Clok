@@ -17,6 +17,7 @@ struct LineGraph: View {
     
     @GestureState var magnifyBy = CGFloat(1.0)
     @State var dragBy = PositionTracker()
+    @FetchRequest(entity: TimeEntry.entity(), sortDescriptors: []) var entries: FetchedResults<TimeEntry>
     
     let tf = DateFormatter()
     let haptic = UIImpactFeedbackGenerator(style: .light)
@@ -45,7 +46,7 @@ struct LineGraph: View {
                     }
                     .allowsHitTesting(false)
                     
-                    ForEach(data.report.entries.filter {$0.wrappedEnd > zero.date && $0.wrappedStart < zero.date + weekLength}, id: \.id) { entry in
+                    ForEach(entries.filter {$0.wrappedEnd > zero.date && $0.wrappedStart < zero.date + weekLength}, id: \.id) { entry in
                         LineBar(with: entry, geo: geo, bounds: GetBounds(zero: zero, entry: entry))
                             .transition(.identity)
                     }

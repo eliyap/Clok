@@ -11,6 +11,7 @@ import SwiftUI
 struct StatView: View {
     @EnvironmentObject var data: TimeData
     @EnvironmentObject var zero: ZeroDate
+    @FetchRequest(entity: TimeEntry.entity(), sortDescriptors: []) var entries: FetchedResults<TimeEntry>
     @State private var dateString = ""
     
     var body: some View {
@@ -39,12 +40,12 @@ struct StatView: View {
                 StatDisplayView(
                     for: WeekTimeFrame(
                         start: zero.date,
-                        entries: data.report.entries,
+                        entries: entries.sorted{$0.wrappedStart < $1.wrappedStart},
                         terms: data.terms
                     ),
                     prev: WeekTimeFrame(
                         start: zero.date - weekLength,
-                        entries: data.report.entries,
+                        entries: entries.sorted{$0.wrappedStart < $1.wrappedStart},
                         terms: data.terms
                     )
                 )

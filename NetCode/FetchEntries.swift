@@ -36,7 +36,7 @@ func fetchEntries(
         projects: projects
     )
     var entries: [TimeEntry]? = nil
-    DispatchQueue.main.async {
+    DispatchQueue.global(qos: .background).async {
         switch result {
         case let .success(fetched):
             entries = fetched
