@@ -9,7 +9,7 @@
 
 import Foundation
 import CoreData
-
+import SwiftUI
 
 extension Project {
 
@@ -30,7 +30,9 @@ extension Project {
         Int(id)
     }
     
-    // color???
+    public var wrappedColor: Color {
+        Color(hex: color ?? StaticProject.unknown.wrappedColor.toHex)
+    }
     
     public var entryArray: [TimeEntry] {
         let set = entries as? Set<TimeEntry> ?? []

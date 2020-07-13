@@ -8,7 +8,7 @@
 
 import Foundation
 import SwiftUI
-
+import CoreData
 // MARK: - Drawing Constants
 
 // controls the angle of spiral being approximated by Bezier curves
@@ -63,6 +63,8 @@ enum Weekdays: Int {
     case Friday = 5
     case Saturday = 6
 }
+
+let radPerSec = Double.tau / dayLength
 
 // MARK: - Misc
 /**

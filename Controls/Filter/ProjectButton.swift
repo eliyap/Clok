@@ -16,13 +16,14 @@ struct ProjectButton: View {
     let radius = CGFloat(10)
     
     var body: some View {
+        #warning("dropped color here")
         HStack {
             /// show Any Project as an empty circle
-            Image(systemName: data.terms.project == .any ? "circle" : "largecircle.fill.circle")
-                .foregroundColor(data.terms.project == .any ? Color.primary : data.terms.project.color)
+            Image(systemName: StaticProject.any == data.terms.project ? "circle" : "largecircle.fill.circle")
+                .foregroundColor(StaticProject.any == data.terms.project ? Color.primary : data.terms.project.wrappedColor)
                 .modifier(ButtonGlyph())
                 .actionSheet(isPresented: $showSheet) { makeSheet() }
-            Text("Project is \(data.terms.project.name)")
+            Text("Project is \(data.terms.project.wrappedName)")
         }
         .onTapGesture {
             self.showSheet.toggle()
@@ -30,10 +31,10 @@ struct ProjectButton: View {
     }
     
     func makeSheet() -> ActionSheet {
-        let projects = [OldProject.any] + self.data.projects()
+        let projects: [ProjectLike] = [StaticProject.any] + data.projects()
         /// make a button for each project
         let projectBtns = projects.map { project in
-            ActionSheet.Button.default(Text(project.name)) { () -> Void in
+            ActionSheet.Button.default(Text(project.wrappedName)) { () -> Void in
                 self.data.terms.project = project
             }
         /// remember cancel button

@@ -8,13 +8,13 @@
 
 import Foundation
 
-extension OldTimeEntry {
+extension TimeEntry {
     func startsWithin(_ frame:TimeFrame) -> Bool {
-        self.start.between(frame.start, frame.end)
+        wrappedStart.between(frame.start, frame.end)
     }
     
     func endsWithin(_ frame:TimeFrame) -> Bool {
-        self.end.between(frame.start, frame.end)
+        wrappedEnd.between(frame.start, frame.end)
     }
     
     /// whether this time entry falls completely within the provided time frame
@@ -23,8 +23,8 @@ extension OldTimeEntry {
     }
 }
 
-extension Array where Element == OldTimeEntry {
-    func matching(_ terms: SearchTerm) -> [OldTimeEntry] {
+extension Array where Element == TimeEntry {
+    func matching(_ terms: SearchTerm) -> [TimeEntry] {
         return self.filter { $0.matches(terms) }
     }
 }

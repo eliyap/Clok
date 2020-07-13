@@ -10,5 +10,5 @@ import Foundation
 import SwiftUI
 
 final class ListRow: ObservableObject {
-    @Published var entry: OldTimeEntry? = nil
+    @Published var entry: TimeEntry? = nil
 }

@@ -19,10 +19,6 @@ extension ContentView {
     }
     
     func fetchData(user: User?) {
-        // do nothing if token is nil (user is not logged in)
-        guard let user = user else { return }
-        
-        
     }
     
     

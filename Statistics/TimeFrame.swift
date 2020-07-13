@@ -8,7 +8,7 @@ struct SearchTerm {
     }
     
     /// May remove project restriction by choosing Any Project
-    var project:OldProject
+    var project: ProjectLike
     
     /// we wish to retain the user's last description
     var description: String
@@ -37,26 +37,26 @@ extension SearchTerm.descriptionPreference {
 struct TimeFrame {
     var start:Date
     var end:Date
-    func containsStartOf(_ entry: OldTimeEntry) -> Bool {
-        entry.start.between(self.start, self.end)
+    func containsStartOf(_ entry: TimeEntry) -> Bool {
+        entry.wrappedStart.between(start, end)
     }
-    func containsEndOf(_ entry: OldTimeEntry) -> Bool {
-        entry.end.between(self.start, self.end)
+    func containsEndOf(_ entry: TimeEntry) -> Bool {
+        entry.wrappedEnd.between(start, end)
     }
-    func contains(_ entry: OldTimeEntry) -> Bool {
-        entry.end.between(self.start, self.end)
-    }
+//    func contains(_ entry: TimeEntry) -> Bool {
+//        entry.end.between(start, end)
+//    }
 }
 
 struct WeekTimeFrame {
-    var frame:TimeFrame
-    var entries:[OldTimeEntry]
+    var frame: TimeFrame
+    var entries: [TimeEntry]
     let df = DateFormatter()
     
     /**
      filter time entries down to between date range
      */
-    init (start start_: Date, entries entries_: [OldTimeEntry], terms: SearchTerm) {
+    init (start start_: Date, entries entries_: [TimeEntry], terms: SearchTerm) {
         frame = TimeFrame(start: start_, end: start_ + weekLength)
         entries = entries_
             .matching(terms)
@@ -69,10 +69,10 @@ struct WeekTimeFrame {
      +12hr to place it on the opposite side of the clock
      designed to be placed OPPOSITE most of the provided time entries, thus dividing them into sensible "days"
      */
-    func modifiedMidnight(for entries: [OldTimeEntry]) -> Date {
+    func modifiedMidnight(for entries: [TimeEntry]) -> Date {
         [
-            entries.map{ $0.start }.meanTime(),
-            entries.map{ $0.end   }.meanTime()
+            entries.map{ $0.wrappedStart }.meanTime(),
+            entries.map{ $0.wrappedEnd   }.meanTime()
         ].meanTime() + (dayLength / 2)
     }
     
@@ -80,7 +80,7 @@ struct WeekTimeFrame {
      find the most sensible way to divide these time entries into "days"
      with each day spanning at most 24 hours, and starting / ending at some modified midnight
     */
-    func modifiedDays(for entries: [OldTimeEntry]) -> [DayTimeFrame] {
+    func modifiedDays(for entries: [TimeEntry]) -> [DayTimeFrame] {
         let modMN = modifiedMidnight(for: entries)
         /// find day time frames, using modified midnight
         return daySlices(
@@ -100,11 +100,11 @@ struct WeekTimeFrame {
         var entries = self.entries
         
         /// filter and sort in chronological order by start
-        entries.sort(by: {$0.start < $1.start})
+        entries.sort(by: {$0.wrappedStart < $1.wrappedStart})
         var days = modifiedDays(for: entries)
         
         /// list of the time entries that were the first started of their day
-        var firstStarts = [OldTimeEntry]()
+        var firstStarts = [TimeEntry]()
         
         /// iterate over list, adding the entry that *first started* that Day frame
         entries.forEach { entry in
@@ -117,7 +117,7 @@ struct WeekTimeFrame {
             }
         }
         return firstStarts
-            .map{$0.start}
+            .map{$0.wrappedStart}
             .meanTime()
     }
     
@@ -131,11 +131,11 @@ struct WeekTimeFrame {
         
         var entries = self.entries
         /// filter and sort in reverse chronological order by end
-        entries.sort(by: {$0.end > $1.end})
+        entries.sort(by: {$0.wrappedEnd > $1.wrappedEnd})
         var days = modifiedDays(for: entries)
         
         /// list of the time entries that were the first ended of their day
-        var lastEnds = [OldTimeEntry]()
+        var lastEnds = [TimeEntry]()
         
         /// iterate over list backwards, adding the entry that *last ended* that Day frame
         entries.forEach { entry in
@@ -149,7 +149,7 @@ struct WeekTimeFrame {
         }
         
         return lastEnds
-            .map{$0.end}
+            .map{$0.wrappedEnd}
             .meanTime()
     }
     
@@ -161,7 +161,7 @@ struct WeekTimeFrame {
     func avgDuration() -> TimeInterval {
         // calculate total time interval / 7, taking care to cap at week boundaries
         return entries
-            .map{min(self.frame.end, $0.end) - max(self.frame.start, $0.start)}
+            .map{min(self.frame.end, $0.wrappedEnd) - max(self.frame.start, $0.wrappedStart)}
             .reduce(0, {$0 + $1}) / 7
     }
 }

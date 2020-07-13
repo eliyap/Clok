@@ -9,10 +9,10 @@
 import SwiftUI
 
 struct EntryView: View {
-    var entry: OldTimeEntry
+    var entry: TimeEntry
     private let df = DateFormatter()
     private let radius = CGFloat(10)
-    init(entry: OldTimeEntry) {
+    init(entry: TimeEntry) {
         self.entry = entry
         df.timeStyle = .short
     }
@@ -20,7 +20,7 @@ struct EntryView: View {
     var body: some View {
         HStack {
             EntryTab(cornerRadius: radius)
-                .foregroundColor(entry.project.color)
+                .foregroundColor(entry.wrappedColor)
                 .frame(width: listPadding * 1.5)
             VStack {
                 HStack {
@@ -31,10 +31,10 @@ struct EntryView: View {
                         .font(.title3)
                 }
                 HStack {
-                    Text(entry.project.name)
+                    Text(entry.wrappedProject.wrappedName)
                         .font(.caption)
                     Spacer()
-                    Text("\(df.string(from: entry.start)) – \(df.string(from: entry.end))")
+                    Text("\(df.string(from: entry.wrappedStart)) – \(df.string(from: entry.wrappedEnd))")
                         .font(.caption)
                 }
             }

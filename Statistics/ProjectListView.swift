@@ -14,12 +14,12 @@ struct ProjectListView: View {
     @Environment(\.presentationMode) var mode
     
     
-    let projects: [OldProject]
+    let projects: [Project]
     
     var body: some View {
         List {
             /// option to filter for Any Project
-            self.button(for: .any).modifier(fillRow())
+            self.button(for: StaticProject.any).modifier(fillRow())
             
             ForEach(self.projects, id: \.id ) { project in
                 self.button(for: project).modifier(fillRow())
@@ -29,10 +29,10 @@ struct ProjectListView: View {
         .modifier(roundedList())
     }
     
-    func button(for project: OldProject) -> some View {
+    func button(for project: ProjectLike) -> some View {
         Button(action: {
-            self.data.terms.project = project
-            self.search.project = project
+            data.terms.project = project
+            search.project = project
             
             /// dismiss this view after project is selected
             self.mode.wrappedValue.dismiss()
@@ -40,13 +40,13 @@ struct ProjectListView: View {
             HStack{
                 Rectangle()
                     .frame(width: listLineInset)
-                    .foregroundColor(project.color)
+                    .foregroundColor(project.wrappedColor)
                 /// bold the chosen project
-                if (project.name == search.project.name) {
-                    Text(project.name)
+                if (project.wrappedName == search.project.wrappedName) {
+                    Text(project.wrappedName)
                         .bold()
                 } else {
-                    Text(project.name)
+                    Text(project.wrappedName)
                 }
             }
         }

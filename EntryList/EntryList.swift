@@ -86,17 +86,15 @@ struct EntryList: View {
     struct Day {
         var id: Int
         var start: Date
-        var entries: [OldTimeEntry]
+        var entries: [TimeEntry]
     }
     
     func Days() -> [Day] {
         /// restrict to current week
-        #warning("silenced error")
-//        let entries = data.report.entries
-//            .within(interval: weekLength, of: zero.date)
-//            .matching(data.terms)
-//            .sorted(by: {$0.start < $1.start} )
-        let entries = [OldTimeEntry]()
+        let entries = data.report.entries
+            .within(interval: weekLength, of: zero.date)
+            .matching(data.terms)
+            .sorted(by: {$0.wrappedStart < $1.wrappedStart} )
         
         var days = [Day]()
         let cal = Calendar.current

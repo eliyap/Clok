@@ -8,14 +8,14 @@
 
 import Foundation
 
-func GetBounds(zero: ZeroDate, entry: OldTimeEntry) -> [LineBar.Bound] {
+func GetBounds(zero: ZeroDate, entry: TimeEntry) -> [LineBar.Bound] {
     var bounds = [LineBar.Bound]()
     for i in 0..<LineGraph.dayCount {
         let begin = zero.date + (Double(i) * dayLength)
-        guard entry.end > begin && entry.start < begin + zero.interval else { continue }
+        guard entry.wrappedEnd > begin && entry.wrappedStart < begin + zero.interval else { continue }
         bounds.append(LineBar.Bound(
-            max(0, (entry.start - begin) / zero.interval),
-            min(1, (entry.end - begin) / zero.interval),
+            max(0, (entry.wrappedStart - begin) / zero.interval),
+            min(1, (entry.wrappedEnd - begin) / zero.interval),
             col: i
         ))
     }

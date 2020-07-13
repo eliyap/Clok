@@ -22,8 +22,8 @@ struct StatView: View {
                 HStack {
                     /// show Any Project as an empty circle
                     Image(systemName: data.terms.project == .any ? "circle" : "largecircle.fill.circle")
-                        .foregroundColor(data.terms.project == .any ? Color.primary : data.terms.project.color)
-                    Text(data.terms.project.name)
+                        .foregroundColor(data.terms.project == .any ? Color.primary : data.terms.project.wrappedColor)
+                    Text(data.terms.project.wrappedName)
                         .bold()
                     if data.terms.byDescription == .any {
                         Text("Any Description")
@@ -36,19 +36,18 @@ struct StatView: View {
                     }
                 }
                 .onTapGesture { withAnimation { data.searching.toggle() } }
-                #warning("silenced type error")
-//                StatDisplayView(
-//                    for: WeekTimeFrame(
-//                        start: zero.date,
-//                        entries: data.report.entries,
-//                        terms: data.terms
-//                    ),
-//                    prev: WeekTimeFrame(
-//                        start: zero.date - weekLength,
-//                        entries: data.report.entries,
-//                        terms: data.terms
-//                    )
-//                )
+                StatDisplayView(
+                    for: WeekTimeFrame(
+                        start: zero.date,
+                        entries: data.report.entries,
+                        terms: data.terms
+                    ),
+                    prev: WeekTimeFrame(
+                        start: zero.date - weekLength,
+                        entries: data.report.entries,
+                        terms: data.terms
+                    )
+                )
             }
             .padding()
         }
@@ -57,6 +56,6 @@ struct StatView: View {
     func Tab() -> some View {
         Rectangle()
             .frame(width: listLineInset)
-            .foregroundColor(data.terms.project.color)
+            .foregroundColor(data.terms.project.wrappedColor)
     }
 }

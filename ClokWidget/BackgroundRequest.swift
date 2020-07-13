@@ -8,7 +8,7 @@ import Foundation
 
 func getRunningEntry(completion:@escaping (RunningEntry?, Error?) -> Void) {
     let sem = DispatchSemaphore(value: 0)
-    var project = OldProject.noProject
+    var project = StaticProject.noProject
     var runningData: [String: AnyObject]!
     
     guard let token = getToken() else {
@@ -58,43 +58,11 @@ func getRunningEntry(completion:@escaping (RunningEntry?, Error?) -> Void) {
         completion(RunningEntry.noEntry, nil)
         return
     }
-    print(pid)
-    URLSession.shared.dataTask(with: formRequest(
-        url: URL(string: "\(API_URL)/projects/\(pid)\(agentSuffix)")!,
-        auth: auth(token: token)
-    )) {(data: Data?, resp: URLResponse?, error: Error?) -> Void in
-        // release process when complete
-        defer{ sem.signal() }
-        
-        guard let data = data else {
-            completion(nil, error)
-            return
-        }
-        do {
-            let json = try JSONSerialization.jsonObject(with: data, options: []) as! [String: AnyObject]
-            guard
-                json["data"] != nil,
-                let data = json["data"] as? [String: AnyObject],
-                let proj = OldProject(from: data)
-            else {
-                completion (nil, NetworkError.serialization)
-                return
-            }
-            project = proj
-        } catch {
-            completion(nil, NetworkError.serialization)
-            return
-        }
-    }.resume()
     
-    // wait for 2nd request to complete
-    if sem.wait(timeout: .now() + 15) == .timedOut {
-        completion(nil, NetworkError.timeout)
-        return
-    }
+    #warning("reimplement project fetch here! now have core data")
     
     // sanity check, the project we requested was the one we received
-    guard project.id == pid else { fatalError("\(project.id) and \(pid) do not match!") }
+    guard project.wrappedID == pid else { fatalError("\(project.wrappedID) and \(pid) do not match!") }
     guard let running = RunningEntry(from: runningData, project: project) else {
         completion(nil, NetworkError.serialization)
         return

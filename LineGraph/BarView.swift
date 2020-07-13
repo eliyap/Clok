@@ -12,7 +12,7 @@ struct LineBar: View {
     
     typealias Bound = (min: Double, max: Double, col: Int)
     
-    @ObservedObject var entry: OldTimeEntry
+    @ObservedObject var entry: TimeEntry
     @EnvironmentObject private var zero: ZeroDate
     @EnvironmentObject var data: TimeData
     @EnvironmentObject var listRow: ListRow
@@ -33,7 +33,7 @@ struct LineBar: View {
                 geo: geo,
                 bound: bound
             )
-                .foregroundColor(entry.project.color)
+                .foregroundColor(entry.wrappedColor)
                 .opacity(opacity * (entry.matches(data.terms) ? 1 : 0.5) )
                 .offset(x: .zero, y: offset)
                 .onTapGesture { tapHandler() }
@@ -41,7 +41,7 @@ struct LineBar: View {
     }
     
     init?(
-        with entry_: OldTimeEntry,
+        with entry_: TimeEntry,
         geo geo_: GeometryProxy,
         bounds bounds_: [Bound]
     ){

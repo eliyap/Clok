@@ -13,19 +13,19 @@ struct RunningEntry: Equatable {
 
     let id:Int
     let start: Date // needs to be coerced from ISO 8601 date / time format (YYYY - MM - DDTHH: MM: SS)
-    let project: OldProject
+    let project: ProjectLike
     let description: String // not nullable
     let df = DateFormatter()
     
     /// signals that no entry is currently running
     static let noEntry = RunningEntry(
         id: NSNotFound,
-        start: .distantFuture,
-        project: .noProject,
+        start: Date.distantFuture,
+        project: StaticProject.noProject,
         description: "No Entry Running"
     )
     
-    private init(id: Int, start: Date, project: OldProject, description: String){
+    private init(id: Int, start: Date, project: ProjectLike, description: String){
         self.id = id
         self.start = start
         self.project = project
@@ -33,7 +33,7 @@ struct RunningEntry: Equatable {
     }
     
     // parse from JSON
-    init?(from data: [String : AnyObject], project: OldProject){
+    init?(from data: [String : AnyObject], project: ProjectLike){
         // initialize DateFormatter to handle ISO8601 strings
         df.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
         
@@ -58,10 +58,10 @@ struct RunningEntry: Equatable {
     /// or project if there's no description,
     /// or placeholder if no info whatsoever
     func descriptionString() -> String {
-        if description == "" && project == .noProject {
+        if description == "" && StaticProject.noProject == project {
             return "No Description"
         } else if description == "" {
-            return project.name
+            return project.wrappedName
         } else {
             return description
         }
@@ -73,7 +73,6 @@ struct RunningEntry: Equatable {
         return
             lhs.id == rhs.id &&
             lhs.start == rhs.start &&
-            lhs.project == rhs.project &&
             lhs.description == rhs.description
        }
 }

@@ -11,18 +11,18 @@ struct SpiralUI: View {
     @EnvironmentObject private var data: TimeData
     @EnvironmentObject private var zero: ZeroDate
     @State private var rotate = Angle()
+    @FetchRequest(entity: TimeEntry.entity(), sortDescriptors: [
+        NSSortDescriptor(key: "\(\TimeEntry.wrappedStart.timeIntervalSince1970)", ascending: true)
+    ]) var entries: FetchedResults<TimeEntry>
     
     var body: some View {
         ZStack {
             Clockhands().allowsHitTesting(false)
             /// dummy shape prevents janky animation when there are no entries
             Circle().stroke(style: StrokeStyle(lineWidth: 0))
-            ForEach(self.data.report.entries, id: \.id) { entry in
-                #warning("silenced type error")
-//                EntrySpiral(
-//                    entry,
-//                    zeroTo:self.zero.date
-//                )
+            ForEach(entries, id: \.id) { entry in
+//                #warning("silenced type error")
+                EntrySpiral(entry)
             }
             DayBubbles().allowsHitTesting(false)
         }

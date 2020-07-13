@@ -9,6 +9,7 @@
 
 import Foundation
 import CoreData
+import SwiftUI
 
 extension TimeEntry {
 
@@ -40,5 +41,12 @@ extension TimeEntry {
         end ?? Date.distantFuture
     }
     
+    public var wrappedColor: Color {
+        wrappedProject.wrappedColor
+    }
+    
+    public var wrappedProject: Project {
+        project!
+    }
     // default project to no project here in future
 }

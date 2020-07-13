@@ -9,52 +9,57 @@
 import Foundation
 import SwiftUI
 
-struct OldProject: Hashable, Comparable, Identifiable {
-    var name: String
-    var color: Color
-    var id: Int
+protocol ProjectLike {
+    var wrappedID: Int { get }
+    var wrappedColor: Color { get }
+    var wrappedName: String { get }
+    func matches(_ other: ProjectLike) -> Bool
+}
+
+class StaticProject: ProjectLike {
     
-    func matches(_ other: OldProject) -> Bool {
+    var wrappedID: Int
+    var wrappedColor: Color
+    var wrappedName: String
+    
+    static func == (lhs: StaticProject, rhs: ProjectLike) -> Bool {
+        lhs.wrappedName == rhs.wrappedName && lhs.wrappedID == rhs.wrappedID
+    }
+    
+    func matches(_ other: ProjectLike) -> Bool {
         /// Any Project matches all other projects
-        self == other || other == .any || self == .any
+        self == other || .any == other  || self == StaticProject.any
     }
     
-    static func < (lhs: OldProject, rhs: OldProject) -> Bool {
+    static func < (lhs: StaticProject, rhs: ProjectLike) -> Bool {
         /// No Project should always be first
-        if lhs == .noProject { return true }
-        if rhs == .noProject { return false }
-        return lhs.name < rhs.name
+        if StaticProject.noProject == lhs  { return true }
+        if StaticProject.noProject == rhs  { return false }
+        return lhs.wrappedName < rhs.wrappedName
     }
     
-    static let noProject = OldProject(
+    init(name: String, color: Color, id: Int){
+        wrappedName = name
+        wrappedID = id
+        wrappedColor = color
+    }
+    
+    static let noProject = StaticProject(
         name: "No Project",
         color: Color.noProject,
         id: NSNotFound
     )
+
+    /// should not appear, represents a project that could not be fetched from our data base
+    static let unknown = StaticProject(
+        name: "Unknown Project",
+        color: Color.noProject,
+        id: NSNotFound
+    )
     
-    static let any = OldProject(
+    static let any = StaticProject(
         name: "Any Project",
         color: Color.secondary,
         id: Int.zero
     )
-    
-    init(name: String, color: Color, id: Int){
-        self.name = name
-        self.color = color
-        self.id = id
-    }
-    
-    // parse from JSON
-    init?(from data: [String : AnyObject]){
-        // check that these properties are not nil
-        guard
-            let id = data["id"] as? Int,
-            let project_hex_color = data["hex_color"] as? String,
-            let name = data["name"] as? String
-        else { return nil }
-        
-        self.id = id
-        self.color = Color(hex: project_hex_color)
-        self.name = name
-    }
 }

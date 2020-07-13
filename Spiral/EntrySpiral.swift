@@ -9,28 +9,27 @@
 import SwiftUI
 
 struct EntrySpiral: View {
-    @ObservedObject var entry: OldTimeEntry
+    @ObservedObject var entry: TimeEntry
     @EnvironmentObject var data: TimeData
+    @EnvironmentObject var zero: ZeroDate
     @EnvironmentObject var listRow: ListRow
     @State private var opacity = 1.0
     @State private var scale = 1.0
     
     var body: some View {
-        
-        SpiralPart(entry)?
-            .fill(entry.project.color)
+        SpiralPart(entry: entry, zero: zero.date)?
+            .fill(entry.wrappedColor)
             // goes transparent when filtered out
             .opacity(opacity * (entry.matches(data.terms) ? 1 : 0.5) )
             .scaleEffect(CGFloat(scale))
             .onTapGesture { tapHandler() }
-            
     }
     
     /// do not render view if it is outside 1 week range
-    init? (_ entry:OldTimeEntry, zeroTo zeroDate:Date) {
+    init? (_ entry: TimeEntry) {
         self.entry = entry
-        self.entry.zero(zeroDate)
-        guard self.entry.spiralEnd > 0 && self.entry.spiralStart < 1 else { return nil }
+        let (start, end) = entry.getDimensions(zero: zero.date)
+        guard end > 0 && start < 1 else { return nil }
     }
     
     // MARK: - Tap Handler
@@ -43,7 +42,7 @@ struct EntrySpiral: View {
             /// drop the opacity to take on more BG color
             opacity -= 0.25
             /// scale more when closer to the center
-            scale += 0.075 / Double(entry.spiralEnd.squareRoot())
+            scale += 0.075 / Double(entry.getDimensions(zero: zero.date).end.squareRoot())
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             withAnimation(.linear(duration: 0.3)){

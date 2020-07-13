@@ -27,7 +27,7 @@ struct ClokWidgetEntryView : View {
                     Text("Start a timer")
                 } else {
                     Text("\(entry.running.description)")
-                    Text("\(entry.running.project.name)")
+                    Text("\(entry.running.project.wrappedName)")
                     Text(entry.running.start, style: .timer)
                         .frame(maxWidth: geo.size.width)
                 }

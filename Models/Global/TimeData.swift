@@ -14,7 +14,7 @@ final class TimeData: ObservableObject {
     
     // the Project and Descriptions the user is filtering for
     @Published var terms = SearchTerm(
-        project: .any,
+        project: StaticProject.any,
         description: "",
         byDescription: .any
     )
@@ -22,7 +22,7 @@ final class TimeData: ObservableObject {
     // true when user is changing the search terms
     @Published var searching = false
     
-    func projects() -> [OldProject] {
+    func projects() -> [Project] {
         #warning("Re implement with Core Data")
         return []
         /// use set to make unique

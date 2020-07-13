@@ -24,9 +24,9 @@ fileprivate struct RawProject: Decodable {
 //        var color: Int // probably an enum for toggl's default color palette
 }
 
-
 @objc(Project)
-public class Project: NSManagedObject, Decodable {
+public class Project: NSManagedObject, Decodable, ProjectLike {
+    
     static let entityName = "Project" /// for making entity calls
     
     @objc
@@ -46,27 +46,23 @@ public class Project: NSManagedObject, Decodable {
         name = rawProject.name
     }
     
-    static let noProject = Project(
-        in: nil,
-        name: "No Project",
-        colorHex: Color.noProject.toHex,
-        id: NSNotFound
-    )
-
-    /// should not appear, represents a project that could not be fetched from our data base
-    static let unkown = Project(
-        in: nil,
-        name: "Unknown Project",
-        colorHex: Color.noProject.toHex,
-        id: NSNotFound
-    )
     
-    static let any = Project(
-        in: nil,
-        name: "Any Project",
-        colorHex: Color.secondary.toHex,
-        id: Int.zero
-    )
+    
+    static func == (lhs: Project, rhs: ProjectLike) -> Bool {
+        lhs.wrappedName == rhs.wrappedName && lhs.wrappedID == rhs.wrappedID
+    }
+    
+    func matches(_ other: ProjectLike) -> Bool {
+        /// Any Project matches all other projects
+        self == other || .any == other  || self == StaticProject.any
+    }
+    
+    static func < (lhs: Project, rhs: ProjectLike) -> Bool {
+        /// No Project should always be first
+        if StaticProject.noProject == lhs  { return true }
+        if StaticProject.noProject == rhs  { return false }
+        return lhs.wrappedName < rhs.wrappedName
+    }
     
     init(in context: NSManagedObjectContext?, name: String, colorHex: String, id: Int){
         super.init(entity: Project.entity(), insertInto: context)

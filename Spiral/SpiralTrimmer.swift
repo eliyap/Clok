@@ -37,20 +37,18 @@ struct SpiralPart : Shape {
             height: 100
         ))
     
-    init?(_ entry: OldTimeEntry){
+    init?(entry: TimeEntry, zero: Date){
+        (start, end) = entry.getDimensions(zero: zero)
         // do not draw spirals that are out of bounds
-        guard entry.spiralEnd > 0 else { return nil }
-        guard entry.spiralStart < 1 else { return nil }
+        guard end > 0 else { return nil }
+        guard start < 1 else { return nil }
         
-        /// cap angles at the end of the spiral
-        start = entry.spiralStart
-        end = entry.spiralEnd
-        rotate = entry.rotate.degrees
+        rotate = zero.unboundedClockAngle24().radians
         
         /// adjust for the stroke cap
         end -= stroke_width / weekSpiralLength
         
-        /// if that adjustment is too big, just make the spiral a sliver
+        /// if that adjustment is too big, approximate by a sliver
         if (end < start) { end = start + 0.0001 }
     }
     
