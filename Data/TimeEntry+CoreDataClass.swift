@@ -41,22 +41,13 @@ public class TimeEntry: NSManagedObject {
         super.init(entity: entity, insertInto: context)
     }
     
-    init(from raw: RawTimeEntry, context: NSManagedObjectContext, projects: [Project]) throws {
+    init(from raw: RawTimeEntry, context: NSManagedObjectContext, projects: [Project]) {
         super.init(entity: TimeEntry.entity(), insertInto: context)
-//        let values = try decoder.container(keyedBy: CodingKeys.self)
-        
-        
-        name = raw.description
-        start = raw.start
-        end = raw.end
-        dur = raw.dur / 1000.0
-        lastUpdated = raw.updated
-        id = Int64(raw.id)
-        /// assign project ID, if any
-        project = projects.first(where: {$0.id == raw.pid ?? NSNotFound})
+        update(from: raw, context: context, projects: projects)
     }
     
-    func update(from raw: RawTimeEntry, context: NSManagedObjectContext) {
+    /// copy properties from raw time entry into TimeEntry
+    func update(from raw: RawTimeEntry, context: NSManagedObjectContext, projects: [Project]) {
         self.setValuesForKeys([
             "name": raw.description,
             "start": raw.start,
@@ -65,15 +56,7 @@ public class TimeEntry: NSManagedObject {
             "lastUpdated": raw.updated,
             "id": Int64(raw.id)
         ])
-        #warning("project not updated")
-//        /// assign project ID, if any
-//        if let pid = raw.pid {
-//            let unknownProject = Project(context: context)
-//            unknownProject.id = Int64(pid)
-//            project = unknownProject
-//        } else {
-//            project = nil
-//        }
+        project = projects.first(where: {$0.id == raw.pid ?? NSNotFound})
     }
     
     /// Headlining description,
