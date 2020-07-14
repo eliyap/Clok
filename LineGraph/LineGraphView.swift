@@ -42,18 +42,11 @@ struct LineGraph: View {
                             .animation(.linear)
                     }
                 }
-                .background(Color.clokBG)
                 .drawingGroup()
                 .gesture(Drag(geo: geo))
             }
             .border(Color.red)
         }
-    }
-    
-    func timeOffset(for date: Date) -> String {
-        (date - Calendar.current.startOfDay(for: zero.date))
-            .truncatingRemainder(dividingBy: dayLength)
-            .toString()
     }
     
     func Drag(geo: GeometryProxy) -> some Gesture {
@@ -71,9 +64,7 @@ struct LineGraph: View {
                 withAnimation {
                     zero.date -= Double(days) * dayLength
                 }
-                
             }
-        
         }
         return DragGesture()
             .onChanged {
