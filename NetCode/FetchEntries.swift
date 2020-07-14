@@ -40,6 +40,7 @@ func fetchEntries(
         switch result {
         case let .success(fetched):
             mergeEntries(context: context, entries: fetched, projects: projects)
+            
         case .failure(.request):
             // temporary micro-copy
             print("We weren't able to fetch your data. Maybe the internet is down?")
@@ -48,13 +49,6 @@ func fetchEntries(
         }
     }
     
-    
-    
-    
-    
-    
-    /// save projects, return the number fetched
-    try! context.save()
     return entries
 }
 
@@ -72,4 +66,6 @@ func mergeEntries(
             }
         }
     }
+    /// save projects
+    try! context.save()
 }
