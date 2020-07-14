@@ -67,14 +67,14 @@ struct LineGraph: View {
         func useValue(value: DragGesture.Value, geo: GeometryProxy) -> Void {
             /// find cursor's
             dragBy.update(state: value, geo: geo)
-            withAnimation {
-                zero.date -= dragBy.intervalDiff * zero.interval
-                let days = dragBy.harvestDays()
-                if days != 0 {
-                    haptic.impactOccurred(intensity: 1)
-                    zero.date -= Double(days) * dayLength
-                }
+        
+            zero.date -= dragBy.intervalDiff * zero.interval
+            let days = dragBy.harvestDays()
+            if days != 0 {
+                haptic.impactOccurred(intensity: 1)
+                zero.date -= Double(days) * dayLength
             }
+        
         }
         return DragGesture()
             .onChanged {
