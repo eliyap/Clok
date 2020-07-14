@@ -19,12 +19,10 @@ struct ContentGroupView: View {
         Group {
             switch settings.tab {
             case .spiral:
-                SpiralStack()
-                EmptyView()
+                Text("Daily View Planned")
                 .frame(width: size(geo), height: size(geo))
             case .bar:
                 BarStack()
-                EmptyView()
                     .frame(width: size(geo), height: size(geo))
             default:
                 EmptyView()

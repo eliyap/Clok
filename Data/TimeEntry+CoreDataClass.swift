@@ -76,19 +76,6 @@ public class TimeEntry: NSManagedObject {
 //        }
     }
     
-    typealias Dimensions = (start: CGFloat, end: CGFloat)
-    
-    func getDimensions(zero date: Date) -> Dimensions {
-        var dims = Dimensions(start: .zero, end: .zero)
-        let startInt = (wrappedStart > date) ? (wrappedStart - date) : TimeInterval.zero
-        let endInt = (wrappedEnd > date) ? (wrappedEnd - date) : TimeInterval.zero
-        withAnimation(.spring()) {
-            dims.start = archimedianSpiralLength(startInt * radPerSec) / weekSpiralLength
-            dims.end = archimedianSpiralLength(endInt * radPerSec) / weekSpiralLength
-        }
-        return dims
-    }
-    
     /// Headlining description,
     /// or project if there's no description,
     /// or placeholder if no info whatsoever
