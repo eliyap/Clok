@@ -17,7 +17,6 @@ struct LineGraph: View {
     
     @GestureState var magnifyBy = CGFloat(1.0)
     @State var dragBy = PositionTracker()
-    @FetchRequest(entity: TimeEntry.entity(), sortDescriptors: []) var entries: FetchedResults<TimeEntry>
     
     let tf = DateFormatter()
     let haptic = UIImpactFeedbackGenerator(style: .light)
@@ -32,8 +31,8 @@ struct LineGraph: View {
         /// check whether the provided time entry coincides with a particular *date* range
         /// if our entry ends before the interval even began
         /// or started after the interval finished, it cannot possibly fall coincide
-        HStack {
-            
+        VStack {
+            Text("TESTING")
             GeometryReader { geo in
                 ZStack {
                     Rectangle().foregroundColor(.clokBG)
@@ -46,15 +45,13 @@ struct LineGraph: View {
                     }
                     .allowsHitTesting(false)
                     
-                    ForEach(entries.filter {$0.wrappedEnd > zero.date && $0.wrappedStart < zero.date + weekLength}, id: \.id) { entry in
+                    ForEach(data.entries.filter {$0.wrappedEnd > zero.date && $0.wrappedStart < zero.date + weekLength}, id: \.id) { entry in
                         LineBar(with: entry, geo: geo, bounds: GetBounds(zero: zero, entry: entry))
                             .transition(.identity)
+                            .animation(.linear)
                     }
                 }
-                .gesture(ExclusiveGesture(
-                    Drag(geo: geo),
-                    MagnificationGesture().updating($magnifyBy, body: magnifyHandler)
-                ))
+                .gesture(Drag(geo: geo))
             }
             .border(Color.red)
         }
@@ -70,11 +67,13 @@ struct LineGraph: View {
         func useValue(value: DragGesture.Value, geo: GeometryProxy) -> Void {
             /// find cursor's
             dragBy.update(state: value, geo: geo)
-            zero.date -= dragBy.intervalDiff * zero.interval
-            let days = dragBy.harvestDays()
-            if days != 0 {
-                haptic.impactOccurred(intensity: 1)
-                zero.date -= Double(days) * dayLength
+            withAnimation {
+                zero.date -= dragBy.intervalDiff * zero.interval
+                let days = dragBy.harvestDays()
+                if days != 0 {
+                    haptic.impactOccurred(intensity: 1)
+                    zero.date -= Double(days) * dayLength
+                }
             }
         }
         return DragGesture()

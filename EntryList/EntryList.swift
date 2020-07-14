@@ -15,7 +15,6 @@ struct EntryList: View {
     @EnvironmentObject var data: TimeData
     @EnvironmentObject var zero: ZeroDate
     @EnvironmentObject var listRow: ListRow
-    @FetchRequest(entity: TimeEntry.entity(), sortDescriptors: []) var entries: FetchedResults<TimeEntry>
     
     private let df = DateFormatter()
     
@@ -92,7 +91,7 @@ struct EntryList: View {
     
     func Days() -> [Day] {
         /// restrict to current week
-        let validEntries = entries
+        let validEntries = data.entries
             .sorted(by: {$0.wrappedStart < $1.wrappedStart} )
             .within(interval: weekLength, of: zero.date)
             .matching(data.terms)

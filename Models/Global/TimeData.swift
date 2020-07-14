@@ -10,6 +10,9 @@ import Foundation
 import SwiftUI
 
 final class TimeData: ObservableObject {
+    /// manage time entries through global var instead of Core Data to prevent changes to views hitting the data base on every reload
+    @Published var entries = [TimeEntry]()
+    
     // the Project and Descriptions the user is filtering for
     @Published var terms = SearchTerm(
         project: StaticProject.any,

@@ -44,16 +44,22 @@ struct ClokApp: App {
                 .environment(\.managedObjectContext, persistentContainer.viewContext)
                 .onReceive(zero.$date, perform: { date in
                     guard let user = settings.user else { return }
+                    /// if data is old
                     if date < minLoaded {
-                        
+                        /// fetch another week's worth from online
                         _ = fetchEntries(
                             user: user,
                             from: minLoaded - weekLength,
                             to: minLoaded, context: persistentContainer.viewContext,
                             projects: data.projects
                         )
-                        
+                        /// update our date range
                         minLoaded -= weekLength
+                        
+                        /// refresh global var
+                        if let freshEntries = loadEntries(from: .distantPast, to: .distantFuture, context: persistentContainer.viewContext) {
+                            data.entries = freshEntries
+                        }
                     }
                 })
         }
