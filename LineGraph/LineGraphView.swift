@@ -36,21 +36,14 @@ struct LineGraph: View {
             GeometryReader { geo in
                 ZStack {
                     Rectangle().foregroundColor(.clokBG)
-                    VStack {
-                        Text(tf.string(from: zero.date))
-                        Spacer()
-                        Text(zero.interval.toString())
-                        Spacer()
-                        Text(tf.string(from: zero.date + zero.interval))
-                    }
-                    .allowsHitTesting(false)
-                    
-                    ForEach(data.entries.filter {$0.wrappedEnd > zero.date && $0.wrappedStart < zero.date + weekLength}, id: \.id) { entry in
+                     ForEach(data.entries.filter {$0.wrappedEnd > zero.date && $0.wrappedStart < zero.date + weekLength}, id: \.id) { entry in
                         LineBar(with: entry, geo: geo, bounds: GetBounds(zero: zero, entry: entry))
                             .transition(.identity)
                             .animation(.linear)
                     }
                 }
+                .background(Color.clokBG)
+                .drawingGroup()
                 .gesture(Drag(geo: geo))
             }
             .border(Color.red)
@@ -68,11 +61,17 @@ struct LineGraph: View {
             /// find cursor's
             dragBy.update(state: value, geo: geo)
         
-            zero.date -= dragBy.intervalDiff * zero.interval
+            withAnimation {
+                zero.date -= dragBy.intervalDiff * zero.interval
+            }
+            
             let days = dragBy.harvestDays()
             if days != 0 {
                 haptic.impactOccurred(intensity: 1)
-                zero.date -= Double(days) * dayLength
+                withAnimation {
+                    zero.date -= Double(days) * dayLength
+                }
+                
             }
         
         }
