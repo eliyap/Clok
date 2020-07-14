@@ -60,9 +60,9 @@ func mergeEntries(
     if let savedEntries = loadEntries(from: Date.distantPast, to: Date.distantFuture, context: context){
         entries.forEach{ entry in
             if let oldEntry = savedEntries.first(where: {$0.id == entry.id}) {
-                oldEntry.update(from: entry, context: context)
+                oldEntry.update(from: entry, context: context, projects: projects)
             } else {
-                try! context.insert(TimeEntry(from: entry, context: context, projects: projects))
+                context.insert(TimeEntry(from: entry, context: context, projects: projects))
             }
         }
     }
