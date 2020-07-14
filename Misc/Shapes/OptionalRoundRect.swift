@@ -15,14 +15,14 @@ struct OptionalRoundRect: Shape {
     var geo: GeometryProxy
     var bound: LineBar.Bound
     
-//    var animatableData: AnimatablePair<Double, Double> {
-//        get {
-//            AnimatablePair(bound.min, bound.max)
-//        }
-//        set {
-//            bound = (min: newValue.first, max: newValue.second, col: bound.col)
-//        }
-//    }
+    var animatableData: AnimatablePair<Double, Double> {
+        get {
+            AnimatablePair(bound.min, bound.max)
+        }
+        set {
+            bound = (min: newValue.first, max: newValue.second, col: bound.col)
+        }
+    }
     
     func path(in rect: CGRect) -> Path {
         /// place according to the column and with half the whitespace to center the graph
