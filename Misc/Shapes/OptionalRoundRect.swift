@@ -26,10 +26,12 @@ struct OptionalRoundRect: Shape {
         )
         
         return Path { path in
-            let size = CGSize(
+            var size = CGSize(
                 width: LineBar.thicc * geo.size.width / CGFloat(LineGraph.dayCount),
                 height: CGFloat(bound.max - bound.min) * geo.size.height
             )
+            /// min height, prevents corners piercing each other
+            size.height = max(size.height, 2 * radius)
             
             /// starts in the middle of the right edge, and draws counter clockwise
             path.move(to: CGPoint(x: size.width, y: size.height / 2))
