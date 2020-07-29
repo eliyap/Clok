@@ -8,16 +8,16 @@
 
 import Foundation
 
-func GetBounds(zeroOffset: Date, entry: TimeEntry, interval: TimeInterval) -> [LineBar.Bound] {
-    var bounds = [LineBar.Bound]()
-    for i in 0..<LineGraph.dayCount {
-        let begin = zeroOffset + (Double(i) * dayLength)
-        guard entry.wrappedEnd > begin && entry.wrappedStart < begin + interval else { continue }
-        bounds.append(LineBar.Bound(
-            max(0, (entry.wrappedStart - begin) / interval),
-            min(1, (entry.wrappedEnd - begin) / interval),
-            col: i
-        ))
-    }
-    return bounds
+/// figure out how to draw the bar for this time entry in this time interval
+func GetBounds(
+    begin: Date, /// beginning of the time interval to consider
+    entry: TimeEntry, /// time entry to consider
+    interval: TimeInterval /// length of time interval
+) -> LineBar.Bound? {
+    guard entry.wrappedEnd > begin && entry.wrappedStart < begin + interval else { return nil }
+    return LineBar.Bound(
+        max(0, (entry.wrappedStart - begin) / interval),
+        min(1, (entry.wrappedEnd - begin) / interval)
+    )
+    
 }

@@ -10,7 +10,7 @@ import SwiftUI
 
 struct LineBar: View {
     
-    typealias Bound = (min: Double, max: Double, col: Int)
+    typealias Bound = (min: Double, max: Double)
     
     @ObservedObject var entry: TimeEntry
     @EnvironmentObject var data: TimeData
@@ -23,36 +23,31 @@ struct LineBar: View {
     private let cornerScale = CGFloat(1.0/120.0);
     /// determines what proportion of available horizontal space to consume
     static let thicc = CGFloat(0.8)
-    var bounds = [Bound]()
+    var bound: Bound
     
     var body: some View {
-        ForEach(bounds, id: \.col){ bound in
-            return OptionalRoundRect(
-                radius: radius,
-                geo: geo,
-                bound: bound
-            )
-                .foregroundColor(entry.wrappedColor)
-                .opacity(opacity * (entry.matches(data.terms) ? 1 : 0.5) )
-                .offset(x: .zero, y: offset)
-                .onTapGesture { tapHandler() }
-        }
+        return OptionalRoundRect(
+            radius: radius,
+            geo: geo,
+            bound: bound
+        )
+            .foregroundColor(entry.wrappedColor)
+            .opacity(opacity * (entry.matches(data.terms) ? 1 : 0.5) )
+            .offset(x: .zero, y: offset)
+            .onTapGesture { tapHandler() }
     }
     
     init?(
         with entry_: TimeEntry,
         geo geo_: GeometryProxy,
-        bounds bounds_: [Bound]
+        bound bound_: Bound?
     ){
+        guard let bound_ = bound_ else { return nil }
         entry = entry_
         geo = geo_
         /// adapt scale to taste
         radius = geo.size.height * cornerScale
-        bounds = bounds_
-        /// if there's nothing to draw, fail the initializer
-        if bounds.count == 0 {
-            return nil
-        }
+        bound = bound_
     }
     
     // MARK: - Tap Handler
