@@ -36,10 +36,8 @@ struct LineGraph: View {
             GeometryReader { geo in
                 ZStack {
                     Rectangle().foregroundColor(.clokBG) /// "invisible" background rectangle to make the whole area touch sensitive
-                    HStack(spacing: .zero) {
-                        ForEach(0..<LineGraph.dayCount, id: \.self) {
-                            DayBar(dayOffset: $0, size: geo.size)
-                        }
+                    ForEach(0..<LineGraph.dayCount, id: \.self) {
+                        DayBar(dayOffset: $0, size: geo.size)
                     }
                 }
                 .drawingGroup()
@@ -51,14 +49,12 @@ struct LineGraph: View {
     
     func DayBar(dayOffset: Int, size: CGSize) -> some View {
         let zeroOffset = zero.date + Double(dayOffset) * dayLength
-        let width = size.width / CGFloat(LineGraph.dayCount)
-        return ZStack {
-            ForEach(data.entries.filter {$0.wrappedEnd > zeroOffset && $0.wrappedStart < zeroOffset + dayLength}, id: \.id) { entry in
-                LineBar(entry: entry, begin: zeroOffset, interval: zero.interval, size: size)
-                    .transition(.opacity)
-            }        
+        let offset = size.width * CGFloat(dayOffset) / CGFloat(LineGraph.dayCount)
+        return ForEach(data.entries.filter {$0.wrappedEnd > zeroOffset && $0.wrappedStart < zeroOffset + dayLength}, id: \.id) { entry in
+            LineBar(entry: entry, begin: zeroOffset, interval: zero.interval, size: size)
+                .transition(.opacity)
+                .offset(x: offset, y: .zero)
         }
-        .frame(width: width, height: size.height)
         .drawingGroup()
     }
     
