@@ -16,7 +16,7 @@ struct OptionalRoundRect: Shape {
     var bound: LineBar.Bound
     
     func path(in rect: CGRect) -> Path {
-        /// place according to the column and with half the whitespace to center the graph
+        /// place with half the whitespace to center the graph
         let factor: CGFloat = (1.0 - LineBar.thicc) / 2.0
         
         /// calculate the position of the bar
