@@ -19,32 +19,31 @@ struct LineBar: View {
     @State private var offset = CGFloat.zero
     
     private var size: CGSize
-    private let radius: CGFloat
     private let cornerScale = CGFloat(1.0/120.0);
     /// determines what proportion of available horizontal space to consume
     static let thicc = CGFloat(0.8)
     var bound: Bound
     
     init?(
-        entry: TimeEntry,      /// time entry to consider
-        begin: Date,           /// beginning of the time interval to consider
+        entry: TimeEntry,       /// time entry to consider
+        begin: Date,            /// beginning of the time interval to consider
         interval: TimeInterval, /// length of time interval
         size: CGSize
     ){
+        /// do not render bars that fall outside of time range
         guard entry.wrappedEnd > begin && entry.wrappedStart < begin + interval else { return nil }
+        
         self.bound = (
             max(0, (entry.wrappedStart - begin) / interval),
             min(1, (entry.wrappedEnd - begin) / interval)
         )
         self.entry = entry
         self.size = size
-        /// adapt scale to taste
-        radius = size.height * cornerScale
     }
     
     var body: some View {
         return OptionalRoundRect(
-            radius: radius,
+            radius: size.height * cornerScale, /// adapt scale to taste
             geoSize: size,
             bound: bound
         )
