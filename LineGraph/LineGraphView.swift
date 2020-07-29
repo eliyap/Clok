@@ -12,10 +12,9 @@ struct LineGraph: View {
     
     @EnvironmentObject var data: TimeData
     @EnvironmentObject var zero: ZeroDate
-    /// for now, show 7 days
+    /// number of days on screen
     static let dayCount = 7
     
-    @GestureState var magnifyBy = CGFloat(1.0)
     @State var dragBy = PositionTracker()
     
     let tf = DateFormatter()
@@ -37,7 +36,10 @@ struct LineGraph: View {
                 ZStack {
                     Rectangle().foregroundColor(.clokBG) /// "invisible" background rectangle to make the whole area touch sensitive
                     ForEach(0..<LineGraph.dayCount, id: \.self) {
-                        DayBar(dayOffset: $0, size: geo.size)
+                        Rectangle()
+                            .frame(width: 30, height: 30)
+                            .offset(x: CGFloat(zero.date.angle().degrees * 5.0), y: CGFloat(10 * $0))
+//                        DayBar(dayOffset: $0, size: geo.size)
                     }
                 }
                 .drawingGroup()
