@@ -30,8 +30,11 @@ struct OptionalRoundRect: Shape {
                 width: LineBar.thicc * geo.size.width / CGFloat(LineGraph.dayCount),
                 height: CGFloat(bound.max - bound.min) * geo.size.height
             )
-            /// min height, prevents corners piercing each other
-            size.height = max(size.height, 2 * radius)
+            
+            /// if both corners are rounded, enforce a min height to prevent corners piercing each other
+            if bound.min != .zero && bound.max != 1 {
+                size.height = max(size.height, 2 * radius)
+            }
             
             /// starts in the middle of the right edge, and draws counter clockwise
             path.move(to: CGPoint(x: size.width, y: size.height / 2))

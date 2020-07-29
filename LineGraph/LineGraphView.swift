@@ -39,7 +39,6 @@ struct LineGraph: View {
                     HStack(spacing: .zero) {
                         ForEach(0..<LineGraph.dayCount, id: \.self) {
                             DayBar(dayOffset: $0, geo: geo)
-                                
                         }
                     }
                 }
@@ -48,6 +47,7 @@ struct LineGraph: View {
             }
             .border(Color.red)
         }
+        .padding()
     }
     
     func DayBar(dayOffset: Int, geo: GeometryProxy) -> some View {
