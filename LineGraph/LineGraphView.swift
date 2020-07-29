@@ -51,17 +51,14 @@ struct LineGraph: View {
     
     func DayBar(dayOffset: Int, geo: GeometryProxy) -> some View {
         let zeroOffset = zero.date + Double(dayOffset) * dayLength
+        let width = geo.size.width / CGFloat(LineGraph.dayCount)
         return ZStack {
-            Text(" ")
-                .frame(width: geo.size.width / CGFloat(LineGraph.dayCount), height: geo.size.height)
-                .allowsHitTesting(false) /// dummy view prevents zstack from disappearing
             ForEach(data.entries.filter {$0.wrappedEnd > zeroOffset && $0.wrappedStart < zeroOffset + dayLength}, id: \.id) { entry in
                 LineBar(with: entry, geo: geo, bound: GetBounds(begin: zeroOffset, entry: entry, interval: zero.interval))
                     .transition(.identity)
-                    .animation(.linear)
             }        
         }
-        .frame(width: geo.size.width / CGFloat(LineGraph.dayCount))
+        .frame(width: width, height: geo.size.height)
     }
     
     func Drag(geo: GeometryProxy) -> some Gesture {
