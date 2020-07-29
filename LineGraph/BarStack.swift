@@ -8,25 +8,18 @@
 
 import SwiftUI
 
-/**
- Negative Padding permits complete overlap of areas, where ZStack failed
- - Important: ZStacking did *not* work, as the Time Strip layer grabbed touch focus,
- preventing the user from manipulating the handle
- */
 struct BarStack: View {
     
     @EnvironmentObject private var bounds: Bounds
     
     var body: some View {
         GeometryReader { geo in
-            VStack(spacing: 0) {
+            ZStack(alignment: .bottomLeading) {
                 Mask {
                     LineGraph()
                 }
-                    .frame(width: geo.size.height, height:geo.size.height)
-                    .padding(Edge.Set.bottom, -geo.size.height)
-                BarControls()
-                    .frame(width: geo.size.height, height: geo.size.height)
+                FilterStack()
+                    .padding(buttonPadding)
             }
         }
         /// keep it square
