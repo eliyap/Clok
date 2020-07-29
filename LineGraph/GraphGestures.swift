@@ -65,17 +65,10 @@ extension LineGraph {
             dayDiff = .zero
         }
         
-        /// if gesture is more than 1 day in either direction, return that, and destroy the result
+        /// if gesture is more than 1 day in either direction, return that, and subtract the result
         mutating func harvestDays() -> Int {
-            if dayDiff < -1 {
-                dayDiff += 1.0
-                return -1
-            }
-            if dayDiff > 1 {
-                dayDiff -= 1.0
-                return 1
-            }
-            return 0
+            defer { dayDiff = dayDiff.remainder(dividingBy: 1) }
+            return Int(dayDiff)
         }
     }
 }
