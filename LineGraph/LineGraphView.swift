@@ -13,7 +13,7 @@ struct LineGraph: View {
     @EnvironmentObject var data: TimeData
     @EnvironmentObject var zero: ZeroDate
     /// for now, show 7 days
-    static let dayCount = 7
+    static let dayCount = 31
     
     @GestureState var magnifyBy = CGFloat(1.0)
     @State var dragBy = PositionTracker()
@@ -35,18 +35,41 @@ struct LineGraph: View {
             Text("TESTING")
             GeometryReader { geo in
                 ZStack {
-                    Rectangle().foregroundColor(.clokBG)
-                     ForEach(data.entries.filter {$0.wrappedEnd > zero.date && $0.wrappedStart < zero.date + weekLength}, id: \.id) { entry in
-                        LineBar(with: entry, geo: geo, bounds: GetBounds(zero: zero, entry: entry))
-                            .transition(.identity)
-                            .animation(.linear)
+                    Rectangle().foregroundColor(.clokBG) /// "invisible" background rectangle to make the whole area touch sensitive
+                    HStack(spacing: .zero) {
+                        ForEach(0..<LineGraph.dayCount, id: \.self) {
+                            DayBar(dayOffset: $0, geo: geo)
+                                
+                        }
                     }
+//                    ForEach(data.entries.filter {$0.wrappedEnd > zero.date && $0.wrappedStart < zero.date + weekLength}, id: \.id) { entry in
+//                        LineBar(with: entry, geo: geo, bounds: GetBounds(zero: zero, entry: entry))
+//                            .transition(.identity)
+//                            .animation(.linear)
+//                    }
                 }
                 .drawingGroup()
                 .gesture(Drag(geo: geo))
             }
             .border(Color.red)
         }
+    }
+    
+    func DayBar(dayOffset: Int, geo: GeometryProxy) -> some View {
+        let zeroOffset = zero.date + Double(dayOffset) * dayLength
+        return ZStack {
+            Text(" ")
+                .frame(width: geo.size.width / CGFloat(LineGraph.dayCount), height: geo.size.height)
+                .allowsHitTesting(false) /// dummy view prevents zstack from disappearing
+            ForEach(data.entries.filter {$0.wrappedEnd > zeroOffset && $0.wrappedStart < zeroOffset + dayLength}, id: \.id) { entry in
+                LineBar(with: entry, geo: geo, bounds: GetBounds(zeroOffset: zeroOffset, entry: entry, interval: zero.interval))
+                    .transition(.identity)
+                    .animation(.linear)
+            }
+        }
+        .transition(.identity)
+        .border(Color.red)
+        .frame(width: geo.size.width / CGFloat(LineGraph.dayCount))
     }
     
     func Drag(geo: GeometryProxy) -> some Gesture {
