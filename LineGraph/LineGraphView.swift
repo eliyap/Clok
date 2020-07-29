@@ -34,20 +34,15 @@ struct LineGraph: View {
         VStack {
             Text("TESTING")
             GeometryReader { geo in
-                HStack {
-                    ForEach((0..<1), id: \.self) { day in
-                        ZStack {
-                            Rectangle().foregroundColor(.clokBG)
-                            ForEach(data.entries.filter {$0.wrappedEnd > zero.date && $0.wrappedStart < zero.date + dayLength * Double(day)}, id: \.id) { entry in
-                                LineBar(with: entry, geo: geo, bounds: GetBounds(zero: zero, entry: entry))
-                                .transition(.identity)
-                                .animation(.linear)
-                            }
-                        }
-                        .drawingGroup()
+                ZStack {
+                    Rectangle().foregroundColor(.clokBG)
+                     ForEach(data.entries.filter {$0.wrappedEnd > zero.date && $0.wrappedStart < zero.date + weekLength}, id: \.id) { entry in
+                        LineBar(with: entry, geo: geo, bounds: GetBounds(zero: zero, entry: entry))
+                            .transition(.identity)
+                            .animation(.linear)
                     }
                 }
-                
+                .drawingGroup()
                 .gesture(Drag(geo: geo))
             }
             .border(Color.red)
