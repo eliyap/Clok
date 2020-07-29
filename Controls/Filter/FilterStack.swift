@@ -12,7 +12,7 @@ struct FilterStack: View {
     @EnvironmentObject private var data: TimeData
         
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: buttonPadding) {
             if data.searching {
                 Text("Filter Entries where")
                     .font(.title)
