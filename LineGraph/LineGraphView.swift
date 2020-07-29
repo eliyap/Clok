@@ -47,7 +47,6 @@ struct LineGraph: View {
             }
             .border(Color.red)
         }
-        .padding()
     }
     
     func DayBar(dayOffset: Int, geo: GeometryProxy) -> some View {
@@ -62,8 +61,6 @@ struct LineGraph: View {
                     .animation(.linear)
             }        
         }
-        .transition(.identity)
-        .border(Color.red)
         .frame(width: geo.size.width / CGFloat(LineGraph.dayCount))
     }
     
