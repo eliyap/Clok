@@ -37,7 +37,7 @@ extension LineGraph {
         var intervalDiff = TimeInterval.zero /// number of days represented by the handle's change in angle
         var dayDiff = 0.0
         
-        mutating func update(state: DragGesture.Value, geo: GeometryProxy) -> Void {
+        mutating func update(state: DragGesture.Value, size: CGSize) -> Void {
             /// get change in position
             lead = state.location - state.startLocation
             
@@ -48,10 +48,10 @@ extension LineGraph {
             /// check whether recent movement was more vertical or more horizontal
             if abs(lead.x - lag.x) > abs(lead.y - lag.y) {
                 /// normalize against view width
-                dayDiff += Double(CGFloat(LineGraph.dayCount) * (lead.x - lag.x) / geo.size.width)
+                dayDiff += Double(CGFloat(LineGraph.dayCount) * (lead.x - lag.x) / size.width)
                 intervalDiff = .zero
             } else {
-                intervalDiff = Double((lead.y - lag.y) / geo.size.height)
+                intervalDiff = Double((lead.y - lag.y) / size.height)
                 dayDiff = .zero
             }
             /// remember state for next time

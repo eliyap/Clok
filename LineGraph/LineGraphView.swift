@@ -13,7 +13,7 @@ struct LineGraph: View {
     @EnvironmentObject var data: TimeData
     @EnvironmentObject var zero: ZeroDate
     /// for now, show 7 days
-    static let dayCount = 31
+    static let dayCount = 7
     
     @GestureState var magnifyBy = CGFloat(1.0)
     @State var dragBy = PositionTracker()
@@ -43,7 +43,7 @@ struct LineGraph: View {
                     }
                 }
                 .drawingGroup()
-                .gesture(Drag(geo: geo))
+                .gesture(Drag(size: geo.size))
             }
             .border(Color.red)
         }
@@ -62,10 +62,10 @@ struct LineGraph: View {
         .drawingGroup()
     }
     
-    func Drag(geo: GeometryProxy) -> some Gesture {
-        func useValue(value: DragGesture.Value, geo: GeometryProxy) -> Void {
+    func Drag(size: CGSize) -> some Gesture {
+        func useValue(value: DragGesture.Value, size: CGSize) -> Void {
             /// find cursor's offset
-            dragBy.update(state: value, geo: geo)
+            dragBy.update(state: value, size: size)
         
             withAnimation {
                 zero.date -= dragBy.intervalDiff * zero.interval
@@ -81,11 +81,11 @@ struct LineGraph: View {
         }
         return DragGesture()
             .onChanged {
-                useValue(value: $0, geo: geo)
+                useValue(value: $0, size: size)
             }
             .onEnded {
                 /// update once more on end
-                useValue(value: $0, geo: geo)
+                useValue(value: $0, size: size)
                 dragBy.reset()
             }
     }
