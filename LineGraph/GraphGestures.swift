@@ -10,27 +10,6 @@ import Foundation
 import SwiftUI
 extension LineGraph {
     
-    /// updates the view based on the Magnification Gesture state
-    func magnifyHandler(
-        currentState: CGFloat,
-        gestureState: inout CGFloat,
-        _: inout Transaction
-    ) -> Void {
-        
-        gestureState = currentState
-        
-        /// get change in time
-        let delta = Double(gestureState - magnifyBy) * dayLength * kCoeff
-
-        /// adjust interval, but cap at reasonable quantity
-        zero.interval -= delta
-        zero.interval = max(zero.interval, 4 * 3600.0) /// min interval: 4 hours
-        zero.interval = min(zero.interval, dayLength)  /// max interval: 1 day
-
-        zero.date += delta / 2
-    }
-    
-    
     struct PositionTracker {
         var lag = CGPoint.zero
         var lead = CGPoint.zero
