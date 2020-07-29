@@ -10,10 +10,7 @@ import SwiftUI
 
 struct FilterStack: View {
     @EnvironmentObject private var data: TimeData
-    
-    let buttonSize = glyphFrameSize + backgroundPadding * 2
-    @State private var spacing = CGFloat.zero
-    
+        
     var body: some View {
         VStack(alignment: .leading) {
             if data.searching {
