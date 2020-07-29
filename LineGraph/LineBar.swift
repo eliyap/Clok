@@ -13,7 +13,6 @@ struct LineBar: View {
     typealias Bound = (min: Double, max: Double, col: Int)
     
     @ObservedObject var entry: TimeEntry
-    @EnvironmentObject private var zero: ZeroDate
     @EnvironmentObject var data: TimeData
     @EnvironmentObject var listRow: ListRow
     @State private var opacity = 1.0
