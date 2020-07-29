@@ -12,8 +12,17 @@ import SwiftUI
 struct OptionalRoundRect: Shape {
     
     var radius: CGFloat
-    var geo: GeometryProxy
+    var geoSize: CGSize
     var bound: LineBar.Bound
+    
+    var animatableData: AnimatablePair<Double, Double> {
+        get {
+            return AnimatablePair(bound.min, bound.max)
+        }
+        set {
+            (bound.min, bound.max) = (newValue.first, newValue.second)
+        }
+    }
     
     func path(in rect: CGRect) -> Path {
         /// place with half the whitespace to center the graph
@@ -21,14 +30,14 @@ struct OptionalRoundRect: Shape {
         
         /// calculate the position of the bar
         let pos = CGPoint(
-            x: geo.size.width / CGFloat(LineGraph.dayCount) * factor,
-            y: CGFloat(bound.min) * geo.size.height
+            x: geoSize.width / CGFloat(LineGraph.dayCount) * factor,
+            y: CGFloat(bound.min) * geoSize.height
         )
         
         return Path { path in
             var size = CGSize(
-                width: LineBar.thicc * geo.size.width / CGFloat(LineGraph.dayCount),
-                height: CGFloat(bound.max - bound.min) * geo.size.height
+                width: LineBar.thicc * geoSize.width / CGFloat(LineGraph.dayCount),
+                height: CGFloat(bound.max - bound.min) * geoSize.height
             )
             
             /// if both corners are rounded, enforce a min height to prevent corners piercing each other

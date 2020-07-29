@@ -18,36 +18,40 @@ struct LineBar: View {
     @State private var opacity = 1.0
     @State private var offset = CGFloat.zero
     
-    private var geo: GeometryProxy
+    private var size: CGSize
     private let radius: CGFloat
     private let cornerScale = CGFloat(1.0/120.0);
     /// determines what proportion of available horizontal space to consume
     static let thicc = CGFloat(0.8)
     var bound: Bound
     
+    init?(
+        entry: TimeEntry,      /// time entry to consider
+        begin: Date,           /// beginning of the time interval to consider
+        interval: TimeInterval, /// length of time interval
+        size: CGSize
+    ){
+        guard entry.wrappedEnd > begin && entry.wrappedStart < begin + interval else { return nil }
+        self.bound = (
+            max(0, (entry.wrappedStart - begin) / interval),
+            min(1, (entry.wrappedEnd - begin) / interval)
+        )
+        self.entry = entry
+        self.size = size
+        /// adapt scale to taste
+        radius = size.height * cornerScale
+    }
+    
     var body: some View {
         return OptionalRoundRect(
             radius: radius,
-            geo: geo,
+            geoSize: size,
             bound: bound
         )
             .foregroundColor(entry.wrappedColor)
             .opacity(opacity * (entry.matches(data.terms) ? 1 : 0.5) )
             .offset(x: .zero, y: offset)
             .onTapGesture { tapHandler() }
-    }
-    
-    init?(
-        with entry_: TimeEntry,
-        geo geo_: GeometryProxy,
-        bound bound_: Bound?
-    ){
-        guard let bound_ = bound_ else { return nil }
-        entry = entry_
-        geo = geo_
-        /// adapt scale to taste
-        radius = geo.size.height * cornerScale
-        bound = bound_
     }
     
     // MARK: - Tap Handler
@@ -60,7 +64,7 @@ struct LineBar: View {
             /// drop the opacity to take on more BG color
             opacity -= 0.25
             /// slight jump
-            offset -= geo.size.height / 40
+            offset -= size.height / 40
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             withAnimation(.linear(duration: 0.3)){

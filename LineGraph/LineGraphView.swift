@@ -38,7 +38,7 @@ struct LineGraph: View {
                     Rectangle().foregroundColor(.clokBG) /// "invisible" background rectangle to make the whole area touch sensitive
                     HStack(spacing: .zero) {
                         ForEach(0..<LineGraph.dayCount, id: \.self) {
-                            DayBar(dayOffset: $0, geo: geo)
+                            DayBar(dayOffset: $0, size: geo.size)
                         }
                     }
                 }
@@ -49,21 +49,22 @@ struct LineGraph: View {
         }
     }
     
-    func DayBar(dayOffset: Int, geo: GeometryProxy) -> some View {
+    func DayBar(dayOffset: Int, size: CGSize) -> some View {
         let zeroOffset = zero.date + Double(dayOffset) * dayLength
-        let width = geo.size.width / CGFloat(LineGraph.dayCount)
+        let width = size.width / CGFloat(LineGraph.dayCount)
         return ZStack {
             ForEach(data.entries.filter {$0.wrappedEnd > zeroOffset && $0.wrappedStart < zeroOffset + dayLength}, id: \.id) { entry in
-                LineBar(with: entry, geo: geo, bound: GetBounds(begin: zeroOffset, entry: entry, interval: zero.interval))
-                    .transition(.identity)
+                LineBar(entry: entry, begin: zeroOffset, interval: zero.interval, size: size)
+                    .transition(.opacity)
             }        
         }
-        .frame(width: width, height: geo.size.height)
+        .frame(width: width, height: size.height)
+        .drawingGroup()
     }
     
     func Drag(geo: GeometryProxy) -> some Gesture {
         func useValue(value: DragGesture.Value, geo: GeometryProxy) -> Void {
-            /// find cursor's
+            /// find cursor's offset
             dragBy.update(state: value, geo: geo)
         
             withAnimation {
@@ -73,9 +74,9 @@ struct LineGraph: View {
             let days = dragBy.harvestDays()
             if days != 0 {
                 haptic.impactOccurred(intensity: 1)
-                withAnimation {
+//                withAnimation {
                     zero.date -= Double(days) * dayLength
-                }
+//                }
             }
         }
         return DragGesture()
