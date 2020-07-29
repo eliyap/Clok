@@ -34,7 +34,6 @@ struct SettingsView: View {
                             Text(settings.user?.chosen.name ?? "No Space")
                         }
                     }
-                    
                 }
                 Section(header: EmptyView()) {
                     Text("Log Out")
@@ -65,11 +64,5 @@ struct SettingsView: View {
             .navigationBarTitle("Settings")
         }
         .navigationViewStyle(StackNavigationViewStyle())
-    }
-}
-
-struct SettingsView_Previews: PreviewProvider {
-    static var previews: some View {
-        SettingsView()
     }
 }
