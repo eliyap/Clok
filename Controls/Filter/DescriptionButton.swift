@@ -32,12 +32,12 @@ struct DescriptionButton: View {
             HStack(spacing: .zero) {
                 Text("Description is ")
                     .onTapGesture { data.terms.byDescription.cycle() }
-                
-                if data.terms.byDescription == .any {
+                switch (data.terms.byDescription) {
+                case .any:
                     Text("Anything")
-                } else if data.terms.byDescription == .empty {
+                case .empty:
                     Text("Empty")
-                } else if data.terms.byDescription == .specific {
+                case .specific:
                     TextField("Description", text: $data.terms.description)
                         .padding(3)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
