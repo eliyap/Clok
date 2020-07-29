@@ -47,7 +47,7 @@ extension LineGraph {
             */
             /// check whether recent movement was more vertical or more horizontal
             if abs(lead.x - lag.x) > abs(lead.y - lag.y) {
-                /// normalize against view height
+                /// normalize against view width
                 dayDiff += Double(CGFloat(LineGraph.dayCount) * (lead.x - lag.x) / geo.size.width)
                 intervalDiff = .zero
             } else {
