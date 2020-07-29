@@ -46,9 +46,3 @@ struct ProjectButton: View {
         )
     }
 }
-
-struct ProjectButton_Previews: PreviewProvider {
-    static var previews: some View {
-        ProjectButton()
-    }
-}

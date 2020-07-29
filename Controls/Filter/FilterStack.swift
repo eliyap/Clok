@@ -30,9 +30,3 @@ struct FilterStack: View {
         }
     }
 }
-
-struct FilterStack_Previews: PreviewProvider {
-    static var previews: some View {
-        FilterStack()
-    }
-}
