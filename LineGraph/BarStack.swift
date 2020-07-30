@@ -24,27 +24,7 @@ struct BarStack: View {
         GeometryReader { geo in
             ZStack(alignment: .bottomLeading) {
                 Mask {
-                    ScrollView(.vertical, showsIndicators: false) {
-                        ScrollViewReader { proxy in
-                            TopReader(geo: geo, proxy: proxy)
-                            VStack(spacing: .zero) {
-                                ForEach(
-                                    enumDays(),
-                                    id: \.1.timeIntervalSince1970
-                                ){ idx, _ in
-                                    LineGraph(offset: idx)
-                                        .frame(width: geo.size.width, height: frameHeight(geo: geo))
-                                    Rectangle()
-                                        .foregroundColor(.red)
-                                        .frame(width: geo.size.width, height: 2)
-                                }
-                            }
-                            BottomReader(geo: geo, proxy: proxy)
-                                .onAppear {
-                                    proxy.scrollTo(middleRow)
-                                }
-                        }
-                    }
+                    InfiniteScroll(geo: geo)
                 }
                 .allowsHitTesting(hitTest)
                 FilterStack()
@@ -55,6 +35,28 @@ struct BarStack: View {
         .aspectRatio(1, contentMode: bounds.notch ? .fit : .fill)
     }
     
+    func InfiniteScroll(geo: GeometryProxy) -> some View {
+        ScrollView(.vertical, showsIndicators: false) {
+            ScrollViewReader { proxy in
+                TopReader(geo: geo, proxy: proxy)
+                VStack(spacing: .zero) {
+                    ForEach(
+                        enumDays(),
+                        id: \.1.timeIntervalSince1970
+                    ){ idx, _ in
+                        LineGraph(offset: idx)
+                            .frame(width: geo.size.width, height: frameHeight(geo: geo))
+                        Rectangle()
+                            .foregroundColor(.red)
+                            .frame(width: geo.size.width, height: 2)
+                    }
+                }
+                BottomReader(geo: geo, proxy: proxy)
+            }
+        }
+    }
+    
+    /// the time interval of the middle row (target to scroll to)
     var middleRow: TimeInterval {
         (Calendar.current.startOfDay(for: zero.date) + 2 * dayLength).timeIntervalSince1970
     }
