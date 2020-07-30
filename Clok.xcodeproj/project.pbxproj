@@ -27,6 +27,7 @@
 		222D992624BAB2FD00F66E0F /* DecoderExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D992524BAB2FD00F66E0F /* DecoderExtension.swift */; };
 		222D996024BB562100F66E0F /* FetchEntries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D995F24BB562100F66E0F /* FetchEntries.swift */; };
 		222D996324BB803800F66E0F /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D996224BB803800F66E0F /* Report.swift */; };
+		22351B0024D37F3C00E14DBC /* Run.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22351AFF24D37F3C00E14DBC /* Run.swift */; };
 		223863FE24BB8BB10041886B /* FetchProjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223863FD24BB8BB10041886B /* FetchProjects.swift */; };
 		2238640024BBBD030041886B /* DataFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223863FF24BBBD030041886B /* DataFetch.swift */; };
 		2238640224BBBDE40041886B /* ConditionalFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2238640124BBBDE40041886B /* ConditionalFetch.swift */; };
@@ -180,6 +181,7 @@
 		222D992524BAB2FD00F66E0F /* DecoderExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderExtension.swift; sourceTree = "<group>"; };
 		222D995F24BB562100F66E0F /* FetchEntries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchEntries.swift; sourceTree = "<group>"; };
 		222D996224BB803800F66E0F /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
+		22351AFF24D37F3C00E14DBC /* Run.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Run.swift; sourceTree = "<group>"; };
 		223863FD24BB8BB10041886B /* FetchProjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchProjects.swift; sourceTree = "<group>"; };
 		223863FF24BBBD030041886B /* DataFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFetch.swift; sourceTree = "<group>"; };
 		2238640124BBBDE40041886B /* ConditionalFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionalFetch.swift; sourceTree = "<group>"; };
@@ -480,6 +482,7 @@
 			isa = PBXGroup;
 			children = (
 				2207B22124B958F00006748A /* Mask.swift */,
+				22351AFF24D37F3C00E14DBC /* Run.swift */,
 				C6B0FFA1246F52B600DED011 /* Extensions */,
 				228B100024AEA6CA0026AD4B /* Shapes */,
 				22027DCD24AFF5D000C0BA90 /* LoginScreen */,
@@ -859,6 +862,7 @@
 				C6C18D7D244BE891000345D5 /* Constants.swift in Sources */,
 				22928AC524A4207E00DC9EC5 /* FilterStack.swift in Sources */,
 				C61D2658249BE1990056C9FA /* StatHelpers.swift in Sources */,
+				22351B0024D37F3C00E14DBC /* Run.swift in Sources */,
 				22B0783824B1519600256EB8 /* NetworkError.swift in Sources */,
 				22CBD84624A84CA400ED6FA3 /* WeekDateString.swift in Sources */,
 				221C3C5724A93C57006995C5 /* User.swift in Sources */,
