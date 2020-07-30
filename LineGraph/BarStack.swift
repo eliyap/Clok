@@ -12,7 +12,6 @@ struct BarStack: View {
     
     @EnvironmentObject private var bounds: Bounds
     @EnvironmentObject private var zero: ZeroDate
-    @State var ids = Array(stride(from: 0, to: 5, by: 1)) /// swiftui does not like negative indices
     @State var hitTest = true
     
     func enumDays() -> [(Int, Date)] {
@@ -29,7 +28,10 @@ struct BarStack: View {
                         ScrollViewReader { proxy in
                             TopReader(geo: geo, proxy: proxy)
                             VStack(spacing: .zero) {
-                                ForEach(enumDays(), id: \.1.timeIntervalSince1970){ idx, _ in
+                                ForEach(
+                                    enumDays(),
+                                    id: \.1.timeIntervalSince1970
+                                ){ idx, _ in
                                     LineGraph(offset: idx)
                                         .frame(width: geo.size.width, height: frameHeight(geo: geo))
                                     Rectangle()
