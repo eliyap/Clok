@@ -13,7 +13,7 @@ struct LineGraph: View {
     @EnvironmentObject var data: TimeData
     @EnvironmentObject var zero: ZeroDate
     /// number of days on screen
-    static let dayCount = 7
+    static let dayCount = 31
     
     @State var dragBy = PositionTracker()
     @State var ticker = Ticker()
@@ -36,8 +36,20 @@ struct LineGraph: View {
             GeometryReader { geo in
                 ZStack {
                     Rectangle().foregroundColor(.clokBG) /// "invisible" background rectangle to make the whole area touch sensitive
-                    ForEach(0..<LineGraph.dayCount, id: \.self) {
-                        DayBar(dayOffset: $0, size: geo.size)
+                    ForEach(0..<LineGraph.dayCount, id: \.self) { days in
+                        ForEach(data.entries.filter{withinDay(entry: $0, days: days)}, id: \.id) { entry in
+                            LineBar(
+                                entry: entry,
+                                begin: zero.date + Double(days) * dayLength,
+                                interval: zero.interval,
+                                size: geo.size
+                            )
+                                .transition(.identity)
+                                .offset(
+                                    x: geo.size.width * CGFloat(days) / CGFloat(LineGraph.dayCount),
+                                    y: .zero
+                                )
+                        }
                     }
                 }
                 .drawingGroup()
@@ -47,15 +59,11 @@ struct LineGraph: View {
         }
     }
     
-    func DayBar(dayOffset: Int, size: CGSize) -> some View {
-        let zeroOffset = zero.date + Double(dayOffset) * dayLength
-        let offset = size.width * CGFloat(dayOffset) / CGFloat(LineGraph.dayCount)
-        return ForEach(data.entries.filter {$0.wrappedEnd > zeroOffset && $0.wrappedStart < zeroOffset + dayLength}, id: \.id) { entry in
-            LineBar(entry: entry, begin: zeroOffset, interval: zero.interval, size: size)
-                .transition(.identity)
-                .offset(x: offset, y: .zero)
-        }
-        .drawingGroup()
+    func withinDay(entry: TimeEntry, days: Int) -> Bool {
+        let begin = zero.date + Double(days) * dayLength
+        if entry.wrappedEnd < begin { return false }
+        if entry.wrappedStart > begin + dayLength { return false }
+        return true
     }
     
     func Drag(size: CGSize) -> some Gesture {
@@ -74,7 +82,10 @@ struct LineGraph: View {
             let days = dragBy.harvestDays()
             if days != 0 {
                 haptic.impactOccurred(intensity: 1)
-                zero.date -= Double(days) * dayLength
+                withAnimation {
+                    zero.date -= Double(days) * dayLength
+                }
+                
             }
         }
         return DragGesture()
@@ -96,6 +107,5 @@ struct LineGraph: View {
             counter = (counter + 1) % limit
             return counter == 0
         }
-        
     }
 }

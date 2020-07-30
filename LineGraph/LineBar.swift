@@ -31,12 +31,18 @@ struct LineBar: View {
         size: CGSize
     ){
         /// do not render bars that fall outside of time range
-        guard entry.wrappedEnd > begin && entry.wrappedStart < begin + interval else { return nil }
+//        guard entry.wrappedEnd > begin && entry.wrappedStart < begin + interval else { return nil }
+        if entry.wrappedEnd > begin && entry.wrappedStart < begin + interval {
+            self.bound = (
+                max(0, (entry.wrappedStart - begin) / interval),
+                min(1, (entry.wrappedEnd - begin) / interval)
+            )
+        } else if entry.wrappedEnd < begin {
+            self.bound = (0.0, 0.0)
+        } else  {
+            self.bound = (1.0, 1.0)
+        }
         
-        self.bound = (
-            max(0, (entry.wrappedStart - begin) / interval),
-            min(1, (entry.wrappedEnd - begin) / interval)
-        )
         self.entry = entry
         self.size = size
     }
