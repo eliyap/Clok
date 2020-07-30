@@ -8,66 +8,18 @@
 
 import SwiftUI
 
-struct LineGraph: View {
-    
-    @EnvironmentObject var data: TimeData
+struct Controller: View {
     @EnvironmentObject var zero: ZeroDate
-    /// number of days on screen
-    static let dayCount = 31
     
     @State var dragBy = PositionTracker()
     @State var ticker = Ticker()
     
-    let tf = DateFormatter()
-    let haptic = UIImpactFeedbackGenerator(style: .light)
-    init(){
-        tf.timeStyle = .short
-    }
-    
-    /// slows down the magnifying effect by some constant
-    let kCoeff = 0.5
-    
     var body: some View {
-        /// check whether the provided time entry coincides with a particular *date* range
-        /// if our entry ends before the interval even began
-        /// or started after the interval finished, it cannot possibly fall coincide
-        VStack {
-            Text("TESTING")
-            GeometryReader { geo in
-                ZStack {
-                    Rectangle().foregroundColor(.clokBG) /// "invisible" background rectangle to make the whole area touch sensitive
-                    ForEach(0..<LineGraph.dayCount, id: \.self) { days in
-                        ForEach(data.entries.filter{withinDay(entry: $0, days: days)}, id: \.id) { entry in
-                            LineBar(
-                                entry: entry,
-                                begin: zero.date + Double(days) * dayLength,
-                                interval: zero.interval,
-                                size: geo.size
-                            )
-                                .transition(.identity)
-                                .offset(
-                                    x: geo.size.width * CGFloat(days) / CGFloat(LineGraph.dayCount),
-                                    y: .zero
-                                )
-                        }
-                    }
-                }
-                .drawingGroup()
+        GeometryReader { geo in
+            Rectangle().foregroundColor(.clokBG) /// "invisible" background rectangle to make the whole area touch sensitive
                 .gesture(Drag(size: geo.size))
-            }
-            .border(Color.red)
         }
-        .onAppear {
-            /// update zero date to get app view to load data
-            zero.date += TimeInterval.leastNonzeroMagnitude
-        }
-    }
-    
-    func withinDay(entry: TimeEntry, days: Int) -> Bool {
-        let begin = zero.date + Double(days) * dayLength
-        if entry.wrappedEnd < begin { return false }
-        if entry.wrappedStart > begin + zero.interval { return false }
-        return true
+        
     }
     
     func Drag(size: CGSize) -> some Gesture {
@@ -85,7 +37,7 @@ struct LineGraph: View {
             
             let days = dragBy.harvestDays()
             if days != 0 {
-                haptic.impactOccurred(intensity: 1)
+//                haptic.impactOccurred(intensity: 1)
                 withAnimation {
                     zero.date -= Double(days) * dayLength
                 }
@@ -112,4 +64,68 @@ struct LineGraph: View {
             return counter == 0
         }
     }
+}
+
+
+struct LineGraph: View {
+    
+    @EnvironmentObject var data: TimeData
+    @EnvironmentObject var zero: ZeroDate
+    /// number of days on screen
+    static let dayCount = 31
+    
+    
+    let tf = DateFormatter()
+    let haptic = UIImpactFeedbackGenerator(style: .light)
+    init(){
+        tf.timeStyle = .short
+    }
+    
+    /// slows down the magnifying effect by some constant
+    let kCoeff = 0.5
+    
+    var body: some View {
+        /// check whether the provided time entry coincides with a particular *date* range
+        /// if our entry ends before the interval even began
+        /// or started after the interval finished, it cannot possibly fall coincide
+        VStack {
+            Text("TESTING")
+            
+            GeometryReader { geo in
+                ZStack {
+                    ForEach(0..<LineGraph.dayCount, id: \.self) { days in
+                        ForEach(data.entries.filter{withinDay(entry: $0, days: days)}, id: \.id) { entry in
+                            LineBar(
+                                entry: entry,
+                                begin: zero.date + Double(days) * dayLength,
+                                interval: zero.interval,
+                                size: geo.size
+                            )
+                                .transition(.identity)
+                                .offset(
+                                    x: geo.size.width * CGFloat(days) / CGFloat(LineGraph.dayCount),
+                                    y: .zero
+                                )
+                        }
+                    }
+                }
+                .drawingGroup()
+            }
+            .border(Color.red)
+        }
+        .onAppear {
+            /// update zero date to get app view to load data
+            zero.date += TimeInterval.leastNonzeroMagnitude
+        }
+    }
+    
+    func withinDay(entry: TimeEntry, days: Int) -> Bool {
+        let begin = zero.date + Double(days) * dayLength
+        if entry.wrappedEnd < begin { return false }
+        if entry.wrappedStart > begin + zero.interval { return false }
+        return true
+    }
+    
+    
+    
 }

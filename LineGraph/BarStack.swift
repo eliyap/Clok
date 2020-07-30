@@ -16,7 +16,11 @@ struct BarStack: View {
         GeometryReader { geo in
             ZStack(alignment: .bottomLeading) {
                 Mask {
-                    LineGraph()
+                    VStack {
+                        Controller()
+                        LineGraph()
+                    }
+                    
                 }
                 FilterStack()
                     .padding(buttonPadding)

@@ -8,7 +8,7 @@
 
 import Foundation
 import SwiftUI
-extension LineGraph {
+extension Controller {
     
     struct PositionTracker {
         var lag = CGPoint.zero
