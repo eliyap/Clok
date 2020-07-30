@@ -20,40 +20,17 @@ struct BarStack: View {
                 Mask {
                     ScrollView(.vertical, showsIndicators: false) {
                         ScrollViewReader { proxy in
-                            GeometryReader { topGeo in
-                                Run {
-                                    guard (geo.frame(in: .global).minY - topGeo.frame(in: .global).minY < geo.size.height) else { return }
-                                    proxy.scrollTo(2)
-                                    hitTest = false
-                                    DispatchQueue.main.async {
-                                        hitTest = true
-                                    }
-                                    zero.date -= dayLength
-                                }
-                            }
-                            .frame(width: .zero, height: .zero)
+                            TopReader(geo: geo, proxy: proxy)
                             VStack(spacing: .zero) {
-    //                            Controller()
                                 ForEach(ids, id: \.self){
                                     LineGraph(offset: $0 - 2) /// keep 0 the middle
                                         .frame(width: geo.size.width, height: geo.size.height)
                                     Rectangle()
                                         .foregroundColor(.red)
                                         .frame(width: geo.size.width, height: 2)
-                                }
-                                
+                                }                            
                             }
-                            GeometryReader { botGeo in
-                                Run {
-                                    guard (botGeo.frame(in: .global).maxY - geo.frame(in: .global).maxY < geo.size.height) else { return }
-                                    proxy.scrollTo(2)
-                                    hitTest = false
-                                    DispatchQueue.main.async {
-                                        hitTest = true
-                                    }
-                                    zero.date += dayLength
-                                }
-                            }
+                            BottomReader(geo: geo, proxy: proxy)
                         }
                     }
                 }
@@ -66,6 +43,34 @@ struct BarStack: View {
         .aspectRatio(1, contentMode: bounds.notch ? .fit : .fill)
     }
     
+    
+    func TopReader(geo: GeometryProxy, proxy: ScrollViewProxy) -> some View {
+        GeometryReader { topGeo in
+            Run {
+                guard (geo.frame(in: .global).minY - topGeo.frame(in: .global).minY < geo.size.height) else { return }
+                proxy.scrollTo(2)
+                hitTest = false
+                DispatchQueue.main.async {
+                    hitTest = true
+                }
+                zero.date -= dayLength
+            }
+        }
+        .frame(width: .zero, height: .zero)
+    }
+    func BottomReader(geo: GeometryProxy, proxy: ScrollViewProxy) -> some View {
+        GeometryReader { botGeo in
+            Run {
+                guard (botGeo.frame(in: .global).maxY - geo.frame(in: .global).maxY < geo.size.height) else { return }
+                proxy.scrollTo(2)
+                hitTest = false
+                DispatchQueue.main.async {
+                    hitTest = true
+                }
+                zero.date += dayLength
+            }
+        }
+    }
 }
 
 struct Run: View {
