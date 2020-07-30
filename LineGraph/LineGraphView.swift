@@ -84,6 +84,12 @@ struct LineGraph: View {
     /// slows down the magnifying effect by some constant
     let kCoeff = 0.5
     
+    func enumDays() -> [(Int, Date)] {
+        stride(from: 0, to: LineGraph.dayCount, by: 1).map{
+            ($0, zero.date + Double($0) * dayLength)
+        }
+    }
+    
     var body: some View {
         /// check whether the provided time entry coincides with a particular *date* range
         /// if our entry ends before the interval even began
@@ -93,17 +99,20 @@ struct LineGraph: View {
             
             GeometryReader { geo in
                 ZStack {
-                    ForEach(0..<LineGraph.dayCount, id: \.self) { days in
-                        ForEach(data.entries.filter{withinDay(entry: $0, days: days)}, id: \.id) { entry in
+                    ForEach(
+                        enumDays(),
+                        id: \.1.timeIntervalSince1970
+                    ) { idx, date in
+                        ForEach(data.entries.filter{withinDay(entry: $0, date: date)}, id: \.id) { entry in
                             LineBar(
                                 entry: entry,
-                                begin: zero.date + Double(days) * dayLength,
+                                begin: date,
                                 interval: zero.interval,
                                 size: geo.size
                             )
                                 .transition(.identity)
                                 .offset(
-                                    x: geo.size.width * CGFloat(days) / CGFloat(LineGraph.dayCount),
+                                    x: geo.size.width * CGFloat(idx) / CGFloat(LineGraph.dayCount),
                                     y: .zero
                                 )
                         }
@@ -119,8 +128,8 @@ struct LineGraph: View {
         }
     }
     
-    func withinDay(entry: TimeEntry, days: Int) -> Bool {
-        let begin = zero.date + Double(days) * dayLength
+    func withinDay(entry: TimeEntry, date: Date) -> Bool {
+        let begin = date
         if entry.wrappedEnd < begin { return false }
         if entry.wrappedStart > begin + zero.interval { return false }
         return true
