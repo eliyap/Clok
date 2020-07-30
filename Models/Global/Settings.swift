@@ -13,6 +13,6 @@ final class Settings: ObservableObject {
         case settings
     }
     
-    @Published var tab: Tabs = .spiral
+    @Published var tab: Tabs = .bar
     @Published var user: User? = nil
 }
