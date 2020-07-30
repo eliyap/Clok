@@ -107,7 +107,7 @@ struct LineGraph: View {
                         LineBar(
                             entry: entry,
                             begin: date,
-                            interval: zero.interval,
+                            interval: dayLength,
                             size: geo.size
                         )
                             .transition(.identity)
@@ -128,7 +128,7 @@ struct LineGraph: View {
     func withinDay(entry: TimeEntry, date: Date) -> Bool {
         let begin = date
         if entry.wrappedEnd < begin { return false }
-        if entry.wrappedStart > begin + zero.interval { return false }
+        if entry.wrappedStart > begin + dayLength { return false }
         return true
     }
     
