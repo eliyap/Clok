@@ -99,6 +99,7 @@ struct LineGraph: View {
             
             GeometryReader { geo in
                 ZStack {
+                    /// use date enum so SwiftUI can identify horizontal swipes without redrawing everything
                     ForEach(
                         enumDays(),
                         id: \.1.timeIntervalSince1970
