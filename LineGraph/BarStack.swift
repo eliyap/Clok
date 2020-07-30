@@ -28,7 +28,7 @@ struct BarStack: View {
                                     Rectangle()
                                         .foregroundColor(.red)
                                         .frame(width: geo.size.width, height: 2)
-                                }                            
+                                }
                             }
                             BottomReader(geo: geo, proxy: proxy)
                         }
@@ -49,10 +49,13 @@ struct BarStack: View {
             Run {
                 guard (geo.frame(in: .global).minY - topGeo.frame(in: .global).minY < geo.size.height) else { return }
                 proxy.scrollTo(2)
+                
+                /// temporarily break hit testing
                 hitTest = false
                 DispatchQueue.main.async {
                     hitTest = true
                 }
+                
                 zero.date -= dayLength
             }
         }
@@ -63,10 +66,13 @@ struct BarStack: View {
             Run {
                 guard (botGeo.frame(in: .global).maxY - geo.frame(in: .global).maxY < geo.size.height) else { return }
                 proxy.scrollTo(2)
+                
+                /// temporarily break hit testing
                 hitTest = false
                 DispatchQueue.main.async {
                     hitTest = true
                 }
+                
                 zero.date += dayLength
             }
         }
