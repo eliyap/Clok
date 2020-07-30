@@ -27,14 +27,13 @@ struct LineBar: View {
     init?(
         entry: TimeEntry,       /// time entry to consider
         begin: Date,            /// beginning of the time interval to consider
-        interval: TimeInterval, /// length of time interval
         size: CGSize
     ){
         /// do not render bars that fall outside of time range
-        guard entry.wrappedEnd > begin && entry.wrappedStart < begin + interval else { return nil }
+        guard entry.wrappedEnd > begin && entry.wrappedStart < begin + dayLength else { return nil }
         self.bound = (
-            max(0, (entry.wrappedStart - begin) / interval),
-            min(1, (entry.wrappedEnd - begin) / interval)
+            max(0, (entry.wrappedStart - begin) / dayLength),
+            min(1, (entry.wrappedEnd - begin) / dayLength)
         )
         
         self.entry = entry

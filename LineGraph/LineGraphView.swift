@@ -30,11 +30,7 @@ struct Controller: View {
         
             /// only run every so often
             guard ticker.tick() else { return }
-            
-//            withAnimation {
-//                zero.date -= dragBy.harvestInterval() * zero.interval
-//            }
-            
+                        
             let days = dragBy.harvestDays()
             if days != 0 {
 //                haptic.impactOccurred(intensity: 1)
@@ -103,11 +99,10 @@ struct LineGraph: View {
                     enumDays(),
                     id: \.1.timeIntervalSince1970
                 ) { idx, date in
-                    ForEach(data.entries.filter{withinDay(entry: $0, date: date)}, id: \.id) { entry in
+                    ForEach(data.entries.filter{withinDay(entry: $0, begin: date)}, id: \.id) { entry in
                         LineBar(
                             entry: entry,
                             begin: date,
-                            interval: dayLength,
                             size: geo.size
                         )
                             .transition(.identity)
@@ -125,13 +120,9 @@ struct LineGraph: View {
         }
     }
     
-    func withinDay(entry: TimeEntry, date: Date) -> Bool {
-        let begin = date
+    func withinDay(entry: TimeEntry, begin: Date) -> Bool {
         if entry.wrappedEnd < begin { return false }
         if entry.wrappedStart > begin + dayLength { return false }
         return true
     }
-    
-    
-    
 }
