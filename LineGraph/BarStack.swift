@@ -12,7 +12,6 @@ struct BarStack: View {
     
     @EnvironmentObject private var bounds: Bounds
     @EnvironmentObject private var zero: ZeroDate
-    @State var hitTest = true
     
     func enumDays() -> [(Int, Date)] {
         stride(from: 0, to: 5, by: 1).map{
@@ -26,7 +25,6 @@ struct BarStack: View {
                 Mask {
                     InfiniteScroll(geo: geo)
                 }
-                .allowsHitTesting(hitTest)
                 FilterStack()
                     .padding(buttonPadding)
             }
@@ -66,22 +64,11 @@ struct BarStack: View {
         geo.size.height * CGFloat(dayLength / zero.interval)
     }
     
-    func breakScroll() -> Void {
-        /// try to temporarily break hit testing,
-        /// prevents a weird loop where multiple days are moved
-        hitTest = false
-        DispatchQueue.main.async {
-            hitTest = true
-        }
-
-    }
-    
     func TopReader(geo: GeometryProxy, proxy: ScrollViewProxy) -> some View {
         GeometryReader { topGeo in
             Run {
                 guard (geo.frame(in: .global).minY - topGeo.frame(in: .global).minY < frameHeight(geo: geo)) else { return }
                 proxy.scrollTo(middleRow, anchor: .top)
-                breakScroll()
                 zero.date -= dayLength
             }
         }
@@ -93,7 +80,6 @@ struct BarStack: View {
             Run {
                 guard (botGeo.frame(in: .global).maxY - geo.frame(in: .global).maxY < frameHeight(geo: geo)) else { return }
                 proxy.scrollTo(middleRow, anchor: .bottom)
-                breakScroll()
                 zero.date += dayLength
             }
         }
