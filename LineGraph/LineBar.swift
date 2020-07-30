@@ -32,13 +32,17 @@ struct LineBar: View {
     ){
         /// do not render bars that fall outside of time range
         guard entry.wrappedEnd > begin && entry.wrappedStart < begin + interval else { return nil }
+        self.bound = (
+            max(0, (entry.wrappedStart - begin) / interval),
+            min(1, (entry.wrappedEnd - begin) / interval)
+        )
         
         self.entry = entry
         self.size = size
     }
     
     var body: some View {
-        return OptionalRoundRect(
+        OptionalRoundRect(
             radius: size.height * cornerScale / CGFloat(LineGraph.dayCount), /// adapt scale to taste
             geoSize: size,
             bound: bound

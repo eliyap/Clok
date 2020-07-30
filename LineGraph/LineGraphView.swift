@@ -66,7 +66,7 @@ struct LineGraph: View {
     func withinDay(entry: TimeEntry, days: Int) -> Bool {
         let begin = zero.date + Double(days) * dayLength
         if entry.wrappedEnd < begin { return false }
-        if entry.wrappedStart > begin + dayLength { return false }
+        if entry.wrappedStart > begin + zero.interval { return false }
         return true
     }
     
