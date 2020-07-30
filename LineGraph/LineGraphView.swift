@@ -58,8 +58,8 @@ struct LineGraph: View {
             .border(Color.red)
         }
         .onAppear {
-            /// force update app view to load data
-            zero.date += 1.0
+            /// update zero date to get app view to load data
+            zero.date += TimeInterval.leastNonzeroMagnitude
         }
     }
     
