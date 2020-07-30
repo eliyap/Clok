@@ -24,5 +24,5 @@ final class ZeroDate: ObservableObject {
     
     /// length of time interval being examined
     /// defaults to 8 hours
-    @Published var interval: TimeInterval = dayLength / 3
+    @Published var interval: TimeInterval = dayLength
 }
