@@ -66,6 +66,4 @@ func mergeEntries(
             }
         }
     }
-    /// save projects
-    try! context.save()
 }
