@@ -19,7 +19,8 @@ struct LineBar: View {
     @State private var offset = CGFloat.zero
     
     private var size: CGSize
-    private let cornerScale = CGFloat(1.0/8.0)
+    private let cornerScale = CGFloat(1.0/18.0)
+    
     /// determines what proportion of available horizontal space to consume
     static let thicc = CGFloat(0.8)
     var bound: Bound
