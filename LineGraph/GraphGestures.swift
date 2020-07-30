@@ -44,6 +44,11 @@ extension LineGraph {
             dayDiff = .zero
         }
         
+        mutating func harvestInterval() -> TimeInterval {
+            defer { intervalDiff = .zero }
+            return intervalDiff
+        }
+        
         /// if gesture is more than 1 day in either direction, return that, and subtract the result
         mutating func harvestDays() -> Int {
             defer { dayDiff = dayDiff.remainder(dividingBy: 1) }
