@@ -13,7 +13,7 @@ struct BarStack: View {
     @EnvironmentObject private var bounds: Bounds
     @EnvironmentObject private var zero: ZeroDate
     @State var ids = Array(stride(from: 0, to: 5, by: 1)) /// swiftui does not like negative indices
-    
+    @State var hitTest = true
     var body: some View {
         GeometryReader { geo in
             ZStack(alignment: .bottomLeading) {
@@ -24,6 +24,10 @@ struct BarStack: View {
                                 Run {
                                     guard (geo.frame(in: .global).minY - topGeo.frame(in: .global).minY < geo.size.height) else { return }
                                     proxy.scrollTo(2)
+                                    hitTest = false
+                                    DispatchQueue.main.async {
+                                        hitTest = true
+                                    }
                                     zero.date -= dayLength
                                 }
                             }
@@ -33,18 +37,27 @@ struct BarStack: View {
                                 ForEach(ids, id: \.self){
                                     LineGraph(offset: $0 - 2) /// keep 0 the middle
                                         .frame(width: geo.size.width, height: geo.size.height)
+                                    Rectangle()
+                                        .foregroundColor(.red)
+                                        .frame(width: geo.size.width, height: 2)
                                 }
+                                
                             }
                             GeometryReader { botGeo in
                                 Run {
                                     guard (botGeo.frame(in: .global).maxY - geo.frame(in: .global).maxY < geo.size.height) else { return }
                                     proxy.scrollTo(2)
+                                    hitTest = false
+                                    DispatchQueue.main.async {
+                                        hitTest = true
+                                    }
                                     zero.date += dayLength
                                 }
                             }
                         }
                     }
                 }
+                .allowsHitTesting(hitTest)
                 FilterStack()
                     .padding(buttonPadding)
             }
