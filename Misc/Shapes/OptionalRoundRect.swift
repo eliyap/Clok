@@ -15,15 +15,6 @@ struct OptionalRoundRect: Shape {
     var geoSize: CGSize
     var bound: LineBar.Bound
     
-    var animatableData: AnimatablePair<Double, Double> {
-        get {
-            return AnimatablePair(bound.min, bound.max)
-        }
-        set {
-            (bound.min, bound.max) = (newValue.first, newValue.second)
-        }
-    }
-    
     func path(in rect: CGRect) -> Path {
         /// place with half the whitespace to center the graph
         let factor: CGFloat = (1.0 - LineBar.thicc) / 2.0
