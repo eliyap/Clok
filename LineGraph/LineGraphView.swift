@@ -94,35 +94,32 @@ struct LineGraph: View {
         /// check whether the provided time entry coincides with a particular *date* range
         /// if our entry ends before the interval even began
         /// or started after the interval finished, it cannot possibly fall coincide
-        VStack {
-            Text("TESTING")
-            
-            GeometryReader { geo in
-                ZStack {
-                    /// use date enum so SwiftUI can identify horizontal swipes without redrawing everything
-                    ForEach(
-                        enumDays(),
-                        id: \.1.timeIntervalSince1970
-                    ) { idx, date in
-                        ForEach(data.entries.filter{withinDay(entry: $0, date: date)}, id: \.id) { entry in
-                            LineBar(
-                                entry: entry,
-                                begin: date,
-                                interval: zero.interval,
-                                size: geo.size
+        GeometryReader { geo in
+            ZStack {
+                /// use date enum so SwiftUI can identify horizontal swipes without redrawing everything
+                ForEach(
+                    enumDays(),
+                    id: \.1.timeIntervalSince1970
+                ) { idx, date in
+                    ForEach(data.entries.filter{withinDay(entry: $0, date: date)}, id: \.id) { entry in
+                        LineBar(
+                            entry: entry,
+                            begin: date,
+                            interval: zero.interval,
+                            size: geo.size
+                        )
+                            .transition(.identity)
+                            .offset(
+                                x: geo.size.width * CGFloat(idx) / CGFloat(LineGraph.dayCount),
+                                y: .zero
                             )
-                                .transition(.identity)
-                                .offset(
-                                    x: geo.size.width * CGFloat(idx) / CGFloat(LineGraph.dayCount),
-                                    y: .zero
-                                )
-                        }
                     }
                 }
-                .drawingGroup()
             }
-            .border(Color.red)
+            .drawingGroup()
         }
+        .border(Color.red)
+    
         .onAppear {
             /// update zero date to get app view to load data
             zero.date += TimeInterval.leastNonzeroMagnitude
