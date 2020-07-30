@@ -16,6 +16,7 @@ struct LineGraph: View {
     static let dayCount = 7
     
     @State var dragBy = PositionTracker()
+    @State var ticker = Ticker()
     
     let tf = DateFormatter()
     let haptic = UIImpactFeedbackGenerator(style: .light)
@@ -36,10 +37,7 @@ struct LineGraph: View {
                 ZStack {
                     Rectangle().foregroundColor(.clokBG) /// "invisible" background rectangle to make the whole area touch sensitive
                     ForEach(0..<LineGraph.dayCount, id: \.self) {
-                        Rectangle()
-                            .frame(width: 30, height: 30)
-                            .offset(x: CGFloat(zero.date.angle().degrees * 5.0), y: CGFloat(10 * $0))
-//                        DayBar(dayOffset: $0, size: geo.size)
+                        DayBar(dayOffset: $0, size: geo.size)
                     }
                 }
                 .drawingGroup()
@@ -62,19 +60,21 @@ struct LineGraph: View {
     
     func Drag(size: CGSize) -> some Gesture {
         func useValue(value: DragGesture.Value, size: CGSize) -> Void {
-            /// find cursor's offset
+            
+            /// find cursor's offset (don't skip this, we want all movements tracked)
             dragBy.update(state: value, size: size)
         
+            /// only run every so often
+            guard ticker.tick() else { return }
+            
             withAnimation {
-                zero.date -= dragBy.intervalDiff * zero.interval
+                zero.date -= dragBy.harvestInterval() * zero.interval
             }
             
             let days = dragBy.harvestDays()
             if days != 0 {
                 haptic.impactOccurred(intensity: 1)
-//                withAnimation {
-                    zero.date -= Double(days) * dayLength
-//                }
+                zero.date -= Double(days) * dayLength
             }
         }
         return DragGesture()
@@ -86,5 +86,16 @@ struct LineGraph: View {
                 useValue(value: $0, size: size)
                 dragBy.reset()
             }
+    }
+    
+    struct Ticker {
+        var counter = 0
+        let limit = 2 /// only run every 1/limit times
+        
+        mutating func tick() -> Bool {
+            counter = (counter + 1) % limit
+            return counter == 0
+        }
+        
     }
 }
