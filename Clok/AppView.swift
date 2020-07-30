@@ -30,7 +30,7 @@ struct ClokApp: App {
     }
     
     /// keep track of the what has been fetched this session
-    @State private var minLoaded = Date() - weekLength
+    @State private var minLoaded = Date()
     @State private var maxLoaded = Date()
     
     var body: some Scene {
