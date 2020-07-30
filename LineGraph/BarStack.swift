@@ -41,8 +41,8 @@ struct BarStack: View {
                     ForEach(
                         enumDays(),
                         id: \.1.timeIntervalSince1970
-                    ){ idx, _ in
-                        LineGraph(offset: idx)
+                    ){ idx, date in
+                        LineGraph(date: date)
                             .frame(width: geo.size.width, height: frameHeight(geo: geo))
                         Rectangle()
                             .foregroundColor(.red)
