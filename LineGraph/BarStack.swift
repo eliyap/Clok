@@ -66,35 +66,34 @@ struct BarStack: View {
         geo.size.height * CGFloat(dayLength / zero.interval)
     }
     
+    func breakScroll() -> Void {
+        /// try to temporarily break hit testing,
+        /// prevents a weird loop where multiple days are moved
+        hitTest = false
+        DispatchQueue.main.async {
+            hitTest = true
+        }
+
+    }
+    
     func TopReader(geo: GeometryProxy, proxy: ScrollViewProxy) -> some View {
         GeometryReader { topGeo in
             Run {
                 guard (geo.frame(in: .global).minY - topGeo.frame(in: .global).minY < frameHeight(geo: geo)) else { return }
                 proxy.scrollTo(middleRow, anchor: .top)
-                
-                /// temporarily break hit testing
-                hitTest = false
-                DispatchQueue.main.async {
-                    hitTest = true
-                }
-                
+                breakScroll()
                 zero.date -= dayLength
             }
         }
         .frame(width: .zero, height: .zero)
     }
+    
     func BottomReader(geo: GeometryProxy, proxy: ScrollViewProxy) -> some View {
         GeometryReader { botGeo in
             Run {
                 guard (botGeo.frame(in: .global).maxY - geo.frame(in: .global).maxY < frameHeight(geo: geo)) else { return }
                 proxy.scrollTo(middleRow, anchor: .bottom)
-                
-                /// temporarily break hit testing
-                hitTest = false
-                DispatchQueue.main.async {
-                    hitTest = true
-                }
-                
+                breakScroll()
                 zero.date += dayLength
             }
         }
