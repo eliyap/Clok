@@ -31,9 +31,9 @@ struct Controller: View {
             /// only run every so often
             guard ticker.tick() else { return }
             
-            withAnimation {
-                zero.date -= dragBy.harvestInterval() * zero.interval
-            }
+//            withAnimation {
+//                zero.date -= dragBy.harvestInterval() * zero.interval
+//            }
             
             let days = dragBy.harvestDays()
             if days != 0 {
@@ -86,7 +86,7 @@ struct LineGraph: View {
     
     func enumDays() -> [(Int, Date)] {
         stride(from: 0, to: LineGraph.dayCount, by: 1).map{
-            ($0, zero.date + Double($0) * dayLength)
+            ($0, Calendar.current.startOfDay(for: zero.date) + Double($0) * dayLength)
         }
     }
     
