@@ -25,16 +25,15 @@ extension LineGraph {
             this prevents crooked swipes from accidentally moving in an undesired direction
             */
             /// check whether recent movement was more vertical or more horizontal
+            /// and increment the correct tracker
             if abs(lead.x - lag.x) > abs(lead.y - lag.y) {
                 /// normalize against view width
                 dayDiff += Double(CGFloat(LineGraph.dayCount) * (lead.x - lag.x) / size.width)
-                intervalDiff = .zero
             } else {
-                intervalDiff = Double((lead.y - lag.y) / size.height)
-                dayDiff = .zero
+                intervalDiff += Double((lead.y - lag.y) / size.height)
             }
-            /// remember state for next time
-            lag = lead
+            
+            lag = lead /// remember state for next time
         }
         
         mutating func reset() -> Void {
@@ -51,7 +50,8 @@ extension LineGraph {
         
         /// if gesture is more than 1 day in either direction, return that, and subtract the result
         mutating func harvestDays() -> Int {
-            defer { dayDiff = dayDiff.remainder(dividingBy: 1) }
+            /// NOTE: apparently `.remainder(dividingBy) turns 0.5 -> -0.5, which is just bad, Apple`
+            defer { dayDiff = dayDiff - Double(Int(dayDiff)) }
             return Int(dayDiff)
         }
     }

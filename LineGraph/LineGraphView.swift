@@ -52,7 +52,7 @@ struct LineGraph: View {
         let offset = size.width * CGFloat(dayOffset) / CGFloat(LineGraph.dayCount)
         return ForEach(data.entries.filter {$0.wrappedEnd > zeroOffset && $0.wrappedStart < zeroOffset + dayLength}, id: \.id) { entry in
             LineBar(entry: entry, begin: zeroOffset, interval: zero.interval, size: size)
-                .transition(.opacity)
+                .transition(.identity)
                 .offset(x: offset, y: .zero)
         }
         .drawingGroup()
