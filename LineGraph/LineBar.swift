@@ -13,7 +13,6 @@ struct LineBar: View {
     typealias Bound = (min: Double, max: Double)
     
     @ObservedObject var entry: TimeEntry
-    @EnvironmentObject var data: TimeData
     @EnvironmentObject var listRow: ListRow
     @State private var opacity = 1.0
     @State private var offset = CGFloat.zero
@@ -48,7 +47,6 @@ struct LineBar: View {
             bound: bound
         )
             .foregroundColor(entry.wrappedColor)
-            .opacity(opacity * (entry.matches(data.terms) ? 1 : 0.5) )
             .offset(x: .zero, y: offset)
             .onTapGesture { tapHandler() }
     }

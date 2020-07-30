@@ -105,6 +105,7 @@ struct LineGraph: View {
                             size: geo.size
                         )
                             .transition(.identity)
+                            .opacity(entry.matches(data.terms) ? 1 : 0.5)
                             .offset(
                                 x: geo.size.width * CGFloat(idx) / CGFloat(LineGraph.dayCount),
                                 y: .zero
