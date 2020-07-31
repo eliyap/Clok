@@ -39,8 +39,6 @@ struct LineBar: View {
     
     var body: some View {
         OptionalRoundRect(
-            radius: size.height * cornerScale / CGFloat(LineGraph.dayCount), /// adapt scale to taste
-            geoSize: size,
             bound: bound
         )
             .foregroundColor(entry.wrappedColor)
