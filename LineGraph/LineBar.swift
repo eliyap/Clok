@@ -10,42 +10,28 @@ import SwiftUI
 
 struct LineBar: View {
     
-    typealias Bound = (min: Double, max: Double)
-    
     let entry: TimeEntry
+    let begin: Date
+    let size: CGSize
+    
     @EnvironmentObject var listRow: ListRow
     @State private var opacity = 1.0
     @State private var offset = CGFloat.zero
     
-    private var size: CGSize
+    /// determines what proportion of available horizontal space to consume
+    private let thicc = CGFloat(0.8)
     private let cornerScale = CGFloat(1.0/8.0)
     
-    /// determines what proportion of available horizontal space to consume
-    static let thicc = CGFloat(0.8)
-    var bound: Bound
-    
-    init?(
-        entry: TimeEntry,       /// time entry to consider
-        begin: Date,            /// beginning of the time interval to consider
-        size: CGSize
-    ){
-        self.bound = (
-            (entry.start - begin) / dayLength,
-            (entry.end - begin) / dayLength
-        )
-        self.entry = entry
-        self.size = size
-    }
     
     var body: some View {
         RoundedRectangle(cornerRadius: size.height * cornerScale / CGFloat(LineGraph.dayCount)) /// adapt scale to taste
             .size(
-                width: size.width / CGFloat(LineGraph.dayCount) * LineBar.thicc,
-                height: CGFloat(bound.max - bound.min) * size.height
+                width: size.width * thicc / CGFloat(LineGraph.dayCount),
+                height: size.height * CGFloat((entry.end - entry.start) / dayLength)
             )
             .offset(CGPoint(
-                x: size.width / CGFloat(LineGraph.dayCount) * CGFloat((1.0 - LineBar.thicc) / 2.0),
-                y: CGFloat(bound.min) * size.height
+                x: size.width / CGFloat(LineGraph.dayCount) * CGFloat((1.0 - thicc) / 2.0),
+                y: size.height * CGFloat((entry.end - begin) / dayLength)
             ))
             .opacity(opacity)
             .offset(y: offset)
