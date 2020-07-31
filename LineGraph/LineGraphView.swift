@@ -104,7 +104,7 @@ struct LineGraph: View {
             ) { idx, date in
                 ForEach(
                     data.entries
-                        .filter{$0.wrappedEnd > date && $0.wrappedStart < date + dayLength}
+                        .filter{$0.end > date && $0.start < date + dayLength}
                     , id: \.id
                 ) { entry in
                     LineBar(
