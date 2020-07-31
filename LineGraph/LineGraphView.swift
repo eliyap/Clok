@@ -69,7 +69,7 @@ struct LineGraph: View {
     
     @EnvironmentObject var data: TimeData
     /// number of days on screen
-    static let dayCount = 31
+    static let dayCount = 7
     
     var offset: Int
     let tf = DateFormatter()
@@ -115,12 +115,13 @@ struct LineGraph: View {
                     }
                 }
             }
+            .drawingGroup()
         }
     }
     
     func withinDay(entry: TimeEntry, begin: Date) -> Bool {
-        if entry.wrappedEnd < begin { return false }
-        if entry.wrappedStart > begin + dayLength { return false }
+        if entry.wrappedEnd > begin { return false }
+        if entry.wrappedStart < begin + dayLength { return false }
         return true
     }
 }
