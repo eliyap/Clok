@@ -31,7 +31,7 @@ struct LineBar: View {
             )
             .offset(CGPoint(
                 x: size.width / CGFloat(LineGraph.dayCount) * CGFloat((1.0 - thicc) / 2.0),
-                y: size.height * CGFloat((entry.end - begin) / dayLength)
+                y: size.height * CGFloat((entry.start - begin) / dayLength)
             ))
             .opacity(opacity)
             .offset(y: offset)
