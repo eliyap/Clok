@@ -8,17 +8,18 @@
 
 import SwiftUI
 
-fileprivate let itemCount = 3
-
 struct BarStack: View {
     
     @EnvironmentObject private var bounds: Bounds
     @EnvironmentObject private var zero: ZeroDate
     
+    @State var items = [UUID(), UUID(), UUID()]
     
-    @State var items: [UUID] = stride(from: 0, to: itemCount, by: 1).map{_ in UUID()}
+    /// Hack: by toggling this bool, force SwiftUI to "redraw" the view, breaking the user's scroll gesture
+    /// this is needed to prevent a long drag repeatedly pop-ing
     @State var meaningless = false
     
+    /// how far user needs to pull before a pop
     let threshhold = CGFloat(0.25)
     
     func jumpCoreDate() {
