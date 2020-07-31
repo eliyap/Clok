@@ -16,7 +16,7 @@ struct Controller: View {
     
     var body: some View {
         GeometryReader { geo in
-            Rectangle().foregroundColor(.clokBG) /// "invisible" background rectangle to make the whole area touch sensitive
+            Rectangle().foregroundColor(.red) /// "invisible" background rectangle to make the whole area touch sensitive
                 .gesture(Drag(size: geo.size))
         }
         
@@ -28,8 +28,6 @@ struct Controller: View {
             /// find cursor's offset (don't skip this, we want all movements tracked)
             dragBy.update(state: value, size: size)
         
-            /// only run every so often
-            guard ticker.tick() else { return }
                         
             let days = dragBy.harvestDays()
             if days != 0 {
@@ -42,7 +40,7 @@ struct Controller: View {
         }
         return DragGesture()
             .onChanged {
-                useValue(value: $0, size: size)
+                dragBy.update(state: $0, size: size)
             }
             .onEnded {
                 /// update once more on end

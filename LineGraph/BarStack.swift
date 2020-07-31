@@ -68,9 +68,9 @@ struct BarStack: View {
                             size: geo.size
                         )
                         .frame(width: geo.size.width, height: geo.size.height)
-                        Rectangle()
+                        Controller()
                             .foregroundColor(.red)
-                            .frame(width: geo.size.width, height: 2)
+                            .frame(width: geo.size.width, height: 40)
                     }
                 }
                 .onAppear {
