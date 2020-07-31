@@ -70,21 +70,21 @@ struct KnobView: View {
                         /// find cursor's angle
                         needsDraw.toggle()
                         if needsDraw {
-                            zero.startDate += dayLength * angleTracker.harvest()
+                            zero.date += dayLength * angleTracker.harvest()
                         }
                         angleTracker.update(geo: geo, value: value)
                     }
                     .onEnded { value in
                         /// update once more on end
                         angleTracker.update(geo: geo, value: value)
-                        zero.startDate += dayLength * angleTracker.harvest()
+                        zero.date += dayLength * angleTracker.harvest()
                     }
                 )
                 .animation(.spring())
         }
         .aspectRatio(1, contentMode: .fit)
         .onAppear {
-            angleTracker.lead = -zero.startDate.clockAngle24()
+            angleTracker.lead = -zero.date.clockAngle24()
             angleTracker.lag = angleTracker.lead
         }
         

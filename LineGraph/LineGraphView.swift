@@ -35,7 +35,7 @@ struct Controller: View {
             if days != 0 {
 //                haptic.impactOccurred(intensity: 1)
                 withAnimation {
-                    zero.startDate -= Double(days) * dayLength
+                    zero.date -= Double(days) * dayLength
                 }
                 
             }
@@ -87,7 +87,7 @@ struct LineGraph: View {
     
     func enumDays() -> [(Int, Date)] {
         stride(from: 0, to: LineGraph.dayCount, by: 1).map{
-            ($0, zero.startDate + Double($0 + offset) * dayLength)
+            ($0, Calendar.current.startOfDay(for: zero.date) + Double($0 + offset) * dayLength)
         }
     }
     

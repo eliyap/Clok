@@ -22,7 +22,7 @@ struct BarStack: View {
     @State var handler = DragHandler()
     
     func jumpCoreDate() {
-        zero.startDate += .leastNonzeroMagnitude
+        zero.date += .leastNonzeroMagnitude
     }
     
     var body: some View {

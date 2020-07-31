@@ -62,7 +62,7 @@ struct EntryList: View {
     func Header(_ day: Day) -> some View {
         let cal = Calendar.current
         let currentYear = cal.component(.year, from: Date())
-        let zeroYear = cal.component(.year, from: zero.startDate)
+        let zeroYear = cal.component(.year, from: zero.date)
                 
         /// day of week, day of month, MMM
         let dateString =  [
@@ -93,14 +93,14 @@ struct EntryList: View {
         /// restrict to current week
         let validEntries = data.entries
             .sorted(by: {$0.wrappedStart < $1.wrappedStart} )
-            .within(interval: weekLength, of: zero.startDate)
+            .within(interval: weekLength, of: zero.date)
             .matching(data.terms)
         
         var days = [Day]()
         let cal = Calendar.current
         for mn in stride(
-            from: cal.startOfDay(for: zero.startDate),
-            through: cal.startOfDay(for: zero.startDate + weekLength),
+            from: cal.startOfDay(for: zero.date),
+            through: cal.startOfDay(for: zero.date + weekLength),
             by: dayLength
         ) {
             days.append(Day(
@@ -119,7 +119,7 @@ struct EntryList: View {
     func HeaderFor(section: Day) -> String {
         let cal = Calendar.current
         let currentYear = cal.component(.year, from: Date())
-        let zeroYear = cal.component(.year, from: zero.startDate)
+        let zeroYear = cal.component(.year, from: zero.date)
         
         /// day of week, day of month, MMM
         return [

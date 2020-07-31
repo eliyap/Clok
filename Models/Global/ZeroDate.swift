@@ -10,12 +10,7 @@ import Foundation
 
 final class ZeroDate: ObservableObject {
     // default to 1 week before end of today
-    @Published var startDate = Calendar.current.startOfDay(for: Date()) - weekLength
-    @Published var dayCount = 31
-    
-    var endDate: Date {
-        startDate - Double(dayCount) * dayLength
-    }
+    @Published var date = Date() - weekLength
     
     enum dateChange {
         case fwrd
