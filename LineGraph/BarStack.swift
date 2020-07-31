@@ -29,7 +29,7 @@ struct BarStack: View {
         GeometryReader { geo in
             ZStack(alignment: .bottomLeading) {
                 Mask {
-                    InfiniteScroll(geo: geo)
+                    InfiniteScroll(size: geo.size)
                         
                 }
                 FilterStack()
@@ -43,28 +43,31 @@ struct BarStack: View {
         }
     }
     
-    func InfiniteScroll(geo: GeometryProxy) -> some View {
+    func InfiniteScroll(size: CGSize) -> some View {
         VStack(spacing: .zero) {
             ForEach(Array(items.enumerated()), id: \.1) { idx, item in
-                LineGraph(offset: idx)
-                    .frame(width: geo.size.width, height: geo.size.height)
+                LineGraph(
+                    offset: idx,
+                    size: size
+                )
+                    .frame(width: size.width, height: size.height)
                     .opacity((idx == 0 || idx == 3) ? 0.5 : 1)
                     .border(Color.green)
                 Rectangle()
                     .foregroundColor(.red)
-                    .frame(width: geo.size.width, height: 2)
+                    .frame(width: size.width, height: 2)
             }
         }
-        .padding([.top, .bottom], -geo.size.height)
+        .padding([.top, .bottom], -size.height)
         .offset(y: offset)
         .gesture(DragGesture()
             .onChanged {value in
                 withAnimation {
-                    handler.update(value: value, height: geo.size.height, offset: $offset, popUp: popUp, popDown: popDown)
+                    handler.update(value: value, height: size.height, offset: $offset, popUp: popUp, popDown: popDown)
                 }
             }
             .onEnded { value in
-                handler.lastUpdate(value: value, height: geo.size.height, offset: $offset)
+                handler.lastUpdate(value: value, height: size.height, offset: $offset)
             }
         )
     }

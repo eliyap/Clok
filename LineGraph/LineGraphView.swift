@@ -74,10 +74,12 @@ struct LineGraph: View {
     var offset: Int
     let tf = DateFormatter()
     let haptic = UIImpactFeedbackGenerator(style: .light)
+    let size: CGSize
     
-    init(offset: Int){
+    init(offset: Int, size: CGSize){
         tf.timeStyle = .short
         self.offset = offset
+        self.size = size
     }
     
     /// slows down the magnifying effect by some constant
@@ -85,7 +87,7 @@ struct LineGraph: View {
     
     func enumDays() -> [(Int, Date)] {
         stride(from: 0, to: LineGraph.dayCount, by: 1).map{
-            ($0, Calendar.current.startOfDay(for: zero.date) + Double($0) * dayLength)
+            ($0, Calendar.current.startOfDay(for: zero.date) + Double($0 + offset) * dayLength)
         }
     }
     
@@ -93,34 +95,33 @@ struct LineGraph: View {
         /// check whether the provided time entry coincides with a particular *date* range
         /// if our entry ends before the interval even began
         /// or started after the interval finished, it cannot possibly fall coincide
-        GeometryReader { geo in
-            ZStack {
-                Rectangle()
-                /// use date enum so SwiftUI can identify horizontal swipes without redrawing everything
+        ZStack {
+            Rectangle()
+            /// use date enum so SwiftUI can identify horizontal swipes without redrawing everything
+            ForEach(
+                enumDays(),
+                id: \.1.timeIntervalSince1970
+            ) { idx, date in
                 ForEach(
-                    enumDays(),
-                    id: \.1.timeIntervalSince1970
-                ) { idx, date in
-                    ForEach(
-                        data.entries
-                            .filter{$0.wrappedEnd > date && $0.wrappedStart < date + dayLength}
-                        , id: \.id
-                    ) { entry in
-                        LineBar(
-                            entry: entry,
-                            begin: date,
-                            size: geo.size
+                    data.entries
+                        .filter{$0.wrappedEnd > date && $0.wrappedStart < date + dayLength}
+                    , id: \.id
+                ) { entry in
+                    LineBar(
+                        entry: entry,
+                        begin: date,
+                        size: size
+                    )
+                        .opacity(entry.matches(data.terms) ? 1 : 0.5)
+                        .offset(
+                            x: size.width * CGFloat(idx) / CGFloat(LineGraph.dayCount),
+                            y: .zero
                         )
-                            .opacity(entry.matches(data.terms) ? 1 : 0.5)
-                            .offset(
-                                x: geo.size.width * CGFloat(idx) / CGFloat(LineGraph.dayCount),
-                                y: .zero
-                            )
-                    }
                 }
             }
-            .drawingGroup()
         }
+        .drawingGroup()
+    
     }
     
 }
