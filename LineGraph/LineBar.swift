@@ -30,15 +30,15 @@ struct LineBar: View {
         size: CGSize
     ){
         self.bound = (
-            max(0, (entry.start - begin) / dayLength),
-            min(1, (entry.end - begin) / dayLength)
+            (entry.start - begin) / dayLength,
+            (entry.end - begin) / dayLength
         )
         self.entry = entry
         self.size = size
     }
     
     var body: some View {
-        RoundedRectangle(cornerRadius: 3)
+        RoundedRectangle(cornerRadius: size.height * cornerScale / CGFloat(LineGraph.dayCount)) /// adapt scale to taste
             .size(
                 width: size.width / CGFloat(LineGraph.dayCount) * LineBar.thicc,
                 height: CGFloat(bound.max - bound.min) * size.height
@@ -47,6 +47,7 @@ struct LineBar: View {
                 x: size.width / CGFloat(LineGraph.dayCount) * CGFloat((1.0 - LineBar.thicc) / 2.0),
                 y: CGFloat(bound.min) * size.height
             ))
+            .opacity(opacity)
             .offset(y: offset)
             .foregroundColor(entry.wrappedColor)
             .onTapGesture { tapHandler() }
