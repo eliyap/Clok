@@ -10,28 +10,22 @@ import SwiftUI
 
 struct Controller: View {
     @EnvironmentObject var zero: ZeroDate
-    
     @State var dragBy = PositionTracker()
-    @State var ticker = Ticker()
     
     var body: some View {
         GeometryReader { geo in
             Rectangle().foregroundColor(.red) /// "invisible" background rectangle to make the whole area touch sensitive
                 .gesture(Drag(size: geo.size))
         }
-        
     }
     
     func Drag(size: CGSize) -> some Gesture {
         func useValue(value: DragGesture.Value, size: CGSize) -> Void {
-            
             /// find cursor's offset (don't skip this, we want all movements tracked)
             dragBy.update(state: value, size: size)
-        
                         
             let days = dragBy.harvestDays()
             if days != 0 {
-//                haptic.impactOccurred(intensity: 1)
                 withAnimation {
                     zero.date -= Double(days) * dayLength
                 }
@@ -47,16 +41,6 @@ struct Controller: View {
                 useValue(value: $0, size: size)
                 dragBy.reset()
             }
-    }
-    
-    struct Ticker {
-        var counter = 0
-        let limit = 2 /// only run every 1/limit times
-        
-        mutating func tick() -> Bool {
-            counter = (counter + 1) % limit
-            return counter == 0
-        }
     }
 }
 
