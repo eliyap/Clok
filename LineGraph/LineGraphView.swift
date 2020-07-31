@@ -65,17 +65,19 @@ struct Controller: View {
 
 struct LineGraph: View {
     
+    @EnvironmentObject var zero: ZeroDate
+    
     @EnvironmentObject var data: TimeData
     /// number of days on screen
     static let dayCount = 31
     
-    let date: Date
+    var offset: Int
     let tf = DateFormatter()
     let haptic = UIImpactFeedbackGenerator(style: .light)
     
-    init(date: Date){
+    init(offset: Int){
         tf.timeStyle = .short
-        self.date = date
+        self.offset = offset
     }
     
     /// slows down the magnifying effect by some constant
@@ -83,7 +85,7 @@ struct LineGraph: View {
     
     func enumDays() -> [(Int, Date)] {
         stride(from: 0, to: LineGraph.dayCount, by: 1).map{
-            ($0, date + Double($0) * dayLength)
+            ($0, Calendar.current.startOfDay(for: zero.date) + Double($0) * dayLength)
         }
     }
     

@@ -21,10 +21,8 @@ struct BarStack: View {
     @State var offset = CGFloat.zero
     @State var handler = DragHandler()
     
-    func enumDays() -> [(Int, Date)] {
-        stride(from: 0, to: 5, by: 1).map{
-            ($0, Calendar.current.startOfDay(for: zero.date) + Double($0) * dayLength)
-        }
+    func jumpCoreDate() {
+        zero.date += .leastNonzeroMagnitude
     }
     
     var body: some View {
@@ -39,16 +37,20 @@ struct BarStack: View {
         }
         /// keep it square
         .aspectRatio(1, contentMode: bounds.notch ? .fit : .fill)
+        .onAppear() {
+            jumpCoreDate()
+        }
     }
     
     func InfiniteScroll(geo: GeometryProxy) -> some View {
-        VStack {
-            ForEach(Array(zip(items.indices, items)), id: \.1) { idx, item in
-                Rectangle()
-                    .foregroundColor(.blue)
+        VStack(spacing: .zero) {
+            ForEach(Array(items.enumerated()), id: \.1) { idx, item in
+                LineGraph(offset: idx)
                     .frame(width: geo.size.width, height: geo.size.height)
-                    .border(Color.red)
                     .opacity((idx == 0 || idx == 3) ? 0.5 : 1)
+                Rectangle()
+                    .foregroundColor(.red)
+                    .frame(width: geo.size.width, height: 2)
             }
         }
         .padding([.top, .bottom], -geo.size.height)
@@ -60,11 +62,13 @@ struct BarStack: View {
                 }
             }
             .onEnded { value in
-                
                 handler.lastUpdate(value: value, height: geo.size.height, offset: $offset)
             }
-                 
         )
+    }
+    
+    func frameHeight(geo: GeometryProxy) -> CGFloat {
+        geo.size.height * CGFloat(dayLength / zero.interval)
     }
     
     func popUp() -> Void {
@@ -83,73 +87,3 @@ struct BarStack: View {
 }
 
 
-struct DragHandler {
-    var translation: CGPoint = .zero
-    var topGap: CGFloat = .zero
-    var botGap: CGFloat = .zero
-    let frustration = CGFloat(0.2)
-    let threshold = CGFloat(0.4)
-    
-    let haptic = UINotificationFeedbackGenerator()
-    
-    mutating func update(
-        value: DragGesture.Value,
-        height: CGFloat,
-        offset: Binding<CGFloat>,
-        popUp: () -> (),
-        popDown: () -> ()
-    ) -> Void {
-        let movement = (value.location - value.startLocation - translation).y
-        let newOffset = offset.wrappedValue + movement
-        
-        if topGap > threshold * height {
-            popUp()
-            offset.wrappedValue = newOffset + topGap - height
-            topGap = -.infinity /// prevent it ever being popped again
-            haptic.notificationOccurred(.success)
-            return
-        }
-        if botGap < threshold * -height {
-            popDown()
-            offset.wrappedValue = newOffset + height + botGap
-            botGap = +.infinity /// prevent it ever being popped again
-            haptic.notificationOccurred(.success)
-            return
-        }
-        
-        if newOffset > 0 {
-            offset.wrappedValue += movement * frustration
-            topGap += movement * (1 - frustration)
-            haptic.prepare()
-        } else if newOffset < -height {
-            offset.wrappedValue += movement * frustration
-            botGap += movement * (1 - frustration)
-            haptic.prepare()
-        }
-        else {
-            offset.wrappedValue = newOffset
-        }
-        
-        translation = value.location - value.startLocation
-    }
-    
-    mutating func lastUpdate(value: DragGesture.Value, height: CGFloat, offset: Binding<CGFloat>) -> Void {
-        let predictedOffset = offset.wrappedValue + (value.predictedEndLocation - value.startLocation - translation).y
-        if predictedOffset > 0 {
-            withAnimation(.spring()) {
-                offset.wrappedValue = 0
-            }
-        } else if predictedOffset < -height {
-            withAnimation(.spring()) {
-                offset.wrappedValue = -height
-            }
-        } else {
-            withAnimation(.easeOut(duration: 0.4)) {
-                offset.wrappedValue = predictedOffset
-            }
-        }
-        topGap = .zero
-        botGap = .zero
-        translation = .zero
-    }
-}
