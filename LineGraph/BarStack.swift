@@ -30,18 +30,7 @@ struct BarStack: View {
             ZStack(alignment: .bottomLeading) {
                 Mask {
                     InfiniteScroll(geo: geo)
-                        .padding([.top, .bottom], -geo.size.height)
-                        .offset(y: offset)
-                        .gesture(DragGesture()
-                            .onChanged {value in
-                                withAnimation {
-                                    handler.update(value: value, height: geo.size.height, offset: $offset, popUp: popUp, popDown: popDown)
-                                }
-                            }
-                            .onEnded { value in
-                                handler.lastUpdate(value: value, height: geo.size.height, offset: $offset)
-                            }
-                        )
+                        
                 }
                 FilterStack()
                     .padding(buttonPadding)
@@ -60,12 +49,24 @@ struct BarStack: View {
                 LineGraph(offset: idx)
                     .frame(width: geo.size.width, height: geo.size.height)
                     .opacity((idx == 0 || idx == 3) ? 0.5 : 1)
+                    .border(Color.green)
                 Rectangle()
                     .foregroundColor(.red)
                     .frame(width: geo.size.width, height: 2)
             }
         }
-        
+        .padding([.top, .bottom], -geo.size.height)
+        .offset(y: offset)
+        .gesture(DragGesture()
+            .onChanged {value in
+                withAnimation {
+                    handler.update(value: value, height: geo.size.height, offset: $offset, popUp: popUp, popDown: popDown)
+                }
+            }
+            .onEnded { value in
+                handler.lastUpdate(value: value, height: geo.size.height, offset: $offset)
+            }
+        )
     }
     
     func frameHeight(geo: GeometryProxy) -> CGFloat {

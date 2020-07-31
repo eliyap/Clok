@@ -69,7 +69,7 @@ struct LineGraph: View {
     
     @EnvironmentObject var data: TimeData
     /// number of days on screen
-    static let dayCount = 7
+    static let dayCount = 31
     
     var offset: Int
     let tf = DateFormatter()
@@ -95,18 +95,22 @@ struct LineGraph: View {
         /// or started after the interval finished, it cannot possibly fall coincide
         GeometryReader { geo in
             ZStack {
+                Rectangle()
                 /// use date enum so SwiftUI can identify horizontal swipes without redrawing everything
                 ForEach(
                     enumDays(),
                     id: \.1.timeIntervalSince1970
                 ) { idx, date in
-                    ForEach(data.entries.filter{withinDay(entry: $0, begin: date)}, id: \.id) { entry in
+                    ForEach(
+                        data.entries
+                            .filter{$0.wrappedEnd > date && $0.wrappedStart < date + dayLength}
+                        , id: \.id
+                    ) { entry in
                         LineBar(
                             entry: entry,
                             begin: date,
                             size: geo.size
                         )
-                            .transition(.identity)
                             .opacity(entry.matches(data.terms) ? 1 : 0.5)
                             .offset(
                                 x: geo.size.width * CGFloat(idx) / CGFloat(LineGraph.dayCount),
@@ -119,9 +123,4 @@ struct LineGraph: View {
         }
     }
     
-    func withinDay(entry: TimeEntry, begin: Date) -> Bool {
-        if entry.wrappedEnd > begin { return false }
-        if entry.wrappedStart < begin + dayLength { return false }
-        return true
-    }
 }
