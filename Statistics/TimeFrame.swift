@@ -38,10 +38,10 @@ struct TimeFrame {
     var start:Date
     var end:Date
     func containsStartOf(_ entry: TimeEntry) -> Bool {
-        entry.wrappedStart.between(start, end)
+        entry.start.between(start, end)
     }
     func containsEndOf(_ entry: TimeEntry) -> Bool {
-        entry.wrappedEnd.between(start, end)
+        entry.end.between(start, end)
     }
 //    func contains(_ entry: TimeEntry) -> Bool {
 //        entry.end.between(start, end)
@@ -71,8 +71,8 @@ struct WeekTimeFrame {
      */
     func modifiedMidnight(for entries: [TimeEntry]) -> Date {
         [
-            entries.map{ $0.wrappedStart }.meanTime(),
-            entries.map{ $0.wrappedEnd   }.meanTime()
+            entries.map{ $0.start }.meanTime(),
+            entries.map{ $0.end   }.meanTime()
         ].meanTime() + (dayLength / 2)
     }
     
@@ -100,7 +100,7 @@ struct WeekTimeFrame {
         var entries = self.entries
         
         /// filter and sort in chronological order by start
-        entries.sort(by: {$0.wrappedStart < $1.wrappedStart})
+        entries.sort(by: {$0.start < $1.start})
         var days = modifiedDays(for: entries)
         
         /// list of the time entries that were the first started of their day
@@ -117,7 +117,7 @@ struct WeekTimeFrame {
             }
         }
         return firstStarts
-            .map{$0.wrappedStart}
+            .map{$0.start}
             .meanTime()
     }
     
@@ -131,7 +131,7 @@ struct WeekTimeFrame {
         
         var entries = self.entries
         /// filter and sort in reverse chronological order by end
-        entries.sort(by: {$0.wrappedEnd > $1.wrappedEnd})
+        entries.sort(by: {$0.end > $1.end})
         var days = modifiedDays(for: entries)
         
         /// list of the time entries that were the first ended of their day
@@ -149,7 +149,7 @@ struct WeekTimeFrame {
         }
         
         return lastEnds
-            .map{$0.wrappedEnd}
+            .map{$0.end}
             .meanTime()
     }
     
@@ -161,7 +161,7 @@ struct WeekTimeFrame {
     func avgDuration() -> TimeInterval {
         // calculate total time interval / 7, taking care to cap at week boundaries
         return entries
-            .map{min(self.frame.end, $0.wrappedEnd) - max(self.frame.start, $0.wrappedStart)}
+            .map{min(frame.end, $0.end) - max(frame.start, $0.start)}
             .reduce(0, {$0 + $1}) / 7
     }
 }

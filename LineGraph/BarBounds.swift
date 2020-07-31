@@ -14,10 +14,10 @@ func GetBounds(
     entry: TimeEntry, /// time entry to consider
     interval: TimeInterval /// length of time interval
 ) -> LineBar.Bound? {
-    guard entry.wrappedEnd > begin && entry.wrappedStart < begin + interval else { return nil }
+    guard entry.end > begin && entry.start < begin + interval else { return nil }
     return LineBar.Bound(
-        max(0, (entry.wrappedStart - begin) / interval),
-        min(1, (entry.wrappedEnd - begin) / interval)
+        max(0, (entry.start - begin) / interval),
+        min(1, (entry.end - begin) / interval)
     )
     
 }

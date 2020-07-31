@@ -34,7 +34,7 @@ struct EntryView: View {
                     Text(entry.wrappedProject.wrappedName)
                         .font(.caption)
                     Spacer()
-                    Text("\(df.string(from: entry.wrappedStart)) – \(df.string(from: entry.wrappedEnd))")
+                    Text("\(df.string(from: entry.start)) – \(df.string(from: entry.end))")
                         .font(.caption)
                 }
             }

@@ -30,8 +30,8 @@ struct LineBar: View {
         size: CGSize
     ){
         self.bound = (
-            max(0, (entry.wrappedStart - begin) / dayLength),
-            min(1, (entry.wrappedEnd - begin) / dayLength)
+            max(0, (entry.start - begin) / dayLength),
+            min(1, (entry.end - begin) / dayLength)
         )
         
         self.entry = entry

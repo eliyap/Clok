@@ -19,8 +19,8 @@ extension TimeEntry {
 
     @NSManaged public var name: String?
     @NSManaged public var id: Int64
-    @NSManaged public var start: Date?
-    @NSManaged public var end: Date?
+    @NSManaged public var start: Date
+    @NSManaged public var end: Date
     @NSManaged public var dur: Double
     @NSManaged public var lastUpdated: Date?
     @NSManaged public var project: Project?
@@ -31,14 +31,6 @@ extension TimeEntry {
     
     public var wrappedID: Int {
         Int(id)
-    }
-    
-    public var wrappedStart: Date {
-        start ?? Date.distantPast
-    }
-    
-    public var wrappedEnd: Date {
-        end ?? Date.distantFuture
     }
     
     public var wrappedColor: Color {

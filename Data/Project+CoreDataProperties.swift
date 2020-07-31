@@ -37,7 +37,7 @@ extension Project {
     public var entryArray: [TimeEntry] {
         let set = entries as? Set<TimeEntry> ?? []
         return set.sorted {
-            $0.wrappedStart < $1.wrappedStart
+            $0.start < $1.start
         }
     }
 }

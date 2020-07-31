@@ -92,7 +92,7 @@ struct EntryList: View {
     func Days() -> [Day] {
         /// restrict to current week
         let validEntries = data.entries
-            .sorted(by: {$0.wrappedStart < $1.wrappedStart} )
+            .sorted(by: {$0.start < $1.start} )
             .within(interval: weekLength, of: zero.date)
             .matching(data.terms)
         
@@ -109,7 +109,7 @@ struct EntryList: View {
                 entries: validEntries
                     /// restrict entries to those that started in this 24 hour period
                     /// NOTE: don't user `within`, as this causes some entries to appear across 2 days, causing a crash!
-                    .filter{ $0.wrappedStart.between(mn, mn + dayLength) }
+                    .filter{ $0.start.between(mn, mn + dayLength) }
             ))
         }
         

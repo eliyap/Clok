@@ -13,7 +13,7 @@ extension Array where Element == TimeEntry {
     func within(interval: TimeInterval, of start: Date) -> [TimeEntry] {
         let end = start + interval
         return self
-            .filter { $0.wrappedStart.between(start, end) || $0.wrappedEnd.between(start, end) }
+            .filter { $0.start.between(start, end) || $0.end.between(start, end) }
     }
 }
 
