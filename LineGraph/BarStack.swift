@@ -31,10 +31,8 @@ struct BarStack: View {
                 Mask {
                     if meaningless {
                         InfiniteScroll(geo: geo)
-                            .animation(.linear(duration: .leastNonzeroMagnitude))
                     } else {
                         InfiniteScroll(geo: geo)
-                            .animation(.linear(duration: .leastNonzeroMagnitude))
                     }
                 }
                 FilterStack()
@@ -56,13 +54,10 @@ struct BarStack: View {
                         guard geo.frame(in: .global).minY - topGeo.frame(in: .global).minY < -geo.size.height * threshhold else { return }
                         meaningless.toggle()
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
-                            popUp()
                             withAnimation{
-                                
+                                popUp()
                                 zero.date -= dayLength
-                                
                             }
-                        
                         }
                     }
                 }
@@ -89,13 +84,10 @@ struct BarStack: View {
                         guard botGeo.frame(in: .global).maxY - geo.frame(in: .global).maxY < -geo.size.height * threshhold else { return }
                         meaningless.toggle()
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
-                            popDown()
                             withAnimation {
-                                
+                                popDown()
                                 zero.date += dayLength
-                                
                             }
-                            
                         }
                     }
                 }
