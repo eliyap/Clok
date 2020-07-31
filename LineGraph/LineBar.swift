@@ -18,7 +18,7 @@ struct LineBar: View {
     @State private var offset = CGFloat.zero
     
     private var size: CGSize
-    private let cornerScale = CGFloat(1.0/18.0)
+    private let cornerScale = CGFloat(1.0/8.0)
     
     /// determines what proportion of available horizontal space to consume
     static let thicc = CGFloat(0.8)
@@ -38,11 +38,17 @@ struct LineBar: View {
     }
     
     var body: some View {
-        OptionalRoundRect(
-            bound: bound
-        )
+        RoundedRectangle(cornerRadius: 3)
+            .size(
+                width: size.width / CGFloat(LineGraph.dayCount) * LineBar.thicc,
+                height: CGFloat(bound.max - bound.min) * size.height
+            )
+            .offset(CGPoint(
+                x: size.width / CGFloat(LineGraph.dayCount) * CGFloat((1.0 - LineBar.thicc) / 2.0),
+                y: CGFloat(bound.min) * size.height
+            ))
+            .offset(y: offset)
             .foregroundColor(entry.wrappedColor)
-            .offset(x: .zero, y: offset)
             .onTapGesture { tapHandler() }
     }
     
