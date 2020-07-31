@@ -94,8 +94,6 @@ struct BarStack: View {
                 }
             }
         }
-            
-        
     }
     
     func frameHeight(geo: GeometryProxy) -> CGFloat {
