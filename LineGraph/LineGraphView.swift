@@ -114,8 +114,7 @@ struct LineGraph: View {
                     )
                         .opacity(entry.matches(data.terms) ? 1 : 0.5)
                         .offset(
-                            x: size.width * CGFloat(idx) / CGFloat(LineGraph.dayCount),
-                            y: .zero
+                            x: size.width * CGFloat(idx) / CGFloat(LineGraph.dayCount)
                         )
                 }
             }
