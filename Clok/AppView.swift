@@ -42,7 +42,7 @@ struct ClokApp: App {
                 .environmentObject(settings)
                 .environmentObject(bounds)
                 .environment(\.managedObjectContext, persistentContainer.viewContext)
-                .onReceive(zero.$date, perform: { date in
+                .onReceive(zero.$startDate, perform: { date in
                     guard let user = settings.user else { return }
                     /// if data is old
                     if date < minLoaded {
