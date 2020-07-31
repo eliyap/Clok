@@ -33,7 +33,6 @@ struct LineBar: View {
             max(0, (entry.start - begin) / dayLength),
             min(1, (entry.end - begin) / dayLength)
         )
-        
         self.entry = entry
         self.size = size
     }
