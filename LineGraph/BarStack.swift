@@ -8,10 +8,18 @@
 
 import SwiftUI
 
+fileprivate let itemCount = 4
+
 struct BarStack: View {
     
     @EnvironmentObject private var bounds: Bounds
     @EnvironmentObject private var zero: ZeroDate
+    
+    
+    @State var items: [UUID] = stride(from: 0, to: itemCount, by: 1).map{_ in UUID()}
+    
+    @State var offset = CGFloat.zero
+    @State var handler = DragHandler()
     
     func enumDays() -> [(Int, Date)] {
         stride(from: 0, to: 5, by: 1).map{
@@ -34,54 +42,114 @@ struct BarStack: View {
     }
     
     func InfiniteScroll(geo: GeometryProxy) -> some View {
-        ScrollView(.vertical, showsIndicators: false) {
-            ScrollViewReader { proxy in
-                TopReader(geo: geo, proxy: proxy)
-                VStack(spacing: .zero) {
-                    ForEach(
-                        enumDays(),
-                        id: \.1.timeIntervalSince1970
-                    ){ idx, date in
-                        LineGraph(date: date)
-                            .frame(width: geo.size.width, height: frameHeight(geo: geo))
-                        Rectangle()
-                            .foregroundColor(.red)
-                            .frame(width: geo.size.width, height: 2)
-                    }
+        VStack {
+            ForEach(Array(zip(items.indices, items)), id: \.1) { idx, item in
+                Rectangle()
+                    .foregroundColor(.blue)
+                    .frame(width: geo.size.width, height: geo.size.height)
+                    .border(Color.red)
+                    .opacity((idx == 0 || idx == 3) ? 0.5 : 1)
+            }
+        }
+        .padding([.top, .bottom], -geo.size.height)
+        .offset(y: offset)
+        .gesture(DragGesture()
+            .onChanged {value in
+                withAnimation {
+                    handler.update(value: value, height: geo.size.height, offset: $offset, popUp: popUp, popDown: popDown)
                 }
-                BottomReader(geo: geo, proxy: proxy)
             }
+            .onEnded { value in
+                
+                handler.lastUpdate(value: value, height: geo.size.height, offset: $offset)
+            }
+                 
+        )
+    }
+    
+    func popUp() -> Void {
+        withAnimation {
+            items.insert(UUID(), at: 0)
+            items.removeLast()
         }
     }
     
-    /// the time interval of the middle row (target to scroll to)
-    var middleRow: TimeInterval {
-        (Calendar.current.startOfDay(for: zero.date) + 2 * dayLength).timeIntervalSince1970
+    func popDown() -> Void {
+        withAnimation {
+            items.append(UUID())
+            items.removeFirst()
+        }
+    }
+}
+
+
+struct DragHandler {
+    var translation: CGPoint = .zero
+    var topGap: CGFloat = .zero
+    var botGap: CGFloat = .zero
+    let frustration = CGFloat(0.2)
+    let threshold = CGFloat(0.4)
+    
+    let haptic = UINotificationFeedbackGenerator()
+    
+    mutating func update(
+        value: DragGesture.Value,
+        height: CGFloat,
+        offset: Binding<CGFloat>,
+        popUp: () -> (),
+        popDown: () -> ()
+    ) -> Void {
+        let movement = (value.location - value.startLocation - translation).y
+        let newOffset = offset.wrappedValue + movement
+        
+        if topGap > threshold * height {
+            popUp()
+            offset.wrappedValue = newOffset + topGap - height
+            topGap = -.infinity /// prevent it ever being popped again
+            haptic.notificationOccurred(.success)
+            return
+        }
+        if botGap < threshold * -height {
+            popDown()
+            offset.wrappedValue = newOffset + height + botGap
+            botGap = +.infinity /// prevent it ever being popped again
+            haptic.notificationOccurred(.success)
+            return
+        }
+        
+        if newOffset > 0 {
+            offset.wrappedValue += movement * frustration
+            topGap += movement * (1 - frustration)
+            haptic.prepare()
+        } else if newOffset < -height {
+            offset.wrappedValue += movement * frustration
+            botGap += movement * (1 - frustration)
+            haptic.prepare()
+        }
+        else {
+            offset.wrappedValue = newOffset
+        }
+        
+        translation = value.location - value.startLocation
     }
     
-    /// how tall a day should be. Scaled against time interval shown on screen
-    func frameHeight(geo: GeometryProxy) -> CGFloat {
-        geo.size.height * CGFloat(dayLength / zero.interval)
-    }
-    
-    func TopReader(geo: GeometryProxy, proxy: ScrollViewProxy) -> some View {
-        GeometryReader { topGeo in
-            Run {
-                guard (geo.frame(in: .global).minY - topGeo.frame(in: .global).minY < frameHeight(geo: geo)) else { return }
-                proxy.scrollTo(middleRow, anchor: .top)
-                zero.date -= dayLength
+    mutating func lastUpdate(value: DragGesture.Value, height: CGFloat, offset: Binding<CGFloat>) -> Void {
+        let predictedOffset = offset.wrappedValue + (value.predictedEndLocation - value.startLocation - translation).y
+        if predictedOffset > 0 {
+            withAnimation(.spring()) {
+                offset.wrappedValue = 0
+            }
+        } else if predictedOffset < -height {
+            withAnimation(.spring()) {
+                offset.wrappedValue = -height
+            }
+        } else {
+            withAnimation(.easeOut(duration: 0.4)) {
+                offset.wrappedValue = predictedOffset
             }
         }
-        .frame(width: .zero, height: .zero)
-    }
-    
-    func BottomReader(geo: GeometryProxy, proxy: ScrollViewProxy) -> some View {
-        GeometryReader { botGeo in
-            Run {
-                guard (botGeo.frame(in: .global).maxY - geo.frame(in: .global).maxY < frameHeight(geo: geo)) else { return }
-                proxy.scrollTo(middleRow, anchor: .bottom)
-                zero.date += dayLength
-            }
-        }
+        topGap = .zero
+        botGap = .zero
+        translation = .zero
     }
 }
