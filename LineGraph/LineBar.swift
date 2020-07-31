@@ -12,7 +12,7 @@ struct LineBar: View {
     
     typealias Bound = (min: Double, max: Double)
     
-    @ObservedObject var entry: TimeEntry
+    let entry: TimeEntry
     @EnvironmentObject var listRow: ListRow
     @State private var opacity = 1.0
     @State private var offset = CGFloat.zero
