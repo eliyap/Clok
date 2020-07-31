@@ -21,9 +21,26 @@ struct OptionalRoundRect: Shape {
         
         /// calculate the position of the bar
         let pos = CGPoint(
-            x: geoSize.width / CGFloat(LineGraph.dayCount) * factor,
-            y: CGFloat(bound.min) * geoSize.height
+            x: rect.width / CGFloat(LineGraph.dayCount) * factor,
+            y: CGFloat(bound.min) * rect.height
         )
+        
+        return Path { path in
+            path.move(to: pos)
+            path.addLine(to: CGPoint(
+                x: pos.x,
+                y: CGFloat(bound.max) * rect.height
+            ))
+        }
+        .strokedPath(StrokeStyle(
+            lineWidth: rect.width / CGFloat(LineGraph.dayCount * 3),
+            lineCap: .butt
+        ))
+        .strokedPath(StrokeStyle(
+            lineWidth: rect.width / CGFloat(LineGraph.dayCount * 2),
+            lineCap: .butt,
+            lineJoin: .round
+        ))
         
         return Path { path in
             var size = CGSize(
