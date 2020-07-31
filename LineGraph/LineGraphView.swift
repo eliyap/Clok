@@ -96,7 +96,6 @@ struct LineGraph: View {
         /// if our entry ends before the interval even began
         /// or started after the interval finished, it cannot possibly fall coincide
         ZStack {
-            Rectangle()
             /// use date enum so SwiftUI can identify horizontal swipes without redrawing everything
             ForEach(
                 enumDays(),

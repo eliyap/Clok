@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-fileprivate let itemCount = 4
+fileprivate let itemCount = 3
 
 struct BarStack: View {
     
@@ -17,9 +17,9 @@ struct BarStack: View {
     
     
     @State var items: [UUID] = stride(from: 0, to: itemCount, by: 1).map{_ in UUID()}
+    @State var meaningless = false
     
-    @State var offset = CGFloat.zero
-    @State var handler = DragHandler()
+    let threshhold = CGFloat(0.25)
     
     func jumpCoreDate() {
         zero.date += .leastNonzeroMagnitude
@@ -29,8 +29,13 @@ struct BarStack: View {
         GeometryReader { geo in
             ZStack(alignment: .bottomLeading) {
                 Mask {
-                    InfiniteScroll(size: geo.size)
-                        
+                    if meaningless {
+                        InfiniteScroll(geo: geo)
+                            .animation(.linear(duration: .leastNonzeroMagnitude))
+                    } else {
+                        InfiniteScroll(geo: geo)
+                            .animation(.linear(duration: .leastNonzeroMagnitude))
+                    }
                 }
                 FilterStack()
                     .padding(buttonPadding)
@@ -43,35 +48,61 @@ struct BarStack: View {
         }
     }
     
-    func InfiniteScroll(size: CGSize) -> some View {
+    func InfiniteScroll(geo: GeometryProxy) -> some View {
         ScrollView {
-            VStack(spacing: .zero) {
-                ForEach(Array(items.enumerated()), id: \.1) { idx, item in
-                    LineGraph(
-                        offset: idx,
-                        size: size
-                    )
-                        .frame(width: size.width, height: size.height)
-                        .opacity((idx == 0 || idx == 3) ? 0.5 : 1)
-                    Rectangle()
-                        .foregroundColor(.red)
-                        .frame(width: size.width, height: 2)
+            ScrollViewReader { proxy in
+                GeometryReader { topGeo in
+                    Run {
+                        guard geo.frame(in: .global).minY - topGeo.frame(in: .global).minY < -geo.size.height * threshhold else { return }
+                        meaningless.toggle()
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+                            popUp()
+                            withAnimation{
+                                
+                                zero.date -= dayLength
+                                
+                            }
+                        
+                        }
+                    }
+                }
+                VStack(spacing: .zero) {
+                    ForEach(Array(items.enumerated()), id: \.1) { idx, item in
+                        LineGraph(
+                            offset: idx,
+                            size: geo.size
+                        )
+                        .frame(width: geo.size.width, height: geo.size.height)
+                        Rectangle()
+                            .foregroundColor(.red)
+                            .frame(width: geo.size.width, height: 2)
+                    }
+                }
+                .onAppear {
+                    withAnimation {
+                        proxy.scrollTo(items[1])
+                    }
+                }
+                .padding([.top, .bottom], -geo.size.height / 2)
+                GeometryReader { botGeo in
+                    Run {
+                        guard botGeo.frame(in: .global).maxY - geo.frame(in: .global).maxY < -geo.size.height * threshhold else { return }
+                        meaningless.toggle()
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+                            popDown()
+                            withAnimation {
+                                
+                                zero.date += dayLength
+                                
+                            }
+                            
+                        }
+                    }
                 }
             }
-            .padding([.top, .bottom], -size.height)
-            .offset(y: offset)
         }
+            
         
-//        .gesture(DragGesture()
-//            .onChanged {value in
-//                withAnimation {
-//                    handler.update(value: value, height: size.height, offset: $offset, popUp: popUp, popDown: popDown)
-//                }
-//            }
-//            .onEnded { value in
-//                handler.lastUpdate(value: value, height: size.height, offset: $offset)
-//            }
-//        )
     }
     
     func frameHeight(geo: GeometryProxy) -> CGFloat {
@@ -79,17 +110,13 @@ struct BarStack: View {
     }
     
     func popUp() -> Void {
-        withAnimation {
-            items.insert(UUID(), at: 0)
-            items.removeLast()
-        }
+        items.insert(UUID(), at: 0)
+        items.removeLast()
     }
     
     func popDown() -> Void {
-        withAnimation {
-            items.append(UUID())
-            items.removeFirst()
-        }
+        items.append(UUID())
+        items.removeFirst()
     }
 }
 
