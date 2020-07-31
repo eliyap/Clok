@@ -44,32 +44,34 @@ struct BarStack: View {
     }
     
     func InfiniteScroll(size: CGSize) -> some View {
-        VStack(spacing: .zero) {
-            ForEach(Array(items.enumerated()), id: \.1) { idx, item in
-                LineGraph(
-                    offset: idx,
-                    size: size
-                )
-                    .frame(width: size.width, height: size.height)
-                    .opacity((idx == 0 || idx == 3) ? 0.5 : 1)
-                    .border(Color.green)
-                Rectangle()
-                    .foregroundColor(.red)
-                    .frame(width: size.width, height: 2)
-            }
-        }
-        .padding([.top, .bottom], -size.height)
-        .offset(y: offset)
-        .gesture(DragGesture()
-            .onChanged {value in
-                withAnimation {
-                    handler.update(value: value, height: size.height, offset: $offset, popUp: popUp, popDown: popDown)
+        ScrollView {
+            VStack(spacing: .zero) {
+                ForEach(Array(items.enumerated()), id: \.1) { idx, item in
+                    LineGraph(
+                        offset: idx,
+                        size: size
+                    )
+                        .frame(width: size.width, height: size.height)
+                        .opacity((idx == 0 || idx == 3) ? 0.5 : 1)
+                    Rectangle()
+                        .foregroundColor(.red)
+                        .frame(width: size.width, height: 2)
                 }
             }
-            .onEnded { value in
-                handler.lastUpdate(value: value, height: size.height, offset: $offset)
-            }
-        )
+            .padding([.top, .bottom], -size.height)
+            .offset(y: offset)
+        }
+        
+//        .gesture(DragGesture()
+//            .onChanged {value in
+//                withAnimation {
+//                    handler.update(value: value, height: size.height, offset: $offset, popUp: popUp, popDown: popDown)
+//                }
+//            }
+//            .onEnded { value in
+//                handler.lastUpdate(value: value, height: size.height, offset: $offset)
+//            }
+//        )
     }
     
     func frameHeight(geo: GeometryProxy) -> CGFloat {

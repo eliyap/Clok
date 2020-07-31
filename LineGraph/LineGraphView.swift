@@ -119,8 +119,7 @@ struct LineGraph: View {
                 }
             }
         }
-        .drawingGroup()
-    
+//        .drawingGroup()
     }
     
 }
