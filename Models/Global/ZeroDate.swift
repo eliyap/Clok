@@ -15,12 +15,13 @@ final class ZeroDate: ObservableObject {
     /// number of days displayed
     @Published var dayCount = 7
     
-    enum dateChange {
+    /// whether the date was moved forwards of backwards
+    enum DateChange {
         case fwrd
         case back
     }
     
-    @Published var weekSkip : dateChange? = nil
+    @Published var dateChange : DateChange? = nil
     
     /// whether the time indicating clock hands should be on screen
     @Published var showTime = false

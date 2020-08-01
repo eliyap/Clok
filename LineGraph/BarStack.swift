@@ -39,9 +39,18 @@ struct BarStack: View {
                 HStack {
                     FilterStack()
                         .padding(buttonPadding)
+                    Image(systemName: "chevron.left.2")
+                        .modifier(ButtonGlyph())
+                        .onTapGesture {
+                            zero.dateChange = .back
+                            withAnimation {
+                                zero.date -= dayLength * Double(zero.dayCount)
+                            }
+                        }
                     Image(systemName: "chevron.left")
                         .modifier(ButtonGlyph())
                         .onTapGesture {
+                            zero.dateChange = .back
                             withAnimation {
                                 zero.date -= dayLength
                             }
@@ -49,8 +58,18 @@ struct BarStack: View {
                     Image(systemName: "chevron.right")
                         .modifier(ButtonGlyph())
                         .onTapGesture {
+                            zero.dateChange = .fwrd
                             withAnimation {
                                 zero.date += dayLength
+                            }
+                        }
+                    Image(systemName: "chevron.right.2")
+                        .modifier(ButtonGlyph())
+                        .onTapGesture {
+                            zero.dateChange = .fwrd
+                            withAnimation {
+                                
+                                zero.date += dayLength * Double(zero.dayCount)
                             }
                         }
                     Image(systemName: "plus")

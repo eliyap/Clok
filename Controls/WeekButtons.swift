@@ -31,7 +31,7 @@ struct WeekButtons: View {
                 }
                 
                 withAnimation { self.zero.date -= weekLength }
-                self.zero.weekSkip = .back
+                zero.dateChange = .back
             } label: {
                 WeekButtonGlyph(name: "chevron.left")
                     .padding(buttonPadding)
@@ -46,7 +46,7 @@ struct WeekButtons: View {
                 }
                 
                 withAnimation { self.zero.date += weekLength }
-                self.zero.weekSkip = .fwrd
+                zero.dateChange = .fwrd
             } label: {
                 WeekButtonGlyph(name: "chevron.right")
                     .padding(buttonPadding)

@@ -91,15 +91,15 @@ struct KnobView: View {
         /// mirror the spiral's rotation effect
         .rotationEffect(rotate)
         .animation(.spring())
-        .onReceive(zero.$weekSkip, perform: { dxn in
+        .onReceive(zero.$dateChange, perform: { dxn in
             /// when a week skip command is received,
             /// perform a 360 degree barell roll animation,
             /// then reset the flag
             switch dxn {
             case .fwrd:
-                self.rotate += Angle.tau
+                rotate += Angle.tau
             case .back:
-                self.rotate -= Angle.tau
+                rotate -= Angle.tau
             default:
                 return
             }

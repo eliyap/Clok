@@ -96,11 +96,22 @@ struct LineGraph: View {
                     )
                         .opacity(entry.matches(data.terms) ? 1 : 0.5)
                 }
-                .transition(.opacity)
+                .transition(slideOver())
                 .offset(
                     x: size.width * CGFloat(idx) / CGFloat(zero.dayCount)
                 )
             }
+        }
+    }
+    
+    func slideOver() -> AnyTransition {
+        switch zero.dateChange {
+        case .fwrd:
+            return .asymmetric(insertion: .move(edge: .leading), removal: .move(edge: .trailing))
+        case .back:
+            return .asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading))
+        case .none:
+            return .opacity
         }
     }
 }
