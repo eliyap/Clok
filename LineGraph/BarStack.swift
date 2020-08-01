@@ -75,6 +75,7 @@ struct BarStack: View {
                     Image(systemName: "plus")
                         .modifier(ButtonGlyph())
                         .onTapGesture {
+                            zero.dateChange = .none
                             withAnimation {
                                 zero.dayCount += 1
                             }
@@ -82,6 +83,7 @@ struct BarStack: View {
                     Image(systemName: "minus")
                         .modifier(ButtonGlyph())
                         .onTapGesture {
+                            zero.dateChange = .none
                             withAnimation {
                                 zero.dayCount -= 1
                             }

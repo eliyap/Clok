@@ -107,9 +107,9 @@ struct LineGraph: View {
     func slideOver() -> AnyTransition {
         switch zero.dateChange {
         case .fwrd:
-            return .asymmetric(insertion: .move(edge: .leading), removal: .move(edge: .trailing))
-        case .back:
             return .asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading))
+        case .back:
+            return .asymmetric(insertion: .move(edge: .leading), removal: .move(edge: .trailing))
         case .none:
             return .opacity
         }
