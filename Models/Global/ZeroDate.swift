@@ -14,6 +14,8 @@ final class ZeroDate: ObservableObject {
     
     /// number of days displayed
     @Published var dayCount = 7
+    static let countMax = 31
+    static let countMin = 7
     
     /// whether the date was moved forwards of backwards
     enum DateChange {
