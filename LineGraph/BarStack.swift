@@ -53,11 +53,18 @@ struct BarStack: View {
                                 zero.date += dayLength
                             }
                         }
-                    Image(systemName: "chevron.right")
+                    Image(systemName: "plus")
                         .modifier(ButtonGlyph())
                         .onTapGesture {
                             withAnimation {
-                                zero.date += dayLength
+                                zero.dayCount += 1
+                            }
+                        }
+                    Image(systemName: "minus")
+                        .modifier(ButtonGlyph())
+                        .onTapGesture {
+                            withAnimation {
+                                zero.dayCount -= 1
                             }
                         }
                 }
