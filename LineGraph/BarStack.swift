@@ -45,7 +45,6 @@ struct BarStack: View {
                             withAnimation {
                                 zero.date -= dayLength
                             }
-                            
                         }
                     Image(systemName: "chevron.right")
                         .modifier(ButtonGlyph())
@@ -53,7 +52,13 @@ struct BarStack: View {
                             withAnimation {
                                 zero.date += dayLength
                             }
-                            
+                        }
+                    Image(systemName: "chevron.right")
+                        .modifier(ButtonGlyph())
+                        .onTapGesture {
+                            withAnimation {
+                                zero.date += dayLength
+                            }
                         }
                 }
                 

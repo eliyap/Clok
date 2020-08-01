@@ -48,12 +48,9 @@ struct Controller: View {
 struct LineGraph: View {
     
     @EnvironmentObject var zero: ZeroDate
-    
     @EnvironmentObject var data: TimeData
-    /// number of days on screen
-    static let dayCount = 31
-    
-    var offset: Int
+
+    let offset: Int
     let tf = DateFormatter()
     let haptic = UIImpactFeedbackGenerator(style: .light)
     let size: CGSize
