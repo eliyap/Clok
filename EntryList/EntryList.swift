@@ -28,7 +28,7 @@ struct EntryList: View {
                 Title(value)
                 ForEach(Days(), id: \.id) { day in
                     Section(header: Header(day)) {
-                        LazyVStack(spacing: 0) {
+                        VStack(spacing: 0) {
                             ForEach(day.entries, id: \.id) { entry in
                                 EntryView(entry: entry)
                                     .id(entry.id)
