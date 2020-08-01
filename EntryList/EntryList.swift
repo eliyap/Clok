@@ -93,14 +93,14 @@ struct EntryList: View {
         /// restrict to current week
         let validEntries = data.entries
             .sorted(by: {$0.start < $1.start} )
-            .within(interval: weekLength, of: zero.date)
+            .within(interval: Double(zero.dayCount) * dayLength, of: zero.date)
             .matching(data.terms)
         
         var days = [Day]()
         let cal = Calendar.current
         for mn in stride(
             from: cal.startOfDay(for: zero.date),
-            through: cal.startOfDay(for: zero.date + weekLength),
+            through: cal.startOfDay(for: zero.date + Double(zero.dayCount) * dayLength),
             by: dayLength
         ) {
             days.append(Day(
