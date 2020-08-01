@@ -36,8 +36,27 @@ struct BarStack: View {
                         InfiniteScroll(geo: geo)
                     }
                 }
-                FilterStack()
-                    .padding(buttonPadding)
+                HStack {
+                    FilterStack()
+                        .padding(buttonPadding)
+                    Image(systemName: "chevron.left")
+                        .modifier(ButtonGlyph())
+                        .onTapGesture {
+                            withAnimation {
+                                zero.date -= dayLength
+                            }
+                            
+                        }
+                    Image(systemName: "chevron.right")
+                        .modifier(ButtonGlyph())
+                        .onTapGesture {
+                            withAnimation {
+                                zero.date += dayLength
+                            }
+                            
+                        }
+                }
+                
             }
         }
         /// keep it square
