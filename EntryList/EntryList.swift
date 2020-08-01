@@ -38,7 +38,7 @@ struct EntryList: View {
                 }
             }
             /// easter egg!
-            if zero.date > Date() + weekLength {
+            if zero.date > Date() {
                 Text("What does the future hold?")
             }
         }
