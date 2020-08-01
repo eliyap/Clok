@@ -68,7 +68,6 @@ struct BarStack: View {
                         .onTapGesture {
                             zero.dateChange = .fwrd
                             withAnimation {
-                                
                                 zero.date += dayLength * Double(zero.dayCount)
                             }
                         }

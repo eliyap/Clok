@@ -49,11 +49,11 @@ struct EntryList: View {
         HStack {
             Text("Time Entries")
                 .font(Font.title.weight(.bold))
-                .onReceive(listRow.$entry, perform: { entry in
+                .onReceive(listRow.$entry) { entry in
                     withAnimation {
                         value.scrollTo(entry?.id, anchor: .top)
                     }
-                })
+                }
             Spacer()
         }
         .padding(listPadding)
