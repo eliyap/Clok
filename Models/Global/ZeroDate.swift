@@ -12,6 +12,9 @@ final class ZeroDate: ObservableObject {
     // default to 1 week before end of today
     @Published var date = Date() - weekLength
     
+    /// number of days displayed
+    @Published var dayCount = 7
+    
     enum dateChange {
         case fwrd
         case back

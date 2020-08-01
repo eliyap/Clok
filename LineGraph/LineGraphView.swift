@@ -65,7 +65,7 @@ struct LineGraph: View {
     let kCoeff = 0.5
     
     func enumDays() -> [(Int, Date)] {
-        stride(from: 0, to: LineGraph.dayCount, by: 1).map{
+        stride(from: 0, to: zero.dayCount, by: 1).map{
             ($0, Calendar.current.startOfDay(for: zero.date) + Double($0 + offset) * dayLength)
         }
     }
@@ -88,13 +88,17 @@ struct LineGraph: View {
                     LineBar(
                         entry: entry,
                         begin: date,
-                        size: size
+                        size: CGSize(
+                            /// reflect the smaller width
+                            width: size.width / CGFloat(zero.dayCount),
+                            height: size.height
+                        )
                     )
                         .opacity(entry.matches(data.terms) ? 1 : 0.5)
                 }
                 .transition(.opacity)
                 .offset(
-                    x: size.width * CGFloat(idx) / CGFloat(LineGraph.dayCount)
+                    x: size.width * CGFloat(idx) / CGFloat(zero.dayCount)
                 )
             }
         }

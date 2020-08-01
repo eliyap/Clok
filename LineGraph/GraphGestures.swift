@@ -11,6 +11,8 @@ import SwiftUI
 extension Controller {
     
     struct PositionTracker {
+        @EnvironmentObject var zero: ZeroDate
+        
         var lag = CGPoint.zero
         var lead = CGPoint.zero
         var intervalDiff = TimeInterval.zero /// number of days represented by the handle's change in angle
@@ -28,7 +30,7 @@ extension Controller {
             /// and increment the correct tracker
             if abs(lead.x - lag.x) > abs(lead.y - lag.y) {
                 /// normalize against view width
-                dayDiff += Double(CGFloat(LineGraph.dayCount) * (lead.x - lag.x) / size.width)
+                dayDiff += Double(CGFloat(zero.dayCount) * (lead.x - lag.x) / size.width)
             } else {
                 intervalDiff += Double((lead.y - lag.y) / size.height)
             }

@@ -24,13 +24,13 @@ struct LineBar: View {
     
     
     var body: some View {
-        RoundedRectangle(cornerRadius: size.height * cornerScale / CGFloat(LineGraph.dayCount)) /// adapt scale to taste
+        RoundedRectangle(cornerRadius: size.width * cornerScale) /// adapt scale to taste
             .size(
-                width: size.width * thicc / CGFloat(LineGraph.dayCount),
+                width: size.width * thicc,
                 height: size.height * CGFloat((entry.end - entry.start) / dayLength)
             )
             .offset(CGPoint(
-                x: size.width / CGFloat(LineGraph.dayCount) * CGFloat((1.0 - thicc) / 2.0),
+                x: size.width * CGFloat((1.0 - thicc) / 2.0),
                 y: size.height * CGFloat((entry.start - begin) / dayLength)
             ))
             .opacity(opacity)
