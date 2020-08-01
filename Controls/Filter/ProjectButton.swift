@@ -25,7 +25,7 @@ struct ProjectButton: View {
             Text("Project is \(data.terms.project.wrappedName)")
         }
         .onTapGesture {
-            self.showSheet.toggle()
+            showSheet.toggle()
         }
     }
     
@@ -34,7 +34,7 @@ struct ProjectButton: View {
         /// make a button for each project
         let projectBtns = projects.map { project in
             ActionSheet.Button.default(Text(project.wrappedName)) { () -> Void in
-                self.data.terms.project = project
+                data.terms.project = project
             }
         /// remember cancel button
         } + [ActionSheet.Button.cancel()]
