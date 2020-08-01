@@ -38,7 +38,7 @@ struct EntryList: View {
                 }
             }
             /// easter egg!
-            if zero.date > Date() {
+            if zero.date >= Calendar.current.startOfDay(for: Date()) {
                 Text("What does the future hold?")
             }
         }
