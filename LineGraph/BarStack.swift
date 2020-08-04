@@ -14,7 +14,7 @@ struct BarStack: View {
     @EnvironmentObject private var zero: ZeroDate
     
     func jumpCoreDate() {
-        zero.date += .leastNonzeroMagnitude
+        zero.start += .leastNonzeroMagnitude
     }
     
     var body: some View {
@@ -31,7 +31,7 @@ struct BarStack: View {
                         .onTapGesture {
                             zero.dateChange = .back
                             withAnimation {
-                                zero.date -= dayLength * Double(zero.dayCount)
+                                zero.start -= dayLength * Double(zero.dayCount)
                             }
                         }
                     Image(systemName: "chevron.left")
@@ -39,7 +39,7 @@ struct BarStack: View {
                         .onTapGesture {
                             zero.dateChange = .back
                             withAnimation {
-                                zero.date -= dayLength
+                                zero.start -= dayLength
                             }
                         }
                     Image(systemName: "chevron.right")
@@ -47,7 +47,7 @@ struct BarStack: View {
                         .onTapGesture {
                             zero.dateChange = .fwrd
                             withAnimation {
-                                zero.date += dayLength
+                                zero.start += dayLength
                             }
                         }
                     Image(systemName: "chevron.right.2")
@@ -55,7 +55,7 @@ struct BarStack: View {
                         .onTapGesture {
                             zero.dateChange = .fwrd
                             withAnimation {
-                                zero.date += dayLength * Double(zero.dayCount)
+                                zero.start += dayLength * Double(zero.dayCount)
                             }
                         }
                     Image(systemName: "plus")
