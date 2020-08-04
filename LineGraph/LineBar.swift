@@ -20,7 +20,7 @@ struct LineBar: View {
     
     /// determines what proportion of available horizontal space to consume
     private let thicc = CGFloat(0.8)
-    private let cornerScale = CGFloat(1.0/8.0)
+    private let cornerScale = CGFloat(1.0/18.0)
     
     
     var body: some View {

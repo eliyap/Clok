@@ -16,7 +16,6 @@ func fetchEntries(
     context: NSManagedObjectContext,
     projects: [Project]
 ) -> [TimeEntry]? {
-    print("NOW FETCHING ENTRIES")
     // assemble request URL (page is added later)
     let df = DateFormatter()
     df.dateFormat = "yyyy-MM-dd" // ISO 8601 format, day precision
@@ -35,7 +34,7 @@ func fetchEntries(
         context: context,
         projects: projects
     )
-    var entries: [TimeEntry]? = nil
+    let entries: [TimeEntry]? = nil
     DispatchQueue.global(qos: .background).async {
         switch result {
         case let .success(fetched):
