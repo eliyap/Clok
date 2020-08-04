@@ -41,9 +41,5 @@ struct ContentView: View {
             }
             
         }
-        
-        .onAppear {
-//            testRunning()
-        }
     }
 }
