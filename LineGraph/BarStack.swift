@@ -85,20 +85,24 @@ struct BarStack: View {
     
     func DayScroll(size: CGSize) -> some View {
         ScrollView(showsIndicators: false) {
-            VStack(spacing: .zero) {
-                LineGraph(offset: 0,size: size)
-                    .frame(width: size.width, height: size.height)
-                    .background(LinedBackground(size: size, color: .clokBG))
-                MidnightDivider(size: size)
-                LineGraph(offset: 1,size: size)
-                    .frame(width: size.width, height: size.height)
-                    .background(LinedBackground(size: size, color: Color(UIColor.systemBackground)))
-                MidnightDivider(size: size)
-                LineGraph(offset: 2,size: size)
-                    .frame(width: size.width, height: size.height)
-                    .background(LinedBackground(size: size, color: .clokBG))
+            ScrollViewReader { proxy in
+                VStack(spacing: .zero) {
+                    LineGraph(offset: 0,size: size)
+                        .frame(width: size.width, height: size.height)
+                        .background(LinedBackground(size: size, color: .clokBG))
+                    MidnightDivider(size: size)
+                    LineGraph(offset: 1,size: size)
+                        .frame(width: size.width, height: size.height)
+                        .background(LinedBackground(size: size, color: Color(UIColor.systemBackground)))
+                        .id(0)
+                    MidnightDivider(size: size)
+                    LineGraph(offset: 2,size: size)
+                        .frame(width: size.width, height: size.height)
+                        .background(LinedBackground(size: size, color: .clokBG))
+                }
+                .padding([.top, .bottom], -size.height / 2)
+                .onAppear{ proxy.scrollTo(0) }
             }
-            .padding([.top, .bottom], -size.height / 2)
         }
     }
     
