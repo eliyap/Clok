@@ -18,7 +18,7 @@ struct WeekDateString: View {
             Text(dateString)
                 .font(.headline)
                 .bold()
-                .onReceive(self.zero.$date, perform: { date in
+                .onReceive(zero.$date, perform: { date in
                 /// set labels programatically so that ellipsis animation does NOT play when changing date
                 self.dateString = "\(self.df.string(from: date)) – \(self.df.string(from: date + weekLength))"
             })

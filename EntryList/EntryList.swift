@@ -38,7 +38,7 @@ struct EntryList: View {
                 }
             }
             /// fuuuuuuutuuuuure
-            if zero.date >= Calendar.current.startOfDay(for: Date()) {
+            if zero.start >= Calendar.current.startOfDay(for: Date()) {
                 Text("What does the future hold?")
             }
         }
@@ -47,7 +47,7 @@ struct EntryList: View {
     
     func Title(_ value: ScrollViewProxy) -> some View {
         HStack {
-            Text("\(df.string(from: zero.date)) – \(df.string(from: zero.date))")
+            Text("\(df.string(from: zero.start)) – \(df.string(from: zero.start))")
                 .font(Font.title.weight(.bold))
                 .onReceive(listRow.$entry) { entry in
                     withAnimation {
@@ -62,7 +62,7 @@ struct EntryList: View {
     func Header(_ day: Day) -> some View {
         let cal = Calendar.current
         let currentYear = cal.component(.year, from: Date())
-        let zeroYear = cal.component(.year, from: zero.date)
+        let zeroYear = cal.component(.year, from: zero.start)
                 
         /// day of week, day of month, MMM
         let dateString =  [
@@ -93,14 +93,14 @@ struct EntryList: View {
         /// restrict to current week
         let validEntries = data.entries
             .sorted(by: {$0.start < $1.start} )
-            .within(interval: Double(zero.dayCount) * dayLength, of: zero.date)
+            .within(interval: Double(zero.dayCount) * dayLength, of: zero.start)
             .matching(data.terms)
         
         var days = [Day]()
         let cal = Calendar.current
         for mn in stride(
-            from: cal.startOfDay(for: zero.date),
-            through: cal.startOfDay(for: zero.date + Double(zero.dayCount) * dayLength),
+            from: cal.startOfDay(for: zero.start),
+            through: cal.startOfDay(for: zero.start + Double(zero.dayCount) * dayLength),
             by: dayLength
         ) {
             days.append(Day(
@@ -119,7 +119,7 @@ struct EntryList: View {
     func HeaderFor(section: Day) -> String {
         let cal = Calendar.current
         let currentYear = cal.component(.year, from: Date())
-        let zeroYear = cal.component(.year, from: zero.date)
+        let zeroYear = cal.component(.year, from: zero.start)
         
         /// day of week, day of month, MMM
         return [

@@ -10,7 +10,11 @@ import Foundation
 
 final class ZeroDate: ObservableObject {
     // default to 1 week before end of today
-    @Published var date = Date() - weekLength
+    @Published var start = Date() - weekLength
+    
+    var end: Date {
+        start + Double(dayCount) * dayLength
+    }
     
     /// number of days displayed
     @Published var dayCount = 7

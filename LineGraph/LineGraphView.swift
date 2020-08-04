@@ -29,7 +29,7 @@ struct LineGraph: View {
     
     func enumDays() -> [(Int, Date)] {
         stride(from: 0, to: zero.dayCount, by: 1).map{
-            ($0, Calendar.current.startOfDay(for: zero.date) + Double($0 + offset) * dayLength)
+            ($0, Calendar.current.startOfDay(for: zero.start) + Double($0 + offset) * dayLength)
         }
     }
     
