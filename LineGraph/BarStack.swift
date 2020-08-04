@@ -88,19 +88,29 @@ struct BarStack: View {
             VStack(spacing: .zero) {
                 LineGraph(offset: 0,size: size)
                     .frame(width: size.width, height: size.height)
-                    .background(Color.clokBG)
+                    .background(LinedBackground(size: size, color: .clokBG))
                 MidnightDivider(size: size)
                 LineGraph(offset: 1,size: size)
                     .frame(width: size.width, height: size.height)
-                    .background(Color(UIColor.systemBackground))
+                    .background(LinedBackground(size: size, color: Color(UIColor.systemBackground)))
                 MidnightDivider(size: size)
                 LineGraph(offset: 2,size: size)
                     .frame(width: size.width, height: size.height)
-                    .background(Color.clokBG)
+                    .background(LinedBackground(size: size, color: .clokBG))
             }
             .padding([.top, .bottom], -size.height / 2)
         }
     }
+    
+    func LinedBackground(size: CGSize, color: Color) -> some View {
+        return VStack(spacing: .zero) {
+            ForEach(0..<evenDivisions(for: size), id: \.self) { _ in
+                Rectangle().foregroundColor(color)
+                Divider()
+            }
+        }
+    }
+    
     
     func MidnightDivider(size: CGSize) -> some View {
         Rectangle()
