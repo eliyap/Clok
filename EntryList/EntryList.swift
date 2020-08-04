@@ -14,7 +14,6 @@ struct EntryList: View {
     
     @EnvironmentObject var data: TimeData
     @EnvironmentObject var zero: ZeroDate
-    @EnvironmentObject var listRow: ListRow
     
     private let df = DateFormatter()
     
@@ -24,15 +23,18 @@ struct EntryList: View {
     
     var body: some View {
         ScrollView {
-            ScrollViewReader { value in
-                Title(value)
-                ForEach(Days(), id: \.id) { day in
-                    Section(header: Header(day)) {
-                        VStack(spacing: 0) {
-                            ForEach(day.entries, id: \.id) { entry in
-                                EntryView(entry: entry)
-                                    .id(entry.id)
-                            }
+            HStack {
+                Text("\(df.string(from: zero.start)) – \(df.string(from: zero.end))")
+                    .font(Font.title.weight(.bold))
+                Spacer()
+            }
+            .padding(listPadding)
+            ForEach(Days(), id: \.id) { day in
+                Section(header: Header(day)) {
+                    VStack(spacing: 0) {
+                        ForEach(day.entries, id: \.id) { entry in
+                            EntryView(entry: entry)
+                                .id(entry.id)
                         }
                     }
                 }
@@ -43,20 +45,6 @@ struct EntryList: View {
             }
         }
         .allowsHitTesting(false)
-    }
-    
-    func Title(_ value: ScrollViewProxy) -> some View {
-        HStack {
-            Text("\(df.string(from: zero.start)) – \(df.string(from: zero.end))")
-                .font(Font.title.weight(.bold))
-                .onReceive(listRow.$entry) { entry in
-                    withAnimation {
-                        value.scrollTo(entry?.id, anchor: .top)
-                    }
-                }
-            Spacer()
-        }
-        .padding(listPadding)
     }
     
     func Header(_ day: Day) -> some View {
