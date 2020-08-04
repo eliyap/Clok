@@ -43,6 +43,7 @@
 		2264CB3924AD33D900ECBF2B /* EmailFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264CB3824AD33D900ECBF2B /* EmailFields.swift */; };
 		2264CB3B24AD344F00ECBF2B /* TokenFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264CB3A24AD344F00ECBF2B /* TokenFields.swift */; };
 		227C613724A3F557006F8168 /* FilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227C613624A3F557006F8168 /* FilterButton.swift */; };
+		22885DAC24D9E87B00A56FE3 /* MVVMListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22885DAB24D9E87B00A56FE3 /* MVVMListView.swift */; };
 		228B100224AEA6E50026AD4B /* RoundBottomRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228B100124AEA6E50026AD4B /* RoundBottomRect.swift */; };
 		228B100424AEAE3A0026AD4B /* WeekDateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228B100324AEAE3A0026AD4B /* WeekDateButton.swift */; };
 		228B100624AECDFF0026AD4B /* EntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228B100524AECDFF0026AD4B /* EntryView.swift */; };
@@ -194,6 +195,7 @@
 		2264CB3824AD33D900ECBF2B /* EmailFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailFields.swift; sourceTree = "<group>"; };
 		2264CB3A24AD344F00ECBF2B /* TokenFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenFields.swift; sourceTree = "<group>"; };
 		227C613624A3F557006F8168 /* FilterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterButton.swift; sourceTree = "<group>"; };
+		22885DAB24D9E87B00A56FE3 /* MVVMListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVMListView.swift; sourceTree = "<group>"; };
 		228B100124AEA6E50026AD4B /* RoundBottomRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundBottomRect.swift; sourceTree = "<group>"; };
 		228B100324AEAE3A0026AD4B /* WeekDateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDateButton.swift; sourceTree = "<group>"; };
 		228B100524AECDFF0026AD4B /* EntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryView.swift; sourceTree = "<group>"; };
@@ -555,6 +557,7 @@
 				22B0784724B249BA00256EB8 /* Clok.entitlements */,
 				225F69B324AD8CE70012B5DB /* AppView.swift */,
 				C6C18D482448F96C000345D5 /* ContentView.swift */,
+				22885DAB24D9E87B00A56FE3 /* MVVMListView.swift */,
 				22027DD124AFF7ED00C0BA90 /* TopFunctions.swift */,
 				22027DCF24AFF63F00C0BA90 /* OrientationView.swift */,
 				2218EA7724B6B90F00E09847 /* SwitchGroupView.swift */,
@@ -822,6 +825,7 @@
 				22928AC924A429F700DC9EC5 /* ProjectButton.swift in Sources */,
 				22DC86A624BA838D00FF771F /* TimeEntry+CoreDataProperties.swift in Sources */,
 				2264CB3524AD330500ECBF2B /* IconView.swift in Sources */,
+				22885DAC24D9E87B00A56FE3 /* MVVMListView.swift in Sources */,
 				C63FC2F8249BCEB900747D49 /* AngleExtension.swift in Sources */,
 				C6AAB3EA249EF26800DFBA36 /* TimeEntryExtension.swift in Sources */,
 				C6C18D492448F96C000345D5 /* ContentView.swift in Sources */,

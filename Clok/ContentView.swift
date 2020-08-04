@@ -22,28 +22,36 @@ struct ContentView: View {
     /// whether we need user's token
     @State var needToken = false
     var body : some View {
-        ZStack {
-            OrientationView()
-            /// fade out loading screen when data is finished being requested
-            
-//            if !loaded { ProgressIndicator() }
-            if settings.user?.token == nil { LoginView() }
-        }
-        .onAppear { tryLoadUserFromDisk() }
-        /// update on change to either user or space
+//        ZStack {
+//            OrientationView()
+//            /// fade out loading screen when data is finished being requested
+//
+////            if !loaded { ProgressIndicator() }
+//            if settings.user?.token == nil { LoginView() }
+//        }
+//        .onAppear { tryLoadUserFromDisk() }
+//        /// update on change to either user or space
+//        .onReceive(settings.$user) { user in
+//            if let user = user {
+//                /// fetch projects when app is started
+//                data.projects = fetchProjects(
+//                    user: user,
+//                    context: moc
+//                ) ?? loadProjects(context: moc) ?? []
+//            }
+//
+//        }
+        MVVMListView(
+            entries: lvm.state.entries,
+            isLoading: lvm.state.canLoadNextPage,
+            onScrollToBottom: lvm.fetch(context: moc, user: settings.user)
+        )
+        .onAppear(perform: lvm.fetch(context: moc, user: settings.user))
         .onReceive(settings.$user) { user in
-            if let user = user {
-                /// fetch projects when app is started
-                data.projects = fetchProjects(
-                    user: user,
-                    context: moc
-                ) ?? loadProjects(context: moc) ?? []
-            }
-            
+            lvm.fetch(context: moc, user: user)()
         }
         
-        .onAppear {
-//            testRunning()
-        }
+        
     }
+    @ObservedObject var lvm: ListViewModel
 }

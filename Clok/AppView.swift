@@ -35,7 +35,7 @@ struct ClokApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(lvm: ContentView.ListViewModel())
                 .environmentObject(listRow)
                 .environmentObject(zero)
                 .environmentObject(data)
