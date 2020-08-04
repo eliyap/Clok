@@ -14,14 +14,9 @@ struct LineBar: View {
     let begin: Date
     let size: CGSize
     
-    @EnvironmentObject var listRow: ListRow
-    @State private var opacity = 1.0
-    @State private var offset = CGFloat.zero
-    
     /// determines what proportion of available horizontal space to consume
     private let thicc = CGFloat(0.8)
     private let cornerScale = CGFloat(1.0/18.0)
-    
     
     var body: some View {
         RoundedRectangle(cornerRadius: size.width * cornerScale) /// adapt scale to taste
@@ -33,29 +28,9 @@ struct LineBar: View {
                 x: size.width * CGFloat((1.0 - thicc) / 2.0),
                 y: size.height * CGFloat((entry.start - begin) / dayLength)
             ))
-            .opacity(opacity)
-            .offset(y: offset)
             .foregroundColor(entry.wrappedColor)
-            .onTapGesture { tapHandler() }
-    }
-    
-    // MARK: - Tap Handler
-    func tapHandler() -> Void {
-        /// scroll to entry in list
-        listRow.entry = entry
-        
-        /// brief bounce animation, peak quickly & drop off slowly
-        withAnimation(.linear(duration: 0.1)){
-            /// drop the opacity to take on more BG color
-            opacity -= 0.25
-            /// slight jump
-            offset -= size.height / 40
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            withAnimation(.linear(duration: 0.3)){
-                opacity = 1
-                offset = .zero
+            .contextMenu {
+                Text("test")
             }
-        }
     }
 }

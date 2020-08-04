@@ -55,41 +55,24 @@ struct LineGraph: View {
             }
         }
     }
-    
+    /**
+     determine what kind of apperance / disappearance animation to use
+     based on whether the anchor date was just moved forwards for backwards
+     */
     func slideOver() -> AnyTransition {
         switch zero.dateChange {
         case .fwrd:
-            return .asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading))
-        case .back:
-            return .asymmetric(insertion: .move(edge: .leading), removal: .move(edge: .trailing))
-        case .none:
-            return .opacity
-        }
-    }
-}
-
-
-/// One vertical strip of bars representing 1 day in the larger graph
-struct DayStrip: View {
-    
-    let entries: [TimeEntry]
-    let begin: Date
-    let size: CGSize
-    let terms: SearchTerm
-    let dayCount: Int
-    
-    var body: some View {
-        ForEach(entries, id: \.id) { entry in
-            LineBar(
-                entry: entry,
-                begin: begin,
-                size: CGSize(
-                    /// reflect the smaller width
-                    width: size.width / CGFloat(dayCount),
-                    height: size.height
-                )
+            return .asymmetric(
+                insertion: .move(edge: .trailing),
+                removal: .move(edge: .leading)
             )
-                .opacity(entry.matches(terms) ? 1 : 0.5)
+        case .back:
+            return .asymmetric(
+                insertion: .move(edge: .leading),
+                removal: .move(edge: .trailing)
+            )
+        default: // fallback option, fade in and out
+            return .opacity
         }
     }
 }

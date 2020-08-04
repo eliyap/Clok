@@ -17,18 +17,19 @@ struct OrientationView: View {
     
     var body: some View {
         GeometryReader { geo in
-            if geo.orientation() == .landscape {
+            switch geo.orientation() {
+            case .landscape:
                 HStack(spacing: 0) { ContentGroupView(geo: geo) }
-                .onAppear {
-                    bounds.mode = .landscape
-                    bounds.notch = hasNotch(geo)
-                }
-            } else {
+                    .onAppear {
+                        bounds.mode = .landscape
+                        bounds.notch = hasNotch(geo)
+                    }
+            case .portrait:
                 VStack(spacing: 0) { ContentGroupView(geo: geo) }
-                .onAppear {
-                    bounds.mode = .portrait
-                    bounds.notch = hasNotch(geo)
-                }
+                    .onAppear {
+                        bounds.mode = .portrait
+                        bounds.notch = hasNotch(geo)
+                    }
             }
         }
         .background(Color.clokBG.edgesIgnoringSafeArea(.all))
