@@ -47,7 +47,7 @@ struct EntryList: View {
     
     func Title(_ value: ScrollViewProxy) -> some View {
         HStack {
-            Text("\(df.string(from: zero.start)) – \(df.string(from: zero.start))")
+            Text("\(df.string(from: zero.start)) – \(df.string(from: zero.end))")
                 .font(Font.title.weight(.bold))
                 .onReceive(listRow.$entry) { entry in
                     withAnimation {
