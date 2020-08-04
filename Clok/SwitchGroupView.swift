@@ -20,7 +20,7 @@ struct ContentGroupView: View {
             switch settings.tab {
             case .spiral:
                 Text("Daily View Planned")
-                .frame(width: size(geo), height: size(geo))
+                    .frame(width: size(geo), height: size(geo))
             case .bar:
                 BarStack()
                     .frame(width: size(geo), height: size(geo))

@@ -39,7 +39,6 @@ struct ContentView: View {
                     context: moc
                 ) ?? loadProjects(context: moc) ?? []
             }
-            
         }
     }
 }
