@@ -15,9 +15,6 @@ struct BarStack: View {
     
     @State var items = [UUID(), UUID(), UUID()]
     
-    /// how far user needs to pull before a pop
-    let threshhold = CGFloat(0.25)
-    
     func jumpCoreDate() {
         zero.date += .leastNonzeroMagnitude
     }
@@ -85,9 +82,7 @@ struct BarStack: View {
         }
         /// keep it square
         .aspectRatio(1, contentMode: bounds.notch ? .fit : .fill)
-        .onAppear() {
-            jumpCoreDate()
-        }
+        .onAppear(perform: jumpCoreDate)
     }
     
     func InfiniteScroll(geo: GeometryProxy) -> some View {
