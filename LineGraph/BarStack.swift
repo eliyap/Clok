@@ -15,10 +15,6 @@ struct BarStack: View {
     
     @State var items = [UUID(), UUID(), UUID()]
     
-    /// Hack: by toggling this bool, force SwiftUI to "redraw" the view, breaking the user's scroll gesture
-    /// this is needed to prevent a long drag repeatedly pop-ing
-    @State var meaningless = false
-    
     /// how far user needs to pull before a pop
     let threshhold = CGFloat(0.25)
     
@@ -30,11 +26,7 @@ struct BarStack: View {
         GeometryReader { geo in
             ZStack(alignment: .bottomLeading) {
                 Mask {
-                    if meaningless {
-                        InfiniteScroll(geo: geo)
-                    } else {
-                        InfiniteScroll(geo: geo)
-                    }
+                    InfiniteScroll(geo: geo)
                 }
                 HStack {
                     FilterStack()
