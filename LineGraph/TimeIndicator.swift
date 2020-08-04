@@ -13,20 +13,21 @@ struct TimeIndicator: View {
 
     let tf = DateFormatter()
     
+    init(divisions: Int) {
+        self.divisions = divisions
+        /// show hour in preferred way (no minutes or seconds)
+        tf.setLocalizedDateFormatFromTemplate(is24hour() ? "HH" : "h a")
+    }
+    
     var body: some View {
         VStack {
             ForEach(0..<divisions, id: \.self) { idx in
-                Text("hi")
                 Text("\(tf.string(from: Calendar.current.startOfDay(for: Date()) + Double(idx * 86400/divisions)))")
                     .onAppear{
                         print(tf.string(from: Calendar.current.startOfDay(for: Date()) + Double(idx * 86400/divisions)))
                     }
+                Spacer()
             }
-            
         }
-            .onAppear {
-                /// show hour in preferred way (no minutes or seconds)
-                tf.setLocalizedDateFormatFromTemplate(is24hour() ? "HH" : "h a")
-            }
     }
 }
