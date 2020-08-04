@@ -84,7 +84,7 @@ struct BarStack: View {
     }
     
     func DayScroll(size: CGSize) -> some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             VStack(spacing: .zero) {
                 LineGraph(offset: 0,size: size)
                     .frame(width: size.width, height: size.height)
