@@ -13,8 +13,6 @@ struct BarStack: View {
     @EnvironmentObject private var bounds: Bounds
     @EnvironmentObject private var zero: ZeroDate
     
-    @State var items = [UUID(), UUID(), UUID()]
-    
     func jumpCoreDate() {
         zero.date += .leastNonzeroMagnitude
     }
@@ -23,7 +21,7 @@ struct BarStack: View {
         GeometryReader { geo in
             ZStack(alignment: .bottomLeading) {
                 Mask {
-                    InfiniteScroll(geo: geo)
+                    DayScroll(size: geo.size)
                 }
                 HStack {
                     FilterStack()
@@ -85,22 +83,29 @@ struct BarStack: View {
         .onAppear(perform: jumpCoreDate)
     }
     
-    func InfiniteScroll(geo: GeometryProxy) -> some View {
+    func DayScroll(size: CGSize) -> some View {
         ScrollView {
             VStack(spacing: .zero) {
-                ForEach(Array(items.enumerated()), id: \.1) { idx, item in
-                    LineGraph(
-                        offset: idx,
-                        size: geo.size
-                    )
-                    .frame(width: geo.size.width, height: geo.size.height)
-                    Rectangle()
-                        .foregroundColor(.red)
-                        .frame(width: geo.size.width, height: 2)
-                }
+                LineGraph(offset: 0,size: size)
+                    .frame(width: size.width, height: size.height)
+                    .background(Color.clokBG)
+                MidnightDivider(size: size)
+                LineGraph(offset: 1,size: size)
+                    .frame(width: size.width, height: size.height)
+                    .background(Color(UIColor.systemBackground))
+                MidnightDivider(size: size)
+                LineGraph(offset: 2,size: size)
+                    .frame(width: size.width, height: size.height)
+                    .background(Color.clokBG)
             }
-            .padding([.top, .bottom], -geo.size.height / 2)
+            .padding([.top, .bottom], -size.height / 2)
         }
+    }
+    
+    func MidnightDivider(size: CGSize) -> some View {
+        Rectangle()
+            .foregroundColor(.red)
+            .frame(width: size.width, height: 2)
     }
     
     func frameHeight(geo: GeometryProxy) -> CGFloat {
