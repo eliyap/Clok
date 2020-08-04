@@ -13,25 +13,23 @@ struct DayStrip: View {
     
     let entries: [TimeEntry]
     let begin: Date
-    let size: CGSize
     let terms: SearchTerm
     let dayCount: Int
     
     var body: some View {
-        ZStack {
-            ForEach(entries, id: \.id) { entry in
-                LineBar(
-                    entry: entry,
-                    begin: begin,
-                    size: CGSize(
-                        /// reflect the smaller width
-                        width: size.width / CGFloat(dayCount),
-                        height: size.height
+        GeometryReader { geo in
+            ZStack {
+                ForEach(entries, id: \.id) { entry in
+                    LineBar(
+                        entry: entry,
+                        begin: begin,
+                        size: geo.size
                     )
-                )
-                    .opacity(entry.matches(terms) ? 1 : 0.5)
+                        .opacity(entry.matches(terms) ? 1 : 0.5)
+                }
             }
         }
+        
 //        .drawingGroup()
     }
 }

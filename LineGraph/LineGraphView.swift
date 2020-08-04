@@ -37,7 +37,7 @@ struct LineGraph: View {
         /// check whether the provided time entry coincides with a particular *date* range
         /// if our entry ends before the interval even began
         /// or started after the interval finished, it cannot possibly fall coincide
-        ZStack {
+        HStack {
             /// use date enum so SwiftUI can identify horizontal swipes without redrawing everything
             ForEach(
                 enumDays(),
@@ -46,12 +46,10 @@ struct LineGraph: View {
                 DayStrip(
                     entries: data.entries.filter{$0.end > date && $0.start < date + dayLength},
                     begin: date,
-                    size: size,
                     terms: data.terms,
                     dayCount: zero.dayCount
                 )
                 .transition(slideOver())
-                .offset(x: size.width * CGFloat(idx) / CGFloat(zero.dayCount))
             }
         }
     }
