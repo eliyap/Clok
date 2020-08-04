@@ -52,8 +52,11 @@ struct LineGraph: View {
                 .transition(slideOver())
                 Divider()
             }
+            TimeIndicator(divisions: evenDivisions(for: size))
         }
     }
+    
+    
     /**
      determine what kind of apperance / disappearance animation to use
      based on whether the anchor date was just moved forwards for backwards
