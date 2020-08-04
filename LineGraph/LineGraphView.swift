@@ -43,26 +43,15 @@ struct LineGraph: View {
                 enumDays(),
                 id: \.1.timeIntervalSince1970
             ) { idx, date in
-                ForEach(
-                    data.entries
-                        .filter{$0.end > date && $0.start < date + dayLength}
-                    , id: \.id
-                ) { entry in
-                    LineBar(
-                        entry: entry,
-                        begin: date,
-                        size: CGSize(
-                            /// reflect the smaller width
-                            width: size.width / CGFloat(zero.dayCount),
-                            height: size.height
-                        )
-                    )
-                        .opacity(entry.matches(data.terms) ? 1 : 0.5)
-                }
-                .transition(slideOver())
-                .offset(
-                    x: size.width * CGFloat(idx) / CGFloat(zero.dayCount)
+                DayStrip(
+                    entries: data.entries.filter{$0.end > date && $0.start < date + dayLength},
+                    begin: date,
+                    size: size,
+                    terms: data.terms,
+                    dayCount: zero.dayCount
                 )
+                .transition(slideOver())
+                .offset(x: size.width * CGFloat(idx) / CGFloat(zero.dayCount))
             }
         }
     }
@@ -75,6 +64,32 @@ struct LineGraph: View {
             return .asymmetric(insertion: .move(edge: .leading), removal: .move(edge: .trailing))
         case .none:
             return .opacity
+        }
+    }
+}
+
+
+/// One vertical strip of bars representing 1 day in the larger graph
+struct DayStrip: View {
+    
+    let entries: [TimeEntry]
+    let begin: Date
+    let size: CGSize
+    let terms: SearchTerm
+    let dayCount: Int
+    
+    var body: some View {
+        ForEach(entries, id: \.id) { entry in
+            LineBar(
+                entry: entry,
+                begin: begin,
+                size: CGSize(
+                    /// reflect the smaller width
+                    width: size.width / CGFloat(dayCount),
+                    height: size.height
+                )
+            )
+                .opacity(entry.matches(terms) ? 1 : 0.5)
         }
     }
 }
