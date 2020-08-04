@@ -32,6 +32,6 @@ struct DayStrip: View {
                     .opacity(entry.matches(terms) ? 1 : 0.5)
             }
         }
-        .drawingGroup()
+//        .drawingGroup()
     }
 }

@@ -100,65 +100,24 @@ struct BarStack: View {
     
     func InfiniteScroll(geo: GeometryProxy) -> some View {
         ScrollView {
-            ScrollViewReader { proxy in
-                GeometryReader { topGeo in
-                    Run {
-                        guard geo.frame(in: .global).minY - topGeo.frame(in: .global).minY < -geo.size.height * threshhold else { return }
-                        meaningless.toggle()
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
-                            withAnimation{
-                                popUp()
-                                zero.date -= dayLength
-                            }
-                        }
-                    }
-                }
-                VStack(spacing: .zero) {
-                    ForEach(Array(items.enumerated()), id: \.1) { idx, item in
-                        LineGraph(
-                            offset: idx,
-                            size: geo.size
-                        )
-                        .frame(width: geo.size.width, height: geo.size.height)
-                        Rectangle()
-                            .foregroundColor(.red)
-                            .frame(width: geo.size.width, height: 2)
-                    }
-                }
-                .onAppear {
-                    withAnimation {
-                        proxy.scrollTo(items[1])
-                    }
-                }
-                .padding([.top, .bottom], -geo.size.height / 2)
-                GeometryReader { botGeo in
-                    Run {
-                        guard botGeo.frame(in: .global).maxY - geo.frame(in: .global).maxY < -geo.size.height * threshhold else { return }
-                        meaningless.toggle()
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
-                            withAnimation {
-                                popDown()
-                                zero.date += dayLength
-                            }
-                        }
-                    }
+            VStack(spacing: .zero) {
+                ForEach(Array(items.enumerated()), id: \.1) { idx, item in
+                    LineGraph(
+                        offset: idx,
+                        size: geo.size
+                    )
+                    .frame(width: geo.size.width, height: geo.size.height)
+                    Rectangle()
+                        .foregroundColor(.red)
+                        .frame(width: geo.size.width, height: 2)
                 }
             }
+            .padding([.top, .bottom], -geo.size.height / 2)
         }
     }
     
     func frameHeight(geo: GeometryProxy) -> CGFloat {
         geo.size.height * CGFloat(dayLength / zero.interval)
-    }
-    
-    func popUp() -> Void {
-        items.insert(UUID(), at: 0)
-        items.removeLast()
-    }
-    
-    func popDown() -> Void {
-        items.append(UUID())
-        items.removeFirst()
     }
 }
 
