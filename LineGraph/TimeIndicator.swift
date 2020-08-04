@@ -20,12 +20,10 @@ struct TimeIndicator: View {
     }
     
     var body: some View {
-        VStack {
+        VStack(alignment: .trailing) {
             ForEach(0..<divisions, id: \.self) { idx in
                 Text("\(tf.string(from: Calendar.current.startOfDay(for: Date()) + Double(idx * 86400/divisions)))")
-                    .onAppear{
-                        print(tf.string(from: Calendar.current.startOfDay(for: Date()) + Double(idx * 86400/divisions)))
-                    }
+                    .font(.footnote)
                 Spacer()
             }
         }
