@@ -47,7 +47,7 @@ struct EntryList: View {
     
     func Title(_ value: ScrollViewProxy) -> some View {
         HStack {
-            Text("Time Entries")
+            Text("\(df.string(from: zero.date)) – \(df.string(from: zero.date))")
                 .font(Font.title.weight(.bold))
                 .onReceive(listRow.$entry) { entry in
                     withAnimation {
