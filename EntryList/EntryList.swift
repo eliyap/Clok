@@ -24,7 +24,8 @@ struct EntryList: View {
     var body: some View {
         ScrollView {
             HStack {
-                Text("\(df.string(from: zero.start)) – \(df.string(from: zero.end))")
+                /// adjust start date to match
+                Text("\(df.string(from: zero.start + dayLength)) – \(df.string(from: zero.end))")
                     .font(Font.title.weight(.bold))
                 Spacer()
             }
