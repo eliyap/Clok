@@ -44,6 +44,7 @@ struct LineGraph: View {
                 enumDays(),
                 id: \.1.timeIntervalSince1970
             ) { idx, date in
+                Divider()
                 DayStrip(
                     entries: data.entries.filter{$0.end > date && $0.start < date + dayLength},
                     begin: date,
@@ -51,9 +52,7 @@ struct LineGraph: View {
                     dayCount: zero.dayCount
                 )
                 .transition(slideOver())
-                Divider()
             }
-            
         }
     }
     
