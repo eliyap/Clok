@@ -11,6 +11,9 @@ import SwiftUI
 /// whitespace around time labels
 fileprivate let labelPadding = CGFloat(3)
 
+/// offset label upwards to rest on the line
+fileprivate let labelOffset = CGFloat(-10)
+
 struct TimeIndicator: View {
     let divisions: Int
 
@@ -30,7 +33,7 @@ struct TimeIndicator: View {
                     Text("\(tf.string(from: Calendar.current.startOfDay(for: Date()) + Double(idx * 86400/divisions)))")
                         .font(.footnote)
                         .padding([.leading, .trailing], labelPadding)
-                        .offset(y: -10)
+                        .offset(y: labelOffset)
                     Spacer()
                         
                 }
