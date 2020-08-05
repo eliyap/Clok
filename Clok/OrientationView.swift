@@ -12,6 +12,7 @@ import SwiftUI
 struct OrientationView: View {
     
     @EnvironmentObject var bounds: Bounds
+    @EnvironmentObject var zero: ZeroDate
     @Environment(\.verticalSizeClass) var vSize: UserInterfaceSizeClass?
     @Environment(\.horizontalSizeClass) var hSize: UserInterfaceSizeClass?
     
@@ -36,6 +37,13 @@ struct OrientationView: View {
         .onAppear {
             /// determine device
             bounds.device = (vSize == .compact || hSize == .compact) ? .iPhone : .iPad
+            switch bounds.device {
+            case .iPhone:
+                /// limit smaller screen to 2 weeks
+                zero.countMax = 14
+            case .iPad:
+                zero.countMax = 31
+            }
         }
     }
 }

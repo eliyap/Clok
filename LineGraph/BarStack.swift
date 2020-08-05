@@ -63,7 +63,7 @@ struct BarStack: View {
                         .onTapGesture {
                             zero.dateChange = .none
                             withAnimation {
-                                zero.dayCount = min(ZeroDate.countMax, zero.dayCount + 1)
+                                zero.dayCount = min(zero.countMax, zero.dayCount + 1)
                             }
                         }
                     Image(systemName: "minus")
@@ -71,7 +71,7 @@ struct BarStack: View {
                         .onTapGesture {
                             zero.dateChange = .none
                             withAnimation {
-                                zero.dayCount = max(ZeroDate.countMin, zero.dayCount - 1)
+                                zero.dayCount = max(zero.countMin, zero.dayCount - 1)
                             }
                         }
                 }
