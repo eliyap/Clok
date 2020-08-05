@@ -20,7 +20,10 @@ struct BarStack: View {
     var body: some View {
         GeometryReader { geo in
             ZStack(alignment: .bottomLeading) {
-                DayScroll(size: geo.size)
+                Mask {
+                    DayScroll(size: geo.size)
+                }
+                
             
                 HStack {
                     FilterStack()
@@ -85,12 +88,9 @@ struct BarStack: View {
     func DayScroll(size: CGSize) -> some View {
         ScrollView(showsIndicators: false) {
             ScrollViewReader { proxy in
-                Mask {
-                    LineGraph(size: size)
-                        .frame(width: size.width, height: size.height * 3)
-                        .id(0)
-                }
-        
+                LineGraph(size: size)
+                    .frame(width: size.width, height: size.height * 3)
+                    .id(0)
                 .padding([.top, .bottom], -size.height / 2)
                 .onAppear{ proxy.scrollTo(0) }
             }
