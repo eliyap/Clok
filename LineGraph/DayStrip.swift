@@ -46,10 +46,9 @@ struct DayStrip: View {
                     )
                         .opacity(entry.matches(terms) ? 1 : 0.5)
                 }
-                StickyHeader(geo: geo)
+//                StickyHeader(geo: geo)
             }
             .frame(width: geo.size.width)
-//            .drawingGroup()
         }
     }
     
