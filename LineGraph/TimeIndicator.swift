@@ -24,11 +24,14 @@ struct TimeIndicator: View {
     
     var body: some View {
         VStack(alignment: .trailing) {
-            ForEach(0..<divisions, id: \.self) { idx in
-                Text("\(tf.string(from: Calendar.current.startOfDay(for: Date()) + Double(idx * 86400/divisions)))")
-                    .font(.footnote)
-                    .padding([.leading, .trailing], labelPadding)
-                Spacer()
+            /// repeat for 3 days
+            ForEach(0..<3, id: \.self) { _ in
+                ForEach(0..<divisions, id: \.self) { idx in
+                    Text("\(tf.string(from: Calendar.current.startOfDay(for: Date()) + Double(idx * 86400/divisions)))")
+                        .font(.footnote)
+                        .padding([.leading, .trailing], labelPadding)
+                    Spacer()
+                }
             }
         }
     }

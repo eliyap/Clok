@@ -46,7 +46,7 @@ struct LineGraph: View {
             ) { idx, date in
                 Divider()
                 DayStrip(
-                    entries: data.entries.filter{$0.end > date && $0.start < date + dayLength},
+                    entries: data.entries.filter{$0.end > date && $0.start < date + dayLength * 3},
                     begin: date,
                     terms: data.terms,
                     dayCount: zero.dayCount

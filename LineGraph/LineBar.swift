@@ -22,11 +22,11 @@ struct LineBar: View {
         RoundedRectangle(cornerRadius: size.width * cornerScale) /// adapt scale to taste
             .size(
                 width: size.width * thicc,
-                height: size.height * CGFloat((entry.end - entry.start) / dayLength)
+                height: size.height * CGFloat((entry.end - entry.start) / (dayLength * 3))
             )
             .offset(CGPoint(
                 x: size.width * CGFloat((1.0 - thicc) / 2.0),
-                y: size.height * CGFloat((entry.start - begin) / dayLength)
+                y: size.height * CGFloat((entry.start - begin) / (dayLength * 3))
             ))
             .foregroundColor(entry.wrappedColor)
             .contextMenu {
