@@ -87,38 +87,12 @@ struct BarStack: View {
         ScrollView(showsIndicators: false) {
             ScrollViewReader { proxy in
                 VStack(spacing: .zero) {
-//                    LineGraph(offset: 0,size: size)
-//                        .frame(width: size.width, height: size.height)
-//                        .background(LinedBackground(size: size, color: .clokBG))
-//                    MidnightDivider(size: size)
                     LineGraph(offset: 1,size: size)
                         .frame(width: size.width, height: size.height * 3)
-                        .background(LinedBackground(size: size))
                         .id(0)
-//                    MidnightDivider(size: size)
-//                    LineGraph(offset: 2,size: size)
-//                        .frame(width: size.width, height: size.height)
-//                        .background(LinedBackground(size: size, color: .clokBG))
                 }
                 .padding([.top, .bottom], -size.height / 2)
                 .onAppear{ proxy.scrollTo(0) }
-            }
-        }
-    }
-    
-    func LinedBackground(size: CGSize) -> some View {
-        return VStack(spacing: .zero) {
-            ForEach(0..<evenDivisions(for: size), id: \.self) { _ in
-                Rectangle().foregroundColor(.clokBG)
-                Divider()
-            }
-            ForEach(0..<evenDivisions(for: size), id: \.self) { _ in
-                Rectangle().foregroundColor(Color(UIColor.systemBackground))
-                Divider()
-            }
-            ForEach(0..<evenDivisions(for: size), id: \.self) { _ in
-                Rectangle().foregroundColor(.clokBG)
-                Divider()
             }
         }
     }

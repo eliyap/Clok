@@ -53,7 +53,9 @@ struct LineGraph: View {
                 )
                 .transition(slideOver())
             }
+            .background(LinedBackground(size: size))
         }
+        
     }
     
     

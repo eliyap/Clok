@@ -49,6 +49,7 @@
 		228B100224AEA6E50026AD4B /* RoundBottomRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228B100124AEA6E50026AD4B /* RoundBottomRect.swift */; };
 		228B100424AEAE3A0026AD4B /* WeekDateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228B100324AEAE3A0026AD4B /* WeekDateButton.swift */; };
 		228B100624AECDFF0026AD4B /* EntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228B100524AECDFF0026AD4B /* EntryView.swift */; };
+		22905B8824DB449400D5AC09 /* LinedBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22905B8724DB449400D5AC09 /* LinedBackground.swift */; };
 		22928AC524A4207E00DC9EC5 /* FilterStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22928AC424A4207E00DC9EC5 /* FilterStack.swift */; };
 		22928AC724A423AA00DC9EC5 /* WeekButtonGlyph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22928AC624A423AA00DC9EC5 /* WeekButtonGlyph.swift */; };
 		22928AC924A429F700DC9EC5 /* ProjectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22928AC824A429F700DC9EC5 /* ProjectButton.swift */; };
@@ -203,6 +204,7 @@
 		228B100124AEA6E50026AD4B /* RoundBottomRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundBottomRect.swift; sourceTree = "<group>"; };
 		228B100324AEAE3A0026AD4B /* WeekDateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDateButton.swift; sourceTree = "<group>"; };
 		228B100524AECDFF0026AD4B /* EntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryView.swift; sourceTree = "<group>"; };
+		22905B8724DB449400D5AC09 /* LinedBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinedBackground.swift; sourceTree = "<group>"; };
 		22928AC424A4207E00DC9EC5 /* FilterStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FilterStack.swift; path = Controls/Filter/FilterStack.swift; sourceTree = SOURCE_ROOT; };
 		22928AC624A423AA00DC9EC5 /* WeekButtonGlyph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekButtonGlyph.swift; sourceTree = "<group>"; };
 		22928AC824A429F700DC9EC5 /* ProjectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProjectButton.swift; path = Controls/Filter/ProjectButton.swift; sourceTree = SOURCE_ROOT; };
@@ -332,6 +334,7 @@
 				2207B21F24B954F40006748A /* BarStack.swift */,
 				225742D324D3C8C8002A22BB /* DragHandler.swift */,
 				225B044124B2A5FA00780424 /* LineGraphView.swift */,
+				22905B8724DB449400D5AC09 /* LinedBackground.swift */,
 				22885DB124DA1E2E00A56FE3 /* TimeIndicator.swift */,
 				22885DAD24DA13E500A56FE3 /* DayStrip.swift */,
 				225ACE4E24B2A7A700FFCDF7 /* LineBar.swift */,
@@ -804,6 +807,7 @@
 				225742D424D3C8C8002A22BB /* DragHandler.swift in Sources */,
 				221810DE24B00FB900B63ECA /* EntryTab.swift in Sources */,
 				2207B22224B958F00006748A /* Mask.swift in Sources */,
+				22905B8824DB449400D5AC09 /* LinedBackground.swift in Sources */,
 				2264CB3B24AD344F00ECBF2B /* TokenFields.swift in Sources */,
 				22232B8B24A9532000F3C378 /* LoginView.swift in Sources */,
 				C6751D8C24723182002965CC /* ZeroDate.swift in Sources */,

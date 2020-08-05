@@ -61,11 +61,13 @@ struct ClokApp: App {
                         if let freshEntries = loadEntries(from: .distantPast, to: .distantFuture, context: persistentContainer.viewContext) {
                             data.entries = freshEntries
                         }
-                        
-                        try! persistentContainer.viewContext.save() /// save on main threads
+                        do {
+                            try persistentContainer.viewContext.save() /// save on main threads
+                        } catch {
+                            print(error)
+                        }
                     }
                 })
         }
-        
     }
 }

@@ -30,7 +30,9 @@ struct TimeIndicator: View {
                     Text("\(tf.string(from: Calendar.current.startOfDay(for: Date()) + Double(idx * 86400/divisions)))")
                         .font(.footnote)
                         .padding([.leading, .trailing], labelPadding)
+                        .offset(y: -10)
                     Spacer()
+                        
                 }
             }
         }
