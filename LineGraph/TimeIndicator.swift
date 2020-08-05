@@ -8,6 +8,9 @@
 
 import SwiftUI
 
+/// whitespace around time labels
+fileprivate let labelPadding = CGFloat(3)
+
 struct TimeIndicator: View {
     let divisions: Int
 
@@ -24,6 +27,7 @@ struct TimeIndicator: View {
             ForEach(0..<divisions, id: \.self) { idx in
                 Text("\(tf.string(from: Calendar.current.startOfDay(for: Date()) + Double(idx * 86400/divisions)))")
                     .font(.footnote)
+                    .padding([.leading, .trailing], labelPadding)
                 Spacer()
             }
         }

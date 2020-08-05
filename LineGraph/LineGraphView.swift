@@ -38,6 +38,7 @@ struct LineGraph: View {
         /// if our entry ends before the interval even began
         /// or started after the interval finished, it cannot possibly fall coincide
         HStack(spacing: .zero) {
+            TimeIndicator(divisions: evenDivisions(for: size))
             /// use date enum so SwiftUI can identify horizontal swipes without redrawing everything
             ForEach(
                 enumDays(),
@@ -52,7 +53,7 @@ struct LineGraph: View {
                 .transition(slideOver())
                 Divider()
             }
-            TimeIndicator(divisions: evenDivisions(for: size))
+            
         }
     }
     
