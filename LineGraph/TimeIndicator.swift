@@ -35,7 +35,6 @@ struct TimeIndicator: View {
                         .padding([.leading, .trailing], labelPadding)
                         .offset(y: labelOffset)
                     Spacer()
-                        
                 }
             }
         }

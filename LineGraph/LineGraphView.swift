@@ -55,9 +55,7 @@ struct LineGraph: View {
             }
             .background(LinedBackground(size: size))
         }
-        
     }
-    
     
     /**
      determine what kind of apperance / disappearance animation to use
