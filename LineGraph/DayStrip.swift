@@ -48,7 +48,7 @@ struct DayStrip: View {
                 }
                 StickyHeader(geo: geo)
             }
-            .frame(width: geo.width)
+            .frame(width: geo.size.width)
 //            .drawingGroup()
         }
     }
@@ -93,6 +93,8 @@ struct DayStrip: View {
     }
     
     func Label(for date: Date) -> String {
+        /// add 1 day to compensate for the day strip covering 3 days
+        let date = date + dayLength
         if Calendar.current.component(.day, from: date) == 1 {
             return dfMonth.string(from: date)
         } else {
