@@ -13,6 +13,7 @@ struct BarStack: View {
     @EnvironmentObject private var bounds: Bounds
     @EnvironmentObject private var zero: ZeroDate
     
+    /// make a meaningless update to zero Date so it will load data from disk
     func jumpCoreDate() {
         zero.start += .leastNonzeroMagnitude
     }
@@ -77,7 +78,6 @@ struct BarStack: View {
                             }
                         }
                 }
-                
             }
         }
         /// keep it square
@@ -97,5 +97,3 @@ struct BarStack: View {
         }
     }
 }
-
-
