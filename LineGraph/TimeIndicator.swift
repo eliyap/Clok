@@ -16,11 +16,12 @@ fileprivate let labelOffset = CGFloat(-10)
 
 struct TimeIndicator: View {
     let divisions: Int
-
+    let days: Int
     let tf = DateFormatter()
     
-    init(divisions: Int) {
+    init(divisions: Int, days: Int) {
         self.divisions = divisions
+        self.days = days
         /// show hour in preferred way (no minutes or seconds)
         tf.setLocalizedDateFormatFromTemplate(is24hour() ? "HH" : "h a")
     }
@@ -28,7 +29,7 @@ struct TimeIndicator: View {
     var body: some View {
         VStack(alignment: .trailing) {
             /// repeat for 3 days
-            ForEach(0..<3, id: \.self) { _ in
+            ForEach(0..<days, id: \.self) { _ in
                 ForEach(0..<divisions, id: \.self) { idx in
                     Text("\(tf.string(from: Calendar.current.startOfDay(for: Date()) + Double(idx * 86400/divisions)))")
                         .font(.footnote)

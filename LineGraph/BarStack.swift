@@ -22,7 +22,23 @@ struct BarStack: View {
         GeometryReader { geo in
             ZStack(alignment: .bottomLeading) {
                 Mask {
-                    DayScroll(size: geo.size)
+                    VStack(spacing: .zero) {
+                        HStack(spacing: .zero) {
+                            /// token time indicator keeps the margins consistent
+                            TimeIndicator(divisions: 1, days: 1)
+                                .layoutPriority(1)
+                                .opacity(0)
+                            ForEach(0..<zero.dayCount, id: \.self) {
+                                Divider()
+                                Text("\($0)")
+                                    .frame(maxWidth: .infinity)
+                            }
+                        
+                        }
+                        DayScroll(size: geo.size)
+                            .layoutPriority(1)
+                    }
+                    
                 }
                 
             

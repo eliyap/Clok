@@ -46,52 +46,8 @@ struct DayStrip: View {
                     )
                         .opacity(entry.matches(terms) ? 1 : 0.5)
                 }
-//                StickyHeader(geo: geo)
             }
-            .frame(width: geo.size.width)
         }
-    }
-    
-    /// sticks to the top of the screen after scrolling at least `threshhold` down
-    func StickyHeader(geo: GeometryProxy) -> some View {
-        let rect = RoundedRectangle(cornerRadius: 7)
-        let background = rect
-            .foregroundColor(Color(UIColor.systemBackground))
-            .overlay(rect.stroke(Color(UIColor.secondaryLabel)))
-        
-        /// how far down we've scrolled
-        let topOffset = bounds.insets.top - geo.frame(in: .global).minY  - labelOffset
-        
-        /// limit to stick to the top
-        let stickLimit = geo.size.height / 3 + labelOffset
-        
-        /// limit to switch to a different date
-        let transformLimit = 2 * geo.size.height / 3  + labelOffset
-        
-        var label: String!
-        var offset: CGFloat!
-        
-        switch topOffset {
-        case _ where topOffset <= stickLimit:
-            label = Label(for: begin)
-            offset = stickLimit
-        case _ where stickLimit < topOffset && topOffset < transformLimit :
-            label = Label(for: begin)
-            offset = topOffset
-        case _ where transformLimit <= topOffset:
-            label = Label(for: begin + dayLength)
-            offset = topOffset
-        default:
-            label = "unexpected case!"
-            offset = topOffset
-        }
-        return Text(label)
-            .lineLimit(1)
-            .frame(width: geo.size.width)
-            .padding([.top, .bottom], labelPadding / 2)
-            .background(background)
-            .offset(y: offset)
-            .minimumScaleFactor(0.01)
     }
     
     func Label(for date: Date) -> String {
