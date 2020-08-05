@@ -57,7 +57,6 @@ struct DayStrip: View {
     func StickyHeader(geo: GeometryProxy) -> some View {
         let background = RoundedRectangle(cornerRadius: 7)
             .foregroundColor(Color(UIColor.secondarySystemBackground))
-            .frame(width: geo.size.width - 2 * labelPadding)
             .shadow(radius: 5)
         
         /// how far down we've scrolled
@@ -88,9 +87,11 @@ struct DayStrip: View {
         }
         return Text(label)
             .lineLimit(1)
+            .frame(width: geo.size.width - 2 * labelPadding)
             .padding([.top, .bottom], labelPadding / 2)
             .background(background)
             .offset(y: offset)
+            .minimumScaleFactor(0.01)
     }
     
     func Label(for date: Date) -> String {
