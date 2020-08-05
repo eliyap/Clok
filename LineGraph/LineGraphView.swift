@@ -13,14 +13,12 @@ struct LineGraph: View {
     @EnvironmentObject var zero: ZeroDate
     @EnvironmentObject var data: TimeData
 
-    let offset: Int
     let tf = DateFormatter()
     let haptic = UIImpactFeedbackGenerator(style: .light)
     let size: CGSize
     
-    init(offset: Int, size: CGSize){
+    init(size: CGSize){
         tf.timeStyle = .short
-        self.offset = offset
         self.size = size
     }
     
@@ -29,7 +27,7 @@ struct LineGraph: View {
     
     func enumDays() -> [(Int, Date)] {
         stride(from: 0, to: zero.dayCount, by: 1).map{
-            ($0, Calendar.current.startOfDay(for: zero.start) + Double($0 + offset) * dayLength)
+            ($0, Calendar.current.startOfDay(for: zero.start) + Double($0) * dayLength)
         }
     }
     
