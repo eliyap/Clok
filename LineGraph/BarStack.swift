@@ -23,58 +23,58 @@ struct BarStack: View {
                 Mask {
                     DayScroll(size: geo.size)
                 }
-                HStack {
-                    FilterStack()
-                        .padding(buttonPadding)
-                    Image(systemName: "chevron.left.2")
-                        .modifier(ButtonGlyph())
-                        .onTapGesture {
-                            zero.dateChange = .back
-                            withAnimation {
-                                zero.start -= dayLength * Double(zero.dayCount)
-                            }
-                        }
-                    Image(systemName: "chevron.left")
-                        .modifier(ButtonGlyph())
-                        .onTapGesture {
-                            zero.dateChange = .back
-                            withAnimation {
-                                zero.start -= dayLength
-                            }
-                        }
-                    Image(systemName: "chevron.right")
-                        .modifier(ButtonGlyph())
-                        .onTapGesture {
-                            zero.dateChange = .fwrd
-                            withAnimation {
-                                zero.start += dayLength
-                            }
-                        }
-                    Image(systemName: "chevron.right.2")
-                        .modifier(ButtonGlyph())
-                        .onTapGesture {
-                            zero.dateChange = .fwrd
-                            withAnimation {
-                                zero.start += dayLength * Double(zero.dayCount)
-                            }
-                        }
-                    Image(systemName: "plus")
-                        .modifier(ButtonGlyph())
-                        .onTapGesture {
-                            zero.dateChange = .none
-                            withAnimation {
-                                zero.dayCount = min(zero.countMax, zero.dayCount + 1)
-                            }
-                        }
-                    Image(systemName: "minus")
-                        .modifier(ButtonGlyph())
-                        .onTapGesture {
-                            zero.dateChange = .none
-                            withAnimation {
-                                zero.dayCount = max(zero.countMin, zero.dayCount - 1)
-                            }
-                        }
-                }
+//                HStack {
+//                    FilterStack()
+//                        .padding(buttonPadding)
+//                    Image(systemName: "chevron.left.2")
+//                        .modifier(ButtonGlyph())
+//                        .onTapGesture {
+//                            zero.dateChange = .back
+//                            withAnimation {
+//                                zero.start -= dayLength * Double(zero.dayCount)
+//                            }
+//                        }
+//                    Image(systemName: "chevron.left")
+//                        .modifier(ButtonGlyph())
+//                        .onTapGesture {
+//                            zero.dateChange = .back
+//                            withAnimation {
+//                                zero.start -= dayLength
+//                            }
+//                        }
+//                    Image(systemName: "chevron.right")
+//                        .modifier(ButtonGlyph())
+//                        .onTapGesture {
+//                            zero.dateChange = .fwrd
+//                            withAnimation {
+//                                zero.start += dayLength
+//                            }
+//                        }
+//                    Image(systemName: "chevron.right.2")
+//                        .modifier(ButtonGlyph())
+//                        .onTapGesture {
+//                            zero.dateChange = .fwrd
+//                            withAnimation {
+//                                zero.start += dayLength * Double(zero.dayCount)
+//                            }
+//                        }
+//                    Image(systemName: "plus")
+//                        .modifier(ButtonGlyph())
+//                        .onTapGesture {
+//                            zero.dateChange = .none
+//                            withAnimation {
+//                                zero.dayCount = min(zero.countMax, zero.dayCount + 1)
+//                            }
+//                        }
+//                    Image(systemName: "minus")
+//                        .modifier(ButtonGlyph())
+//                        .onTapGesture {
+//                            zero.dateChange = .none
+//                            withAnimation {
+//                                zero.dayCount = max(zero.countMin, zero.dayCount - 1)
+//                            }
+//                        }
+//                }
                 
             }
         }
@@ -89,7 +89,7 @@ struct BarStack: View {
                 LineGraph(size: size)
                     .frame(width: size.width, height: size.height * 3)
                     .id(0)
-//                .padding([.top, .bottom], -size.height / 2)
+                .padding([.top, .bottom], -size.height / 2)
                 .onAppear{ proxy.scrollTo(0) }
             }
         }
