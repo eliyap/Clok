@@ -56,8 +56,7 @@ struct DayStrip: View {
     /// sticks to the top of the screen after scrolling at least `threshhold` down
     func StickyHeader(geo: GeometryProxy) -> some View {
         let background = RoundedRectangle(cornerRadius: 7)
-            .foregroundColor(Color(UIColor.secondarySystemBackground))
-            .shadow(radius: 5)
+            .foregroundColor(Color(UIColor.tertiaryLabel))
         
         /// how far down we've scrolled
         let topOffset = bounds.insets.top - geo.frame(in: .global).minY  - labelOffset
@@ -87,7 +86,7 @@ struct DayStrip: View {
         }
         return Text(label)
             .lineLimit(1)
-            .frame(width: geo.size.width - 2 * labelPadding)
+            .frame(width: geo.size.width)
             .padding([.top, .bottom], labelPadding / 2)
             .background(background)
             .offset(y: offset)
