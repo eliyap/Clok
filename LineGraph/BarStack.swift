@@ -96,17 +96,6 @@ struct BarStack: View {
             }
         }
     }
-    
-    
-    func MidnightDivider(size: CGSize) -> some View {
-        Rectangle()
-            .foregroundColor(.red)
-            .frame(width: size.width, height: 2)
-    }
-    
-    func frameHeight(geo: GeometryProxy) -> CGFloat {
-        geo.size.height * CGFloat(dayLength / zero.interval)
-    }
 }
 
 
