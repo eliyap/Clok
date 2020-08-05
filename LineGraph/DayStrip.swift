@@ -59,6 +59,7 @@ struct DayStrip: View {
             .foregroundColor(Color(UIColor.secondarySystemBackground))
             .frame(width: geo.size.width - 2 * labelPadding)
             .shadow(radius: 5)
+        
         /// how far down we've scrolled
         let topOffset = bounds.insets.top - geo.frame(in: .global).minY  - labelOffset
         
@@ -68,28 +69,28 @@ struct DayStrip: View {
         /// limit to switch to a different date
         let transformLimit = 2 * geo.size.height / 3  + labelOffset
         
+        var label: String!
+        var offset: CGFloat!
+        
         switch topOffset {
         case _ where topOffset <= stickLimit:
-            return Text(Label(for: begin))
-                .padding([.top, .bottom], labelPadding / 2)
-                .background(background)
-                .offset(y: stickLimit)
+            label = Label(for: begin)
+            offset = stickLimit
         case _ where stickLimit < topOffset && topOffset < transformLimit :
-            return Text(Label(for: begin))
-                .padding([.top, .bottom], labelPadding / 2)
-                .background(background)
-                .offset(y: topOffset)
+            label = Label(for: begin)
+            offset = topOffset
         case _ where transformLimit <= topOffset:
-            return Text(Label(for: begin + dayLength))
-                .padding([.top, .bottom], labelPadding / 2)
-                .background(background)
-                .offset(y: topOffset)
+            label = Label(for: begin + dayLength)
+            offset = topOffset
         default:
-            return Text("unexpected case!")
-                .padding([.top, .bottom], labelPadding / 2)
-                .background(background)
-                .offset(y: topOffset)
+            label = "unexpected case!"
+            offset = topOffset
         }
+        return Text(label)
+            .lineLimit(1)
+            .padding([.top, .bottom], labelPadding / 2)
+            .background(background)
+            .offset(y: offset)
     }
     
     func Label(for date: Date) -> String {
