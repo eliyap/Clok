@@ -22,13 +22,13 @@ struct OrientationView: View {
                 HStack(spacing: 0) { ContentGroupView(geo: geo) }
                     .onAppear {
                         bounds.mode = .landscape
-                        bounds.notch = hasNotch(geo)
+                        bounds.insets = geo.safeAreaInsets
                     }
             case .portrait:
                 VStack(spacing: 0) { ContentGroupView(geo: geo) }
                     .onAppear {
                         bounds.mode = .portrait
-                        bounds.notch = hasNotch(geo)
+                        bounds.insets = geo.safeAreaInsets
                     }
             }
         }
@@ -37,9 +37,5 @@ struct OrientationView: View {
             /// determine device
             bounds.device = (vSize == .compact || hSize == .compact) ? .iPhone : .iPad
         }
-    }
-    
-    func hasNotch(_ geo: GeometryProxy) -> Bool {
-        return geo.safeAreaInsets.bottom > 0
     }
 }
