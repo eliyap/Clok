@@ -110,8 +110,8 @@ struct BarStack: View {
                                 
                         }
                     }
-                    
                     .frame(width: size.width, height: size.height * 3)
+                    .drawingGroup()
                 }
                 /// immediately center on white day area
                 .onAppear{ proxy.scrollTo(0, anchor: .center) }
