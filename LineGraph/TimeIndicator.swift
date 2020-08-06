@@ -27,25 +27,28 @@ struct TimeIndicator: View {
     }
     
     var body: some View {
-        VStack(alignment: .trailing) {
-            /// repeat for 3 days
-            ForEach(0..<days, id: \.self) { _ in
-                /// midnight is specially bolded
-                Text("\(tf.string(from: Calendar.current.startOfDay(for: Date())))")
-                    .bold()
-                    .font(.footnote)
-                    .padding([.leading, .trailing], labelPadding)
-                    .offset(y: labelOffset)
-                Spacer()
-                ForEach(1..<divisions, id: \.self) { idx in
-                    /// format the hour according to user preference
-                    Text("\(tf.string(from: Calendar.current.startOfDay(for: Date()) + Double(idx * 86400/divisions)))")
+        HStack(spacing: .zero) {
+            VStack(alignment: .trailing) {
+                /// repeat for 3 days
+                ForEach(0..<days, id: \.self) { _ in
+                    /// midnight is specially bolded
+                    Text("\(tf.string(from: Calendar.current.startOfDay(for: Date())))")
+                        .bold()
                         .font(.footnote)
                         .padding([.leading, .trailing], labelPadding)
                         .offset(y: labelOffset)
                     Spacer()
+                    ForEach(1..<divisions, id: \.self) { idx in
+                        /// format the hour according to user preference
+                        Text("\(tf.string(from: Calendar.current.startOfDay(for: Date()) + Double(idx * 86400/divisions)))")
+                            .font(.footnote)
+                            .padding([.leading, .trailing], labelPadding)
+                            .offset(y: labelOffset)
+                        Spacer()
+                    }
                 }
             }
+            Divider()
         }
     }
 }
