@@ -45,6 +45,15 @@ struct BarStack: View {
                                 zero.start += weekLength
                             }
                         }
+                    Image(systemName: "star")
+                        .modifier(ButtonGlyph())
+                        .onTapGesture {
+                            zero.dateChange = .fwrd
+                            withAnimation {
+                                zero.interval = dayLength
+                                collapsed = true
+                            }
+                        }
                 }
             }
         }
@@ -52,7 +61,7 @@ struct BarStack: View {
         .aspectRatio(1, contentMode: bounds.notch ? .fit : .fill)
         .onAppear(perform: jumpCoreDate)
     }
-    
+    @State var collapsed = false
     
     func DayScroll(size: CGSize) -> some View {
         let dayHeight = size.height * zero.zoom
@@ -66,14 +75,14 @@ struct BarStack: View {
                     HStack(spacing: .zero) {
                         TimeIndicator(divisions: evenDivisions(for: dayHeight))
                         GeometryReader { geo in
-                            LineGraph(dayHeight: dayHeight)
+                            LineGraph(days: 3, dayHeight: dayHeight)
                                 .frame(width: geo.size.width)
                         }
                     }
                     .frame(width: size.width, height: dayHeight * 3)
                     /// block off part of the extended day strip
                     /// keeps focus on the white day area
-                    .padding([.top, .bottom], -dayHeight / 2)
+                    .padding([.top, .bottom], collapsed ? -dayHeight : -dayHeight / 2)
                     .drawingGroup()
                     /// immediately center on white day area
                     .onAppear{ proxy.scrollTo(0, anchor: .center) }

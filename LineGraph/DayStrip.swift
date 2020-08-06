@@ -19,6 +19,7 @@ struct DayStrip: View {
     let begin: Date
     let terms: SearchTerm
     let df = DateFormatter()
+    let days: Int
     
     var body: some View {
         GeometryReader { geo in
@@ -30,7 +31,8 @@ struct DayStrip: View {
                     LineBar(
                         entry: entry,
                         begin: begin,
-                        size: geo.size
+                        size: geo.size,
+                        days: days
                     )
                         .opacity(entry.matches(terms) ? 1 : 0.5)
                 }

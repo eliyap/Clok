@@ -13,6 +13,8 @@ struct LineGraph: View {
     @EnvironmentObject var zero: ZeroDate
     @EnvironmentObject var data: TimeData
 
+    var days: Int
+    
     /// visual height for 1 day
     let dayHeight: CGFloat
     
@@ -37,14 +39,21 @@ struct LineGraph: View {
             ) { idx, date in
                 Divider()
                 DayStrip(
-                    entries: data.entries.filter{$0.end > date && $0.start < date + dayLength * 3},
+                    entries: data.entries
+                        .filter{$0.end > date}
+                        .filter{$0.start < date + dayLength * Double(days)},
                     begin: date,
-                    terms: data.terms
+                    terms: data.terms,
+                    days: days
                 )
                 .transition(slideOver())
-                .frame(height: dayHeight * 3) /// space for 3 days
+                .frame(height: dayHeight * CGFloat(days)) /// space for 3 days
             }
-            .background(LinedBackground(height: dayHeight))
+            /// vary background based on daycount
+            .background(days == 3
+                            ? AnyView(LinedBackground(height: dayHeight))
+                            : AnyView(LinedBackground(height: dayHeight).Lines(color: Color(UIColor.systemBackground)))
+            )
         }
         .drawingGroup()
     }
