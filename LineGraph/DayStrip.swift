@@ -29,15 +29,15 @@ struct DayStrip: View {
                     .offset(y: bounds.insets.top - geo.frame(in: .global).minY)
                     .zIndex(1) /// ensure this is drawn first, but remains on top
                 VStack(spacing: .zero) {
-                    ForEach(0..<entries.count, id: \.self) { idx in
+                    ForEach(entries, id: \.id) {
                         LineBar(
-                            entry: entries[idx],
+                            entry: $0,
                             begin: begin,
                             size: geo.size,
                             days: days
                         )
-                            .padding(.top, padding(for: idx, size: geo.size))
-                            .opacity(entries[idx].matches(terms) ? 1 : 0.5)
+                            .padding(.top, padding(for: $0, size: geo.size))
+                            .opacity($0.matches(terms) ? 1 : 0.5)
                     }
                 }
                 
@@ -46,20 +46,17 @@ struct DayStrip: View {
     }
     
     /// calculate appropriate distance to next time entry
-    func padding(for idx: Int, size: CGSize) -> CGFloat {
-        let scale = size.height / CGFloat(dayLength * Double(days))
-        /// for first entry, always check against `begin`
+    func padding(for entry: TimeEntry, size: CGSize) -> CGFloat {
+        let idx = entries.firstIndex(of: entry)!
+        /// for first entry, always hit the bottom
         guard idx != 0 else {
-            return scale * CGFloat(entries[0].start - begin)
-        }
-        
-        if !noPad {
-            return CGFloat(entries[idx].start - entries[idx - 1].end) * scale
-        } else {
             return .zero
         }
-        
-        
+        guard !noPad else {
+            return .zero
+        }
+        let scale = size.height / CGFloat(dayLength * Double(days))
+        return CGFloat(entries[idx].start - entries[idx - 1].end) * scale
     }
     
     var HeaderLabel: some View {

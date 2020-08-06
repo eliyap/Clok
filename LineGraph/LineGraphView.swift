@@ -43,7 +43,10 @@ struct LineGraph: View {
                     entries: data.entries
                         .filter{$0.end > date}
                         .filter{$0.start < date + dayLength * Double(days)}
-                        .sorted(by: {$0.start < $1.start}),
+                        .sorted(by: noPad
+                                    ? {$0.wrappedProject.wrappedName < $1.wrappedProject.wrappedName}
+                                    : {$0.start < $1.start}
+                        ),
                     begin: date,
                     terms: data.terms,
                     days: days,
