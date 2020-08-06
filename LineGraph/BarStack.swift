@@ -49,9 +49,12 @@ struct BarStack: View {
                         .modifier(ButtonGlyph())
                         .onTapGesture {
                             zero.dateChange = .fwrd
-                            withAnimation {
+                            withAnimation(.linear(duration: 0.4)) {
                                 zero.interval = dayLength
                                 collapsed = true
+                            }
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                                days = 1
                             }
                         }
                 }
@@ -61,7 +64,9 @@ struct BarStack: View {
         .aspectRatio(1, contentMode: bounds.notch ? .fit : .fill)
         .onAppear(perform: jumpCoreDate)
     }
+    
     @State var collapsed = false
+    @State var days = 3
     
     func DayScroll(size: CGSize) -> some View {
         let dayHeight = size.height * zero.zoom
@@ -75,7 +80,7 @@ struct BarStack: View {
                     HStack(spacing: .zero) {
                         TimeIndicator(divisions: evenDivisions(for: dayHeight))
                         GeometryReader { geo in
-                            LineGraph(days: 3, dayHeight: dayHeight)
+                            LineGraph(days: days, dayHeight: dayHeight)
                                 .frame(width: geo.size.width)
                         }
                     }

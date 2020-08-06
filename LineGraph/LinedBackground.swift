@@ -10,11 +10,12 @@ import SwiftUI
 
 struct LinedBackground: View {
     let height: CGFloat
+    let days: Int
     var body: some View {
         VStack(spacing: .zero) {
-            Lines(color: .clokBG)
+            if days == 3 { Lines(color: .clokBG) }
             Lines(color: Color(UIColor.systemBackground))
-            Lines(color: .clokBG)
+            if days == 3 { Lines(color: .clokBG) }
         }
     }
     
@@ -31,5 +32,4 @@ struct LinedBackground: View {
                 .foregroundColor(.red)
         }
     }
-    
 }

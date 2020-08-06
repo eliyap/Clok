@@ -50,9 +50,7 @@ struct LineGraph: View {
                 .frame(height: dayHeight * CGFloat(days)) /// space for 3 days
             }
             /// vary background based on daycount
-            .background(days == 3
-                            ? AnyView(LinedBackground(height: dayHeight))
-                            : AnyView(LinedBackground(height: dayHeight).Lines(color: Color(UIColor.systemBackground)))
+            .background(LinedBackground(height: dayHeight, days: days)
             )
         }
         .drawingGroup()
