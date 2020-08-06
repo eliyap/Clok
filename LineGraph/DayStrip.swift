@@ -27,17 +27,26 @@ struct DayStrip: View {
                 HeaderLabel
                     .offset(y: bounds.insets.top - geo.frame(in: .global).minY)
                     .zIndex(1) /// ensure this is drawn first, but remains on top
-                ForEach(entries, id: \.id) { entry in
-                    LineBar(
-                        entry: entry,
-                        begin: begin,
-                        size: geo.size,
-                        days: days
-                    )
-                        .opacity(entry.matches(terms) ? 1 : 0.5)
+                VStack(spacing: .zero) {
+                    ForEach(0..<entries.count, id: \.self) { idx in
+                        LineBar(
+                            entry: entries[idx],
+                            begin: begin,
+                            size: geo.size,
+                            days: days
+                        )
+                            .padding(.top, padding(for: idx, size: geo.size))
+                            .opacity(entries[idx].matches(terms) ? 1 : 0.5)
+                    }
                 }
+                
             }
         }
+    }
+    
+    func padding(for idx: Int, size: CGSize) -> CGFloat {
+        let prevEnd = idx == 0 ? begin : entries[idx - 1].end
+        return CGFloat((entries[idx].start - prevEnd) / (dayLength * Double(days))) * size.height
     }
     
     var HeaderLabel: some View {

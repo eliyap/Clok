@@ -41,7 +41,8 @@ struct LineGraph: View {
                 DayStrip(
                     entries: data.entries
                         .filter{$0.end > date}
-                        .filter{$0.start < date + dayLength * Double(days)},
+                        .filter{$0.start < date + dayLength * Double(days)}
+                        .sorted(by: {$0.start < $1.start}),
                     begin: date,
                     terms: data.terms,
                     days: days
