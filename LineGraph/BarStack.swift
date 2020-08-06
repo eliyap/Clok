@@ -114,6 +114,7 @@ struct BarStack: View {
                 .onAppear{ proxy.scrollTo(0, anchor: .center) }
             }
         }
+        /// clip to view height
         .frame(height: size.height)
     }
 }
