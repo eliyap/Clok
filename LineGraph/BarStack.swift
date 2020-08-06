@@ -56,30 +56,30 @@ struct BarStack: View {
     
     func DayScroll(size: CGSize) -> some View {
         let dayHeight = size.height * zero.zoom
-        return ScrollView(.vertical, showsIndicators: false) {
-            ScrollViewReader { proxy in
-                /// scroll anchor allows view to appear in the right position
-                EmptyView()
-                    .id(0)
-                    .offset(y: size.height)
-                HStack(spacing: .zero) {
-                    TimeIndicator(divisions: evenDivisions(for: dayHeight))
-                    GeometryReader { geo in
-                        LineGraph(dayHeight: dayHeight)
-                            .frame(width: geo.size.width)
+        return SafetyWrapper {
+            ScrollView(.vertical, showsIndicators: false) {
+                ScrollViewReader { proxy in
+                    /// scroll anchor allows view to appear in the right position
+                    EmptyView()
+                        .id(0)
+                        .offset(y: size.height)
+                    HStack(spacing: .zero) {
+                        TimeIndicator(divisions: evenDivisions(for: dayHeight))
+                        GeometryReader { geo in
+                            LineGraph(dayHeight: dayHeight)
+                                .frame(width: geo.size.width)
+                        }
                     }
+                    .frame(width: size.width, height: dayHeight * 3)
+                    /// block off part of the extended day strip
+                    /// keeps focus on the white day area
+                    .padding([.top, .bottom], -dayHeight / 2)
+                    .drawingGroup()
+                    /// immediately center on white day area
+                    .onAppear{ proxy.scrollTo(0, anchor: .center) }
                 }
-                .frame(width: size.width, height: dayHeight * 3)
-                /// block off part of the extended day strip
-                /// keeps focus on the white day area
-                .padding([.top, .bottom], -dayHeight / 2)
-                .drawingGroup()
-                /// immediately center on white day area
-                .onAppear{ proxy.scrollTo(0, anchor: .center) }
             }
         }
-        /// clip to view height
-        .frame(height: size.height)
     }
 }
 
