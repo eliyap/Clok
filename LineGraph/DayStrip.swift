@@ -46,17 +46,29 @@ struct DayStrip: View {
                     )
                         .opacity(entry.matches(terms) ? 1 : 0.5)
                 }
+                /// short weekday and date labels
+                VStack(spacing: .zero) {
+                    Text((begin + dayLength).shortWeekday())
+                        .font(.footnote)
+                        .lineLimit(1)
+                    DateLabel(for: begin)
+                        .font(.caption)
+                        .lineLimit(1)
+                }
+                .frame(maxWidth: .infinity)
+                .background(Color.clokBG)
+                .offset(y: bounds.insets.top - geo.frame(in: .global).minY)
             }
         }
     }
     
-    func Label(for date: Date) -> String {
+    func DateLabel(for date: Date) -> Text {
         /// add 1 day to compensate for the day strip covering 3 days
         let date = date + dayLength
         if Calendar.current.component(.day, from: date) == 1 {
-            return dfMonth.string(from: date)
+            return Text(dfMonth.string(from: date)).bold()
         } else {
-            return dfDay.string(from: date)
+            return Text(dfDay.string(from: date))
         }
     }
 }
