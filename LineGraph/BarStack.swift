@@ -103,9 +103,11 @@ struct BarStack: View {
                                 /// keeps focus on the white day area
                                 .padding([.top, .bottom], -size.height / 2)
                             TimeIndicator(divisions: evenDivisions(for: size), days: 3)
+                                .background(Color.clokBG)
                                 .layoutPriority(1) /// prevent it from shrinking
                                 .padding([.top, .bottom], -size.height / 2)
                                 .offset(x: bounds.insets.leading - geo.frame(in: .global).minX)
+                                
                         }
                     }
                     
