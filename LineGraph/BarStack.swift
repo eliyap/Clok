@@ -86,19 +86,27 @@ struct BarStack: View {
     }
     
     func DayScroll(size: CGSize) -> some View {
-        ScrollView(.horizontal) {
-            ScrollView(.vertical, showsIndicators: false) {
-                ScrollViewReader { proxy in
-                    /// scroll anchor allows view to appear in the right position
-                    EmptyView()
-                        .id(0)
-                        .offset(y: size.height)
-                    LineGraph(size: size)
-                        .frame(width: size.width, height: size.height * 3)
-                        .padding([.top, .bottom], -size.height / 2)
-                        .onAppear{ proxy.scrollTo(0, anchor: .center) }
+        ScrollView(.vertical) {
+            HStack {
+                TimeIndicator(divisions: evenDivisions(for: size), days: 3)
+                    .layoutPriority(1) /// prevent it from shrinking
+                    .frame(height: size.height * 3)
+                    .padding([.top, .bottom], -size.height / 2)
+                ScrollView(.horizontal, showsIndicators: false) {
+                    ScrollViewReader { proxy in
+                        
+                        /// scroll anchor allows view to appear in the right position
+                        EmptyView()
+                            .id(0)
+                            .offset(y: size.height)
+                        LineGraph(size: size)
+                            .frame(width: size.width, height: size.height * 3)
+                            .padding([.top, .bottom], -size.height / 2)
+                            .onAppear{ proxy.scrollTo(0, anchor: .center) }
+                    }
                 }
             }
+            
         }
         
     }
