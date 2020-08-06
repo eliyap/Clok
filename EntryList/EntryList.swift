@@ -89,7 +89,7 @@ struct EntryList: View {
         let cal = Calendar.current
         for mn in stride(
             from: cal.startOfDay(for: zero.start),
-            through: cal.startOfDay(for: zero.end),
+            to: cal.startOfDay(for: zero.end),
             by: dayLength
         ) {
             days.append(Day(
