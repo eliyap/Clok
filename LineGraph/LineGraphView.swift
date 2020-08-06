@@ -20,7 +20,7 @@ struct LineGraph: View {
     let kCoeff = 0.5
     
     func enumDays() -> [(Int, Date)] {
-        stride(from: 0, to: zero.dayCount, by: 1).map{
+        stride(from: 0, to: 7, by: 1).map{
             ($0, Calendar.current.startOfDay(for: zero.start) + Double($0) * dayLength)
         }
     }
@@ -41,8 +41,7 @@ struct LineGraph: View {
                 DayStrip(
                     entries: data.entries.filter{$0.end > date && $0.start < date + dayLength * 3},
                     begin: date,
-                    terms: data.terms,
-                    dayCount: zero.dayCount
+                    terms: data.terms
                 )
                 .transition(slideOver())
                 .frame(height: dayHeight * 3) /// space for 3 days

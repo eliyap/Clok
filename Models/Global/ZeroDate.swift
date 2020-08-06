@@ -15,15 +15,8 @@ final class ZeroDate: ObservableObject {
     
     /// computed end date
     var end: Date {
-        start + Double(dayCount) * dayLength
+        start + weekLength
     }
-    
-    /// number of days displayed
-    @Published var dayCount = 7
-    /// min / max number of days displayed on a graph
-    /// NOTE: modified based on whether app is iPhone or iPad
-    var countMax = 31
-    let countMin = 7
     
     /// whether the date was moved forwards of backwards
     enum DateChange {

@@ -18,7 +18,6 @@ struct DayStrip: View {
     let entries: [TimeEntry]
     let begin: Date
     let terms: SearchTerm
-    let dayCount: Int
     let df = DateFormatter()
     
     var body: some View {
