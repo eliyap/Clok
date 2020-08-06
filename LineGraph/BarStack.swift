@@ -87,7 +87,8 @@ struct BarStack: View {
     
     
     func DayScroll(size: CGSize) -> some View {
-        ScrollView(.horizontal) {
+        let dayHeight = size.height * zero.zoom
+        return ScrollView(.horizontal) {
             ScrollViewReader { proxy in
                 ScrollView(.vertical, showsIndicators: false) {
                     /// scroll anchor allows view to appear in the right position
@@ -99,15 +100,15 @@ struct BarStack: View {
                             LineGraph(size: size)
                                 /// block off part of the extended day strip
                                 /// keeps focus on the white day area
-                                .padding([.top, .bottom], -size.height / 2)
-                            TimeIndicator(divisions: evenDivisions(for: size), days: 3)
+                                .padding([.top, .bottom], -dayHeight / 2)
+                            TimeIndicator(divisions: evenDivisions(for: dayHeight), days: 3)
                                 .background(Color.clokBG)
                                 .layoutPriority(1) /// prevent it from shrinking
-                                .padding([.top, .bottom], -size.height / 2)
+                                .padding([.top, .bottom], -dayHeight / 2)
                                 .offset(x: bounds.insets.leading - geo.frame(in: .global).minX)
                         }
                     }
-                    .frame(width: size.width, height: size.height * 3)
+                    .frame(width: size.width, height: dayHeight * 3)
                     .drawingGroup()
                 }
                 /// immediately center on white day area

@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct LinedBackground: View {
-    let size: CGSize
+    let height: CGFloat
     var body: some View {
         VStack(spacing: .zero) {
             Lines(color: .clokBG)
@@ -20,7 +20,7 @@ struct LinedBackground: View {
     
     func Lines(color: Color) -> some View {
         Group {
-            ForEach(0..<evenDivisions(for: size) - 1, id: \.self) { _ in
+            ForEach(0..<evenDivisions(for: height) - 1, id: \.self) { _ in
                 Rectangle().foregroundColor(color)
                 Divider()
             }

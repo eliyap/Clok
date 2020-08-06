@@ -52,7 +52,7 @@ struct LineGraph: View {
                 )
                 .transition(slideOver())
             }
-            .background(LinedBackground(size: size))
+            .background(LinedBackground(height: size.height * zero.zoom))
         }
         .drawingGroup()
     }
