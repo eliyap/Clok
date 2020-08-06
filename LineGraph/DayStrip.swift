@@ -20,6 +20,7 @@ struct DayStrip: View {
     let terms: SearchTerm
     let df = DateFormatter()
     let days: Int
+    let noPad: Bool
     
     var body: some View {
         GeometryReader { geo in
@@ -44,9 +45,21 @@ struct DayStrip: View {
         }
     }
     
+    /// calculate appropriate distance to next time entry
     func padding(for idx: Int, size: CGSize) -> CGFloat {
-        let prevEnd = idx == 0 ? begin : entries[idx - 1].end
-        return CGFloat((entries[idx].start - prevEnd) / (dayLength * Double(days))) * size.height
+        let scale = size.height / CGFloat(dayLength * Double(days))
+        /// for first entry, always check against `begin`
+        guard idx != 0 else {
+            return scale * CGFloat(entries[0].start - begin)
+        }
+        
+        if !noPad {
+            return CGFloat(entries[idx].start - entries[idx - 1].end) * scale
+        } else {
+            return .zero
+        }
+        
+        
     }
     
     var HeaderLabel: some View {

@@ -20,6 +20,7 @@ struct LineGraph: View {
     
     /// slows down the magnifying effect by some constant
     let kCoeff = 0.5
+    let noPad: Bool
     
     func enumDays() -> [(Int, Date)] {
         stride(from: 0, to: 7, by: 1).map{
@@ -45,7 +46,8 @@ struct LineGraph: View {
                         .sorted(by: {$0.start < $1.start}),
                     begin: date,
                     terms: data.terms,
-                    days: days
+                    days: days,
+                    noPad: noPad
                 )
                 .transition(slideOver())
                 .frame(height: dayHeight * CGFloat(days)) /// space for 3 days
