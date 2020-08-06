@@ -48,7 +48,6 @@ struct LineGraph: View {
                 .frame(height: dayHeight * 3) /// space for 3 days
             }
             .background(LinedBackground(height: dayHeight))
-//            Run{print(size.height * zero.zoom)}
         }
         .drawingGroup()
     }
