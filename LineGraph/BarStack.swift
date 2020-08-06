@@ -99,7 +99,7 @@ struct BarStack: View {
                         ZStack(alignment: .topLeading) {
                             LineGraph(dayHeight: dayHeight)
                                 .frame(width: size.width)
-                            TimeIndicator(divisions: evenDivisions(for: dayHeight), days: 3)
+                            TimeIndicator(divisions: evenDivisions(for: dayHeight))
                                 .background(Color.clokBG)
                                 /// sticky this to the left edge
                                 .offset(x: bounds.insets.leading - geo.frame(in: .global).minX)
