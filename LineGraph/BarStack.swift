@@ -97,8 +97,6 @@ struct BarStack: View {
                     GeometryReader { geo in
                         ZStack(alignment: .topLeading) {
                             LineGraph(size: size)
-                                /// use reduced width
-                                
                                 /// block off part of the extended day strip
                                 /// keeps focus on the white day area
                                 .padding([.top, .bottom], -size.height / 2)
@@ -107,7 +105,6 @@ struct BarStack: View {
                                 .layoutPriority(1) /// prevent it from shrinking
                                 .padding([.top, .bottom], -size.height / 2)
                                 .offset(x: bounds.insets.leading - geo.frame(in: .global).minX)
-                                
                         }
                     }
                     .frame(width: size.width, height: size.height * 3)

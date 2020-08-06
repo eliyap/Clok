@@ -7,17 +7,21 @@
 //
 
 import Foundation
+import SwiftUI
 
 final class ZeroDate: ObservableObject {
-    // default to 1 week before end of today
+    /// default to 1 week before start of today
     @Published var start = Calendar.current.startOfDay(for: Date()) - weekLength
     
+    /// computed end date
     var end: Date {
         start + Double(dayCount) * dayLength
     }
     
     /// number of days displayed
     @Published var dayCount = 7
+    /// min / max number of days displayed on a graph
+    /// NOTE: modified based on whether app is iPhone or iPad
     var countMax = 31
     let countMin = 7
     
@@ -35,4 +39,7 @@ final class ZeroDate: ObservableObject {
     /// length of time interval being examined
     /// defaults to 8 hours
     @Published var interval: TimeInterval = dayLength / 3
+    var zoom: CGFloat {
+        CGFloat(dayLength / interval)
+    }
 }
