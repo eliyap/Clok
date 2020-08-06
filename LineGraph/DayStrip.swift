@@ -38,6 +38,9 @@ struct DayStrip: View {
     var body: some View {
         GeometryReader { geo in
             ZStack(alignment: .top) {
+                HeaderLabel
+                    .offset(y: bounds.insets.top - geo.frame(in: .global).minY)
+                    .zIndex(1) /// ensure this is drawn first, but remains on top
                 ForEach(entries, id: \.id) { entry in
                     LineBar(
                         entry: entry,
@@ -46,20 +49,24 @@ struct DayStrip: View {
                     )
                         .opacity(entry.matches(terms) ? 1 : 0.5)
                 }
-                /// short weekday and date labels
-                VStack(spacing: .zero) {
-                    Text((begin + dayLength).shortWeekday())
-                        .font(.footnote)
-                        .lineLimit(1)
-                    DateLabel(for: begin)
-                        .font(.caption)
-                        .lineLimit(1)
-                }
-                .frame(maxWidth: .infinity)
-                .background(Color.clokBG)
-                .offset(y: bounds.insets.top - geo.frame(in: .global).minY)
+                
             }
         }
+    }
+    
+    var HeaderLabel: some View {
+        /// short weekday and date labels
+        VStack(spacing: .zero) {
+            Text((begin + dayLength).shortWeekday())
+                .font(.footnote)
+                .lineLimit(1)
+            DateLabel(for: begin)
+                .font(.caption)
+                .lineLimit(1)
+        }
+        .frame(maxWidth: .infinity)
+        .background(Color.clokBG)
+
     }
     
     func DateLabel(for date: Date) -> Text {
