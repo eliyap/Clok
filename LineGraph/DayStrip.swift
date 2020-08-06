@@ -18,26 +18,12 @@ struct DayStrip: View {
     let begin: Date
     let terms: SearchTerm
     let dayCount: Int
-    let dfDay = DateFormatter()
-    let dfMonth = DateFormatter()
-    
-    init(
-        entries: [TimeEntry],
-        begin: Date,
-        terms: SearchTerm,
-        dayCount: Int
-    ){
-        self.entries = entries
-        self.begin = begin
-        self.terms = terms
-        self.dayCount = dayCount
-        dfDay.setLocalizedDateFormatFromTemplate("dd")
-        dfMonth.setLocalizedDateFormatFromTemplate("MMM")
-    }
+    let df = DateFormatter()
     
     var body: some View {
         GeometryReader { geo in
             ZStack(alignment: .top) {
+                Run{print(geo.size.height)}
                 HeaderLabel
                     .offset(y: bounds.insets.top - geo.frame(in: .global).minY)
                     .zIndex(1) /// ensure this is drawn first, but remains on top
@@ -49,7 +35,6 @@ struct DayStrip: View {
                     )
                         .opacity(entry.matches(terms) ? 1 : 0.5)
                 }
-                
             }
         }
     }
@@ -73,9 +58,11 @@ struct DayStrip: View {
         /// add 1 day to compensate for the day strip covering 3 days
         let date = date + dayLength
         if Calendar.current.component(.day, from: date) == 1 {
-            return Text(dfMonth.string(from: date)).bold()
+            df.setLocalizedDateFormatFromTemplate("MMM")
+            return Text(df.string(from: date)).bold()
         } else {
-            return Text(dfDay.string(from: date))
+            df.setLocalizedDateFormatFromTemplate("dd")
+            return Text(df.string(from: date))
         }
     }
 }
