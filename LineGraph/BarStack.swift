@@ -86,9 +86,7 @@ struct BarStack: View {
     }
     
     func DayScroll(size: CGSize) -> some View {
-        VStack(spacing: .zero) {
-            Text(" ")
-                .frame(height: 1)
+        SafetyWrapper {
             ScrollView(.vertical) {
                 ScrollViewReader { proxy in
                     
@@ -108,13 +106,31 @@ struct BarStack: View {
                                     .frame(width: newGeo.size.width, height: size.height * 3)
                             }
                         }
-                        
-                        .onAppear{ proxy.scrollTo(0, anchor: .center) }
                     }
+                    /// immediately center on white day area
+                    .onAppear{ proxy.scrollTo(0, anchor: .center) }
+                    /// block off part of the extended day strip
+                    /// keeps focus on the white day area
                     .padding([.top, .bottom], -size.height / 2)
                 }
             }
         }
-        
+    }
+}
+
+/// prevents the vertical scrollview from over-running the status bar
+struct SafetyWrapper<Content: View>:View {
+    let content: Content
+    init(@ViewBuilder content: () -> Content) {
+        self.content = content()
+    }
+    var body: some View {
+        VStack(spacing: .zero) {
+            /// tiny view stops scroll from drawing above it (into the status bar)
+            Rectangle()
+                .foregroundColor(.clear)
+                .frame(height: 1)
+            content
+        }
     }
 }
