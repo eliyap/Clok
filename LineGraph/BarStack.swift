@@ -22,23 +22,7 @@ struct BarStack: View {
         GeometryReader { geo in
             ZStack(alignment: .bottomLeading) {
                 Mask {
-                    VStack(spacing: .zero) {
-                        HStack(spacing: .zero) {
-                            /// token time indicator keeps the margins consistent
-                            TimeIndicator(divisions: 1, days: 1)
-                                .layoutPriority(1)
-                                .opacity(0)
-                            ForEach(0..<zero.dayCount, id: \.self) {
-                                Divider()
-                                Text("\($0)")
-                                    .frame(maxWidth: .infinity)
-                            }
-                        
-                        }
-                        DayScroll(size: geo.size)
-                            .layoutPriority(1)
-                    }
-                    
+                    DayScroll(size: geo.size)
                 }
                 
             
@@ -102,17 +86,20 @@ struct BarStack: View {
     }
     
     func DayScroll(size: CGSize) -> some View {
-        ScrollView(showsIndicators: false) {
-            ScrollViewReader { proxy in
-                /// scroll anchor allows view to appear in the right position
-                EmptyView()
-                    .id(0)
-                    .offset(y: size.height)
-                LineGraph(size: size)
-                    .frame(width: size.width, height: size.height * 3)
-                    .padding([.top, .bottom], -size.height / 2)
-                    .onAppear{ proxy.scrollTo(0, anchor: .center) }
+        ScrollView(.horizontal) {
+            ScrollView(.vertical, showsIndicators: false) {
+                ScrollViewReader { proxy in
+                    /// scroll anchor allows view to appear in the right position
+                    EmptyView()
+                        .id(0)
+                        .offset(y: size.height)
+                    LineGraph(size: size)
+                        .frame(width: size.width, height: size.height * 3)
+                        .padding([.top, .bottom], -size.height / 2)
+                        .onAppear{ proxy.scrollTo(0, anchor: .center) }
+                }
             }
         }
+        
     }
 }
