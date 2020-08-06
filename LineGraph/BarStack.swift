@@ -29,44 +29,13 @@ struct BarStack: View {
                 HStack {
                     FilterStack()
                         .padding(buttonPadding)
-                    Image(systemName: "chevron.left.2")
-                        .modifier(ButtonGlyph())
-                        .onTapGesture {
-                            zero.dateChange = .back
-                            withAnimation {
-                                zero.start -= dayLength * Double(zero.dayCount)
-                            }
-                        }
-                    Image(systemName: "chevron.left")
-                        .modifier(ButtonGlyph())
-                        .onTapGesture {
-                            zero.dateChange = .back
-                            withAnimation {
-                                zero.start -= dayLength
-                            }
-                        }
-                    Image(systemName: "chevron.right")
-                        .modifier(ButtonGlyph())
-                        .onTapGesture {
-                            zero.dateChange = .fwrd
-                            withAnimation {
-                                zero.start += dayLength
-                            }
-                        }
-                    Image(systemName: "chevron.right.2")
-                        .modifier(ButtonGlyph())
-                        .onTapGesture {
-                            zero.dateChange = .fwrd
-                            withAnimation {
-                                zero.start += dayLength * Double(zero.dayCount)
-                            }
-                        }
                     Image(systemName: "plus")
                         .modifier(ButtonGlyph())
                         .onTapGesture {
                             zero.dateChange = .none
                             withAnimation {
-                                zero.dayCount = min(zero.countMax, zero.dayCount + 1)
+                                zero.interval += 3600
+//                                zero.dayCount = min(zero.countMax, zero.dayCount + 1)
                             }
                         }
                     Image(systemName: "minus")
@@ -74,7 +43,8 @@ struct BarStack: View {
                         .onTapGesture {
                             zero.dateChange = .none
                             withAnimation {
-                                zero.dayCount = max(zero.countMin, zero.dayCount - 1)
+                                zero.interval -= 3600
+//                                zero.dayCount = max(zero.countMin, zero.dayCount - 1)
                             }
                         }
                 }
@@ -88,35 +58,40 @@ struct BarStack: View {
     
     func DayScroll(size: CGSize) -> some View {
         let dayHeight = size.height * zero.zoom
-        return ScrollView(.horizontal) {
-            ScrollViewReader { proxy in
-                ScrollView(.vertical, showsIndicators: false) {
-                    /// scroll anchor allows view to appear in the right position
+        return SafetyWrapper {
+            ScrollView(.vertical, showsIndicators: false) {
+                ScrollViewReader { proxy in
+                   /// scroll anchor allows view to appear in the right position
                     EmptyView()
-                        .id(0)
-                        .offset(y: size.height)
-                    GeometryReader { geo in
-                        ZStack(alignment: .topLeading) {
-                            LineGraph(dayHeight: dayHeight)
-                                .frame(width: size.width)
-                            TimeIndicator(divisions: evenDivisions(for: dayHeight))
-                                .background(Color.clokBG)
-                                /// sticky this to the left edge
-                                .offset(x: bounds.insets.leading - geo.frame(in: .global).minX)
+                       .id(0)
+                       .offset(y: size.height)
+                    HStack(spacing: .zero) {
+                        TimeIndicator(divisions: evenDivisions(for: dayHeight))
+                            .background(Color.clokBG)
+                            /// sticky this to the left edge
+//                                .offset(x: bounds.insets.leading - geo.frame(in: .global).minX)
+                        GeometryReader { geo in
+                            TabView {
+                                LineGraph(dayHeight: dayHeight)
+                                    .frame(width: geo.size.width)
+                                LineGraph(dayHeight: dayHeight)
+                                    .frame(width: geo.size.width)
+                            }
+                            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
                         }
                     }
+                    
                     .frame(width: size.width, height: dayHeight * 3)
                     /// block off part of the extended day strip
                     /// keeps focus on the white day area
                     .padding([.top, .bottom], -dayHeight / 2)
-                    .drawingGroup()
+                
+                    /// immediately center on white day area
+                    .onAppear{ proxy.scrollTo(0, anchor: .center) }
+                   
                 }
-                /// immediately center on white day area
-                .onAppear{ proxy.scrollTo(0, anchor: .center) }
             }
         }
-        /// clip to view height
-        .frame(height: size.height)
     }
 }
 
