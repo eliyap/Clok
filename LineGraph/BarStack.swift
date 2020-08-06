@@ -104,11 +104,14 @@ struct BarStack: View {
     func DayScroll(size: CGSize) -> some View {
         ScrollView(showsIndicators: false) {
             ScrollViewReader { proxy in
+                /// scroll anchor allows view to appear in the right position
+                EmptyView()
+                    .id(0)
+                    .offset(y: size.height)
                 LineGraph(size: size)
                     .frame(width: size.width, height: size.height * 3)
-                    .id(0)
-                .padding([.top, .bottom], -size.height / 2)
-                .onAppear{ proxy.scrollTo(0) }
+                    .padding([.top, .bottom], -size.height / 2)
+                    .onAppear{ proxy.scrollTo(0, anchor: .center) }
             }
         }
     }
