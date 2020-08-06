@@ -25,6 +25,7 @@ struct LineBar: View {
                 height: size.height * CGFloat((entry.end - entry.start) / (dayLength * 3))
             )
             .offset(
+                /// center bar horizontally in column
                 x: size.width * CGFloat((1.0 - thicc) / 2.0),
                 y: size.height * CGFloat((entry.start - begin) / (dayLength * 3))
             )

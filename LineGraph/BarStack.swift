@@ -85,36 +85,37 @@ struct BarStack: View {
         .onAppear(perform: jumpCoreDate)
     }
     
+    
     func DayScroll(size: CGSize) -> some View {
-        SafetyWrapper {
-            ScrollView(.vertical) {
-                ScrollViewReader { proxy in
-                    
+        ScrollView(.horizontal) {
+            ScrollViewReader { proxy in
+                ScrollView(.vertical, showsIndicators: false) {
                     /// scroll anchor allows view to appear in the right position
                     EmptyView()
                         .id(0)
                         .offset(y: size.height)
-                
-                    HStack {
-                        TimeIndicator(divisions: evenDivisions(for: size), days: 3)
-                            .layoutPriority(1) /// prevent it from shrinking
-                            .frame(height: size.height * 3)
-                        GeometryReader { newGeo in
-                            ScrollView(.horizontal, showsIndicators: false) {
-                                LineGraph(size: size)
-                                    /// use reduced width
-                                    .frame(width: newGeo.size.width, height: size.height * 3)
-                            }
+                    GeometryReader { geo in
+                        ZStack(alignment: .topLeading) {
+                            LineGraph(size: size)
+                                /// use reduced width
+                                
+                                /// block off part of the extended day strip
+                                /// keeps focus on the white day area
+                                .padding([.top, .bottom], -size.height / 2)
+                            TimeIndicator(divisions: evenDivisions(for: size), days: 3)
+                                .layoutPriority(1) /// prevent it from shrinking
+                                .padding([.top, .bottom], -size.height / 2)
+                                .offset(x: bounds.insets.leading - geo.frame(in: .global).minX)
                         }
                     }
-                    /// immediately center on white day area
-                    .onAppear{ proxy.scrollTo(0, anchor: .center) }
-                    /// block off part of the extended day strip
-                    /// keeps focus on the white day area
-                    .padding([.top, .bottom], -size.height / 2)
+                    
+                    .frame(width: size.width, height: size.height * 3)
                 }
+                /// immediately center on white day area
+                .onAppear{ proxy.scrollTo(0, anchor: .center) }
             }
         }
+        .frame(height: size.height)
     }
 }
 
