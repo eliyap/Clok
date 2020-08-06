@@ -23,7 +23,7 @@ struct TimeIndicator: View {
         self.divisions = divisions
         self.days = days
         /// show hour in preferred way (no minutes or seconds)
-        tf.setLocalizedDateFormatFromTemplate(is24hour() ? "HH" : "h a")
+        tf.setLocalizedDateFormatFromTemplate(is24hour() ? "HH:mm" : "h:mm a")
     }
     
     var body: some View {
