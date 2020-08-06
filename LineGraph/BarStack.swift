@@ -97,18 +97,18 @@ struct BarStack: View {
                         .offset(y: size.height)
                     GeometryReader { geo in
                         ZStack(alignment: .topLeading) {
-                            LineGraph(size: size)
-                                /// block off part of the extended day strip
-                                /// keeps focus on the white day area
-                                .padding([.top, .bottom], -dayHeight / 2)
+                            LineGraph(dayHeight: dayHeight)
+                                .frame(width: size.width)
                             TimeIndicator(divisions: evenDivisions(for: dayHeight), days: 3)
                                 .background(Color.clokBG)
-                                .layoutPriority(1) /// prevent it from shrinking
-                                .padding([.top, .bottom], -dayHeight / 2)
+                                /// sticky this to the left edge
                                 .offset(x: bounds.insets.leading - geo.frame(in: .global).minX)
                         }
                     }
                     .frame(width: size.width, height: dayHeight * 3)
+                    /// block off part of the extended day strip
+                    /// keeps focus on the white day area
+                    .padding([.top, .bottom], -dayHeight / 2)
                     .drawingGroup()
                 }
                 /// immediately center on white day area

@@ -13,14 +13,8 @@ struct LineGraph: View {
     @EnvironmentObject var zero: ZeroDate
     @EnvironmentObject var data: TimeData
 
-    let tf = DateFormatter()
-    let haptic = UIImpactFeedbackGenerator(style: .light)
-    let size: CGSize
-    
-    init(size: CGSize){
-        tf.timeStyle = .short
-        self.size = size
-    }
+    /// visual height for 1 day
+    let dayHeight: CGFloat
     
     /// slows down the magnifying effect by some constant
     let kCoeff = 0.5
@@ -51,8 +45,10 @@ struct LineGraph: View {
                     dayCount: zero.dayCount
                 )
                 .transition(slideOver())
+                .frame(height: dayHeight * 3) /// space for 3 days
             }
-            .background(LinedBackground(height: size.height * zero.zoom))
+            .background(LinedBackground(height: dayHeight))
+//            Run{print(size.height * zero.zoom)}
         }
         .drawingGroup()
     }

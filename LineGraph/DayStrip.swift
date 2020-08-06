@@ -13,6 +13,7 @@ fileprivate let labelPadding = CGFloat(3)
 
 /// One vertical strip of bars representing 1 day in the larger graph
 struct DayStrip: View {
+    
     @EnvironmentObject var bounds: Bounds
     let entries: [TimeEntry]
     let begin: Date
