@@ -19,9 +19,16 @@ struct LinedBackground: View {
     }
     
     func Lines(color: Color) -> some View {
-        ForEach(0..<evenDivisions(for: size), id: \.self) { _ in
+        Group {
+            ForEach(0..<evenDivisions(for: size) - 1, id: \.self) { _ in
+                Rectangle().foregroundColor(color)
+                Divider()
+            }
+            /// midnight divider is red
             Rectangle().foregroundColor(color)
-            Divider()
+            Rectangle()
+                .frame(height: 1)
+                .foregroundColor(.red)
         }
     }
     
