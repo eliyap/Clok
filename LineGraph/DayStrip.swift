@@ -24,7 +24,6 @@ struct DayStrip: View {
     var body: some View {
         GeometryReader { geo in
             ZStack(alignment: .top) {
-                Run{print(geo.size.height)}
                 HeaderLabel
                     .offset(y: bounds.insets.top - geo.frame(in: .global).minY)
                     .zIndex(1) /// ensure this is drawn first, but remains on top
