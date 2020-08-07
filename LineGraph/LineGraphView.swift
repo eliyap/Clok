@@ -35,7 +35,7 @@ struct LineGraph: View {
                 Divider()
                 DayStrip(
                     entries: entries(midnight: midnight),
-                    begin: midnight - model.castBack,
+                    midnight: midnight,
                     terms: data.terms,
                     dayHeight: dayHeight
                 )

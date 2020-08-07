@@ -17,7 +17,7 @@ struct DayStrip: View {
     @EnvironmentObject var bounds: Bounds
     @EnvironmentObject var model: GraphModel
     let entries: [TimeEntry]
-    let begin: Date
+    let midnight: Date
     let terms: SearchTerm
     let dayHeight: CGFloat
     
@@ -49,8 +49,8 @@ struct DayStrip: View {
     }
     
     func height(size: CGSize, entry: TimeEntry) -> CGFloat {
-        let start = max(entry.start, begin)
-        let end = min(entry.end, begin + model.days * dayLength)
+        let start = max(entry.start, midnight - model.castBack)
+        let end = min(entry.end, midnight + model.castFwrd)
         return size.height * CGFloat((end - start) / (dayLength * model.days))
     }
     
@@ -64,7 +64,8 @@ struct DayStrip: View {
             case .calendar:
                 return .zero
             case .graph:
-                let end = begin + dayLength
+                let begin = midnight - model.castBack
+                let end = midnight + model.castFwrd
                 /// deduct all time today from 24 hours
                 return CGFloat(entries.reduce(dayLength, {$0 - (min($1.end, end) - max(begin, $1.start))})) * scale
             }
@@ -80,10 +81,10 @@ struct DayStrip: View {
     var HeaderLabel: some View {
         /// short weekday and date labels
         VStack(spacing: .zero) {
-            Text((begin + dayLength).shortWeekday())
+            Text(midnight.shortWeekday())
                 .font(.footnote)
                 .lineLimit(1)
-            DateLabel(for: begin)
+            DateLabel(for: midnight)
                 .font(.caption)
                 .lineLimit(1)
         }
