@@ -22,6 +22,10 @@ struct DayStrip: View {
     let days: Int
     let dayHeight: CGFloat
     
+    /// determines what proportion of available horizontal space to consume
+    private let thicc = CGFloat(0.8)
+    private let cornerScale = CGFloat(1.0/18.0)
+    
     var body: some View {
         GeometryReader { geo in
             ZStack(alignment: .top) {
@@ -33,18 +37,30 @@ struct DayStrip: View {
                     .zIndex(1) /// ensure this is drawn first, but remains on top
                 VStack(spacing: .zero) {
                     ForEach(entries, id: \.id) {
-                        LineBar(
-                            entry: $0,
-                            begin: begin,
-                            size: geo.size,
-                            days: days
-                        )
+                        RoundedRectangle(cornerRadius: geo.size.width * cornerScale) /// adapt scale to taste
+                            .frame(
+                                width: geo.size.width * thicc,
+                                height: height(size: geo.size, entry: $0)
+                            )
+                            .foregroundColor($0.wrappedColor)
+//                        LineBar(
+//                            entry: $0,
+//                            begin: begin,
+//                            size: geo.size,
+//                            days: days
+//                        )
                             .padding(.top, padding(for: $0, size: geo.size))
                             .opacity($0.matches(terms) ? 1 : 0.5)
                     }
                 }
             }
         }
+    }
+    
+    func height(size: CGSize, entry: TimeEntry) -> CGFloat {
+        let start = max(entry.start, begin)
+        let end = min(entry.end, begin + Double(days) * dayLength)
+        return size.height * CGFloat((end - start) / (dayLength * Double(days)))
     }
     
     /// calculate appropriate distance to next time entry
