@@ -34,13 +34,7 @@ struct LineGraph: View {
             ) { midnight in
                 Divider()
                 DayStrip(
-                    entries: data.entries
-                        .filter{$0.end > midnight - model.castBack}
-                        .filter{$0.start < midnight + model.castFwrd}
-                        .sorted(by: model.mode == .graph
-                                    ? {$0.wrappedProject.wrappedName < $1.wrappedProject.wrappedName}
-                                    : {$0.start < $1.start}
-                        ),
+                    entries: entries(midnight: midnight),
                     begin: midnight - model.castBack,
                     terms: data.terms,
                     dayHeight: dayHeight
@@ -52,6 +46,19 @@ struct LineGraph: View {
             .background(LinedBackground(height: dayHeight, days: Int(model.days)))
         }
         .drawingGroup()
+    }
+    
+    func entries(midnight: Date) -> [TimeEntry] {
+        switch model.mode {
+        case .calendar: return data.entries
+            .filter{$0.end > midnight - model.castBack}
+            .filter{$0.start < midnight + model.castFwrd}
+            .sorted{$0.start < $1.start}
+        case .graph: return data.entries
+            .filter{$0.end > midnight - model.castBack}
+            .filter{$0.start < midnight + model.castFwrd}
+            .sorted{$0.wrappedProject.wrappedName < $1.wrappedProject.wrappedName}
+        }
     }
     
     /**
