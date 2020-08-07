@@ -57,22 +57,24 @@ struct DayStrip: View {
     /// calculate appropriate distance to next time entry
     func padding(for entry: TimeEntry, size: CGSize) -> CGFloat {
         let scale = size.height / CGFloat(dayLength * model.days)
+        
         let idx = entries.firstIndex(of: entry)!
-        /// for first entry, always hit the bottom
-        guard idx != 0 else {
-            if model.mode == .graph {
+        guard entry != entries.first else {
+            switch model.mode {
+            case .calendar:
+                return .zero
+            case .graph:
                 let end = begin + dayLength
                 /// deduct all time today from 24 hours
                 return CGFloat(entries.reduce(dayLength, {$0 - (min($1.end, end) - max(begin, $1.start))})) * scale
             }
-            else {
-                return .zero
-            }
         }
-        guard model.mode != .graph else {
+        switch model.mode {
+        case .calendar:
+            return CGFloat(entries[idx].start - entries[idx - 1].end) * scale
+        case .graph:
             return .zero
         }
-        return CGFloat(entries[idx].start - entries[idx - 1].end) * scale
     }
     
     var HeaderLabel: some View {
