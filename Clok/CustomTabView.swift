@@ -28,7 +28,7 @@ struct CustomTabView: View {
         } else {
             VStack(spacing: 0) {
                 Views
-                VStack(spacing: 0) { Buttons }
+                HStack(spacing: 0) { Buttons }
             }
         }
     }
