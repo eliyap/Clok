@@ -23,6 +23,26 @@ final class GraphModel: ObservableObject {
             }
         }
     }
+    
+    /// how far back to look
+    var castBack: TimeInterval {
+        switch mode {
+        case .calendar: return dayLength * 0
+        case .graph: return dayLength * 0
+        }
+    }
+    
+    /// how far forwards to look
+    var castFwrd: TimeInterval {
+        switch mode {
+        case .calendar: return dayLength * 3
+        case .graph: return dayLength * 1
+        }
+    }
+    
+    var days: Double {
+        (castBack + castFwrd) / dayLength
+    }
 }
 
 struct BarStack: View {
@@ -102,7 +122,7 @@ struct BarStack: View {
                         .offset(y: size.height)
                     HStack(spacing: .zero) {
                         TimeIndicator(divisions: evenDivisions(for: dayHeight))
-                        LineGraph(days: days, dayHeight: dayHeight)
+                        LineGraph(dayHeight: dayHeight)
                             
                     }
                     .frame(width: size.width, height: dayHeight * 3)

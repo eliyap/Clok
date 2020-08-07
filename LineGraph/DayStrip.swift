@@ -19,7 +19,6 @@ struct DayStrip: View {
     let entries: [TimeEntry]
     let begin: Date
     let terms: SearchTerm
-    let days: Int
     let dayHeight: CGFloat
     
     /// determines what proportion of available horizontal space to consume
@@ -51,13 +50,13 @@ struct DayStrip: View {
     
     func height(size: CGSize, entry: TimeEntry) -> CGFloat {
         let start = max(entry.start, begin)
-        let end = min(entry.end, begin + Double(days) * dayLength)
-        return size.height * CGFloat((end - start) / (dayLength * Double(days)))
+        let end = min(entry.end, begin + model.days * dayLength)
+        return size.height * CGFloat((end - start) / (dayLength * model.days))
     }
     
     /// calculate appropriate distance to next time entry
     func padding(for entry: TimeEntry, size: CGSize) -> CGFloat {
-        let scale = size.height / CGFloat(dayLength * Double(days))
+        let scale = size.height / CGFloat(dayLength * model.days)
         let idx = entries.firstIndex(of: entry)!
         /// for first entry, always hit the bottom
         guard idx != 0 else {

@@ -14,7 +14,6 @@ struct LineGraph: View {
     @EnvironmentObject var data: TimeData
     @EnvironmentObject var model: GraphModel
 
-    var days: Int
     
     /// visual height for 1 day
     let dayHeight: CGFloat
@@ -32,26 +31,25 @@ struct LineGraph: View {
             ForEach(
                 Array(stride(from: zero.start, to: zero.end, by: dayLength)),
                 id: \.timeIntervalSince1970
-            ) { date in
+            ) { midnight in
                 Divider()
                 DayStrip(
                     entries: data.entries
-                        .filter{$0.end > date}
-                        .filter{$0.start < date + dayLength * Double(days)}
+                        .filter{$0.end > midnight - model.castBack}
+                        .filter{$0.start < midnight + model.castFwrd}
                         .sorted(by: model.mode == .graph
                                     ? {$0.wrappedProject.wrappedName < $1.wrappedProject.wrappedName}
                                     : {$0.start < $1.start}
                         ),
-                    begin: date,
+                    begin: midnight - model.castBack,
                     terms: data.terms,
-                    days: days,
                     dayHeight: dayHeight
                 )
                 .transition(slideOver())
-                .frame(height: dayHeight * CGFloat(days)) /// space for 3 days
+                .frame(height: dayHeight * CGFloat(model.days))
             }
             /// vary background based on daycount
-            .background(LinedBackground(height: dayHeight, days: days)
+            .background(LinedBackground(height: dayHeight, days: Int(model.days))
             )
         }
         .drawingGroup()
