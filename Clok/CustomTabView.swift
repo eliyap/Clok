@@ -21,19 +21,15 @@ struct CustomTabView: View {
     
     var body: some View {
         if notchLandscape {
-            AnyView(
-                HStack(spacing: 0) {
-                    Views
-                    VStack(spacing: 0) { Buttons }
-                }
-            )
+            HStack(spacing: 0) {
+                Views
+                VStack(spacing: 0) { Buttons }
+            }
         } else {
-            AnyView(
-                VStack(spacing: 0) {
-                    Views
-                    VStack(spacing: 0) { Buttons }
-                }
-            )
+            VStack(spacing: 0) {
+                Views
+                VStack(spacing: 0) { Buttons }
+            }
         }
     }
     
