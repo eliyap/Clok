@@ -20,18 +20,20 @@ struct CustomTabView: View {
     @EnvironmentObject private var bounds: Bounds
     
     var body: some View {
-        Group {
-            if bounds.notch && bounds.mode == .landscape {
+        if notchLandscape {
+            AnyView(
                 HStack(spacing: 0) {
                     Views
                     VStack(spacing: 0) { Buttons }
                 }
-            } else {
+            )
+        } else {
+            AnyView(
                 VStack(spacing: 0) {
                     Views
-                    HStack(spacing: 0) { Buttons }
+                    VStack(spacing: 0) { Buttons }
                 }
-            }
+            )
         }
     }
     
@@ -67,10 +69,15 @@ struct CustomTabView: View {
                 .foregroundColor(settings.tab == select ? .primary : .secondary)
                 .font(Font.body.weight(settings.tab == select ? .bold : .regular))
                 .frame(
-                    maxWidth: (bounds.notch && bounds.mode == .landscape) ? nil : .infinity,
-                    maxHeight: (bounds.notch && bounds.mode == .landscape) ? .infinity : nil
+                    maxWidth: notchLandscape ? nil : .infinity,
+                    maxHeight: notchLandscape ? .infinity : nil
                 )
                 .padding(buttonPadding)
         }
+    }
+    
+    /// device has a notch and is in landscape mode
+    var notchLandscape: Bool {
+        bounds.notch && bounds.mode == .landscape
     }
 }
