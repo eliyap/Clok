@@ -24,7 +24,7 @@ struct ContentGroupView: View {
             case .bar:
                 BarStack()
                     .frame(width: size(geo), height: size(geo))
-            default:
+            case .settings:
                 EmptyView()
             }
             CustomTabView()
