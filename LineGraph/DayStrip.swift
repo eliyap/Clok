@@ -21,12 +21,16 @@ struct DayStrip: View {
     let df = DateFormatter()
     let days: Int
     let noPad: Bool
+    let dayHeight: CGFloat
     
     var body: some View {
         GeometryReader { geo in
             ZStack(alignment: .top) {
                 HeaderLabel
-                    .offset(y: bounds.insets.top - geo.frame(in: .global).minY)
+                    .offset(y: max(
+                        bounds.insets.top - geo.frame(in: .global).minY,
+                        dayHeight / 2
+                    ))
                     .zIndex(1) /// ensure this is drawn first, but remains on top
                 VStack(spacing: .zero) {
                     ForEach(entries, id: \.id) {
@@ -40,7 +44,6 @@ struct DayStrip: View {
                             .opacity($0.matches(terms) ? 1 : 0.5)
                     }
                 }
-                
             }
         }
     }

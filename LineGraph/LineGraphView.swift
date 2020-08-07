@@ -50,7 +50,8 @@ struct LineGraph: View {
                     begin: date,
                     terms: data.terms,
                     days: days,
-                    noPad: noPad
+                    noPad: noPad,
+                    dayHeight: dayHeight
                 )
                 .transition(slideOver())
                 .frame(height: dayHeight * CGFloat(days)) /// space for 3 days
