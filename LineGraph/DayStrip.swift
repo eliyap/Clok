@@ -38,21 +38,13 @@ struct DayStrip: View {
                 VStack(spacing: .zero) {
                     ForEach(entries, id: \.id) {
                         RoundedRectangle(cornerRadius: geo.size.width * cornerScale) /// adapt scale to taste
-                            .frame(
-                                width: geo.size.width * thicc,
-                                height: height(size: geo.size, entry: $0)
-                            )
+                            .frame(height: height(size: geo.size, entry: $0))
                             .foregroundColor($0.wrappedColor)
-//                        LineBar(
-//                            entry: $0,
-//                            begin: begin,
-//                            size: geo.size,
-//                            days: days
-//                        )
                             .padding(.top, padding(for: $0, size: geo.size))
                             .opacity($0.matches(terms) ? 1 : 0.5)
                     }
                 }
+                .frame(width: geo.size.width * thicc)
             }
         }
     }
