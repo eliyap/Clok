@@ -23,19 +23,19 @@ struct CustomTabView: View {
         Group {
             if bounds.notch && bounds.mode == .landscape {
                 HStack(spacing: 0) {
-                    Views()
-                    VStack(spacing: 0) { Buttons() }
+                    Views
+                    VStack(spacing: 0) { Buttons }
                 }
             } else {
                 VStack(spacing: 0) {
-                    Views()
-                    HStack(spacing: 0) { Buttons() }
+                    Views
+                    HStack(spacing: 0) { Buttons }
                 }
             }
         }
     }
     
-    func Views() -> some View {
+    var Views: some View {
         /// group prevents warning about underlying types
         Group {
             switch settings.tab {
@@ -52,8 +52,8 @@ struct CustomTabView: View {
         }
     }
     
-    func Buttons() -> some View {
-        return Group {
+    var Buttons: some View {
+        Group {
             TabButton(select: .spiral, glyph: "arrow.counterclockwise")
             TabButton(select: .bar, glyph: "chart.bar.fill")
             TabButton(select: .settings, glyph: "gear")
