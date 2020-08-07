@@ -330,8 +330,8 @@
 				2207B21F24B954F40006748A /* BarStack.swift */,
 				225B044124B2A5FA00780424 /* LineGraphView.swift */,
 				22905B8724DB449400D5AC09 /* LinedBackground.swift */,
-				22885DB124DA1E2E00A56FE3 /* TimeIndicator.swift */,
 				22885DAD24DA13E500A56FE3 /* DayStrip.swift */,
+				22885DB124DA1E2E00A56FE3 /* TimeIndicator.swift */,
 			);
 			path = LineGraph;
 			sourceTree = "<group>";

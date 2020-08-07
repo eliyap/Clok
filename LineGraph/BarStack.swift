@@ -27,7 +27,7 @@ final class GraphModel: ObservableObject {
     /// how far back to look
     var castBack: TimeInterval {
         switch mode {
-        case .calendar: return dayLength * 0
+        case .calendar: return dayLength * 1
         case .graph: return dayLength * 0
         }
     }
@@ -35,7 +35,7 @@ final class GraphModel: ObservableObject {
     /// how far forwards to look
     var castFwrd: TimeInterval {
         switch mode {
-        case .calendar: return dayLength * 3
+        case .calendar: return dayLength * 2
         case .graph: return dayLength * 1
         }
     }
