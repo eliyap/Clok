@@ -18,7 +18,6 @@ struct DayStrip: View {
     let entries: [TimeEntry]
     let begin: Date
     let terms: SearchTerm
-    let df = DateFormatter()
     let days: Int
     let noPad: Bool
     let dayHeight: CGFloat
@@ -44,21 +43,29 @@ struct DayStrip: View {
                             .opacity($0.matches(terms) ? 1 : 0.5)
                     }
                 }
+                .border(Color.red)
             }
         }
     }
     
     /// calculate appropriate distance to next time entry
     func padding(for entry: TimeEntry, size: CGSize) -> CGFloat {
+        let scale = size.height / CGFloat(dayLength * Double(days))
         let idx = entries.firstIndex(of: entry)!
         /// for first entry, always hit the bottom
         guard idx != 0 else {
-            return .zero
+            if noPad {
+                let end = begin + dayLength
+                /// deduct all time today from 24 hours
+                return CGFloat(entries.reduce(dayLength, {$0 - (min($1.end, end) - max(begin, $1.start))})) * scale
+            }
+            else {
+                return .zero
+            }
         }
         guard !noPad else {
             return .zero
         }
-        let scale = size.height / CGFloat(dayLength * Double(days))
         return CGFloat(entries[idx].start - entries[idx - 1].end) * scale
     }
     
@@ -77,6 +84,7 @@ struct DayStrip: View {
     }
     
     func DateLabel(for date: Date) -> Text {
+        let df = DateFormatter()
         /// add 1 day to compensate for the day strip covering 3 days
         let date = date + dayLength
         if Calendar.current.component(.day, from: date) == 1 {
