@@ -50,7 +50,6 @@ struct BarStack: View {
                         .onTapGesture {
                             zero.dateChange = .fwrd
                             withAnimation(.linear(duration: 0.4)) {
-                                zero.interval = dayLength
                                 collapsed = true
                             }
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
@@ -60,7 +59,6 @@ struct BarStack: View {
                                 withAnimation {
                                     noPad = true
                                 }
-                                
                             }
                         }
                 }
