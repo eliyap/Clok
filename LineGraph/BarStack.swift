@@ -123,7 +123,6 @@ struct BarStack: View {
                     HStack(spacing: .zero) {
                         TimeIndicator(divisions: evenDivisions(for: dayHeight))
                         LineGraph(dayHeight: dayHeight)
-                            
                     }
                     .frame(width: size.width, height: dayHeight * CGFloat(model.days))
                     /// block off part of the extended day strip
