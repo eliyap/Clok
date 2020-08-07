@@ -42,32 +42,35 @@ struct ClokApp: App {
                 .environmentObject(settings)
                 .environmentObject(bounds)
                 .environment(\.managedObjectContext, persistentContainer.viewContext)
-                .onReceive(zero.$start, perform: { date in
-                    /// ensure user is logged in
-                    guard let user = settings.user else { return }
-                    /// if data is old
-                    if date < minLoaded {
-                        /// fetch another week's worth from online
-                        _ = fetchEntries(
-                            user: user,
-                            from: minLoaded - weekLength,
-                            to: minLoaded, context: persistentContainer.viewContext,
-                            projects: data.projects
-                        )
-                        /// update our date range
-                        minLoaded -= weekLength
-                        
-                        /// refresh global var
-                        if let freshEntries = loadEntries(from: .distantPast, to: .distantFuture, context: persistentContainer.viewContext) {
-                            data.entries = freshEntries
-                        }
-                        do {
-                            try persistentContainer.viewContext.save() /// save on main threads
-                        } catch {
-                            print(error)
-                        }
-                    }
-                })
+                .onReceive(zero.$start, perform: loadData)
         }
+    }
+    
+    func loadData(date: Date) -> Void {
+        /// ensure user is logged in
+        guard let user = settings.user else { return }
+        /// if data is old
+        if date < minLoaded {
+            /// fetch another week's worth from online
+            _ = fetchEntries(
+                user: user,
+                from: minLoaded - weekLength,
+                to: minLoaded, context: persistentContainer.viewContext,
+                projects: data.projects
+            )
+            /// update our date range
+            minLoaded -= weekLength
+            
+            /// refresh global var
+            if let freshEntries = loadEntries(from: .distantPast, to: .distantFuture, context: persistentContainer.viewContext) {
+                data.entries = freshEntries
+            }
+            do {
+                try persistentContainer.viewContext.save() /// save on main threads
+            } catch {
+                print(error)
+            }
+        }
+    
     }
 }
