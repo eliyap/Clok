@@ -18,33 +18,35 @@ struct DayStrip: View {
     let entries: [TimeEntry]
     let begin: Date
     let terms: SearchTerm
-    let df = DateFormatter()
     let days: Int
     let noPad: Bool
     let dayHeight: CGFloat
     
     var body: some View {
         GeometryReader { geo in
-            ZStack(alignment: .top) {
-                HeaderLabel
-                    .offset(y: max(
-                        bounds.insets.top - geo.frame(in: .global).minY,
-                        noPad ? .zero : dayHeight / 2
-                    ))
-                    .zIndex(1) /// ensure this is drawn first, but remains on top
-                VStack(spacing: .zero) {
-                    ForEach(entries, id: \.id) {
-                        LineBar(
-                            entry: $0,
-                            begin: begin,
-                            size: geo.size,
-                            days: days
-                        )
-                            .padding(.top, padding(for: $0, size: geo.size))
-                            .opacity($0.matches(terms) ? 1 : 0.5)
+            VStack(spacing: .zero) {
+                ZStack(alignment: .top) {
+                    DayStrip.HeaderLabel(date: begin)
+                        .offset(y: max(
+                            bounds.insets.top - geo.frame(in: .global).minY,
+                            noPad ? .zero : dayHeight / 2
+                        ))
+                        .zIndex(1) /// ensure this is drawn first, but remains on top
+                    VStack(spacing: .zero) {
+                        ForEach(entries, id: \.id) {
+                            LineBar(
+                                entry: $0,
+                                begin: begin,
+                                size: geo.size,
+                                days: days
+                            )
+                                .padding(.top, padding(for: $0, size: geo.size))
+                                .opacity($0.matches(terms) ? 1 : 0.5)
+                        }
                     }
                 }
             }
+            
         }
     }
     
@@ -62,13 +64,13 @@ struct DayStrip: View {
         return CGFloat(entries[idx].start - entries[idx - 1].end) * scale
     }
     
-    var HeaderLabel: some View {
+    static func HeaderLabel(date: Date) -> some View {
         /// short weekday and date labels
         VStack(spacing: .zero) {
-            Text((begin + dayLength).shortWeekday())
+            Text((date + dayLength).shortWeekday())
                 .font(.footnote)
                 .lineLimit(1)
-            DateLabel(for: begin)
+            DateLabel(for: date)
                 .font(.caption)
                 .lineLimit(1)
         }
@@ -76,7 +78,8 @@ struct DayStrip: View {
         .background(Color.clokBG)
     }
     
-    func DateLabel(for date: Date) -> Text {
+    static func DateLabel(for date: Date) -> Text {
+        let df = DateFormatter()
         /// add 1 day to compensate for the day strip covering 3 days
         let date = date + dayLength
         if Calendar.current.component(.day, from: date) == 1 {
