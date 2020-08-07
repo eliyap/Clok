@@ -86,7 +86,6 @@ struct EntryList: View {
             .matching(data.terms)
         
         var days = [Day]()
-        let cal = Calendar.current
         for mn in stride(
             from: zero.start + dayLength,
             to: zero.end + dayLength,
@@ -97,7 +96,7 @@ struct EntryList: View {
                 start: mn,
                 entries: validEntries
                     /// restrict entries to those that started in this 24 hour period
-                    /// NOTE: don't user `within`, as this causes some entries to appear across 2 days, causing a crash!
+                    /// NOTE: don't use `within`, as this causes some entries to appear across 2 days, causing a crash!
                     .filter{ $0.start.between(mn, mn + dayLength) }
             ))
         }
