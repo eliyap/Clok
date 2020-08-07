@@ -13,6 +13,22 @@ struct BarStack: View {
     @EnvironmentObject private var bounds: Bounds
     @EnvironmentObject private var zero: ZeroDate
     
+    /// what form this view is adopting
+    enum Mode {
+        case calendar
+        case graph
+        
+        mutating func toggle() -> Void {
+            switch self {
+            case .calendar: self = .graph
+            case .graph: self = .calendar
+            }
+        }
+    }
+    
+    /// default to calendar
+    @State var mode = Mode.calendar
+    
     /// make a meaningless update to zero Date so it will load data from disk
     func jumpCoreDate() {
         zero.start += .leastNonzeroMagnitude
