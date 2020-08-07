@@ -8,11 +8,15 @@
 
 import SwiftUI
 
+final class GraphModel: ObservableObject {
+    @Published var mode: BarStack.Mode = .calendar
+}
+
 struct BarStack: View {
     
     @EnvironmentObject private var bounds: Bounds
     @EnvironmentObject private var zero: ZeroDate
-    
+    @EnvironmentObject var model: GraphModel
     /// what form this view is adopting
     enum Mode {
         case calendar
@@ -27,7 +31,7 @@ struct BarStack: View {
     }
     
     /// default to calendar
-    @State var mode = Mode.calendar
+//    @State var mode = Mode.calendar
     
     /// make a meaningless update to zero Date so it will load data from disk
     func jumpCoreDate() {
@@ -66,7 +70,7 @@ struct BarStack: View {
                         .onTapGesture {
                             zero.dateChange = .fwrd
                             withAnimation(.linear(duration: 0.4)) {
-                                mode.toggle()
+                                model.mode.toggle()
                             }
                         }
                 }
@@ -78,7 +82,7 @@ struct BarStack: View {
     }
     
     var days: Int {
-        switch mode {
+        switch model.mode {
         case .calendar: return 3
         case .graph: return 1
         }
@@ -95,12 +99,13 @@ struct BarStack: View {
                         .offset(y: size.height)
                     HStack(spacing: .zero) {
                         TimeIndicator(divisions: evenDivisions(for: dayHeight))
-                        LineGraph(days: days, dayHeight: dayHeight, mode: mode)
+                        LineGraph(days: days, dayHeight: dayHeight)
+                            
                     }
                     .frame(width: size.width, height: dayHeight * 3)
                     /// block off part of the extended day strip
                     /// keeps focus on the white day area
-                    .padding([.top, .bottom], mode == .graph ? -dayHeight : -dayHeight / 2)
+                    .padding([.top, .bottom], model.mode == .graph ? -dayHeight : -dayHeight / 2)
                     .drawingGroup()
                     /// immediately center on white day area
                     .onAppear{ proxy.scrollTo(0, anchor: .center) }

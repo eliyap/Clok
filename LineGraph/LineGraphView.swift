@@ -12,6 +12,7 @@ struct LineGraph: View {
     
     @EnvironmentObject var zero: ZeroDate
     @EnvironmentObject var data: TimeData
+    @EnvironmentObject var model: GraphModel
 
     var days: Int
     
@@ -20,7 +21,7 @@ struct LineGraph: View {
     
     /// slows down the magnifying effect by some constant
     let kCoeff = 0.5
-    let mode: BarStack.Mode
+//    let mode: BarStack.Mode
     
     func enumDays() -> [(Int, Date)] {
         stride(from: 0, to: 7, by: 1).map{
@@ -43,14 +44,14 @@ struct LineGraph: View {
                     entries: data.entries
                         .filter{$0.end > date}
                         .filter{$0.start < date + dayLength * Double(days)}
-                        .sorted(by: mode == .graph
+                        .sorted(by: model.mode == .graph
                                     ? {$0.wrappedProject.wrappedName < $1.wrappedProject.wrappedName}
                                     : {$0.start < $1.start}
                         ),
                     begin: date,
                     terms: data.terms,
                     days: days,
-                    mode: mode,
+                    mode: model.mode,
                     dayHeight: dayHeight
                 )
                 .transition(slideOver())

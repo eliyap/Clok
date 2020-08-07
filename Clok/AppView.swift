@@ -17,6 +17,7 @@ struct ClokApp: App {
     var data = TimeData()
     var settings = Settings()
     var bounds = Bounds()
+    var model = GraphModel()
     
     var persistentContainer: NSPersistentContainer
     
@@ -41,6 +42,7 @@ struct ClokApp: App {
                 .environmentObject(data)
                 .environmentObject(settings)
                 .environmentObject(bounds)
+                .environmentObject(model)
                 .environment(\.managedObjectContext, persistentContainer.viewContext)
                 .onReceive(zero.$start, perform: loadData)
         }
