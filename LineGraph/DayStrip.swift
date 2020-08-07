@@ -43,7 +43,6 @@ struct DayStrip: View {
                             .opacity($0.matches(terms) ? 1 : 0.5)
                     }
                 }
-                .border(Color.red)
             }
         }
     }
