@@ -100,10 +100,9 @@ struct BarStack: View {
                         .offset(y: size.height)
                     HStack(spacing: .zero) {
                         TimeIndicator(divisions: evenDivisions(for: dayHeight))
-                        GeometryReader { geo in
-                            LineGraph(days: days, dayHeight: dayHeight, noPad: noPad)
-                                .frame(width: geo.size.width)
-                        }
+                        LineGraph(days: days, dayHeight: dayHeight, noPad: noPad)
+//                            .frame(width: geo.size.width)
+                    
                     }
                     .frame(width: size.width, height: dayHeight * 3)
                     /// block off part of the extended day strip
