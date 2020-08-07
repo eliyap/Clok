@@ -66,15 +66,7 @@ struct BarStack: View {
                         .onTapGesture {
                             zero.dateChange = .fwrd
                             withAnimation(.linear(duration: 0.4)) {
-                                collapsed = true
-                            }
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                                days = 1
-                            }
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.41) {
-                                withAnimation {
-                                    noPad = true
-                                }
+                                mode.toggle()
                             }
                         }
                 }
@@ -85,9 +77,12 @@ struct BarStack: View {
         .onAppear(perform: jumpCoreDate)
     }
     
-    @State var collapsed = false
-    @State var noPad = false
-    @State var days = 3
+    var days: Int {
+        switch mode {
+        case .calendar: return 3
+        case .graph: return 1
+        }
+    }
     
     func DayScroll(size: CGSize) -> some View {
         let dayHeight = size.height * zero.zoom
@@ -100,14 +95,12 @@ struct BarStack: View {
                         .offset(y: size.height)
                     HStack(spacing: .zero) {
                         TimeIndicator(divisions: evenDivisions(for: dayHeight))
-                        LineGraph(days: days, dayHeight: dayHeight, noPad: noPad)
-//                            .frame(width: geo.size.width)
-                    
+                        LineGraph(days: days, dayHeight: dayHeight, mode: mode)
                     }
                     .frame(width: size.width, height: dayHeight * 3)
                     /// block off part of the extended day strip
                     /// keeps focus on the white day area
-                    .padding([.top, .bottom], collapsed ? -dayHeight : -dayHeight / 2)
+                    .padding([.top, .bottom], mode == .graph ? -dayHeight : -dayHeight / 2)
                     .drawingGroup()
                     /// immediately center on white day area
                     .onAppear{ proxy.scrollTo(0, anchor: .center) }

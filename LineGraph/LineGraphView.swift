@@ -20,7 +20,7 @@ struct LineGraph: View {
     
     /// slows down the magnifying effect by some constant
     let kCoeff = 0.5
-    let noPad: Bool
+    let mode: BarStack.Mode
     
     func enumDays() -> [(Int, Date)] {
         stride(from: 0, to: 7, by: 1).map{
@@ -43,14 +43,14 @@ struct LineGraph: View {
                     entries: data.entries
                         .filter{$0.end > date}
                         .filter{$0.start < date + dayLength * Double(days)}
-                        .sorted(by: noPad
+                        .sorted(by: mode == .graph
                                     ? {$0.wrappedProject.wrappedName < $1.wrappedProject.wrappedName}
                                     : {$0.start < $1.start}
                         ),
                     begin: date,
                     terms: data.terms,
                     days: days,
-                    noPad: noPad,
+                    mode: mode,
                     dayHeight: dayHeight
                 )
                 .transition(slideOver())
