@@ -9,14 +9,8 @@
 import SwiftUI
 
 final class GraphModel: ObservableObject {
-    @Published var mode: BarStack.Mode = .calendar
-}
-
-struct BarStack: View {
+    @Published var mode: Mode = .calendar
     
-    @EnvironmentObject private var bounds: Bounds
-    @EnvironmentObject private var zero: ZeroDate
-    @EnvironmentObject var model: GraphModel
     /// what form this view is adopting
     enum Mode {
         case calendar
@@ -29,6 +23,15 @@ struct BarStack: View {
             }
         }
     }
+}
+
+struct BarStack: View {
+    
+    @EnvironmentObject private var bounds: Bounds
+    @EnvironmentObject private var zero: ZeroDate
+    @EnvironmentObject var model: GraphModel
+    
+    
     
     /// default to calendar
 //    @State var mode = Mode.calendar

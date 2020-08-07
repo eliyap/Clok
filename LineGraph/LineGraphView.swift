@@ -51,7 +51,6 @@ struct LineGraph: View {
                     begin: date,
                     terms: data.terms,
                     days: days,
-                    mode: model.mode,
                     dayHeight: dayHeight
                 )
                 .transition(slideOver())

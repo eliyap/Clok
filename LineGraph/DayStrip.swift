@@ -15,11 +15,11 @@ fileprivate let labelPadding = CGFloat(3)
 struct DayStrip: View {
     
     @EnvironmentObject var bounds: Bounds
+    @EnvironmentObject var model: GraphModel
     let entries: [TimeEntry]
     let begin: Date
     let terms: SearchTerm
     let days: Int
-    let mode: BarStack.Mode
     let dayHeight: CGFloat
     
     var body: some View {
@@ -28,7 +28,7 @@ struct DayStrip: View {
                 HeaderLabel
                     .offset(y: max(
                         bounds.insets.top - geo.frame(in: .global).minY,
-                        mode == .graph ? .zero : dayHeight / 2
+                        model.mode == .graph ? .zero : dayHeight / 2
                     ))
                     .zIndex(1) /// ensure this is drawn first, but remains on top
                 VStack(spacing: .zero) {
@@ -53,7 +53,7 @@ struct DayStrip: View {
         let idx = entries.firstIndex(of: entry)!
         /// for first entry, always hit the bottom
         guard idx != 0 else {
-            if mode == .graph {
+            if model.mode == .graph {
                 let end = begin + dayLength
                 /// deduct all time today from 24 hours
                 return CGFloat(entries.reduce(dayLength, {$0 - (min($1.end, end) - max(begin, $1.start))})) * scale
@@ -62,7 +62,7 @@ struct DayStrip: View {
                 return .zero
             }
         }
-        guard mode != .graph else {
+        guard model.mode != .graph else {
             return .zero
         }
         return CGFloat(entries[idx].start - entries[idx - 1].end) * scale
