@@ -10,27 +10,34 @@ import SwiftUI
 
 struct LinedBackground: View {
     let height: CGFloat
-    let mode: GraphModel.Mode
+    @EnvironmentObject var model: GraphModel
     var body: some View {
         VStack(spacing: .zero) {
-            if mode == .calendar { Lines(color: .clokBG) }
-            Lines(color: Color(UIColor.systemBackground))
-            if mode == .calendar { Lines(color: .clokBG) }
+            ForEach(
+                Array(stride(
+                    from: -model.castBack,
+                    to: model.castFwrd,
+                    by: dayLength / Double(evenDivisions(for: height))
+                )), id: \.self) {
+                    Slice(interval: $0)
+            }
         }
     }
     
-    func Lines(color: Color) -> some View {
+    private func Slice(interval: TimeInterval) -> some View {
         Group {
-            ForEach(0..<evenDivisions(for: height) - 1, id: \.self) { _ in
-                Rectangle().foregroundColor(color)
+            if interval.remainder(dividingBy: dayLength) == 0 {
+                Rectangle()
+                    .frame(height: 1)
+                    .foregroundColor(.red) /// midnight divider is red
+            } else {
                 Divider()
             }
-            /// midnight divider is red
-            Rectangle()
-                .foregroundColor(color)
-            Rectangle()
-                .frame(height: 1)
-                .foregroundColor(.red)
+            if interval < 0 || interval >= dayLength { /// outside the highlighted 1 day range
+                Rectangle().foregroundColor(.clokBG)
+            } else {
+                Rectangle().foregroundColor(Color(UIColor.systemBackground))
+            }
         }
     }
 }
