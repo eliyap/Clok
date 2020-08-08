@@ -13,10 +13,7 @@ struct LineGraph: View {
     @EnvironmentObject var zero: ZeroDate
     @EnvironmentObject var data: TimeData
     @EnvironmentObject var model: GraphModel
-
-    
-    /// visual height for 1 day
-    let dayHeight: CGFloat
+    let dayHeight: CGFloat     /// visual height for 1 day
     
     var body: some View {
         /// check whether the provided time entry coincides with a particular *date* range
@@ -35,7 +32,7 @@ struct LineGraph: View {
                     terms: data.terms,
                     dayHeight: dayHeight
                 )
-                .transition(slideOver())
+                .transition(.opacity)
                 .frame(height: dayHeight * CGFloat(model.days))
             }
             /// vary background based on daycount

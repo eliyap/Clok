@@ -48,18 +48,20 @@ struct TimeIndicator: View {
     /// closely mimics Google Calendar or other generic calendar app
     var CalendarTime: some View {
         VStack(alignment: .trailing) {
-            ForEach(0..<Int(model.days)) { _ in
-                ForEach(0..<divisions, id: \.self) {
-                    TimeLabel(idx: $0)
+            ForEach(
+                Array(stride(
+                    from: -model.castBack,
+                    to: model.castFwrd,
+                    by: dayLength / Double(divisions)
+                )), id: \.self) {
+                    TimeLabel(interval: $0)
                     Spacer()
-                }
             }
         }
     }
     
     /// format time according to user preference
-    private func TimeLabel(idx: Int) -> some View {
-        let interval = TimeInterval(idx * 86400/divisions)
+    private func TimeLabel(interval: TimeInterval) -> some View {
         let midnight = Calendar.current.startOfDay(for: Date())
         var text = Text("\(tf.string(from: midnight + interval))")
             .font(.footnote)
