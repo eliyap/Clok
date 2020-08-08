@@ -32,7 +32,7 @@ final class ZeroDate: ObservableObject {
     
     /// length of time interval being examined
     /// defaults to 8 hours
-    @Published var interval: TimeInterval = dayLength
+    @Published var interval: TimeInterval = dayLength / 12
     var zoom: CGFloat {
         CGFloat(dayLength / interval)
     }
