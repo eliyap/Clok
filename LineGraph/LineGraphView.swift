@@ -18,10 +18,6 @@ struct LineGraph: View {
     /// visual height for 1 day
     let dayHeight: CGFloat
     
-    /// slows down the magnifying effect by some constant
-    let kCoeff = 0.5
-//    let mode: BarStack.Mode
-    
     var body: some View {
         /// check whether the provided time entry coincides with a particular *date* range
         /// if our entry ends before the interval even began
