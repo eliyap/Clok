@@ -8,22 +8,26 @@
 
 import SwiftUI
 
+/// draw a sliced background to visually guide when a `TimeEntry` occurs
+/// should align exactly with `TimeIndicator`
 struct LinedBackground: View {
-    let height: CGFloat
+    let divisions: Int
     @EnvironmentObject var model: GraphModel
+    
     var body: some View {
         VStack(spacing: .zero) {
             ForEach(
                 Array(stride(
                     from: -model.castBack,
                     to: model.castFwrd,
-                    by: dayLength / Double(evenDivisions(for: height))
+                    by: dayLength / Double(divisions)
                 )), id: \.self) {
                     Slice(interval: $0)
             }
         }
     }
     
+    /// Draw 1 line in the background at the given time interval offset
     private func Slice(interval: TimeInterval) -> some View {
         Group {
             if interval.remainder(dividingBy: dayLength) == 0 {

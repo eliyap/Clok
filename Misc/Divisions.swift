@@ -11,9 +11,9 @@ fileprivate let minSize = 35 /// allocate at least this amount of space per divi
 
 /// ways to divide 24 hours into equal portions
 func evenDivisions(for height: CGFloat) -> Int {
+    /// NOTE: since we can cut days in half, numbers must all be even
     [
         2,
-        3,
         4,
         6,
         8,
