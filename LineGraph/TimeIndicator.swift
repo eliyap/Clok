@@ -29,7 +29,6 @@ struct TimeIndicator: View {
         } else {
             tf.setLocalizedDateFormatFromTemplate(is24hour() ? "HH" : "h a")
         }
-        
     }
     
     var body: some View {

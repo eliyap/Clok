@@ -36,7 +36,7 @@ struct LineGraph: View {
                 .frame(height: dayHeight * CGFloat(model.days))
             }
             /// vary background based on daycount
-            .background(LinedBackground(height: dayHeight, days: Int(model.days)))
+            .background(LinedBackground(height: dayHeight, mode: model.mode))
         }
         .drawingGroup()
     }

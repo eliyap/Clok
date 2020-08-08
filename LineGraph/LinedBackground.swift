@@ -10,12 +10,12 @@ import SwiftUI
 
 struct LinedBackground: View {
     let height: CGFloat
-    let days: Int
+    let mode: GraphModel.Mode
     var body: some View {
         VStack(spacing: .zero) {
-            if days == 3 { Lines(color: .clokBG) }
+            if mode == .calendar { Lines(color: .clokBG) }
             Lines(color: Color(UIColor.systemBackground))
-            if days == 3 { Lines(color: .clokBG) }
+            if mode == .calendar { Lines(color: .clokBG) }
         }
     }
     
