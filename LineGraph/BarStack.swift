@@ -126,20 +126,3 @@ struct BarStack: View {
         }
     }
 }
-
-/// prevents the vertical scrollview from over-running the status bar
-struct SafetyWrapper<Content: View>:View {
-    let content: Content
-    init(@ViewBuilder content: () -> Content) {
-        self.content = content()
-    }
-    var body: some View {
-        VStack(spacing: .zero) {
-            /// tiny view stops scroll from drawing above it (into the status bar)
-            Rectangle()
-                .foregroundColor(.clear)
-                .frame(height: 1)
-            content
-        }
-    }
-}
