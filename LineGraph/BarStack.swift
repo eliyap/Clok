@@ -119,7 +119,7 @@ struct BarStack: View {
                         .frame(width: size.width, height: dayHeight * CGFloat(model.days))
                         /// block off part of the extended day strip
                         /// keeps focus on the white day area
-                        .padding([.top, .bottom], model.mode == .graph ? -.zero : -dayHeight / 2)
+//                        .padding([.top, .bottom], model.mode == .graph ? -.zero : -dayHeight / 2)
                         .drawingGroup()
                         /// immediately center on white day area
                         .onAppear{ proxy.scrollTo(0, anchor: .center) }
