@@ -90,7 +90,6 @@ struct BarStack: View {
                     Image(systemName: "star")
                         .modifier(ButtonGlyph())
                         .onTapGesture {
-                            zero.dateChange = .fwrd
                             withAnimation(.linear(duration: 0.4)) {
                                 model.mode.toggle()
                             }
