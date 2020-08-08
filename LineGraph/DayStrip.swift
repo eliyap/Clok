@@ -94,8 +94,6 @@ struct DayStrip: View {
     
     func DateLabel(for date: Date) -> Text {
         let df = DateFormatter()
-        /// add 1 day to compensate for the day strip covering 3 days
-        let date = date + dayLength
         if Calendar.current.component(.day, from: date) == 1 {
             df.setLocalizedDateFormatFromTemplate("MMM")
             return Text(df.string(from: date)).bold()
