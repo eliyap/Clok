@@ -30,6 +30,7 @@
 		2238640224BBBDE40041886B /* ConditionalFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2238640124BBBDE40041886B /* ConditionalFetch.swift */; };
 		2238640324BBC6980041886B /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63FC2F9249BCFBD00747D49 /* DoubleExtension.swift */; };
 		224B3AFC24DE280A00B1C943 /* SafetyWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224B3AFB24DE280A00B1C943 /* SafetyWrapper.swift */; };
+		224B3AFE24DE28C300B1C943 /* FilterModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224B3AFD24DE28C300B1C943 /* FilterModal.swift */; };
 		225B044224B2A5FA00780424 /* LineGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225B044124B2A5FA00780424 /* LineGraphView.swift */; };
 		225F69B424AD8CE70012B5DB /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225F69B324AD8CE70012B5DB /* AppView.swift */; };
 		225F69B724AD8EF50012B5DB /* EntryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225F69B624AD8EF50012B5DB /* EntryList.swift */; };
@@ -182,6 +183,7 @@
 		223863FF24BBBD030041886B /* DataFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFetch.swift; sourceTree = "<group>"; };
 		2238640124BBBDE40041886B /* ConditionalFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionalFetch.swift; sourceTree = "<group>"; };
 		224B3AFB24DE280A00B1C943 /* SafetyWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafetyWrapper.swift; sourceTree = "<group>"; };
+		224B3AFD24DE28C300B1C943 /* FilterModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterModal.swift; sourceTree = "<group>"; };
 		225B044124B2A5FA00780424 /* LineGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineGraphView.swift; sourceTree = "<group>"; };
 		225F69B324AD8CE70012B5DB /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		225F69B624AD8EF50012B5DB /* EntryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryList.swift; sourceTree = "<group>"; };
@@ -382,6 +384,7 @@
 			isa = PBXGroup;
 			children = (
 				22928AC424A4207E00DC9EC5 /* FilterStack.swift */,
+				224B3AFD24DE28C300B1C943 /* FilterModal.swift */,
 				2264B82924A437F800FA4F08 /* DescriptionButton.swift */,
 				227C613624A3F557006F8168 /* FilterButton.swift */,
 				22928AC824A429F700DC9EC5 /* ProjectButton.swift */,
@@ -854,6 +857,7 @@
 				221C3C5524A93C0F006995C5 /* GetUserData.swift in Sources */,
 				22B0783B24B15B2E00256EB8 /* ReloadPolicy.swift in Sources */,
 				222D996324BB803800F66E0F /* Report.swift in Sources */,
+				224B3AFE24DE28C300B1C943 /* FilterModal.swift in Sources */,
 				C6C18D7D244BE891000345D5 /* Constants.swift in Sources */,
 				22928AC524A4207E00DC9EC5 /* FilterStack.swift in Sources */,
 				C61D2658249BE1990056C9FA /* StatHelpers.swift in Sources */,
