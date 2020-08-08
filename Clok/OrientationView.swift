@@ -20,13 +20,13 @@ struct OrientationView: View {
         GeometryReader { geo in
             switch geo.orientation() {
             case .landscape:
-                CustomTabView(size: geo.size)
+                HStack(spacing: 0) { ContentGroupView(geo: geo) }
                     .onAppear {
                         bounds.mode = .landscape
                         bounds.insets = geo.safeAreaInsets
                     }
             case .portrait:
-                CustomTabView(size: geo.size)
+                VStack(spacing: 0) { ContentGroupView(geo: geo) }
                     .onAppear {
                         bounds.mode = .portrait
                         bounds.insets = geo.safeAreaInsets

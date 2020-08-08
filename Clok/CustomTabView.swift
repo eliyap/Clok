@@ -15,12 +15,12 @@ struct CustomTabView: View {
         case bar
         case settings
     }
-    let size: CGSize
+    
     @EnvironmentObject private var settings: Settings
     @EnvironmentObject private var bounds: Bounds
     
     var body: some View {
-        if bounds.mode == .landscape {
+        if notchLandscape {
             HStack(spacing: 0) {
                 Views
                 VStack(spacing: 0) { Buttons }
@@ -37,20 +37,15 @@ struct CustomTabView: View {
         /// group prevents warning about underlying types
         Group {
             switch settings.tab {
-            case .spiral:
-                Text("Daily View Planned")
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-            case .bar:
-                BarStack()
-                    .frame(width: graphSize(size), height: graphSize(size))
+            case .settings:
+                SettingsView()
+            default:
                 TabView{
                     EntryList()
                     StatView()
                 }
                 .tabViewStyle(PageTabViewStyle())
                 .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
-            case .settings:
-                SettingsView()
             }
         }
     }
@@ -70,24 +65,15 @@ struct CustomTabView: View {
                 .foregroundColor(settings.tab == select ? .primary : .secondary)
                 .font(Font.body.weight(settings.tab == select ? .bold : .regular))
                 .frame(
-                    maxWidth: bounds.mode == .landscape ? nil : .infinity,
-                    maxHeight: bounds.mode == .landscape ? .infinity : nil
+                    maxWidth: notchLandscape ? nil : .infinity,
+                    maxHeight: notchLandscape ? .infinity : nil
                 )
                 .padding(buttonPadding)
         }
     }
     
-    private func graphSize(_ size: CGSize) -> CGFloat {
-        if bounds.mode == .landscape {
-            /// take full height in landscape mode, on every device
-            return size.height
-        } else  {
-            /// in portrait, restrict to 60% height
-            /// prevent tabview getting crushed when device aspect ratio is close to 1
-            return min(
-                size.width,
-                size.height * 0.6
-            )
-        }
+    /// device has a notch and is in landscape mode
+    var notchLandscape: Bool {
+        bounds.notch && bounds.mode == .landscape
     }
 }
