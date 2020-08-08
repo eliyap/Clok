@@ -12,7 +12,6 @@
 		22027DD424AFF92000C0BA90 /* Fullscreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22027DD324AFF92000C0BA90 /* Fullscreen.swift */; };
 		22027DD624AFFA6500C0BA90 /* Bounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22027DD524AFFA6500C0BA90 /* Bounds.swift */; };
 		2207B22024B954F40006748A /* BarStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2207B21F24B954F40006748A /* BarStack.swift */; };
-		2207B22224B958F00006748A /* Mask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2207B22124B958F00006748A /* Mask.swift */; };
 		221810DE24B00FB900B63ECA /* EntryTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221810DD24B00FB900B63ECA /* EntryTab.swift */; };
 		221810E024B0158500B63ECA /* Get24hourPref.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221810DF24B0158500B63ECA /* Get24hourPref.swift */; };
 		221810E424B01AAC00B63ECA /* InAndOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221810E324B01AAC00B63ECA /* InAndOut.swift */; };
@@ -165,7 +164,6 @@
 		22027DD324AFF92000C0BA90 /* Fullscreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fullscreen.swift; sourceTree = "<group>"; };
 		22027DD524AFFA6500C0BA90 /* Bounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bounds.swift; sourceTree = "<group>"; };
 		2207B21F24B954F40006748A /* BarStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarStack.swift; sourceTree = "<group>"; };
-		2207B22124B958F00006748A /* Mask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mask.swift; sourceTree = "<group>"; };
 		221810DD24B00FB900B63ECA /* EntryTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryTab.swift; sourceTree = "<group>"; };
 		221810DF24B0158500B63ECA /* Get24hourPref.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Get24hourPref.swift; sourceTree = "<group>"; };
 		221810E324B01AAC00B63ECA /* InAndOut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAndOut.swift; sourceTree = "<group>"; };
@@ -478,7 +476,6 @@
 		C688BFC624A18BA00077CECF /* Misc */ = {
 			isa = PBXGroup;
 			children = (
-				2207B22124B958F00006748A /* Mask.swift */,
 				22885DAF24DA1C9600A56FE3 /* Divisions.swift */,
 				22351AFF24D37F3C00E14DBC /* Run.swift */,
 				C6B0FFA1246F52B600DED011 /* Extensions */,
@@ -796,7 +793,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				221810DE24B00FB900B63ECA /* EntryTab.swift in Sources */,
-				2207B22224B958F00006748A /* Mask.swift in Sources */,
 				22905B8824DB449400D5AC09 /* LinedBackground.swift in Sources */,
 				2264CB3B24AD344F00ECBF2B /* TokenFields.swift in Sources */,
 				22232B8B24A9532000F3C378 /* LoginView.swift in Sources */,

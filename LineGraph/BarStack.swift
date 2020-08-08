@@ -64,10 +64,7 @@ struct BarStack: View {
     var body: some View {
         GeometryReader { geo in
             ZStack(alignment: .bottomLeading) {
-                Mask {
-                    DayScroll(size: geo.size)
-                }
-                
+                DayScroll(size: geo.size)
             
                 HStack {
                     FilterStack()
@@ -102,13 +99,6 @@ struct BarStack: View {
         /// keep it square
         .aspectRatio(1, contentMode: bounds.notch ? .fit : .fill)
         .onAppear(perform: jumpCoreDate)
-    }
-    
-    var days: Int {
-        switch model.mode {
-        case .calendar: return 3
-        case .graph: return 1
-        }
     }
     
     func DayScroll(size: CGSize) -> some View {
