@@ -31,7 +31,9 @@ struct DayStrip: View {
                 HeaderLabel
                     .offset(y: max(
                         bounds.insets.top - geo.frame(in: .global).minY,
-                        model.mode == .graph ? .zero : dayHeight / 2
+                        model.mode == .graph
+                            ? .zero
+                            : dayHeight / 2
                     ))
                     .zIndex(1) /// ensure this is drawn first, but remains on top
                 VStack(spacing: .zero) {

@@ -48,6 +48,8 @@ struct LineGraph: View {
         .drawingGroup()
     }
     
+    /// filter & sort time entries for this day
+    /// the day begins at provided `midnight`
     func entries(midnight: Date) -> [TimeEntry] {
         switch model.mode {
         case .calendar: return data.entries
