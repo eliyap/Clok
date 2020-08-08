@@ -26,7 +26,8 @@ struct LinedBackground: View {
                 Divider()
             }
             /// midnight divider is red
-            Rectangle().foregroundColor(color)
+            Rectangle()
+                .foregroundColor(color)
             Rectangle()
                 .frame(height: 1)
                 .foregroundColor(.red)
