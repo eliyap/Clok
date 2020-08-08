@@ -15,14 +15,14 @@ fileprivate let labelPadding = CGFloat(3)
 fileprivate let labelOffset = CGFloat(-10)
 
 struct TimeIndicator: View {
+    
+    @EnvironmentObject var model: GraphModel
+    
     let divisions: Int
-    /// repeat for number of days
-    let days: Int
     let tf = DateFormatter()
     
-    init(divisions: Int, days: Int = 3) {
+    init(divisions: Int) {
         self.divisions = divisions
-        self.days = days
         /// show hour in preferred way
         if divisions > 24 { /// minute resolution
             tf.setLocalizedDateFormatFromTemplate(is24hour() ? "HH:mm" : "h:mm a")
@@ -33,9 +33,13 @@ struct TimeIndicator: View {
     }
     
     var body: some View {
+        CalendarTime
+    }
+    
+    var CalendarTime: some View {
         HStack(spacing: .zero) {
             VStack(alignment: .trailing) {
-                ForEach(0..<days, id: \.self) { _ in
+                ForEach(0..<Int(model.days)) { _ in
                     /// midnight is specially bolded
                     Text("\(tf.string(from: Calendar.current.startOfDay(for: Date())))")
                         .bold()
