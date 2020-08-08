@@ -71,8 +71,6 @@ struct BarStack: View {
                         .fullScreenCover(isPresented: $filtering) {
                             FilterModal()
                         }
-                    FilterStack()
-                        .padding(buttonPadding)
                     Image(systemName: "chevron.left")
                         .modifier(ButtonGlyph())
                         .onTapGesture {
@@ -98,6 +96,7 @@ struct BarStack: View {
                             }
                         }
                 }
+                .padding(buttonPadding)
             }
         }
         /// keep it square

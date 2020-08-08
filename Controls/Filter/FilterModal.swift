@@ -13,14 +13,28 @@ struct FilterModal: View {
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
-        VStack {
-            Text("This is a modal view")
+        NavigationView {
+            List {
+                Section(header: Text("Include")) {
+                    EmptyView()
+                }
+                Section(header: Text("Exclude")) {
+                    EmptyView()
+                }
+            }
+            .listStyle(InsetGroupedListStyle())
+            .navigationBarItems(
+                leading: Text("Filter Entries").bold().font(.title),
+                trailing: DoneButton
+            )
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.red)
-        .edgesIgnoringSafeArea(.all)
-        .onTapGesture {
+    }
+    
+    var DoneButton: some View {
+        Button {
             presentationMode.wrappedValue.dismiss()
+        } label: {
+            Text("Done").bold()
         }
     }
 }
