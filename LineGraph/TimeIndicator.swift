@@ -33,31 +33,57 @@ struct TimeIndicator: View {
     }
     
     var body: some View {
-        CalendarTime
-    }
-    
-    var CalendarTime: some View {
         HStack(spacing: .zero) {
-            VStack(alignment: .trailing) {
-                ForEach(0..<Int(model.days)) { _ in
-                    /// midnight is specially bolded
-                    Text("\(tf.string(from: Calendar.current.startOfDay(for: Date())))")
-                        .bold()
-                        .font(.footnote)
-                        .padding([.leading, .trailing], labelPadding)
-                        .offset(y: labelOffset)
-                    Spacer()
-                    ForEach(1..<divisions, id: \.self) { idx in
-                        /// format the hour according to user preference
-                        Text("\(tf.string(from: Calendar.current.startOfDay(for: Date()) + Double(idx * 86400/divisions)))")
-                            .font(.footnote)
-                            .padding([.leading, .trailing], labelPadding)
-                            .offset(y: labelOffset)
-                        Spacer()
-                    }
-                }
+            switch model.mode {
+            case .calendar:
+                CalendarTime
+            default:
+                GraphTime
             }
             Divider()
         }
+    }
+    
+    /// time indicators shown in `.calendar` mode
+    /// closely mimics Google Calendar or other generic calendar app
+    var CalendarTime: some View {
+        VStack(alignment: .trailing) {
+            ForEach(0..<Int(model.days)) { _ in
+                ForEach(0..<divisions, id: \.self) {
+                    TimeLabel(idx: $0)
+                    Spacer()
+                }
+            }
+        }
+    }
+    
+    /// format time according to user preference
+    private func TimeLabel(idx: Int) -> some View {
+        let interval = TimeInterval(idx * 86400/divisions)
+        let midnight = Calendar.current.startOfDay(for: Date())
+        var text = Text("\(tf.string(from: midnight + interval))")
+            .font(.footnote)
+        /// midnight is specially bolded
+        if interval.remainder(dividingBy: dayLength) == 0 {
+            text = text.bold()
+        }
+        return text
+            .padding([.leading, .trailing], labelPadding)
+            .offset(y: labelOffset)
+    }
+    
+    /// time indicators shown in `.graph` mode
+    var GraphTime: some View {
+        VStack(alignment: .trailing) {
+            ForEach((0..<divisions).reversed(), id: \.self) {
+                Spacer()
+                GraphLabel(idx: $0)
+            }
+        }
+    }
+    
+    private func GraphLabel(idx: Int) -> some View {
+        Text("\(idx)")
+            .offset(y: -labelOffset)
     }
 }
