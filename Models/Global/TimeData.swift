@@ -14,11 +14,7 @@ final class TimeData: ObservableObject {
     @Published var entries = [TimeEntry]()
     
     // the Project and Descriptions the user is filtering for
-    @Published var terms = SearchTerm(
-        project: StaticProject.any,
-        description: "",
-        byDescription: .any
-    )
+    @Published var terms = SearchTerms()
     
     // true when user is changing the search terms
     @Published var searching = false
