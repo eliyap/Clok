@@ -21,19 +21,19 @@ struct CustomTabView: View {
     
     var body: some View {
         if bounds.mode == .portrait {
-            VStack {
+            VStack(spacing: 0) {
                 VStack(spacing: 0) { TabContents }
                 HStack(spacing: 0) { TabButtons }
             }
         }
         else if bounds.device == .iPad && bounds.mode == .landscape {
-            VStack {
+            VStack(spacing: 0) {
                 HStack(spacing: 0) { TabContents }
                 HStack(spacing: 0) { TabButtons }
             }
         }
         else if bounds.device == .iPhone && bounds.mode == .landscape {
-            HStack {
+            HStack(spacing: 0) {
                 HStack(spacing: 0) { TabContents }
                 VStack(spacing: 0) { TabButtons }
             }
