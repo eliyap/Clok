@@ -23,40 +23,8 @@ struct FilterView: View {
             SelectButtons
             List {
                 Section {
-                    /** Note:
-                     I tried arranging these as composable functions, but it broke the UI something awful
-                     I think that keeping the scripts close to the section is neccessary
-                     */
-                    ForEach(data.terms.projects, id: \.wrappedID) { project in
-                        HStack {
-                            Image(systemName: "largecircle.fill.circle")
-                                .foregroundColor(project.wrappedColor)
-                            Text("\(project.wrappedName)")
-                            /// for some reason (possible dragon drop), `onMove` does not register on the iPhone
-                            if bounds.device != .iPhone {
-                                Spacer()
-                                Image(systemName: "line.horizontal.3")
-                            }
-                        }
-                        .onTapGesture {
-                            exclude(project)
-                        }
-                    }
-                    .onMove(perform: {
-                        data.terms.projects.move(fromOffsets: $0, toOffset: $1)
-                    })
-                    ForEach(excluded, id: \.wrappedID) { project in
-                        HStack {
-                            Image(systemName: "circle")
-                                .foregroundColor(project.wrappedColor)
-                            Text("\(project.wrappedName)")
-                        }
-                        .onTapGesture {
-                            withAnimation {
-                                data.terms.projects.append(project)
-                            }
-                        }
-                    }
+                    Included
+                    Excluded
                 }
             }
             .listStyle(GroupedListStyle())
@@ -68,6 +36,42 @@ struct FilterView: View {
     func exclude(_ project: ProjectLike) -> Void {
         withAnimation {
             _ = data.terms.projects.remove(at: data.terms.projects.firstIndex(where: {$0.wrappedID == project.wrappedID})!)
+        }
+    }
+    
+    var Included: some View {
+        ForEach(data.terms.projects, id: \.wrappedID) { project in
+            HStack {
+                Image(systemName: "largecircle.fill.circle")
+                    .foregroundColor(project.wrappedColor)
+                Text("\(project.wrappedName)")
+                /// for some reason (possible dragon drop), `onMove` does not register on the iPhone
+                if bounds.device != .iPhone {
+                    Spacer()
+                    Image(systemName: "line.horizontal.3")
+                }
+            }
+            .onTapGesture {
+                exclude(project)
+            }
+        }
+        .onMove(perform: {
+            data.terms.projects.move(fromOffsets: $0, toOffset: $1)
+        })
+    }
+    
+    var Excluded: some View {
+        ForEach(excluded, id: \.wrappedID) { project in
+            HStack {
+                Image(systemName: "circle")
+                    .foregroundColor(project.wrappedColor)
+                Text("\(project.wrappedName)")
+            }
+            .onTapGesture {
+                withAnimation {
+                    data.terms.projects.append(project)
+                }
+            }
         }
     }
     
