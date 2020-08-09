@@ -41,8 +41,8 @@ struct ContentView: View {
                 ?? loadProjects(context: moc)
                 ?? []
                 
-                /// populate include list with all projects
-                data.terms.projects = data.projects
+                /// populate include list with all projects, and `noProject`
+                data.terms.projects = data.projects + [StaticProject.noProject]
             }
         }
     }
