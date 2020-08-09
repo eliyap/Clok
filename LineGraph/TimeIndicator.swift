@@ -21,16 +21,6 @@ struct TimeIndicator: View {
     let divisions: Int
     let tf = DateFormatter()
     
-    init(divisions: Int) {
-        self.divisions = divisions
-        /// show hour in preferred way
-        if divisions > 24 { /// minute resolution
-            tf.setLocalizedDateFormatFromTemplate(is24hour() ? "HH:mm" : "h:mm a")
-        } else {
-            tf.setLocalizedDateFormatFromTemplate(is24hour() ? "HH" : "h a")
-        }
-    }
-    
     var body: some View {
         HStack(spacing: .zero) {
             switch model.mode {
@@ -62,6 +52,12 @@ struct TimeIndicator: View {
     /// format time according to user preference
     private func TimeLabel(interval: TimeInterval) -> some View {
         let midnight = Calendar.current.startOfDay(for: Date())
+        /// show time according to 24 hour format
+        if divisions > 24 { /// enable minute resolution
+            tf.setLocalizedDateFormatFromTemplate(is24hour() ? "HH:mm" : "h:mm a")
+        } else {
+            tf.setLocalizedDateFormatFromTemplate(is24hour() ? "HH" : "h a")
+        }
         var text = Text("\(tf.string(from: midnight + interval))")
             .font(.footnote)
         /// midnight is specially bolded
