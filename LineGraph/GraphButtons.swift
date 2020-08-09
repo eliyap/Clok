@@ -56,7 +56,7 @@ struct GraphButtons: View {
     }
     
     private var ZoomInButton: some View {
-        Image(systemName: "arrow.up.left.and.arrow.down.right")
+        Image(systemName: "plus.magnifyingglass")
             .modifier(ButtonGlyph())
             .onTapGesture {
                 withAnimation {
@@ -69,7 +69,7 @@ struct GraphButtons: View {
     }
     
     private var ZoomOutButton: some View {
-        Image(systemName: "arrow.down.right.and.arrow.up.left")
+        Image(systemName: "minus.magnifyingglass")
             .modifier(ButtonGlyph())
             .onTapGesture {
                 withAnimation {
