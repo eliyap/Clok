@@ -52,7 +52,7 @@ struct LineGraph: View {
         case .graph: return data.entries
             .filter{$0.end > midnight - model.castBack}
             .filter{$0.start < midnight + model.castFwrd}
-            .sorted{$0.wrappedProject.wrappedName < $1.wrappedProject.wrappedName}
+            .sorted{data.terms.projectSort(p0: $0.wrappedProject, p1: $1.wrappedProject    )}
         }
     }
     
