@@ -20,15 +20,34 @@ struct CustomTabView: View {
     @EnvironmentObject private var bounds: Bounds
     
     var body: some View {
-        if notchLandscape {
-            HStack(spacing: 0) {
-                Views
-                VStack(spacing: 0) { Buttons }
+        if bounds.mode == .portrait {
+            VStack {
+                VStack(spacing: 0) {
+                    Views
+                }
+                HStack(spacing: 0) {
+                    Buttons
+                }
             }
-        } else {
-            VStack(spacing: 0) {
-                Views
-                HStack(spacing: 0) { Buttons }
+        }
+        else if bounds.device == .iPad && bounds.mode == .landscape {
+            VStack {
+                HStack(spacing: 0) {
+                    Views
+                }
+                HStack(spacing: 0) {
+                    Buttons
+                }
+            }
+        }
+        else if bounds.device == .iPhone && bounds.mode == .landscape {
+            HStack {
+                HStack(spacing: 0) {
+                    Views
+                }
+                VStack(spacing: 0) {
+                    Buttons
+                }
             }
         }
     }
@@ -37,15 +56,13 @@ struct CustomTabView: View {
         /// group prevents warning about underlying types
         Group {
             switch settings.tab {
+            case .spiral:
+                Text("Daily View Planned")
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+            case .bar:
+                BarStack()
             case .settings:
                 SettingsView()
-            default:
-                TabView{
-                    EntryList()
-                    StatView()
-                }
-                .tabViewStyle(PageTabViewStyle())
-                .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
             }
         }
     }
@@ -58,22 +75,18 @@ struct CustomTabView: View {
         }
     }
     
-    private let buttonPadding = CGFloat(8)
+    fileprivate let buttonPadding = CGFloat(8)
     func TabButton(select: Settings.Tabs, glyph: String) -> some View {
-        Button { settings.tab = select } label: {
+        let iPhoneLandscape = bounds.device == .iPhone && bounds.mode == .landscape
+        return Button { settings.tab = select } label: {
             Label("", systemImage: glyph)
                 .foregroundColor(settings.tab == select ? .primary : .secondary)
                 .font(Font.body.weight(settings.tab == select ? .bold : .regular))
                 .frame(
-                    maxWidth: notchLandscape ? nil : .infinity,
-                    maxHeight: notchLandscape ? .infinity : nil
+                    maxWidth: iPhoneLandscape ? nil : .infinity,
+                    maxHeight: iPhoneLandscape ? .infinity : nil
                 )
                 .padding(buttonPadding)
         }
-    }
-    
-    /// device has a notch and is in landscape mode
-    var notchLandscape: Bool {
-        bounds.notch && bounds.mode == .landscape
     }
 }
