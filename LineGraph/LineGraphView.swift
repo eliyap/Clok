@@ -48,11 +48,12 @@ struct LineGraph: View {
         case .calendar: return data.entries
             .filter{$0.end > midnight - model.castBack}
             .filter{$0.start < midnight + model.castFwrd}
-            .sorted{$0.start < $1.start}
+            .sorted{$0.start < $1.start} /// chronological sort
         case .graph: return data.entries
             .filter{$0.end > midnight - model.castBack}
             .filter{$0.start < midnight + model.castFwrd}
-            .sorted{data.terms.projectSort(p0: $0.wrappedProject, p1: $1.wrappedProject    )}
+            /// use Search sort, which prioritizes selected Projects
+            .sorted{data.terms.projectSort(p0: $0.wrappedProject, p1: $1.wrappedProject)}
         }
     }
     
