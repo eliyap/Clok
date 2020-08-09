@@ -13,7 +13,7 @@ struct FilterView: View {
     @EnvironmentObject var data: TimeData
     
     var body: some View {
-        List {
+        ScrollView {
             Text("Filter")
                 .bold()
                 .font(.title)

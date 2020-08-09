@@ -23,26 +23,25 @@ struct EntryList: View {
     
     var body: some View {
         ScrollView {
-            HStack {
+            VStack(alignment: .leading) {
                 /// adjust start date to match
                 Text("\(df.string(from: zero.start + dayLength)) – \(df.string(from: zero.end))")
                     .font(Font.title.weight(.bold))
-                Spacer()
-            }
-            .padding(listPadding)
-            ForEach(Days(), id: \.id) { day in
-                Section(header: Header(day)) {
-                    VStack(spacing: 0) {
-                        ForEach(day.entries, id: \.id) { entry in
-                            EntryView(entry: entry)
-                                .id(entry.id)
+                    .padding(listPadding)
+                ForEach(Days(), id: \.id) { day in
+                    Section(header: Header(day)) {
+                        VStack(spacing: 0) {
+                            ForEach(day.entries, id: \.id) { entry in
+                                EntryView(entry: entry)
+                                    .id(entry.id)
+                            }
                         }
                     }
                 }
-            }
-            /// fuuuuuuutuuuuure
-            if zero.start >= Calendar.current.startOfDay(for: Date()) {
-                Text("What does the future hold?")
+                /// fuuuuuuutuuuuure
+                if zero.start >= Calendar.current.startOfDay(for: Date()) {
+                    Text("What does the future hold?")
+                }
             }
         }
         .allowsHitTesting(false)
@@ -61,12 +60,9 @@ struct EntryList: View {
             ((currentYear == zeroYear) ? "" : "\(zeroYear)")
         ].joined(separator: " ")
         
-        return VStack {
-            HStack {
-                Text(dateString)
-                    .font(Font.title2.weight(.bold))
-                Spacer()
-            }
+        return VStack(alignment: .leading) {
+            Text(dateString)
+                .font(Font.title2.weight(.bold))
             Divider()
         }
         .padding([.leading, .trailing], listPadding)
