@@ -11,7 +11,7 @@
 		22027DD224AFF7ED00C0BA90 /* TopFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22027DD124AFF7ED00C0BA90 /* TopFunctions.swift */; };
 		22027DD424AFF92000C0BA90 /* Fullscreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22027DD324AFF92000C0BA90 /* Fullscreen.swift */; };
 		22027DD624AFFA6500C0BA90 /* Bounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22027DD524AFFA6500C0BA90 /* Bounds.swift */; };
-		2207B22024B954F40006748A /* BarStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2207B21F24B954F40006748A /* BarStack.swift */; };
+		2207B22024B954F40006748A /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2207B21F24B954F40006748A /* GraphView.swift */; };
 		221810DE24B00FB900B63ECA /* EntryTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221810DD24B00FB900B63ECA /* EntryTab.swift */; };
 		221810E024B0158500B63ECA /* Get24hourPref.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221810DF24B0158500B63ECA /* Get24hourPref.swift */; };
 		221810E424B01AAC00B63ECA /* InAndOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221810E324B01AAC00B63ECA /* InAndOut.swift */; };
@@ -166,7 +166,7 @@
 		22027DD124AFF7ED00C0BA90 /* TopFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopFunctions.swift; sourceTree = "<group>"; };
 		22027DD324AFF92000C0BA90 /* Fullscreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fullscreen.swift; sourceTree = "<group>"; };
 		22027DD524AFFA6500C0BA90 /* Bounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bounds.swift; sourceTree = "<group>"; };
-		2207B21F24B954F40006748A /* BarStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarStack.swift; sourceTree = "<group>"; };
+		2207B21F24B954F40006748A /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		221810DD24B00FB900B63ECA /* EntryTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryTab.swift; sourceTree = "<group>"; };
 		221810DF24B0158500B63ECA /* Get24hourPref.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Get24hourPref.swift; sourceTree = "<group>"; };
 		221810E324B01AAC00B63ECA /* InAndOut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAndOut.swift; sourceTree = "<group>"; };

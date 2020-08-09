@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct BarStack: View {
+struct GraphView: View {
     
     @EnvironmentObject private var bounds: Bounds
     @EnvironmentObject private var zero: ZeroDate
@@ -61,8 +61,6 @@ struct BarStack: View {
                 .padding(buttonPadding)
             }
         }
-        /// keep it square
-        .aspectRatio(1, contentMode: bounds.notch ? .fit : .fill)
         .onAppear(perform: jumpCoreDate)
     }
     
