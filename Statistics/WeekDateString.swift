@@ -10,24 +10,18 @@ import SwiftUI
 
 struct WeekDateString: View {
     @EnvironmentObject private var zero: ZeroDate
-    @State private var dateString = ""
     private var df = DateFormatter()
-    
-    var body: some View {
-        HStack{
-            Text(dateString)
-                .font(.headline)
-                .bold()
-                .onReceive(zero.$start, perform: { date in
-                /// set labels programatically so that ellipsis animation does NOT play when changing date
-                dateString = "\(df.string(from: date)) – \(df.string(from: date + weekLength))"
-            })
-            Spacer()
-        }
-        
-    }
     
     init() {
         df.setLocalizedDateFormatFromTemplate("MMMdd")
+    }
+    
+    var body: some View {
+        HStack{
+            Text("\(df.string(from: zero.start)) – \(df.string(from: zero.end - 1))")
+                .font(.headline)
+                .bold()
+            Spacer()
+        }
     }
 }
