@@ -22,32 +22,20 @@ struct CustomTabView: View {
     var body: some View {
         if bounds.mode == .portrait {
             VStack {
-                VStack(spacing: 0) {
-                    TabContents
-                }
-                HStack(spacing: 0) {
-                    TabButtons
-                }
+                VStack(spacing: 0) { TabContents }
+                HStack(spacing: 0) { TabButtons }
             }
         }
         else if bounds.device == .iPad && bounds.mode == .landscape {
             VStack {
-                HStack(spacing: 0) {
-                    TabContents
-                }
-                HStack(spacing: 0) {
-                    TabButtons
-                }
+                HStack(spacing: 0) { TabContents }
+                HStack(spacing: 0) { TabButtons }
             }
         }
         else if bounds.device == .iPhone && bounds.mode == .landscape {
             HStack {
-                HStack(spacing: 0) {
-                    TabContents
-                }
-                VStack(spacing: 0) {
-                    TabButtons
-                }
+                HStack(spacing: 0) { TabContents }
+                VStack(spacing: 0) { TabButtons }
             }
         }
     }
