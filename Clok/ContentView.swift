@@ -37,7 +37,12 @@ struct ContentView: View {
                 data.projects = fetchProjects(
                     user: user,
                     context: moc
-                ) ?? loadProjects(context: moc) ?? []
+                )
+                ?? loadProjects(context: moc)
+                ?? []
+                
+                /// populate include list with all projects
+                data.terms.projects = data.projects
             }
         }
     }
