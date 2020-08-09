@@ -18,7 +18,7 @@ struct DayStrip: View {
     @EnvironmentObject var model: GraphModel
     let entries: [TimeEntry]
     let midnight: Date
-    let terms: SearchTerm
+    let terms: SearchTerms
     let dayHeight: CGFloat
     
     /// determines what proportion of available horizontal space to consume

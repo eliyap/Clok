@@ -28,7 +28,7 @@ class StaticProject: ProjectLike {
     
     func matches(_ other: ProjectLike) -> Bool {
         /// Any Project matches all other projects
-        self == other || .any == other  || self == StaticProject.any
+        self == other || StaticProject.any == other  || self == StaticProject.any
     }
     
     static func < (lhs: StaticProject, rhs: ProjectLike) -> Bool {

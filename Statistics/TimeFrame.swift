@@ -25,10 +25,10 @@ struct WeekTimeFrame {
     /**
      filter time entries down to between date range
      */
-    init (start start_: Date, entries entries_: [TimeEntry], terms: SearchTerm) {
+    init (start start_: Date, entries entries_: [TimeEntry], terms: SearchTerms) {
         frame = TimeFrame(start: start_, end: start_ + weekLength)
         entries = entries_
-            .matching(terms)
+            .matching(terms: terms)
             .within(interval: weekLength, of: start_)
         df.timeStyle = .short
     }
