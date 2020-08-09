@@ -1,14 +1,14 @@
 //
-//  GraphButtons.swift
+//  DPad.swift
 //  Clok
 //
-//  Created by Secret Asian Man Dev on 8/8/20.
+//  Created by Secret Asian Man Dev on 9/8/20.
 //  Copyright © 2020 Secret Asian Man 3. All rights reserved.
 //
 
 import SwiftUI
 
-struct GraphButtons: View {
+struct DPad: View {
     
     @EnvironmentObject private var zero: ZeroDate
     @EnvironmentObject var model: GraphModel
@@ -59,17 +59,6 @@ struct GraphButtons: View {
             x: +GraphButton.size,
             y: -GraphButton.size
         )
-        .padding(buttonPadding)
-            
-
-    }
-    var thing: some View {
-        Image(systemName: "star")
-            .modifier(ButtonGlyph())
-            .onTapGesture {
-                withAnimation(.linear(duration: 0.4)) {
-                    model.mode.toggle()
-                }
-            }
+        
     }
 }
