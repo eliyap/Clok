@@ -21,6 +21,10 @@ struct FilterView: View {
                 .font(.title)
             List {
                 Section {
+                    /** Note:
+                     I tried arranging these as composable functions, but it broke the UI something awful
+                     I think that keeping the scripts close to the section is neccessary
+                     */
                     ForEach(data.terms.projects, id: \.wrappedID) { project in
                         HStack {
                             Image(systemName: "largecircle.fill.circle")
