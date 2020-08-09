@@ -14,23 +14,14 @@ struct GraphButtons: View {
     @EnvironmentObject var model: GraphModel
     
     var body: some View {
-        HStack {
-            Image(systemName: "chevron.left")
-                .modifier(ButtonGlyph())
-                .onTapGesture {
-                    zero.dateChange = .back
-                    withAnimation {
-                        zero.start -= weekLength
-                    }
-                }
-            Image(systemName: "chevron.right")
-                .modifier(ButtonGlyph())
-                .onTapGesture {
-                    zero.dateChange = .fwrd
-                    withAnimation {
-                        zero.start += weekLength
-                    }
-                }
+        HStack(alignment: .center, spacing: .zero) {
+            BackButton
+            VStack(spacing: .zero) {
+                BackButton
+                BackButton
+                BackButton
+            }
+            FwrdButton
             Image(systemName: "star")
                 .modifier(ButtonGlyph())
                 .onTapGesture {
@@ -40,5 +31,27 @@ struct GraphButtons: View {
                 }
         }
         .padding(buttonPadding)
+    }
+    
+    private var BackButton: some View {
+        Image(systemName: "chevron.left")
+            .modifier(ButtonGlyph())
+            .onTapGesture {
+                zero.dateChange = .back
+                withAnimation {
+                    zero.start -= weekLength
+                }
+            }
+    }
+    
+    private var FwrdButton: some View {
+        Image(systemName: "chevron.right")
+            .modifier(ButtonGlyph())
+            .onTapGesture {
+                zero.dateChange = .fwrd
+                withAnimation {
+                    zero.start += weekLength
+                }
+            }
     }
 }
