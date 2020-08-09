@@ -11,6 +11,7 @@ import SwiftUI
 struct FilterView: View {
     
     @EnvironmentObject var data: TimeData
+    @EnvironmentObject var bounds: Bounds
     
     let listPadding: CGFloat
     
@@ -19,6 +20,7 @@ struct FilterView: View {
             Text("Filter")
                 .bold()
                 .font(.title)
+            SelectButtons
             List {
                 Section {
                     /** Note:
@@ -30,8 +32,11 @@ struct FilterView: View {
                             Image(systemName: "largecircle.fill.circle")
                                 .foregroundColor(project.wrappedColor)
                             Text("\(project.wrappedName)")
-                            Spacer()
-                            Image(systemName: "line.horizontal.3")
+                            /// for some reason (possible dragon drop), `onMove` does not register on the iPhone
+                            if bounds.device != .iPhone {
+                                Spacer()
+                                Image(systemName: "line.horizontal.3")
+                            }
                         }
                         .onTapGesture {
                             exclude(project)
@@ -75,5 +80,21 @@ struct FilterView: View {
             !data.terms.projects.contains(where: {project.wrappedID == $0.wrappedID})
         }
         .sorted(by: {$0.wrappedName < $1.wrappedName})
+    }
+    
+    var SelectButtons: some View {
+        HStack {
+            Button {
+                data.terms.projects = allProjects
+            } label: {
+                Text("Select All")
+            }
+            Spacer()
+            Button {
+                data.terms.projects.removeAll()
+            } label: {
+                Text("Deselect All")
+            }
+        }
     }
 }
