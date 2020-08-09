@@ -53,7 +53,7 @@
 		228B100424AEAE3A0026AD4B /* WeekDateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228B100324AEAE3A0026AD4B /* WeekDateButton.swift */; };
 		228B100624AECDFF0026AD4B /* EntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228B100524AECDFF0026AD4B /* EntryView.swift */; };
 		22905B8824DB449400D5AC09 /* LinedBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22905B8724DB449400D5AC09 /* LinedBackground.swift */; };
-		22928AC724A423AA00DC9EC5 /* WeekButtonGlyph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22928AC624A423AA00DC9EC5 /* WeekButtonGlyph.swift */; };
+		22928AC724A423AA00DC9EC5 /* ButtonGlyph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22928AC624A423AA00DC9EC5 /* ButtonGlyph.swift */; };
 		2296F15924A96FB800AF38B5 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2296F15824A96FB800AF38B5 /* Icon.png */; };
 		2296F15B24A994A400AF38B5 /* FormRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2296F15A24A994A400AF38B5 /* FormRequest.swift */; };
 		22AD5F7D24B1467D006EF7FB /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22AD5F7C24B1467D006EF7FB /* WidgetKit.framework */; };
@@ -203,7 +203,7 @@
 		228B100324AEAE3A0026AD4B /* WeekDateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDateButton.swift; sourceTree = "<group>"; };
 		228B100524AECDFF0026AD4B /* EntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryView.swift; sourceTree = "<group>"; };
 		22905B8724DB449400D5AC09 /* LinedBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinedBackground.swift; sourceTree = "<group>"; };
-		22928AC624A423AA00DC9EC5 /* WeekButtonGlyph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekButtonGlyph.swift; sourceTree = "<group>"; };
+		22928AC624A423AA00DC9EC5 /* ButtonGlyph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonGlyph.swift; sourceTree = "<group>"; };
 		2296F15824A96FB800AF38B5 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = Icon/Icon.png; sourceTree = SOURCE_ROOT; };
 		2296F15A24A994A400AF38B5 /* FormRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormRequest.swift; sourceTree = "<group>"; };
 		22AD5F7A24B1467D006EF7FB /* ClokWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ClokWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -472,7 +472,7 @@
 				22027DCD24AFF5D000C0BA90 /* LoginScreen */,
 				221D963624A90BF100C84F57 /* Keychain */,
 				C6D448ED248471250072E7D4 /* Activity */,
-				22928AC624A423AA00DC9EC5 /* WeekButtonGlyph.swift */,
+				22928AC624A423AA00DC9EC5 /* ButtonGlyph.swift */,
 				221D964324A9207600C84F57 /* SearchContrastScreen.swift */,
 				C688BFC924A18BF00077CECF /* RaisedShape.swift */,
 				22027DD324AFF92000C0BA90 /* Fullscreen.swift */,
@@ -850,7 +850,7 @@
 				22283DA024DF9959005AC0F3 /* BarTabs.swift in Sources */,
 				C688BFCA24A18BF00077CECF /* RaisedShape.swift in Sources */,
 				222305AE24AE807000711031 /* CustomTabView.swift in Sources */,
-				22928AC724A423AA00DC9EC5 /* WeekButtonGlyph.swift in Sources */,
+				22928AC724A423AA00DC9EC5 /* ButtonGlyph.swift in Sources */,
 				22885DB224DA1E2E00A56FE3 /* TimeIndicator.swift in Sources */,
 				C6AAB3F2249F061D00DFBA36 /* TimeData.swift in Sources */,
 				C615CD57245F332300D62B87 /* FetchDetailedReport.swift in Sources */,

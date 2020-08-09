@@ -13,15 +13,6 @@ import SwiftUI
 let glyphFrameSize = CGFloat(10)
 let backgroundPadding = CGFloat(15)
 
-struct WeekButtonGlyph: View {
-    let name: String
-    
-    var body: some View {
-        Image(systemName: name)
-            .modifier(ButtonGlyph())
-    }
-}
-
 struct ButtonGlyph : ViewModifier {
     let radius = CGFloat(10)
     
