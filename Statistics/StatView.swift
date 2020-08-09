@@ -36,7 +36,6 @@ struct StatView: View {
 //                        Text(data.terms.description)
 //                    }
                 }
-                .onTapGesture { withAnimation { data.searching.toggle() } }
                 StatDisplayView(
                     for: WeekTimeFrame(
                         start: zero.start,
