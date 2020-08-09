@@ -29,13 +29,23 @@ struct GraphButtons: View {
                 }
             }
                 .offset(x: +GraphButton.size)
-            GraphButton(glyph: "plus.magnifyingglass", condition: zero.interval > .hour) {
+            
+            /// zoom in button
+            GraphButton(
+                glyph: "plus.magnifyingglass",
+                condition: zero.interval > .hour
+            ) {
                 withAnimation {
                     zero.interval -= .hour
                 }
             }
                 .offset(y: -GraphButton.size)
-            GraphButton(glyph: "minus.magnifyingglass", condition: zero.interval < .day) {
+            
+            /// zoom out button
+            GraphButton(
+                glyph: "minus.magnifyingglass",
+                condition: zero.interval < .day
+            ) {
                 zero.dateChange = .back
                 withAnimation {
                     zero.interval += .hour
@@ -44,6 +54,7 @@ struct GraphButtons: View {
                 .offset(y: +GraphButton.size)
             
         }
+        /// keep buttons in the right place
         .offset(
             x: +GraphButton.size,
             y: -GraphButton.size

@@ -45,6 +45,7 @@ struct GraphButton: View {
         .offset(x: offset)
     }
     
+    /// perform a little zoom to show action succeeded
     static let size = glyphFrameSize + backgroundPadding * 2
     private func animateSuccess() -> Void {
         withAnimation(.linear(duration: 0.1)) { scale = 1.25 }
@@ -55,6 +56,7 @@ struct GraphButton: View {
         }
     }
     
+    /// perform a little shake to show that action has failed
     private func animateFailure() -> Void {
         let period = 0.1
         withAnimation(.linear(duration: period)) { offset = GraphButton.size / 4 }
