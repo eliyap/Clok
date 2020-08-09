@@ -19,21 +19,34 @@ struct FilterView: View {
             Text("Filter")
                 .bold()
                 .font(.title)
-            HStack {
-                Text("Select All")
-                Spacer()
-                Text("Deselect All")
-            }
             List {
                 Section {
-                    ForEach(data.terms.projects, id: \.wrappedID) {
-                        Included(project: $0)
+                    ForEach(data.terms.projects, id: \.wrappedID) { project in
+                        HStack {
+                            Image(systemName: "largecircle.fill.circle")
+                                .foregroundColor(project.wrappedColor)
+                            Text("\(project.wrappedName)")
+                            Spacer()
+                            Image(systemName: "line.horizontal.3")
+                        }
+                        .onTapGesture {
+                            exclude(project)
+                        }
                     }
                     .onMove(perform: {
                         data.terms.projects.move(fromOffsets: $0, toOffset: $1)
                     })
-                    ForEach(excluded, id: \.wrappedID) {
-                        Excluded(project: $0)
+                    ForEach(excluded, id: \.wrappedID) { project in
+                        HStack {
+                            Image(systemName: "circle")
+                                .foregroundColor(project.wrappedColor)
+                            Text("\(project.wrappedName)")
+                        }
+                        .onTapGesture {
+                            withAnimation {
+                                data.terms.projects.append(project)
+                            }
+                        }
                     }
                 }
             }
@@ -42,31 +55,10 @@ struct FilterView: View {
         .padding(listPadding)
     }
     
-    func Included(project: ProjectLike) -> some View {
-        HStack {
-            Image(systemName: "circle")
-                .foregroundColor(project.wrappedColor)
-            Text("\(project.wrappedName)")
-        }
-        .onTapGesture {
-            withAnimation {
-                data.terms.projects.append(project)
-            }
-        }
-    }
-    
-    func Excluded(project: ProjectLike) -> some View {
-        HStack {
-            Image(systemName: "largecircle.fill.circle")
-                .foregroundColor(project.wrappedColor)
-            Text("\(project.wrappedName)")
-            Spacer()
-            Image(systemName: "line.horizontal.3")
-        }
-        .onTapGesture {
-            withAnimation {
-                _ = data.terms.projects.remove(at: data.terms.projects.firstIndex(where: {$0.wrappedID == project.wrappedID})!)
-            }
+    /// wrapper around withAnimation, due to some scoping issue
+    func exclude(_ project: ProjectLike) -> Void {
+        withAnimation {
+            _ = data.terms.projects.remove(at: data.terms.projects.firstIndex(where: {$0.wrappedID == project.wrappedID})!)
         }
     }
     
