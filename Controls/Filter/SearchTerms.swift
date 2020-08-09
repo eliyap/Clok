@@ -23,4 +23,12 @@ struct SearchTerms {
     var tags: [Any] {
         fatalError("Tag system not yet implemented")
     }
+    
+    func contains(project: ProjectLike) -> Bool {
+        projects.contains(where: {project.wrappedID == $0.wrappedID})
+    }
+    
+//    let projectSort: (ProjectLike, ProjectLike) -> Bool = {
+//        if
+//    }
 }

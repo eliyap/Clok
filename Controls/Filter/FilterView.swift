@@ -76,10 +76,9 @@ struct FilterView: View {
     }
     
     var excluded: [ProjectLike] {
-        allProjects.filter{ project in
-            !data.terms.projects.contains(where: {project.wrappedID == $0.wrappedID})
-        }
-        .sorted(by: {$0.wrappedName < $1.wrappedName})
+        allProjects
+            .filter{!data.terms.contains(project: $0)}
+            .sorted(by: {$0.wrappedName < $1.wrappedName})
     }
     
     var SelectButtons: some View {
