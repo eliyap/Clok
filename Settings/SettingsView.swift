@@ -60,7 +60,7 @@ struct SettingsView: View {
                         }
                 }
             }
-            .modifier(roundedList())
+            .listStyle(InsetGroupedListStyle())
             .navigationBarTitle("Settings")
         }
         .navigationViewStyle(StackNavigationViewStyle())
