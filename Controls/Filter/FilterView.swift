@@ -13,26 +13,41 @@ struct FilterView: View {
     @EnvironmentObject var data: TimeData
     
     var body: some View {
-        ScrollView {
-            Text("Filter")
-                .bold()
-                .font(.title)
-            Section(header: Text("Include")) {
-                ForEach(data.terms.projects, id: \.wrappedID) {  project in
+        List {
+            Section(
+                header: Text("Filter")
+                    .bold()
+                    .font(.title)
+                    .foregroundColor(.primary)
+            ) {
+                ForEach(data.terms.projects, id: \.wrappedID) { project in
                     HStack {
                         Image(systemName: "largecircle.fill.circle")
+                            .foregroundColor(project.wrappedColor)
                         Text("\(project.wrappedName)")
+                        Spacer()
+                        Image(systemName: "line.horizontal.3")
+                    }
+                    .onTapGesture {
+                        data.terms.projects.remove(at: data.terms.projects.firstIndex(where: {$0.wrappedID == project.wrappedID})!)
                     }
                 }
+                .onMove(perform: {
+                    data.terms.projects.move(fromOffsets: $0, toOffset: $1)
+                })
                 ForEach(excluded, id: \.wrappedID) { project in
                     HStack {
                         Image(systemName: "circle")
+                            .foregroundColor(project.wrappedColor)
                         Text("\(project.wrappedName)")
+                    }
+                    .onTapGesture {
+                        data.terms.projects.append(project)
                     }
                 }
             }
         }
-        .listStyle(InsetGroupedListStyle())
+        .listStyle(GroupedListStyle())
     }
     
     var allProjects: [ProjectLike] {
@@ -43,5 +58,6 @@ struct FilterView: View {
         allProjects.filter{ project in
             !data.terms.projects.contains(where: {project.wrappedID == $0.wrappedID})
         }
+        .sorted(by: {$0.wrappedName < $1.wrappedName})
     }
 }
