@@ -19,10 +19,19 @@ struct GraphButton: View {
     @State var scale: CGFloat = 1
     
     let glyph: String
+    var condition: Bool = true
     let action: () -> ()
     
     var body: some View {
-        Button(action: action) {
+        Button {
+            if condition {
+                action()
+                animateSuccess()
+            } else {
+                animateFailure()
+            }
+            
+        } label: {
             Image(systemName: glyph)
                 .font(.system(size: glyphFrameSize * 2))
                 // enforce square images so that SF symbols align vertically
@@ -35,4 +44,21 @@ struct GraphButton: View {
     }
     
     static let size = glyphFrameSize + backgroundPadding * 2
+    private func animateSuccess() -> Void {
+        withAnimation(.linear(duration: 0.25)) { scale = 1.25 }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+            withAnimation(.spring()) {
+                scale = 1
+            }
+        }
+    }
+    
+    private func animateFailure() -> Void {
+        withAnimation(.linear(duration: 0.25)) { scale = 0.25 }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+            withAnimation(.spring()) {
+                scale = 1
+            }
+        }
+    }
 }

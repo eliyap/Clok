@@ -29,22 +29,16 @@ struct GraphButtons: View {
                 }
             }
                 .offset(x: +GraphButton.size)
-            GraphButton(glyph: "plus.magnifyingglass") {
+            GraphButton(glyph: "plus.magnifyingglass", condition: zero.interval > .hour) {
                 withAnimation {
-                    zero.interval = max(
-                        zero.interval - .hour,
-                        .hour
-                    )
+                    zero.interval -= .hour
                 }
             }
                 .offset(y: -GraphButton.size)
-            GraphButton(glyph: "minus.magnifyingglass") {
+            GraphButton(glyph: "minus.magnifyingglass", condition: zero.interval < .day) {
                 zero.dateChange = .back
                 withAnimation {
-                    zero.interval = min(
-                        zero.interval + .hour,
-                        .day
-                    )
+                    zero.interval += .hour
                 }
             }
                 .offset(y: +GraphButton.size)
