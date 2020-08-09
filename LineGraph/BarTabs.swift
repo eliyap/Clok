@@ -16,7 +16,7 @@ struct BarTabs: View {
     
     var body: some View {
         TabView{
-            FilterView()
+            FilterView(listPadding: listPadding)
             EntryList(listPadding: listPadding)
             StatView(listPadding: listPadding)
         }

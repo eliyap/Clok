@@ -12,6 +12,8 @@ struct FilterView: View {
     
     @EnvironmentObject var data: TimeData
     
+    let listPadding: CGFloat
+    
     var body: some View {
         VStack(alignment: .leading, spacing: .zero) {
             Text("Filter")
@@ -46,8 +48,9 @@ struct FilterView: View {
                     }
                 }
             }
-            .listStyle(InsetGroupedListStyle())
+            .listStyle(GroupedListStyle())
         }
+        .padding(listPadding)
     }
     
     var allProjects: [ProjectLike] {
