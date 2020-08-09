@@ -17,6 +17,7 @@ fileprivate let radius = CGFloat(10)
 struct GraphButton: View {
     
     @State var scale: CGFloat = 1
+    @State var offset: CGFloat = 0
     
     let glyph: String
     var condition: Bool = true
@@ -41,12 +42,13 @@ struct GraphButton: View {
                 .background(RaisedShape(radius: radius) { Circle() })
         }
         .scaleEffect(scale)
+        .offset(x: offset)
     }
     
     static let size = glyphFrameSize + backgroundPadding * 2
     private func animateSuccess() -> Void {
-        withAnimation(.linear(duration: 0.25)) { scale = 1.25 }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+        withAnimation(.linear(duration: 0.1)) { scale = 1.25 }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             withAnimation(.spring()) {
                 scale = 1
             }
@@ -54,11 +56,13 @@ struct GraphButton: View {
     }
     
     private func animateFailure() -> Void {
-        withAnimation(.linear(duration: 0.25)) { scale = 0.25 }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-            withAnimation(.spring()) {
-                scale = 1
-            }
+        let period = 0.1
+        withAnimation(.linear(duration: period)) { offset = GraphButton.size / 4 }
+        DispatchQueue.main.asyncAfter(deadline: .now() + period) {
+            withAnimation(.linear(duration: period)) { offset = -GraphButton.size / 4 }
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + period * 2) {
+            withAnimation(.linear(duration: period)) { offset = 0 }
         }
     }
 }
