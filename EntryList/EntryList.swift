@@ -24,8 +24,8 @@ struct EntryList: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
-                /// adjust start date to match
-                Text("\(df.string(from: zero.start + dayLength)) – \(df.string(from: zero.end))")
+                /// adjust end date to be just before midnight of the last day
+                Text("\(df.string(from: zero.start)) – \(df.string(from: zero.end - 1))")
                     .font(Font.title.weight(.bold))
                     .padding(listPadding)
                 ForEach(Days(), id: \.id) { day in
@@ -78,13 +78,13 @@ struct EntryList: View {
         /// restrict to current week
         let validEntries = data.entries
             .sorted(by: {$0.start < $1.start} )
-            .within(interval: weekLength, of: zero.start + dayLength)
+            .within(interval: weekLength, of: zero.start)
             .matching(terms: data.terms)
         
         var days = [Day]()
         for mn in stride(
-            from: zero.start + dayLength,
-            to: zero.end + dayLength,
+            from: zero.start,
+            to: zero.end,
             by: dayLength
         ) {
             days.append(Day(
