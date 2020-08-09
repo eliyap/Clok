@@ -20,3 +20,9 @@ extension TimeInterval {
         return String(format: "%d:%02d:%02d", hh,mm,ss)
     }
 }
+
+extension TimeInterval {
+    static let hour = 60 * 60
+    static let day = 24 * hour
+    static let week = 7 * day
+}
