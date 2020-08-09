@@ -18,8 +18,17 @@ struct FilterView: View {
                 .bold()
                 .font(.title)
             Section(header: Text("Include")) {
-                ForEach(allProjects, id: \.wrappedID) {
-                    Text("\($0.wrappedName)")
+                ForEach(data.terms.projects, id: \.wrappedID) {  project in
+                    HStack {
+                        Image(systemName: "largecircle.fill.circle")
+                        Text("\(project.wrappedName)")
+                    }
+                }
+                ForEach(excluded, id: \.wrappedID) { project in
+                    HStack {
+                        Image(systemName: "circle")
+                        Text("\(project.wrappedName)")
+                    }
                 }
             }
         }
@@ -28,5 +37,11 @@ struct FilterView: View {
     
     var allProjects: [ProjectLike] {
         data.projects + [StaticProject.noProject]
+    }
+    
+    var excluded: [ProjectLike] {
+        allProjects.filter{ project in
+            !data.terms.projects.contains(where: {project.wrappedID == $0.wrappedID})
+        }
     }
 }
