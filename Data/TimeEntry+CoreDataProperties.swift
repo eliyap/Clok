@@ -38,7 +38,6 @@ extension TimeEntry {
     }
     
     var wrappedProject: ProjectLike {
-        project ?? StaticProject.unknown
+        project ?? StaticProject.noProject
     }
-    // default project to no project here in future
 }
