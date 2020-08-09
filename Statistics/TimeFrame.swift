@@ -26,10 +26,10 @@ struct WeekTimeFrame {
      filter time entries down to between date range
      */
     init (start start_: Date, entries entries_: [TimeEntry], terms: SearchTerms) {
-        frame = TimeFrame(start: start_, end: start_ + weekLength)
+        frame = TimeFrame(start: start_, end: start_ + .week)
         entries = entries_
             .matching(terms: terms)
-            .within(interval: weekLength, of: start_)
+            .within(interval: .week, of: start_)
         df.timeStyle = .short
     }
     
@@ -42,7 +42,7 @@ struct WeekTimeFrame {
         [
             entries.map{ $0.start }.meanTime(),
             entries.map{ $0.end   }.meanTime()
-        ].meanTime() + (dayLength / 2)
+        ].meanTime() + (.day / 2)
     }
     
     /**
@@ -143,7 +143,7 @@ struct DayTimeFrame {
     var frame:TimeFrame
     init(start:Date, end:Date) {
         guard start < end else { fatalError("End Not After Start!")}
-        guard end - start <= dayLength else { fatalError("spans more than a day!")}
+        guard end - start <= .day else { fatalError("spans more than a day!")}
         frame = TimeFrame(start: start, end: end)
     }
 }

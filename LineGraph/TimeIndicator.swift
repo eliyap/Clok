@@ -41,7 +41,7 @@ struct TimeIndicator: View {
                 Array(stride(
                     from: -model.castBack,
                     to: model.castFwrd,
-                    by: dayLength / Double(divisions)
+                    by: TimeInterval.day / Double(divisions)
                 )), id: \.self) {
                     TimeLabel(interval: $0)
                     Spacer()
@@ -61,7 +61,7 @@ struct TimeIndicator: View {
         var text = Text("\(tf.string(from: midnight + interval))")
             .font(.footnote)
         /// midnight is specially bolded
-        if interval.remainder(dividingBy: dayLength) == 0 {
+        if interval.remainder(dividingBy: .day) == 0 {
             text = text.bold()
         }
         return text

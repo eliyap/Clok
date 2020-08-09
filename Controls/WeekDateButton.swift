@@ -54,7 +54,7 @@ struct WeekDateButton: View {
             .onReceive(zero.$start, perform: { date in
                 /// set labels programatically so that ellipsis animation does NOT play when changing date
                 dateStart = df.string(from: date)
-                dateEnd = " – " + df.string(from: date + weekLength)
+                dateEnd = " – " + df.string(from: date + .week)
             })
         }
             .buttonStyle(PlainButtonStyle())

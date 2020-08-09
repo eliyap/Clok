@@ -79,10 +79,10 @@ func roundDown(_ date: Date, to other: Date) -> Date {
     
     var date = date
     if other > date {
-        let timeOffset = (other - date).truncatingRemainder(dividingBy: dayLength)
-        date -= dayLength - timeOffset
+        let timeOffset = (other - date).truncatingRemainder(dividingBy: .day)
+        date -= .day - timeOffset
     } else {
-        let timeOffset = (date - other).truncatingRemainder(dividingBy: dayLength)
+        let timeOffset = (date - other).truncatingRemainder(dividingBy: .day)
         date -= timeOffset
     }
     return date

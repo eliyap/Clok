@@ -22,7 +22,7 @@ struct LineGraph: View {
         HStack(spacing: .zero) {
             /// use date enum so SwiftUI can identify horizontal swipes without redrawing everything
             ForEach(
-                Array(stride(from: zero.start, to: zero.end, by: dayLength)),
+                Array(stride(from: zero.start, to: zero.end, by: .day)),
                 id: \.timeIntervalSince1970
             ) { midnight in
                 Divider()

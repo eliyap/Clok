@@ -39,7 +39,7 @@ struct GraphButtons: View {
             .onTapGesture {
                 zero.dateChange = .back
                 withAnimation {
-                    zero.start -= weekLength
+                    zero.start -= .week
                 }
             }
     }
@@ -50,7 +50,7 @@ struct GraphButtons: View {
             .onTapGesture {
                 zero.dateChange = .fwrd
                 withAnimation {
-                    zero.start += weekLength
+                    zero.start += .week
                 }
             }
     }
@@ -72,7 +72,7 @@ struct GraphButtons: View {
             .onTapGesture {
                 zero.dateChange = .fwrd
                 withAnimation {
-                    zero.start += weekLength
+                    zero.start += .week
                 }
             }
     }

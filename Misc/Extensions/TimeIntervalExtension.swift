@@ -22,7 +22,7 @@ extension TimeInterval {
 }
 
 extension TimeInterval {
-    static let hour = 60 * 60
-    static let day = 24 * hour
-    static let week = 7 * day
+    static let hour: TimeInterval = 60.0 * 60.0
+    static let day: TimeInterval = 24 * hour
+    static let week: TimeInterval = 7 * day
 }

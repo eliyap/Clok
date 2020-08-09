@@ -27,7 +27,7 @@ extension Angle {
     */
     func time24h() -> Date {
         let cal = Calendar.current
-        let time = dayLength * (self.degrees / 360.0)
+        let time = TimeInterval.day * (self.degrees / 360.0)
         return cal.startOfDay(for: Date()) + time
     }
 }

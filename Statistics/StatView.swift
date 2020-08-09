@@ -44,7 +44,7 @@ struct StatView: View {
                         terms: data.terms
                     ),
                     prev: WeekTimeFrame(
-                        start: zero.start - weekLength,
+                        start: zero.start - .week,
                         entries: data.entries,
                         terms: data.terms
                     )

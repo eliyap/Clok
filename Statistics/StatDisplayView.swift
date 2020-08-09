@@ -69,7 +69,7 @@ struct StatDisplayView: View {
             Stat(
                 label: "Percentage of Week",
                 symbol: "chart.pie.fill",
-                text: Text("\(Int((avgDur / dayLength) * 100.0))%")
+                text: Text("\(Int((avgDur / .day) * 100.0))%")
             )
         }
     }

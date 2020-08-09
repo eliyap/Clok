@@ -46,9 +46,6 @@ let runningURL = URL(string: "\(API_URL)/time_entries/current\(agentSuffix)")!
 
 // MARK: - Time Constants
 
-let dayLength = TimeInterval(24 * 60 * 60)
-let weekLength: TimeInterval = 7 * dayLength
-
 // the length of an Archimedean Spiral with a = 0, b = 1, from 0 to 14 pi
 // https://www.wolframalpha.com/input/?i=integrate+sqrt%28x%5E2%2B1%29dx+from+0+to+14pi
 let weekSpiralLength = CGFloat(969.7)
@@ -64,7 +61,7 @@ enum Weekdays: Int {
     case Saturday = 6
 }
 
-let radPerSec = Double.tau / dayLength
+//let radPerSec = Double.tau / TimeInterval.day
 
 // MARK: - Misc
 /**
