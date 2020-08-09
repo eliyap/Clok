@@ -333,7 +333,9 @@
 		225B044024B2A5DD00780424 /* LineGraph */ = {
 			isa = PBXGroup;
 			children = (
-				2207B21F24B954F40006748A /* BarStack.swift */,
+				22283DA324DF9D8B005AC0F3 /* BarStack.swift */,
+				22283D9F24DF9959005AC0F3 /* BarTabs.swift */,
+				2207B21F24B954F40006748A /* GraphView.swift */,
 				225B044124B2A5FA00780424 /* LineGraphView.swift */,
 				22885DAD24DA13E500A56FE3 /* DayStrip.swift */,
 				22905B8724DB449400D5AC09 /* LinedBackground.swift */,
@@ -372,6 +374,7 @@
 				C6AAB3F1249F061D00DFBA36 /* TimeData.swift */,
 				22BE1FF324A92DE500A9A739 /* Settings.swift */,
 				22027DD524AFFA6500C0BA90 /* Bounds.swift */,
+				22283DA124DF9CE0005AC0F3 /* GraphModel.swift */,
 			);
 			path = Global;
 			sourceTree = "<group>";
@@ -570,7 +573,6 @@
 				C6C18D482448F96C000345D5 /* ContentView.swift */,
 				22027DD124AFF7ED00C0BA90 /* TopFunctions.swift */,
 				22027DCF24AFF63F00C0BA90 /* OrientationView.swift */,
-				2218EA7724B6B90F00E09847 /* SwitchGroupView.swift */,
 				222305AD24AE807000711031 /* CustomTabView.swift */,
 				C6C18D7C244BE891000345D5 /* Constants.swift */,
 				C6C18D4A2448F96F000345D5 /* Assets.xcassets */,
@@ -813,14 +815,13 @@
 				C68F8C8B24A03DB4000D249B /* TimeStripView.swift in Sources */,
 				C6F605AF246C6B1700D0FE82 /* DateExtension.swift in Sources */,
 				C68F8C8D24A04CE8000D249B /* IceCreamStick.swift in Sources */,
-				2207B22024B954F40006748A /* BarStack.swift in Sources */,
+				2207B22024B954F40006748A /* GraphView.swift in Sources */,
 				2238640024BBBD030041886B /* DataFetch.swift in Sources */,
 				221D963C24A912B900C84F57 /* APIKeyHandler.swift in Sources */,
 				22027DD024AFF63F00C0BA90 /* OrientationView.swift in Sources */,
 				228B100224AEA6E50026AD4B /* RoundBottomRect.swift in Sources */,
 				C65B7D2C2497DE4A00EED981 /* EntryOperations.swift in Sources */,
 				22B0783D24B1630800256EB8 /* BackgroundRequest.swift in Sources */,
-				2218EA7824B6B90F00E09847 /* SwitchGroupView.swift in Sources */,
 				22DC86A424BA838D00FF771F /* TimeEntry+CoreDataClass.swift in Sources */,
 				C688A8882479A8D6003260CE /* TimeFrame.swift in Sources */,
 				C69F02782496AFA200D1C650 /* TimeIntervalExtension.swift in Sources */,
@@ -831,6 +832,7 @@
 				22DC869A24BA7A5E00FF771F /* TimeEntryModel.xcdatamodeld in Sources */,
 				22BE1FEF24A92B2300A9A739 /* SettingsView.swift in Sources */,
 				22885DAE24DA13E500A56FE3 /* DayStrip.swift in Sources */,
+				22283DA224DF9CE0005AC0F3 /* GraphModel.swift in Sources */,
 				22928AC924A429F700DC9EC5 /* ProjectButton.swift in Sources */,
 				22DC86A624BA838D00FF771F /* TimeEntry+CoreDataProperties.swift in Sources */,
 				2264CB3524AD330500ECBF2B /* IconView.swift in Sources */,
@@ -871,9 +873,11 @@
 				C61D2658249BE1990056C9FA /* StatHelpers.swift in Sources */,
 				22351B0024D37F3C00E14DBC /* Run.swift in Sources */,
 				22B0783824B1519600256EB8 /* NetworkError.swift in Sources */,
+				22283DA424DF9D8B005AC0F3 /* BarStack.swift in Sources */,
 				22CBD84624A84CA400ED6FA3 /* WeekDateString.swift in Sources */,
 				221C3C5724A93C57006995C5 /* User.swift in Sources */,
 				C63C0D4B248DBDDB00163E20 /* Handle.swift in Sources */,
+				22283DA024DF9959005AC0F3 /* BarTabs.swift in Sources */,
 				C688BFCA24A18BF00077CECF /* RaisedShape.swift in Sources */,
 				222305AE24AE807000711031 /* CustomTabView.swift in Sources */,
 				227C613724A3F557006F8168 /* FilterButton.swift in Sources */,
