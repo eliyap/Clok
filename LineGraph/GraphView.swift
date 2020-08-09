@@ -13,7 +13,6 @@ struct GraphView: View {
     @EnvironmentObject private var bounds: Bounds
     @EnvironmentObject private var zero: ZeroDate
     @EnvironmentObject var model: GraphModel
-    @State private var filtering = false
     
     /// make a meaningless update to zero Date so it will load data from disk
     func jumpCoreDate() {
@@ -24,41 +23,7 @@ struct GraphView: View {
         GeometryReader { geo in
             ZStack(alignment: .bottomLeading) {
                 DayScroll(size: geo.size)
-            
-                HStack {
-                    Image(systemName: "line.horizontal.3.decrease.circle")
-                        .modifier(ButtonGlyph())
-                        .onTapGesture {
-                            filtering.toggle()
-                        }
-                        .fullScreenCover(isPresented: $filtering) {
-                            FilterModal()
-                        }
-                    Image(systemName: "chevron.left")
-                        .modifier(ButtonGlyph())
-                        .onTapGesture {
-                            zero.dateChange = .back
-                            withAnimation {
-                                zero.start -= weekLength
-                            }
-                        }
-                    Image(systemName: "chevron.right")
-                        .modifier(ButtonGlyph())
-                        .onTapGesture {
-                            zero.dateChange = .fwrd
-                            withAnimation {
-                                zero.start += weekLength
-                            }
-                        }
-                    Image(systemName: "star")
-                        .modifier(ButtonGlyph())
-                        .onTapGesture {
-                            withAnimation(.linear(duration: 0.4)) {
-                                model.mode.toggle()
-                            }
-                        }
-                }
-                .padding(buttonPadding)
+                GraphButtons()
             }
         }
         .onAppear(perform: jumpCoreDate)
@@ -77,7 +42,10 @@ struct GraphView: View {
                         TimeIndicator(divisions: evenDivisions(for: dayHeight))
                         LineGraph(dayHeight: dayHeight)
                     }
-                        .frame(width: size.width, height: dayHeight * CGFloat(model.days))
+                        .frame(
+                            width: size.width,
+                            height: dayHeight * CGFloat(model.days)
+                        )
                         .drawingGroup()
                         /// immediately center on white day area
                         .onAppear{ proxy.scrollTo(0, anchor: .center) }
