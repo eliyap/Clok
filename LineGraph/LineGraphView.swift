@@ -48,7 +48,8 @@ struct LineGraph: View {
         case .calendar: return data.entries
             .filter{$0.end > midnight - model.castBack}
             .filter{$0.start < midnight + model.castFwrd}
-            .sorted{$0.start < $1.start} /// chronological sort
+            /// chronological sort
+            .sorted{$0.start < $1.start}
         case .graph: return data.entries
             .filter{$0.end > midnight - model.castBack}
             .filter{$0.start < midnight + model.castFwrd}
