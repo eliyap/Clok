@@ -8,12 +8,12 @@
 
 import SwiftUI
 
-let listPadding = CGFloat(7)
-
 struct EntryList: View {
     
     @EnvironmentObject var data: TimeData
     @EnvironmentObject var zero: ZeroDate
+    
+    let listPadding: CGFloat
     
     var body: some View {
         ScrollView {

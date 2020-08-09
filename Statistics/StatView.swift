@@ -9,9 +9,9 @@
 import SwiftUI
 
 struct StatView: View {
+    
     @EnvironmentObject var data: TimeData
     @EnvironmentObject var zero: ZeroDate
-    @State private var dateString = ""
     
     var body: some View {
         ScrollView {
