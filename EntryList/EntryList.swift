@@ -83,7 +83,7 @@ struct EntryList: View {
         let validEntries = data.entries
             .sorted(by: {$0.start < $1.start} )
             .within(interval: weekLength, of: zero.start + dayLength)
-            .matching(data.terms)
+            .matching(terms: data.terms)
         
         var days = [Day]()
         for mn in stride(

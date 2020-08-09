@@ -21,19 +21,20 @@ struct StatView: View {
                     .bold()
                 HStack {
                     /// show Any Project as an empty circle
-                    Image(systemName: StaticProject.any == data.terms.project ? "circle" : "largecircle.fill.circle")
-                        .foregroundColor(StaticProject.any == data.terms.project ? Color.primary : data.terms.project.wrappedColor)
-                    Text(data.terms.project.wrappedName)
-                        .bold()
-                    if data.terms.byDescription == .any {
-                        Text("Any Description")
-                            .foregroundColor(.secondary)
-                    } else if data.terms.byDescription == .empty {
-                        Text("No Description")
-                            .foregroundColor(.secondary)
-                    } else {
-                        Text(data.terms.description)
-                    }
+                    #warning("silenced")
+//                    Image(systemName: StaticProject.any == data.terms.project ? "circle" : "largecircle.fill.circle")
+//                        .foregroundColor(StaticProject.any == data.terms.project ? Color.primary : data.terms.project.wrappedColor)
+//                    Text(data.terms.project.wrappedName)
+//                        .bold()
+//                    if data.terms.byDescription == .any {
+//                        Text("Any Description")
+//                            .foregroundColor(.secondary)
+//                    } else if data.terms.byDescription == .empty {
+//                        Text("No Description")
+//                            .foregroundColor(.secondary)
+//                    } else {
+//                        Text(data.terms.description)
+//                    }
                 }
                 .onTapGesture { withAnimation { data.searching.toggle() } }
                 StatDisplayView(
