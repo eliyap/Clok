@@ -18,11 +18,15 @@ struct FilterView: View {
                 .bold()
                 .font(.title)
             Section(header: Text("Include")) {
-                ForEach(data.projects, id: \.id) {
+                ForEach(allProjects, id: \.wrappedID) {
                     Text("\($0.wrappedName)")
                 }
             }
         }
         .listStyle(InsetGroupedListStyle())
+    }
+    
+    var allProjects: [ProjectLike] {
+        data.projects + [StaticProject.noProject]
     }
 }
