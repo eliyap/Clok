@@ -30,7 +30,7 @@ struct FilterView: View {
                             Image(systemName: "line.horizontal.3")
                         }
                         .onTapGesture {
-                            data.terms.projects.remove(at: data.terms.projects.firstIndex(where: {$0.wrappedID == project.wrappedID})!)
+                            exclude(project)
                         }
                     }
                     .onMove(perform: {
@@ -43,7 +43,9 @@ struct FilterView: View {
                             Text("\(project.wrappedName)")
                         }
                         .onTapGesture {
-                            data.terms.projects.append(project)
+                            withAnimation {
+                                data.terms.projects.append(project)
+                            }
                         }
                     }
                 }
@@ -51,6 +53,13 @@ struct FilterView: View {
             .listStyle(GroupedListStyle())
         }
         .padding(listPadding)
+    }
+    
+    /// wrapper around withAnimation, due to some scoping issue
+    func exclude(_ project: ProjectLike) -> Void {
+        withAnimation {
+            _ = data.terms.projects.remove(at: data.terms.projects.firstIndex(where: {$0.wrappedID == project.wrappedID})!)
+        }
     }
     
     var allProjects: [ProjectLike] {
