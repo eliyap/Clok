@@ -17,9 +17,9 @@ struct GraphButtons: View {
         HStack(alignment: .center, spacing: .zero) {
             BackButton
             VStack(spacing: .zero) {
-                BackButton
-                BackButton
-                BackButton
+                ZoomInButton
+                InvisibleButton
+                ZoomOutButton
             }
             FwrdButton
             Image(systemName: "star")
@@ -60,8 +60,8 @@ struct GraphButtons: View {
             .modifier(ButtonGlyph())
             .onTapGesture {
                 zero.interval = max(
-                    zero.interval - 3600,
-                    3600
+                    zero.interval - .hour,
+                    .hour
                 )
             }
     }
@@ -70,10 +70,19 @@ struct GraphButtons: View {
         Image(systemName: "arrow.down.right.and.arrow.up.left")
             .modifier(ButtonGlyph())
             .onTapGesture {
-                zero.dateChange = .fwrd
                 withAnimation {
-                    zero.start += .week
+                    zero.interval = min(
+                        zero.interval + .hour,
+                        .day
+                    )
                 }
             }
+    }
+    
+    private var InvisibleButton: some View {
+        EmptyView()
+            .modifier(ButtonGlyph())
+            .opacity(.zero)
+            .allowsHitTesting(false)
     }
 }
