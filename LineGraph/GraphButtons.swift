@@ -59,10 +59,12 @@ struct GraphButtons: View {
         Image(systemName: "arrow.up.left.and.arrow.down.right")
             .modifier(ButtonGlyph())
             .onTapGesture {
-                zero.interval = max(
-                    zero.interval - .hour,
-                    .hour
-                )
+                withAnimation {
+                    zero.interval = max(
+                        zero.interval - .hour,
+                        .hour
+                    )
+                }
             }
     }
     
@@ -80,7 +82,7 @@ struct GraphButtons: View {
     }
     
     private var InvisibleButton: some View {
-        EmptyView()
+        Image(systemName: "ellipsis") /// image doesn't matter
             .modifier(ButtonGlyph())
             .opacity(.zero)
             .allowsHitTesting(false)
