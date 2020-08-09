@@ -29,15 +29,15 @@ struct StatDisplayView: View {
         Group {
             Divider()
             Text(zero.weekString)
+                .font(.headline)
+                .bold()
             thisWeek
             
             Divider()
-            HStack {
-                Text("Since Previous Week")
-                    .font(.headline)
-                    .bold()
-                Spacer()
-            }
+            Text("Since Previous Week")
+                .font(.headline)
+                .bold()
+        
             weekChange
         }
         

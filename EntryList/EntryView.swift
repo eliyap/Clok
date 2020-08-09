@@ -9,11 +9,15 @@
 import SwiftUI
 
 struct EntryView: View {
-    var entry: TimeEntry
     private let df = DateFormatter()
     private let radius = CGFloat(10)
-    init(entry: TimeEntry) {
+    
+    var entry: TimeEntry
+    let listPadding: CGFloat
+    
+    init(entry: TimeEntry, listPadding: CGFloat) {
         self.entry = entry
+        self.listPadding = listPadding
         df.timeStyle = .short
     }
     
@@ -21,7 +25,7 @@ struct EntryView: View {
         HStack {
             EntryTab(cornerRadius: radius)
                 .foregroundColor(entry.wrappedColor)
-                .frame(width: listPadding * 1.5)
+                .frame(width: 7)
             VStack {
                 HStack {
                     Text(entry.descriptionString())

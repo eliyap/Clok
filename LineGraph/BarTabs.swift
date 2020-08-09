@@ -12,13 +12,13 @@ import SwiftUI
 
 struct BarTabs: View {
     
-    private let listPadding = CGFloat(7)
+    private let listPadding = CGFloat(10)
     
     var body: some View {
         TabView{
             FilterView()
             EntryList(listPadding: listPadding)
-            StatView()
+            StatView(listPadding: listPadding)
         }
         .tabViewStyle(PageTabViewStyle())
         .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))

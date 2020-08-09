@@ -20,13 +20,17 @@ struct EntryList: View {
             VStack(alignment: .leading) {
                 /// adjust end date to be just before midnight of the last day
                 Text(zero.weekString)
-                    .font(Font.title.weight(.bold))
+                    .font(.title)
+                    .bold()
                     .padding(listPadding)
                 ForEach(Days(), id: \.id) { day in
                     Section(header: Header(day)) {
                         VStack(spacing: 0) {
                             ForEach(day.entries, id: \.id) { entry in
-                                EntryView(entry: entry)
+                                EntryView(
+                                    entry: entry,
+                                    listPadding: listPadding
+                                )
                                     .id(entry.id)
                             }
                         }

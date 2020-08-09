@@ -13,12 +13,15 @@ struct StatView: View {
     @EnvironmentObject var data: TimeData
     @EnvironmentObject var zero: ZeroDate
     
+    let listPadding: CGFloat
+    
     var body: some View {
         ScrollView {
-            VStack {
+            VStack(alignment: .leading) {
                 Text("Summary")
                     .font(.title)
                     .bold()
+                    .padding(.bottom, listPadding)
                 HStack {
                     /// show Any Project as an empty circle
                     #warning("silenced")
@@ -49,7 +52,7 @@ struct StatView: View {
                     )
                 )
             }
-            .padding()
+            .padding(listPadding)
         }
     }
 }
