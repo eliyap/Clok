@@ -15,13 +15,38 @@ struct GraphButtons: View {
     
     var body: some View {
         ZStack {
-            BackButton
+            GraphButton(glyph: "chevron.left") {
+                zero.dateChange = .back
+                withAnimation {
+                    zero.start -= .week
+                }
+            }
                 .offset(x: -GraphButton.size)
-            FwrdButton
+            GraphButton(glyph: "chevron.right") {
+                zero.dateChange = .fwrd
+                withAnimation {
+                    zero.start += .week
+                }
+            }
                 .offset(x: +GraphButton.size)
-            ZoomInButton
+            GraphButton(glyph: "plus.magnifyingglass") {
+                withAnimation {
+                    zero.interval = max(
+                        zero.interval - .hour,
+                        .hour
+                    )
+                }
+            }
                 .offset(y: -GraphButton.size)
-            ZoomOutButton
+            GraphButton(glyph: "minus.magnifyingglass") {
+                zero.dateChange = .back
+                withAnimation {
+                    zero.interval = min(
+                        zero.interval + .hour,
+                        .day
+                    )
+                }
+            }
                 .offset(y: +GraphButton.size)
             
         }
@@ -39,53 +64,6 @@ struct GraphButtons: View {
             .onTapGesture {
                 withAnimation(.linear(duration: 0.4)) {
                     model.mode.toggle()
-                }
-            }
-    }
-    private var BackButton: some View {
-        Image(systemName: "chevron.left")
-            .modifier(ButtonGlyph())
-            .onTapGesture {
-                zero.dateChange = .back
-                withAnimation {
-                    zero.start -= .week
-                }
-            }
-    }
-    
-    private var FwrdButton: some View {
-        Image(systemName: "chevron.right")
-            .modifier(ButtonGlyph())
-            .onTapGesture {
-                zero.dateChange = .fwrd
-                withAnimation {
-                    zero.start += .week
-                }
-            }
-    }
-    
-    private var ZoomInButton: some View {
-        Image(systemName: "plus.magnifyingglass")
-            .modifier(ButtonGlyph())
-            .onTapGesture {
-                withAnimation {
-                    zero.interval = max(
-                        zero.interval - .hour,
-                        .hour
-                    )
-                }
-            }
-    }
-    
-    private var ZoomOutButton: some View {
-        Image(systemName: "minus.magnifyingglass")
-            .modifier(ButtonGlyph())
-            .onTapGesture {
-                withAnimation {
-                    zero.interval = min(
-                        zero.interval + .hour,
-                        .day
-                    )
                 }
             }
     }

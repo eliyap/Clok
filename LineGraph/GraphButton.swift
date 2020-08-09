@@ -18,19 +18,20 @@ struct GraphButton: View {
     
     @State var scale: CGFloat = 1
     
+    let glyph: String
+    let action: () -> ()
+    
     var body: some View {
-        Button {
-            
-        } label: {
-            Image(systemName: "minus.magnifyingglass")
+        Button(action: action) {
+            Image(systemName: glyph)
                 .font(.system(size: glyphFrameSize * 2))
                 // enforce square images so that SF symbols align vertically
                 .frame(width: glyphFrameSize, height: glyphFrameSize)
-                
                 .foregroundColor(.primary) /// adapts to dark mode
                 .padding(backgroundPadding)
                 .background(RaisedShape(radius: radius) { Circle() })
         }
+        .scaleEffect(scale)
     }
     
     static let size = glyphFrameSize + backgroundPadding * 2
