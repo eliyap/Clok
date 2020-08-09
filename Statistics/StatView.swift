@@ -52,10 +52,4 @@ struct StatView: View {
             .padding()
         }
     }
-    
-    func Tab() -> some View {
-        Rectangle()
-            .frame(width: listLineInset)
-            .foregroundColor(data.terms.project.wrappedColor)
-    }
 }
