@@ -13,41 +13,41 @@ struct FilterView: View {
     @EnvironmentObject var data: TimeData
     
     var body: some View {
-        List {
-            Section(
-                header: Text("Filter")
-                    .bold()
-                    .font(.title)
-                    .foregroundColor(.primary)
-            ) {
-                ForEach(data.terms.projects, id: \.wrappedID) { project in
-                    HStack {
-                        Image(systemName: "largecircle.fill.circle")
-                            .foregroundColor(project.wrappedColor)
-                        Text("\(project.wrappedName)")
-                        Spacer()
-                        Image(systemName: "line.horizontal.3")
+        VStack(alignment: .leading, spacing: .zero) {
+            Text("Filter")
+                .bold()
+                .font(.title)
+            List {
+                Section {
+                    ForEach(data.terms.projects, id: \.wrappedID) { project in
+                        HStack {
+                            Image(systemName: "largecircle.fill.circle")
+                                .foregroundColor(project.wrappedColor)
+                            Text("\(project.wrappedName)")
+                            Spacer()
+                            Image(systemName: "line.horizontal.3")
+                        }
+                        .onTapGesture {
+                            data.terms.projects.remove(at: data.terms.projects.firstIndex(where: {$0.wrappedID == project.wrappedID})!)
+                        }
                     }
-                    .onTapGesture {
-                        data.terms.projects.remove(at: data.terms.projects.firstIndex(where: {$0.wrappedID == project.wrappedID})!)
-                    }
-                }
-                .onMove(perform: {
-                    data.terms.projects.move(fromOffsets: $0, toOffset: $1)
-                })
-                ForEach(excluded, id: \.wrappedID) { project in
-                    HStack {
-                        Image(systemName: "circle")
-                            .foregroundColor(project.wrappedColor)
-                        Text("\(project.wrappedName)")
-                    }
-                    .onTapGesture {
-                        data.terms.projects.append(project)
+                    .onMove(perform: {
+                        data.terms.projects.move(fromOffsets: $0, toOffset: $1)
+                    })
+                    ForEach(excluded, id: \.wrappedID) { project in
+                        HStack {
+                            Image(systemName: "circle")
+                                .foregroundColor(project.wrappedColor)
+                            Text("\(project.wrappedName)")
+                        }
+                        .onTapGesture {
+                            data.terms.projects.append(project)
+                        }
                     }
                 }
             }
+            .listStyle(InsetGroupedListStyle())
         }
-        .listStyle(GroupedListStyle())
     }
     
     var allProjects: [ProjectLike] {

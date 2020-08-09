@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct BarTabs: View {
+    
     var body: some View {
         TabView{
             FilterView()

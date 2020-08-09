@@ -37,3 +37,12 @@ final class ZeroDate: ObservableObject {
         CGFloat(TimeInterval.day / interval)
     }
 }
+
+extension ZeroDate {
+    var weekString: String {
+        let df = DateFormatter()
+        df.setLocalizedDateFormatFromTemplate("MMMdd")
+        /// slightly adjust end down so it falls before midnight into the previous day
+        return "\(df.string(from: start)) – \(df.string(from: end - 1))"
+    }
+}

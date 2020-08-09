@@ -15,17 +15,11 @@ struct EntryList: View {
     @EnvironmentObject var data: TimeData
     @EnvironmentObject var zero: ZeroDate
     
-    private let df = DateFormatter()
-    
-    init() {
-        df.setLocalizedDateFormatFromTemplate("MMMdd")
-    }
-    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
                 /// adjust end date to be just before midnight of the last day
-                Text("\(df.string(from: zero.start)) – \(df.string(from: zero.end - 1))")
+                Text(zero.weekString)
                     .font(Font.title.weight(.bold))
                     .padding(listPadding)
                 ForEach(Days(), id: \.id) { day in
@@ -48,6 +42,9 @@ struct EntryList: View {
     }
     
     func Header(_ day: Day) -> some View {
+        let df = DateFormatter()
+        df.setLocalizedDateFormatFromTemplate("MMM dd")
+        
         let cal = Calendar.current
         let currentYear = cal.component(.year, from: Date())
         let zeroYear = cal.component(.year, from: zero.start)

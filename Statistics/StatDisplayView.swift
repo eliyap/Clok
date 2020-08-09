@@ -12,6 +12,7 @@ import SwiftUI
 
 struct StatDisplayView: View {
     
+    @EnvironmentObject var zero: ZeroDate
     private let df = DateFormatter()
     
     private var avgStart = placeholderTime
@@ -27,7 +28,7 @@ struct StatDisplayView: View {
     var body: some View {
         Group {
             Divider()
-            WeekDateString()
+            Text(zero.weekString)
             thisWeek
             
             Divider()
