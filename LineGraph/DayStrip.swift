@@ -45,6 +45,7 @@ struct DayStrip: View {
                 }
                 .frame(width: geo.size.width * thicc)
             }
+            .drawingGroup()
         }
     }
     
