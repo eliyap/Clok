@@ -15,7 +15,6 @@
 		221810DE24B00FB900B63ECA /* EntryTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221810DD24B00FB900B63ECA /* EntryTab.swift */; };
 		221810E024B0158500B63ECA /* Get24hourPref.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221810DF24B0158500B63ECA /* Get24hourPref.swift */; };
 		221810E424B01AAC00B63ECA /* InAndOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221810E324B01AAC00B63ECA /* InAndOut.swift */; };
-		2218EA7824B6B90F00E09847 /* SwitchGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2218EA7724B6B90F00E09847 /* SwitchGroupView.swift */; };
 		221C3C5524A93C0F006995C5 /* GetUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221C3C5424A93C0F006995C5 /* GetUserData.swift */; };
 		221C3C5724A93C57006995C5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221C3C5624A93C57006995C5 /* User.swift */; };
 		221D963C24A912B900C84F57 /* APIKeyHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221D963B24A912B900C84F57 /* APIKeyHandler.swift */; };
@@ -170,7 +169,6 @@
 		221810DD24B00FB900B63ECA /* EntryTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryTab.swift; sourceTree = "<group>"; };
 		221810DF24B0158500B63ECA /* Get24hourPref.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Get24hourPref.swift; sourceTree = "<group>"; };
 		221810E324B01AAC00B63ECA /* InAndOut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAndOut.swift; sourceTree = "<group>"; };
-		2218EA7724B6B90F00E09847 /* SwitchGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchGroupView.swift; sourceTree = "<group>"; };
 		221C3C5424A93C0F006995C5 /* GetUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserData.swift; sourceTree = "<group>"; };
 		221C3C5624A93C57006995C5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		221D963B24A912B900C84F57 /* APIKeyHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeyHandler.swift; sourceTree = "<group>"; };
