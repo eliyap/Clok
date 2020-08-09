@@ -15,14 +15,23 @@ fileprivate let backgroundPadding = CGFloat(15)
 fileprivate let radius = CGFloat(10)
 
 struct GraphButton: View {
+    
+    @State var scale: CGFloat = 1
+    
     var body: some View {
-        Image(systemName: "minus.magnifyingglass")
-            .font(.system(size: glyphFrameSize * 2))
-            // enforce square images so that SF symbols align vertically
-            .frame(width: glyphFrameSize, height: glyphFrameSize)
+        Button {
             
-            .foregroundColor(.primary) /// adapts to dark mode
-            .padding(backgroundPadding)
-            .background(RaisedShape(radius: radius) { Circle() })
+        } label: {
+            Image(systemName: "minus.magnifyingglass")
+                .font(.system(size: glyphFrameSize * 2))
+                // enforce square images so that SF symbols align vertically
+                .frame(width: glyphFrameSize, height: glyphFrameSize)
+                
+                .foregroundColor(.primary) /// adapts to dark mode
+                .padding(backgroundPadding)
+                .background(RaisedShape(radius: radius) { Circle() })
+        }
     }
+    
+    static let size = glyphFrameSize + backgroundPadding * 2
 }

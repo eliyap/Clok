@@ -14,25 +14,34 @@ struct GraphButtons: View {
     @EnvironmentObject var model: GraphModel
     
     var body: some View {
-        HStack(alignment: .center, spacing: .zero) {
+        ZStack {
             BackButton
-            VStack(spacing: .zero) {
-                ZoomInButton
-                InvisibleButton
-                ZoomOutButton
-            }
+                .offset(x: -GraphButton.size)
             FwrdButton
-            Image(systemName: "star")
-                .modifier(ButtonGlyph())
-                .onTapGesture {
-                    withAnimation(.linear(duration: 0.4)) {
-                        model.mode.toggle()
-                    }
-                }
+                .offset(x: +GraphButton.size)
+            ZoomInButton
+                .offset(y: -GraphButton.size)
+            ZoomOutButton
+                .offset(y: +GraphButton.size)
+            
         }
+        .offset(
+            x: +GraphButton.size,
+            y: -GraphButton.size
+        )
         .padding(buttonPadding)
+            
+
     }
-    
+    var thing: some View {
+        Image(systemName: "star")
+            .modifier(ButtonGlyph())
+            .onTapGesture {
+                withAnimation(.linear(duration: 0.4)) {
+                    model.mode.toggle()
+                }
+            }
+    }
     private var BackButton: some View {
         Image(systemName: "chevron.left")
             .modifier(ButtonGlyph())
@@ -79,12 +88,5 @@ struct GraphButtons: View {
                     )
                 }
             }
-    }
-    
-    private var InvisibleButton: some View {
-        Image(systemName: "ellipsis") /// image doesn't matter
-            .modifier(ButtonGlyph())
-            .opacity(.zero)
-            .allowsHitTesting(false)
     }
 }
