@@ -23,18 +23,21 @@ struct CustomTabView: View {
         if bounds.mode == .portrait {
             VStack(spacing: 0) {
                 VStack(spacing: 0) { TabContents }
+                Divider()
                 HStack(spacing: 0) { TabButtons }
             }
         }
         else if bounds.device == .iPad && bounds.mode == .landscape {
             VStack(spacing: 0) {
                 HStack(spacing: 0) { TabContents }
+                Divider()
                 HStack(spacing: 0) { TabButtons }
             }
         }
         else if bounds.device == .iPhone && bounds.mode == .landscape {
             HStack(spacing: 0) {
                 HStack(spacing: 0) { TabContents }
+                Divider()
                 VStack(spacing: 0) { TabButtons }
             }
         }
