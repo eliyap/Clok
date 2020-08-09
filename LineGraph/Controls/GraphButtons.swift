@@ -14,12 +14,14 @@ struct GraphButtons: View {
     @EnvironmentObject var model: GraphModel
     
     var body: some View {
-        HStack(alignment: .center) {
+        HStack(alignment: .bottom) {
             DPad()
+            Spacer()
             ModeButton
         }
         .padding(buttonPadding)
     }
+    
     var ModeButton: some View {
         Image(systemName: "star")
             .modifier(ButtonGlyph())

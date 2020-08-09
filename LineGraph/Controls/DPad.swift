@@ -14,7 +14,7 @@ struct DPad: View {
     @EnvironmentObject var model: GraphModel
     
     var body: some View {
-        ZStack {
+        ZStack(alignment: .center) {
             GraphButton(glyph: "chevron.left") {
                 zero.dateChange = .back
                 withAnimation {
@@ -54,11 +54,9 @@ struct DPad: View {
                 .offset(y: +GraphButton.size)
             
         }
-        /// keep buttons in the right place
-        .offset(
-            x: +GraphButton.size,
-            y: -GraphButton.size
+        .frame(
+            width: 3 * GraphButton.size,
+            height: 3 * GraphButton.size
         )
-        
     }
 }
