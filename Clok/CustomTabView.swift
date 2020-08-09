@@ -23,36 +23,36 @@ struct CustomTabView: View {
         if bounds.mode == .portrait {
             VStack {
                 VStack(spacing: 0) {
-                    Views
+                    TabContents
                 }
                 HStack(spacing: 0) {
-                    Buttons
+                    TabButtons
                 }
             }
         }
         else if bounds.device == .iPad && bounds.mode == .landscape {
             VStack {
                 HStack(spacing: 0) {
-                    Views
+                    TabContents
                 }
                 HStack(spacing: 0) {
-                    Buttons
+                    TabButtons
                 }
             }
         }
         else if bounds.device == .iPhone && bounds.mode == .landscape {
             HStack {
                 HStack(spacing: 0) {
-                    Views
+                    TabContents
                 }
                 VStack(spacing: 0) {
-                    Buttons
+                    TabButtons
                 }
             }
         }
     }
     
-    var Views: some View {
+    var TabContents: some View {
         /// group prevents warning about underlying types
         Group {
             switch settings.tab {
@@ -67,7 +67,7 @@ struct CustomTabView: View {
         }
     }
     
-    var Buttons: some View {
+    var TabButtons: some View {
         Group {
             TabButton(select: .spiral, glyph: "arrow.counterclockwise")
             TabButton(select: .bar, glyph: "chart.bar.fill")
