@@ -32,7 +32,7 @@ struct LineGraph: View {
                     terms: data.terms,
                     dayHeight: dayHeight
                 )
-                .transition(.opacity)
+                .transition(slideOver())
                 .frame(height: dayHeight * CGFloat(model.days))
             }
             /// vary background based on daycount
