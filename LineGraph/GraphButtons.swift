@@ -54,4 +54,26 @@ struct GraphButtons: View {
                 }
             }
     }
+    
+    private var ZoomInButton: some View {
+        Image(systemName: "arrow.up.left.and.arrow.down.right")
+            .modifier(ButtonGlyph())
+            .onTapGesture {
+                zero.interval = max(
+                    zero.interval - 3600,
+                    3600
+                )
+            }
+    }
+    
+    private var ZoomOutButton: some View {
+        Image(systemName: "arrow.down.right.and.arrow.up.left")
+            .modifier(ButtonGlyph())
+            .onTapGesture {
+                zero.dateChange = .fwrd
+                withAnimation {
+                    zero.start += weekLength
+                }
+            }
+    }
 }
