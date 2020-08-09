@@ -99,18 +99,4 @@ struct EntryList: View {
         
         return days.filter{ $0.entries.count > 0 }
     }
-    
-    func HeaderFor(section: Day) -> String {
-        let cal = Calendar.current
-        let currentYear = cal.component(.year, from: Date())
-        let zeroYear = cal.component(.year, from: zero.start)
-        
-        /// day of week, day of month, MMM
-        return [
-            section.start.shortWeekday(),
-            df.string(from: section.start),
-            /// plus optional YYYY if it is not current year
-            ((currentYear == zeroYear) ? "" : "\(zeroYear)")
-        ].joined(separator: " ")
-    }
 }
