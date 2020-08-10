@@ -55,8 +55,10 @@ struct FilterView: View {
                 exclude(project)
             }
         }
-        .onMove(perform: {
-            data.terms.projects.move(fromOffsets: $0, toOffset: $1)
+        .onMove(perform: { source, destination in
+            withAnimation {
+                data.terms.projects.move(fromOffsets: source, toOffset: destination)
+            }
         })
     }
     
@@ -88,13 +90,17 @@ struct FilterView: View {
     var SelectButtons: some View {
         HStack {
             Button {
-                data.terms.projects = allProjects
+                withAnimation {
+                    data.terms.projects = allProjects
+                }
             } label: {
                 Text("Select All")
             }
             Spacer()
             Button {
-                data.terms.projects.removeAll()
+                withAnimation {
+                    data.terms.projects.removeAll()
+                }
             } label: {
                 Text("Deselect All")
             }
