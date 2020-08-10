@@ -17,18 +17,16 @@ struct GraphButtons: View {
         HStack(alignment: .bottom) {
             DPad()
             Spacer()
-            ModeButton
-        }
-        .padding(buttonPadding)
-    }
-    
-    var ModeButton: some View {
-        Image(systemName: "star")
-            .modifier(ButtonGlyph())
-            .onTapGesture {
+            GraphButton(glyph: model.mode == .calendar
+                ? "calendar"
+                : "chart.bar.fill"
+            ) {
                 withAnimation(.linear(duration: 0.4)) {
                     model.mode.toggle()
                 }
             }
+        
+        }
+        .padding(buttonPadding)
     }
 }
