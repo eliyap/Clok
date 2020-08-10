@@ -12,11 +12,11 @@ import SwiftUI
 final class ZeroDate: ObservableObject {
     /// default to 6 days before start of today
     /// ensures the default week includes today
-    @Published var start = Calendar.current.startOfDay(for: Date()) - weekLength + dayLength
+    @Published var start = Calendar.current.startOfDay(for: Date()) - .week + .day
     
     /// computed end date
     var end: Date {
-        start + weekLength
+        start + .week
     }
     
     /// whether the date was moved forwards of backwards
@@ -32,8 +32,17 @@ final class ZeroDate: ObservableObject {
     
     /// length of time interval being examined
     /// defaults to 8 hours
-    @Published var interval: TimeInterval = dayLength
+    @Published var interval: TimeInterval = .day
     var zoom: CGFloat {
-        CGFloat(dayLength / interval)
+        CGFloat(TimeInterval.day / interval)
+    }
+}
+
+extension ZeroDate {
+    var weekString: String {
+        let df = DateFormatter()
+        df.setLocalizedDateFormatFromTemplate("MMMdd")
+        /// slightly adjust end down so it falls before midnight into the previous day
+        return "\(df.string(from: start)) – \(df.string(from: end - 1))"
     }
 }

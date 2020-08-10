@@ -18,7 +18,7 @@ struct DayStrip: View {
     @EnvironmentObject var model: GraphModel
     let entries: [TimeEntry]
     let midnight: Date
-    let terms: SearchTerm
+    let terms: SearchTerms
     let dayHeight: CGFloat
     
     /// determines what proportion of available horizontal space to consume
@@ -52,12 +52,12 @@ struct DayStrip: View {
     func height(size: CGSize, entry: TimeEntry) -> CGFloat {
         let start = max(entry.start, midnight - model.castBack)
         let end = min(entry.end, midnight + model.castFwrd)
-        return size.height * CGFloat((end - start) / (dayLength * model.days))
+        return size.height * CGFloat((end - start) / (.day * model.days))
     }
     
     /// calculate appropriate distance to next time entry
     func padding(for entry: TimeEntry, size: CGSize) -> CGFloat {
-        let scale = size.height / CGFloat(dayLength * model.days)
+        let scale = size.height / CGFloat(.day * model.days)
         
         let idx = entries.firstIndex(of: entry)!
         guard entry != entries.first else {
@@ -68,7 +68,7 @@ struct DayStrip: View {
                 let begin = midnight - model.castBack
                 let end = midnight + model.castFwrd
                 /// deduct all time today from 24 hours
-                return CGFloat(entries.reduce(dayLength, {$0 - (min($1.end, end) - max(begin, $1.start))})) * scale
+                return CGFloat(entries.reduce(.day, {$0 - (min($1.end, end) - max(begin, $1.start))})) * scale
             }
         }
         switch model.mode {

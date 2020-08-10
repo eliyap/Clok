@@ -12,6 +12,7 @@ import SwiftUI
 
 struct StatDisplayView: View {
     
+    @EnvironmentObject var zero: ZeroDate
     private let df = DateFormatter()
     
     private var avgStart = placeholderTime
@@ -27,16 +28,16 @@ struct StatDisplayView: View {
     var body: some View {
         Group {
             Divider()
-            WeekDateString()
+            Text(zero.weekString)
+                .font(.headline)
+                .bold()
             thisWeek
             
             Divider()
-            HStack {
-                Text("Since Previous Week")
-                    .font(.headline)
-                    .bold()
-                Spacer()
-            }
+            Text("Since Previous Week")
+                .font(.headline)
+                .bold()
+        
             weekChange
         }
         
@@ -69,7 +70,7 @@ struct StatDisplayView: View {
             Stat(
                 label: "Percentage of Week",
                 symbol: "chart.pie.fill",
-                text: Text("\(Int((avgDur / dayLength) * 100.0))%")
+                text: Text("\(Int((avgDur / .day) * 100.0))%")
             )
         }
     }

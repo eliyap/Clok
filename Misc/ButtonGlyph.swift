@@ -10,17 +10,8 @@ import SwiftUI
 
 // though hard coded size is undesirable
 // this was the only way I could think of to enforce width
-let glyphFrameSize = CGFloat(10)
-let backgroundPadding = CGFloat(15)
-
-struct WeekButtonGlyph: View {
-    let name: String
-    
-    var body: some View {
-        Image(systemName: name)
-            .modifier(ButtonGlyph())
-    }
-}
+fileprivate let glyphFrameSize = CGFloat(10)
+fileprivate let backgroundPadding = CGFloat(15)
 
 struct ButtonGlyph : ViewModifier {
     let radius = CGFloat(10)

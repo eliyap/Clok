@@ -21,6 +21,7 @@ struct BarStack: View {
                         .aspectRatio(1, contentMode: .fill)
                         .frame(width: geo.size.height, height: geo.size.height)
                         .layoutPriority(1)
+                    Divider()
                     BarTabs()
                 }
             case .portrait:
@@ -28,6 +29,7 @@ struct BarStack: View {
                     GraphView()
                         .frame(maxHeight: geo.size.height * 0.6)
                         .layoutPriority(1)
+                    Divider()
                     BarTabs()
                 }
             }

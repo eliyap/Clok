@@ -24,7 +24,7 @@ extension TimeEntry {
 }
 
 extension Array where Element == TimeEntry {
-    func matching(_ terms: SearchTerm) -> [TimeEntry] {
+    func matching(terms: SearchTerms) -> [TimeEntry] {
         return self.filter { $0.matches(terms) }
     }
 }

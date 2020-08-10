@@ -8,47 +8,47 @@
 
 import SwiftUI
 
-let listPadding = CGFloat(7)
-
 struct EntryList: View {
     
     @EnvironmentObject var data: TimeData
     @EnvironmentObject var zero: ZeroDate
     
-    private let df = DateFormatter()
-    
-    init() {
-        df.setLocalizedDateFormatFromTemplate("MMMdd")
-    }
+    let listPadding: CGFloat
     
     var body: some View {
         ScrollView {
-            HStack {
-                /// adjust start date to match
-                Text("\(df.string(from: zero.start + dayLength)) – \(df.string(from: zero.end))")
-                    .font(Font.title.weight(.bold))
-                Spacer()
-            }
-            .padding(listPadding)
-            ForEach(Days(), id: \.id) { day in
-                Section(header: Header(day)) {
-                    VStack(spacing: 0) {
-                        ForEach(day.entries, id: \.id) { entry in
-                            EntryView(entry: entry)
-                                .id(entry.id)
+            VStack(alignment: .leading) {
+                /// adjust end date to be just before midnight of the last day
+                Text(zero.weekString)
+                    .font(.title)
+                    .bold()
+                    .padding(listPadding)
+                ForEach(Days(), id: \.id) { day in
+                    Section(header: Header(day)) {
+                        VStack(spacing: 0) {
+                            ForEach(day.entries, id: \.id) { entry in
+                                EntryView(
+                                    entry: entry,
+                                    listPadding: listPadding
+                                )
+                                    .id(entry.id)
+                            }
                         }
                     }
                 }
-            }
-            /// fuuuuuuutuuuuure
-            if zero.start >= Calendar.current.startOfDay(for: Date()) {
-                Text("What does the future hold?")
+                /// fuuuuuuutuuuuure
+                if zero.start >= Calendar.current.startOfDay(for: Date()) {
+                    Text("What does the future hold?")
+                }
             }
         }
         .allowsHitTesting(false)
     }
     
     func Header(_ day: Day) -> some View {
+        let df = DateFormatter()
+        df.setLocalizedDateFormatFromTemplate("MMM dd")
+        
         let cal = Calendar.current
         let currentYear = cal.component(.year, from: Date())
         let zeroYear = cal.component(.year, from: zero.start)
@@ -61,12 +61,9 @@ struct EntryList: View {
             ((currentYear == zeroYear) ? "" : "\(zeroYear)")
         ].joined(separator: " ")
         
-        return VStack {
-            HStack {
-                Text(dateString)
-                    .font(Font.title2.weight(.bold))
-                Spacer()
-            }
+        return VStack(alignment: .leading) {
+            Text(dateString)
+                .font(Font.title2.weight(.bold))
             Divider()
         }
         .padding([.leading, .trailing], listPadding)
@@ -82,14 +79,14 @@ struct EntryList: View {
         /// restrict to current week
         let validEntries = data.entries
             .sorted(by: {$0.start < $1.start} )
-            .within(interval: weekLength, of: zero.start + dayLength)
-            .matching(data.terms)
+            .within(interval: .week, of: zero.start)
+            .matching(terms: data.terms)
         
         var days = [Day]()
         for mn in stride(
-            from: zero.start + dayLength,
-            to: zero.end + dayLength,
-            by: dayLength
+            from: zero.start,
+            to: zero.end,
+            by: .day
         ) {
             days.append(Day(
                 id: Int(mn.timeIntervalSince1970),
@@ -97,24 +94,10 @@ struct EntryList: View {
                 entries: validEntries
                     /// restrict entries to those that started in this 24 hour period
                     /// NOTE: don't use `within`, as this causes some entries to appear across 2 days, causing a crash!
-                    .filter{ $0.start.between(mn, mn + dayLength) }
+                    .filter{ $0.start.between(mn, mn + .day) }
             ))
         }
         
         return days.filter{ $0.entries.count > 0 }
-    }
-    
-    func HeaderFor(section: Day) -> String {
-        let cal = Calendar.current
-        let currentYear = cal.component(.year, from: Date())
-        let zeroYear = cal.component(.year, from: zero.start)
-        
-        /// day of week, day of month, MMM
-        return [
-            section.start.shortWeekday(),
-            df.string(from: section.start),
-            /// plus optional YYYY if it is not current year
-            ((currentYear == zeroYear) ? "" : "\(zeroYear)")
-        ].joined(separator: " ")
     }
 }

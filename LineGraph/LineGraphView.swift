@@ -22,7 +22,7 @@ struct LineGraph: View {
         HStack(spacing: .zero) {
             /// use date enum so SwiftUI can identify horizontal swipes without redrawing everything
             ForEach(
-                Array(stride(from: zero.start, to: zero.end, by: dayLength)),
+                Array(stride(from: zero.start, to: zero.end, by: .day)),
                 id: \.timeIntervalSince1970
             ) { midnight in
                 Divider()
@@ -48,11 +48,13 @@ struct LineGraph: View {
         case .calendar: return data.entries
             .filter{$0.end > midnight - model.castBack}
             .filter{$0.start < midnight + model.castFwrd}
+            /// chronological sort
             .sorted{$0.start < $1.start}
         case .graph: return data.entries
             .filter{$0.end > midnight - model.castBack}
             .filter{$0.start < midnight + model.castFwrd}
-            .sorted{$0.wrappedProject.wrappedName < $1.wrappedProject.wrappedName}
+            /// use Search sort, which prioritizes selected Projects
+            .sorted{data.terms.projectSort(p0: $0.wrappedProject, p1: $1.wrappedProject)}
         }
     }
     

@@ -1,36 +1,5 @@
 import Foundation
 
-struct SearchTerm {
-    enum descriptionPreference {
-        case any
-        case specific
-        case empty
-    }
-    
-    /// May remove project restriction by choosing Any Project
-    var project: ProjectLike
-    
-    /// we wish to retain the user's last description
-    var description: String
-    
-    /// if you *do not wish* to search by description, set to false
-    var byDescription = descriptionPreference.any
-}
-
-extension SearchTerm.descriptionPreference {
-    /// go to the "next" case, or loop back
-    mutating func cycle() -> Void {
-        switch self {
-        case .any:
-            self = .specific
-        case .specific:
-            self = .empty
-        case .empty:
-            self = .any
-        }
-    }
-}
-
 /**
  represents a period of time
  */
@@ -56,11 +25,11 @@ struct WeekTimeFrame {
     /**
      filter time entries down to between date range
      */
-    init (start start_: Date, entries entries_: [TimeEntry], terms: SearchTerm) {
-        frame = TimeFrame(start: start_, end: start_ + weekLength)
+    init (start start_: Date, entries entries_: [TimeEntry], terms: SearchTerms) {
+        frame = TimeFrame(start: start_, end: start_ + .week)
         entries = entries_
-            .matching(terms)
-            .within(interval: weekLength, of: start_)
+            .matching(terms: terms)
+            .within(interval: .week, of: start_)
         df.timeStyle = .short
     }
     
@@ -73,7 +42,7 @@ struct WeekTimeFrame {
         [
             entries.map{ $0.start }.meanTime(),
             entries.map{ $0.end   }.meanTime()
-        ].meanTime() + (dayLength / 2)
+        ].meanTime() + (.day / 2)
     }
     
     /**
@@ -174,7 +143,7 @@ struct DayTimeFrame {
     var frame:TimeFrame
     init(start:Date, end:Date) {
         guard start < end else { fatalError("End Not After Start!")}
-        guard end - start <= dayLength else { fatalError("spans more than a day!")}
+        guard end - start <= .day else { fatalError("spans more than a day!")}
         frame = TimeFrame(start: start, end: end)
     }
 }

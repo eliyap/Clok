@@ -9,33 +9,36 @@
 import SwiftUI
 
 struct StatView: View {
+    
     @EnvironmentObject var data: TimeData
     @EnvironmentObject var zero: ZeroDate
-    @State private var dateString = ""
+    
+    let listPadding: CGFloat
     
     var body: some View {
         ScrollView {
-            VStack {
+            VStack(alignment: .leading) {
                 Text("Summary")
                     .font(.title)
                     .bold()
+                    .padding(.bottom, listPadding)
                 HStack {
                     /// show Any Project as an empty circle
-                    Image(systemName: StaticProject.any == data.terms.project ? "circle" : "largecircle.fill.circle")
-                        .foregroundColor(StaticProject.any == data.terms.project ? Color.primary : data.terms.project.wrappedColor)
-                    Text(data.terms.project.wrappedName)
-                        .bold()
-                    if data.terms.byDescription == .any {
-                        Text("Any Description")
-                            .foregroundColor(.secondary)
-                    } else if data.terms.byDescription == .empty {
-                        Text("No Description")
-                            .foregroundColor(.secondary)
-                    } else {
-                        Text(data.terms.description)
-                    }
+                    #warning("silenced")
+//                    Image(systemName: StaticProject.any == data.terms.project ? "circle" : "largecircle.fill.circle")
+//                        .foregroundColor(StaticProject.any == data.terms.project ? Color.primary : data.terms.project.wrappedColor)
+//                    Text(data.terms.project.wrappedName)
+//                        .bold()
+//                    if data.terms.byDescription == .any {
+//                        Text("Any Description")
+//                            .foregroundColor(.secondary)
+//                    } else if data.terms.byDescription == .empty {
+//                        Text("No Description")
+//                            .foregroundColor(.secondary)
+//                    } else {
+//                        Text(data.terms.description)
+//                    }
                 }
-                .onTapGesture { withAnimation { data.searching.toggle() } }
                 StatDisplayView(
                     for: WeekTimeFrame(
                         start: zero.start,
@@ -43,19 +46,13 @@ struct StatView: View {
                         terms: data.terms
                     ),
                     prev: WeekTimeFrame(
-                        start: zero.start - weekLength,
+                        start: zero.start - .week,
                         entries: data.entries,
                         terms: data.terms
                     )
                 )
             }
-            .padding()
+            .padding(listPadding)
         }
-    }
-    
-    func Tab() -> some View {
-        Rectangle()
-            .frame(width: listLineInset)
-            .foregroundColor(data.terms.project.wrappedColor)
     }
 }
