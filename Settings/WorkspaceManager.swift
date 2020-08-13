@@ -94,4 +94,17 @@ struct WorkspaceManager {
             suite?.set(newValue, forKey: zoomKey)
         }
     }
+    
+    // MARK:- Zero Start Date
+    static let startKey = "zeroStart"
+    static var zeroStart: Date {
+        get {
+            suite?.object(forKey: startKey) as? Date
+                /// default index of 0
+                ?? Date()
+        }
+        set {
+            suite?.set(newValue, forKey: startKey)
+        }
+    }
 }

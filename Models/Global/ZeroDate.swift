@@ -17,8 +17,10 @@ final class ZeroDate: ObservableObject {
      */
     let objectWillChange = ObservableObjectPublisher()
     
-    init(start: Date){
-        self.start = start
+    init(){
+        /// initialize to chosen start day
+        /// usually, this will do nothing, but if user changed `firstDayOfWeek`, it should bring start up to speed
+        self.start = WorkspaceManager.zeroStart.startOfWeek(day: WorkspaceManager.firstDayOfWeek)
         self.zoomIdx = WorkspaceManager.zoomIdx
     }
     
@@ -26,6 +28,8 @@ final class ZeroDate: ObservableObject {
     /// ensures the default week includes today
     var start: Date {
         willSet {
+            /// update `UserDefaults`
+            WorkspaceManager.zeroStart = newValue
             objectWillChange.send()
         }
     }
