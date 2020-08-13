@@ -32,7 +32,7 @@ struct LineGraph: View {
                     terms: data.terms,
                     dayHeight: dayHeight
                 )
-                .transition(slideOver())
+                .transition(slideOver)
                 .frame(height: dayHeight * CGFloat(model.days))
             }
             /// vary background based on daycount
@@ -62,7 +62,7 @@ struct LineGraph: View {
      determine what kind of apperance / disappearance animation to use
      based on whether the anchor date was just moved forwards for backwards
      */
-    func slideOver() -> AnyTransition {
+    var slideOver: AnyTransition {
         switch zero.dateChange {
         case .fwrd:
             return .asymmetric(
