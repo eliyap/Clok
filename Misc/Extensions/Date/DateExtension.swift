@@ -17,19 +17,22 @@ extension Date {
     }
 }
 
-/// move back in time until date shares 24 hour time with other date
-func roundDown(_ date: Date, to other: Date) -> Date {
-    guard date != other else { return date }
-    
-    var date = date
-    if other > date {
-        let timeOffset = (other - date).truncatingRemainder(dividingBy: .day)
-        date -= .day - timeOffset
-    } else {
-        let timeOffset = (date - other).truncatingRemainder(dividingBy: .day)
-        date -= timeOffset
+extension Date {
+    /// move back in time until date shares 24 hour time with other date
+    mutating func roundDown(to other: Date) -> Date {
+        guard self != other else { return self }
+        
+        var date = self
+        if other > date {
+            let timeOffset = (other - date).truncatingRemainder(dividingBy: .day)
+            date -= .day - timeOffset
+        } else {
+            let timeOffset = (date - other).truncatingRemainder(dividingBy: .day)
+            date -= timeOffset
+        }
+        return date
     }
-    return date
+
 }
 
 extension Date {
