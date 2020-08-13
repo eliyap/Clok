@@ -22,15 +22,13 @@ extension Date {
     func roundDown(to other: Date) -> Date {
         guard self != other else { return self }
         
-        var date = self
-        if other > date {
-            let timeOffset = (other - date).truncatingRemainder(dividingBy: .day)
-            date -= .day - timeOffset
+        if other > self {
+            let timeOffset = (other - self).truncatingRemainder(dividingBy: .day)
+            return self - (.day - timeOffset)
         } else {
-            let timeOffset = (date - other).truncatingRemainder(dividingBy: .day)
-            date -= timeOffset
+            let timeOffset = (self - other).truncatingRemainder(dividingBy: .day)
+            return self - timeOffset
         }
-        return date
     }
 }
 
