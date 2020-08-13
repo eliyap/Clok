@@ -1,13 +1,15 @@
 //
-//  ColorExtension.swift
-//  Trickl
+//  ColorHex.swift
+//  Clok
 //
-// https://stackoverflow.com/questions/56874133/use-hex-color-in-swiftui
+//  Created by Secret Asian Man Dev on 13/8/20.
+//  Copyright © 2020 Secret Asian Man 3. All rights reserved.
+//
 
 import Foundation
 import SwiftUI
+
 extension Color {
-    
     /// extract Color from hex string
     init(hex: String) {
         let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
@@ -67,17 +69,4 @@ extension Color {
         }
         return (r, g, b, a)
     }
-}
-
-/// my custom colors
-extension Color {
-
-    // middle of the road grey, replace with dark mode sensitive color later
-    static let noProject = Color(
-        red: 0.5,
-        green: 0.5,
-        blue: 0.5
-    )
-    
-    static let clokBG = Color("ClokBG")
 }
