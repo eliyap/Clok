@@ -53,7 +53,7 @@ struct SettingsView: View {
                             
                             // destroy workspace records
                             WorkspaceManager.saveSpaces([])
-                            WorkspaceManager.saveChosen(Workspace(wid: 0, name: ""))
+                            WorkspaceManager.chosenWorkspace = Workspace(wid: 0, name: "")
                             
                             settings.user = nil
                             print("logged out!")

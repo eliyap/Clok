@@ -16,7 +16,7 @@ struct WorkspaceMenu: View {
             ForEach(settings.user?.workspaces ?? [], id: \.wid) { space in
                 Button {
                     settings.user?.chosen = space // set chosen space (updates Spiral)
-                    WorkspaceManager.saveChosen(space) // write choice to disk for future launches
+                    WorkspaceManager.chosenWorkspace = space // write choice to disk for future launches
                     dismiss = false // dismiss this menu
                 } label: {
                     Text(space.name)

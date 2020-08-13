@@ -33,25 +33,41 @@ struct WorkspaceManager {
         )
     }
 
-    static func saveChosen(_ space: Workspace) -> Void {
-        try! suite?.setValue(
-            NSKeyedArchiver.archivedData(
-                withRootObject: space,
-                requiringSecureCoding: false
-            ),
-            forKey: spaceChosenKey
-        )
-    }
-    
     /// get user's stored `Workspace`s
     static func getSpaces() -> [Workspace]? {
         guard let decoded = suite?.object(forKey: spacesKey) as? Data else { return nil }
         return try? NSKeyedUnarchiver.unarchivedObject(ofClasses: [NSArray.self, Workspace.self], from: decoded) as? [Workspace]
     }
 
-    /// get user's chosen `Workspace`
-    static func getChosen() -> Workspace? {
-        guard let decoded  = suite?.object(forKey: spaceChosenKey) as? Data else { return nil }
-        return try? NSKeyedUnarchiver.unarchivedObject(ofClass: Workspace.self, from: decoded)
+    /// user's chosen `Workspace`
+    static var chosenWorkspace: Workspace? {
+        get {
+            guard let decoded  = suite?.object(forKey: spaceChosenKey) as? Data else { return nil }
+            return try? NSKeyedUnarchiver.unarchivedObject(ofClass: Workspace.self, from: decoded)
+        }
+        set {
+            guard let workspace = newValue else { return }
+            try! suite?.setValue(
+                NSKeyedArchiver.archivedData(
+                    withRootObject: workspace,
+                    requiringSecureCoding: false
+                ),
+                forKey: spaceChosenKey
+            )
+        }
+    }
+    
+    static let firstDayOfWeekKey = "firstDayOfWeek"
+    /**
+     user's chosen firstDayOfWeek
+     defaults to Sunday = 1
+     */
+    static var firstDayOfWeek: Int {
+        get {
+            suite?.object(forKey: firstDayOfWeekKey) as? Int ?? 1
+        }
+        set {
+            suite?.set(newValue, forKey: firstDayOfWeekKey)
+        }
     }
 }

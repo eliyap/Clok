@@ -38,7 +38,7 @@ func getCredentials() -> User? {
         let (email, fullname, apiKey) = try getKey()
         guard
             let spaces = WorkspaceManager.getSpaces(),
-            let chosen = WorkspaceManager.getChosen()
+            let chosen = WorkspaceManager.chosenWorkspace
         else {
             print("no workspace")
             return nil
@@ -71,7 +71,7 @@ func saveKeys(user: User) throws -> Void {
     WorkspaceManager.saveSpaces(user.workspaces)
     
     // choose 1st workspace by default.
-    WorkspaceManager.saveChosen(user.workspaces.first!)
+    WorkspaceManager.chosenWorkspace = user.workspaces.first!
     print("workspaces ok")
     
     let keychainItem = [kSecAttrServer: service,       // secure Toggl login items:
