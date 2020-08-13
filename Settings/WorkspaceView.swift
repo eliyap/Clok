@@ -19,7 +19,6 @@ struct WorkspaceMenu: View {
                 Button {
                     settings.user?.chosen = space // set chosen space (updates Spiral)
                     WorkspaceManager.chosenWorkspace = space // write choice to disk for future launches
-//                    dismiss = false // dismiss this menu
                     presentationMode.wrappedValue.dismiss()
                 } label: {
                     Text(space.name)
