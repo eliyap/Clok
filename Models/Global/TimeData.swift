@@ -10,11 +10,13 @@ import Foundation
 import SwiftUI
 
 final class TimeData: ObservableObject {
-    /// manage time entries through global var instead of Core Data to prevent changes to views hitting the data base on every reload
+    /// A delegate between SwiftUI and CoreData, storing all of the user's `TimeEntry`s
+    /// `EnvironmentObject` was chosen to prevent the UI hitting CoreData on every refresh
     @Published var entries = [TimeEntry]()
     
-    /// the Project and Descriptions the user is filtering for
+    /// the `Project`s the user is filtering for
     @Published var terms = SearchTerms()
     
+    /// a list of the user's `Project`s
     @Published var projects = [Project]()
 }
