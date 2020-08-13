@@ -41,8 +41,8 @@ extension Array where Element == Date {
      */
     public func meanTime() -> Date {
         /// find average coordinates on a unit circle
-        let meanX = self.map{$0.angle().cosine()}.mean()
-        let meanY = self.map{$0.angle().sine()}.mean()
+        let meanX = self.map{cos($0.angle.radians)}.mean
+        let meanY = self.map{sin($0.angle.radians)}.mean
         
         /// find time represented by coordinates
         return Angle(x: meanX, y: meanY).time24h()

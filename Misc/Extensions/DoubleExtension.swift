@@ -9,7 +9,7 @@
 import Foundation
 extension Array where Element == Double {
     /// simple mean calculation
-    func mean() -> Double {
+    var mean: Double {
         self.reduce(0.0, {$0 + $1}) / Double(self.count)
     }
 }

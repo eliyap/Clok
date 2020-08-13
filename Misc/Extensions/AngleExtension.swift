@@ -9,17 +9,6 @@
 import Foundation
 import SwiftUI
 
-
-extension Angle {
-    /// utility trig functions
-    func cosine() -> Double {
-        cos(self.radians)
-    }
-    func sine() -> Double {
-        sin(self.radians)
-    }
-}
-
 extension Angle {
     /**
      maps [0, 360) degrees to [0000,2400) hours

@@ -15,7 +15,7 @@ extension Date {
      returns the angle this date would show on a 24 hour clock, with 0000h being +x direction,
      bounded 0 to 360 degrees
      */
-    public func angle() -> Angle {
+    var angle: Angle {
         let cal = Calendar.current
         
         let mins = Double(
@@ -34,7 +34,7 @@ extension Date {
      */
     public func clockAngle24() -> Angle {
         /// 90 degree deduction to bring 0000h up to vertical
-        self.angle() - Angle(degrees: 90)
+        angle - Angle(degrees: 90)
     }
     
     /**
