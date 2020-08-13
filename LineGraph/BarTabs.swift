@@ -13,6 +13,7 @@ import SwiftUI
 struct BarTabs: View {
     
     private let listPadding = CGFloat(10)
+    @EnvironmentObject var zero: ZeroDate
     @AppStorage(
         "BarTab",
         store: UserDefaults(suiteName: WorkspaceManager.suiteName)
@@ -25,15 +26,21 @@ struct BarTabs: View {
     }
     
     var body: some View {
-        TabView(selection: $tab){
-            FilterView(listPadding: listPadding)
-                .tag(BarTab.filter)
-            EntryList(listPadding: listPadding)
-                .tag(BarTab.entryList)
-            StatView(listPadding: listPadding)
-                .tag(BarTab.stat)
+        VStack(spacing: listPadding) {
+            Text(zero.weekString)
+                .font(.title)
+                .bold()
+                .padding(.top, listPadding)
+            TabView(selection: $tab){
+                FilterView(listPadding: listPadding)
+                    .tag(BarTab.filter)
+                EntryList(listPadding: listPadding)
+                    .tag(BarTab.entryList)
+                StatView(listPadding: listPadding)
+                    .tag(BarTab.stat)
+            }
+            .tabViewStyle(PageTabViewStyle())
+            .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
         }
-        .tabViewStyle(PageTabViewStyle())
-        .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
     }
 }

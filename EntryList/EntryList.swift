@@ -19,7 +19,7 @@ struct EntryList: View {
         ScrollView {
             VStack(alignment: .leading) {
                 /// adjust end date to be just before midnight of the last day
-                Text(zero.weekString)
+                Text("Entries")
                     .font(.title)
                     .bold()
                     .padding(listPadding)

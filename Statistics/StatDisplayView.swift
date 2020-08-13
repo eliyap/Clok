@@ -27,10 +27,6 @@ struct StatDisplayView: View {
     
     var body: some View {
         Group {
-            Divider()
-            Text(zero.weekString)
-                .font(.headline)
-                .bold()
             thisWeek
             
             Divider()
