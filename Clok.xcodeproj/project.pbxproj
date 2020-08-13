@@ -60,6 +60,7 @@
 		2296F15B24A994A400AF38B5 /* FormRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2296F15A24A994A400AF38B5 /* FormRequest.swift */; };
 		22A2CE1D24E59BB1000820AD /* DateStridable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE1C24E59BB1000820AD /* DateStridable.swift */; };
 		22A2CE1F24E59BCE000820AD /* DateAngle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE1E24E59BCE000820AD /* DateAngle.swift */; };
+		22A2CE2424E59DFE000820AD /* DateMean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE2324E59DFE000820AD /* DateMean.swift */; };
 		22AD5F7D24B1467D006EF7FB /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22AD5F7C24B1467D006EF7FB /* WidgetKit.framework */; };
 		22AD5F7F24B1467D006EF7FB /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22AD5F7E24B1467D006EF7FB /* SwiftUI.framework */; };
 		22AD5F8524B1467E006EF7FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22AD5F8424B1467E006EF7FB /* Assets.xcassets */; };
@@ -212,6 +213,7 @@
 		2296F15A24A994A400AF38B5 /* FormRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormRequest.swift; sourceTree = "<group>"; };
 		22A2CE1C24E59BB1000820AD /* DateStridable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateStridable.swift; sourceTree = "<group>"; };
 		22A2CE1E24E59BCE000820AD /* DateAngle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateAngle.swift; sourceTree = "<group>"; };
+		22A2CE2324E59DFE000820AD /* DateMean.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateMean.swift; sourceTree = "<group>"; };
 		22AD5F7A24B1467D006EF7FB /* ClokWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ClokWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		22AD5F7C24B1467D006EF7FB /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		22AD5F7E24B1467D006EF7FB /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -403,6 +405,7 @@
 			isa = PBXGroup;
 			children = (
 				C6F605AE246C6B1700D0FE82 /* DateExtension.swift */,
+				22A2CE2324E59DFE000820AD /* DateMean.swift */,
 				22A2CE1C24E59BB1000820AD /* DateStridable.swift */,
 				22A2CE1E24E59BCE000820AD /* DateAngle.swift */,
 			);
@@ -834,6 +837,7 @@
 				22283DA624DF9EFA005AC0F3 /* GraphButtons.swift in Sources */,
 				22A2CE1F24E59BCE000820AD /* DateAngle.swift in Sources */,
 				2264CB3524AD330500ECBF2B /* IconView.swift in Sources */,
+				22A2CE2424E59DFE000820AD /* DateMean.swift in Sources */,
 				C63FC2F8249BCEB900747D49 /* AngleExtension.swift in Sources */,
 				C6AAB3EA249EF26800DFBA36 /* TimeEntryExtension.swift in Sources */,
 				C6C18D492448F96C000345D5 /* ContentView.swift in Sources */,
