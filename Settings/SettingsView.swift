@@ -18,51 +18,64 @@ struct SettingsView: View {
     var body: some View {
         NavigationView {
             List {
-                Section(header: Text("Account")) {
-                    HStack {
-                        Text("Logged in as")
-                        Spacer()
-                        Text(settings.user?.fullName ?? "No One")
-                    }
-                    NavigationLink(
-                        destination: WorkspaceMenu(dismiss: $selectingWorkspace),
-                        isActive: $selectingWorkspace
-                    ){
-                        HStack {
-                            Text("Workspace")
-                            Spacer()
-                            Text(settings.user?.chosen.name ?? "No Space")
-                        }
-                    }
-                }
-                Section(header: EmptyView()) {
-                    Text("Log Out")
-                        .foregroundColor(.red)
-                        .onTapGesture {
-                            // destroy local data
-                            let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: TimeEntry.entityName)
-                            let request = NSBatchDeleteRequest(fetchRequest: fetch)
-                            do {
-                                try moc.execute(request)
-                            } catch {
-                                fatalError("Failed to execute request: \(error)")
-                            }
-                                                    
-                            // destroy credentials
-                            try! dropKey()
-                            
-                            // destroy workspace records
-                            WorkspaceManager.workspaces = []
-                            WorkspaceManager.chosenWorkspace = Workspace(wid: 0, name: "")
-                            
-                            settings.user = nil
-                            print("logged out!")
-                        }
-                }
+                AccountSection
+                LogOutSection
             }
             .listStyle(InsetGroupedListStyle())
             .navigationBarTitle("Settings")
         }
         .navigationViewStyle(StackNavigationViewStyle())
+    }
+    
+    var AccountSection: some View {
+        Section(header: Text("Account")) {
+            HStack {
+                Text("Logged in as")
+                Spacer()
+                Text(settings.user?.fullName ?? "No One")
+            }
+            NavigationLink(
+                destination: WorkspaceMenu(dismiss: $selectingWorkspace),
+                isActive: $selectingWorkspace
+            ){
+                HStack {
+                    Text("Workspace")
+                    Spacer()
+                    Text(settings.user?.chosen.name ?? "No Space")
+                }
+            }
+        }
+    }
+    
+    var LogOutSection: some View {
+        Section(header: EmptyView()) {
+            Text("Log Out")
+                .foregroundColor(.red)
+                .onTapGesture(perform: logOut)
+        }
+    }
+}
+
+// MARK:- Functions
+extension SettingsView {
+    func logOut() -> Void {
+        // destroy local data
+        let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: TimeEntry.entityName)
+        let request = NSBatchDeleteRequest(fetchRequest: fetch)
+        do {
+            try moc.execute(request)
+        } catch {
+            fatalError("Failed to execute request: \(error)")
+        }
+                                
+        // destroy credentials
+        try! dropKey()
+        
+        // destroy workspace records
+        WorkspaceManager.workspaces = []
+        WorkspaceManager.chosenWorkspace = Workspace(wid: 0, name: "")
+        
+        settings.user = nil
+        print("logged out!")
     }
 }
