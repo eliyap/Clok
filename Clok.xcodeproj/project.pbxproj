@@ -20,7 +20,6 @@
 		221C3C5524A93C0F006995C5 /* GetUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221C3C5424A93C0F006995C5 /* GetUserData.swift */; };
 		221C3C5724A93C57006995C5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221C3C5624A93C57006995C5 /* User.swift */; };
 		221D963C24A912B900C84F57 /* APIKeyHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221D963B24A912B900C84F57 /* APIKeyHandler.swift */; };
-		221D964424A9207600C84F57 /* SearchContrastScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221D964324A9207600C84F57 /* SearchContrastScreen.swift */; };
 		222305AE24AE807000711031 /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222305AD24AE807000711031 /* CustomTabView.swift */; };
 		22232B8B24A9532000F3C378 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22232B8A24A9532000F3C378 /* LoginView.swift */; };
 		22283DA024DF9959005AC0F3 /* BarTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22283D9F24DF9959005AC0F3 /* BarTabs.swift */; };
@@ -179,7 +178,6 @@
 		221C3C5424A93C0F006995C5 /* GetUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserData.swift; sourceTree = "<group>"; };
 		221C3C5624A93C57006995C5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		221D963B24A912B900C84F57 /* APIKeyHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeyHandler.swift; sourceTree = "<group>"; };
-		221D964324A9207600C84F57 /* SearchContrastScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchContrastScreen.swift; sourceTree = "<group>"; };
 		222305AD24AE807000711031 /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
 		22232B8A24A9532000F3C378 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		22283D9F24DF9959005AC0F3 /* BarTabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarTabs.swift; sourceTree = "<group>"; };
@@ -536,7 +534,6 @@
 				221D963624A90BF100C84F57 /* Keychain */,
 				C6D448ED248471250072E7D4 /* Activity */,
 				22928AC624A423AA00DC9EC5 /* ButtonGlyph.swift */,
-				221D964324A9207600C84F57 /* SearchContrastScreen.swift */,
 				C688BFC924A18BF00077CECF /* RaisedShape.swift */,
 				22027DD324AFF92000C0BA90 /* Fullscreen.swift */,
 				221810DF24B0158500B63ECA /* Get24hourPref.swift */,
@@ -934,7 +931,6 @@
 				22027DD624AFFA6500C0BA90 /* Bounds.swift in Sources */,
 				228B100624AECDFF0026AD4B /* EntryView.swift in Sources */,
 				222D992624BAB2FD00F66E0F /* DecoderExtension.swift in Sources */,
-				221D964424A9207600C84F57 /* SearchContrastScreen.swift in Sources */,
 				2264CB3724AD338500ECBF2B /* LoginWith.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
