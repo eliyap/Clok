@@ -74,7 +74,8 @@ func saveKeys(user: User) throws -> Void {
     WorkspaceManager.chosenWorkspace = user.workspaces.first!
     print("workspaces ok")
     
-    let keychainItem = [kSecAttrServer: service,         // secure Toggl login items:
+    let keychainItem = [
+        kSecAttrServer: service,                         // secure Toggl login items:
         kSecAttrAccount: user.email,                     // email
         kSecAttrCreator: user.fullName,                  // full name
         kSecValueData:   user.token.data(using: .utf8)!, // token
