@@ -66,6 +66,7 @@
 		22A2CE2B24E59ED0000820AD /* AngleFromCartesian.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE2A24E59ED0000820AD /* AngleFromCartesian.swift */; };
 		22A2CE2E24E59F88000820AD /* ColorHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE2D24E59F88000820AD /* ColorHex.swift */; };
 		22A2CE2F24E59F8B000820AD /* ColorHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE2D24E59F88000820AD /* ColorHex.swift */; };
+		22A2CE3224E5A218000820AD /* CGPointOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE3124E5A218000820AD /* CGPointOperators.swift */; };
 		22AD5F7D24B1467D006EF7FB /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22AD5F7C24B1467D006EF7FB /* WidgetKit.framework */; };
 		22AD5F7F24B1467D006EF7FB /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22AD5F7E24B1467D006EF7FB /* SwiftUI.framework */; };
 		22AD5F8524B1467E006EF7FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22AD5F8424B1467E006EF7FB /* Assets.xcassets */; };
@@ -223,6 +224,7 @@
 		22A2CE2824E59E8C000820AD /* AngleAsDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AngleAsDate.swift; sourceTree = "<group>"; };
 		22A2CE2A24E59ED0000820AD /* AngleFromCartesian.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AngleFromCartesian.swift; sourceTree = "<group>"; };
 		22A2CE2D24E59F88000820AD /* ColorHex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHex.swift; sourceTree = "<group>"; };
+		22A2CE3124E5A218000820AD /* CGPointOperators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPointOperators.swift; sourceTree = "<group>"; };
 		22AD5F7A24B1467D006EF7FB /* ClokWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ClokWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		22AD5F7C24B1467D006EF7FB /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		22AD5F7E24B1467D006EF7FB /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -442,6 +444,15 @@
 			path = Angle/Color;
 			sourceTree = "<group>";
 		};
+		22A2CE3024E5A20B000820AD /* CGPoint */ = {
+			isa = PBXGroup;
+			children = (
+				C64385F42485F46A00CCF47E /* CGPointExtension.swift */,
+				22A2CE3124E5A218000820AD /* CGPointOperators.swift */,
+			);
+			path = CGPoint;
+			sourceTree = "<group>";
+		};
 		22AD5F7B24B1467D006EF7FB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -553,7 +564,7 @@
 			isa = PBXGroup;
 			children = (
 				C63FC2F9249BCFBD00747D49 /* DoubleExtension.swift */,
-				C64385F42485F46A00CCF47E /* CGPointExtension.swift */,
+				22A2CE3024E5A20B000820AD /* CGPoint */,
 				C69F02772496AFA200D1C650 /* TimeIntervalExtension.swift */,
 				C6AAB3E9249EF26800DFBA36 /* TimeEntryExtension.swift */,
 				22A2CE2524E59E3C000820AD /* Angle */,
@@ -909,6 +920,7 @@
 				22B0783824B1519600256EB8 /* NetworkError.swift in Sources */,
 				22283DA424DF9D8B005AC0F3 /* BarStack.swift in Sources */,
 				221C3C5724A93C57006995C5 /* User.swift in Sources */,
+				22A2CE3224E5A218000820AD /* CGPointOperators.swift in Sources */,
 				22283DA024DF9959005AC0F3 /* BarTabs.swift in Sources */,
 				C688BFCA24A18BF00077CECF /* RaisedShape.swift in Sources */,
 				222305AE24AE807000711031 /* CustomTabView.swift in Sources */,
