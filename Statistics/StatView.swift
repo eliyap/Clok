@@ -12,16 +12,14 @@ struct StatView: View {
     
     @EnvironmentObject var data: TimeData
     @EnvironmentObject var zero: ZeroDate
+    @EnvironmentObject var bounds: Bounds
     
     let listPadding: CGFloat
     
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
-                Text("Summary")
-                    .font(.title)
-                    .bold()
-                    .padding(.bottom, listPadding)
+                Title
                 HStack {
                     /// show Any Project as an empty circle
                     #warning("silenced")
@@ -53,6 +51,20 @@ struct StatView: View {
                 )
             }
             .padding(listPadding)
+        }
+    }
+    
+    var Title: some View {
+        if bounds.device == .iPhone && bounds.mode == .portrait {
+            return Text("Summary")
+                .font(.title2)
+                .bold()
+                .padding(.top, listPadding / 2)
+        } else {
+            return Text("Summary")
+                .font(.title)
+                .bold()
+                .padding(.bottom, listPadding)
         }
     }
 }

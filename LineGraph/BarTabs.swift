@@ -14,6 +14,7 @@ struct BarTabs: View {
     
     private let listPadding = CGFloat(10)
     @EnvironmentObject var zero: ZeroDate
+    @EnvironmentObject var bounds: Bounds
     @AppStorage(
         "BarTab",
         store: UserDefaults(suiteName: WorkspaceManager.suiteName)
@@ -27,10 +28,7 @@ struct BarTabs: View {
     
     var body: some View {
         VStack(spacing: listPadding) {
-            Text(zero.weekString)
-                .font(.title)
-                .bold()
-                .padding(.top, listPadding)
+            WeekTitle
             TabView(selection: $tab){
                 FilterView(listPadding: listPadding)
                     .tag(BarTab.filter)
@@ -41,6 +39,20 @@ struct BarTabs: View {
             }
             .tabViewStyle(PageTabViewStyle())
             .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
+        }
+    }
+    
+    var WeekTitle: some View {
+        if bounds.device == .iPhone && bounds.mode == .portrait {
+            return Text(zero.weekString)
+                .font(.title2)
+                .bold()
+                .padding(.top, listPadding / 2)
+        } else {
+            return Text(zero.weekString)
+                .font(.title)
+                .bold()
+                .padding(.top, listPadding)
         }
     }
 }

@@ -16,18 +16,15 @@ struct FilterView: View {
     let listPadding: CGFloat
     
     var body: some View {
-        VStack(alignment: .leading, spacing: .zero) {
-            Text("Filter")
-                .bold()
-                .font(.title)
+        VStack(alignment: .leading, spacing: listPadding) {
+            Title
             SelectButtons
             List {
-                Section {
-                    Included
-                    Excluded
-                }
+                Included
+                Excluded
+            
             }
-            .listStyle(GroupedListStyle())
+            .listStyle(PlainListStyle())
         }
         .padding(listPadding)
     }
@@ -36,6 +33,18 @@ struct FilterView: View {
     func exclude(_ project: ProjectLike) -> Void {
         withAnimation {
             _ = data.terms.projects.remove(at: data.terms.projects.firstIndex(where: {$0.wrappedID == project.wrappedID})!)
+        }
+    }
+    
+    var Title: some View {
+        if bounds.device == .iPhone && bounds.mode == .portrait {
+            return Text("Filter")
+                .font(.title2)
+                .bold()
+        } else {
+            return Text("Filter")
+                .font(.title)
+                .bold()
         }
     }
     

@@ -12,17 +12,15 @@ struct EntryList: View {
     
     @EnvironmentObject var data: TimeData
     @EnvironmentObject var zero: ZeroDate
+    @EnvironmentObject var bounds: Bounds
     
     let listPadding: CGFloat
     
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
+                Title
                 /// adjust end date to be just before midnight of the last day
-                Text("Entries")
-                    .font(.title)
-                    .bold()
-                    .padding(listPadding)
                 ForEach(Days(), id: \.id) { day in
                     Section(header: Header(day)) {
                         VStack(spacing: 0) {
@@ -43,6 +41,20 @@ struct EntryList: View {
             }
         }
         .allowsHitTesting(false)
+    }
+    
+    var Title: some View {
+        if bounds.device == .iPhone && bounds.mode == .portrait {
+            return Text("Entries")
+                .font(.title2)
+                .bold()
+                .padding(.top, listPadding / 2)
+        } else {
+            return Text("Entries")
+                .font(.title)
+                .bold()
+                .padding(.top, listPadding)
+        }
     }
     
     func Header(_ day: Day) -> some View {
