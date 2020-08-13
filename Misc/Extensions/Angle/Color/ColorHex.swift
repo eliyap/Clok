@@ -40,7 +40,7 @@ extension Color {
     /// https://cocoacasts.com/how-to-store-uicolor-in-core-data-persistent-store
     var toHex: String {
         // Extract Components
-        let (r,g,b,a) = self.components
+        let (r,g,b,a) = components
 
         // Create Hex String
         let hex = String(
