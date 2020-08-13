@@ -22,7 +22,6 @@ struct FilterView: View {
             List {
                 Included
                 Excluded
-            
             }
             .listStyle(PlainListStyle())
         }
