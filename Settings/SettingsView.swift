@@ -52,7 +52,7 @@ struct SettingsView: View {
                             try! dropKey()
                             
                             // destroy workspace records
-                            WorkspaceManager.saveSpaces([])
+                            WorkspaceManager.workspaces = []
                             WorkspaceManager.chosenWorkspace = Workspace(wid: 0, name: "")
                             
                             settings.user = nil
