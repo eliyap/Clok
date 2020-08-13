@@ -18,7 +18,7 @@ extension Date {
 }
 
 extension Date {
-    /// move back in time until date shares 24 hour time with other date
+    /// find the most recent `Date` that shares a 24h time with provided `Date`
     func roundDown(to other: Date) -> Date {
         guard self != other else { return self }
         
@@ -32,7 +32,6 @@ extension Date {
         }
         return date
     }
-
 }
 
 extension Date {
