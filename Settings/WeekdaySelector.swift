@@ -17,13 +17,17 @@ struct WeekdaySelector: View {
         List {
             ForEach(0..<7) { idx in
                 Button {
-                    weekday = weekday + idx % 7
+                    weekday = newDay(idx: idx)
                     presentationMode.wrappedValue.dismiss()
                 } label: {
-                    Text((weekday + idx % 7).weekdaySymbol)
+                    Text(newDay(idx: idx).weekdaySymbol)
                 }
             }
         }
+    }
+    
+    private func newDay(idx: Int) -> Int {
+        (weekday + idx - 1) % 7 + 1
     }
 }
 
