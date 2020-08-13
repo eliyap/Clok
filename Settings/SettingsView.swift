@@ -8,16 +8,32 @@
 import CoreData
 import SwiftUI
 
+struct weekdayWrapper {
+    private var day_ = WorkspaceManager.firstDayOfWeek
+    var day: Int {
+        get {
+            day_
+        }
+        set {
+            day_ = newValue
+            WorkspaceManager.firstDayOfWeek = newValue
+        }
+    }
+}
+
 struct SettingsView: View {
     
     @EnvironmentObject var data: TimeData
     @EnvironmentObject var settings: Settings
     @Environment(\.managedObjectContext) var moc
     
+    @State var weekday = weekdayWrapper()
+    
     var body: some View {
         NavigationView {
             List {
                 AccountSection
+                PrefsSection
                 LogOutSection
             }
             .listStyle(InsetGroupedListStyle())
@@ -45,11 +61,11 @@ struct SettingsView: View {
     
     var PrefsSection: some View {
         Section(header: Text("Preferences")) {
-            NavigationLink(destination: WorkspaceMenu()){
+            NavigationLink(destination: WeekdaySelector(weekday: $weekday.day)){
                 HStack {
-                    Text("Workspace")
+                    Text("Week starts on")
                     Spacer()
-                    Text(settings.user?.chosen.name ?? "No Space")
+                    Text(Calendar.current.weekdaySymbols[weekday.day - 1])
                 }
             }
         }
