@@ -36,13 +36,16 @@ final class ZeroDate: ObservableObject {
     @Published var showTime = false
     
     // MARK:- Zoom Level
-    /// length of time interval being examined
-    /// defaults to 8 hours
+    /** NOTE:
+     due to a bug, the `ObservableObjectPublisher` **must** be named `objectWillChange`
+     https://www.hackingwithswift.com/quick-start/swiftui/how-to-send-state-updates-manually-using-objectwillchange
+     */
     let objectWillChange = ObservableObjectPublisher()
     var zoomIdx = WorkspaceManager.zoomIdx {
         willSet {
             /// cap `zoomIndex` to valid indices
             let safeVal = min(max(newValue, 0), zoomLevels.count - 1)
+            /// update `UserDefaults`
             WorkspaceManager.zoomIdx = safeVal
             objectWillChange.send()
         }
@@ -51,6 +54,8 @@ final class ZeroDate: ObservableObject {
         /// cap `zoomIndex` to valid indices
         zoomLevels[min(max(zoomIdx, 0), zoomLevels.count - 1)]
     }
+    
+    /// length of time interval visible in `GraphView`
     var interval: TimeInterval {
         .day / Double(zoomLevel)
     }
