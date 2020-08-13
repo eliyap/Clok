@@ -51,20 +51,6 @@ extension Color {
 
         return hex
     }
-}
-
-/// https://stackoverflow.com/questions/57257704/how-can-i-change-a-swiftui-color-to-uicolor
-extension Color {
-
-    func uiColor() -> UIColor {
-        let components = self.components
-        return UIColor(
-            red: components.r,
-            green: components.g,
-            blue: components.b,
-            alpha: components.a
-        )
-    }
     
     var components: (r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat) {
 
@@ -82,7 +68,6 @@ extension Color {
         return (r, g, b, a)
     }
 }
-
 
 /// my custom colors
 extension Color {
