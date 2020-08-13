@@ -47,7 +47,7 @@ struct ClokApp: App {
                 .environmentObject(bounds)
                 .environmentObject(model)
                 .environment(\.managedObjectContext, persistentContainer.viewContext)
-                .onReceive(zero.$start, perform: loadData)
+                .onChange(of: zero.start, perform: loadData)
         }
     }
     

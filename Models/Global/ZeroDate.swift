@@ -24,13 +24,18 @@ final class ZeroDate: ObservableObject {
     
     /// default to 6 days before start of today
     /// ensures the default week includes today
-    @Published var start: Date
+    var start: Date {
+        willSet {
+            objectWillChange.send()
+        }
+    }
     
     /// computed end date
     var end: Date {
         start + .week
     }
     
+    // MARK:- Date Change
     /// whether the date was moved forwards of backwards
     enum DateChange {
         case fwrd
