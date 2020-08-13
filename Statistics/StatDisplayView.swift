@@ -27,19 +27,17 @@ struct StatDisplayView: View {
     
     var body: some View {
         Group {
-            thisWeek
-            
+            WeekStats
             Divider()
             Text("Since Previous Week")
                 .font(.headline)
                 .bold()
-        
-            weekChange
+            WeekChangeStats
         }
         
     }
     
-    var thisWeek: some View {
+    var WeekStats: some View {
         Group {
             Stat(
                 label: "Started Around",
@@ -71,7 +69,7 @@ struct StatDisplayView: View {
         }
     }
     
-    var weekChange: some View {
+    var WeekChangeStats: some View {
         Group {
             Stat(
                 label: "Started",
