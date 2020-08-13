@@ -33,10 +33,10 @@ struct DPad: View {
             /// zoom in button
             GraphButton(
                 glyph: "plus.magnifyingglass",
-                condition: zero.interval > .hour
-            ) {
+                condition: zero.zoomIdx < zero.zoomLevels.count - 1
+            ){
                 withAnimation {
-                    zero.interval -= .hour
+                    zero.zoomIdx += 1
                 }
             }
                 .offset(y: -GraphButton.size)
@@ -44,11 +44,10 @@ struct DPad: View {
             /// zoom out button
             GraphButton(
                 glyph: "minus.magnifyingglass",
-                condition: zero.interval < .day
-            ) {
-                zero.dateChange = .back
+                condition: zero.zoomIdx > 0
+            ){
                 withAnimation {
-                    zero.interval += .hour
+                    zero.zoomIdx -= 1
                 }
             }
                 .offset(y: +GraphButton.size)

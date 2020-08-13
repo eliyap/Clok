@@ -30,7 +30,7 @@ struct GraphView: View {
     }
     
     func DayScroll(size: CGSize) -> some View {
-        let dayHeight = size.height * zero.zoom
+        let dayHeight = size.height * zero.zoomLevel
         return SafetyWrapper {
             ScrollView(.vertical, showsIndicators: false) {
                 ScrollViewReader { proxy in
