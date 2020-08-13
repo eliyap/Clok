@@ -64,6 +64,15 @@ extension Date {
     }
 }
 
+extension Date {
+    /**
+     whether this date falls between the 2 provided dates (inclusive)
+     */
+    func between(_ start:Date,_ end:Date) -> Bool {
+        start <= self && self <= end
+    }
+}
+
 /// move back in time until date shares 24 hour time with other date
 func roundDown(_ date: Date, to other: Date) -> Date {
     guard date != other else { return date }
