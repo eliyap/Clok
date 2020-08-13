@@ -17,5 +17,5 @@ extension Color {
         blue: 0.5
     )
     
-    static let clokBG = Color("ClokBG")
+    static let clokBG = Color(UIColor.systemGray6)
 }
