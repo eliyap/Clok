@@ -561,10 +561,10 @@
 			isa = PBXGroup;
 			children = (
 				C63FC2F9249BCFBD00747D49 /* DoubleExtension.swift */,
-				22A2CE3024E5A20B000820AD /* CGPoint */,
 				C69F02772496AFA200D1C650 /* TimeIntervalExtension.swift */,
 				C6AAB3E9249EF26800DFBA36 /* TimeEntryExtension.swift */,
 				22A2CE2524E59E3C000820AD /* Angle */,
+				22A2CE3024E5A20B000820AD /* CGPoint */,
 				22A2CE2C24E59F76000820AD /* Color */,
 				22A2CE1B24E59BA3000820AD /* Date */,
 			);
