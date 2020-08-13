@@ -26,7 +26,7 @@ struct FilterView: View {
             }
             .listStyle(PlainListStyle())
         }
-        .padding(listPadding)
+        .padding([.leading, .trailing], listPadding)
     }
     
     /// wrapper around withAnimation, due to some scoping issue

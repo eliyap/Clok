@@ -44,16 +44,15 @@ struct EntryList: View {
     }
     
     var Title: some View {
+        let text = Text("Entries").bold()
         if bounds.device == .iPhone && bounds.mode == .portrait {
-            return Text("Entries")
+            return text
                 .font(.title2)
-                .bold()
-                .padding(.top, listPadding / 2)
+                .padding([.leading, .trailing], listPadding)
         } else {
-            return Text("Entries")
+            return text
                 .font(.title)
-                .bold()
-                .padding(.top, listPadding)
+                .padding([.leading, .trailing], listPadding)
         }
     }
     
