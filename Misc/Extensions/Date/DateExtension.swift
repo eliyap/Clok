@@ -44,3 +44,23 @@ extension Date {
             ) - 1]
     }
 }
+
+extension Date {
+    /**
+     returns 0000h of the first day of the week this `Date` is contained in.
+     
+     NOTE: the first day of the week is provided, NOT deduced from `Calendar`.
+     In my testing, `Calendar`'s `.firstWeekday` straight up ignores the user's selected weekday (in Settings)
+     and is just completely unreliable.
+     */
+    func startOfWeek(day: Int) -> Date {
+        /// `day` is indexed 1 to 7, Sunday to Saturday
+        precondition(1 <= day && day <= 7, "\(day) is out of range!")
+        
+        var date = Calendar.current.startOfDay(for: self)
+        while (Calendar.current.component(.weekday, from: date) != day){
+            date -= .day
+        }
+        return date
+    }
+}
