@@ -104,7 +104,6 @@
 		C62F7B8824970E530076F64C /* StatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62F7B8724970E530076F64C /* StatView.swift */; };
 		C63FC2F8249BCEB900747D49 /* AngleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63FC2F7249BCEB900747D49 /* AngleExtension.swift */; };
 		C63FC2FA249BCFBD00747D49 /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63FC2F9249BCFBD00747D49 /* DoubleExtension.swift */; };
-		C64385F52485F46A00CCF47E /* CGPointExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64385F42485F46A00CCF47E /* CGPointExtension.swift */; };
 		C65B7D2C2497DE4A00EED981 /* EntryOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65B7D2B2497DE4A00EED981 /* EntryOperations.swift */; };
 		C6751D8A2471E39F002965CC /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6751D892471E39F002965CC /* Position.swift */; };
 		C6751D8C24723182002965CC /* ZeroDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6751D8B24723182002965CC /* ZeroDate.swift */; };
@@ -252,7 +251,6 @@
 		C62F7B8724970E530076F64C /* StatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatView.swift; sourceTree = "<group>"; };
 		C63FC2F7249BCEB900747D49 /* AngleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AngleExtension.swift; sourceTree = "<group>"; };
 		C63FC2F9249BCFBD00747D49 /* DoubleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
-		C64385F42485F46A00CCF47E /* CGPointExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPointExtension.swift; sourceTree = "<group>"; };
 		C65B7D2B2497DE4A00EED981 /* EntryOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryOperations.swift; sourceTree = "<group>"; };
 		C6751D892471E39F002965CC /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
 		C6751D8B24723182002965CC /* ZeroDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZeroDate.swift; sourceTree = "<group>"; };
@@ -447,7 +445,6 @@
 		22A2CE3024E5A20B000820AD /* CGPoint */ = {
 			isa = PBXGroup;
 			children = (
-				C64385F42485F46A00CCF47E /* CGPointExtension.swift */,
 				22A2CE3124E5A218000820AD /* CGPointOperators.swift */,
 			);
 			path = CGPoint;
@@ -904,7 +901,6 @@
 				221810E024B0158500B63ECA /* Get24hourPref.swift in Sources */,
 				224B3AFC24DE280A00B1C943 /* SafetyWrapper.swift in Sources */,
 				C67F47D3249FD44500FD2E6E /* Project.swift in Sources */,
-				C64385F52485F46A00CCF47E /* CGPointExtension.swift in Sources */,
 				C6D448EC2484710E0072E7D4 /* ActivityIndicator.swift in Sources */,
 				C6AAB3EC249F003100DFBA36 /* StatDisplayView.swift in Sources */,
 				C6751D8A2471E39F002965CC /* Position.swift in Sources */,
