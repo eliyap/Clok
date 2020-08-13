@@ -42,7 +42,11 @@ final class ZeroDate: ObservableObject {
         case back
     }
     
-    @Published var dateChange : DateChange? = nil
+    var dateChange: DateChange? = nil {
+        willSet {
+            objectWillChange.send()
+        }
+    }
     
     // MARK:- Zoom Level
     var zoomIdx: Int {
