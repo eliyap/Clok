@@ -1,8 +1,8 @@
 //
-//  AngleExtension.swift
-//  Trickl
+//  AngleFromCartesian.swift
+//  Clok
 //
-//  Created by Secret Asian Man 3 on 20.06.18.
+//  Created by Secret Asian Man Dev on 13/8/20.
 //  Copyright © 2020 Secret Asian Man 3. All rights reserved.
 //
 
@@ -53,8 +53,4 @@ extension Angle {
         /// if in 2nd or 3rd quadrant, adjust angle
         if x < 0 { self.radians += Double.pi }
     }
-}
-
-extension Angle {
-    static let tau = Angle(radians: 2 * Double.pi)
 }
