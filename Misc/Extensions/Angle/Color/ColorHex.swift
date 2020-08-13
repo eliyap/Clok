@@ -9,6 +9,9 @@
 import Foundation
 import SwiftUI
 
+/**
+ Bridge `Color` to hex string representations
+ */
 extension Color {
     /// extract Color from hex string
     init(hex: String) {
