@@ -55,8 +55,7 @@ func getCredentials() -> User? {
     } catch KeychainError.unhandledError(code: let status) {
         print("Keychain error with OSStatus: \(status)")
     } catch {
-        // no other error type should come through!
-        fatalError()
+        fatalError("Unexpected non KeyChain error: \(error)")
     }
     return nil
 }

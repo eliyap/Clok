@@ -43,13 +43,13 @@ struct WorkspaceManager {
         )
     }
     
-    // unarchive previously stored data objects
+    /// get user's stored `Workspace`s
     static func getSpaces() -> [Workspace]? {
         guard let decoded = suite?.object(forKey: spacesKey) as? Data else { return nil }
         return try? NSKeyedUnarchiver.unarchivedObject(ofClasses: [NSArray.self, Workspace.self], from: decoded) as? [Workspace]
     }
 
-    
+    /// get user's chosen `Workspace`
     static func getChosen() -> Workspace? {
         guard let decoded  = suite?.object(forKey: spaceChosenKey) as? Data else { return nil }
         return try? NSKeyedUnarchiver.unarchivedObject(ofClass: Workspace.self, from: decoded)
