@@ -13,7 +13,7 @@ import CoreData
 struct ClokApp: App {
     
     var listRow = ListRow()
-    var zero = ZeroDate()
+    var zero: ZeroDate
     var data = TimeData()
     var settings = Settings()
     var bounds = Bounds()
@@ -22,6 +22,8 @@ struct ClokApp: App {
     var persistentContainer: NSPersistentContainer
     
     init(){
+        zero = ZeroDate(start: Date().startOfWeek(day: WorkspaceManager.firstDayOfWeek))
+        
         let container = NSPersistentContainer(name: "TimeEntryModel")
         container.loadPersistentStores { description, error in
             if let error = error { fatalError("\(error)") }
