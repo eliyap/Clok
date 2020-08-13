@@ -53,7 +53,7 @@ struct WeekTimeFrame {
         let modMN = modifiedMidnight(for: entries)
         /// find day time frames, using modified midnight
         return daySlices(
-            start: roundDown(frame.start, to: modMN),
+            start: frame.start.roundDown(to: modMN),
             end: frame.end
         )
     }

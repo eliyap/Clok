@@ -19,7 +19,7 @@ extension Date {
 
 extension Date {
     /// move back in time until date shares 24 hour time with other date
-    mutating func roundDown(to other: Date) -> Date {
+    func roundDown(to other: Date) -> Date {
         guard self != other else { return self }
         
         var date = self
