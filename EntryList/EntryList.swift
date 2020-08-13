@@ -55,7 +55,7 @@ struct EntryList: View {
                 
         /// day of week, day of month, MMM
         let dateString =  [
-            day.start.shortWeekday(),
+            day.start.shortWeekday,
             df.string(from: day.start),
             /// plus optional YYYY if it is not current year
             ((currentYear == zeroYear) ? "" : "\(zeroYear)")

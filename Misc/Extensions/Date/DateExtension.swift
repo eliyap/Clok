@@ -35,7 +35,7 @@ extension Date {
 extension Date {
     /// get the short weekday name
     /// uses "Mon" to "Sun" in EN, hopefully translates well to other languages
-    public func shortWeekday() -> String {
+    var shortWeekday: String {
         DateFormatter()
             .shortWeekdaySymbols[Calendar.current.component(
                 .weekday,

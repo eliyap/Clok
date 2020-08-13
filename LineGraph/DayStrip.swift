@@ -82,7 +82,7 @@ struct DayStrip: View {
     var HeaderLabel: some View {
         /// short weekday and date labels
         VStack(spacing: .zero) {
-            Text(midnight.shortWeekday())
+            Text(midnight.shortWeekday)
                 .font(.footnote)
                 .lineLimit(1)
             DateLabel(for: midnight)
