@@ -18,7 +18,6 @@ struct CustomTabView: View {
     
     @EnvironmentObject private var settings: Settings
     @EnvironmentObject private var bounds: Bounds
-//    @AppStorage("Tab", WorkspaceManager.suite) private var tab: Settings.Tabs = .bar
     @AppStorage(
         "Tab",
         store: UserDefaults(suiteName: WorkspaceManager.suiteName)
