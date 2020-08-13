@@ -22,6 +22,6 @@ extension Array where Element == Date {
         let meanY = self.map{sin($0.angle.radians)}.mean
         
         /// find time represented by coordinates
-        return Angle(x: meanX, y: meanY).time24h()
+        return Angle(x: meanX, y: meanY).time24h
     }
 }

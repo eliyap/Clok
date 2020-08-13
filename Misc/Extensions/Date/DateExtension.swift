@@ -32,8 +32,6 @@ func roundDown(_ date: Date, to other: Date) -> Date {
     return date
 }
 
-
-
 extension Date {
     /// get the short weekday name
     /// uses "Mon" to "Sun" in EN, hopefully translates well to other languages

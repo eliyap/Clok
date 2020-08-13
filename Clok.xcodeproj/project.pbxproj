@@ -61,6 +61,8 @@
 		22A2CE1D24E59BB1000820AD /* DateStridable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE1C24E59BB1000820AD /* DateStridable.swift */; };
 		22A2CE1F24E59BCE000820AD /* DateAngle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE1E24E59BCE000820AD /* DateAngle.swift */; };
 		22A2CE2424E59DFE000820AD /* DateMean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE2324E59DFE000820AD /* DateMean.swift */; };
+		22A2CE2724E59E4D000820AD /* AngleOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE2624E59E4D000820AD /* AngleOperators.swift */; };
+		22A2CE2924E59E8C000820AD /* AngleAsDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE2824E59E8C000820AD /* AngleAsDate.swift */; };
 		22AD5F7D24B1467D006EF7FB /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22AD5F7C24B1467D006EF7FB /* WidgetKit.framework */; };
 		22AD5F7F24B1467D006EF7FB /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22AD5F7E24B1467D006EF7FB /* SwiftUI.framework */; };
 		22AD5F8524B1467E006EF7FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22AD5F8424B1467E006EF7FB /* Assets.xcassets */; };
@@ -214,6 +216,8 @@
 		22A2CE1C24E59BB1000820AD /* DateStridable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateStridable.swift; sourceTree = "<group>"; };
 		22A2CE1E24E59BCE000820AD /* DateAngle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateAngle.swift; sourceTree = "<group>"; };
 		22A2CE2324E59DFE000820AD /* DateMean.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateMean.swift; sourceTree = "<group>"; };
+		22A2CE2624E59E4D000820AD /* AngleOperators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AngleOperators.swift; sourceTree = "<group>"; };
+		22A2CE2824E59E8C000820AD /* AngleAsDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AngleAsDate.swift; sourceTree = "<group>"; };
 		22AD5F7A24B1467D006EF7FB /* ClokWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ClokWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		22AD5F7C24B1467D006EF7FB /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		22AD5F7E24B1467D006EF7FB /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -412,6 +416,15 @@
 			path = Date;
 			sourceTree = "<group>";
 		};
+		22A2CE2524E59E3C000820AD /* Angle */ = {
+			isa = PBXGroup;
+			children = (
+				22A2CE2624E59E4D000820AD /* AngleOperators.swift */,
+				22A2CE2824E59E8C000820AD /* AngleAsDate.swift */,
+			);
+			path = Angle;
+			sourceTree = "<group>";
+		};
 		22AD5F7B24B1467D006EF7FB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -528,6 +541,7 @@
 				C64385F42485F46A00CCF47E /* CGPointExtension.swift */,
 				C69F02772496AFA200D1C650 /* TimeIntervalExtension.swift */,
 				C63FC2F7249BCEB900747D49 /* AngleExtension.swift */,
+				22A2CE2524E59E3C000820AD /* Angle */,
 				C6AAB3E9249EF26800DFBA36 /* TimeEntryExtension.swift */,
 			);
 			path = Extensions;
@@ -807,6 +821,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				221810DE24B00FB900B63ECA /* EntryTab.swift in Sources */,
+				22A2CE2924E59E8C000820AD /* AngleAsDate.swift in Sources */,
 				22905B8824DB449400D5AC09 /* LinedBackground.swift in Sources */,
 				2264CB3B24AD344F00ECBF2B /* TokenFields.swift in Sources */,
 				22232B8B24A9532000F3C378 /* LoginView.swift in Sources */,
@@ -843,6 +858,7 @@
 				C6C18D492448F96C000345D5 /* ContentView.swift in Sources */,
 				22885DB024DA1C9600A56FE3 /* Divisions.swift in Sources */,
 				C6B0FF9C246F124300DED011 /* ColorExtension.swift in Sources */,
+				22A2CE2724E59E4D000820AD /* AngleOperators.swift in Sources */,
 				C63FC2FA249BCFBD00747D49 /* DoubleExtension.swift in Sources */,
 				22DC86A224BA838D00FF771F /* Project+CoreDataProperties.swift in Sources */,
 				22BE1FF424A92DE500A9A739 /* Settings.swift in Sources */,

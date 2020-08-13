@@ -11,18 +11,6 @@ import SwiftUI
 
 extension Angle {
     /**
-     maps [0, 360) degrees to [0000,2400) hours
-     time is relative to midnight today
-    */
-    func time24h() -> Date {
-        let cal = Calendar.current
-        let time = TimeInterval.day * (self.degrees / 360.0)
-        return cal.startOfDay(for: Date()) + time
-    }
-}
-
-extension Angle {
-    /**
      initialize angle from cartesian coordinates (x,y)
      */
     init(x:Double, y:Double) {
@@ -68,10 +56,5 @@ extension Angle {
 }
 
 extension Angle {
-    /// allow subtraction of 2 angles (nothing fancy)
-    static func -(lhs: Angle, rhs: Angle) -> Angle {
-        Angle(radians: lhs.radians - rhs.radians)
-    }
-    
     static let tau = Angle(radians: 2 * Double.pi)
 }
