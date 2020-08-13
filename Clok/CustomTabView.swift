@@ -10,7 +10,7 @@ import SwiftUI
 
 struct CustomTabView: View {
     
-    enum Tabs {
+    enum Tabs: Int {
         case spiral
         case bar
         case settings
@@ -18,6 +18,12 @@ struct CustomTabView: View {
     
     @EnvironmentObject private var settings: Settings
     @EnvironmentObject private var bounds: Bounds
+//    @AppStorage("Tab", WorkspaceManager.suite) private var tab: Settings.Tabs = .bar
+    @AppStorage(
+        "Tab",
+        store: UserDefaults(suiteName: WorkspaceManager.suiteName)
+    ) private var tab: Tabs = .bar
+
     
     var body: some View {
         if bounds.mode == .portrait {
@@ -46,7 +52,7 @@ struct CustomTabView: View {
     var TabContents: some View {
         /// group prevents warning about underlying types
         Group {
-            switch settings.tab {
+            switch tab {
             case .spiral:
                 Text("Daily View Planned")
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -67,12 +73,12 @@ struct CustomTabView: View {
     }
     
     fileprivate let buttonPadding = CGFloat(8)
-    func TabButton(select: Settings.Tabs, glyph: String) -> some View {
+    func TabButton(select: Tabs, glyph: String) -> some View {
         let iPhoneLandscape = bounds.device == .iPhone && bounds.mode == .landscape
-        return Button { settings.tab = select } label: {
+        return Button { tab = select } label: {
             Label("", systemImage: glyph)
-                .foregroundColor(settings.tab == select ? .primary : .secondary)
-                .font(Font.body.weight(settings.tab == select ? .bold : .regular))
+                .foregroundColor(tab == select ? .primary : .secondary)
+                .font(Font.body.weight(tab == select ? .bold : .regular))
                 .frame(
                     maxWidth: iPhoneLandscape ? nil : .infinity,
                     maxHeight: iPhoneLandscape ? .infinity : nil
