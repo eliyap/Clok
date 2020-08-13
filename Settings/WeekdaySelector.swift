@@ -24,6 +24,8 @@ struct WeekdaySelector: View {
                 }
             }
         }
+        .listStyle(InsetGroupedListStyle())
+        .navigationTitle("Week starts on")
     }
     
     private func newDay(idx: Int) -> Int {

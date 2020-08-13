@@ -8,26 +8,15 @@
 import CoreData
 import SwiftUI
 
-struct weekdayWrapper {
-    private var day_ = WorkspaceManager.firstDayOfWeek
-    var day: Int {
-        get {
-            day_
-        }
-        set {
-            day_ = newValue
-            WorkspaceManager.firstDayOfWeek = newValue
-        }
-    }
-}
-
 struct SettingsView: View {
     
     @EnvironmentObject var data: TimeData
     @EnvironmentObject var settings: Settings
+    @EnvironmentObject var zero: ZeroDate
     @Environment(\.managedObjectContext) var moc
     
-    @State var weekday = weekdayWrapper()
+//    @State var weekday = WeekdayWrapper()
+    @State var weekday: Int = WorkspaceManager.firstDayOfWeek
     
     var body: some View {
         NavigationView {
@@ -61,13 +50,14 @@ struct SettingsView: View {
     
     var PrefsSection: some View {
         Section(header: Text("Preferences")) {
-            NavigationLink(destination: WeekdaySelector(weekday: $weekday.day)){
+            NavigationLink(destination: WeekdaySelector(weekday: $weekday)){
                 HStack {
                     Text("Week starts on")
                     Spacer()
-                    Text(Calendar.current.weekdaySymbols[weekday.day - 1])
+                    Text(Calendar.current.weekdaySymbols[weekday - 1])
                 }
             }
+            .onChange(of: weekday, perform: updateWeekday)
         }
     }
     
@@ -101,5 +91,12 @@ extension SettingsView {
         
         settings.user = nil
         print("logged out!")
+    }
+    
+    func updateWeekday(weekday: Int) -> Void {
+        /// update `UserDefaults`
+        WorkspaceManager.firstDayOfWeek = weekday
+        /// update `ZeroDate.start` to keep app in sync
+        zero.start = zero.start.startOfWeek(day: weekday)
     }
 }
