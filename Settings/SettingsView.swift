@@ -35,7 +35,22 @@ struct SettingsView: View {
                 Text(settings.user?.fullName ?? "No One")
             }
             NavigationLink(
-                destination: WorkspaceMenu(dismiss: $selectingWorkspace),
+                destination: WorkspaceMenu(),
+                isActive: $selectingWorkspace
+            ){
+                HStack {
+                    Text("Workspace")
+                    Spacer()
+                    Text(settings.user?.chosen.name ?? "No Space")
+                }
+            }
+        }
+    }
+    
+    var PrefsSection: some View {
+        Section(header: Text("Preferences")) {
+            NavigationLink(
+                destination: WorkspaceMenu(),
                 isActive: $selectingWorkspace
             ){
                 HStack {

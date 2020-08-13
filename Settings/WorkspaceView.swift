@@ -9,15 +9,18 @@
 import SwiftUI
 
 struct WorkspaceMenu: View {
+    
     @EnvironmentObject private var settings: Settings
-    @Binding var dismiss: Bool
+    @Environment(\.presentationMode) var presentationMode
+    
     var body: some View {
         List {
             ForEach(settings.user?.workspaces ?? [], id: \.wid) { space in
                 Button {
                     settings.user?.chosen = space // set chosen space (updates Spiral)
                     WorkspaceManager.chosenWorkspace = space // write choice to disk for future launches
-                    dismiss = false // dismiss this menu
+//                    dismiss = false // dismiss this menu
+                    presentationMode.wrappedValue.dismiss()
                 } label: {
                     Text(space.name)
                 }
