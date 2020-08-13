@@ -22,6 +22,7 @@ struct ClokApp: App {
     var persistentContainer: NSPersistentContainer
     
     init(){
+        /// initialize `ZeroDate` using the user's preferred `firstDayOfWeek`
         zero = ZeroDate(start: Date().startOfWeek(day: WorkspaceManager.firstDayOfWeek))
         
         let container = NSPersistentContainer(name: "TimeEntryModel")
