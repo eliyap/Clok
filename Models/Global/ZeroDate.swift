@@ -11,8 +11,15 @@ import SwiftUI
 import Combine
 
 final class ZeroDate: ObservableObject {
+    /** NOTE:
+     due to a bug, the `ObservableObjectPublisher` **must** be named `objectWillChange`
+     https://www.hackingwithswift.com/quick-start/swiftui/how-to-send-state-updates-manually-using-objectwillchange
+     */
+    let objectWillChange = ObservableObjectPublisher()
+    
     init(start: Date){
         self.start = start
+        self.zoomIdx = WorkspaceManager.zoomIdx
     }
     
     /// default to 6 days before start of today
@@ -32,16 +39,8 @@ final class ZeroDate: ObservableObject {
     
     @Published var dateChange : DateChange? = nil
     
-    /// whether the time indicating clock hands should be on screen
-    @Published var showTime = false
-    
     // MARK:- Zoom Level
-    /** NOTE:
-     due to a bug, the `ObservableObjectPublisher` **must** be named `objectWillChange`
-     https://www.hackingwithswift.com/quick-start/swiftui/how-to-send-state-updates-manually-using-objectwillchange
-     */
-    let objectWillChange = ObservableObjectPublisher()
-    var zoomIdx = WorkspaceManager.zoomIdx {
+    var zoomIdx: Int {
         willSet {
             /// cap `zoomIndex` to valid indices
             let safeVal = min(max(newValue, 0), zoomLevels.count - 1)
