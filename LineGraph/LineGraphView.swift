@@ -66,13 +66,21 @@ struct LineGraph: View {
         switch zero.dateChange {
         case .fwrd:
             return .asymmetric(
-                insertion: .move(edge: .trailing),
-                removal: .move(edge: .leading)
+                insertion: AnyTransition
+                    .move(edge: .trailing)
+                    .combined(with: .opacity),
+                removal: AnyTransition
+                    .move(edge: .leading)
+                    .combined(with: .opacity)
             )
         case .back:
             return .asymmetric(
-                insertion: .move(edge: .leading),
-                removal: .move(edge: .trailing)
+                insertion: AnyTransition
+                    .move(edge: .leading)
+                    .combined(with: .opacity),
+                removal: AnyTransition
+                    .move(edge: .trailing)
+                    .combined(with: .opacity)
             )
         default: // fallback option, fade in and out
             return .opacity
