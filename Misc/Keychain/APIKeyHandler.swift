@@ -37,7 +37,7 @@ func getCredentials() -> User? {
     do {
         let (email, fullname, apiKey) = try getKey()
         guard
-            let spaces = WorkspaceManager.getSpaces(),
+            let spaces = WorkspaceManager.workspaces,
             let chosen = WorkspaceManager.chosenWorkspace
         else {
             print("no workspace")
@@ -68,7 +68,7 @@ func saveKeys(user: User) throws -> Void {
     }
     
     // save workspaces in user defaults
-    WorkspaceManager.saveSpaces(user.workspaces)
+    WorkspaceManager.workspaces = user.workspaces
     
     // choose 1st workspace by default.
     WorkspaceManager.chosenWorkspace = user.workspaces.first!

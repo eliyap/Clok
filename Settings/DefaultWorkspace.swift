@@ -23,22 +23,24 @@ struct WorkspaceManager {
     
     static let suite = UserDefaults(suiteName: suiteName)
     
-    static func saveSpaces(_ spaces: [Workspace]) -> Void {
-        try! suite?.setValue(
-            NSKeyedArchiver.archivedData(
-                withRootObject: spaces,
-                requiringSecureCoding: false
-            ),
-            forKey: spacesKey
-        )
+    /// user's stored `Workspace`s
+    static var workspaces: [Workspace]? {
+        get {
+            guard let decoded = suite?.object(forKey: spacesKey) as? Data else { return nil }
+            return try? NSKeyedUnarchiver.unarchivedObject(ofClasses: [NSArray.self, Workspace.self], from: decoded) as? [Workspace]
+        }
+        set {
+            guard let workspaces = newValue else { return }
+            try! suite?.setValue(
+                NSKeyedArchiver.archivedData(
+                    withRootObject: workspaces,
+                    requiringSecureCoding: false
+                ),
+                forKey: spacesKey
+            )
+        }
     }
-
-    /// get user's stored `Workspace`s
-    static func getSpaces() -> [Workspace]? {
-        guard let decoded = suite?.object(forKey: spacesKey) as? Data else { return nil }
-        return try? NSKeyedUnarchiver.unarchivedObject(ofClasses: [NSArray.self, Workspace.self], from: decoded) as? [Workspace]
-    }
-
+    
     /// user's chosen `Workspace`
     static var chosenWorkspace: Workspace? {
         get {
