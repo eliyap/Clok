@@ -16,13 +16,13 @@ import Foundation
  we do not store them in the keychain, instead in the User Defaults area
  */
 struct WorkspaceManager {
-    static let spacesKey = "Clok.WorkspaceIDs"
-    static let spaceChosenKey = "Clok.ChosenID"
     
     static let suiteName = "group.sam.clok"
-    
     static let suite = UserDefaults(suiteName: suiteName)
     
+    // MARK:- All Workspaces
+    
+    static let spacesKey = "Clok.WorkspaceIDs"
     /// user's stored `Workspace`s
     static var workspaces: [Workspace]? {
         get {
@@ -41,6 +41,9 @@ struct WorkspaceManager {
         }
     }
     
+    // MARK:- Chosen Workspace
+    
+    static let spaceChosenKey = "Clok.ChosenID"
     /// user's chosen `Workspace`
     static var chosenWorkspace: Workspace? {
         get {
@@ -59,17 +62,36 @@ struct WorkspaceManager {
         }
     }
     
+    // MARK:- Weekday
+    
     static let firstDayOfWeekKey = "firstDayOfWeek"
     /**
      user's chosen firstDayOfWeek
-     defaults to Sunday = 1
      */
     static var firstDayOfWeek: Int {
         get {
-            suite?.object(forKey: firstDayOfWeekKey) as? Int ?? 1
+            suite?.object(forKey: firstDayOfWeekKey) as? Int
+                /// defaults to Sunday = 1
+                ?? 1
         }
         set {
             suite?.set(newValue, forKey: firstDayOfWeekKey)
+        }
+    }
+    
+    // MARK:- Bar Zoom Level
+    static let zoomKey = "barZoomLevel"
+    /**
+     how much to scale (or zoom) the `GraphView`
+     */
+    static var zoomIdx: Int {
+        get {
+            suite?.object(forKey: zoomKey) as? Int
+                /// default index of 0
+                ?? 0
+        }
+        set {
+            suite?.set(newValue, forKey: zoomKey)
         }
     }
 }

@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftUI
+import Combine
 
 final class ZeroDate: ObservableObject {
     init(start: Date){
@@ -34,11 +35,21 @@ final class ZeroDate: ObservableObject {
     /// whether the time indicating clock hands should be on screen
     @Published var showTime = false
     
+    // MARK:- Zoom Level
     /// length of time interval being examined
     /// defaults to 8 hours
-    @Published var zoomIdx: Int = 0
+    let objectWillChange = ObservableObjectPublisher()
+    var zoomIdx = WorkspaceManager.zoomIdx {
+        willSet {
+            /// cap `zoomIndex` to valid indices
+            let safeVal = min(max(newValue, 0), zoomLevels.count - 1)
+            WorkspaceManager.zoomIdx = safeVal
+            objectWillChange.send()
+        }
+    }
     var zoomLevel: CGFloat {
-        zoomLevels[zoomIdx]
+        /// cap `zoomIndex` to valid indices
+        zoomLevels[min(max(zoomIdx, 0), zoomLevels.count - 1)]
     }
     var interval: TimeInterval {
         .day / Double(zoomLevel)
@@ -58,10 +69,13 @@ final class ZeroDate: ObservableObject {
 }
 
 extension ZeroDate {
+    /**
+     a short string marking the `start` and `end` of this week
+     */
     var weekString: String {
         let df = DateFormatter()
         df.setLocalizedDateFormatFromTemplate("MMMdd")
-        /// slightly adjust end down so it falls before midnight into the previous day
+        /// slightly adjust `end` so that it falls before midnight, into the previous day
         return "\(df.string(from: start)) – \(df.string(from: end - 1))"
     }
 }
