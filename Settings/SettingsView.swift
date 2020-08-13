@@ -72,6 +72,11 @@ struct SettingsView: View {
 
 // MARK:- Functions
 extension SettingsView {
+    
+    /**
+     Log the user out of our app
+     destroy all stored data tied to the user
+     */
     func logOut() -> Void {
         // destroy local data
         let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: TimeEntry.entityName)
