@@ -12,7 +12,6 @@ struct SettingsView: View {
     
     @EnvironmentObject var data: TimeData
     @EnvironmentObject var settings: Settings
-    @State var selectingWorkspace = false
     @Environment(\.managedObjectContext) var moc
     
     var body: some View {
@@ -34,10 +33,7 @@ struct SettingsView: View {
                 Spacer()
                 Text(settings.user?.fullName ?? "No One")
             }
-            NavigationLink(
-                destination: WorkspaceMenu(),
-                isActive: $selectingWorkspace
-            ){
+            NavigationLink(destination: WorkspaceMenu()){
                 HStack {
                     Text("Workspace")
                     Spacer()
@@ -49,10 +45,7 @@ struct SettingsView: View {
     
     var PrefsSection: some View {
         Section(header: Text("Preferences")) {
-            NavigationLink(
-                destination: WorkspaceMenu(),
-                isActive: $selectingWorkspace
-            ){
+            NavigationLink(destination: WorkspaceMenu()){
                 HStack {
                     Text("Workspace")
                     Spacer()
