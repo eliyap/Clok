@@ -10,9 +10,13 @@ import Foundation
 import SwiftUI
 
 final class ZeroDate: ObservableObject {
+    init(start: Date){
+        self.start = start
+    }
+    
     /// default to 6 days before start of today
     /// ensures the default week includes today
-    @Published var start = Calendar.current.startOfDay(for: Date()) - .week + .day
+    @Published var start: Date
     
     /// computed end date
     var end: Date {
