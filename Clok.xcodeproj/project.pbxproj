@@ -539,13 +539,13 @@
 		C6B0FFA1246F52B600DED011 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				22A2CE1B24E59BA3000820AD /* Date */,
 				C6B0FF9B246F124300DED011 /* ColorExtension.swift */,
 				C63FC2F9249BCFBD00747D49 /* DoubleExtension.swift */,
 				C64385F42485F46A00CCF47E /* CGPointExtension.swift */,
 				C69F02772496AFA200D1C650 /* TimeIntervalExtension.swift */,
-				22A2CE2524E59E3C000820AD /* Angle */,
 				C6AAB3E9249EF26800DFBA36 /* TimeEntryExtension.swift */,
+				22A2CE1B24E59BA3000820AD /* Date */,
+				22A2CE2524E59E3C000820AD /* Angle */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
