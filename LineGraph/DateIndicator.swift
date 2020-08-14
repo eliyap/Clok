@@ -16,11 +16,7 @@ struct DateIndicator: View {
     
     var body: some View {
         HStack(spacing: .zero) {
-            ScrollView {
-                TimeIndicator(divisions: evenDivisions(for: dayHeight))
-            }
-            .opacity(0)
-            .allowsHitTesting(false)
+            WidthHelper
             ForEach(
                 Array(stride(from: zero.start, to: zero.end, by: .day)),
                 id: \.timeIntervalSince1970
@@ -39,7 +35,23 @@ struct DateIndicator: View {
                 .transition(zero.slideOver)
             }
         }
-        .frame(height: 50)
+    }
+    
+    /**
+     Wrapper around  an invisible`TimeIndicator`.
+     Keeps the labels aligned correctly above their respective days
+     */
+    var WidthHelper: some View {
+        /// `TimeIndicator` is very tall, so wrap it in a `ScrollView`
+        /// to allow it to collapse its height without messing up the width
+        ScrollView {
+            TimeIndicator(divisions: evenDivisions(for: dayHeight))
+        }
+        /// view should be invisible and non-interactable
+        .opacity(0)
+        .allowsHitTesting(false)
+        .disabled(true)
+        
     }
     
     func HeaderLabel(for date: Date) -> some View {

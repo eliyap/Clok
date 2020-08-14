@@ -52,6 +52,8 @@ struct GraphView: View {
                         .onAppear{ proxy.scrollTo(0, anchor: .center) }
                 }
             }
+            /// allow graph to consume maximum height
+            .layoutPriority(1)
         }
     }
 }
