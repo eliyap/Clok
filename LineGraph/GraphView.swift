@@ -20,40 +20,40 @@ struct GraphView: View {
     }
     
     var body: some View {
-        GeometryReader { geo in
-            ZStack(alignment: .bottomLeading) {
-                DayScroll(size: geo.size)
-                GraphButtons()
+        VStack(spacing: .zero) {
+            DateIndicator(dayHeight: 500)
+            GeometryReader { geo in
+                ZStack(alignment: .bottomLeading) {
+                    DayScroll(size: geo.size)
+                    GraphButtons()
+                }
             }
+            /// allow graph to consume maximum height
+            .layoutPriority(1)
         }
         .onAppear(perform: jumpCoreDate)
     }
     
     func DayScroll(size: CGSize) -> some View {
         let dayHeight = size.height * zero.zoomLevel
-        return VStack(spacing: .zero) {
-            DateIndicator(dayHeight: dayHeight)
-            ScrollView(.vertical, showsIndicators: false) {
-                ScrollViewReader { proxy in
-                    /// scroll anchor allows view to appear in the right position
-                    EmptyView()
-                        .id(0)
-                        .offset(y: size.height)
-                    HStack(spacing: .zero) {
-                        TimeIndicator(divisions: evenDivisions(for: dayHeight))
-                        LineGraph(dayHeight: dayHeight)
-                    }
-                        .frame(
-                            width: size.width,
-                            height: dayHeight * CGFloat(model.days)
-                        )
-                        .drawingGroup()
-                        /// immediately center on white day area
-                        .onAppear{ proxy.scrollTo(0, anchor: .center) }
+        return ScrollView(.vertical, showsIndicators: false) {
+            ScrollViewReader { proxy in
+                /// scroll anchor allows view to appear in the right position
+                EmptyView()
+                    .id(0)
+                    .offset(y: size.height)
+                HStack(spacing: .zero) {
+                    TimeIndicator(divisions: evenDivisions(for: dayHeight))
+                    LineGraph(dayHeight: dayHeight)
                 }
+                    .frame(
+                        width: size.width,
+                        height: dayHeight * CGFloat(model.days)
+                    )
+                    .drawingGroup()
+                    /// immediately center on white day area
+                    .onAppear{ proxy.scrollTo(0, anchor: .center) }
             }
-            /// allow graph to consume maximum height
-            .layoutPriority(1)
         }
     }
 }
