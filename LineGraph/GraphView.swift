@@ -21,7 +21,8 @@ struct GraphView: View {
     
     var body: some View {
         VStack(spacing: .zero) {
-            DateIndicator(dayHeight: 500)
+            /// 1000 is a meaningless placeholder height
+            DateIndicator(dayHeight: 1000)
             GeometryReader { geo in
                 ZStack(alignment: .bottomLeading) {
                     DayScroll(size: geo.size)
