@@ -35,9 +35,9 @@ struct LineGraph: View {
                 .transition(slideOver)
                 .frame(height: dayHeight * CGFloat(model.days))
             }
-            /// vary background based on daycount
-            .background(LinedBackground(divisions: evenDivisions(for: dayHeight)))
         }
+        /// NOTE: apply lined background to whole stack, NOT individual `DayStrip`!
+        .background(LinedBackground(divisions: evenDivisions(for: dayHeight)))
         .drawingGroup()
     }
     
