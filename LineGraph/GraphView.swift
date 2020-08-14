@@ -31,7 +31,8 @@ struct GraphView: View {
     
     func DayScroll(size: CGSize) -> some View {
         let dayHeight = size.height * zero.zoomLevel
-        return SafetyWrapper {
+        return VStack(spacing: .zero) {
+            DateIndicator(dayHeight: dayHeight)
             ScrollView(.vertical, showsIndicators: false) {
                 ScrollViewReader { proxy in
                     /// scroll anchor allows view to appear in the right position

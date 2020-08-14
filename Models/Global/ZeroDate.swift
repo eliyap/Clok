@@ -52,6 +52,35 @@ final class ZeroDate: ObservableObject {
         }
     }
     
+    /**
+     determine what kind of apperance / disappearance animation to use
+     based on whether the anchor date was just moved forwards for backwards
+     */
+    var slideOver: AnyTransition {
+        switch dateChange {
+        case .fwrd:
+            return .asymmetric(
+                insertion: AnyTransition
+                    .move(edge: .trailing)
+                    .combined(with: .opacity),
+                removal: AnyTransition
+                    .move(edge: .leading)
+                    .combined(with: .opacity)
+            )
+        case .back:
+            return .asymmetric(
+                insertion: AnyTransition
+                    .move(edge: .leading)
+                    .combined(with: .opacity),
+                removal: AnyTransition
+                    .move(edge: .trailing)
+                    .combined(with: .opacity)
+            )
+        default: // fallback option, fade in and out
+            return .opacity
+        }
+    }
+    
     // MARK:- Zoom Level
     var zoomIdx: Int {
         willSet {

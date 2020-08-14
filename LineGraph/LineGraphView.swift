@@ -32,7 +32,7 @@ struct LineGraph: View {
                     terms: data.terms,
                     dayHeight: dayHeight
                 )
-                .transition(slideOver)
+                .transition(zero.slideOver)
                 .frame(height: dayHeight * CGFloat(model.days))
             }
         }
@@ -55,35 +55,6 @@ struct LineGraph: View {
             .filter{$0.start < midnight + model.castFwrd}
             /// use Search sort, which prioritizes selected Projects
             .sorted{data.terms.projectSort(p0: $0.wrappedProject, p1: $1.wrappedProject)}
-        }
-    }
-    
-    /**
-     determine what kind of apperance / disappearance animation to use
-     based on whether the anchor date was just moved forwards for backwards
-     */
-    var slideOver: AnyTransition {
-        switch zero.dateChange {
-        case .fwrd:
-            return .asymmetric(
-                insertion: AnyTransition
-                    .move(edge: .trailing)
-                    .combined(with: .opacity),
-                removal: AnyTransition
-                    .move(edge: .leading)
-                    .combined(with: .opacity)
-            )
-        case .back:
-            return .asymmetric(
-                insertion: AnyTransition
-                    .move(edge: .leading)
-                    .combined(with: .opacity),
-                removal: AnyTransition
-                    .move(edge: .trailing)
-                    .combined(with: .opacity)
-            )
-        default: // fallback option, fade in and out
-            return .opacity
         }
     }
 }

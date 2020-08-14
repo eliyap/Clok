@@ -39,6 +39,7 @@
 		224B3AFC24DE280A00B1C943 /* SafetyWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224B3AFB24DE280A00B1C943 /* SafetyWrapper.swift */; };
 		224B3AFE24DE28C300B1C943 /* FilterModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224B3AFD24DE28C300B1C943 /* FilterModal.swift */; };
 		224D10CE24E5AC8C00668FD8 /* WeekdaySelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224D10CD24E5AC8C00668FD8 /* WeekdaySelector.swift */; };
+		224D10D324E6FA8900668FD8 /* DateIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224D10D224E6FA8800668FD8 /* DateIndicator.swift */; };
 		225B044224B2A5FA00780424 /* LineGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225B044124B2A5FA00780424 /* LineGraphView.swift */; };
 		225F69B424AD8CE70012B5DB /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225F69B324AD8CE70012B5DB /* AppView.swift */; };
 		225F69B724AD8EF50012B5DB /* EntryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225F69B624AD8EF50012B5DB /* EntryList.swift */; };
@@ -196,6 +197,7 @@
 		224B3AFB24DE280A00B1C943 /* SafetyWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafetyWrapper.swift; sourceTree = "<group>"; };
 		224B3AFD24DE28C300B1C943 /* FilterModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterModal.swift; sourceTree = "<group>"; };
 		224D10CD24E5AC8C00668FD8 /* WeekdaySelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekdaySelector.swift; sourceTree = "<group>"; };
+		224D10D224E6FA8800668FD8 /* DateIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateIndicator.swift; sourceTree = "<group>"; };
 		225B044124B2A5FA00780424 /* LineGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineGraphView.swift; sourceTree = "<group>"; };
 		225F69B324AD8CE70012B5DB /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		225F69B624AD8EF50012B5DB /* EntryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryList.swift; sourceTree = "<group>"; };
@@ -351,6 +353,7 @@
 				22885DAD24DA13E500A56FE3 /* DayStrip.swift */,
 				22905B8724DB449400D5AC09 /* LinedBackground.swift */,
 				22885DB124DA1E2E00A56FE3 /* TimeIndicator.swift */,
+				224D10D224E6FA8800668FD8 /* DateIndicator.swift */,
 				2207E46324E0BE9B00311F10 /* Controls */,
 			);
 			path = LineGraph;
@@ -925,6 +928,7 @@
 				225F69B424AD8CE70012B5DB /* AppView.swift in Sources */,
 				2207E46524E0BEAD00311F10 /* DPad.swift in Sources */,
 				222D996024BB562100F66E0F /* FetchEntries.swift in Sources */,
+				224D10D324E6FA8900668FD8 /* DateIndicator.swift in Sources */,
 				22DC86A024BA838D00FF771F /* Project+CoreDataClass.swift in Sources */,
 				2296F15B24A994A400AF38B5 /* FormRequest.swift in Sources */,
 				22027DD224AFF7ED00C0BA90 /* TopFunctions.swift in Sources */,

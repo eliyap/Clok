@@ -27,24 +27,16 @@ struct DayStrip: View {
     
     var body: some View {
         GeometryReader { geo in
-            ZStack(alignment: .top) {
-                HeaderLabel
-                    .offset(y: max(
-                        bounds.insets.top - geo.frame(in: .global).minY,
-                        .zero
-                    ))
-                    .zIndex(1) /// ensure this is drawn first, but remains on top
-                VStack(spacing: .zero) {
-                    ForEach(entries, id: \.id) {
-                        RoundedRectangle(cornerRadius: geo.size.width * cornerScale) /// adapt scale to taste
-                            .frame(height: height(size: geo.size, entry: $0))
-                            .foregroundColor($0.wrappedColor)
-                            .padding(.top, padding(for: $0, size: geo.size))
-                            .opacity($0.matches(terms) ? 1 : 0.5)
-                    }
+            VStack(alignment: .center, spacing: .zero) {
+                ForEach(entries, id: \.id) {
+                    RoundedRectangle(cornerRadius: geo.size.width * cornerScale) /// adapt scale to taste
+                        .frame(height: height(size: geo.size, entry: $0))
+                        .foregroundColor($0.wrappedColor)
+                        .padding(.top, padding(for: $0, size: geo.size))
+                        .opacity($0.matches(terms) ? 1 : 0.5)
                 }
-                .frame(width: geo.size.width * thicc)
             }
+            .frame(width: geo.size.width * thicc)
             .drawingGroup()
         }
     }
@@ -76,31 +68,6 @@ struct DayStrip: View {
             return CGFloat(entries[idx].start - entries[idx - 1].end) * scale
         case .graph:
             return .zero
-        }
-    }
-    
-    var HeaderLabel: some View {
-        /// short weekday and date labels
-        VStack(spacing: .zero) {
-            Text(midnight.shortWeekday)
-                .font(.footnote)
-                .lineLimit(1)
-            DateLabel(for: midnight)
-                .font(.caption)
-                .lineLimit(1)
-        }
-        .frame(maxWidth: .infinity)
-        .background(Color.clokBG)
-    }
-    
-    func DateLabel(for date: Date) -> Text {
-        let df = DateFormatter()
-        if Calendar.current.component(.day, from: date) == 1 {
-            df.setLocalizedDateFormatFromTemplate("MMM")
-            return Text(df.string(from: date)).bold()
-        } else {
-            df.setLocalizedDateFormatFromTemplate("dd")
-            return Text(df.string(from: date))
         }
     }
 }
