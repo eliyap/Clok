@@ -19,7 +19,6 @@ struct DayStrip: View {
     let entries: [TimeEntry]
     let midnight: Date
     let terms: SearchTerms
-    let dayHeight: CGFloat
     
     /// determines what proportion of available horizontal space to consume
     private let thicc = CGFloat(0.8)
@@ -30,13 +29,16 @@ struct DayStrip: View {
             VStack(alignment: .center, spacing: .zero) {
                 ForEach(entries, id: \.id) {
                     RoundedRectangle(cornerRadius: geo.size.width * cornerScale) /// adapt scale to taste
-                        .frame(height: height(size: geo.size, entry: $0))
+                        .frame(
+                            width: geo.size.width * thicc,
+                            height: height(size: geo.size, entry: $0)
+                        )
                         .foregroundColor($0.wrappedColor)
                         .padding(.top, padding(for: $0, size: geo.size))
                         .opacity($0.matches(terms) ? 1 : 0.5)
                 }
             }
-            .frame(width: geo.size.width * thicc)
+            .frame(width: geo.size.width)
             .drawingGroup()
         }
     }

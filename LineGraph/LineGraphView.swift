@@ -29,8 +29,7 @@ struct LineGraph: View {
                 DayStrip(
                     entries: entries(midnight: midnight),
                     midnight: midnight,
-                    terms: data.terms,
-                    dayHeight: dayHeight
+                    terms: data.terms
                 )
                 .transition(zero.slideOver)
                 .frame(height: dayHeight * CGFloat(model.days))
