@@ -23,7 +23,7 @@ struct EntryList: View {
                 /// adjust end date to be just before midnight of the last day
                 ForEach(Days(), id: \.id) { day in
                     Section(header: Header(day)) {
-                        VStack(spacing: 0) {
+                        LazyVStack(spacing: 0) {
                             ForEach(day.entries, id: \.id) { entry in
                                 EntryView(
                                     entry: entry,
