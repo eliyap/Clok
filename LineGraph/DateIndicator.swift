@@ -24,16 +24,32 @@ struct DateIndicator: View {
                 /// short weekday and date labels
                 VStack(spacing: .zero) {
                     Text(midnight.shortWeekday)
-                        .font(.footnote)
+                        .font(Font.footnote.boldIfToday(date: midnight))
                         .lineLimit(1)
+                        .foregroundColor(color(for: midnight))
                     DateLabel(for: midnight)
-                        .font(.caption)
+                        .font(Font.caption.boldIfToday(date: midnight))
                         .lineLimit(1)
+                        .foregroundColor(color(for: midnight))
                 }
                 .frame(maxWidth: .infinity)
                 .background(Color.clokBG)
                 .transition(zero.slideOver)
             }
+        }
+    }
+    
+    /**
+     determine the correct color to use for this date
+     */
+    private func color(for date: Date) -> Color {
+        switch Date() - date {
+        case let diff where diff < 0: /// date is in the future
+            return .secondary
+        case let diff where diff < .day: /// date is today
+            return .red
+        default: /// date is in the past
+            return .primary
         }
     }
     
@@ -77,5 +93,17 @@ struct DateIndicator: View {
             df.setLocalizedDateFormatFromTemplate("dd")
             return Text(df.string(from: date))
         }
+    }
+}
+
+/**
+ bold the font if the provided date is today
+ */
+fileprivate extension Font {
+    func boldIfToday(date: Date) -> Font {
+        let diff = Date() - date
+        guard diff > 0 else { return self }
+        guard diff < .day else { return self }
+        return self.bold()
     }
 }
