@@ -44,6 +44,5 @@ struct SearchTerms {
             let index1 = projects.firstIndex(where: {$0.wrappedID == p1.wrappedID})!
             return index0 < index1
         }
-        
     }
 }
