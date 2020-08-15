@@ -22,11 +22,12 @@ struct ContentView: View {
     /// whether we need user's token
     @State var needToken = false
     var body : some View {
+        /// ZStack replaces `fullScreenCover`, which was not flexible enough for my needs
         ZStack {
             OrientationView()
-            /// fade out loading screen when data is finished being requested
-            
-//            if !loaded { ProgressIndicator() }
+            if !loaded {
+                ProgressIndicator()
+            }
             if settings.user?.token == nil {
                 LoginView()
                     .modifier(FullscreenModifier())
