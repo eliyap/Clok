@@ -7,12 +7,24 @@
 //
 
 import Foundation
+import Combine
+
 extension LoginView {
     func loginWith(auth: String) -> Void {
         let request = formRequest(
             url: userDataURL,
             auth: auth
         )
+        
+        URLSession.shared.dataTaskPublisher(for: request)
+            .map { $0.data }
+            .decode(type: User.self, decoder: JSONDecoder())
+            .eraseToAnyPublisher()
+            .sink(receiveCompletion: { _ in
+                print("completed!")
+            }, receiveValue: {
+                print($0.fullName)
+            })
         DispatchQueue.main.async {
             let result = getUserData(with: request)
             var user: User!
