@@ -62,6 +62,9 @@ func loadCredentials() -> User? {
     return nil
 }
 
+/**
+ Write the `User`'s login credentials to local KeyChain
+ */
 func saveKeys(user: User) throws -> Void {
     
     /// User constructor guarantees >0 workspaces, but check anyway
@@ -120,7 +123,7 @@ func getKey() throws -> (String, String, String) {
     return (email, fullName, apiKey)
 }
 
-/// when user logs out, remove token from the keychain
+/// when user logs out, remove login credentials from the keychain
 func dropKey() throws -> Void {
     let query = [kSecClass: kSecClassInternetPassword,
                  kSecAttrServer: service,
