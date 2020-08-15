@@ -33,6 +33,9 @@ func getToken() -> String? {
     return nil
 }
 
+/**
+ Load the user's login credentials from local KeyChain, if any
+ */
 func loadCredentials() -> User? {
     do {
         let (email, fullname, apiKey) = try getKey()
