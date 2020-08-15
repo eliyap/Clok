@@ -62,9 +62,7 @@ func getCredentials() -> User? {
 func saveKeys(user: User) throws -> Void {
     
     // User constructor guarantees >0 workspaces, but check anyway
-    if user.workspaces.count <= 0 {
-        fatalError("Tried to save no workspaces!")
-    }
+    precondition(user.workspaces.count <= 0, "Tried to save no workspaces!")
     
     // save workspaces in user defaults
     WorkspaceManager.workspaces = user.workspaces
