@@ -27,7 +27,7 @@ struct LoginView: View {
     @State var key = ""
     @State var errorText = ""
     @State private var pref: loginPreference = .email
-    @State var pushup = false
+    @State private var pushup = false
     
     @Binding var loaded: Bool
     

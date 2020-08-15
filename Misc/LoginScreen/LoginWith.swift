@@ -16,39 +16,16 @@ extension LoginView {
             auth: auth
         )
         
-        URLSession.shared.dataTaskPublisher(for: request)
+        settings.cancellable = URLSession.shared.dataTaskPublisher(for: request)
             .map { $0.data }
-            .decode(type: User.self, decoder: JSONDecoder())
-            .eraseToAnyPublisher()
-            .sink(receiveCompletion: { _ in
-                print("completed!")
-            }, receiveValue: {
-                print($0.fullName)
+            .decode(type: User?.self, decoder: JSONDecoder())
+            .replaceError(with: nil)
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: {
+                /// save user's credentials in iOS Keychain
+                guard let user = $0 else { return }
+                settings.user = user
+                try! saveKeys(user: user)
             })
-        DispatchQueue.main.async {
-            let result = getUserData(with: request)
-            var user: User!
-            
-            switch result {
-            case .failure(.statusCode(code: 403)):
-                errorText = "Wrong Token / Password"
-                return
-            case let .failure(.statusCode(code: errorCode)):
-                errorText = "Error \(errorCode): Could not login to Toggl"
-                return
-            case let .failure(error):
-                print(error)
-                errorText = "Unknown Error \(error)"
-                return
-            case let .success(newUser):
-                user = newUser
-            }
-            
-            /// save user's login details in Keychain
-            try! saveKeys(user: user)
-            
-            /// set user, also dismisses login screen
-            settings.user = user
-        }
     }
 }
