@@ -18,7 +18,7 @@ struct OrientationView: View {
     
     var body: some View {
         GeometryReader { geo in
-            switch geo.orientation() {
+            switch geo.orientation {
             case .landscape:
                 HStack(spacing: 0) { CustomTabView() }
                     .onAppear {

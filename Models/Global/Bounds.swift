@@ -10,11 +10,11 @@ import Foundation
 import SwiftUI
 
 extension GeometryProxy {
-    enum orientation {
+    enum Orientation {
         case landscape
         case portrait
     }
-    func orientation() -> orientation {
+    var orientation: Orientation {
         size.height > size.width ? .portrait : .landscape
     }
 }
@@ -25,7 +25,7 @@ enum Device {
 }
 
 final class Bounds: ObservableObject {
-    @Published var mode =  GeometryProxy.orientation.portrait
+    @Published var mode =  GeometryProxy.Orientation.portrait
     @Published var insets = EdgeInsets()
     /// notched devices (including the new iPad Pros) have bottom insets
     var notch: Bool {
