@@ -52,15 +52,12 @@ struct FilterView: View {
     }
     
     var Title: some View {
-        if bounds.device == .iPhone && bounds.mode == .portrait {
-            return Text("Filter")
-                .font(.title2)
-                .bold()
-        } else {
-            return Text("Filter")
-                .font(.title)
-                .bold()
-        }
+        Text("Filter")
+            .font(bounds.device == .iPhone && bounds.mode == .portrait
+                ? .title2
+                : .title
+            )
+            .bold()
     }
     
     var Included: some View {
@@ -110,12 +107,4 @@ struct FilterView: View {
             .filter{!data.terms.contains(project: $0)}
             .sorted(by: {$0.wrappedName < $1.wrappedName})
     }
-    
-//    var SelectButtons: some View {
-//        HStack {
-//
-//            Spacer()
-//
-//        }
-//    }
 }
