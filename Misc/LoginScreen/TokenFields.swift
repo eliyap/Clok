@@ -10,7 +10,7 @@ import Foundation
 import SwiftUI
 
 extension LoginView {
-    func TokenFields() -> some View {
+    var TokenFields: some View {
         Group {
             TextField(
                 "API Token",
@@ -22,9 +22,7 @@ extension LoginView {
                         return
                     }
                     
-                    self.loginWith(auth: auth(
-                        token: self.key
-                    ))
+                    loginWith(auth: auth(token: key))
                 }
             )
                 .textFieldStyle(RoundedBorderTextFieldStyle())

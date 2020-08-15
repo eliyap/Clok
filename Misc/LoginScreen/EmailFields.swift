@@ -10,7 +10,7 @@ import Foundation
 import SwiftUI
 
 extension LoginView {
-    func EmailFields() -> some View {
+    var EmailFields: some View {
         Group {
             TextField(
                 "Email",

@@ -47,12 +47,12 @@ struct LoginView: View {
                 
                 switch pref {
                 case .email:
-                    EmailFields()
+                    EmailFields
                 case .token :
-                    TokenFields()
+                    TokenFields
                 }
                 
-                /// dummy view that ensures textField isn't masked by keyboard on iOS
+                /// dummy view that ensures textField isn't masked by software keyboard
                 /// EmptyView didn't work
                 if pushup {
                     Text(" ")
