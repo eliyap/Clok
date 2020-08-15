@@ -38,7 +38,7 @@ struct ClokApp: App {
         cred = Credentials(user: getCredentials())
         
         /// refresh project list on launch
-        fetchProjects(user: cred.user)
+        data.fetchProjects(user: cred.user, context: persistentContainer.viewContext)
         
     }
     
@@ -56,7 +56,12 @@ struct ClokApp: App {
                     loadData(date: zero.start)
                 }
                 /// update on change to either user or space
-                .onReceive(cred.$user, perform: fetchProjects)
+                .onReceive(cred.$user) {
+                    data.fetchProjects(
+                        user: $0,
+                        context: persistentContainer.viewContext
+                    )
+                }
         }
     }
     
@@ -89,30 +94,5 @@ struct ClokApp: App {
                 print(error)
             }
         }
-    }
-    
-    func fetchProjects(user: User?) -> Void {
-        guard let user = user else { return }
-        data.projectsPipe = URLSession.shared.dataTaskPublisher(for: formRequest(
-            /// https://github.com/toggl/toggl_api_docs/blob/master/chapters/workspaces.md#get-workspace-projects
-            url: URL(string: "\(API_URL)/workspaces/\(user.chosen.wid)/projects?user_agent=\(user_agent)")!,
-            auth: auth(token: user.token)
-        ))
-        .map { $0.data }
-        .decode(
-            type: [Project]?.self,
-            /// pass `managedObjectContext` to decoder so that a CoreData object can be created
-            decoder: JSONDecoder(context: persistentContainer.viewContext)
-        )
-        .replaceError(with: nil)
-        .receive(on: DispatchQueue.main)
-        .sink(receiveValue: {
-            /// if there was an error and nothing came through, do not edit the data
-            /// NOTE: if we correctly received 0 `Project`s (for some reason), this should correctly wipe the `Project`s in CoreData
-            guard let projects = $0 else { return }
-            data.projects = projects
-            /// save newly created CoreData objects
-            try! persistentContainer.viewContext.save()
-        })
     }
 }
