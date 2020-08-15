@@ -10,14 +10,14 @@ import SwiftUI
 
 struct WorkspaceMenu: View {
     
-    @EnvironmentObject private var settings: Settings
+    @EnvironmentObject private var cred: Credentials
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         List {
-            ForEach(settings.user?.workspaces ?? [], id: \.wid) { space in
+            ForEach(cred.user?.workspaces ?? [], id: \.wid) { space in
                 Button {
-                    settings.user?.chosen = space // set chosen space (updates Spiral)
+                    cred.user?.chosen = space // set chosen space (updates Spiral)
                     WorkspaceManager.chosenWorkspace = space // write choice to disk for future launches
                     presentationMode.wrappedValue.dismiss()
                 } label: {

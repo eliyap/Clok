@@ -16,7 +16,7 @@ extension LoginView {
             auth: auth
         )
         
-        settings.cancellable = URLSession.shared.dataTaskPublisher(for: request)
+        cred.cancellable = URLSession.shared.dataTaskPublisher(for: request)
             .map { $0.data }
             .decode(type: User?.self, decoder: JSONDecoder())
             .replaceError(with: nil)
@@ -24,7 +24,7 @@ extension LoginView {
             .sink(receiveValue: {
                 /// save user's credentials in iOS Keychain
                 guard let user = $0 else { return }
-                settings.user = user
+                cred.user = user
                 try! saveKeys(user: user)
             })
     }

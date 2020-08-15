@@ -12,7 +12,7 @@ extension ContentView {
     func tryLoadUserFromDisk() {
         /// try to find user credentials
         if let user = getCredentials() {
-            settings.user = user
+            cred.user = user
         } else {
             print("could not retrieve user from disk")
         }

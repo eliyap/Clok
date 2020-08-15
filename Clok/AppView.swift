@@ -15,7 +15,7 @@ struct ClokApp: App {
     var listRow = ListRow()
     var zero = ZeroDate()
     var data = TimeData()
-    var settings = Settings()
+    var cred = Credentials()
     var bounds = Bounds()
     var model = GraphModel()
     
@@ -37,7 +37,7 @@ struct ClokApp: App {
                 .environmentObject(listRow)
                 .environmentObject(zero)
                 .environmentObject(data)
-                .environmentObject(settings)
+                .environmentObject(cred)
                 .environmentObject(bounds)
                 .environmentObject(model)
                 .environment(\.managedObjectContext, persistentContainer.viewContext)
@@ -53,7 +53,7 @@ struct ClokApp: App {
     
     func loadData(date: Date) -> Void {
         /// ensure user is logged in
-        guard let user = settings.user else { return }
+        guard let user = cred.user else { return }
         /// if data is old
         if date < minLoaded {
             /// fetch another week's worth from online

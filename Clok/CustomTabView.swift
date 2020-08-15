@@ -16,7 +16,7 @@ struct CustomTabView: View {
         case settings
     }
     
-    @EnvironmentObject private var settings: Settings
+    @EnvironmentObject private var cred: Credentials
     @EnvironmentObject private var bounds: Bounds
     @AppStorage(
         "MainTab",

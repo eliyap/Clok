@@ -1,4 +1,4 @@
-//  Settings.swift
+//  Credentials.swift
 //  Clok
 //
 //  Created by Secret Asian Man Dev on 28/6/20.
@@ -7,7 +7,7 @@
 import Foundation
 import Combine
 
-final class Settings: ObservableObject {
+final class Credentials: ObservableObject {
     @Published var user: User? = nil
     var cancellable: AnyCancellable? = nil
 }

@@ -11,7 +11,7 @@ import SwiftUI
 struct SettingsView: View {
     
     @EnvironmentObject var data: TimeData
-    @EnvironmentObject var settings: Settings
+    @EnvironmentObject var settings: Credentials
     @EnvironmentObject var zero: ZeroDate
     @Environment(\.managedObjectContext) var moc
     

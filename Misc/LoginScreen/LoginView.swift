@@ -12,7 +12,7 @@ import SwiftUI
 struct LoginView: View {
     
     /// allow this view to dismiss itself after user logs in
-    @EnvironmentObject var settings: Settings
+    @EnvironmentObject var cred: Credentials
     
     /// direct users to their profile, where they can copy the API Token
     static let profileURL = URL(string: "https://toggl.com/app/profile")!

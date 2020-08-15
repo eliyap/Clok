@@ -14,7 +14,7 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) var moc
     
     @EnvironmentObject var data: TimeData
-    @EnvironmentObject var settings: Settings
+    @EnvironmentObject var cred: Credentials
     
     /// whether we're finished loading data
     @State var loaded = false
@@ -28,14 +28,14 @@ struct ContentView: View {
 //            if !loaded {
 //                ProgressIndicator()
 //            }
-            if settings.user?.token == nil {
+            if cred.user?.token == nil {
                 LoginView(loaded: $loaded)
                     .modifier(FullscreenModifier())
             }
         }
         .onAppear { tryLoadUserFromDisk() }
         /// update on change to either user or space
-        .onReceive(settings.$user) { user in
+        .onReceive(cred.$user) { user in
             if let user = user {
                 /// fetch projects when app is started
                 data.projects = fetchProjects(
