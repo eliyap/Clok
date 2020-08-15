@@ -22,6 +22,7 @@ struct ClokApp: App {
     var persistentContainer: NSPersistentContainer
     
     init(){
+        /// initialize Core Data container
         let container = NSPersistentContainer(name: "TimeEntryModel")
         container.loadPersistentStores { description, error in
             if let error = error { fatalError("\(error)") }
@@ -29,10 +30,6 @@ struct ClokApp: App {
         persistentContainer = container
         container.viewContext.mergePolicy = NSOverwriteMergePolicy
     }
-    
-    /// keep track of the what has been fetched this session
-    @State private var minLoaded = Date()
-    @State private var maxLoaded = Date()
     
     var body: some Scene {
         WindowGroup {
@@ -49,6 +46,10 @@ struct ClokApp: App {
                 }
         }
     }
+    
+    /// keep track of the what has been fetched this session
+    @State private var minLoaded = Date()
+    @State private var maxLoaded = Date()
     
     func loadData(date: Date) -> Void {
         /// ensure user is logged in
