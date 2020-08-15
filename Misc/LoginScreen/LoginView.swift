@@ -29,6 +29,8 @@ struct LoginView: View {
     @State private var pref: loginPreference = .email
     @State var pushup = false
     
+    @Binding var loaded: Bool
+    
     var body: some View {
         HStack {
             IconView()

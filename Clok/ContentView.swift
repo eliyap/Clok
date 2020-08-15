@@ -29,7 +29,7 @@ struct ContentView: View {
                 ProgressIndicator()
             }
             if settings.user?.token == nil {
-                LoginView()
+                LoginView(loaded: $loaded)
                     .modifier(FullscreenModifier())
             }
         }
