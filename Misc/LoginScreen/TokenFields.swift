@@ -24,11 +24,6 @@ extension LoginView {
             HStack(spacing: .zero) {
                 Text("Find Toggl's API Token on your ")
                 Link("Profile", destination: LoginView.profileURL)
-//                Text("Profile")
-//                    .foregroundColor(Color.blue)
-//                    .onTapGesture {
-//                        UIApplication.shared.open(LoginView.profileURL)
-//                    }
             }
                 .transition(.inAndOut(edge: .bottom))
         }
