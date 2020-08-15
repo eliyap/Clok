@@ -18,8 +18,24 @@ struct FilterView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: listPadding) {
             Title
-            SelectButtons
+            
             List {
+                Button {
+                    withAnimation {
+                        data.terms.projects = allProjects
+                    }
+                } label: {
+                    Text("Select All")
+                        .foregroundColor(.blue)
+                }
+                Button {
+                    withAnimation {
+                        data.terms.projects.removeAll()
+                    }
+                } label: {
+                    Text("Deselect All")
+                        .foregroundColor(.blue)
+                }
                 Included
                 Excluded
             }
@@ -95,23 +111,11 @@ struct FilterView: View {
             .sorted(by: {$0.wrappedName < $1.wrappedName})
     }
     
-    var SelectButtons: some View {
-        HStack {
-            Button {
-                withAnimation {
-                    data.terms.projects = allProjects
-                }
-            } label: {
-                Text("Select All")
-            }
-            Spacer()
-            Button {
-                withAnimation {
-                    data.terms.projects.removeAll()
-                }
-            } label: {
-                Text("Deselect All")
-            }
-        }
-    }
+//    var SelectButtons: some View {
+//        HStack {
+//
+//            Spacer()
+//
+//        }
+//    }
 }
