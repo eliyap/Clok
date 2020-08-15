@@ -83,7 +83,7 @@ func saveKeys(user: User) throws -> Void {
         kSecValueData:   user.token.data(using: .utf8)!, // token
         kSecClass:       kSecClassInternetPassword,
         kSecReturnData:  true
-        ] as CFDictionary
+    ] as CFDictionary
 
     var ref: AnyObject?
 
