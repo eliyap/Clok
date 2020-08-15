@@ -18,10 +18,10 @@ fileprivate struct RawReport: Decodable {
 
 struct Report: Decodable {
     
-    var totalCount: Int        // total number of time entries in the report
-    var perPage: Int           // number of time entries provided per request
-    var totalGrand: Double     // total seconds tracked
-    var entries: [RawTimeEntry]   // list of TimeEntry's
+    var totalCount: Int         /// total number of time entries in the report
+    var perPage: Int            /// number of time entries provided per request
+    var totalGrand: Double      /// total seconds tracked
+    var entries: [RawTimeEntry] /// list of TimeEntry's
     
     static let empty = Report(
         total_count: NSNotFound,
