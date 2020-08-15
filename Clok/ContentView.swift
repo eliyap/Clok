@@ -27,7 +27,10 @@ struct ContentView: View {
             /// fade out loading screen when data is finished being requested
             
 //            if !loaded { ProgressIndicator() }
-            if settings.user?.token == nil { LoginView() }
+            if settings.user?.token == nil {
+                LoginView()
+                    .modifier(FullscreenModifier())
+            }
         }
         .onAppear { tryLoadUserFromDisk() }
         /// update on change to either user or space

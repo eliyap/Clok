@@ -15,6 +15,6 @@ struct FullscreenModifier: ViewModifier {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color(UIColor.systemBackground))
             .edgesIgnoringSafeArea(.all)
-            .transition(.opacity)
+            .transition(.inAndOut(edge: .bottom))
     }
 }

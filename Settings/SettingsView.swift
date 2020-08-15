@@ -94,8 +94,9 @@ extension SettingsView {
         WorkspaceManager.workspaces = []
         WorkspaceManager.chosenWorkspace = Workspace(wid: 0, name: "")
         
-        settings.user = nil
-        print("logged out!")
+        withAnimation {
+            settings.user = nil
+        }
     }
     
     func updateWeekday(weekday: Int) -> Void {

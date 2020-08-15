@@ -63,7 +63,6 @@ struct LoginView: View {
             /// prevent 's picker from munching the whole screen
             .frame(maxWidth: UIScreen.main.bounds.size.width / 2)
         }
-        .modifier(FullscreenModifier())
     }
     
     /// when user starts / stops editing text field, raise / lower the pushup view

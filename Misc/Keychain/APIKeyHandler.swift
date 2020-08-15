@@ -40,7 +40,6 @@ func getCredentials() -> User? {
             let spaces = WorkspaceManager.workspaces,
             let chosen = WorkspaceManager.chosenWorkspace
         else {
-            print("no workspace")
             return nil
         }
         return User(
