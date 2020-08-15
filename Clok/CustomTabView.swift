@@ -10,7 +10,7 @@ import SwiftUI
 
 struct CustomTabView: View {
     
-    enum Tabs {
+    enum Tabs: Int {
         case spiral
         case bar
         case settings
@@ -18,65 +18,71 @@ struct CustomTabView: View {
     
     @EnvironmentObject private var settings: Settings
     @EnvironmentObject private var bounds: Bounds
+    @AppStorage(
+        "MainTab",
+        store: UserDefaults(suiteName: WorkspaceManager.suiteName)
+    ) private var tab: Tabs = .bar
+
     
     var body: some View {
-        Group {
-            if bounds.notch && bounds.mode == .landscape {
-                HStack(spacing: 0) {
-                    Views()
-                    VStack(spacing: 0) { Buttons() }
-                }
-            } else {
-                VStack(spacing: 0) {
-                    Views()
-                    HStack(spacing: 0) { Buttons() }
-                }
+        if bounds.mode == .portrait {
+            VStack(spacing: 0) {
+                VStack(spacing: 0) { TabContents }
+                Divider()
+                HStack(spacing: 0) { TabButtons }
+            }
+        }
+        else if bounds.device == .iPad && bounds.mode == .landscape {
+            VStack(spacing: 0) {
+                HStack(spacing: 0) { TabContents }
+                Divider()
+                HStack(spacing: 0) { TabButtons }
+            }
+        }
+        else if bounds.device == .iPhone && bounds.mode == .landscape {
+            HStack(spacing: 0) {
+                HStack(spacing: 0) { TabContents }
+                Divider()
+                VStack(spacing: 0) { TabButtons }
             }
         }
     }
     
-    func Views() -> some View {
+    var TabContents: some View {
         /// group prevents warning about underlying types
         Group {
-            switch settings.tab {
+            switch tab {
+            case .spiral:
+                Text("Daily View Planned")
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+            case .bar:
+                BarStack()
             case .settings:
                 SettingsView()
-            default:
-                TabView{
-                    EntryList()
-                    StatView()
-                }
-                .tabViewStyle(PageTabViewStyle())
-                .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
             }
         }
     }
     
-    func Buttons() -> some View {
-        return Group {
+    var TabButtons: some View {
+        Group {
             TabButton(select: .spiral, glyph: "arrow.counterclockwise")
             TabButton(select: .bar, glyph: "chart.bar.fill")
             TabButton(select: .settings, glyph: "gear")
         }
     }
     
-    private let buttonPadding = CGFloat(8)
-    func TabButton(select: Settings.Tabs, glyph: String) -> some View {
-        Button { settings.tab = select } label: {
+    fileprivate let buttonPadding = CGFloat(8)
+    func TabButton(select: Tabs, glyph: String) -> some View {
+        let iPhoneLandscape = bounds.device == .iPhone && bounds.mode == .landscape
+        return Button { tab = select } label: {
             Label("", systemImage: glyph)
-                .foregroundColor(settings.tab == select ? .primary : .secondary)
-                .font(Font.body.weight(settings.tab == select ? .bold : .regular))
+                .foregroundColor(tab == select ? .primary : .secondary)
+                .font(Font.body.weight(tab == select ? .bold : .regular))
                 .frame(
-                    maxWidth: (bounds.notch && bounds.mode == .landscape) ? nil : .infinity,
-                    maxHeight: (bounds.notch && bounds.mode == .landscape) ? .infinity : nil
+                    maxWidth: iPhoneLandscape ? nil : .infinity,
+                    maxHeight: iPhoneLandscape ? .infinity : nil
                 )
                 .padding(buttonPadding)
         }
-    }
-}
-
-struct CustomTabView_Previews: PreviewProvider {
-    static var previews: some View {
-        CustomTabView()
     }
 }

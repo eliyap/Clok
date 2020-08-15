@@ -37,20 +37,13 @@ struct ContentView: View {
                 data.projects = fetchProjects(
                     user: user,
                     context: moc
-                ) ?? loadProjects(context: moc) ?? []
-                _ = fetchEntries(
-                    user: user,
-                    from: Date() - weekLength,
-                    to: Date(),
-                    context: moc,
-                    projects: data.projects
                 )
+                ?? loadProjects(context: moc)
+                ?? []
+                
+                /// populate include list with all projects, and `noProject`
+                data.terms.projects = data.projects + [StaticProject.noProject]
             }
-            
-        }
-        
-        .onAppear {
-//            testRunning()
         }
     }
 }

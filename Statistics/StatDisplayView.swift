@@ -12,6 +12,7 @@ import SwiftUI
 
 struct StatDisplayView: View {
     
+    @EnvironmentObject var zero: ZeroDate
     private let df = DateFormatter()
     
     private var avgStart = placeholderTime
@@ -26,23 +27,17 @@ struct StatDisplayView: View {
     
     var body: some View {
         Group {
+            WeekStats
             Divider()
-            WeekDateString()
-            thisWeek
-            
-            Divider()
-            HStack {
-                Text("Since Previous Week")
-                    .font(.headline)
-                    .bold()
-                Spacer()
-            }
-            weekChange
+            Text("Since Previous Week")
+                .font(.headline)
+                .bold()
+            WeekChangeStats
         }
         
     }
     
-    var thisWeek: some View {
+    var WeekStats: some View {
         Group {
             Stat(
                 label: "Started Around",
@@ -69,12 +64,12 @@ struct StatDisplayView: View {
             Stat(
                 label: "Percentage of Week",
                 symbol: "chart.pie.fill",
-                text: Text("\(Int((avgDur / dayLength) * 100.0))%")
+                text: Text("\(Int((avgDur / .day) * 100.0))%")
             )
         }
     }
     
-    var weekChange: some View {
+    var WeekChangeStats: some View {
         Group {
             Stat(
                 label: "Started",
@@ -87,15 +82,15 @@ struct StatDisplayView: View {
                 text: Text(abs(deltaEnd).toString() + " " + (deltaStart > 0 ? "later" : "earlier"))
             )
             Stat(
-                label: "\(deltaAvgDur > 0 ? "Increased" : "Decreased") by",
-                symbol: "arrow.\(deltaStart > 0 ? "up" : "down").right",
-                text: Text(abs(deltaAvgDur * 7).toString() + " total"),
+                label: "\(deltaAvgDur > 0 ? "Increased" : "Decreased")",
+                symbol: "arrow.\(deltaAvgDur > 0 ? "up" : "down").right",
+                text: Text(abs(deltaAvgDur * 7).toString()),
                 weight: .heavy
             )
             Stat(
-                label: "",
+                label: "Per Day",
                 symbol: nil,
-                text: Text(abs(deltaAvgDur).toString() + " per day")
+                text: Text(abs(deltaAvgDur).toString())
             )
                 /// good ol negative padding hack to bring it closer up
                 .padding(.top, -10)

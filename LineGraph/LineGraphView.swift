@@ -10,81 +10,50 @@ import SwiftUI
 
 struct LineGraph: View {
     
-    @EnvironmentObject var data: TimeData
     @EnvironmentObject var zero: ZeroDate
-    /// for now, show 7 days
-    static let dayCount = 7
-    
-    @GestureState var magnifyBy = CGFloat(1.0)
-    @State var dragBy = PositionTracker()
-    @FetchRequest(entity: TimeEntry.entity(), sortDescriptors: []) var entries: FetchedResults<TimeEntry>
-    
-    let tf = DateFormatter()
-    let haptic = UIImpactFeedbackGenerator(style: .light)
-    init(){
-        tf.timeStyle = .short
-    }
-    
-    /// slows down the magnifying effect by some constant
-    let kCoeff = 0.5
+    @EnvironmentObject var data: TimeData
+    @EnvironmentObject var model: GraphModel
+    let dayHeight: CGFloat     /// visual height for 1 day
     
     var body: some View {
         /// check whether the provided time entry coincides with a particular *date* range
         /// if our entry ends before the interval even began
         /// or started after the interval finished, it cannot possibly fall coincide
-        HStack {
-            
-            GeometryReader { geo in
-                ZStack {
-                    Rectangle().foregroundColor(.clokBG)
-                    VStack {
-                        Text(tf.string(from: zero.date))
-                        Spacer()
-                        Text(zero.interval.toString())
-                        Spacer()
-                        Text(tf.string(from: zero.date + zero.interval))
-                    }
-                    .allowsHitTesting(false)
-                    
-                    ForEach(entries.filter {$0.wrappedEnd > zero.date && $0.wrappedStart < zero.date + weekLength}, id: \.id) { entry in
-                        LineBar(with: entry, geo: geo, bounds: GetBounds(zero: zero, entry: entry))
-                            .transition(.identity)
-                    }
-                }
-                .gesture(ExclusiveGesture(
-                    Drag(geo: geo),
-                    MagnificationGesture().updating($magnifyBy, body: magnifyHandler)
-                ))
-            }
-            .border(Color.red)
-        }
-    }
-    
-    func timeOffset(for date: Date) -> String {
-        (date - Calendar.current.startOfDay(for: zero.date))
-            .truncatingRemainder(dividingBy: dayLength)
-            .toString()
-    }
-    
-    func Drag(geo: GeometryProxy) -> some Gesture {
-        func useValue(value: DragGesture.Value, geo: GeometryProxy) -> Void {
-            /// find cursor's
-            dragBy.update(state: value, geo: geo)
-            zero.date -= dragBy.intervalDiff * zero.interval
-            let days = dragBy.harvestDays()
-            if days != 0 {
-                haptic.impactOccurred(intensity: 1)
-                zero.date -= Double(days) * dayLength
+        HStack(spacing: .zero) {
+            /// use date enum so SwiftUI can identify horizontal swipes without redrawing everything
+            ForEach(
+                Array(stride(from: zero.start, to: zero.end, by: .day)),
+                id: \.timeIntervalSince1970
+            ) { midnight in
+                Divider()
+                DayStrip(
+                    entries: entries(midnight: midnight),
+                    midnight: midnight,
+                    terms: data.terms
+                )
+                .transition(zero.slideOver)
+                .frame(height: dayHeight * CGFloat(model.days))
             }
         }
-        return DragGesture()
-            .onChanged {
-                useValue(value: $0, geo: geo)
-            }
-            .onEnded {
-                /// update once more on end
-                useValue(value: $0, geo: geo)
-                dragBy.reset()
-            }
+        /// NOTE: apply lined background to whole stack, NOT individual `DayStrip`!
+        .background(LinedBackground(divisions: evenDivisions(for: dayHeight)))
+        .drawingGroup()
+    }
+    
+    /// filter & sort time entries for this day
+    /// the day begins at provided `midnight`
+    func entries(midnight: Date) -> [TimeEntry] {
+        switch model.mode {
+        case .calendar: return data.entries
+            .filter{$0.end > midnight - model.castBack}
+            .filter{$0.start < midnight + model.castFwrd}
+            /// chronological sort
+            .sorted{$0.start < $1.start}
+        case .graph: return data.entries
+            .filter{$0.end > midnight - model.castBack}
+            .filter{$0.start < midnight + model.castFwrd}
+            /// use Search sort, which prioritizes selected Projects
+            .sorted{data.terms.projectSort(p0: $0.wrappedProject, p1: $1.wrappedProject)}
+        }
     }
 }

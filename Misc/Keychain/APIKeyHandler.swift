@@ -37,8 +37,8 @@ func getCredentials() -> User? {
     do {
         let (email, fullname, apiKey) = try getKey()
         guard
-            let spaces = WorkspaceManager.getSpaces(),
-            let chosen = WorkspaceManager.getChosen()
+            let spaces = WorkspaceManager.workspaces,
+            let chosen = WorkspaceManager.chosenWorkspace
         else {
             print("no workspace")
             return nil
@@ -55,8 +55,7 @@ func getCredentials() -> User? {
     } catch KeychainError.unhandledError(code: let status) {
         print("Keychain error with OSStatus: \(status)")
     } catch {
-        // no other error type should come through!
-        fatalError()
+        fatalError("Unexpected non KeyChain error: \(error)")
     }
     return nil
 }
@@ -69,18 +68,19 @@ func saveKeys(user: User) throws -> Void {
     }
     
     // save workspaces in user defaults
-    WorkspaceManager.saveSpaces(user.workspaces)
+    WorkspaceManager.workspaces = user.workspaces
     
     // choose 1st workspace by default.
-    WorkspaceManager.saveChosen(user.workspaces.first!)
+    WorkspaceManager.chosenWorkspace = user.workspaces.first!
     print("workspaces ok")
     
-    let keychainItem = [kSecAttrServer: service,       // secure Toggl login items:
-        kSecAttrAccount: user.email,                   // email
-        kSecAttrCreator: user.fullName,                // full name
-        kSecValueData: user.token.data(using: .utf8)!, // token
-        kSecClass: kSecClassInternetPassword,
-        kSecReturnData: true
+    let keychainItem = [
+        kSecAttrServer:  service,                        // secure Toggl login items:
+        kSecAttrAccount: user.email,                     // email
+        kSecAttrCreator: user.fullName,                  // full name
+        kSecValueData:   user.token.data(using: .utf8)!, // token
+        kSecClass:       kSecClassInternetPassword,
+        kSecReturnData:  true
         ] as CFDictionary
 
     var ref: AnyObject?

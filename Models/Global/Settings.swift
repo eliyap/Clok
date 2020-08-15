@@ -7,12 +7,5 @@
 import Foundation
 
 final class Settings: ObservableObject {
-    enum Tabs {
-        case spiral
-        case bar
-        case settings
-    }
-    
-    @Published var tab: Tabs = .spiral
     @Published var user: User? = nil
 }

@@ -17,21 +17,4 @@ extension ContentView {
             print("could not retrieve user from disk")
         }
     }
-    
-    func fetchData(user: User?) {
-    }
-    
-    
-//    TOP LEVEL SANDBOX
-    func testRunning() -> Void {
-        
-//        var project = OldProject.noProject
-//        let sem = DispatchSemaphore(value: 0)
-//        let token = "cfae5db4249b8509ca7671259598c2fb"
-//        let pid = 158395089
-
-        
-        
-    }
-    
 }

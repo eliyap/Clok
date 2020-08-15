@@ -28,7 +28,6 @@ func loadEntries(
     context: NSManagedObjectContext
 ) -> [TimeEntry]? {
     let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: TimeEntry.entityName)
-    #warning("NO PREDICATES SET")
     do {
         let entries = try context.fetch(fetchRequest) as! [TimeEntry]
         return entries

@@ -10,14 +10,13 @@ import Foundation
 import SwiftUI
 
 final class TimeData: ObservableObject {
-    // the Project and Descriptions the user is filtering for
-    @Published var terms = SearchTerm(
-        project: StaticProject.any,
-        description: "",
-        byDescription: .any
-    )
+    /// A delegate between SwiftUI and CoreData, storing all of the user's `TimeEntry`s
+    /// `EnvironmentObject` was chosen to prevent the UI hitting CoreData on every refresh
+    @Published var entries = [TimeEntry]()
     
-    // true when user is changing the search terms
-    @Published var searching = false
+    /// the `Project`s the user is filtering for
+    @Published var terms = SearchTerms()
+    
+    /// a list of the user's `Project`s
     @Published var projects = [Project]()
 }

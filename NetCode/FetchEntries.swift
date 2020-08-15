@@ -16,7 +16,6 @@ func fetchEntries(
     context: NSManagedObjectContext,
     projects: [Project]
 ) -> [TimeEntry]? {
-    print("NOW FETCHING ENTRIES")
     // assemble request URL (page is added later)
     let df = DateFormatter()
     df.dateFormat = "yyyy-MM-dd" // ISO 8601 format, day precision
@@ -35,11 +34,12 @@ func fetchEntries(
         context: context,
         projects: projects
     )
-    var entries: [TimeEntry]? = nil
+    let entries: [TimeEntry]? = nil
     DispatchQueue.global(qos: .background).async {
         switch result {
         case let .success(fetched):
-            entries = fetched
+            mergeEntries(context: context, entries: fetched, projects: projects)
+            
         case .failure(.request):
             // temporary micro-copy
             print("We weren't able to fetch your data. Maybe the internet is down?")
@@ -47,5 +47,22 @@ func fetchEntries(
             print(error)
         }
     }
+    
     return entries
+}
+
+func mergeEntries(
+    context: NSManagedObjectContext,
+    entries: [RawTimeEntry],
+    projects: [Project]
+) -> Void {
+    if let savedEntries = loadEntries(from: Date.distantPast, to: Date.distantFuture, context: context){
+        entries.forEach{ entry in
+            if let oldEntry = savedEntries.first(where: {$0.id == entry.id}) {
+                oldEntry.update(from: entry, context: context, projects: projects)
+            } else {
+                context.insert(TimeEntry(from: entry, context: context, projects: projects))
+            }
+        }
+    }
 }

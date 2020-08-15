@@ -13,27 +13,20 @@ extension Array where Element == TimeEntry {
     func within(interval: TimeInterval, of start: Date) -> [TimeEntry] {
         let end = start + interval
         return self
-            .filter { $0.wrappedStart.between(start, end) || $0.wrappedEnd.between(start, end) }
+            .filter { $0.start.between(start, end) || $0.end.between(start, end) }
     }
 }
 
 extension TimeEntry {
     
     /// checks whether this time entry matches what the user is searching for
-    func matches(_ terms: SearchTerm) -> Bool {
-        /// perform case insensitive comparison
-        /// NOTE: search can be significantly improved (stemming, fuzzy matching, etc.)
-        if terms.byDescription == .empty && self.description != "" {
-            return false
+    func matches(_ terms: SearchTerms) -> Bool {
+        switch terms.mode {
+        case.projects:
+            /// check whether project matches any in included projects list
+            return terms.projects.first{wrappedProject.matches($0)} != nil
+        case.tags:
+            fatalError("tag filtering not implemented")
         }
-        else if terms.byDescription == .specific && self.description.caseInsensitiveCompare(terms.description) != .orderedSame {
-            return false
-        }
-        
-        if !terms.project.matches(wrappedProject) {
-            return false
-        }
-        
-        return true
     }
 }

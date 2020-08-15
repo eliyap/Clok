@@ -26,6 +26,10 @@ enum Device {
 
 final class Bounds: ObservableObject {
     @Published var mode =  GeometryProxy.orientation.portrait
-    @Published var notch = false
+    @Published var insets = EdgeInsets()
+    /// notched devices (including the new iPad Pros) have bottom insets
+    var notch: Bool {
+        insets.bottom != 0
+    }
     @Published var device = Device.iPhone
 }

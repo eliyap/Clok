@@ -18,7 +18,7 @@ func daySlices(start:Date, end:Date) -> [DayTimeFrame] {
     var frames = [DayTimeFrame]()
     var slices = [Date]()
     
-    for d in stride(from: start, through: end, by: dayLength) {
+    for d in stride(from: start, through: end, by: .day) {
         slices.append(d)
     }
     

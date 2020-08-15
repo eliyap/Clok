@@ -17,33 +17,33 @@ struct DescriptionButton: View {
     
     var body: some View {
         HStack {
-            Image(systemName:
-                /// no preference for description: wildcard!
-                self.data.terms.byDescription == .any ? "asterisk.circle" :
-                /// explicitly want blank description
-                self.data.terms.byDescription == .empty ? "xmark.circle" :
-                /// some description specified
-                self.data.terms.byDescription == .specific ? "pencil.circle" : ""
-                
-            )
-                .transition(.opacity)
-                .modifier(ButtonGlyph())
-                .onTapGesture { self.data.terms.byDescription.cycle() }
-            
-            HStack(spacing: .zero) {
-                Text("Description is ")
-                    .onTapGesture { self.data.terms.byDescription.cycle() }
-                
-                if data.terms.byDescription == .any {
-                    Text("Anything")
-                } else if data.terms.byDescription == .empty {
-                    Text("Empty")
-                } else if data.terms.byDescription == .specific {
-                    TextField("Description", text: self.$data.terms.description)
-                        .padding(3)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                }
-            }
+            #warning("may still need description filter later, but is currently dysfunctional")
+//            Image(systemName:
+//                /// no preference for description: wildcard!
+//                data.terms.byDescription == .any ? "asterisk.circle" :
+//                /// explicitly want blank description
+//                data.terms.byDescription == .empty ? "xmark.circle" :
+//                /// some description specified
+//                data.terms.byDescription == .specific ? "pencil.circle" : ""
+//            )
+//                .transition(.opacity)
+//                .modifier(ButtonGlyph())
+//                .onTapGesture { data.terms.byDescription.cycle() }
+//            
+//            HStack(spacing: .zero) {
+//                Text("Description is ")
+//                    .onTapGesture { data.terms.byDescription.cycle() }
+//                switch (data.terms.byDescription) {
+//                case .any:
+//                    Text("Anything")
+//                case .empty:
+//                    Text("Empty")
+//                case .specific:
+//                    TextField("Description", text: $data.terms.description)
+//                        .padding(3)
+//                        .textFieldStyle(RoundedBorderTextFieldStyle())
+//                }
+//            }
         }
     }
 }
