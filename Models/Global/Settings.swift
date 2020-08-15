@@ -8,7 +8,12 @@ import Foundation
 import Combine
 
 final class Credentials: ObservableObject {
-    @Published var user: User? = nil
+    
+    init(user: User?){
+        self.user = user
+    }
+    
+    @Published var user: User?
     var cancellable: AnyCancellable? = nil
 }
 

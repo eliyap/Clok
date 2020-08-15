@@ -10,6 +10,11 @@ import Foundation
 import SwiftUI
 
 final class TimeData: ObservableObject {
+    
+    init(projects: [Project]){
+        self.projects = projects
+    }
+    
     /// A delegate between SwiftUI and CoreData, storing all of the user's `TimeEntry`s
     /// `EnvironmentObject` was chosen to prevent the UI hitting CoreData on every refresh
     @Published var entries = [TimeEntry]()
@@ -18,5 +23,5 @@ final class TimeData: ObservableObject {
     @Published var terms = SearchTerms()
     
     /// a list of the user's `Project`s
-    @Published var projects = [Project]()
+    @Published var projects: [Project]
 }

@@ -14,8 +14,8 @@ struct ClokApp: App {
     
     var listRow = ListRow()
     var zero = ZeroDate()
-    var data = TimeData()
-    var cred = Credentials()
+    var data: TimeData
+    var cred: Credentials
     var bounds = Bounds()
     var model = GraphModel()
     
@@ -29,6 +29,12 @@ struct ClokApp: App {
         }
         persistentContainer = container
         container.viewContext.mergePolicy = NSOverwriteMergePolicy
+        
+        /// pull `Project`s from CoreData
+        data = TimeData(projects: loadProjects(context: persistentContainer.viewContext) ?? [])
+        
+        /// pull `User` from KeyChain
+        cred = Credentials(user: getCredentials())
     }
     
     var body: some Scene {
@@ -76,6 +82,5 @@ struct ClokApp: App {
                 print(error)
             }
         }
-    
     }
 }

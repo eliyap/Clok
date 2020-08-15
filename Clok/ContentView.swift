@@ -33,7 +33,6 @@ struct ContentView: View {
                     .modifier(FullscreenModifier())
             }
         }
-        .onAppear { tryLoadUserFromDisk() }
         /// update on change to either user or space
         .onReceive(cred.$user) { user in
             if let user = user {

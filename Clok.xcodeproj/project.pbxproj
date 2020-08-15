@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		22027DD024AFF63F00C0BA90 /* OrientationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22027DCF24AFF63F00C0BA90 /* OrientationView.swift */; };
-		22027DD224AFF7ED00C0BA90 /* TopFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22027DD124AFF7ED00C0BA90 /* TopFunctions.swift */; };
 		22027DD424AFF92000C0BA90 /* Fullscreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22027DD324AFF92000C0BA90 /* Fullscreen.swift */; };
 		22027DD624AFFA6500C0BA90 /* Bounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22027DD524AFFA6500C0BA90 /* Bounds.swift */; };
 		2207B22024B954F40006748A /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2207B21F24B954F40006748A /* GraphView.swift */; };
@@ -166,7 +165,6 @@
 
 /* Begin PBXFileReference section */
 		22027DCF24AFF63F00C0BA90 /* OrientationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrientationView.swift; sourceTree = "<group>"; };
-		22027DD124AFF7ED00C0BA90 /* TopFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopFunctions.swift; sourceTree = "<group>"; };
 		22027DD324AFF92000C0BA90 /* Fullscreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fullscreen.swift; sourceTree = "<group>"; };
 		22027DD524AFFA6500C0BA90 /* Bounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bounds.swift; sourceTree = "<group>"; };
 		2207B21F24B954F40006748A /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
@@ -605,7 +603,6 @@
 				22B0784724B249BA00256EB8 /* Clok.entitlements */,
 				225F69B324AD8CE70012B5DB /* AppView.swift */,
 				C6C18D482448F96C000345D5 /* ContentView.swift */,
-				22027DD124AFF7ED00C0BA90 /* TopFunctions.swift */,
 				22027DCF24AFF63F00C0BA90 /* OrientationView.swift */,
 				222305AD24AE807000711031 /* CustomTabView.swift */,
 				C6C18D7C244BE891000345D5 /* Constants.swift */,
@@ -928,7 +925,6 @@
 				224D10D324E6FA8900668FD8 /* DateIndicator.swift in Sources */,
 				22DC86A024BA838D00FF771F /* Project+CoreDataClass.swift in Sources */,
 				2296F15B24A994A400AF38B5 /* FormRequest.swift in Sources */,
-				22027DD224AFF7ED00C0BA90 /* TopFunctions.swift in Sources */,
 				22027DD624AFFA6500C0BA90 /* Bounds.swift in Sources */,
 				228B100624AECDFF0026AD4B /* EntryView.swift in Sources */,
 				222D992624BAB2FD00F66E0F /* DecoderExtension.swift in Sources */,
