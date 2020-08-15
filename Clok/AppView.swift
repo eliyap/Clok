@@ -94,16 +94,24 @@ struct ClokApp: App {
     func fetchProjects(user: User?) -> Void {
         guard let user = user else { return }
         data.projectsPipe = URLSession.shared.dataTaskPublisher(for: formRequest(
+            /// https://github.com/toggl/toggl_api_docs/blob/master/chapters/workspaces.md#get-workspace-projects
             url: URL(string: "\(API_URL)/workspaces/\(user.chosen.wid)/projects?user_agent=\(user_agent)")!,
             auth: auth(token: user.token)
         ))
         .map { $0.data }
-        .decode(type: [Project].self, decoder: JSONDecoder(context: persistentContainer.viewContext))
-        .replaceError(with: [])
+        .decode(
+            type: [Project]?.self,
+            /// pass `managedObjectContext` to decoder so that a CoreData object can be created
+            decoder: JSONDecoder(context: persistentContainer.viewContext)
+        )
+        .replaceError(with: nil)
         .receive(on: DispatchQueue.main)
         .sink(receiveValue: {
-            guard $0.count > 0 else { return }
-            data.projects = $0
+            /// if there was an error and nothing came through, do not edit the data
+            /// NOTE: if we correctly received 0 `Project`s (for some reason), this should correctly wipe the `Project`s in CoreData
+            guard let projects = $0 else { return }
+            data.projects = projects
+            /// save newly created CoreData objects
             try! persistentContainer.viewContext.save()
         })
     }
