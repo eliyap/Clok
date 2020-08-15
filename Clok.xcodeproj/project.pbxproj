@@ -321,6 +321,7 @@
 				22232B8A24A9532000F3C378 /* LoginView.swift */,
 				2264CB3824AD33D900ECBF2B /* EmailFields.swift */,
 				2264CB3A24AD344F00ECBF2B /* TokenFields.swift */,
+				2264CB3624AD338500ECBF2B /* LoginWith.swift */,
 			);
 			path = LoginScreen;
 			sourceTree = "<group>";
@@ -481,7 +482,6 @@
 				223863FD24BB8BB10041886B /* FetchProjects.swift */,
 				C615CD56245F332300D62B87 /* FetchDetailedReport.swift */,
 				2296F15A24A994A400AF38B5 /* FormRequest.swift */,
-				2264CB3624AD338500ECBF2B /* LoginWith.swift */,
 				221C3C5424A93C0F006995C5 /* GetUserData.swift */,
 			);
 			path = NetCode;
