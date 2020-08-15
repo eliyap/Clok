@@ -61,13 +61,13 @@ func getCredentials() -> User? {
 
 func saveKeys(user: User) throws -> Void {
     
-    // User constructor guarantees >0 workspaces, but check anyway
+    /// User constructor guarantees >0 workspaces, but check anyway
     precondition(user.workspaces.count <= 0, "Tried to save no workspaces!")
     
-    // save workspaces in user defaults
+    /// save workspaces in user defaults
     WorkspaceManager.workspaces = user.workspaces
     
-    // choose 1st workspace by default.
+    /// default `chosenWorkspace` to 1st workspace
     WorkspaceManager.chosenWorkspace = user.workspaces.first!
     
     let keychainItem = [
@@ -83,11 +83,11 @@ func saveKeys(user: User) throws -> Void {
 
     let status = SecItemAdd(keychainItem, &ref)
     
-    // handle result of operation
+    /// handle result of operation
     switch status {
     case 0:
         break
-    case -25299: // duplicate item found
+    case -25299: /// duplicate item found
         break
     default:
         throw KeychainError.unhandledError(code: status)
