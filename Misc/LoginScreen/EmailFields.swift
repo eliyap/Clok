@@ -41,7 +41,7 @@ extension LoginView {
             return
         }
         
-        loginWith(auth: auth(
+        cred.loginWith(auth: auth(
             email: email,
             password: password
         ))

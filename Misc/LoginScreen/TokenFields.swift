@@ -35,6 +35,6 @@ extension LoginView {
             return
         }
         
-        loginWith(auth: auth(token: key))
+        cred.loginWith(auth: auth(token: key))
     }
 }
