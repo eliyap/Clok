@@ -33,7 +33,7 @@ func getToken() -> String? {
     return nil
 }
 
-func getCredentials() -> User? {
+func loadCredentials() -> User? {
     do {
         let (email, fullname, apiKey) = try getKey()
         guard

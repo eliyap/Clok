@@ -35,7 +35,7 @@ struct ClokApp: App {
         data = TimeData(projects: loadProjects(context: persistentContainer.viewContext) ?? [])
         
         /// pull `User` from KeyChain
-        cred = Credentials(user: getCredentials())
+        cred = Credentials(user: loadCredentials())
         
         /// refresh project list on launch
         data.fetchProjects(user: cred.user, context: persistentContainer.viewContext)
