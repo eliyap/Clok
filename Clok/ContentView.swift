@@ -25,9 +25,9 @@ struct ContentView: View {
         /// ZStack replaces `fullScreenCover`, which was not flexible enough for my needs
         ZStack {
             OrientationView()
-            if !loaded {
-                ProgressIndicator()
-            }
+//            if !loaded {
+//                ProgressIndicator()
+//            }
             if settings.user?.token == nil {
                 LoginView(loaded: $loaded)
                     .modifier(FullscreenModifier())
