@@ -78,7 +78,7 @@ extension SettingsView {
      destroy all stored data tied to the user
      */
     func logOut() -> Void {
-        // destroy local data
+        /// destroy CoreData `TimeEntry`s
         let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: TimeEntry.entityName)
         let request = NSBatchDeleteRequest(fetchRequest: fetch)
         do {
@@ -87,13 +87,14 @@ extension SettingsView {
             fatalError("Failed to execute request: \(error)")
         }
                                 
-        // destroy credentials
+        /// destroy credentials
         try! dropKey()
         
-        // destroy workspace records
+        /// destroy workspace records
         WorkspaceManager.workspaces = []
         WorkspaceManager.chosenWorkspace = Workspace(wid: 0, name: "")
         
+        /// animate appearance of `LoginView`
         withAnimation {
             settings.user = nil
         }
