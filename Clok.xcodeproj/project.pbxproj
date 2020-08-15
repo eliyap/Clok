@@ -320,8 +320,8 @@
 		22027DCD24AFF5D000C0BA90 /* LoginScreen */ = {
 			isa = PBXGroup;
 			children = (
-				2264CB3424AD330500ECBF2B /* IconView.swift */,
 				22232B8A24A9532000F3C378 /* LoginView.swift */,
+				2264CB3424AD330500ECBF2B /* IconView.swift */,
 				2264CB3824AD33D900ECBF2B /* EmailFields.swift */,
 				2264CB3A24AD344F00ECBF2B /* TokenFields.swift */,
 				2264CB3624AD338500ECBF2B /* LoginWith.swift */,
