@@ -29,7 +29,7 @@ extension LoginView {
                         return
                     }
                     
-                    self.loginWith(auth: auth(
+                    loginWith(auth: auth(
                         email: email,
                         password: password
                     ))
