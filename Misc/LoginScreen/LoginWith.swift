@@ -32,9 +32,10 @@ extension LoginView {
                 user = newUser
             }
             
+            /// save user's login details in Keychain
             try! saveKeys(user: user)
             
-            // bind token, also dismisses login screen
+            /// set user, also dismisses login screen
             settings.user = user
         }
     }
