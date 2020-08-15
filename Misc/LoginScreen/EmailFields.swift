@@ -31,8 +31,13 @@ extension LoginView {
     }
     
     func emailLogin() -> Void {
-        guard email != "" && password != "" else {
-            errorText = "Please both your email and password"
+        guard email != "" else {
+            errorText = "Please enter your email"
+            return
+        }
+        
+        guard password != "" else {
+            errorText = "Please enter your password"
             return
         }
         
