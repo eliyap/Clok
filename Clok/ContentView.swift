@@ -33,20 +33,5 @@ struct ContentView: View {
                     .modifier(FullscreenModifier())
             }
         }
-        /// update on change to either user or space
-        .onReceive(cred.$user) { user in
-            if let user = user {
-                /// fetch projects when app is started
-                data.projects = fetchProjects(
-                    user: user,
-                    context: moc
-                )
-                ?? loadProjects(context: moc)
-                ?? []
-                
-                /// populate include list with all projects, and `noProject`
-                data.terms.projects = data.projects + [StaticProject.noProject]
-            }
-        }
     }
 }

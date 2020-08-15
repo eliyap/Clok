@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import SwiftUI
+import Combine
 
 final class TimeData: ObservableObject {
     
@@ -24,4 +24,5 @@ final class TimeData: ObservableObject {
     
     /// a list of the user's `Project`s
     @Published var projects: [Project]
+    var projectsPipe: AnyCancellable? = nil
 }

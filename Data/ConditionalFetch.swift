@@ -13,29 +13,6 @@ import CoreData
  get whatever projects are available. try to load from disk first,
  but if nothing is on disk, fetch from online
  */
-func loadOrFetchProjects(user: User, context: NSManagedObjectContext) -> [Project] {
-    /// try to load from disk
-    if
-        let loaded = loadProjects(context: context),
-        loaded.count > 0
-    {
-        return loaded
-    }
-    /// nothing loaded locally, fetch from online
-    else if
-        let fetched = fetchProjects(user: user, context: context),
-        fetched.count > 0
-    {
-        return fetched
-    }
-    /// couldn't find any projects anywhere!
-    return []
-}
-
-/**
- get whatever projects are available. try to load from disk first,
- but if nothing is on disk, fetch from online
- */
 func loadOrFetchEntries(
     from start: Date,
     to end: Date,

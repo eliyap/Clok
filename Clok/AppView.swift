@@ -8,6 +8,7 @@
 
 import SwiftUI
 import CoreData
+import Combine
 
 @main
 struct ClokApp: App {
@@ -35,6 +36,10 @@ struct ClokApp: App {
         
         /// pull `User` from KeyChain
         cred = Credentials(user: getCredentials())
+        
+        /// refresh project list on launch
+        fetchProjects(user: cred.user)
+        
     }
     
     var body: some Scene {
@@ -50,6 +55,8 @@ struct ClokApp: App {
                 .onReceive(zero.objectWillChange) {
                     loadData(date: zero.start)
                 }
+                /// update on change to either user or space
+                .onReceive(cred.$user, perform: fetchProjects)
         }
     }
     
@@ -82,5 +89,22 @@ struct ClokApp: App {
                 print(error)
             }
         }
+    }
+    
+    func fetchProjects(user: User?) -> Void {
+        guard let user = user else { return }
+        data.projectsPipe = URLSession.shared.dataTaskPublisher(for: formRequest(
+            url: URL(string: "\(API_URL)/workspaces/\(user.chosen.wid)/projects?user_agent=\(user_agent)")!,
+            auth: auth(token: user.token)
+        ))
+        .map { $0.data }
+        .decode(type: [Project].self, decoder: JSONDecoder(context: persistentContainer.viewContext))
+        .replaceError(with: [])
+        .receive(on: DispatchQueue.main)
+        .sink(receiveValue: {
+            guard $0.count > 0 else { return }
+            data.projects = $0
+            try! persistentContainer.viewContext.save()
+        })
     }
 }
