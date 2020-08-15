@@ -23,20 +23,22 @@ extension LoginView {
             SecureField(
                 "Password",
                 text: $password,
-                onCommit: {
-                    guard email != "" && password != "" else {
-                        errorText = "Please both your email and password"
-                        return
-                    }
-                    
-                    loginWith(auth: auth(
-                        email: email,
-                        password: password
-                    ))
-                }
+                onCommit: emailLogin
             )
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .transition(.inAndOut(edge: .bottom))
         }
+    }
+    
+    func emailLogin() -> Void {
+        guard email != "" && password != "" else {
+            errorText = "Please both your email and password"
+            return
+        }
+        
+        loginWith(auth: auth(
+            email: email,
+            password: password
+        ))
     }
 }
