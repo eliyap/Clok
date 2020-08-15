@@ -15,7 +15,6 @@ struct SettingsView: View {
     @EnvironmentObject var zero: ZeroDate
     @Environment(\.managedObjectContext) var moc
     
-//    @State var weekday = WeekdayWrapper()
     @State var weekday: Int = WorkspaceManager.firstDayOfWeek
     
     var body: some View {
