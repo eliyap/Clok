@@ -28,8 +28,14 @@ final class TimeData: ObservableObject {
     /// List of the user's `Project`s
     @Published var projects: [Project]
     var projectsPipe: AnyCancellable? = nil
+    
+    /**
+     Use Combine to make an async network request for all the User's `Project`s
+     */
     func fetchProjects(user: User?, context: NSManagedObjectContext) -> Void {
+        /// abort if user is not logged in
         guard let user = user else { return }
+        
         projectsPipe = URLSession.shared.dataTaskPublisher(for: formRequest(
             /// https://github.com/toggl/toggl_api_docs/blob/master/chapters/workspaces.md#get-workspace-projects
             url: URL(string: "\(API_URL)/workspaces/\(user.chosen.wid)/projects?user_agent=\(user_agent)")!,
