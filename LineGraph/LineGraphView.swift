@@ -13,6 +13,11 @@ struct LineGraph: View {
     @EnvironmentObject var zero: ZeroDate
     @EnvironmentObject var data: TimeData
     @EnvironmentObject var model: GraphModel
+    @FetchRequest(
+        entity: TimeEntry.entity(),
+        sortDescriptors: []
+    ) var entries: FetchedResults<TimeEntry>
+
     let dayHeight: CGFloat     /// visual height for 1 day
     
     var body: some View {
@@ -44,12 +49,12 @@ struct LineGraph: View {
     /// the day begins at provided `midnight`
     func entries(midnight: Date) -> [TimeEntry] {
         switch model.mode {
-        case .calendar: return data.entries
+        case .calendar: return entries
             .filter{$0.end > midnight - model.castBack}
             .filter{$0.start < midnight + model.castFwrd}
             /// chronological sort
             .sorted{$0.start < $1.start}
-        case .graph: return data.entries
+        case .graph: return entries
             .filter{$0.end > midnight - model.castBack}
             .filter{$0.start < midnight + model.castFwrd}
             /// use Search sort, which prioritizes selected Projects
