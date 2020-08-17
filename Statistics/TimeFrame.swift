@@ -131,7 +131,7 @@ struct WeekTimeFrame {
         // calculate total time interval / 7, taking care to cap at week boundaries
         return entries
             .map{min(frame.end, $0.end) - max(frame.start, $0.start)}
-            .reduce(0, {$0 + $1}) / 7
+            .reduce(0, +) / 7
     }
 }
 
