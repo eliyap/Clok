@@ -83,8 +83,8 @@ class RecursiveLoader {
             })
             .receive(on: DispatchQueue.main)
             .map { rawEntries in
-                let entries = rawEntries.map {
-                    TimeEntry(from: $0, context: context, projects: projects)
+                let entries = rawEntries.map { (rawEntry: RawTimeEntry) -> TimeEntry in
+                    TimeEntry(from: rawEntry, context: context, projects: projects)
                 }
                 try! context.save()
                 return entries
