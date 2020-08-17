@@ -23,6 +23,29 @@ struct StatDisplayView: View {
     private var deltaEnd = TimeInterval.zero
     private var deltaAvgDur = TimeInterval.zero
     
+    init(for week: WeekTimeFrame, prev: WeekTimeFrame) {
+        df.timeStyle = .short
+        df.dateStyle = .none
+        
+        /// handle cases where there are no entries
+        if let start = week.avgStartTime() {
+            avgStart = df.string(from: start)
+            if let prevStart = prev.avgStartTime() {
+                deltaStart = start - prevStart
+            }
+        }
+        
+        if let end = week.avgEndTime() {
+            avgEnd = df.string(from: end)
+            if let prevEnd = prev.avgEndTime() {
+                deltaEnd = end - prevEnd
+            }
+        }
+        
+        avgDur = week.avgDuration()
+        deltaAvgDur = prev.avgDuration() - avgDur
+    }
+    
     var body: some View {
         Group {
             WeekStats
@@ -94,30 +117,6 @@ struct StatDisplayView: View {
                 .padding(.top, -10)
         }
     }
-    
-    init(for week: WeekTimeFrame, prev: WeekTimeFrame) {
-        df.timeStyle = .short
-        df.dateStyle = .none
-        
-        /// handle cases where there are no entries
-        if let start = week.avgStartTime() {
-            avgStart = df.string(from: start)
-            if let prevStart = prev.avgStartTime() {
-                deltaStart = start - prevStart
-            }
-        }
-        
-        if let end = week.avgEndTime() {
-            avgEnd = df.string(from: end)
-            if let prevEnd = prev.avgEndTime() {
-                deltaEnd = end - prevEnd
-            }
-        }
-        
-        avgDur = week.avgDuration()
-        deltaAvgDur = prev.avgDuration() - avgDur
-    }
-    
     private let size = CGFloat(30)
     func Stat(label: String, symbol: String?, text: Text, weight: Font.Weight = .regular) -> some View {
         HStack{
