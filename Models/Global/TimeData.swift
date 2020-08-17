@@ -16,42 +16,6 @@ final class TimeData: ObservableObject {
         self.projects = projects
     }
     
-    var entriesPipe: AnyCancellable? = nil
-    func newLoadEntries(start: Date, end: Date, user: User, context: NSManagedObjectContext) -> Void {
-        // assemble request URL (page is added later)
-        let df = DateFormatter()
-        df.dateFormat = "yyyy-MM-dd" // ISO 8601 format, day precision
-        
-        // documented at https://github.com/toggl/toggl_api_docs/blob/master/reports.md
-        let api_string = "\(REPORT_URL)details?" + [
-            "user_agent=\(user_agent)",    // identifies my app
-            "workspace_id=\(user.chosen.wid)", // provided by the User
-            "since=\(df.string(from: start))",
-            "until=\(df.string(from: end))"
-        ].joined(separator: "&")
-        let loader = RecursiveLoader()
-        entriesPipe = loader.loadPages(
-            context: context,
-            projects: self.projects,
-            api_string: api_string,
-            auth: auth(token: user.token)
-        )
-        .sink(
-            receiveCompletion: { completion in
-                switch completion {
-                case .failure(let error):
-                    fatalError(error.localizedDescription)
-                case .finished:
-                    break
-                }
-            },
-            receiveValue: { _ in
-                
-            }
-        )
-    }
-    
-    
     /// the `Project`s the user is filtering for
     @Published var terms = SearchTerms()
     

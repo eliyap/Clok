@@ -19,6 +19,7 @@ struct ClokApp: App {
     var cred: Credentials
     var bounds = Bounds()
     var model = GraphModel()
+    var loader = EntryLoader()
     
     /// pipeline for making Detailed Report requests
     var entryLoader: AnyCancellable? = nil
@@ -55,9 +56,6 @@ struct ClokApp: App {
                 .environmentObject(bounds)
                 .environmentObject(model)
                 .environment(\.managedObjectContext, persistentContainer.viewContext)
-                .onReceive(zero.objectWillChange) {
-                    loadData(date: zero.start)
-                }
                 /// update on change to either user or space
                 .onReceive(cred.$user) {
                     data.fetchProjects(
@@ -65,27 +63,6 @@ struct ClokApp: App {
                         context: persistentContainer.viewContext
                     )
                 }
-        }
-    }
-    
-    /// keep track of the what has been fetched this session
-    @State private var minLoaded = Date()
-    @State private var maxLoaded = Date()
-    
-    func loadData(date: Date) -> Void {
-        /// ensure user is logged in
-        guard let user = cred.user else { return }
-        /// if data is old
-        if date < minLoaded {
-            /// fetch another week's worth from online
-            data.newLoadEntries(
-                start: minLoaded - .week,
-                end: minLoaded,
-                user: user,
-                context: persistentContainer.viewContext
-            )
-            /// update our date range
-            minLoaded -= .week
         }
     }
 }

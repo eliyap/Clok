@@ -25,7 +25,6 @@ struct GraphButtons: View {
                     model.mode.toggle()
                 }
             }
-        
         }
         .padding(buttonPadding)
     }
