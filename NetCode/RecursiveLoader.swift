@@ -7,11 +7,14 @@
 
 import Foundation
 import Combine
+import CoreData
 
-struct Response {
-    var hasMorePages = true
-    var items = [Item(), Item()]
-    var nextPageIndex = 0
+fileprivate struct PagedReport {
+    /// the `Report` struct decoded
+    let report: Report
+    
+    /// the page no. of the detailed report this `Report` represents
+    let index: Int
 }
 
 struct Item {}
@@ -19,37 +22,48 @@ struct Item {}
 class RecursiveLoader {
     init() { }
 
-    private func loadPage(withIndex index: Int) -> AnyPublisher<Response, Never> {
+    private func loadPage(
+        index: Int
+    ) -> AnyPublisher<PagedReport, Error> {
         // this would be the individual network call
-        Future { promise in
-            DispatchQueue.global().asyncAfter(deadline: .now() + 0.1) {
-                let nextIndex = index + 1
-                if nextIndex < 5 {
-                    return promise(.success(Response(nextPageIndex: nextIndex)))
-                } else {
-                    return promise(.success(Response(hasMorePages: false)))
-                }
-            }
-        }.eraseToAnyPublisher()
+        #warning("placeholder request!")
+        let request = formRequest(url: URL(string: "")!, auth: "")
+        return URLSession.shared.dataTaskPublisher(for: request)
+            .map { $0.data }
+            .decode(type: Report.self, decoder: JSONDecoder())
+            .map { PagedReport(report: $0, index: index) }
+            .eraseToAnyPublisher()
     }
     
-    func loadPages() -> AnyPublisher<[Item], Never> {
+    func loadPages(context: NSManagedObjectContext) -> AnyPublisher<[TimeEntry], Error> {
         let pageIndexPublisher = CurrentValueSubject<Int, Never>(0)
 
         return pageIndexPublisher
             .flatMap({ index in
-                return self.loadPage(withIndex: index)
+                return self.loadPage(index: index)
             })
-            .handleEvents(receiveOutput: { (response: Response) in
-                if response.hasMorePages {
-                    pageIndexPublisher.send(response.nextPageIndex)
-                } else {
+            .handleEvents(receiveOutput: { (page: PagedReport) in
+                guard
+                    /// if request yielded no entries, terminate
+                    page.report.entries.count != 0,
+                    /// if `totalCount` has been met, terminate
+                    page.report.totalCount > page.index * togglPageSize + page.report.entries.count
+                else {
                     pageIndexPublisher.send(completion: .finished)
+                    return
                 }
+                /// request next page
+                pageIndexPublisher.send(page.index + 1)
+                
             })
-            .reduce([Item](), { allItems, response in
-                return response.items + allItems
+            .reduce([RawTimeEntry](), { entries, page in
+                return entries + page.report.entries
             })
+            .map {
+                $0.map {
+                    TimeEntry(from: $0, context: context, projects: [])
+                }
+            }
             .eraseToAnyPublisher()
     }
 
