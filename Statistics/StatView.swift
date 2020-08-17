@@ -13,7 +13,11 @@ struct StatView: View {
     @EnvironmentObject var data: TimeData
     @EnvironmentObject var zero: ZeroDate
     @EnvironmentObject var bounds: Bounds
-    
+    @FetchRequest(
+        entity: TimeEntry.entity(),
+        sortDescriptors: []
+    ) var entries: FetchedResults<TimeEntry>
+
     let listPadding: CGFloat
     
     var body: some View {
@@ -40,12 +44,12 @@ struct StatView: View {
                 StatDisplayView(
                     for: WeekTimeFrame(
                         start: zero.start,
-                        entries: data.entries,
+                        entries: Array(entries),
                         terms: data.terms
                     ),
                     prev: WeekTimeFrame(
                         start: zero.start - .week,
-                        entries: data.entries,
+                        entries: Array(entries),
                         terms: data.terms
                     )
                 )

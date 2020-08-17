@@ -16,9 +16,6 @@ final class TimeData: ObservableObject {
         self.projects = projects
     }
     
-    /// A delegate between SwiftUI and CoreData, storing all of the user's `TimeEntry`s
-    /// `EnvironmentObject` was chosen to prevent the UI hitting CoreData on every refresh
-    @Published var entries = [TimeEntry]()
     var entriesPipe: AnyCancellable? = nil
     func newLoadEntries(start: Date, end: Date, user: User, context: NSManagedObjectContext) -> Void {
         // assemble request URL (page is added later)
