@@ -44,6 +44,10 @@ let userDataURL = URL(string:"\(API_URL)/me\(agentSuffix)")!
 // https://github.com/toggl/toggl_api_docs/blob/master/chapters/time_entries.md#get-running-time-entry
 let runningURL = URL(string: "\(API_URL)/time_entries/current\(agentSuffix)")!
 
+/// for detailed reports, toggl dispenses at most 50 entries per request
+/// https://github.com/toggl/toggl_api_docs/blob/master/reports/detailed.md#response
+let togglPageSize = 50
+
 // MARK: - Time Constants
 
 // the length of an Archimedean Spiral with a = 0, b = 1, from 0 to 14 pi
