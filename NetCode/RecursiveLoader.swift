@@ -39,7 +39,9 @@ class RecursiveLoader {
         return URLSession.shared.dataTaskPublisher(for: request)
             .map { $0.data }
             .decode(type: Report.self, decoder: JSONDecoder())
-            .map { PagedReport(report: $0, pageNo: pageNo) }
+            .map { (report: Report) -> PagedReport in
+                PagedReport(report: report, pageNo: pageNo)
+            }
             .eraseToAnyPublisher()
     }
     
