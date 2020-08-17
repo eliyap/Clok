@@ -19,3 +19,12 @@ extension JSONDecoder {
         self.userInfo[.context] = context
     }
 }
+
+/// allow `JSONDecoder` to be initialized with a specified `DateDecodingStrategy`
+/// for use in `Combine`'s `.decode(type: X, decoder: Y)`
+extension JSONDecoder {
+    convenience init(dateStrategy: JSONDecoder.DateDecodingStrategy) {
+        self.init()
+        self.dateDecodingStrategy = dateStrategy
+    }
+}

@@ -38,7 +38,7 @@ class RecursiveLoader {
         )
         return URLSession.shared.dataTaskPublisher(for: request)
             .map { $0.data }
-            .decode(type: Report.self, decoder: JSONDecoder())
+            .decode(type: Report.self, decoder: JSONDecoder(dateStrategy: .iso8601))
             .map { (report: Report) -> PagedReport in
                 PagedReport(report: report, pageNo: pageNo)
             }
@@ -76,7 +76,6 @@ class RecursiveLoader {
                 }
                 /// request next page
                 pageIndexPublisher.send(pageNo + 1)
-                
             })
             .reduce([RawTimeEntry](), { entries, pagedReport in
                 return entries + pagedReport.0.entries

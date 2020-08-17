@@ -75,24 +75,31 @@ struct ClokApp: App {
         /// if data is old
         if date < minLoaded {
             /// fetch another week's worth from online
-            _ = fetchEntries(
+            data.newLoadEntries(
+                start: minLoaded - .week,
+                end: minLoaded,
                 user: user,
-                from: minLoaded - .week,
-                to: minLoaded, context: persistentContainer.viewContext,
-                projects: data.projects
+                context: persistentContainer.viewContext
             )
-            /// update our date range
-            minLoaded -= .week
             
-            /// refresh global var
-            if let freshEntries = loadEntries(from: .distantPast, to: .distantFuture, context: persistentContainer.viewContext) {
-                data.entries = freshEntries
-            }
-            do {
-                try persistentContainer.viewContext.save() /// save on main threads
-            } catch {
-                print(error)
-            }
+//            _ = fetchEntries(
+//                user: user,
+//                from: minLoaded - .week,
+//                to: minLoaded, context: persistentContainer.viewContext,
+//                projects: data.projects
+//            )
+//            /// update our date range
+//            minLoaded -= .week
+//
+//            /// refresh global var
+//            if let freshEntries = loadEntries(from: .distantPast, to: .distantFuture, context: persistentContainer.viewContext) {
+//                data.entries = freshEntries
+//            }
+//            do {
+//                try persistentContainer.viewContext.save() /// save on main threads
+//            } catch {
+//                print(error)
+//            }
         }
     }
 }
