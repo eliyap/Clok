@@ -19,6 +19,7 @@ final class TimeData: ObservableObject {
     /// A delegate between SwiftUI and CoreData, storing all of the user's `TimeEntry`s
     /// `EnvironmentObject` was chosen to prevent the UI hitting CoreData on every refresh
     @Published var entries = [TimeEntry]()
+    var entriesPipe: AnyCancellable? = nil
     
     /// the `Project`s the user is filtering for
     @Published var terms = SearchTerms()

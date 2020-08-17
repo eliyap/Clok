@@ -9,13 +9,11 @@ import Foundation
 import Combine
 import CoreData
 
-fileprivate struct PagedReport {
-    /// the `Report` struct decoded
-    let report: Report
-    
-    /// the page no. of the detailed report this `Report` represents
-    let index: Int
-}
+/**
+ Bundle one page of a detailed report as a `Report` and its associated page no.
+ - Page No. is indexed from 1
+ */
+fileprivate typealias PagedReport = (report: Report, pageNo: Int)
 
 struct Item {}
 
@@ -24,27 +22,24 @@ class RecursiveLoader {
     /**
      Requests a specific page of a Detailed Report
      - Parameters:
-        - index: which page is being requested. Zero indexed.
+        - pageNo: which page is being requested. 1 indexed.
         - api_string: URL path plus some necessary info to form the request. Missing the page number.
         - auth: string authenticating the request
      - Returns: the `Report` struct bundled with the `index`
      */
     private func loadPage(
-        index: Int,
+        pageNo: Int,
         api_string: String,
         auth: String
-    ) -> AnyPublisher<PagedReport, Error> {
-        // this would be the individual network call
-        #warning("placeholder request!")
+    ) -> AnyPublisher<(Report, Int), Error> {
         let request = formRequest(
-            /// NOTE: pages are 1 indexed
-            url: URL(string: api_string + "&page=\(index + 1)")!,
+            url: URL(string: api_string + "&page=\(pageNo)")!,
             auth: auth
         )
         return URLSession.shared.dataTaskPublisher(for: request)
             .map { $0.data }
             .decode(type: Report.self, decoder: JSONDecoder())
-            .map { PagedReport(report: $0, index: index) }
+            .map { PagedReport(report: $0, pageNo: pageNo) }
             .eraseToAnyPublisher()
     }
     
@@ -61,28 +56,28 @@ class RecursiveLoader {
         api_string: String,
         auth: String
     ) -> AnyPublisher<[TimeEntry], Error> {
-        let pageIndexPublisher = CurrentValueSubject<Int, Never>(0)
+        let pageIndexPublisher = CurrentValueSubject<Int, Never>(1)
 
         return pageIndexPublisher
-            .flatMap({ index in
-                return self.loadPage(index: index, api_string: api_string, auth: auth)
+            .flatMap({ pageNo in
+                return self.loadPage(pageNo: pageNo, api_string: api_string, auth: auth)
             })
-            .handleEvents(receiveOutput: { (page: PagedReport) in
+            .handleEvents(receiveOutput: { (report, pageNo) in
                 guard
                     /// if request yielded no entries, terminate
-                    page.report.entries.count != 0,
+                    report.entries.count != 0,
                     /// if `totalCount` has been met, terminate
-                    page.report.totalCount > page.index * togglPageSize + page.report.entries.count
+                    report.totalCount > (pageNo - 1) * togglPageSize + report.entries.count
                 else {
                     pageIndexPublisher.send(completion: .finished)
                     return
                 }
                 /// request next page
-                pageIndexPublisher.send(page.index + 1)
+                pageIndexPublisher.send(pageNo + 1)
                 
             })
-            .reduce([RawTimeEntry](), { entries, page in
-                return entries + page.report.entries
+            .reduce([RawTimeEntry](), { entries, pagedReport in
+                return entries + pagedReport.0.entries
             })
             .receive(on: DispatchQueue.main)
             .map { rawEntries in
@@ -94,6 +89,5 @@ class RecursiveLoader {
             }
             .eraseToAnyPublisher()
     }
-
 }
 
