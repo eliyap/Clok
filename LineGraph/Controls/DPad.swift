@@ -36,7 +36,8 @@ struct DPad: View {
                 condition: zero.zoomIdx < zero.zoomLevels.count - 1
             ){
                 withAnimation {
-                    zero.zoomIdx += 1
+                    /// cap `zoomIdx` at safe index
+                    zero.zoomIdx = min(zero.zoomIdx + 1, zero.zoomLevels.count - 1)
                 }
             }
                 .offset(y: -GraphButton.size)
@@ -47,7 +48,8 @@ struct DPad: View {
                 condition: zero.zoomIdx > 0
             ){
                 withAnimation {
-                    zero.zoomIdx -= 1
+                    /// cap `zoomIdx` at safe index
+                    zero.zoomIdx = max(zero.zoomIdx - 1, 0)
                 }
             }
                 .offset(y: +GraphButton.size)

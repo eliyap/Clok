@@ -20,9 +20,7 @@ struct ClokApp: App {
     var bounds = Bounds()
     var model = GraphModel()
     var loader = EntryLoader()
-    
-    /// pipeline for making Detailed Report requests
-    var entryLoader: AnyCancellable? = nil
+    var saver: GraphSaver
     
     var persistentContainer: NSPersistentContainer
     
@@ -43,8 +41,14 @@ struct ClokApp: App {
         
         /// refresh project list on launch
         data.fetchProjects(user: cred.user, context: persistentContainer.viewContext)
-        
+//        loader.entryLoader = zero.start.
+//            .debounce(for: .seconds(1), scheduler: RunLoop.main)
+//            .sink { date in
+//                print("load requested \(zero)")
+//            }
+        saver = GraphSaver(zero: zero)
     }
+    
     
     var body: some Scene {
         WindowGroup {
@@ -65,4 +69,33 @@ struct ClokApp: App {
                 }
         }
     }
+}
+final class GraphSaver: ObservableObject {
+    
+    init(zero: ZeroDate){
+        /// save start date to User Defaults
+        self.startSaver = zero.$start
+            /// debounce to limit the rate we hit User Defaults
+            .debounce(
+                for: .seconds(1),
+                scheduler: RunLoop.main
+            )
+            .sink { date in
+                WorkspaceManager.zeroStart = date
+            }
+        
+        /// save `zoomIdx` date to User Defaults
+        self.zoomSaver = zero.$zoomIdx
+            /// debounce to limit the rate we hit User Defaults
+            .debounce(
+                for: .seconds(1),
+                scheduler: RunLoop.main
+            )
+            .sink { index in
+                WorkspaceManager.zoomIdx = index
+            }
+    }
+    
+    var startSaver: AnyCancellable?
+    var zoomSaver: AnyCancellable?
 }

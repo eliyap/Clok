@@ -11,12 +11,6 @@ import SwiftUI
 import Combine
 
 final class ZeroDate: ObservableObject {
-    /** NOTE:
-     due to a bug, the `ObservableObjectPublisher` **must** be named `objectWillChange`
-     https://www.hackingwithswift.com/quick-start/swiftui/how-to-send-state-updates-manually-using-objectwillchange
-     */
-    let objectWillChange = ObservableObjectPublisher()
-    
     init(){
         /// initialize to chosen start day
         /// usually, this will do nothing, but if user changed `firstDayOfWeek`, it should bring start up to speed
@@ -26,13 +20,7 @@ final class ZeroDate: ObservableObject {
     
     /// default to 6 days before start of today
     /// ensures the default week includes today
-    var start: Date {
-        willSet {
-            /// update `UserDefaults`
-            WorkspaceManager.zeroStart = newValue
-            objectWillChange.send()
-        }
-    }
+    @Published var start: Date
     
     /// computed end date
     var end: Date {
@@ -46,11 +34,7 @@ final class ZeroDate: ObservableObject {
         case back
     }
     
-    var dateChange: DateChange? = nil {
-        willSet {
-            objectWillChange.send()
-        }
-    }
+    @Published var dateChange: DateChange? = nil
     
     /**
      determine what kind of apperance / disappearance animation to use
@@ -82,15 +66,7 @@ final class ZeroDate: ObservableObject {
     }
     
     // MARK:- Zoom Level
-    var zoomIdx: Int {
-        willSet {
-            /// cap `zoomIndex` to valid indices
-            let safeVal = min(max(newValue, 0), zoomLevels.count - 1)
-            /// update `UserDefaults`
-            WorkspaceManager.zoomIdx = safeVal
-            objectWillChange.send()
-        }
-    }
+    @Published var zoomIdx: Int
     var zoomLevel: CGFloat {
         /// cap `zoomIndex` to valid indices
         zoomLevels[min(max(zoomIdx, 0), zoomLevels.count - 1)]
