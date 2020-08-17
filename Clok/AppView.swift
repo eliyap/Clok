@@ -20,6 +20,9 @@ struct ClokApp: App {
     var bounds = Bounds()
     var model = GraphModel()
     
+    /// pipeline for making Detailed Report requests
+    var entryLoader: AnyCancellable? = nil
+    
     var persistentContainer: NSPersistentContainer
     
     init(){
@@ -81,25 +84,8 @@ struct ClokApp: App {
                 user: user,
                 context: persistentContainer.viewContext
             )
-            
-//            _ = fetchEntries(
-//                user: user,
-//                from: minLoaded - .week,
-//                to: minLoaded, context: persistentContainer.viewContext,
-//                projects: data.projects
-//            )
-//            /// update our date range
-//            minLoaded -= .week
-//
-//            /// refresh global var
-//            if let freshEntries = loadEntries(from: .distantPast, to: .distantFuture, context: persistentContainer.viewContext) {
-//                data.entries = freshEntries
-//            }
-//            do {
-//                try persistentContainer.viewContext.save() /// save on main threads
-//            } catch {
-//                print(error)
-//            }
+            /// update our date range
+            minLoaded -= .week
         }
     }
 }

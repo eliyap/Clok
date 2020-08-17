@@ -1,13 +1,13 @@
 //
-//  RecursiveLoader.swift
+//  PaginatedLoad.swift
 //  Clok
 //
-// Based on:
-// https://www.donnywals.com/recursively-execute-a-paginated-network-call-with-combine/
+//  Created by Secret Asian Man Dev on 17/8/20.
+//  Copyright © 2020 Secret Asian Man 3. All rights reserved.
+//
 
 import Foundation
 import Combine
-import CoreData
 
 /**
  Bundle one page of a detailed report as a `Report` and its associated page no.
@@ -15,10 +15,10 @@ import CoreData
  */
 fileprivate typealias PagedReport = (report: Report, pageNo: Int)
 
-struct Item {}
-
-class RecursiveLoader {
-    init() { }
+/**
+ Code to perform the request for a Detailed Report over several URLSessions for the many pages
+ */
+extension EntryLoader {
     /**
      Requests a specific page of a Detailed Report
      - Parameters:
@@ -37,7 +37,10 @@ class RecursiveLoader {
             auth: auth
         )
         return URLSession.shared.dataTaskPublisher(for: request)
-            .map { $0.data }
+            .map {
+                print("map on page \(pageNo)")
+                return $0.data
+            }
             .decode(type: Report.self, decoder: JSONDecoder(dateStrategy: .iso8601))
             .map { (report: Report) -> PagedReport in
                 PagedReport(report: report, pageNo: pageNo)
@@ -46,18 +49,17 @@ class RecursiveLoader {
     }
     
     /**
-     Fetch a Detailed Report in pages from Toggl
+     Fetch a Detailed Report in multiple pages from Toggl
      - Parameters:
         - api_string: URL path plus some necessary info to form the request. Missing the page number.
         - auth: string authenticating the request
-     - Returns: the `TimeEntries` fetched
+     - Returns: the `RawTimeEntries` fetched
      */
-    func loadPages(
-        context: NSManagedObjectContext,
+    func recursiveLoadPages(
         projects: [Project],
         api_string: String,
         auth: String
-    ) -> AnyPublisher<[TimeEntry], Error> {
+    ) -> AnyPublisher<[RawTimeEntry], Error> {
         let pageIndexPublisher = CurrentValueSubject<Int, Never>(1)
 
         return pageIndexPublisher
@@ -74,21 +76,13 @@ class RecursiveLoader {
                     pageIndexPublisher.send(completion: .finished)
                     return
                 }
+                print("requesting page \(pageNo + 1)")
                 /// request next page
                 pageIndexPublisher.send(pageNo + 1)
             })
             .reduce([RawTimeEntry](), { entries, pagedReport in
                 return entries + pagedReport.0.entries
             })
-            .receive(on: DispatchQueue.main)
-            .map { rawEntries in
-                let entries = rawEntries.map { (rawEntry: RawTimeEntry) -> TimeEntry in
-                    TimeEntry(from: rawEntry, context: context, projects: projects)
-                }
-                try! context.save()
-                return entries
-            }
             .eraseToAnyPublisher()
     }
 }
-

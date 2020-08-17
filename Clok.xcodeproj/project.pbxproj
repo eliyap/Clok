@@ -27,13 +27,11 @@
 		22283DA824DFA166005AC0F3 /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22283DA724DFA166005AC0F3 /* FilterView.swift */; };
 		22283DAA24DFA27D005AC0F3 /* SearchTerms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22283DA924DFA27D005AC0F3 /* SearchTerms.swift */; };
 		222D992624BAB2FD00F66E0F /* DecoderExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D992524BAB2FD00F66E0F /* DecoderExtension.swift */; };
-		222D996024BB562100F66E0F /* FetchEntries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D995F24BB562100F66E0F /* FetchEntries.swift */; };
 		222D996324BB803800F66E0F /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D996224BB803800F66E0F /* Report.swift */; };
 		22351B0024D37F3C00E14DBC /* Run.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22351AFF24D37F3C00E14DBC /* Run.swift */; };
 		2238640024BBBD030041886B /* DataFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223863FF24BBBD030041886B /* DataFetch.swift */; };
 		2238640224BBBDE40041886B /* ConditionalFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2238640124BBBDE40041886B /* ConditionalFetch.swift */; };
 		2238640324BBC6980041886B /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63FC2F9249BCFBD00747D49 /* DoubleExtension.swift */; };
-		224B3AFC24DE280A00B1C943 /* SafetyWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224B3AFB24DE280A00B1C943 /* SafetyWrapper.swift */; };
 		224B3AFE24DE28C300B1C943 /* FilterModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224B3AFD24DE28C300B1C943 /* FilterModal.swift */; };
 		224D10CE24E5AC8C00668FD8 /* WeekdaySelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224D10CD24E5AC8C00668FD8 /* WeekdaySelector.swift */; };
 		224D10D324E6FA8900668FD8 /* DateIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224D10D224E6FA8800668FD8 /* DateIndicator.swift */; };
@@ -47,6 +45,8 @@
 		2264CB3524AD330500ECBF2B /* IconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264CB3424AD330500ECBF2B /* IconView.swift */; };
 		2264CB3924AD33D900ECBF2B /* EmailFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264CB3824AD33D900ECBF2B /* EmailFields.swift */; };
 		2264CB3B24AD344F00ECBF2B /* TokenFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264CB3A24AD344F00ECBF2B /* TokenFields.swift */; };
+		2277E8C724EB44AC00702086 /* EntryLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E8C624EB44AC00702086 /* EntryLoader.swift */; };
+		2277E8C924EB47B400702086 /* PaginatedLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E8C824EB47B400702086 /* PaginatedLoad.swift */; };
 		22885DAE24DA13E500A56FE3 /* DayStrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22885DAD24DA13E500A56FE3 /* DayStrip.swift */; };
 		22885DB024DA1C9600A56FE3 /* Divisions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22885DAF24DA1C9600A56FE3 /* Divisions.swift */; };
 		22885DB224DA1E2E00A56FE3 /* TimeIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22885DB124DA1E2E00A56FE3 /* TimeIndicator.swift */; };
@@ -96,7 +96,6 @@
 		22DC86A224BA838D00FF771F /* Project+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC869D24BA838D00FF771F /* Project+CoreDataProperties.swift */; };
 		22DC86A424BA838D00FF771F /* TimeEntry+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC869E24BA838D00FF771F /* TimeEntry+CoreDataClass.swift */; };
 		22DC86A624BA838D00FF771F /* TimeEntry+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC869F24BA838D00FF771F /* TimeEntry+CoreDataProperties.swift */; };
-		C615CD57245F332300D62B87 /* FetchDetailedReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = C615CD56245F332300D62B87 /* FetchDetailedReport.swift */; };
 		C61D2658249BE1990056C9FA /* StatHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61D2657249BE1990056C9FA /* StatHelpers.swift */; };
 		C62F7B8824970E530076F64C /* StatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62F7B8724970E530076F64C /* StatView.swift */; };
 		C63FC2F8249BCEB900747D49 /* AngleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63FC2F7249BCEB900747D49 /* AngleExtension.swift */; };
@@ -109,7 +108,6 @@
 		C688BFCA24A18BF00077CECF /* RaisedShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = C688BFC924A18BF00077CECF /* RaisedShape.swift */; };
 		C68F8C8D24A04CE8000D249B /* IceCreamStick.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68F8C8C24A04CE8000D249B /* IceCreamStick.swift */; };
 		C69F02782496AFA200D1C650 /* TimeIntervalExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69F02772496AFA200D1C650 /* TimeIntervalExtension.swift */; };
-		C6A030CC24EA4E6000C6ED48 /* RecursiveLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A030CB24EA4E6000C6ED48 /* RecursiveLoader.swift */; };
 		C6AAB3EA249EF26800DFBA36 /* TimeEntryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AAB3E9249EF26800DFBA36 /* TimeEntryExtension.swift */; };
 		C6AAB3EC249F003100DFBA36 /* StatDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AAB3EB249F003100DFBA36 /* StatDisplayView.swift */; };
 		C6AAB3F2249F061D00DFBA36 /* TimeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AAB3F1249F061D00DFBA36 /* TimeData.swift */; };
@@ -184,12 +182,10 @@
 		22283DA724DFA166005AC0F3 /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 		22283DA924DFA27D005AC0F3 /* SearchTerms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTerms.swift; sourceTree = "<group>"; };
 		222D992524BAB2FD00F66E0F /* DecoderExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderExtension.swift; sourceTree = "<group>"; };
-		222D995F24BB562100F66E0F /* FetchEntries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchEntries.swift; sourceTree = "<group>"; };
 		222D996224BB803800F66E0F /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
 		22351AFF24D37F3C00E14DBC /* Run.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Run.swift; sourceTree = "<group>"; };
 		223863FF24BBBD030041886B /* DataFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFetch.swift; sourceTree = "<group>"; };
 		2238640124BBBDE40041886B /* ConditionalFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionalFetch.swift; sourceTree = "<group>"; };
-		224B3AFB24DE280A00B1C943 /* SafetyWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafetyWrapper.swift; sourceTree = "<group>"; };
 		224B3AFD24DE28C300B1C943 /* FilterModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterModal.swift; sourceTree = "<group>"; };
 		224D10CD24E5AC8C00668FD8 /* WeekdaySelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekdaySelector.swift; sourceTree = "<group>"; };
 		224D10D224E6FA8800668FD8 /* DateIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateIndicator.swift; sourceTree = "<group>"; };
@@ -202,6 +198,8 @@
 		2264CB3424AD330500ECBF2B /* IconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconView.swift; sourceTree = "<group>"; };
 		2264CB3824AD33D900ECBF2B /* EmailFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailFields.swift; sourceTree = "<group>"; };
 		2264CB3A24AD344F00ECBF2B /* TokenFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenFields.swift; sourceTree = "<group>"; };
+		2277E8C624EB44AC00702086 /* EntryLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryLoader.swift; sourceTree = "<group>"; };
+		2277E8C824EB47B400702086 /* PaginatedLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginatedLoad.swift; sourceTree = "<group>"; };
 		22885DAD24DA13E500A56FE3 /* DayStrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayStrip.swift; sourceTree = "<group>"; };
 		22885DAF24DA1C9600A56FE3 /* Divisions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Divisions.swift; sourceTree = "<group>"; };
 		22885DB124DA1E2E00A56FE3 /* TimeIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIndicator.swift; sourceTree = "<group>"; };
@@ -241,7 +239,6 @@
 		22DC869D24BA838D00FF771F /* Project+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Project+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		22DC869E24BA838D00FF771F /* TimeEntry+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeEntry+CoreDataClass.swift"; sourceTree = "<group>"; };
 		22DC869F24BA838D00FF771F /* TimeEntry+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeEntry+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		C615CD56245F332300D62B87 /* FetchDetailedReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchDetailedReport.swift; sourceTree = "<group>"; };
 		C61D2657249BE1990056C9FA /* StatHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatHelpers.swift; sourceTree = "<group>"; };
 		C62F7B8724970E530076F64C /* StatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatView.swift; sourceTree = "<group>"; };
 		C63FC2F7249BCEB900747D49 /* AngleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AngleExtension.swift; sourceTree = "<group>"; };
@@ -254,7 +251,6 @@
 		C688BFC924A18BF00077CECF /* RaisedShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaisedShape.swift; sourceTree = "<group>"; };
 		C68F8C8C24A04CE8000D249B /* IceCreamStick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IceCreamStick.swift; sourceTree = "<group>"; };
 		C69F02772496AFA200D1C650 /* TimeIntervalExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervalExtension.swift; sourceTree = "<group>"; };
-		C6A030CB24EA4E6000C6ED48 /* RecursiveLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecursiveLoader.swift; sourceTree = "<group>"; };
 		C6AAB3E9249EF26800DFBA36 /* TimeEntryExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntryExtension.swift; sourceTree = "<group>"; };
 		C6AAB3EB249F003100DFBA36 /* StatDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatDisplayView.swift; sourceTree = "<group>"; };
 		C6AAB3F1249F061D00DFBA36 /* TimeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeData.swift; sourceTree = "<group>"; };
@@ -473,10 +469,9 @@
 			isa = PBXGroup;
 			children = (
 				22B0783724B1519600256EB8 /* NetworkError.swift */,
-				222D995F24BB562100F66E0F /* FetchEntries.swift */,
-				C615CD56245F332300D62B87 /* FetchDetailedReport.swift */,
 				2296F15A24A994A400AF38B5 /* FormRequest.swift */,
-				C6A030CB24EA4E6000C6ED48 /* RecursiveLoader.swift */,
+				2277E8C624EB44AC00702086 /* EntryLoader.swift */,
+				2277E8C824EB47B400702086 /* PaginatedLoad.swift */,
 			);
 			path = NetCode;
 			sourceTree = "<group>";
@@ -523,7 +518,6 @@
 			isa = PBXGroup;
 			children = (
 				22885DAF24DA1C9600A56FE3 /* Divisions.swift */,
-				224B3AFB24DE280A00B1C943 /* SafetyWrapper.swift */,
 				22351AFF24D37F3C00E14DBC /* Run.swift */,
 				C6B0FFA1246F52B600DED011 /* Extensions */,
 				228B100024AEA6CA0026AD4B /* Shapes */,
@@ -866,6 +860,7 @@
 				22DC869A24BA7A5E00FF771F /* TimeEntryModel.xcdatamodeld in Sources */,
 				2207E46224E0820600311F10 /* GraphButton.swift in Sources */,
 				22BE1FEF24A92B2300A9A739 /* SettingsView.swift in Sources */,
+				2277E8C924EB47B400702086 /* PaginatedLoad.swift in Sources */,
 				22885DAE24DA13E500A56FE3 /* DayStrip.swift in Sources */,
 				22283DA224DF9CE0005AC0F3 /* GraphModel.swift in Sources */,
 				22DC86A624BA838D00FF771F /* TimeEntry+CoreDataProperties.swift in Sources */,
@@ -874,6 +869,7 @@
 				2264CB3524AD330500ECBF2B /* IconView.swift in Sources */,
 				22A2CE2B24E59ED0000820AD /* AngleFromCartesian.swift in Sources */,
 				22A2CE2424E59DFE000820AD /* DateMean.swift in Sources */,
+				2277E8C724EB44AC00702086 /* EntryLoader.swift in Sources */,
 				C63FC2F8249BCEB900747D49 /* AngleExtension.swift in Sources */,
 				C6AAB3EA249EF26800DFBA36 /* TimeEntryExtension.swift in Sources */,
 				C6C18D492448F96C000345D5 /* ContentView.swift in Sources */,
@@ -893,7 +889,6 @@
 				2264CB3924AD33D900ECBF2B /* EmailFields.swift in Sources */,
 				2264CB3124AD250600ECBF2B /* WorkspaceManager.swift in Sources */,
 				221810E024B0158500B63ECA /* Get24hourPref.swift in Sources */,
-				224B3AFC24DE280A00B1C943 /* SafetyWrapper.swift in Sources */,
 				C67F47D3249FD44500FD2E6E /* Project.swift in Sources */,
 				C6D448EC2484710E0072E7D4 /* ActivityIndicator.swift in Sources */,
 				C6AAB3EC249F003100DFBA36 /* StatDisplayView.swift in Sources */,
@@ -908,7 +903,6 @@
 				22B0783824B1519600256EB8 /* NetworkError.swift in Sources */,
 				22283DA424DF9D8B005AC0F3 /* BarStack.swift in Sources */,
 				221C3C5724A93C57006995C5 /* User.swift in Sources */,
-				C6A030CC24EA4E6000C6ED48 /* RecursiveLoader.swift in Sources */,
 				22A2CE3224E5A218000820AD /* CGPointOperators.swift in Sources */,
 				22283DA024DF9959005AC0F3 /* BarTabs.swift in Sources */,
 				C688BFCA24A18BF00077CECF /* RaisedShape.swift in Sources */,
@@ -916,12 +910,10 @@
 				22928AC724A423AA00DC9EC5 /* ButtonGlyph.swift in Sources */,
 				22885DB224DA1E2E00A56FE3 /* TimeIndicator.swift in Sources */,
 				C6AAB3F2249F061D00DFBA36 /* TimeData.swift in Sources */,
-				C615CD57245F332300D62B87 /* FetchDetailedReport.swift in Sources */,
 				22B9E05C24B4FF550040C5AC /* WorkspaceView.swift in Sources */,
 				225F69B424AD8CE70012B5DB /* AppView.swift in Sources */,
 				2262882224E88691006B330C /* Workspace.swift in Sources */,
 				2207E46524E0BEAD00311F10 /* DPad.swift in Sources */,
-				222D996024BB562100F66E0F /* FetchEntries.swift in Sources */,
 				224D10D324E6FA8900668FD8 /* DateIndicator.swift in Sources */,
 				22DC86A024BA838D00FF771F /* Project+CoreDataClass.swift in Sources */,
 				2296F15B24A994A400AF38B5 /* FormRequest.swift in Sources */,

@@ -45,8 +45,8 @@ final class TimeData: ObservableObject {
                     break
                 }
             },
-            receiveValue: {
-                self.entries = $0
+            receiveValue: { _ in
+                
             }
         )
     }
