@@ -21,13 +21,26 @@ struct Item {}
 
 class RecursiveLoader {
     init() { }
-
+    /**
+     Requests a specific page of a Detailed Report
+     - Parameters:
+        - index: which page is being requested. Zero indexed.
+        - api_string: URL path plus some necessary info to form the request. Missing the page number.
+        - auth: string authenticating the request
+     - Returns: the `Report` struct bundled with the `index`
+     */
     private func loadPage(
-        index: Int
+        index: Int,
+        api_string: String,
+        auth: String
     ) -> AnyPublisher<PagedReport, Error> {
         // this would be the individual network call
         #warning("placeholder request!")
-        let request = formRequest(url: URL(string: "")!, auth: "")
+        let request = formRequest(
+            /// NOTE: pages are 1 indexed
+            url: URL(string: api_string + "&page=\(index + 1)")!,
+            auth: auth
+        )
         return URLSession.shared.dataTaskPublisher(for: request)
             .map { $0.data }
             .decode(type: Report.self, decoder: JSONDecoder())
@@ -35,12 +48,24 @@ class RecursiveLoader {
             .eraseToAnyPublisher()
     }
     
-    func loadPages(context: NSManagedObjectContext) -> AnyPublisher<[TimeEntry], Error> {
+    /**
+     Fetch a Detailed Report in pages from Toggl
+     - Parameters:
+        - api_string: URL path plus some necessary info to form the request. Missing the page number.
+        - auth: string authenticating the request
+     - Returns: the `TimeEntries` fetched
+     */
+    func loadPages(
+        context: NSManagedObjectContext,
+        projects: [Project],
+        api_string: String,
+        auth: String
+    ) -> AnyPublisher<[TimeEntry], Error> {
         let pageIndexPublisher = CurrentValueSubject<Int, Never>(0)
 
         return pageIndexPublisher
             .flatMap({ index in
-                return self.loadPage(index: index)
+                return self.loadPage(index: index, api_string: api_string, auth: auth)
             })
             .handleEvents(receiveOutput: { (page: PagedReport) in
                 guard
@@ -59,10 +84,13 @@ class RecursiveLoader {
             .reduce([RawTimeEntry](), { entries, page in
                 return entries + page.report.entries
             })
-            .map {
-                $0.map {
-                    TimeEntry(from: $0, context: context, projects: [])
+            .receive(on: DispatchQueue.main)
+            .map { rawEntries in
+                let entries = rawEntries.map {
+                    TimeEntry(from: $0, context: context, projects: projects)
                 }
+                try! context.save()
+                return entries
             }
             .eraseToAnyPublisher()
     }
