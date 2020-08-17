@@ -23,8 +23,6 @@ struct StatDisplayView: View {
     private var deltaEnd = TimeInterval.zero
     private var deltaAvgDur = TimeInterval.zero
     
-    @Environment(\.colorScheme) var mode
-    
     var body: some View {
         Group {
             WeekStats
