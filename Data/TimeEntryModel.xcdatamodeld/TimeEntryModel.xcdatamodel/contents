@@ -2,6 +2,7 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17183" systemVersion="19F101" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Project" representedClassName=".Project" syncable="YES">
         <attribute name="color" attributeType="String" valueTransformerName=""/>
+        <attribute name="fetched" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="name" attributeType="String"/>
         <relationship name="entries" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TimeEntry" inverseName="project" inverseEntity="TimeEntry"/>
@@ -26,7 +27,7 @@
         </uniquenessConstraints>
     </entity>
     <elements>
-        <element name="Project" positionX="390.23828125" positionY="41.34375" width="128" height="28"/>
+        <element name="Project" positionX="390.23828125" positionY="41.34375" width="128" height="118"/>
         <element name="TimeEntry" positionX="-63" positionY="-18" width="128" height="148"/>
     </elements>
 </model>

@@ -12,13 +12,18 @@ import SwiftUI
 import CoreData
 
 /// simplify decoding
-fileprivate struct RawProject: Decodable {
-    var id: Int
-    var is_private: Bool
-    var wid: Int
-    var hex_color: String
-    var name: String
-    var billable: Bool
+/// Documentation:
+/// https://github.com/toggl/toggl_api_docs/blob/f62b8f4bb9118d97af54df48a268ff1e4319b34b/chapters/projects.md#projects
+struct RawProject: Decodable {
+    let id: Int
+    let is_private: Bool
+    let wid: Int
+    let hex_color: String
+    let name: String
+    let billable: Bool
+    
+    /// `Date` the "task" was last updated
+    let at: Date
     // one of these cases a coding failure, ignore for now
 //        var actual_hours: Int
 //        var color: Int // probably an enum for toggl's default color palette
@@ -43,6 +48,25 @@ public class Project: NSManagedObject, Decodable, ProjectLike {
         id = Int64(rawProject.id)
         color = rawProject.hex_color
         name = rawProject.name
+        fetched = Date()
+    }
+    
+    init(raw: RawProject, context: NSManagedObjectContext) {
+        super.init(entity: Project.entity(), insertInto: context)
+        id = Int64(raw.id)
+        color = raw.hex_color
+        name = raw.name
+        fetched = Date()
+    }
+    
+    /// copy properties from `RawProject` into `Project`
+    func update(from rawProject: RawProject) {
+        self.setValuesForKeys([
+            /// NOTE: `id`should never change
+            "color": rawProject.hex_color,
+            "name": rawProject.name,
+            "fetched": Date(), /// update `fetched`
+        ])
     }
     
     static func == (lhs: Project, rhs: ProjectLike) -> Bool {

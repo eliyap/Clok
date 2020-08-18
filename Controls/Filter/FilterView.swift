@@ -12,7 +12,7 @@ struct FilterView: View {
     
     @EnvironmentObject var data: TimeData
     @EnvironmentObject var bounds: Bounds
-    
+    @FetchRequest(entity: Project.entity(), sortDescriptors: []) var projects: FetchedResults<Project>
     let listPadding: CGFloat
     
     var body: some View {
@@ -105,7 +105,7 @@ struct FilterView: View {
     }
     
     var allProjects: [ProjectLike] {
-        data.projects + [StaticProject.noProject]
+        projects.sorted(by: {$0.name < $1.name}) + [StaticProject.noProject]
     }
     
     var excluded: [ProjectLike] {

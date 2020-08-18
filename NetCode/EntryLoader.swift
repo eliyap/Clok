@@ -51,4 +51,48 @@ final class EntryLoader: ObservableObject {
                 try! context.save()
             })
     }
+    
+    var projectsPipe: AnyCancellable? = nil
+    
+    /**
+     Use Combine to make an async network request for all the User's `Project`s
+     */
+    func fetchProjects(user: User?, context: NSManagedObjectContext) -> Void {
+        /// abort if user is not logged in
+        guard let user = user else { return }
+        
+        /// API URL documentation:
+        /// https://github.com/toggl/toggl_api_docs/blob/master/chapters/workspaces.md#get-workspace-projects
+        let request = formRequest(
+            url: URL(string: "\(API_URL)/workspaces/\(user.chosen.wid)/projects?user_agent=\(user_agent)")!,
+            auth: auth(token: user.token)
+        )
+        
+        projectsPipe = URLSession.shared.dataTaskPublisher(for: request)
+            .map { $0.data }
+            .decode(
+                type: [RawProject].self,
+                /// pass `managedObjectContext` to decoder so that a CoreData object can be created
+                decoder: JSONDecoder()
+            )
+            /// discard array on error
+            .replaceError(with: [])
+            .receive(on: DispatchQueue.main)
+            .sink { (rawProjects: [RawProject]) in
+                let projects = loadProjects(context: context) ?? []
+                rawProjects.forEach { rawProject in
+                    if let match = projects.first(where: {$0.id == rawProject.id}) {
+                        /// if `rawProject` is more recent, update `Project` on disk
+                        if match.fetched < rawProject.at {
+                            match.update(from: rawProject)
+                        }
+                    } else {
+                        /// if no match was found, insert new `Project`
+                        context.insert(Project(raw: rawProject, context: context))
+                    }
+                }
+                /// save CoreData changes
+                try! context.save()
+            }
+    }
 }

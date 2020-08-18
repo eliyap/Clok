@@ -20,6 +20,10 @@ extension Project {
     @NSManaged public var name: String
     @NSManaged public var id: Int64
     @NSManaged public var color: String
+    
+    /// the `Date` we fetched this Project's details from Toggl
+    @NSManaged public var fetched: Date
+    
     @NSManaged public var entries: NSSet?
     
     public var wrappedID: Int {

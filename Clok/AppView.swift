@@ -58,10 +58,10 @@ struct ClokApp: App {
                 /// also fires at app launch when user is logged in
                 .onReceive(cred.$user) { user in
                     print(user?.email)
-//                    data.fetchProjects(
-//                        user: $0,
-//                        context: persistentContainer.viewContext
-//                    )
+                    loader.fetchProjects(
+                        user: user,
+                        context: persistentContainer.viewContext
+                    )
                 }
                 .onReceive(zero.limitedStart, perform: { date in
                     print("Detailed report for \(date) requested")
@@ -69,7 +69,7 @@ struct ClokApp: App {
                     loader.fetchEntries(
                         range: (start: date, end: date + .week),
                         user: user,
-                        projects: data.projects,
+                        projects: [],
                         context: persistentContainer.viewContext
                     )
                 })
