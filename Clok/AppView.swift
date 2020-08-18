@@ -19,7 +19,10 @@ struct ClokApp: App {
     let cred: Credentials
     let bounds = Bounds()
     let model = GraphModel()
-    let loader = EntryLoader()
+    
+    /// other stuff
+    let entryLoader = EntryLoader()
+    let projectLoader = ProjectLoader()
     let saver: GraphSaver
     
     var persistentContainer: NSPersistentContainer
@@ -60,7 +63,7 @@ struct ClokApp: App {
                 /// also fires at app launch when user is logged in
                 .onReceive(cred.$user) { user in
                     print(user?.email)
-                    loader.fetchProjects(
+                    projectLoader.fetchProjects(
                         user: user,
                         context: persistentContainer.viewContext
                     )
@@ -68,7 +71,7 @@ struct ClokApp: App {
                 .onReceive(zero.limitedStart, perform: { date in
                     print("Detailed report for \(date) requested")
                     guard let user = cred.user else { return }
-                    loader.fetchEntries(
+                    entryLoader.fetchEntries(
                         /// NOTE: also fetch entries that show in the top and bottom margins
                         range: (
                             start: date - model.castBack,
@@ -79,6 +82,12 @@ struct ClokApp: App {
                         context: persistentContainer.viewContext
                     )
                 })
+            
+                .onAppear {
+                    let entries = loadEntries(from: zero.start, to: zero.end, context: persistentContainer.viewContext)
+                    print(entries?.count)
+                }
+            #warning("debug")
         }
     }
 }

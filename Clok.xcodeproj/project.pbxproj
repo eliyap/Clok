@@ -56,6 +56,7 @@
 		22928AC724A423AA00DC9EC5 /* ButtonGlyph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22928AC624A423AA00DC9EC5 /* ButtonGlyph.swift */; };
 		2293CEE924EC50F0000B68F4 /* AsNSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2293CEE824EC50F0000B68F4 /* AsNSDate.swift */; };
 		2293CEEB24EC5289000B68F4 /* GraphSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2293CEEA24EC5289000B68F4 /* GraphSaver.swift */; };
+		2293CEED24EC5661000B68F4 /* ProjectLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2293CEEC24EC5661000B68F4 /* ProjectLoader.swift */; };
 		2296F15924A96FB800AF38B5 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2296F15824A96FB800AF38B5 /* Icon.png */; };
 		2296F15B24A994A400AF38B5 /* FormRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2296F15A24A994A400AF38B5 /* FormRequest.swift */; };
 		22A2CE1D24E59BB1000820AD /* DateStridable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE1C24E59BB1000820AD /* DateStridable.swift */; };
@@ -212,6 +213,7 @@
 		22928AC624A423AA00DC9EC5 /* ButtonGlyph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonGlyph.swift; sourceTree = "<group>"; };
 		2293CEE824EC50F0000B68F4 /* AsNSDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsNSDate.swift; sourceTree = "<group>"; };
 		2293CEEA24EC5289000B68F4 /* GraphSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphSaver.swift; sourceTree = "<group>"; };
+		2293CEEC24EC5661000B68F4 /* ProjectLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectLoader.swift; sourceTree = "<group>"; };
 		2296F15824A96FB800AF38B5 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = Icon/Icon.png; sourceTree = SOURCE_ROOT; };
 		2296F15A24A994A400AF38B5 /* FormRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormRequest.swift; sourceTree = "<group>"; };
 		22A2CE1C24E59BB1000820AD /* DateStridable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateStridable.swift; sourceTree = "<group>"; };
@@ -478,6 +480,7 @@
 				22B0783724B1519600256EB8 /* NetworkError.swift */,
 				2296F15A24A994A400AF38B5 /* FormRequest.swift */,
 				2277E8C624EB44AC00702086 /* EntryLoader.swift */,
+				2293CEEC24EC5661000B68F4 /* ProjectLoader.swift */,
 				2277E8C824EB47B400702086 /* PaginatedLoad.swift */,
 				C6B1D64824EBAD27001E87C1 /* DataTaskMonitor.swift */,
 			);
@@ -924,6 +927,7 @@
 				225F69B424AD8CE70012B5DB /* AppView.swift in Sources */,
 				2293CEEB24EC5289000B68F4 /* GraphSaver.swift in Sources */,
 				2262882224E88691006B330C /* Workspace.swift in Sources */,
+				2293CEED24EC5661000B68F4 /* ProjectLoader.swift in Sources */,
 				2207E46524E0BEAD00311F10 /* DPad.swift in Sources */,
 				224D10D324E6FA8900668FD8 /* DateIndicator.swift in Sources */,
 				22DC86A024BA838D00FF771F /* Project+CoreDataClass.swift in Sources */,

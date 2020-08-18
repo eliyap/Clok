@@ -11,7 +11,7 @@ import Combine
 import CoreData
 
 final class EntryLoader: ObservableObject {
-    var entryLoader: AnyCancellable? = nil
+    private var loader: AnyCancellable? = nil
     
     func fetchEntries(
         range: DateRange,
@@ -31,7 +31,7 @@ final class EntryLoader: ObservableObject {
             "until=\(df.string(from: range.end))"
         ].joined(separator: "&")
     
-        entryLoader = recursiveLoadPages(
+        loader = recursiveLoadPages(
             projects: projects,
             api_string: api_string,
             auth: auth(token: user.token)
@@ -51,55 +51,12 @@ final class EntryLoader: ObservableObject {
             .sink(receiveValue: { (rawEntries: [RawTimeEntry]?) in
                 /// terminate if error resulted in `nil` being passed
                 guard let rawEntries = rawEntries else { return }
+                
                 rawEntries.forEach { (rawEntry: RawTimeEntry) in
                     context.insert(TimeEntry(from: rawEntry, context: context, projects: projects))
                 }
                 try! context.save()
             })
-    }
-    
-    var projectsPipe: AnyCancellable? = nil
-    
-    /**
-     Use Combine to make an async network request for all the User's `Project`s
-     */
-    func fetchProjects(user: User?, context: NSManagedObjectContext) -> Void {
-        /// abort if user is not logged in
-        guard let user = user else { return }
-        
-        /// API URL documentation:
-        /// https://github.com/toggl/toggl_api_docs/blob/master/chapters/workspaces.md#get-workspace-projects
-        let request = formRequest(
-            url: URL(string: "\(API_URL)/workspaces/\(user.chosen.wid)/projects?user_agent=\(user_agent)")!,
-            auth: auth(token: user.token)
-        )
-        
-        projectsPipe = URLSession.shared.dataTaskPublisher(for: request)
-            .map(dataTaskMonitor)
-            .decode(
-                type: [RawProject].self,
-                /// pass `managedObjectContext` to decoder so that a CoreData object can be created
-                decoder: JSONDecoder(dateStrategy: .iso8601)
-            )
-            /// discard array on error
-            .replaceError(with: [])
-            .receive(on: DispatchQueue.main)
-            .sink { (rawProjects: [RawProject]) in
-                let projects = loadProjects(context: context) ?? []
-                rawProjects.forEach { rawProject in
-                    if let match = projects.first(where: {$0.id == rawProject.id}) {
-                        /// if `rawProject` is more recent, update `Project` on disk
-                        if match.fetched < rawProject.at {
-                            match.update(from: rawProject)
-                        }
-                    } else {
-                        /// if no match was found, insert new `Project`
-                        context.insert(Project(raw: rawProject, context: context))
-                    }
-                }
-                /// save CoreData changes
-                try! context.save()
-            }
     }
 }
 
