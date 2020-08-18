@@ -76,10 +76,10 @@ struct ClokApp: App {
                     #endif
                     guard let user = cred.user else { return }
                     entryLoader.fetchEntries(
-                        /// NOTE: also fetch entries that show in the top and bottom margins
+                        /// NOTE: add a 1 day margin of safety on either side
                         range: (
-                            start: date - model.castBack,
-                            end: date + .week + model.castFwrd
+                            start: date - .day,
+                            end: date + .week + .day
                         ),
                         user: user,
                         projects: loadProjects(context: persistentContainer.viewContext) ?? [],
