@@ -37,15 +37,7 @@ extension EntryLoader {
             auth: auth
         )
         return URLSession.shared.dataTaskPublisher(for: request)
-            .map {
-                let code = ($0.response as? HTTPURLResponse)?.statusCode
-                    ?? -1
-                if !(200...299).contains(code) {
-                    print($0.response)
-                    print("HTTP Error with Code: \(code)")
-                }
-                return $0.data
-            }
+            .map(dataTaskMonitor)
             .decode(type: Report.self, decoder: JSONDecoder(dateStrategy: .iso8601))
             .map { (report: Report) -> PagedReport in
                 PagedReport(report: report, pageNo: pageNo)

@@ -24,6 +24,8 @@ struct ClokApp: App {
     
     var persistentContainer: NSPersistentContainer
     
+    @FetchRequest(entity: Project.entity(), sortDescriptors: []) var projects: FetchedResults<Project>
+    
     init(){
         /// initialize Core Data container
         let container = NSPersistentContainer(name: "TimeEntryModel")
@@ -69,7 +71,7 @@ struct ClokApp: App {
                     loader.fetchEntries(
                         range: (start: date, end: date + .week),
                         user: user,
-                        projects: [],
+                        projects: loadProjects(context: persistentContainer.viewContext) ?? [],
                         context: persistentContainer.viewContext
                     )
                 })

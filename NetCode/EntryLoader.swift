@@ -69,15 +69,7 @@ final class EntryLoader: ObservableObject {
         )
         
         projectsPipe = URLSession.shared.dataTaskPublisher(for: request)
-            .map {
-                let code = ($0.response as? HTTPURLResponse)?.statusCode
-                    ?? -1
-                if !(200...299).contains(code) {
-                    print($0.response)
-                    print("HTTP Error with Code: \(code)")
-                }
-                return $0.data
-            }
+            .map(dataTaskMonitor)
             .decode(
                 type: [RawProject].self,
                 /// pass `managedObjectContext` to decoder so that a CoreData object can be created
@@ -88,7 +80,6 @@ final class EntryLoader: ObservableObject {
             .receive(on: DispatchQueue.main)
             .sink { (rawProjects: [RawProject]) in
                 let projects = loadProjects(context: context) ?? []
-                print("fetched \(rawProjects.count) raws")
                 rawProjects.forEach { rawProject in
                     if let match = projects.first(where: {$0.id == rawProject.id}) {
                         /// if `rawProject` is more recent, update `Project` on disk
