@@ -60,15 +60,4 @@ public class Project: NSManagedObject, Decodable, ProjectLike {
         if StaticProject.noProject == rhs  { return false }
         return lhs.name < rhs.name
     }
-    
-    init(in context: NSManagedObjectContext?, name: String, colorHex: String, id: Int){
-        super.init(entity: Project.entity(), insertInto: context)
-        self.name = name
-        self.id = Int64(id)
-        self.color = colorHex
-    }
-    
-    init(context: NSManagedObjectContext){
-        super.init(entity: Project.entity(), insertInto: context)
-    }
 }
