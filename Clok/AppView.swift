@@ -82,12 +82,6 @@ struct ClokApp: App {
                         context: persistentContainer.viewContext
                     )
                 })
-            
-                .onAppear {
-                    let entries = loadEntries(from: zero.start, to: zero.end, context: persistentContainer.viewContext)
-                    print(entries?.count)
-                }
-            #warning("debug")
         }
     }
 }

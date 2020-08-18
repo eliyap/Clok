@@ -53,7 +53,7 @@ final class EntryLoader: ObservableObject {
                 guard let rawEntries = rawEntries else { return }
                 
                 /// fetch the CoreData records for this `DateRange`
-                var entries = loadEntries(from: range.start, to: range.end, context: context)
+                var entries = loadEntries(range: range, context: context)
                 
                 /// perform matching between new and stored data
                 rawEntries.forEach { (rawEntry: RawTimeEntry) in

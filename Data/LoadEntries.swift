@@ -9,17 +9,16 @@
 import Foundation
 import CoreData
 
-/// fetch entries from Core Data storage
+/// fetch entries from Core Data storage within the provided `DateRange`
 func loadEntries(
-    from start: Date,
-    to end: Date,
+    range: DateRange,
     context: NSManagedObjectContext
 ) -> [TimeEntry]? {
     let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: TimeEntry.entityName)
     fetchRequest.predicate = NSPredicate(
         format: "(end >= %@) AND (start <= %@)",
-        NSDate(start),
-        NSDate(end)
+        NSDate(range.start),
+        NSDate(range.end)
     )
     do {
         let entries = try context.fetch(fetchRequest) as! [TimeEntry]
