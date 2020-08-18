@@ -96,3 +96,24 @@ final class EntryLoader: ObservableObject {
             }
     }
 }
+
+/// fetch entries from Core Data storage
+func loadEntries(
+    from start: Date,
+    to end: Date,
+    context: NSManagedObjectContext
+) -> [TimeEntry]? {
+    let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: TimeEntry.entityName)
+    fetchRequest.predicate = NSPredicate(
+        format: "(end >= %@) AND (start <= %@)",
+        start.asNSDate,
+        end.asNSDate
+    )
+    do {
+        let entries = try context.fetch(fetchRequest) as! [TimeEntry]
+        return entries
+    } catch {
+        print(error)
+    }
+    return nil
+}
