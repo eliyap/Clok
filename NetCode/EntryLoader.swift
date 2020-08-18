@@ -38,7 +38,11 @@ final class EntryLoader: ObservableObject {
         )
             /// switch to main thread before performing CoreData work
             .receive(on: DispatchQueue.main)
-            .assertNoFailure()
+            .catch({ error -> AnyPublisher<[RawTimeEntry], Never> in
+                print(error)
+                return Just([RawTimeEntry]())
+                    .eraseToAnyPublisher()
+            })
             .sink(receiveValue: { rawEntries in
                 print("\(rawEntries.count) raw received")
                 rawEntries.forEach { (rawEntry: RawTimeEntry) in
