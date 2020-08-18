@@ -43,20 +43,18 @@ final class TimeData: ObservableObject {
         projectsPipe = URLSession.shared.dataTaskPublisher(for: request)
             .map { $0.data }
             .decode(
-                type: [Project]?.self,
+                type: [Project].self,
                 /// pass `managedObjectContext` to decoder so that a CoreData object can be created
                 decoder: JSONDecoder(context: context)
             )
-            .replaceError(with: nil)
+            /// if there was an error, just assign self (leaving `projects` unchanged
+            .replaceError(with: self.projects)
             .receive(on: DispatchQueue.main)
-            .sink(receiveValue: {
-                /// if there was an error and nothing came through, do not edit the data
-                /// NOTE: if we correctly received 0 `Project`s (for some reason), this should correctly wipe the `Project`s in CoreData
-                guard let projects = $0 else { return }
-                self.projects = projects
-                
+            .map {
                 /// save newly created CoreData objects
                 try! context.save()
-            })
+                return $0
+            }
+            .assign(to: \.projects, on: self)
     }
 }
