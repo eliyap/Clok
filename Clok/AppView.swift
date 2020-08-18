@@ -39,9 +39,6 @@ struct ClokApp: App {
         /// pull `User` from KeyChain
         cred = Credentials(user: loadCredentials())
         
-        /// refresh project list on launch
-        data.fetchProjects(user: cred.user, context: persistentContainer.viewContext)
-        
         /// attach `ZeroDate` to UserDefaults
         saver = GraphSaver(zero: zero)
     }
@@ -58,11 +55,13 @@ struct ClokApp: App {
                 .environmentObject(model)
                 .environment(\.managedObjectContext, persistentContainer.viewContext)
                 /// update on change to either user or space
-                .onReceive(cred.$user) {
-                    data.fetchProjects(
-                        user: $0,
-                        context: persistentContainer.viewContext
-                    )
+                /// also fires at app launch when user is logged in
+                .onReceive(cred.$user) { user in
+                    print(user?.email)
+//                    data.fetchProjects(
+//                        user: $0,
+//                        context: persistentContainer.viewContext
+//                    )
                 }
                 .onReceive(zero.limitedStart, perform: { date in
                     print("Detailed report for \(date) requested")
