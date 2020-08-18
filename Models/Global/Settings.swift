@@ -19,7 +19,9 @@ final class Credentials: ObservableObject {
 
 extension Credentials {
     func loginWith(auth: String) -> Void {
+        #if DEBUG
         print("Now logging in...")
+        #endif
         cancellable = URLSession.shared.dataTaskPublisher(for: formRequest(
             url: userDataURL,
             auth: auth

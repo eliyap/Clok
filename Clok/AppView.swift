@@ -62,14 +62,18 @@ struct ClokApp: App {
                 /// update on change to either user or space
                 /// also fires at app launch when user is logged in
                 .onReceive(cred.$user) { user in
+                    #if DEBUG
                     print(user?.email)
+                    #endif
                     projectLoader.fetchProjects(
                         user: user,
                         context: persistentContainer.viewContext
                     )
                 }
                 .onReceive(zero.limitedStart, perform: { date in
+                    #if DEBUG
                     print("Detailed report for \(date) requested")
+                    #endif
                     guard let user = cred.user else { return }
                     entryLoader.fetchEntries(
                         /// NOTE: also fetch entries that show in the top and bottom margins
