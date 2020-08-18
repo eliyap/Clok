@@ -38,7 +38,7 @@ struct SearchTerms {
             return false
         /// case 2: neither are included: sort by name
         case (false, false):
-            return p0.wrappedName < p1.wrappedName
+            return p0.name < p1.name
         case (true, true):
             let index0 = projects.firstIndex(where: {$0.wrappedID == p0.wrappedID})!
             let index1 = projects.firstIndex(where: {$0.wrappedID == p1.wrappedID})!

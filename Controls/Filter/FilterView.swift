@@ -65,7 +65,7 @@ struct FilterView: View {
             HStack {
                 Image(systemName: "largecircle.fill.circle")
                     .foregroundColor(project.wrappedColor)
-                Text("\(project.wrappedName)")
+                Text("\(project.name)")
                 /// for some reason (possible dragon drop), `onMove` does not register on the iPhone
                 if bounds.device != .iPhone {
                     Spacer()
@@ -88,7 +88,7 @@ struct FilterView: View {
             HStack {
                 Image(systemName: "circle")
                     .foregroundColor(project.wrappedColor)
-                Text("\(project.wrappedName)")
+                Text("\(project.name)")
             }
             .onTapGesture {
                 withAnimation {
@@ -105,6 +105,6 @@ struct FilterView: View {
     var excluded: [ProjectLike] {
         allProjects
             .filter{!data.terms.contains(project: $0)}
-            .sorted(by: {$0.wrappedName < $1.wrappedName})
+            .sorted(by: {$0.name < $1.name})
     }
 }

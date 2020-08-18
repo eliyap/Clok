@@ -61,7 +61,7 @@ struct RunningEntry: Equatable {
         if description == "" && StaticProject.noProject == project {
             return "No Description"
         } else if description == "" {
-            return project.wrappedName
+            return project.name
         } else {
             return description
         }

@@ -35,7 +35,7 @@ public class Project: NSManagedObject, Decodable, ProjectLike {
     }
     
     public required init(from decoder: Decoder) throws {
-        guard let context = decoder.userInfo[.context] as? NSManagedObjectContext else { fatalError("NSManagedObjectContext is missing") }
+    
         super.init(entity: Project.entity(), insertInto: context)
         
         let rawProject = try RawProject(from: decoder)
@@ -47,7 +47,7 @@ public class Project: NSManagedObject, Decodable, ProjectLike {
     
     
     static func == (lhs: Project, rhs: ProjectLike) -> Bool {
-        lhs.wrappedName == rhs.wrappedName && lhs.wrappedID == rhs.wrappedID
+        lhs.name == rhs.name && lhs.wrappedID == rhs.wrappedID
     }
     
     func matches(_ other: ProjectLike) -> Bool {
@@ -59,7 +59,7 @@ public class Project: NSManagedObject, Decodable, ProjectLike {
         /// No Project should always be first
         if StaticProject.noProject == lhs  { return true }
         if StaticProject.noProject == rhs  { return false }
-        return lhs.wrappedName < rhs.wrappedName
+        return lhs.name < rhs.name
     }
     
     init(in context: NSManagedObjectContext?, name: String, colorHex: String, id: Int){

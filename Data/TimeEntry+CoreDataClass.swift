@@ -66,7 +66,7 @@ public class TimeEntry: NSManagedObject {
         if wrappedDescription == "" && StaticProject.noProject == wrappedProject {
             return "No Description"
         } else if wrappedDescription == "" {
-            return wrappedProject.wrappedName
+            return wrappedProject.name
         } else {
             return wrappedDescription
         }

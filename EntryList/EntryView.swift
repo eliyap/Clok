@@ -35,7 +35,7 @@ struct EntryView: View {
                         .font(.title3)
                 }
                 HStack {
-                    Text(entry.wrappedProject.wrappedName)
+                    Text(entry.wrappedProject.name)
                         .font(.caption)
                     Spacer()
                     Text("\(df.string(from: entry.start)) – \(df.string(from: entry.end))")

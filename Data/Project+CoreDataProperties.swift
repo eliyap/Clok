@@ -22,16 +22,12 @@ extension Project {
     @NSManaged public var color: String
     @NSManaged public var entries: NSSet?
     
-    public var wrappedName: String {
-        name ?? "No Name"
-    }
-    
     public var wrappedID: Int {
         Int(id)
     }
     
     public var wrappedColor: Color {
-        Color(hex: color ?? StaticProject.unknown.wrappedColor.toHex)
+        Color(hex: color)
     }
     
     public var entryArray: [TimeEntry] {

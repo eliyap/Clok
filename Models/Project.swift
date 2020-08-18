@@ -12,7 +12,7 @@ import SwiftUI
 protocol ProjectLike {
     var wrappedID: Int { get }
     var wrappedColor: Color { get }
-    var wrappedName: String { get }
+    var name: String { get }
     func matches(_ other: ProjectLike) -> Bool
 }
 
@@ -20,10 +20,10 @@ class StaticProject: ProjectLike {
     
     var wrappedID: Int
     var wrappedColor: Color
-    var wrappedName: String
+    var name: String
     
     static func == (lhs: StaticProject, rhs: ProjectLike) -> Bool {
-        lhs.wrappedName == rhs.wrappedName && lhs.wrappedID == rhs.wrappedID
+        lhs.name == rhs.name && lhs.wrappedID == rhs.wrappedID
     }
     
     func matches(_ other: ProjectLike) -> Bool {
@@ -35,11 +35,11 @@ class StaticProject: ProjectLike {
         /// No Project should always be first
         if StaticProject.noProject == lhs  { return true }
         if StaticProject.noProject == rhs  { return false }
-        return lhs.wrappedName < rhs.wrappedName
+        return lhs.name < rhs.name
     }
     
     init(name: String, color: Color, id: Int){
-        wrappedName = name
+        self.name = name
         wrappedID = id
         wrappedColor = color
     }
