@@ -22,6 +22,12 @@ struct FilterView: View {
             List {
                 Button {
                     withAnimation {
+                        #warning("debug")
+                        allProjects.forEach { project in
+                            print("project: ", project.name, project.wrappedColor, project.wrappedID)
+                        }
+                        
+                        
                         data.terms.projects = allProjects
                     }
                 } label: {

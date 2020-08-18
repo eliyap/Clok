@@ -45,8 +45,6 @@ public class Project: NSManagedObject, Decodable, ProjectLike {
         name = rawProject.name
     }
     
-    
-    
     static func == (lhs: Project, rhs: ProjectLike) -> Bool {
         lhs.name == rhs.name && lhs.wrappedID == rhs.wrappedID
     }
