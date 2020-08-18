@@ -36,6 +36,7 @@ struct DayStrip: View {
                         .foregroundColor($0.wrappedColor)
                         .padding(.top, padding(for: $0, size: geo.size))
                         .opacity($0.matches(terms) ? 1 : 0.5)
+                        .transition(.opacity)
                 }
             }
             .frame(width: geo.size.width)

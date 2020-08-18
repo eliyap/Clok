@@ -12,7 +12,7 @@ import CoreData
 fileprivate struct RawReport: Decodable {
     var total_count: Int
     var per_page: Int
-    var total_grand: Double
+    var total_grand: Double?
     var data: [RawTimeEntry]
 }
 
@@ -25,7 +25,8 @@ struct Report: Decodable {
     var perPage: Int
     
     /// total seconds tracked
-    var totalGrand: Double
+    /// Note: if date is in the future, returns `nil`
+    var totalGrand: Double?
     
     /// list of TimeEntry's
     var entries: [RawTimeEntry]

@@ -65,6 +65,7 @@ struct ClokApp: App {
                     )
                 }
                 .onReceive(zero.limitedStart, perform: { date in
+                    print("\(date) requestewd")
                     loader.fetchEntries(
                         range: (start: date, end: date + .week),
                         user: cred.user!,

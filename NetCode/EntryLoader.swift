@@ -30,7 +30,7 @@ final class EntryLoader: ObservableObject {
             "since=\(df.string(from: range.start))",
             "until=\(df.string(from: range.end))"
         ].joined(separator: "&")
-        #warning("unhandled error!")
+        print(api_string)
         entryLoader = recursiveLoadPages(
             projects: projects,
             api_string: api_string,
@@ -40,6 +40,7 @@ final class EntryLoader: ObservableObject {
             .receive(on: DispatchQueue.main)
             .catch({ error -> AnyPublisher<[RawTimeEntry], Never> in
                 print(error)
+                fatalError()
                 return Just([RawTimeEntry]())
                     .eraseToAnyPublisher()
             })
