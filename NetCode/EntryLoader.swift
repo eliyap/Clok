@@ -38,13 +38,19 @@ final class EntryLoader: ObservableObject {
         )
             /// switch to main thread before performing CoreData work
             .receive(on: DispatchQueue.main)
-            .catch({ error -> AnyPublisher<[RawTimeEntry], Never> in
+            /// transform to Optional
+            .map { (rawEntries: [RawTimeEntry]) -> [RawTimeEntry]? in
+                return rawEntries
+            }
+            .catch({ error -> AnyPublisher<[RawTimeEntry]?, Never> in
                 print(error)
-            
-                return Just([RawTimeEntry]())
+                ///
+                return Just(nil)
                     .eraseToAnyPublisher()
             })
-            .sink(receiveValue: { rawEntries in
+            .sink(receiveValue: { (rawEntries: [RawTimeEntry]?) in
+                /// terminate if error resulted in `nil` being passed
+                guard let rawEntries = rawEntries else { return }
                 rawEntries.forEach { (rawEntry: RawTimeEntry) in
                     context.insert(TimeEntry(from: rawEntry, context: context, projects: projects))
                 }
