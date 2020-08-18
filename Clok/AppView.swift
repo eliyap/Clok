@@ -13,14 +13,14 @@ import Combine
 @main
 struct ClokApp: App {
     
-    var listRow = ListRow()
-    var zero = ZeroDate()
-    var data: TimeData
-    var cred: Credentials
-    var bounds = Bounds()
-    var model = GraphModel()
-    var loader = EntryLoader()
-    var saver: GraphSaver
+    let listRow = ListRow()
+    let zero = ZeroDate()
+    let data: TimeData
+    let cred: Credentials
+    let bounds = Bounds()
+    let model = GraphModel()
+    let loader = EntryLoader()
+    let saver: GraphSaver
     
     var persistentContainer: NSPersistentContainer
     
