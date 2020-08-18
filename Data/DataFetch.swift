@@ -20,20 +20,3 @@ func loadProjects(context: NSManagedObjectContext) -> [Project]? {
     }
     return nil
 }
-
-/// fetch entries from Core Data storage
-func loadEntries(
-    from start: Date,
-    to end: Date,
-    context: NSManagedObjectContext
-) -> [TimeEntry]? {
-    let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: TimeEntry.entityName)
-    do {
-        let entries = try context.fetch(fetchRequest) as! [TimeEntry]
-        return entries
-    } catch {
-        print(error)
-    }
-    return nil
-}
-

@@ -39,7 +39,11 @@ extension EntryLoader {
         return URLSession.shared.dataTaskPublisher(for: request)
             .map {
                 let code = ($0.response as? HTTPURLResponse)?.statusCode
-                print("map on page \(pageNo), response \(code ?? -1)")
+                    ?? -1
+                if !(200...299).contains(code) {
+                    print($0.response)
+                    print("HTTP Error with Code: \(code)")
+                }
                 return $0.data
             }
             .decode(type: Report.self, decoder: JSONDecoder(dateStrategy: .iso8601))
@@ -68,7 +72,6 @@ extension EntryLoader {
                 return self.loadPage(pageNo: pageNo, api_string: api_string, auth: auth)
             })
             .handleEvents(receiveOutput: { (report, pageNo) in
-                print("expecting \(report.totalCount)")
                 guard
                     /// if request yielded no entries, terminate
                     report.entries.count != 0,
@@ -78,7 +81,6 @@ extension EntryLoader {
                     pageIndexPublisher.send(completion: .finished)
                     return
                 }
-                print("requesting page \(pageNo + 1)")
                 /// request next page
                 pageIndexPublisher.send(pageNo + 1)
             })

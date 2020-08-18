@@ -30,7 +30,7 @@ final class EntryLoader: ObservableObject {
             "since=\(df.string(from: range.start))",
             "until=\(df.string(from: range.end))"
         ].joined(separator: "&")
-        print(api_string)
+    
         entryLoader = recursiveLoadPages(
             projects: projects,
             api_string: api_string,
@@ -40,12 +40,11 @@ final class EntryLoader: ObservableObject {
             .receive(on: DispatchQueue.main)
             .catch({ error -> AnyPublisher<[RawTimeEntry], Never> in
                 print(error)
-                fatalError()
+            
                 return Just([RawTimeEntry]())
                     .eraseToAnyPublisher()
             })
             .sink(receiveValue: { rawEntries in
-                print("\(rawEntries.count) raw received")
                 rawEntries.forEach { (rawEntry: RawTimeEntry) in
                     context.insert(TimeEntry(from: rawEntry, context: context, projects: projects))
                 }
