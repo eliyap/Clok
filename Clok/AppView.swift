@@ -78,32 +78,3 @@ struct ClokApp: App {
         }
     }
 }
-final class GraphSaver: ObservableObject {
-    
-    init(zero: ZeroDate){
-        /// save start date to User Defaults
-        self.startSaver = zero.$start
-            /// debounce to limit the rate we hit User Defaults
-            .debounce(
-                for: .seconds(1),
-                scheduler: RunLoop.main
-            )
-            .sink { date in
-                WorkspaceManager.zeroStart = date
-            }
-        
-        /// save `zoomIdx` date to User Defaults
-        self.zoomSaver = zero.$zoomIdx
-            /// debounce to limit the rate we hit User Defaults
-            .debounce(
-                for: .seconds(1),
-                scheduler: RunLoop.main
-            )
-            .sink { index in
-                WorkspaceManager.zoomIdx = index
-            }
-    }
-    
-    var startSaver: AnyCancellable?
-    var zoomSaver: AnyCancellable?
-}
