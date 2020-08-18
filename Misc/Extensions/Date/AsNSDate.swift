@@ -8,8 +8,8 @@
 
 import Foundation
 
-extension Date {
-    var asNSDate: NSDate {
-        NSDate(timeIntervalSince1970: timeIntervalSince1970)
+extension NSDate {
+    convenience init(_ date: Date) {
+        self.init(timeIntervalSince1970: date.timeIntervalSince1970)
     }
 }

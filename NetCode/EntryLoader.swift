@@ -106,8 +106,8 @@ func loadEntries(
     let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: TimeEntry.entityName)
     fetchRequest.predicate = NSPredicate(
         format: "(end >= %@) AND (start <= %@)",
-        start.asNSDate,
-        end.asNSDate
+        NSDate(start),
+        NSDate(end)
     )
     do {
         let entries = try context.fetch(fetchRequest) as! [TimeEntry]
