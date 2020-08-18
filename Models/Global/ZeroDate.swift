@@ -16,12 +16,17 @@ final class ZeroDate: ObservableObject {
         /// usually, this will do nothing, but if user changed `firstDayOfWeek`, it should bring start up to speed
         self.start = WorkspaceManager.zeroStart.startOfWeek(day: WorkspaceManager.firstDayOfWeek)
         self.zoomIdx = WorkspaceManager.zoomIdx
+        self.limitedStart = $start
+            .debounce(for: .seconds(1), scheduler: RunLoop.main)
+            .eraseToAnyPublisher()
     }
     
     /// default to 6 days before start of today
     /// ensures the default week includes today
     @Published var start: Date
     
+    /// debounced zero start
+    var limitedStart: AnyPublisher<Date, Never> = Just(Date()).eraseToAnyPublisher()
     /// computed end date
     var end: Date {
         start + .week

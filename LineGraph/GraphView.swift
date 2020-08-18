@@ -13,12 +13,6 @@ struct GraphView: View {
     @EnvironmentObject private var bounds: Bounds
     @EnvironmentObject private var zero: ZeroDate
     @EnvironmentObject var model: GraphModel
-    
-    /// make a meaningless update to zero Date so it will load data from disk
-    func jumpCoreDate() {
-        zero.start += .leastNonzeroMagnitude
-    }
-    
     var body: some View {
         VStack(spacing: .zero) {
             /// 1000 is a meaningless placeholder height
@@ -32,7 +26,6 @@ struct GraphView: View {
             /// allow graph to consume maximum height
             .layoutPriority(1)
         }
-        .onAppear(perform: jumpCoreDate)
     }
     
     func DayScroll(size: CGSize) -> some View {

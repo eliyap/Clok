@@ -41,11 +41,8 @@ struct ClokApp: App {
         
         /// refresh project list on launch
         data.fetchProjects(user: cred.user, context: persistentContainer.viewContext)
-//        loader.entryLoader = zero.start.
-//            .debounce(for: .seconds(1), scheduler: RunLoop.main)
-//            .sink { date in
-//                print("load requested \(zero)")
-//            }
+        
+        /// attach `ZeroDate` to UserDefaults
         saver = GraphSaver(zero: zero)
     }
     
@@ -67,6 +64,14 @@ struct ClokApp: App {
                         context: persistentContainer.viewContext
                     )
                 }
+                .onReceive(zero.limitedStart, perform: { date in
+                    loader.fetchEntries(
+                        range: (start: date, end: date + .week),
+                        user: cred.user!,
+                        projects: data.projects,
+                        context: persistentContainer.viewContext
+                    )
+                })
         }
     }
 }
