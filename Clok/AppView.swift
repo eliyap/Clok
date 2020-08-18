@@ -69,7 +69,11 @@ struct ClokApp: App {
                     print("Detailed report for \(date) requested")
                     guard let user = cred.user else { return }
                     loader.fetchEntries(
-                        range: (start: date, end: date + .week),
+                        /// NOTE: also fetch entries that show in the top and bottom margins
+                        range: (
+                            start: date - model.castBack,
+                            end: date + .week + model.castFwrd
+                        ),
                         user: user,
                         projects: loadProjects(context: persistentContainer.viewContext) ?? [],
                         context: persistentContainer.viewContext
