@@ -52,31 +52,29 @@ final class EntryLoader: ObservableObject {
                 /// terminate if error resulted in `nil` being passed
                 guard let rawEntries = rawEntries else { return }
                 
+                /// fetch the CoreData records for this `DateRange`
+                var entries = loadEntries(from: range.start, to: range.end, context: context)
+                
+                /// perform matching between new and stored data
                 rawEntries.forEach { (rawEntry: RawTimeEntry) in
-                    context.insert(TimeEntry(from: rawEntry, context: context, projects: projects))
+                    if let entryIdx = entries?.firstIndex(where: {$0.id == rawEntry.id}) {
+                        /// if a matching `TimeEntry` was found, update the record
+                        entries![entryIdx].update(from: rawEntry, projects: projects)
+                        /// and remove it from future consideration
+                        entries!.remove(at: entryIdx)
+                    } else {
+                        /// if no match was found, insert the new `TimeEntry`
+                        context.insert(TimeEntry(from: rawEntry, context: context, projects: projects))
+                    }
+                }
+                /**
+                 Remaining `TimeEntry`s had no match in the fetched data.
+                 Hence they must have been deleted, so we will delete them in CoreData as well.
+                 */
+                for deletedEntry in entries ?? [] {
+                    context.delete(deletedEntry)
                 }
                 try! context.save()
             })
     }
-}
-
-/// fetch entries from Core Data storage
-func loadEntries(
-    from start: Date,
-    to end: Date,
-    context: NSManagedObjectContext
-) -> [TimeEntry]? {
-    let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: TimeEntry.entityName)
-    fetchRequest.predicate = NSPredicate(
-        format: "(end >= %@) AND (start <= %@)",
-        NSDate(start),
-        NSDate(end)
-    )
-    do {
-        let entries = try context.fetch(fetchRequest) as! [TimeEntry]
-        return entries
-    } catch {
-        print(error)
-    }
-    return nil
 }

@@ -43,11 +43,11 @@ public class TimeEntry: NSManagedObject {
     
     init(from raw: RawTimeEntry, context: NSManagedObjectContext, projects: [Project]) {
         super.init(entity: TimeEntry.entity(), insertInto: context)
-        update(from: raw, context: context, projects: projects)
+        update(from: raw, projects: projects)
     }
     
     /// copy properties from raw time entry into TimeEntry
-    func update(from raw: RawTimeEntry, context: NSManagedObjectContext, projects: [Project]) {
+    func update(from raw: RawTimeEntry, projects: [Project]) {
         self.setValuesForKeys([
             "name": raw.description,
             "start": raw.start,
