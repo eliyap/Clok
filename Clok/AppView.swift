@@ -66,9 +66,10 @@ struct ClokApp: App {
                 }
                 .onReceive(zero.limitedStart, perform: { date in
                     print("Detailed report for \(date) requested")
+                    guard let user = cred.user else { return }
                     loader.fetchEntries(
                         range: (start: date, end: date + .week),
-                        user: cred.user!,
+                        user: user,
                         projects: data.projects,
                         context: persistentContainer.viewContext
                     )

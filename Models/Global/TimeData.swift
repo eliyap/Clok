@@ -14,6 +14,7 @@ final class TimeData: ObservableObject {
     
     init(projects: [Project]){
         self.projects = projects
+        self.terms.projects = projects
     }
     
     /// the `Project`s the user is filtering for
@@ -53,6 +54,7 @@ final class TimeData: ObservableObject {
                 /// NOTE: if we correctly received 0 `Project`s (for some reason), this should correctly wipe the `Project`s in CoreData
                 guard let projects = $0 else { return }
                 self.projects = projects
+                
                 /// save newly created CoreData objects
                 try! context.save()
             })

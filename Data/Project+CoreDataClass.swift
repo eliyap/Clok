@@ -36,9 +36,7 @@ public class Project: NSManagedObject, Decodable, ProjectLike {
     
     public required init(from decoder: Decoder) throws {
         guard let context = decoder.userInfo[.context] as? NSManagedObjectContext else { fatalError("NSManagedObjectContext is missing") }
-//        let values = try decoder.container(keyedBy: CodingKeys.self)
         super.init(entity: Project.entity(), insertInto: context)
-        
         
         let rawProject = try RawProject(from: decoder)
         id = Int64(rawProject.id)
