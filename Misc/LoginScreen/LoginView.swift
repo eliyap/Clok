@@ -16,6 +16,7 @@ struct LoginView: View {
     /// allow this view to dismiss itself after user logs in
     @EnvironmentObject var cred: Credentials
     @EnvironmentObject var entryLoader: EntryLoader
+    @EnvironmentObject var projectLoader: ProjectLoader
     
     /// direct users to their profile, where they can copy the API Token
     static let profileURL = URL(string: "https://toggl.com/app/profile")!
@@ -33,9 +34,6 @@ struct LoginView: View {
     @State private var pushup = false
     
     @Binding var loaded: Bool
-    
-    /// Projects for our login call
-    @FetchRequest(entity: Project.entity(), sortDescriptors: []) var projects: FetchedResults<Project>
     
     var body: some View {
         HStack {
@@ -81,16 +79,22 @@ struct LoginView: View {
     }
     
     func loadEntriesOnLogin(user: User) -> Void {
-        entryLoader.fetchEntries(
-            range: (
-                /// grab a year's worth of work (should be enough for most users)
-                start: Date() - (.day * 365),
-                end: Date()
-            ),
-            user: user,
-            projects: Array(projects),
-            context: moc
-        )
+        /// request projects
+        projectLoader.fetchProjects(user: user, context: moc) { projects in
+            /// then use fresh projects when requesting entries
+            entryLoader.fetchEntries(
+                range: (
+                    /// grab a year's worth of work (should be enough for most users)
+                    #warning("365 not 60")
+                    start: Date() - (.day * 60),
+                    end: Date()
+                ),
+                user: user,
+                projects: projects,
+                context: moc
+            )
+        }
+        
     }
     
 }

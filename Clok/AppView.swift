@@ -59,12 +59,14 @@ struct ClokApp: App {
                 .environmentObject(bounds)
                 .environmentObject(model)
                 .environmentObject(entryLoader)
+                .environmentObject(projectLoader)
                 .environment(\.managedObjectContext, persistentContainer.viewContext)
                 /// update on change to either user or space
                 /// also fires at app launch when user is logged in
                 .onReceive(cred.$user) { user in
+                    guard let user = user else { return }
                     #if DEBUG
-                    print(user?.email)
+                    print(user.email)
                     #endif
                     projectLoader.fetchProjects(
                         user: user,

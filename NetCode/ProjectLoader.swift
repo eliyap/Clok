@@ -16,7 +16,11 @@ final class ProjectLoader: ObservableObject {
     /**
      Use Combine to make an async network request for all the User's `Project`s
      */
-    func fetchProjects(user: User?, context: NSManagedObjectContext) -> Void {
+    func fetchProjects(
+        user: User?,
+        context: NSManagedObjectContext,
+        completion: (([Project]) -> Void)? = nil
+    ) -> Void {
         /// abort if user is not logged in
         guard let user = user else { return }
         
@@ -52,6 +56,14 @@ final class ProjectLoader: ObservableObject {
                 }
                 /// save CoreData changes
                 try! context.save()
+                
+                /// execute completion block, if any
+                if
+                    let completion = completion,
+                    let projects = loadProjects(context: context)
+                {
+                    completion(projects)
+                }
             }
     }
 }
