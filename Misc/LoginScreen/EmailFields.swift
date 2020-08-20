@@ -30,7 +30,7 @@ extension LoginView {
         }
     }
     
-    func emailLogin() -> Void {
+    private func emailLogin() -> Void {
         guard email != "" else {
             errorText = "Please enter your email"
             return
@@ -41,9 +41,9 @@ extension LoginView {
             return
         }
         
-        cred.loginWith(auth: auth(
-            email: email,
-            password: password
-        ))
+        cred.fetchUser(
+            auth: auth(email: email, password: password),
+            completion: loadEntriesOnLogin
+        )
     }
 }

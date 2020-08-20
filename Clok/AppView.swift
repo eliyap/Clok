@@ -58,6 +58,7 @@ struct ClokApp: App {
                 .environmentObject(cred)
                 .environmentObject(bounds)
                 .environmentObject(model)
+                .environmentObject(entryLoader)
                 .environment(\.managedObjectContext, persistentContainer.viewContext)
                 /// update on change to either user or space
                 /// also fires at app launch when user is logged in

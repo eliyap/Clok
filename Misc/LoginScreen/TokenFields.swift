@@ -35,6 +35,9 @@ extension LoginView {
             return
         }
         
-        cred.loginWith(auth: auth(token: key))
+        cred.fetchUser(
+            auth: auth(token: key),
+            completion: loadEntriesOnLogin
+        )
     }
 }

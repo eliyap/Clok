@@ -11,8 +11,11 @@ import SwiftUI
 
 struct LoginView: View {
     
+    @Environment(\.managedObjectContext) var moc
+    
     /// allow this view to dismiss itself after user logs in
     @EnvironmentObject var cred: Credentials
+    @EnvironmentObject var entryLoader: EntryLoader
     
     /// direct users to their profile, where they can copy the API Token
     static let profileURL = URL(string: "https://toggl.com/app/profile")!
@@ -30,6 +33,9 @@ struct LoginView: View {
     @State private var pushup = false
     
     @Binding var loaded: Bool
+    
+    /// Projects for our login call
+    @FetchRequest(entity: Project.entity(), sortDescriptors: []) var projects: FetchedResults<Project>
     
     var body: some View {
         HStack {
@@ -72,6 +78,18 @@ struct LoginView: View {
         withAnimation {
             pushup = editing
         }
+    }
+    
+    func loadEntriesOnLogin(user: User) -> Void {
+        entryLoader.fetchEntries(
+            range: (
+                start: Date(timeIntervalSince1970: 0),
+                end: Date()
+            ),
+            user: user,
+            projects: Array(projects),
+            context: moc
+        )
     }
     
 }

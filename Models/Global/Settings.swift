@@ -18,7 +18,10 @@ final class Credentials: ObservableObject {
 }
 
 extension Credentials {
-    func loginWith(auth: String) -> Void {
+    func fetchUser(
+        auth: String,
+        completion: @escaping (User) -> Void
+    ) -> Void {
         #if DEBUG
         print("Now logging in...")
         #endif
@@ -35,6 +38,9 @@ extension Credentials {
                 self.user = user
                 /// save user's credentials in iOS Keychain
                 try! saveKeys(user: user)
+                
+                /// execute completion block
+                completion(user)
             })
     }
 }
