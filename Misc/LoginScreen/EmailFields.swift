@@ -43,7 +43,7 @@ extension LoginView {
         
         cred.fetchUser(
             auth: auth(email: email, password: password),
-            completion: loadEntriesOnLogin
+            completion: fetchOnLogin
         )
     }
 }

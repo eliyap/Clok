@@ -78,20 +78,26 @@ struct LoginView: View {
         }
     }
     
-    func loadEntriesOnLogin(user: User) -> Void {
+    #warning("365 not 14")
+    /**
+     On first login, execute a special call that fetches projects and many weeks of entries.
+     This helps ensure the user won't encounter a lot of blank screens
+     */
+    func fetchOnLogin(user: User) -> Void {
         /// request projects
         projectLoader.fetchProjects(user: user, context: moc) { projects in
             /// then use fresh projects when requesting entries
             entryLoader.fetchEntries(
                 range: (
                     /// grab a year's worth of work (should be enough for most users)
-                    #warning("365 not 60")
-                    start: Date() - (.day * 60),
+                    start: Date() - (.day * 365),
                     end: Date()
                 ),
                 user: user,
                 projects: projects,
-                context: moc
+                context: moc,
+                /// indicate that a loading screen SHOULD be shown
+                initialLogin: true
             )
         }
         

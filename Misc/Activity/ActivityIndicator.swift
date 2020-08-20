@@ -10,8 +10,18 @@ import Foundation
 import SwiftUI
 
 struct ProgressIndicator: View {
+    
+    @Binding var loaded: Int
+    @Binding var totalCount: Int
+    
     var body: some View {
-        ActivityIndicator()
+        VStack {
+            ActivityIndicator()
+            ProgressView(value: Double(loaded) / Double(totalCount), total: 1)
+            Text("Downloading \(loaded) of \(totalCount) time entries...")
+            
+        }
+            .padding()
             .modifier(FullscreenModifier())
     }
 }

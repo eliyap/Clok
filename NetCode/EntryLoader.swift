@@ -13,12 +13,23 @@ import CoreData
 final class EntryLoader: ObservableObject {
     private var loader: AnyCancellable? = nil
     
+    @Published var loading = false
+    @Published var totalCount = 0
+    @Published var loaded = 0
+    
     func fetchEntries(
         range: DateRange,
         user: User,
         projects: [Project],
-        context: NSManagedObjectContext
+        context: NSManagedObjectContext,
+        initialLogin: Bool = false
     ) -> Void {
+        if initialLogin {
+            /// begin loading animations
+            loading = true
+        }
+        
+        
         // assemble request URL (page is added later)
         let df = DateFormatter()
         df.dateFormat = "yyyy-MM-dd" // ISO 8601 format, day precision
@@ -75,6 +86,9 @@ final class EntryLoader: ObservableObject {
                     context.delete(deletedEntry)
                 }
                 try! context.save()
+                
+                /// loading complete!
+                self.loading = false
             })
     }
 }

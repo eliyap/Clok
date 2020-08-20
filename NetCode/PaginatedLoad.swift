@@ -63,12 +63,26 @@ extension EntryLoader {
             .flatMap({ pageNo in
                 return self.loadPage(pageNo: pageNo, api_string: api_string, auth: auth)
             })
+            /// publish updates on main thread
+            .receive(on: DispatchQueue.main)
+            .handleEvents( receiveOutput: { (report, pageNo) in
+                /// report the expected total entries
+                self.totalCount = report.totalCount
+                
+                /// calculate total number of loaded entries so far
+                let loaded = (pageNo - 1) * togglPageSize + report.entries.count
+                self.loaded = loaded
+                
+            })
+            /// send back to background thread
+            .receive(on: DispatchQueue.global(qos: .background))
             .handleEvents(receiveOutput: { (report, pageNo) in
+                let loaded = (pageNo - 1) * togglPageSize + report.entries.count
                 guard
                     /// if request yielded no entries, terminate
                     report.entries.count != 0,
                     /// if `totalCount` has been met, terminate
-                    report.totalCount > (pageNo - 1) * togglPageSize + report.entries.count
+                    report.totalCount > loaded
                 else {
                     pageIndexPublisher.send(completion: .finished)
                     return
