@@ -83,7 +83,8 @@ struct LoginView: View {
     func loadEntriesOnLogin(user: User) -> Void {
         entryLoader.fetchEntries(
             range: (
-                start: Date(timeIntervalSince1970: 0),
+                /// grab a year's worth of work (should be enough for most users)
+                start: Date() - (.day * 365),
                 end: Date()
             ),
             user: user,
