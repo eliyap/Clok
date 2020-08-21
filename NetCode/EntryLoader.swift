@@ -13,7 +13,19 @@ import CoreData
 final class EntryLoader: ObservableObject {
     private var loader: AnyCancellable? = nil
     
-    @Published var loading = false
+    /// represents the state of the `EntryLoader`
+    enum LoadState: Int {
+        /// data is finished loading
+        case finished
+        
+        /// short load for 1 week
+        case loadingBriefly
+        
+        /// performing a long load at initial login
+        case loadingLengthy
+    }
+    
+    @Published var state = LoadState.finished
     @Published var totalCount = 0
     @Published var loaded = 0
     
@@ -24,11 +36,9 @@ final class EntryLoader: ObservableObject {
         context: NSManagedObjectContext,
         initialLogin: Bool = false
     ) -> Void {
-        if initialLogin {
-            /// begin loading animations
-            loading = true
-        }
-        
+        /// begin loading animations
+        state = initialLogin ? .loadingLengthy : .loadingBriefly
+
         
         // assemble request URL (page is added later)
         let df = DateFormatter()
@@ -88,7 +98,7 @@ final class EntryLoader: ObservableObject {
                 try! context.save()
                 
                 /// loading complete!
-                self.loading = false
+                self.state = .finished
             })
     }
 }

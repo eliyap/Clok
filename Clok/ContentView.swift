@@ -26,7 +26,7 @@ struct ContentView: View {
         /// ZStack replaces `fullScreenCover`, which was not flexible enough for my needs
         ZStack {
             OrientationView()
-            if entryLoader.loading {
+            if entryLoader.state == .loadingLengthy {
                 ProgressIndicator(
                     loaded: $entryLoader.loaded,
                     totalCount: $entryLoader.totalCount
