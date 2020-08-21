@@ -44,6 +44,7 @@ struct CurrentTimeIndicator: View {
         .onReceive(timer) { date in
             self.date = date
         }
+        .transition(.opacity)
     }
     
     private var offset: CGFloat {
