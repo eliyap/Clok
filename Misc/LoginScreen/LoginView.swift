@@ -78,10 +78,9 @@ struct LoginView: View {
         }
     }
     
-    #warning("365 not 14")
     /**
-     On first login, execute a special call that fetches projects and many weeks of entries.
-     This helps ensure the user won't encounter a lot of blank screens
+     On first login, execute a special call that fetches `User`'s projects and many weeks of entries.
+     This helps ensure the user won't encounter a lot of blank screens.
      */
     func fetchOnLogin(user: User) -> Void {
         /// request projects
@@ -100,7 +99,5 @@ struct LoginView: View {
                 initialLogin: true
             )
         }
-        
     }
-    
 }

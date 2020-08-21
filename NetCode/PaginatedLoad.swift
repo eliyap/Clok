@@ -72,7 +72,6 @@ extension EntryLoader {
                 /// calculate total number of loaded entries so far
                 let loaded = (pageNo - 1) * togglPageSize + report.entries.count
                 self.loaded = loaded
-                
             })
             /// send back to background thread
             .receive(on: DispatchQueue.global(qos: .background))
