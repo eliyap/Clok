@@ -8,6 +8,10 @@
 
 import SwiftUI
 
+/// an extremely rough estimate of the usual height `TimeIndicator` will take up,
+/// so that it's `widthHelper` has a better estimate of the true `dayHeight`
+fileprivate let timeIndicatorHeightEstimate = 100
+
 struct GraphView: View {
     
     @EnvironmentObject private var bounds: Bounds
@@ -15,17 +19,19 @@ struct GraphView: View {
     @EnvironmentObject var model: GraphModel
     
     var body: some View {
-        VStack(spacing: .zero) {
-            /// 1000 is a meaningless placeholder height
-            DateIndicator(dayHeight: 1000)
-            GeometryReader { geo in
-                ZStack(alignment: .bottomLeading) {
-                    DayScroll(size: geo.size)
-                    GraphButtons()
+        GeometryReader { outer in
+            VStack(spacing: .zero) {
+                /// 1000 is a meaningless placeholder height
+                DateIndicator(dayHeight: outer.size.height * zero.zoomLevel - timeIndicatorHeightEstimate)
+                GeometryReader { geo in
+                    ZStack(alignment: .bottomLeading) {
+                        DayScroll(size: geo.size)
+                        GraphButtons()
+                    }
                 }
+                /// allow graph to consume maximum height
+                .layoutPriority(1)
             }
-            /// allow graph to consume maximum height
-            .layoutPriority(1)
         }
     }
     
