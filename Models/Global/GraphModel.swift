@@ -9,10 +9,17 @@
 import Foundation
 
 final class GraphModel: ObservableObject {
-    @Published var mode: Mode = .calendar
+    
+    init(){
+        /// load mode from UserDefaults
+        self.mode = GraphModel.Mode(rawValue: WorkspaceManager.graphMode)
+            ?? .calendar
+    }
+    
+    @Published var mode: Mode
     
     /// what form this view is adopting
-    enum Mode {
+    enum Mode: Int {
         case calendar
         case graph
         

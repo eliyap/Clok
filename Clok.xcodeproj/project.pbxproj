@@ -26,6 +26,9 @@
 		22283DA624DF9EFA005AC0F3 /* GraphButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22283DA524DF9EFA005AC0F3 /* GraphButtons.swift */; };
 		22283DA824DFA166005AC0F3 /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22283DA724DFA166005AC0F3 /* FilterView.swift */; };
 		22283DAA24DFA27D005AC0F3 /* SearchTerms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22283DA924DFA27D005AC0F3 /* SearchTerms.swift */; };
+		2229D7A424EF5C41004E1034 /* WorkspaceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264CB3024AD250600ECBF2B /* WorkspaceManager.swift */; };
+		2229D7A524EF5C4C004E1034 /* GraphModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22283DA124DF9CE0005AC0F3 /* GraphModel.swift */; };
+		2229D7A624EF5C55004E1034 /* TimeIntervalExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69F02772496AFA200D1C650 /* TimeIntervalExtension.swift */; };
 		222D992624BAB2FD00F66E0F /* DecoderExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D992524BAB2FD00F66E0F /* DecoderExtension.swift */; };
 		222D996324BB803800F66E0F /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D996224BB803800F66E0F /* Report.swift */; };
 		22351B0024D37F3C00E14DBC /* Run.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22351AFF24D37F3C00E14DBC /* Run.swift */; };
@@ -85,7 +88,6 @@
 		22B0783D24B1630800256EB8 /* BackgroundRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B0783C24B1630800256EB8 /* BackgroundRequest.swift */; };
 		22B0783E24B166DE00256EB8 /* BackgroundRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B0783C24B1630800256EB8 /* BackgroundRequest.swift */; };
 		22B0783F24B1795300256EB8 /* APIKeyHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221D963B24A912B900C84F57 /* APIKeyHandler.swift */; };
-		22B0784024B17AD200256EB8 /* WorkspaceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264CB3024AD250600ECBF2B /* WorkspaceManager.swift */; };
 		22B0784224B17BEC00256EB8 /* RunningEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B0784124B17BEC00256EB8 /* RunningEntry.swift */; };
 		22B0784324B17BED00256EB8 /* RunningEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B0784124B17BEC00256EB8 /* RunningEntry.swift */; };
 		22B0784424B17CC000256EB8 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67F47D2249FD44500FD2E6E /* Project.swift */; };
@@ -828,11 +830,13 @@
 				2238640324BBC6980041886B /* DoubleExtension.swift in Sources */,
 				22B0783924B1519D00256EB8 /* NetworkError.swift in Sources */,
 				22DC869B24BA7A5E00FF771F /* TimeEntryModel.xcdatamodeld in Sources */,
+				2229D7A624EF5C55004E1034 /* TimeIntervalExtension.swift in Sources */,
 				22B0783324B150C300256EB8 /* FormRequest.swift in Sources */,
 				22B0783E24B166DE00256EB8 /* BackgroundRequest.swift in Sources */,
+				2229D7A424EF5C41004E1034 /* WorkspaceManager.swift in Sources */,
 				22B0783624B1513A00256EB8 /* User.swift in Sources */,
+				2229D7A524EF5C4C004E1034 /* GraphModel.swift in Sources */,
 				22B0784324B17BED00256EB8 /* RunningEntry.swift in Sources */,
-				22B0784024B17AD200256EB8 /* WorkspaceManager.swift in Sources */,
 				22AD5F8724B1467E006EF7FB /* ClokWidget.intentdefinition in Sources */,
 				22B0784A24B262FA00256EB8 /* Timeline.swift in Sources */,
 				22A2CE2F24E59F8B000820AD /* ColorHex.swift in Sources */,

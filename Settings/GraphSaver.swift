@@ -12,7 +12,10 @@ import Combine
 /// Plugs my `EnvironmentObject`s publishers into UserDefaults
 final class PrefSaver: ObservableObject {
     
-    init(zero: ZeroDate){
+    init(
+        zero: ZeroDate,
+        model: GraphModel
+    ){
         /// save start date to User Defaults
         self.startSaver = zero.$start
             /// debounce to limit the rate we hit User Defaults
@@ -34,8 +37,17 @@ final class PrefSaver: ObservableObject {
             .sink { index in
                 WorkspaceManager.zoomIdx = index
             }
+        self.modeSaver = model.$mode
+            .debounce(
+                for: .seconds(1),
+                scheduler: RunLoop.main
+            )
+            .sink { mode in
+                WorkspaceManager.graphMode = mode.rawValue
+            }
     }
     
     var startSaver: AnyCancellable?
     var zoomSaver: AnyCancellable?
+    var modeSaver: AnyCancellable?
 }

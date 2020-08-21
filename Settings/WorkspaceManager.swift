@@ -107,4 +107,20 @@ struct WorkspaceManager {
             suite?.set(newValue, forKey: startKey)
         }
     }
+    
+    // MARK:- Graph Mode
+    static let graphModeKey = "graphMode"
+    /**
+     what mode our `GraphView` is in
+     */
+    static var graphMode: Int {
+        get {
+            suite?.object(forKey: graphModeKey) as? Int
+                /// default index of 0
+                ?? GraphModel.Mode.calendar.rawValue
+        }
+        set {
+            suite?.set(newValue, forKey: graphModeKey)
+        }
+    }
 }

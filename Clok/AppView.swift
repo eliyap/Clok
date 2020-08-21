@@ -44,8 +44,8 @@ struct ClokApp: App {
         /// pull `User` from KeyChain
         cred = Credentials(user: loadCredentials())
         
-        /// attach `ZeroDate` to UserDefaults
-        saver = PrefSaver(zero: zero)
+        /// attach Publishers to UserDefaults
+        saver = PrefSaver(zero: zero, model: model)
     }
     
     
