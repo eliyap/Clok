@@ -20,6 +20,7 @@ struct SearchTerms {
     /// included projects (including `noProject`)
     var projects: [ProjectLike] = [StaticProject.any]
     
+    /// code stub for tag sorting
     var tags: [Any] {
         fatalError("Tag system not yet implemented")
     }
