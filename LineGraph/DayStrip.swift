@@ -28,10 +28,7 @@ struct DayStrip: View {
                         EntryRect(
                             range: ($0.start, $0.end),
                             size: geo.size,
-                            midnight: midnight,
-                            castFwrd: model.castFwrd,
-                            castBack: model.castBack,
-                            days: model.days
+                            midnight: midnight
                         )
                         .padding(.top, padding(for: $0, size: geo.size))
                         .foregroundColor($0.wrappedColor)

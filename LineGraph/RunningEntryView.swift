@@ -30,10 +30,7 @@ struct RunningEntryView: View {
                 EntryRect(
                     range: (running.start, Date()),
                     size: geo.size,
-                    midnight: Date().midnight,
-                    castFwrd: model.castFwrd,
-                    castBack: model.castBack,
-                    days: model.days
+                    midnight: Date().midnight
                 )
                     .foregroundColor(running.project.wrappedColor)
                     .offset(y: offset(size: geo.size))
