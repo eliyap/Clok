@@ -22,6 +22,7 @@ final class ProjectLoader: ObservableObject {
         completion: (([Project]) -> Void)? = nil
     ) -> Void {
         loader = ProjectLoader.projectPublisher(user: user)
+            .receive(on: DispatchQueue.main)
             .sink { (rawProjects: [RawProject]) in
                 let projects = loadProjects(context: context) ?? []
                 rawProjects.forEach { rawProject in
@@ -65,7 +66,6 @@ final class ProjectLoader: ObservableObject {
             )
             /// discard array on error
             .replaceError(with: [])
-            .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
     }
 }
