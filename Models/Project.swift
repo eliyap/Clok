@@ -43,6 +43,14 @@ class StaticProject: ProjectLike {
         wrappedID = id
         wrappedColor = color
     }
+}
+
+/**
+ `StaticProject`s identify special project cases, and are not stored in Core Data
+ */
+extension StaticProject {
+    
+    static let all = [noProject, unknown, any]
     
     static let noProject = StaticProject(
         name: "No Project",
