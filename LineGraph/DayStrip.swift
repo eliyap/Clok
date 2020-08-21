@@ -20,23 +20,22 @@ struct DayStrip: View {
     let midnight: Date
     let terms: SearchTerms
     
-    /// determines what proportion of available horizontal space to consume
-    private let thicc = CGFloat(0.8)
-    private let cornerScale = CGFloat(1.0/18.0)
-    
     var body: some View {
         GeometryReader { geo in
             ZStack(alignment: .top) {
                 VStack(alignment: .center, spacing: .zero) {
                     ForEach(entries, id: \.id) {
-                        RoundedRectangle(cornerRadius: geo.size.width * cornerScale) /// adapt scale to taste
-                            .frame(
-                                width: geo.size.width * thicc,
-                                height: height(size: geo.size, entry: $0)
-                            )
-                            .foregroundColor($0.wrappedColor)
-                            .padding(.top, padding(for: $0, size: geo.size))
-                            .opacity($0.matches(terms) ? 1 : 0.5)
+                        EntryRect(
+                            range: ($0.start, $0.end),
+                            size: geo.size,
+                            midnight: midnight,
+                            castFwrd: model.castFwrd,
+                            castBack: model.castBack,
+                            days: model.days
+                        )
+                        .padding(.top, padding(for: $0, size: geo.size))
+                        .foregroundColor($0.wrappedColor)
+                        .opacity($0.matches(terms) ? 1 : 0.5)
                     }
                 }
                 .frame(width: geo.size.width)
@@ -45,19 +44,10 @@ struct DayStrip: View {
                 /// show current time in `calendar` mode
                 if midnight == Date().midnight && model.mode == .calendar {
                     CurrentTimeIndicator(height: geo.size.height)
-                    RunningEntryView()
+                    RunningEntryView(terms: terms)
                 }
             }
         }
-    }
-    
-    /**
-     Calculate the appropriate height for a time entry.
-     */
-    func height(size: CGSize, entry: TimeEntry) -> CGFloat {
-        let start = max(entry.start, midnight - model.castBack)
-        let end = min(entry.end, midnight + model.castFwrd)
-        return size.height * CGFloat((end - start) / (.day * model.days))
     }
     
     /// calculate appropriate distance to next `entry`
