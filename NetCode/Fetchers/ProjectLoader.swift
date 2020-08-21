@@ -17,13 +17,10 @@ final class ProjectLoader: ObservableObject {
      Use Combine to make an async network request for all the User's `Project`s
      */
     func fetchProjects(
-        user: User?,
+        user: User,
         context: NSManagedObjectContext,
         completion: (([Project]) -> Void)? = nil
     ) -> Void {
-        /// abort if user is not logged in
-        guard let user = user else { return }
-        
         /// API URL documentation:
         /// https://github.com/toggl/toggl_api_docs/blob/master/chapters/workspaces.md#get-workspace-projects
         let request = formRequest(
