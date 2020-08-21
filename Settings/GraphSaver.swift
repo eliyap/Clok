@@ -9,8 +9,8 @@
 import Foundation
 import Combine
 
-/// Plugs my `EnvironmentObject` publisher into UserDefaults
-final class GraphSaver: ObservableObject {
+/// Plugs my `EnvironmentObject`s publishers into UserDefaults
+final class PrefSaver: ObservableObject {
     
     init(zero: ZeroDate){
         /// save start date to User Defaults

@@ -23,7 +23,7 @@ struct ClokApp: App {
     /// other stuff
     let entryLoader = EntryLoader()
     let projectLoader = ProjectLoader()
-    let saver: GraphSaver
+    let saver: PrefSaver
     
     var persistentContainer: NSPersistentContainer
     
@@ -45,7 +45,7 @@ struct ClokApp: App {
         cred = Credentials(user: loadCredentials())
         
         /// attach `ZeroDate` to UserDefaults
-        saver = GraphSaver(zero: zero)
+        saver = PrefSaver(zero: zero)
     }
     
     
