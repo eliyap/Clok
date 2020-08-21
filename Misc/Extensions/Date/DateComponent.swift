@@ -15,14 +15,12 @@ extension Date {
     var minute: Int {
         Calendar.current.component(.minute, from: self)
     }
-    
     var hour: Int {
         Calendar.current.component(.hour, from: self)
     }
     var month: Int {
         Calendar.current.component(.month, from: self)
     }
-    
     var year: Int {
         Calendar.current.component(.year, from: self)
     }
