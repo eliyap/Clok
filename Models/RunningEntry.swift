@@ -8,25 +8,6 @@
 
 import Foundation
 import SwiftUI
-import CoreData
-
-fileprivate struct RawRunningEntry: Decodable {
-    /// wrapped in a `data` tag, for some reason
-    let data: WrappedEntry
-    
-    struct WrappedEntry: Decodable {
-        let id: Int
-        let pid: Int
-        let wid: Int
-        let billable: Bool
-        let start: Date
-        let duration: TimeInterval
-        let description: String
-        
-        /// not sure what this represents, probably update / creation timestamp
-        let at: Date
-    }
-}
 
 struct RunningEntry: Equatable {
 
@@ -43,7 +24,9 @@ struct RunningEntry: Equatable {
         self.description = description
     }
     
-    // parse from JSON
+    
+    
+    // parse from JSON for Widget
     init?(from data: [String : AnyObject], project: ProjectLike){
         // initialize DateFormatter to handle ISO8601 strings
         df.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"

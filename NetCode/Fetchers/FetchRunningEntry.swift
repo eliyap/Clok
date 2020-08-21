@@ -23,8 +23,8 @@ final class RunningEntryLoader: ObservableObject {
             url: runningURL,
             auth: auth(token: user.token)
         ))
-        .map(dataTaskMonitor)
-        .decode(type: RunningEntry.self, decoder: JSONDecoder(dateStrategy: .iso8601))
+//        .map(dataTaskMonitor)
+//        .decode(type: RunningEntry.self, decoder: JSONDecoder(dateStrategy: .iso8601))
     }
     
 }
