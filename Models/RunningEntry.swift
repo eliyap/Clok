@@ -17,14 +17,6 @@ struct RunningEntry: Equatable {
     let description: String // not nullable
     let df = DateFormatter()
     
-    /// signals that no entry is currently running
-    static let noEntry = RunningEntry(
-        id: NSNotFound,
-        start: Date.distantFuture,
-        project: StaticProject.noProject,
-        description: "No Entry Running"
-    )
-    
     private init(id: Int, start: Date, project: ProjectLike, description: String){
         self.id = id
         self.start = start
@@ -75,4 +67,14 @@ struct RunningEntry: Equatable {
             lhs.start == rhs.start &&
             lhs.description == rhs.description
        }
+}
+
+extension RunningEntry {
+    /// signals that no entry is currently running
+    static let noEntry = RunningEntry(
+        id: NSNotFound,
+        start: Date.distantFuture,
+        project: StaticProject.noProject,
+        description: "No Entry Running"
+    )
 }
