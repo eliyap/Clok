@@ -10,7 +10,7 @@ import SwiftUI
 
 /// an extremely rough estimate of the usual height `TimeIndicator` will take up,
 /// so that it's `widthHelper` has a better estimate of the true `dayHeight`
-fileprivate let timeIndicatorHeightEstimate = 100
+fileprivate let timeIndicatorHeightEstimate = CGFloat(100)
 
 struct GraphView: View {
     
