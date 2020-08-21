@@ -13,11 +13,14 @@ import Combine
 fileprivate let interval = TimeInterval(10)
 
 struct RunningEntryView: View {
+    
     @EnvironmentObject var cred: Credentials
     @EnvironmentObject var model: GraphModel
     @Environment(\.managedObjectContext) var moc
+    
     @FetchRequest(entity: Project.entity(), sortDescriptors: []) var projects: FetchedResults<Project>
     
+    /// manage the auto updating
     let timer = Timer.publish(every: interval, on: .main, in: .common).autoconnect()
     @State var running: RunningEntry? = nil
     @State var cancellable: AnyCancellable? = nil
@@ -58,6 +61,9 @@ struct RunningEntryView: View {
     
     func loadRunning() -> Void {
         guard let user = cred.user else { return }
+        #if DEBUG
+        print("Fetching running timer")
+        #endif
         cancellable = RunningEntryLoader().fetchRunningEntry(
             user: user,
             projects: Array(projects),
