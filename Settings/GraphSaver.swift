@@ -14,7 +14,8 @@ final class PrefSaver: ObservableObject {
     
     init(
         zero: ZeroDate,
-        model: GraphModel
+        model: GraphModel,
+        data: TimeData
     ){
         /// save start date to User Defaults
         self.startSaver = zero.$start
@@ -45,9 +46,23 @@ final class PrefSaver: ObservableObject {
             .sink { mode in
                 WorkspaceManager.graphMode = mode.rawValue
             }
+        self.projectsSaver = data.$terms
+            .debounce(
+                for: .seconds(1),
+                scheduler: RunLoop.main
+            )
+            .map { terms in
+                terms.projects.map { project in
+                    project.wrappedID
+                }
+            }
+            .sink { ids in
+                WorkspaceManager.termsProjects = ids
+            }
     }
     
     var startSaver: AnyCancellable?
     var zoomSaver: AnyCancellable?
     var modeSaver: AnyCancellable?
+    var projectsSaver: AnyCancellable?
 }

@@ -45,7 +45,7 @@ struct ClokApp: App {
         cred = Credentials(user: loadCredentials())
         
         /// attach Publishers to UserDefaults
-        saver = PrefSaver(zero: zero, model: model)
+        saver = PrefSaver(zero: zero, model: model, data: data)
     }
     
     

@@ -47,14 +47,14 @@ class StaticProject: ProjectLike {
     static let noProject = StaticProject(
         name: "No Project",
         color: Color.noProject,
-        id: NSNotFound
+        id: NSNotFound /// just a random named number
     )
 
     /// should not appear, represents a project that could not be fetched from our data base
     static let unknown = StaticProject(
         name: "Unknown Project",
         color: Color.noProject,
-        id: NSNotFound
+        id: NS_UnknownByteOrder /// just a random named number
     )
     
     static let any = StaticProject(

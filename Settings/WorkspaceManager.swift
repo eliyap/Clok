@@ -21,8 +21,7 @@ struct WorkspaceManager {
     static let suite = UserDefaults(suiteName: suiteName)
     
     // MARK:- All Workspaces
-    
-    static let spacesKey = "Clok.WorkspaceIDs"
+    private static let spacesKey = "Clok.WorkspaceIDs"
     /// user's stored `Workspace`s
     static var workspaces: [Workspace]? {
         get {
@@ -42,8 +41,7 @@ struct WorkspaceManager {
     }
     
     // MARK:- Chosen Workspace
-    
-    static let spaceChosenKey = "Clok.ChosenID"
+    private static let spaceChosenKey = "Clok.ChosenID"
     /// user's chosen `Workspace`
     static var chosenWorkspace: Workspace? {
         get {
@@ -63,8 +61,7 @@ struct WorkspaceManager {
     }
     
     // MARK:- Weekday
-    
-    static let firstDayOfWeekKey = "firstDayOfWeek"
+    private static let firstDayOfWeekKey = "firstDayOfWeek"
     /**
      user's chosen firstDayOfWeek
      */
@@ -80,7 +77,7 @@ struct WorkspaceManager {
     }
     
     // MARK:- Bar Zoom Level
-    static let zoomKey = "barZoomLevel"
+    private static let zoomKey = "barZoomLevel"
     /**
      how much to scale (or zoom) the `GraphView`
      */
@@ -96,7 +93,7 @@ struct WorkspaceManager {
     }
     
     // MARK:- Zero Start Date
-    static let startKey = "zeroStart"
+    private static let startKey = "zeroStart"
     static var zeroStart: Date {
         get {
             suite?.object(forKey: startKey) as? Date
@@ -109,7 +106,7 @@ struct WorkspaceManager {
     }
     
     // MARK:- Graph Mode
-    static let graphModeKey = "graphMode"
+    private static let graphModeKey = "graphMode"
     /**
      what mode our `GraphView` is in
      */
@@ -121,6 +118,22 @@ struct WorkspaceManager {
         }
         set {
             suite?.set(newValue, forKey: graphModeKey)
+        }
+    }
+    
+    // MARK:- Search Terms Projects
+    private static let termsProjectsKey = "termsProjects"
+    /**
+     stores the `Project` ID's user was searching for
+     */
+    static var termsProjects: [Int] {
+        get {
+            suite?.object(forKey: termsProjectsKey) as? [Int]
+                /// default no projects
+                ?? []
+        }
+        set {
+            suite?.set(newValue, forKey: termsProjectsKey)
         }
     }
 }
