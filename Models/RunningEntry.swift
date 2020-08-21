@@ -12,9 +12,10 @@ import SwiftUI
 struct RunningEntry: Equatable {
 
     let id: Int
-    let start: Date // needs to be coerced from ISO 8601 date / time format (YYYY - MM - DDTHH: MM: SS)
-    let project: ProjectLike
-    let description: String // not nullable
+    var pid: Int = NSNotFound
+    let start: Date
+    var project: ProjectLike
+    let description: String
     let df = DateFormatter()
     
     private init(id: Int, start: Date, project: ProjectLike, description: String){

@@ -7,6 +7,11 @@
 //
 import Foundation
 
+/** **NOTE**
+ This file contains a parallel decoding of RawRunningEntry that does *not* build for Widget,
+ as that created lots of import issues.
+ */
+
 fileprivate struct RawRunningEntry: Decodable {
     /// wrapped in a `data` tag, for some reason
     let data: WrappedEntry
@@ -28,7 +33,16 @@ fileprivate struct RawRunningEntry: Decodable {
 extension RunningEntry {
     init(data: Data, projects: [Project]) throws {
         let decoder = JSONDecoder(dateStrategy: .iso8601)
-        let rawRunningEntry = try decoder.decode(RawRunningEntry.self, from: data)
-        
+        let rawRunningEntry = try decoder.decode(RawRunningEntry.self, from: data).data
+        id = rawRunningEntry.id
+        start = rawRunningEntry.start
+        description = rawRunningEntry.description
+        pid = rawRunningEntry.pid
+        /**
+         Since data comes from Toggl, `Project` should always be a valid project.
+         If we cannot find the project in our system, mark it as unknown and try to pull it later.
+         */
+        project = projects.first(where: {$0.id == rawRunningEntry.pid})
+            ?? StaticProject.unknown
     }
 }
