@@ -66,11 +66,12 @@ struct DayStrip: View {
         let idx = entries.firstIndex(of: entry)!
         guard entry != entries.first else {
             switch model.mode {
+            /// if `entry` is cut off by the top of the graph, make it flush with the top, otherwise apply appropriate padding
             case .calendar:
-                /// if `entry` is cut off by the top of the graph, make it flush with the top, otherwise apply appropriate padding
                 return entry.start < midnight - model.castBack
                     ? .zero
                     : CGFloat(entry.start - (midnight - model.castBack)) * scale
+            /// push the bar graph down to the bottom of the screen
             case .graph:
                 let begin = midnight - model.castBack
                 let end = midnight + model.castFwrd
@@ -83,6 +84,7 @@ struct DayStrip: View {
         switch model.mode {
         case .calendar:
             return CGFloat(entries[idx].start - entries[idx - 1].end) * scale
+        /// no spacing neccessary
         case .graph:
             return .zero
         }
