@@ -14,6 +14,7 @@ import SwiftUI
 struct CurrentTimeIndicator: View {
     
     @EnvironmentObject var model: GraphModel
+    @EnvironmentObject var bounds: Bounds
     
     /// update this view every minute
     @State var date = Date()
@@ -24,7 +25,7 @@ struct CurrentTimeIndicator: View {
     let radius: CGFloat = 7
     
     var body: some View {
-        VStack(alignment: .trailing) {
+        VStack(alignment: .center) {
             HStack(alignment: .center, spacing: .zero) {
                 Circle()
                     .foregroundColor(.red)
@@ -34,9 +35,11 @@ struct CurrentTimeIndicator: View {
                     .frame(height: 1)
             }
             Text(time)
-                .font(.system(.caption, design: .monospaced))
+                .font( bounds.device == .iPhone
+                    ? Font.system(.caption2, design: .monospaced)
+                    : Font.system(.caption, design: .monospaced)
+                )
                 .foregroundColor(.red)
-                .padding(.trailing, radius)
         }
         /// allow the circle to bleed into the margin
         /// also nudge view upwards, ignoring the top half of the semi-circle
