@@ -39,7 +39,8 @@ struct CurrentTimeIndicator: View {
                 .padding(.trailing, radius)
         }
         /// allow the circle to bleed into the margin
-        .padding(.leading, -radius / 2)
+        /// also nudge view upwards, ignoring the top half of the semi-circle
+        .padding([.leading, .top], -radius / 2)
         .offset(y: offset)
         .onReceive(timer) { date in
             self.date = date
