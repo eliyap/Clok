@@ -47,11 +47,6 @@ struct GraphView: View {
                     .drawingGroup()
                     /// immediately center on white day area
                     .onAppear{ proxy.scrollTo(0, anchor: .center) }
-                    .onReceive(model.$mode){ _ in
-                        withAnimation {
-                            proxy.scrollTo(0, anchor: .center)
-                        }
-                    }
             }
         }
     }
