@@ -43,16 +43,16 @@ struct BarTabs: View {
     }
     
     var WeekTitle: some View {
-        if bounds.device == .iPhone && bounds.mode == .portrait {
-            return Text(zero.weekString)
-                .font(.title2)
-                .bold()
-                .padding(.top, listPadding / 2)
-        } else {
-            return Text(zero.weekString)
-                .font(.title)
-                .bold()
-                .padding(.top, listPadding)
-        }
+        let condition = bounds.device == .iPhone && bounds.mode == .portrait
+        return Text(zero.weekString)
+            .font(condition
+                    ? Font.title2
+                    : Font.title
+            )
+            .bold()
+            .padding(.top, condition
+                        ? listPadding / 2
+                        : listPadding
+            )
     }
 }
