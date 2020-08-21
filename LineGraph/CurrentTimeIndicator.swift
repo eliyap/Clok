@@ -17,7 +17,7 @@ struct CurrentTimeIndicator: View {
     
     /// update this view every minute
     @State var date = Date()
-    let timer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
+    let timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
     
     let height: CGFloat
     let df = DateFormatter()
