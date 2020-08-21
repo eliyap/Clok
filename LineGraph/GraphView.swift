@@ -13,6 +13,7 @@ struct GraphView: View {
     @EnvironmentObject private var bounds: Bounds
     @EnvironmentObject private var zero: ZeroDate
     @EnvironmentObject var model: GraphModel
+    
     var body: some View {
         VStack(spacing: .zero) {
             /// 1000 is a meaningless placeholder height
