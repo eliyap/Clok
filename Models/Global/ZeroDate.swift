@@ -103,7 +103,22 @@ extension ZeroDate {
     var weekString: String {
         let df = DateFormatter()
         df.setLocalizedDateFormatFromTemplate("MMMdd")
-        /// slightly adjust `end` so that it falls before midnight, into the previous day
-        return "\(df.string(from: start)) – \(df.string(from: end - 1))"
+        
+        var startDate = df.string(from: start)
+        var endDate = df.string(from: end)
+        
+        switch (start.year, end.year, Date().year) {
+        /// if year differs from current year, append year
+        case let (s, e, c) where s == e && s != c:
+            endDate += " \(e)"
+        /// if years differ, append both
+        case let (s, e, _) where s != e:
+            startDate += " \(s)"
+            endDate += " \(e)"
+        default:
+            break
+        }
+        
+        return startDate + " – " + endDate
     }
 }
