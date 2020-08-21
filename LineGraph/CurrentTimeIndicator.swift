@@ -41,6 +41,9 @@ struct CurrentTimeIndicator: View {
         /// allow the circle to bleed into the margin
         .padding(.leading, -radius / 2)
         .offset(y: offset)
+        .onReceive(timer) { date in
+            self.date = date
+        }
     }
     
     private var offset: CGFloat {
