@@ -27,32 +27,41 @@ struct RunningEntryView: View {
     var body: some View {
         GeometryReader { geo in
             if let running = running {
-                VStack {
-                    Text(running.description)
-                    Text(running.project.name)
-                    EntryRect(
-                        range: (running.start, Date()),
-                        size: geo.size,
-                        midnight: Date().midnight,
-                        castFwrd: model.castFwrd,
-                        castBack: model.castBack,
-                        days: model.days
-                    )
-                }
+                EntryRect(
+                    range: (running.start, Date()),
+                    size: geo.size,
+                    midnight: Date().midnight,
+                    castFwrd: model.castFwrd,
+                    castBack: model.castBack,
+                    days: model.days
+                )
+                    .foregroundColor(running.project.wrappedColor)
+                    .offset(y: offset(size: geo.size))
+                    /// placeholder styling
+                    .opacity(0.5)
+            
             } else {
                 EmptyView()
             }
-            
         }
-        
-            .onReceive(timer) { _ in
-                guard let user = cred.user else { return }
-                cancellable = RunningEntryLoader().fetchRunningEntry(
-                    user: user,
-                    projects: Array(projects),
-                    context: moc
-                )
-                .assign(to: \.running, on: self)
-            }
+            .onReceive(timer) { _ in loadRunning() }
+            .onAppear(perform: loadRunning)
+    }
+    
+    /// calculate appropriate distance to next `entry`
+    func offset(size: CGSize) -> CGFloat {
+        let scale = size.height / CGFloat(.day * model.days)
+        guard let running = running else { return .zero }
+        return CGFloat(max(running.start - (Date().midnight - model.castBack), .zero)) * scale
+    }
+    
+    func loadRunning() -> Void {
+        guard let user = cred.user else { return }
+        cancellable = RunningEntryLoader().fetchRunningEntry(
+            user: user,
+            projects: Array(projects),
+            context: moc
+        )
+        .assign(to: \.running, on: self)
     }
 }
