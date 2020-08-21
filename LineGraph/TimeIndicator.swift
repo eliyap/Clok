@@ -51,14 +51,13 @@ struct TimeIndicator: View {
     
     /// format time according to user preference
     private func TimeLabel(interval: TimeInterval) -> some View {
-        let midnight = Calendar.current.startOfDay(for: Date())
         /// show time according to 24 hour format
         if divisions > 24 { /// enable minute resolution
             tf.setLocalizedDateFormatFromTemplate(is24hour() ? "HH:mm" : "h:mm a")
         } else {
             tf.setLocalizedDateFormatFromTemplate(is24hour() ? "HH" : "h a")
         }
-        var text = Text("\(tf.string(from: midnight + interval))")
+        var text = Text("\(tf.string(from: Date().midnight + interval))")
             .font(.footnote)
         /// midnight is specially bolded
         if interval.remainder(dividingBy: .day) == 0 {

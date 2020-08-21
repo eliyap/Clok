@@ -39,7 +39,7 @@ struct EntryList: View {
                     }
                 }
                 /// fuuuuuuutuuuuure
-                if zero.start >= Calendar.current.startOfDay(for: Date()) {
+                if zero.start >= Date().midnight {
                     Text("What does the future hold?")
                 }
             }

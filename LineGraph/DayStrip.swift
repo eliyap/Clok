@@ -26,20 +26,27 @@ struct DayStrip: View {
     
     var body: some View {
         GeometryReader { geo in
-            VStack(alignment: .center, spacing: .zero) {
-                ForEach(entries, id: \.id) {
-                    RoundedRectangle(cornerRadius: geo.size.width * cornerScale) /// adapt scale to taste
-                        .frame(
-                            width: geo.size.width * thicc,
-                            height: height(size: geo.size, entry: $0)
-                        )
-                        .foregroundColor($0.wrappedColor)
-                        .padding(.top, padding(for: $0, size: geo.size))
-                        .opacity($0.matches(terms) ? 1 : 0.5)
+            ZStack(alignment: .top) {
+                VStack(alignment: .center, spacing: .zero) {
+                    ForEach(entries, id: \.id) {
+                        RoundedRectangle(cornerRadius: geo.size.width * cornerScale) /// adapt scale to taste
+                            .frame(
+                                width: geo.size.width * thicc,
+                                height: height(size: geo.size, entry: $0)
+                            )
+                            .foregroundColor($0.wrappedColor)
+                            .padding(.top, padding(for: $0, size: geo.size))
+                            .opacity($0.matches(terms) ? 1 : 0.5)
+                    }
+                }
+                .frame(width: geo.size.width)
+                .drawingGroup()
+                
+                /// show current time in `calendar` mode
+                if midnight == Date().midnight && model.mode == .calendar {
+                    CurrentTimeIndicator(height: geo.size.height)
                 }
             }
-            .frame(width: geo.size.width)
-            .drawingGroup()
         }
     }
     
