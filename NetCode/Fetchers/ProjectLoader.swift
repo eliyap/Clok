@@ -21,23 +21,7 @@ final class ProjectLoader: ObservableObject {
         context: NSManagedObjectContext,
         completion: (([Project]) -> Void)? = nil
     ) -> Void {
-        /// API URL documentation:
-        /// https://github.com/toggl/toggl_api_docs/blob/master/chapters/workspaces.md#get-workspace-projects
-        let request = formRequest(
-            url: URL(string: "\(API_URL)/workspaces/\(user.chosen.wid)/projects?user_agent=\(user_agent)")!,
-            auth: auth(token: user.token)
-        )
-        
-        loader = URLSession.shared.dataTaskPublisher(for: request)
-            .map(dataTaskMonitor)
-            .decode(
-                type: [RawProject].self,
-                /// pass `managedObjectContext` to decoder so that a CoreData object can be created
-                decoder: JSONDecoder(dateStrategy: .iso8601)
-            )
-            /// discard array on error
-            .replaceError(with: [])
-            .receive(on: DispatchQueue.main)
+        loader = ProjectLoader.projectPublisher(user: user)
             .sink { (rawProjects: [RawProject]) in
                 let projects = loadProjects(context: context) ?? []
                 rawProjects.forEach { rawProject in
@@ -62,5 +46,26 @@ final class ProjectLoader: ObservableObject {
                     completion(projects)
                 }
             }
+    }
+    
+    static func projectPublisher(user: User) -> AnyPublisher<[RawProject], Never> {
+        /// API URL documentation:
+        /// https://github.com/toggl/toggl_api_docs/blob/master/chapters/workspaces.md#get-workspace-projects
+        let request = formRequest(
+            url: URL(string: "\(API_URL)/workspaces/\(user.chosen.wid)/projects?user_agent=\(user_agent)")!,
+            auth: auth(token: user.token)
+        )
+        
+        return URLSession.shared.dataTaskPublisher(for: request)
+            .map(dataTaskMonitor)
+            .decode(
+                type: [RawProject].self,
+                /// pass `managedObjectContext` to decoder so that a CoreData object can be created
+                decoder: JSONDecoder(dateStrategy: .iso8601)
+            )
+            /// discard array on error
+            .replaceError(with: [])
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
     }
 }
