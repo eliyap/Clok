@@ -31,6 +31,7 @@
 		2229D7A624EF5C55004E1034 /* TimeIntervalExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69F02772496AFA200D1C650 /* TimeIntervalExtension.swift */; };
 		2229D7A824EF6750004E1034 /* DateComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229D7A724EF6750004E1034 /* DateComponent.swift */; };
 		2229D7AA24EF6BDB004E1034 /* CurrentTimeIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229D7A924EF6BDB004E1034 /* CurrentTimeIndicator.swift */; };
+		2229D7AC24F0435B004E1034 /* RunningEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229D7AB24F0435B004E1034 /* RunningEntryView.swift */; };
 		222D992624BAB2FD00F66E0F /* DecoderExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D992524BAB2FD00F66E0F /* DecoderExtension.swift */; };
 		222D996324BB803800F66E0F /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D996224BB803800F66E0F /* Report.swift */; };
 		22351B0024D37F3C00E14DBC /* Run.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22351AFF24D37F3C00E14DBC /* Run.swift */; };
@@ -192,6 +193,7 @@
 		22283DA924DFA27D005AC0F3 /* SearchTerms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTerms.swift; sourceTree = "<group>"; };
 		2229D7A724EF6750004E1034 /* DateComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateComponent.swift; sourceTree = "<group>"; };
 		2229D7A924EF6BDB004E1034 /* CurrentTimeIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTimeIndicator.swift; sourceTree = "<group>"; };
+		2229D7AB24F0435B004E1034 /* RunningEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningEntryView.swift; sourceTree = "<group>"; };
 		222D992524BAB2FD00F66E0F /* DecoderExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderExtension.swift; sourceTree = "<group>"; };
 		222D996224BB803800F66E0F /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
 		22351AFF24D37F3C00E14DBC /* Run.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Run.swift; sourceTree = "<group>"; };
@@ -359,6 +361,7 @@
 				2207B21F24B954F40006748A /* GraphView.swift */,
 				225B044124B2A5FA00780424 /* LineGraphView.swift */,
 				22885DAD24DA13E500A56FE3 /* DayStrip.swift */,
+				2229D7AB24F0435B004E1034 /* RunningEntryView.swift */,
 				22905B8724DB449400D5AC09 /* LinedBackground.swift */,
 				2229D7A924EF6BDB004E1034 /* CurrentTimeIndicator.swift */,
 				22885DB124DA1E2E00A56FE3 /* TimeIndicator.swift */,
@@ -934,6 +937,7 @@
 				22A2CE3224E5A218000820AD /* CGPointOperators.swift in Sources */,
 				22283DA024DF9959005AC0F3 /* BarTabs.swift in Sources */,
 				C688BFCA24A18BF00077CECF /* RaisedShape.swift in Sources */,
+				2229D7AC24F0435B004E1034 /* RunningEntryView.swift in Sources */,
 				222305AE24AE807000711031 /* CustomTabView.swift in Sources */,
 				22928AC724A423AA00DC9EC5 /* ButtonGlyph.swift in Sources */,
 				22885DB224DA1E2E00A56FE3 /* TimeIndicator.swift in Sources */,
