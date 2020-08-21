@@ -26,20 +26,24 @@ struct RunningEntryView: View {
     
     var body: some View {
         GeometryReader { geo in
-            if let running = running {
-                EntryRect(
-                    range: (running.start, Date()),
-                    size: geo.size,
-                    midnight: Date().midnight
-                )
-                    .foregroundColor(running.project.wrappedColor)
-                    .offset(y: offset(size: geo.size))
-                    /// placeholder styling
-                    .opacity(0.5)
-            
-            } else {
-                EmptyView()
+            VStack(alignment: .center, spacing: .zero) {
+                if let running = running {
+                    EntryRect(
+                        range: (running.start, Date()),
+                        size: geo.size,
+                        midnight: Date().midnight
+                    )
+                        .foregroundColor(running.project.wrappedColor)
+                        .offset(y: offset(size: geo.size))
+                        /// placeholder styling
+                        .opacity(0.5)
+                
+                } else {
+                    EmptyView()
+                }
             }
+            .frame(width: geo.size.width)
+            
         }
             .onReceive(timer) { _ in loadRunning() }
             .onAppear(perform: loadRunning)
