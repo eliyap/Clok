@@ -8,10 +8,29 @@
 
 import Foundation
 import SwiftUI
+import CoreData
+
+fileprivate struct RawRunningEntry: Decodable {
+    /// wrapped in a `data` tag, for some reason
+    let data: WrappedEntry
+    
+    struct WrappedEntry: Decodable {
+        let id: Int
+        let pid: Int
+        let wid: Int
+        let billable: Bool
+        let start: Date
+        let duration: TimeInterval
+        let description: String
+        
+        /// not sure what this represents, probably update / creation timestamp
+        let at: Date
+    }
+}
 
 struct RunningEntry: Equatable {
 
-    let id:Int
+    let id: Int
     let start: Date // needs to be coerced from ISO 8601 date / time format (YYYY - MM - DDTHH: MM: SS)
     let project: ProjectLike
     let description: String // not nullable
