@@ -50,6 +50,9 @@ struct DayStrip: View {
         }
     }
     
+    /**
+     Calculate the appropriate height for a time entry
+     */
     func height(size: CGSize, entry: TimeEntry) -> CGFloat {
         let start = max(entry.start, midnight - model.castBack)
         let end = min(entry.end, midnight + model.castFwrd)
@@ -64,7 +67,10 @@ struct DayStrip: View {
         guard entry != entries.first else {
             switch model.mode {
             case .calendar:
-                return .zero
+                /// if entry falls off the graph, offset is zero, otherwise apply appropriate padding
+                return entry.start < midnight - model.castBack
+                    ? .zero
+                    : CGFloat(entry.start - (midnight - model.castBack)) * scale
             case .graph:
                 let begin = midnight - model.castBack
                 let end = midnight + model.castFwrd
