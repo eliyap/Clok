@@ -9,6 +9,7 @@
 import Foundation
 import Combine
 import CoreData
+import SwiftUI
 
 final class EntryLoader: ObservableObject {
     private var loader: AnyCancellable? = nil
@@ -37,8 +38,9 @@ final class EntryLoader: ObservableObject {
         initialLogin: Bool = false
     ) -> Void {
         /// begin loading animations
-        state = initialLogin ? .loadingLengthy : .loadingBriefly
-
+        withAnimation {
+            state = initialLogin ? .loadingLengthy : .loadingBriefly
+        }
         
         // assemble request URL (page is added later)
         let df = DateFormatter()
@@ -98,7 +100,9 @@ final class EntryLoader: ObservableObject {
                 try! context.save()
                 
                 /// loading complete!
-                self.state = .finished
+                withAnimation {
+                    self.state = .finished
+                }
             })
     }
 }

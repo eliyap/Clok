@@ -12,17 +12,26 @@ struct GraphButtons: View {
     
     @EnvironmentObject private var zero: ZeroDate
     @EnvironmentObject var model: GraphModel
+    @EnvironmentObject var entryLoader: EntryLoader
     
     var body: some View {
-        HStack(alignment: .bottom) {
-            DPad()
+        VStack(alignment: .trailing) {
+            if entryLoader.state == .loadingBriefly {
+                ActivityIndicator()
+                    .modifier(ButtonGlyph())
+                    .transition(.inAndOut(edge: .top))
+            }
             Spacer()
-            GraphButton(glyph: model.mode == .calendar
-                ? "calendar"
-                : "chart.bar.fill"
-            ) {
-                withAnimation(.linear(duration: 0.4)) {
-                    model.mode.toggle()
+            HStack(alignment: .bottom) {
+                DPad()
+                Spacer()
+                GraphButton(glyph: model.mode == .calendar
+                    ? "calendar"
+                    : "chart.bar.fill"
+                ) {
+                    withAnimation(.linear(duration: 0.4)) {
+                        model.mode.toggle()
+                    }
                 }
             }
         }
