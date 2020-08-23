@@ -8,6 +8,8 @@
 
 import SwiftUI
 
+fileprivate let buttonPadding = CGFloat(7)
+
 struct GraphButtons: View {
     
     @EnvironmentObject private var zero: ZeroDate
