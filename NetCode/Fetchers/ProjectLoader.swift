@@ -61,7 +61,6 @@ final class ProjectLoader: ObservableObject {
             .map(dataTaskMonitor)
             .decode(
                 type: [RawProject].self,
-                /// pass `managedObjectContext` to decoder so that a CoreData object can be created
                 decoder: JSONDecoder(dateStrategy: .iso8601)
             )
             /// discard array on error
