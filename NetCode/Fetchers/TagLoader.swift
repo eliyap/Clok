@@ -35,8 +35,6 @@ final class TagLoader: ObservableObject {
     ) -> [Tag] {
         rawTags.forEach {
             context.insert(Tag(from: $0, context: context))
-            /// debug
-            print("tag name: \($0.name)")
         }
         /// save CoreData changes
         try! context.save()
