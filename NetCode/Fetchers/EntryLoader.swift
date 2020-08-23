@@ -74,12 +74,12 @@ final class EntryLoader: ObservableObject {
                 rawEntries.forEach { (rawEntry: RawTimeEntry) in
                     if let entryIdx = entries?.firstIndex(where: {$0.id == rawEntry.id}) {
                         /// if a matching `TimeEntry` was found, update the record
-                        entries![entryIdx].update(from: rawEntry, projects: projects)
+                        entries![entryIdx].update(from: rawEntry, projects: projects, tags: tags)
                         /// and remove it from future consideration
                         entries!.remove(at: entryIdx)
                     } else {
                         /// if no match was found, insert the new `TimeEntry`
-                        context.insert(TimeEntry(from: rawEntry, context: context, projects: projects))
+                        context.insert(TimeEntry(from: rawEntry, context: context, projects: projects, tags: tags))
                     }
                 }
                 /**
