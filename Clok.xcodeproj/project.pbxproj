@@ -73,6 +73,8 @@
 		229646CC24F3220300FE14E5 /* RequestConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229646C824F3212700FE14E5 /* RequestConstants.swift */; };
 		229646CD24F3220600FE14E5 /* TimeConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229646CA24F321AE00FE14E5 /* TimeConstants.swift */; };
 		229646CF24F322E600FE14E5 /* TagLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229646CE24F322E600FE14E5 /* TagLoader.swift */; };
+		229646D224F3294900FE14E5 /* Tag+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229646D024F3294900FE14E5 /* Tag+CoreDataClass.swift */; };
+		229646D324F3294900FE14E5 /* Tag+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229646D124F3294900FE14E5 /* Tag+CoreDataProperties.swift */; };
 		2296F15924A96FB800AF38B5 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2296F15824A96FB800AF38B5 /* Icon.png */; };
 		2296F15B24A994A400AF38B5 /* FormRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2296F15A24A994A400AF38B5 /* FormRequest.swift */; };
 		22A2CE1D24E59BB1000820AD /* DateStridable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE1C24E59BB1000820AD /* DateStridable.swift */; };
@@ -236,6 +238,8 @@
 		229646C824F3212700FE14E5 /* RequestConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestConstants.swift; sourceTree = "<group>"; };
 		229646CA24F321AE00FE14E5 /* TimeConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeConstants.swift; sourceTree = "<group>"; };
 		229646CE24F322E600FE14E5 /* TagLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagLoader.swift; sourceTree = "<group>"; };
+		229646D024F3294900FE14E5 /* Tag+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tag+CoreDataClass.swift"; sourceTree = "<group>"; };
+		229646D124F3294900FE14E5 /* Tag+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tag+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		2296F15824A96FB800AF38B5 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = Icon/Icon.png; sourceTree = SOURCE_ROOT; };
 		2296F15A24A994A400AF38B5 /* FormRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormRequest.swift; sourceTree = "<group>"; };
 		22A2CE1C24E59BB1000820AD /* DateStridable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateStridable.swift; sourceTree = "<group>"; };
@@ -558,6 +562,8 @@
 				22DC869D24BA838D00FF771F /* Project+CoreDataProperties.swift */,
 				22DC869E24BA838D00FF771F /* TimeEntry+CoreDataClass.swift */,
 				22DC869F24BA838D00FF771F /* TimeEntry+CoreDataProperties.swift */,
+				229646D024F3294900FE14E5 /* Tag+CoreDataClass.swift */,
+				229646D124F3294900FE14E5 /* Tag+CoreDataProperties.swift */,
 				222D992524BAB2FD00F66E0F /* DecoderExtension.swift */,
 				223863FF24BBBD030041886B /* LoadProjects.swift */,
 				2293CEEE24EC5A84000B68F4 /* LoadEntries.swift */,
@@ -944,6 +950,7 @@
 				22A2CE2B24E59ED0000820AD /* AngleFromCartesian.swift in Sources */,
 				22A2CE2424E59DFE000820AD /* DateMean.swift in Sources */,
 				2277E8C724EB44AC00702086 /* EntryLoader.swift in Sources */,
+				229646D224F3294900FE14E5 /* Tag+CoreDataClass.swift in Sources */,
 				C63FC2F8249BCEB900747D49 /* AngleExtension.swift in Sources */,
 				2229D7AA24EF6BDB004E1034 /* CurrentTimeIndicator.swift in Sources */,
 				C6AAB3EA249EF26800DFBA36 /* TimeEntryExtension.swift in Sources */,
@@ -987,6 +994,7 @@
 				2229D7B024F0459F004E1034 /* FetchRunningEntry.swift in Sources */,
 				22885DB224DA1E2E00A56FE3 /* TimeIndicator.swift in Sources */,
 				C6AAB3F2249F061D00DFBA36 /* TimeData.swift in Sources */,
+				229646D324F3294900FE14E5 /* Tag+CoreDataProperties.swift in Sources */,
 				2293CEEF24EC5A84000B68F4 /* LoadEntries.swift in Sources */,
 				22B9E05C24B4FF550040C5AC /* WorkspaceView.swift in Sources */,
 				225F69B424AD8CE70012B5DB /* AppView.swift in Sources */,
