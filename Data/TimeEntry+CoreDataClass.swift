@@ -10,24 +10,24 @@ import SwiftUI
 import CoreData
 
 struct RawTimeEntry: Decodable {
-    var description: String
+    let description: String
     
-    var start: Date
-    var end: Date
-    var dur: Double
-    var updated: Date
+    let start: Date
+    let end: Date
+    let dur: Double
+    let updated: Date
     
-    var id: Int
-    var is_billable: Bool
+    let id: Int
+    let is_billable: Bool
     
-    var pid: Int?
-    var project: String?
-    var project_hex_color: String?
+    let pid: Int?
+    let project: String?
+    let project_hex_color: String?
     
-    var uid: Int; // user ID
-    var use_stop: Bool
-    var user: String
-    //    tags =     ();
+    let uid: Int; // user ID
+    let use_stop: Bool
+    let user: String
+    let tags: [String]
     //    task = "<null>";
     //    tid = "<null>";
 }
@@ -41,13 +41,13 @@ public class TimeEntry: NSManagedObject {
         super.init(entity: entity, insertInto: context)
     }
     
-    init(from raw: RawTimeEntry, context: NSManagedObjectContext, projects: [Project]) {
+    init(from raw: RawTimeEntry, context: NSManagedObjectContext, projects: [Project], tags: [Tag]) {
         super.init(entity: TimeEntry.entity(), insertInto: context)
-        update(from: raw, projects: projects)
+        update(from: raw, projects: projects, tags: tags)
     }
     
     /// copy properties from raw time entry into TimeEntry
-    func update(from raw: RawTimeEntry, projects: [Project]) {
+    func update(from raw: RawTimeEntry, projects: [Project], tags: [Tag]) {
         self.setValuesForKeys([
             "name": raw.description,
             "start": raw.start,
@@ -57,6 +57,7 @@ public class TimeEntry: NSManagedObject {
             "id": Int64(raw.id)
         ])
         project = projects.first(where: {$0.id == raw.pid ?? NSNotFound})
+        #warning("tags here")
     }
     
     /// Headlining description,
