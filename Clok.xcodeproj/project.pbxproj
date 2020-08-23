@@ -72,6 +72,7 @@
 		229646CB24F321AE00FE14E5 /* TimeConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229646CA24F321AE00FE14E5 /* TimeConstants.swift */; };
 		229646CC24F3220300FE14E5 /* RequestConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229646C824F3212700FE14E5 /* RequestConstants.swift */; };
 		229646CD24F3220600FE14E5 /* TimeConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229646CA24F321AE00FE14E5 /* TimeConstants.swift */; };
+		229646CF24F322E600FE14E5 /* TagLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229646CE24F322E600FE14E5 /* TagLoader.swift */; };
 		2296F15924A96FB800AF38B5 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2296F15824A96FB800AF38B5 /* Icon.png */; };
 		2296F15B24A994A400AF38B5 /* FormRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2296F15A24A994A400AF38B5 /* FormRequest.swift */; };
 		22A2CE1D24E59BB1000820AD /* DateStridable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE1C24E59BB1000820AD /* DateStridable.swift */; };
@@ -234,6 +235,7 @@
 		229646C524F06AFF00FE14E5 /* EntryRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryRect.swift; sourceTree = "<group>"; };
 		229646C824F3212700FE14E5 /* RequestConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestConstants.swift; sourceTree = "<group>"; };
 		229646CA24F321AE00FE14E5 /* TimeConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeConstants.swift; sourceTree = "<group>"; };
+		229646CE24F322E600FE14E5 /* TagLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagLoader.swift; sourceTree = "<group>"; };
 		2296F15824A96FB800AF38B5 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = Icon/Icon.png; sourceTree = SOURCE_ROOT; };
 		2296F15A24A994A400AF38B5 /* FormRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormRequest.swift; sourceTree = "<group>"; };
 		22A2CE1C24E59BB1000820AD /* DateStridable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateStridable.swift; sourceTree = "<group>"; };
@@ -369,6 +371,7 @@
 				2277E8C824EB47B400702086 /* PaginatedLoad.swift */,
 				2293CEEC24EC5661000B68F4 /* ProjectLoader.swift */,
 				2229D7AF24F0459F004E1034 /* FetchRunningEntry.swift */,
+				229646CE24F322E600FE14E5 /* TagLoader.swift */,
 			);
 			path = Fetchers;
 			sourceTree = "<group>";
@@ -956,6 +959,7 @@
 				221810E424B01AAC00B63ECA /* InAndOut.swift in Sources */,
 				22AD5F8824B1467E006EF7FB /* ClokWidget.intentdefinition in Sources */,
 				22283DA824DFA166005AC0F3 /* FilterView.swift in Sources */,
+				229646CF24F322E600FE14E5 /* TagLoader.swift in Sources */,
 				22B0784224B17BEC00256EB8 /* RunningEntry.swift in Sources */,
 				2264CB3924AD33D900ECBF2B /* EmailFields.swift in Sources */,
 				2264CB3124AD250600ECBF2B /* WorkspaceManager.swift in Sources */,
