@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftUI
+import Combine
 
 struct LoginView: View {
     
@@ -78,13 +79,17 @@ struct LoginView: View {
         }
     }
     
+    @State private var loader: AnyCancellable? = nil
+    
     /**
      On first login, execute a special call that fetches `User`'s projects and many weeks of entries.
      This helps ensure the user won't encounter a lot of blank screens.
      */
     func fetchOnLogin(user: User) -> Void {
         /// request projects
-        projectLoader.fetchProjects(user: user, context: moc) { projects in
+        loader = ProjectLoader.fetchProjects(user: user, context: moc)
+            .zip(TagLoader.fetchTags(user: user, context: moc))
+            .sink { (projects, tags) in
             /// then use fresh projects when requesting entries
             entryLoader.fetchEntries(
                 range: (

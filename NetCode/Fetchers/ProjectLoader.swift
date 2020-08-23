@@ -11,42 +11,48 @@ import Combine
 import CoreData
 
 final class ProjectLoader: ObservableObject {
-    private var loader: AnyCancellable? = nil
+    var loader: AnyCancellable? = nil
     
     /**
      Use Combine to make an async network request for all the User's `Project`s
      */
-    func fetchProjects(
+    static func fetchProjects(
         user: User,
-        context: NSManagedObjectContext,
-        completion: (([Project]) -> Void)? = nil
-    ) -> Void {
-        loader = ProjectLoader.projectPublisher(user: user)
+        context: NSManagedObjectContext
+    ) -> AnyPublisher<[Project], Never> {
+        ProjectLoader.projectPublisher(user: user)
+            /// switch to main thread for CoreData changes
             .receive(on: DispatchQueue.main)
-            .sink { (rawProjects: [RawProject]) in
-                let projects = loadProjects(context: context) ?? []
-                rawProjects.forEach { rawProject in
-                    if let match = projects.first(where: {$0.id == rawProject.id}) {
-                        /// if `rawProject` is more recent, update `Project` on disk
-                        if match.fetched < rawProject.at {
-                            match.update(from: rawProject)
-                        }
-                    } else {
-                        /// if no match was found, insert new `Project`
-                        context.insert(Project(raw: rawProject, context: context))
-                    }
-                }
-                /// save CoreData changes
-                try! context.save()
-                
-                /// execute completion block, if any
-                if
-                    let completion = completion,
-                    let projects = loadProjects(context: context)
-                {
-                    completion(projects)
-                }
+            .map {
+                ProjectLoader.saveProjects(rawProjects: $0, context: context)
             }
+            .eraseToAnyPublisher()
+    }
+    
+    /**
+     Save provided `RawProject`s into CoreData, and return the updated list of `Project`s
+     */
+    static func saveProjects(
+        rawProjects: [RawProject],
+        context: NSManagedObjectContext
+    ) -> [Project] {
+        let projects = loadProjects(context: context) ?? []
+        rawProjects.forEach { rawProject in
+            if let match = projects.first(where: {$0.id == rawProject.id}) {
+                /// if `rawProject` is more recent, update `Project` on disk
+                if match.fetched < rawProject.at {
+                    match.update(from: rawProject)
+                }
+            } else {
+                /// if no match was found, insert new `Project`
+                context.insert(Project(raw: rawProject, context: context))
+            }
+        }
+        /// save CoreData changes
+        try! context.save()
+        
+        /// return fresh list from Core Data
+        return loadProjects(context: context) ?? []
     }
     
     static func projectPublisher(user: User) -> AnyPublisher<[RawProject], Never> {
