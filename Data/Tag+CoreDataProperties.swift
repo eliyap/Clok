@@ -17,11 +17,14 @@ extension Tag {
         return NSFetchRequest<Tag>(entityName: "Tag")
     }
 
-    @NSManaged public var name: String?
+    @NSManaged public var name: String
     @NSManaged public var id: Int64
     @NSManaged public var wid: Int64
     @NSManaged public var entries: NSSet?
-
+    
+    public var entryArray: [TimeEntry] {
+        return Array(entries as? Set<TimeEntry> ?? [])
+    }
 }
 
 // MARK: Generated accessors for entries

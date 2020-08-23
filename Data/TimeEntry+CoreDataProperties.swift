@@ -24,6 +24,7 @@ extension TimeEntry {
     @NSManaged public var dur: Double
     @NSManaged public var lastUpdated: Date?
     @NSManaged public var project: Project?
+    @NSManaged public var tags: NSSet?
 
     public var wrappedDescription: String {
         name ?? "No Description"
@@ -39,5 +40,9 @@ extension TimeEntry {
     
     var wrappedProject: ProjectLike {
         project ?? StaticProject.noProject
+    }
+    
+    public var tagArray: [Tag] {
+        return Array(tags as? Set<Tag> ?? [])
     }
 }
