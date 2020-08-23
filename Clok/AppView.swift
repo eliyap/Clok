@@ -23,6 +23,7 @@ struct ClokApp: App {
     /// other stuff
     let entryLoader = EntryLoader()
     let projectLoader = ProjectLoader()
+    let tagLoader = TagLoader()
     let saver: PrefSaver
     
     var persistentContainer: NSPersistentContainer
@@ -68,10 +69,10 @@ struct ClokApp: App {
                     #if DEBUG
                     print(user.email)
                     #endif
-                    projectLoader.fetchProjects(
-                        user: user,
-                        context: persistentContainer.viewContext
-                    )
+                    projectLoader.loader = ProjectLoader.fetchProjects(user: user, context: persistentContainer.viewContext)
+                        .sink(receiveValue: { _ in })
+                    tagLoader.loader = TagLoader.fetchTags(user: user, context: persistentContainer.viewContext)
+                        .sink(receiveValue: { _ in })
                 }
                 .onReceive(zero.limitedStart, perform: { date in
                     #if DEBUG
