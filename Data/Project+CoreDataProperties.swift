@@ -35,10 +35,7 @@ extension Project {
     }
     
     public var entryArray: [TimeEntry] {
-        let set = entries as? Set<TimeEntry> ?? []
-        return set.sorted {
-            $0.start < $1.start
-        }
+        return Array(entries as? Set<TimeEntry> ?? [])
     }
 }
 
