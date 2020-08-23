@@ -23,9 +23,6 @@ let userDataURL = URL(string:"\(API_URL)/me\(agentSuffix)")!
 /// https://github.com/toggl/toggl_api_docs/blob/master/chapters/time_entries.md#get-running-time-entry
 let runningURL = URL(string: "\(API_URL)/time_entries/current\(agentSuffix)")!
 
-/// https://github.com/toggl/toggl_api_docs/blob/b19c3b61f2b1be2eeccc28ea4e6acee38cfc72a1/chapters/tags.md#tags
-let tagsURL = URL(string: "\(API_URL)/tags\(agentSuffix)")!
-
 // MARK:- Misc
 /// for detailed reports, toggl dispenses at most 50 entries per request
 /// https://github.com/toggl/toggl_api_docs/blob/master/reports/detailed.md#response
