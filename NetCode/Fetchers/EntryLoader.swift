@@ -34,6 +34,7 @@ final class EntryLoader: ObservableObject {
         range: DateRange,
         user: User,
         projects: [Project],
+        tags: [Tag],
         context: NSManagedObjectContext,
         initialLogin: Bool = false
     ) -> Void {
