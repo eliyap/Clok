@@ -25,8 +25,6 @@ struct RunningEntry: Equatable {
         self.description = description
     }
     
-    
-    
     // parse from JSON for Widget
     init?(from data: [String : AnyObject], project: ProjectLike){
         // initialize DateFormatter to handle ISO8601 strings
