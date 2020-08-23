@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17183" systemVersion="19F101" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17189" systemVersion="19F101" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Project" representedClassName=".Project" syncable="YES">
         <attribute name="color" attributeType="String" valueTransformerName=""/>
         <attribute name="fetched" attributeType="Date" usesScalarValueType="NO"/>
@@ -12,6 +12,12 @@
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
+    <entity name="Tag" representedClassName="Tag" syncable="YES" codeGenerationType="class">
+        <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="wid" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="entries" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TimeEntry" inverseName="tags" inverseEntity="TimeEntry"/>
+    </entity>
     <entity name="TimeEntry" representedClassName=".TimeEntry" syncable="YES">
         <attribute name="dur" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="end" attributeType="Date" usesScalarValueType="NO"/>
@@ -20,6 +26,7 @@
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="start" attributeType="Date" usesScalarValueType="NO"/>
         <relationship name="project" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="entries" inverseEntity="Project"/>
+        <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="entries" inverseEntity="Tag"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="id"/>
@@ -28,6 +35,7 @@
     </entity>
     <elements>
         <element name="Project" positionX="390.23828125" positionY="41.34375" width="128" height="118"/>
-        <element name="TimeEntry" positionX="-63" positionY="-18" width="128" height="148"/>
+        <element name="TimeEntry" positionX="-63" positionY="-18" width="128" height="163"/>
+        <element name="Tag" positionX="144" positionY="54" width="128" height="103"/>
     </elements>
 </model>
