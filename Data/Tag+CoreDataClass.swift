@@ -34,7 +34,7 @@ public class Tag: NSManagedObject {
         super.init(entity: entity, insertInto: context)
     }
     
-    init(from rawTag: RawTag, context: NSManagedObjectContext) throws {
+    init(from rawTag: RawTag, context: NSManagedObjectContext) {
         super.init(entity: Tag.entity(), insertInto: context)
         
         id = Int64(rawTag.id)
