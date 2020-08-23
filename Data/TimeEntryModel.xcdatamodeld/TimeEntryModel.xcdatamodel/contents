@@ -34,8 +34,8 @@
         </uniquenessConstraints>
     </entity>
     <elements>
-        <element name="Project" positionX="390.23828125" positionY="41.34375" width="128" height="118"/>
-        <element name="TimeEntry" positionX="-63" positionY="-18" width="128" height="163"/>
-        <element name="Tag" positionX="144" positionY="54" width="128" height="103"/>
+        <element name="Project" positionX="151.33984375" positionY="58.87109375" width="128" height="118"/>
+        <element name="TimeEntry" positionX="-131.171875" positionY="102.9375" width="128" height="163"/>
+        <element name="Tag" positionX="155.15234375" positionY="252.46484375" width="128" height="103"/>
     </elements>
 </model>
