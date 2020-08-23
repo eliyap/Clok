@@ -62,11 +62,7 @@ final class EntryLoader: ObservableObject {
             /// switch to main thread before performing CoreData work
             .receive(on: DispatchQueue.main)
             .map(toOptional)
-            .catch({ error -> AnyPublisher<[RawTimeEntry]?, Never> in
-                print(error)
-                return Just(nil)
-                    .eraseToAnyPublisher()
-            })
+            .catch(printAndReturnNil)
             .sink(receiveValue: { (rawEntries: [RawTimeEntry]?) in
                 /// terminate if error resulted in `nil` being passed
                 guard let rawEntries = rawEntries else { return }
