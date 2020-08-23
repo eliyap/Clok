@@ -53,7 +53,6 @@ extension EntryLoader {
      - Returns: the `RawTimeEntries` fetched
      */
     func recursiveLoadPages(
-        projects: [Project],
         api_string: String,
         auth: String
     ) -> AnyPublisher<[RawTimeEntry], Error> {

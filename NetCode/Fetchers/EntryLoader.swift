@@ -56,7 +56,6 @@ final class EntryLoader: ObservableObject {
         ].joined(separator: "&")
     
         loader = recursiveLoadPages(
-            projects: projects,
             api_string: api_string,
             auth: auth(token: user.token)
         )
