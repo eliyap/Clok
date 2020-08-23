@@ -69,6 +69,7 @@ struct ClokApp: App {
                     #if DEBUG
                     print(user.email)
                     #endif
+                    /// fetch projects and tags, discard results
                     projectLoader.loader = ProjectLoader.fetchProjects(user: user, context: persistentContainer.viewContext)
                         .sink(receiveValue: { _ in })
                     tagLoader.loader = TagLoader.fetchTags(user: user, context: persistentContainer.viewContext)
@@ -87,6 +88,7 @@ struct ClokApp: App {
                         ),
                         user: user,
                         projects: loadProjects(context: persistentContainer.viewContext) ?? [],
+                        tags: loadTags(context: persistentContainer.viewContext) ?? [],
                         context: persistentContainer.viewContext
                     )
                 })

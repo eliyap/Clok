@@ -99,6 +99,7 @@ struct LoginView: View {
                 ),
                 user: user,
                 projects: projects,
+                tags: tags,
                 context: moc,
                 /// indicate that a loading screen SHOULD be shown
                 initialLogin: true
