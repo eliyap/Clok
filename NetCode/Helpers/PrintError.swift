@@ -11,7 +11,8 @@ import Combine
 
 /**
  print any errors that are encountered,
- then return `nil`
+ then return `nil`.
+ Note: unlike `replaceErrorWith(nil)`, this prints the issue to console instead of suppressing it
  */
 func printAndReturnNil<T>(error: Error) -> AnyPublisher<T?, Never> {
     #if DEBUG
