@@ -66,7 +66,9 @@ struct RunningEntry: Equatable {
         return
             lhs.id == rhs.id &&
             lhs.start == rhs.start &&
-            lhs.description == rhs.description
+            lhs.description == rhs.description &&
+            /// remember to check if the project was updated
+            lhs.project.wrappedID == rhs.project.wrappedID
        }
 }
 
