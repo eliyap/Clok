@@ -36,10 +36,20 @@ struct RunningEntryView: View {
                         size: geo.size,
                         midnight: Date().midnight
                     )
-                        .foregroundColor(running.project.wrappedColor)
-                        .offset(y: offset(size: geo.size, running: running))
                         /// placeholder styling
                         .opacity(0.5)
+                        .overlay(
+                            EntryRect(
+                                range: (running.start, Date()),
+                                size: geo.size,
+                                midnight: Date().midnight,
+                                border: true
+                            )
+                        )
+                        
+                        .foregroundColor(running.project.wrappedColor)
+                        .offset(y: offset(size: geo.size, running: running))
+                    
                 
                 } else {
                     EmptyView()
