@@ -48,6 +48,9 @@ final class ProjectLoader: ObservableObject {
                 context.insert(Project(raw: rawProject, context: context))
             }
         }
+        #if DEBUG
+        print("Updating local projects")
+        #endif
         /// save CoreData changes
         try! context.save()
         
