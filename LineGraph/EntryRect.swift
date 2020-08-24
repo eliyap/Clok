@@ -18,10 +18,12 @@ struct EntryRect: View {
     
     /// determines what proportion of available horizontal space to consume
     private let thicc = CGFloat(0.8)
+    
+    /// adapt scale to taste
     private let cornerScale = CGFloat(1.0/18.0)
     
     var body: some View {
-        RoundedRectangle(cornerRadius: size.width * cornerScale) /// adapt scale to taste
+        RoundedRectangle(cornerRadius: size.width * cornerScale)
             .frame(
                 width: size.width * thicc,
                 height: height
