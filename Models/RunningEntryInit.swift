@@ -24,6 +24,8 @@ fileprivate struct RawRunningEntry: Decodable {
         let start: Date
         let duration: TimeInterval
         let description: String
+        
+        /// NOTE: if there are no tags, the data is omitted
         let tags: [String]?
         
         /// not sure what this represents, probably update / creation timestamp
