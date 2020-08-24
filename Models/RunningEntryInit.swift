@@ -14,7 +14,7 @@ import Foundation
 
 fileprivate struct RawRunningEntry: Decodable {
     /// wrapped in a `data` tag, for some reason
-    let data: WrappedEntry
+    let data: WrappedEntry?
     
     struct WrappedEntry: Decodable {
         let id: Int
@@ -36,7 +36,10 @@ fileprivate struct RawRunningEntry: Decodable {
 extension RunningEntry {
     init(data: Data, projects: [Project]) throws {
         let decoder = JSONDecoder(dateStrategy: .iso8601)
-        let rawRunningEntry = try decoder.decode(RawRunningEntry.self, from: data).data
+        guard let rawRunningEntry = try decoder.decode(RawRunningEntry.self, from: data).data else {
+            /// no `data` simply means no timer is running, trust Combine to deal with the error nicely
+            throw NetworkError.serialization
+        }
         id = rawRunningEntry.id
         start = rawRunningEntry.start
         description = rawRunningEntry.description
