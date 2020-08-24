@@ -37,7 +37,7 @@ struct RunningEntryView: View {
                         midnight: Date().midnight
                     )
                         .foregroundColor(running.project.wrappedColor)
-                        .offset(y: offset(size: geo.size))
+                        .offset(y: offset(size: geo.size, running: running))
                         /// placeholder styling
                         .opacity(0.5)
                 
@@ -53,9 +53,8 @@ struct RunningEntryView: View {
     }
     
     /// calculate appropriate distance to next `entry`
-    func offset(size: CGSize) -> CGFloat {
+    func offset(size: CGSize, running: RunningEntry) -> CGFloat {
         let scale = size.height / CGFloat(.day * model.days)
-        guard let running = running else { return .zero }
         return CGFloat(max(running.start - (Date().midnight - model.castBack), .zero)) * scale
     }
     
