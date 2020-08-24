@@ -45,4 +45,10 @@ extension TimeEntry {
     public var tagArray: [Tag] {
         return Array(tags as? Set<Tag> ?? [])
     }
+    
+    public var sortedTags: [Tag] {
+        return (tags as? Set<Tag>)?
+            .sorted(by: {$0.name < $1.name})
+            ?? []
+    }
 }
