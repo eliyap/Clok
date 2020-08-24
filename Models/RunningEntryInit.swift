@@ -24,7 +24,7 @@ fileprivate struct RawRunningEntry: Decodable {
         let start: Date
         let duration: TimeInterval
         let description: String
-        let tags: [String]
+        let tags: [String]?
         
         /// not sure what this represents, probably update / creation timestamp
         let at: Date
