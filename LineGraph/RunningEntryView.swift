@@ -64,7 +64,7 @@ struct RunningEntryView: View {
         #if DEBUG
         print("Fetching running timer")
         #endif
-        cancellable = RunningEntryLoader().fetchRunningEntry(
+        cancellable = RunningEntryLoader.fetchRunningEntry(
             user: user,
             projects: Array(projects),
             context: moc
