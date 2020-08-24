@@ -8,6 +8,12 @@
 
 import SwiftUI
 
+/// determines what proportion of available horizontal space to consume
+fileprivate let thicc = CGFloat(0.8)
+
+/// adapt scale to taste
+fileprivate let cornerScale = CGFloat(1.0/18.0)
+
 struct EntryRect: View {
     
     @EnvironmentObject var model: GraphModel
@@ -16,11 +22,7 @@ struct EntryRect: View {
     let size: CGSize
     let midnight: Date
     
-    /// determines what proportion of available horizontal space to consume
-    let thicc = CGFloat(0.8)
-    
-    /// adapt scale to taste
-    let cornerScale = CGFloat(1.0/18.0)
+    /// toggles solid fill or animated border
     var border: Bool = false
     
     /// credit: https://www.hackingwithswift.com/quick-start/swiftui/how-to-create-a-marching-ants-border-effect
@@ -37,7 +39,6 @@ struct EntryRect: View {
                     width: size.width * thicc,
                     height: height
                 )
-            
         }
         /// avoid an invalid size warning
         else if height > 0 {
