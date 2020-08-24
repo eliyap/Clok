@@ -17,17 +17,34 @@ struct EntryRect: View {
     let midnight: Date
     
     /// determines what proportion of available horizontal space to consume
-    private let thicc = CGFloat(0.8)
+    let thicc = CGFloat(0.8)
     
     /// adapt scale to taste
-    private let cornerScale = CGFloat(1.0/18.0)
+    let cornerScale = CGFloat(1.0/18.0)
+    var border: Bool = false
+    
+    /// credit: https://www.hackingwithswift.com/quick-start/swiftui/how-to-create-a-marching-ants-border-effect
+    @State private var phase: CGFloat = 0
     
     var body: some View {
-        RoundedRectangle(cornerRadius: size.width * cornerScale)
-            .frame(
-                width: size.width * thicc,
-                height: height
-            )
+        if border {
+            /// animated border outline version
+            RoundedRectangle(cornerRadius: size.width * cornerScale)
+                .strokeBorder(style: StrokeStyle(lineWidth: 2, dash: [10], dashPhase: phase))
+                .onAppear { phase -= 20 }
+                .animation(Animation.linear(duration: 2).repeatForever(autoreverses: false))
+                .frame(
+                    width: size.width * thicc,
+                    height: height
+                )
+        } else {
+            RoundedRectangle(cornerRadius: size.width * cornerScale)
+                .frame(
+                    width: size.width * thicc,
+                    height: height
+                )
+        }
+        
     }
     
     /**
