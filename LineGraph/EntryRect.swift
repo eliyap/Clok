@@ -32,19 +32,21 @@ struct EntryRect: View {
             RoundedRectangle(cornerRadius: size.width * cornerScale)
                 .strokeBorder(style: StrokeStyle(lineWidth: 2, dash: [10], dashPhase: phase))
                 .onAppear { phase -= 20 }
-                .animation(Animation.linear(duration: 2).repeatForever(autoreverses: false))
+                .animation(Animation.linear(duration: 1).repeatForever(autoreverses: false))
                 .frame(
                     width: size.width * thicc,
                     height: height
                 )
-        } else {
+            
+        }
+        /// avoid an invalid size warning
+        else if height > 0 {
             RoundedRectangle(cornerRadius: size.width * cornerScale)
                 .frame(
                     width: size.width * thicc,
                     height: height
                 )
         }
-        
     }
     
     /**
