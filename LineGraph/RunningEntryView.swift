@@ -31,10 +31,16 @@ struct RunningEntryView: View {
         GeometryReader { geo in
             VStack(alignment: .center, spacing: .zero) {
                 if let running = running {
-                    Rect(size: geo.size, running: running)
-                    /// placeholder styling
+                    EntryRect(
+                        range: (running.start, Date()),
+                        size: geo.size,
+                        midnight: Date().midnight
+                    )
+                        .foregroundColor(running.project.wrappedColor)
+                        .offset(y: offset(size: geo.size, running: running))
+                        /// placeholder styling
                         .opacity(0.5)
-                    
+                
                 } else {
                     EmptyView()
                 }
@@ -46,7 +52,13 @@ struct RunningEntryView: View {
             .onAppear(perform: loadRunning)
     }
     
-    private func loadRunning() -> Void {
+    /// calculate appropriate distance to next `entry`
+    func offset(size: CGSize, running: RunningEntry) -> CGFloat {
+        let scale = size.height / CGFloat(.day * model.days)
+        return CGFloat(max(running.start - (Date().midnight - model.castBack), .zero)) * scale
+    }
+    
+    func loadRunning() -> Void {
         guard let user = cred.user else { return }
         #if DEBUG
         print("Fetching running timer")
@@ -57,20 +69,5 @@ struct RunningEntryView: View {
             context: moc
         )
         .assign(to: \.running, on: self)
-    }
-    
-    func Rect(size: CGSize, running: RunningEntry) -> some View {
-        let scale = size.height / CGFloat(.day * model.days)
-        
-        /// calculate appropriate distance to next `entry`
-        let offset = CGFloat(max(running.start - (Date().midnight - model.castBack), .zero)) * scale
-        
-        return EntryRect(
-            range: (running.start, Date()),
-            size: size,
-            midnight: Date().midnight
-        )
-            .foregroundColor(running.project.wrappedColor)
-            .offset(y: offset)
     }
 }
