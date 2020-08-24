@@ -22,15 +22,15 @@ struct RunningEntryView: View {
     
     /// manage the auto updating
     let timer = Timer.publish(every: interval, on: .main, in: .common).autoconnect()
-    @State var running: RunningEntry? = nil
-    @State var cancellable: AnyCancellable? = nil
+    
+    @ObservedObject var loader = RunningEntryLoader()
     
     let terms: SearchTerms
     
     var body: some View {
         GeometryReader { geo in
             VStack(alignment: .center, spacing: .zero) {
-                if let running = running {
+                if let running = loader.running {
                     EntryRect(
                         range: (running.start, Date()),
                         size: geo.size,
@@ -41,15 +41,16 @@ struct RunningEntryView: View {
                         /// placeholder styling
                         .opacity(0.5)
                 
-                } else {
-                    EmptyView()
                 }
+                ForceRefresh
             }
             .frame(width: geo.size.width)
             
         }
             .onReceive(timer) { _ in loadRunning() }
-            .onAppear(perform: loadRunning)
+            .onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: loadRunning)
+            }
     }
     
     /// calculate appropriate distance to next `entry`
@@ -59,15 +60,30 @@ struct RunningEntryView: View {
     }
     
     func loadRunning() -> Void {
+        /// force a refresh
+        meaningless.toggle()
+        
         guard let user = cred.user else { return }
+        
         #if DEBUG
         print("Fetching running timer")
         #endif
-        cancellable = RunningEntryLoader.fetchRunningEntry(
+        
+        loader.fetchRunningEntry(
             user: user,
             projects: Array(projects),
             context: moc
         )
-        .assign(to: \.running, on: self)
+    }
+    
+    /**
+     A hacky way to force SwiftUI to wake its dopey ass up and redraw the view
+     */
+    @State var meaningless = false
+    
+    var ForceRefresh: some View {
+        Text(meaningless ? "!" : "?")
+            .opacity(0)
+            .allowsHitTesting(false)
     }
 }
