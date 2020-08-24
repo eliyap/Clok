@@ -57,7 +57,9 @@ public class TimeEntry: NSManagedObject {
             "id": Int64(raw.id)
         ])
         project = projects.first(where: {$0.id == raw.pid ?? NSNotFound})
-        #warning("tags here")
+        self.tags = Set(tags.filter {
+            raw.tags.contains($0.name)
+        }) as NSSet
     }
     
     /// Headlining description,
