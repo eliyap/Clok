@@ -41,6 +41,7 @@ struct EntryView: View {
                     Text("\(df.string(from: entry.start)) – \(df.string(from: entry.end))")
                         .font(.caption)
                 }
+                Text()
             }
             .padding(listPadding)
         }
