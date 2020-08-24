@@ -15,6 +15,8 @@ struct EntryView: View {
     var entry: TimeEntry
     let listPadding: CGFloat
     
+    let columns = [GridItem(.adaptive(minimum: 10))]
+    
     init(entry: TimeEntry, listPadding: CGFloat) {
         self.entry = entry
         self.listPadding = listPadding
@@ -41,7 +43,9 @@ struct EntryView: View {
                     Text("\(df.string(from: entry.start)) – \(df.string(from: entry.end))")
                         .font(.caption)
                 }
-                Text()
+                if entry.tagArray.count > 0 {
+                    Tags
+                }
             }
             .padding(listPadding)
         }
@@ -50,6 +54,24 @@ struct EntryView: View {
                 .foregroundColor(Color(UIColor.systemBackground))
         )
         .padding([.leading, .trailing, .bottom], listPadding)
+    }
+    
+    var Tags: some View {
+        HStack {
+            Image(systemName: "tag")
+                .font(.caption)
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack {
+                    ForEach(entry.sortedTags, id: \.id) {
+                        Text($0.name)
+                            .lineLimit(1)
+                            .font(.caption)
+                            .padding(3)
+                            .background(RoundedRectangle(cornerRadius: 5).foregroundColor(.clokBG))
+                    }
+                }
+            }
+        }
     }
 }
 
