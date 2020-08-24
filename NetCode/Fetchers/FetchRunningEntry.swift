@@ -12,20 +12,18 @@ import CoreData
 final class RunningEntryLoader: ObservableObject {
     private var loader: AnyCancellable? = nil
     
-    var running: RunningEntry? = nil
-    
     /**
      Use Combine to make an async network request for the User's `RunningEntry`,
      which is not a `TimeEntry` (not stored in CoreData)
      */
-    func fetchRunningEntry(
+    static func fetchRunningEntry(
         user: User,
         projects: [Project],
         context: NSManagedObjectContext
-    ) -> Void {
+    ) -> AnyPublisher<RunningEntry?, Never> {
         /// API URL documentation:
         /// https://github.com/toggl/toggl_api_docs/blob/master/chapters/time_entries.md#get-running-time-entry
-        loader = URLSession.shared.dataTaskPublisher(for: formRequest(
+        URLSession.shared.dataTaskPublisher(for: formRequest(
             url: runningURL,
             auth: auth(token: user.token)
         ))
@@ -37,8 +35,6 @@ final class RunningEntryLoader: ObservableObject {
              If project could not be found, request a replacement
              */
             .flatMap { (running: RunningEntry) -> AnyPublisher<RunningEntry?, Never> in
-                /// debug
-                print(running.project.name)
                 if StaticProject.unknown == running.project {
                     return ProjectLoader.projectPublisher(user: user)
                         /// move to main thread for CoreData work
@@ -65,6 +61,6 @@ final class RunningEntryLoader: ObservableObject {
             /// move to main thread
             .receive(on: DispatchQueue.main)
             .catch(printAndReturnNil)
-            .assign(to: \.running, on: self)
+            .eraseToAnyPublisher()
     }
 }
