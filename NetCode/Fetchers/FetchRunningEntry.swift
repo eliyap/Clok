@@ -28,8 +28,8 @@ final class RunningEntryLoader: ObservableObject {
             auth: auth(token: user.token)
         ))
             .map(dataTaskMonitor)
-            .map { (data: Data) -> RunningEntry? in
-                return try? RunningEntry(data: data, projects: projects)
+            .tryMap { (data: Data) -> RunningEntry? in
+                return try RunningEntry(data: data, projects: projects)
             }
             /**
              If project could not be found, request a replacement
@@ -63,7 +63,7 @@ final class RunningEntryLoader: ObservableObject {
             }
             /// move to main thread
             .receive(on: DispatchQueue.main)
-            .replaceError(with: nil)
+            .catch(printAndReturnNil)
             .eraseToAnyPublisher()
     }
 }
