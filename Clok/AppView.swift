@@ -27,9 +27,7 @@ struct ClokApp: App {
     let saver: PrefSaver
     
     var persistentContainer: NSPersistentContainer
-    
-    @FetchRequest(entity: Project.entity(), sortDescriptors: []) var projects: FetchedResults<Project>
-    
+        
     init(){
         /// initialize Core Data container
         let container = NSPersistentContainer(name: "TimeEntryModel")
