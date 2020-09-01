@@ -14,7 +14,8 @@ final class TagLoader: ObservableObject {
     
     func fetchTags(user: User) -> Void {
         loader = URLSession.shared.dataTaskPublisher(for: formRequest(
-            url: tagsURL,
+            /// https://github.com/toggl/toggl_api_docs/blob/b19c3b61f2b1be2eeccc28ea4e6acee38cfc72a1/chapters/tags.md#tags
+            url: URL(string: "\(API_URL)/tags\(agentSuffix)")!,
             auth: auth(token: user.token)
         ))
             .map(dataTaskMonitor)
