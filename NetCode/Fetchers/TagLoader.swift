@@ -48,4 +48,23 @@ final class TagLoader: ObservableObject {
             .replaceError(with: [])
             .eraseToAnyPublisher()
     }
+    
+    /**
+     Save provided `RawTag`s into CoreData, and return the updated list of `Tag`s
+     */
+    static func saveTags(
+        rawTags: [RawTag],
+        context: NSManagedObjectContext
+    ) -> [Tag] {
+        rawTags.forEach {
+            context.insert(Tag(from: $0, context: context))
+            /// debug
+            print("tag name: \($0.name)")
+        }
+        /// save CoreData changes
+        try! context.save()
+
+        /// return fresh list from Core Data
+        return loadTags(context: context) ?? []
+    }
 }
