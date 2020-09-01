@@ -61,7 +61,7 @@ struct ClokApp: App {
                 .environmentObject(projectLoader)
                 .environment(\.managedObjectContext, persistentContainer.viewContext)
                 /// update on change to either user or space
-                /// also fires at app launch when user is logged in
+                /// NOTE: also fires at app launch if the user is logged in
                 .onReceive(cred.$user) { user in
                     guard let user = user else { return }
                     #if DEBUG
@@ -78,6 +78,7 @@ struct ClokApp: App {
                     print("Detailed report for \(date) requested")
                     #endif
                     guard let user = cred.user else { return }
+
                     entryLoader.fetchEntries(
                         /// NOTE: add a 1 day margin of safety on either side
                         range: (
@@ -89,6 +90,17 @@ struct ClokApp: App {
                         tags: loadTags(context: persistentContainer.viewContext) ?? [],
                         context: persistentContainer.viewContext
                     )
+                    /// switch to main thread before performing CoreData work
+                    .receive(on: DispatchQueue.main)
+                    .sink {
+                        entryLoader.saveEntries(
+                            range: range,
+                            rawEntries: $0,
+                            projects: loadProjects(context: persistentContainer.viewContext) ?? [],
+                            tags: loadTags(context: persistentContainer.viewContext) ?? [],
+                            context: persistentContainer.viewContext
+                        )
+                    }
                 })
         }
     }

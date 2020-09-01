@@ -12,7 +12,7 @@ import CoreData
 import SwiftUI
 
 final class EntryLoader: ObservableObject {
-    private var loader: AnyCancellable? = nil
+    var loader: AnyCancellable? = nil
     
     /// represents the state of the `EntryLoader`
     enum LoadState: Int {
@@ -30,14 +30,14 @@ final class EntryLoader: ObservableObject {
     @Published var totalCount = 0
     @Published var loaded = 0
     
-    func fetchEntries(
+    func fetchRawEntries(
         range: DateRange,
         user: User,
         projects: [Project],
         tags: [Tag],
         context: NSManagedObjectContext,
         initialLogin: Bool = false
-    ) -> Void {
+    ) -> AnyPublisher<[RawTimeEntry]?, Never> {
         /// begin loading animations
         withAnimation {
             state = initialLogin ? .loadingLengthy : .loadingBriefly
