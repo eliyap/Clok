@@ -38,6 +38,8 @@ struct FilterView: View {
                 }
                 Included
                 Excluded
+                /// workaround for the Tab Page indicator cutting off the bottom of the list
+                Text(" ")
             }
             .listStyle(PlainListStyle())
         }
