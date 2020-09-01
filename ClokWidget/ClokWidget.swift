@@ -46,14 +46,11 @@ struct ClokWidget: Widget {
         IntentConfiguration(
             kind: kind,
             intent: ConfigurationIntent.self,
-            provider: Provider(),
-            placeholder: PlaceholderView(
-                entry: SimpleEntry(
-                    date: Date(),
-                    running: .noEntry))) { entry in
-                        ClokWidgetEntryView(entry: entry)
-                    }
-                .configurationDisplayName("My Widget")
+            provider: Provider()
+        ) { entry in
+            ClokWidgetEntryView(entry: entry)
+        }
+            .configurationDisplayName("My Widget")
             .description("This is an example widget.")
             .supportedFamilies([.systemSmall])
     }
