@@ -10,12 +10,20 @@ import Foundation
 import Intents
 
 struct Provider: IntentTimelineProvider {
-    public func snapshot(for configuration: ConfigurationIntent, with context: Context, completion: @escaping (SimpleEntry) -> ()) {
+    
+    typealias Entry = SimpleEntry
+    typealias Intent = ConfigurationIntent
+    
+    func placeholder(in context: Context) -> SimpleEntry {
+        SimpleEntry(date: Date(), running: .noEntry)
+    }
+    
+    func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (SimpleEntry) -> Void) {
         let entry = SimpleEntry(date: Date(), running: .noEntry)
         completion(entry)
     }
-
-    public func timeline(for configuration: ConfigurationIntent, with context: Context, completion: @escaping (Timeline<SimpleEntry>) -> ()) {
+    
+    func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<SimpleEntry>) -> Void) {
         getRunningEntry { (running, error) in
             guard let running = running else {
                 var entries: [SimpleEntry] = [
