@@ -82,11 +82,6 @@ struct LoginView: View {
     @State private var loader: AnyCancellable? = nil
     
     /**
-     Special loader for this specific task, since it involves a complex zipped `Publisher`
-     */
-    @State private var loader: AnyCancellable? = nil
-    
-    /**
      On first login, execute a special call that fetches `User`'s projects and many weeks of entries.
      This helps ensure the user won't encounter a lot of blank screens.
      */
@@ -108,16 +103,6 @@ struct LoginView: View {
                 context: moc,
                 /// indicate that a loading screen SHOULD be shown
                 initialLogin: true
-            )
-        )
-            .sink { (projects, tags, rawEntries) in
-            /// then use fresh projects when requesting entries
-            entryLoader.saveEntries(
-                range: range,
-                rawEntries: rawEntries,
-                projects: projects,
-                tags: tags,
-                context: moc
             )
         }
     }
