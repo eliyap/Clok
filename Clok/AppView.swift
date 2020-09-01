@@ -78,16 +78,17 @@ struct ClokApp: App {
                     print("Detailed report for \(date) requested")
                     #endif
                     guard let user = cred.user else { return }
-                    
-                    /// NOTE: add a 1 day margin of safety on either side
-                    let range = (
-                        start: date - .day,
-                        end: date + .week + .day
-                    )
-                    
-                    entryLoader.loader = entryLoader.fetchRawEntries(
-                        range: range,
-                        user: user
+
+                    entryLoader.fetchEntries(
+                        /// NOTE: add a 1 day margin of safety on either side
+                        range: (
+                            start: date - .day,
+                            end: date + .week + .day
+                        ),
+                        user: user,
+                        projects: loadProjects(context: persistentContainer.viewContext) ?? [],
+                        tags: loadTags(context: persistentContainer.viewContext) ?? [],
+                        context: persistentContainer.viewContext
                     )
                     /// switch to main thread before performing CoreData work
                     .receive(on: DispatchQueue.main)

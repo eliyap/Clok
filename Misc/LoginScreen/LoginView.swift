@@ -79,6 +79,8 @@ struct LoginView: View {
         }
     }
     
+    @State private var loader: AnyCancellable? = nil
+    
     /**
      Special loader for this specific task, since it involves a complex zipped `Publisher`
      */
@@ -89,23 +91,21 @@ struct LoginView: View {
      This helps ensure the user won't encounter a lot of blank screens.
      */
     func fetchOnLogin(user: User) -> Void {
-        /// grab a year's worth of work (should be enough for most users)
-        let range = (
-            start: Date() - (.day * 365),
-            end: Date()
-        )
-        
-        /**
-         Request `Project`s, `Tag`s, and `RawEntry`s together,
-         but wait until `Project`s and `Tag`s are processed before processing
-         `TimeEntry`s against the updated records
-        */
-        loader = Publishers.Zip3(
-            ProjectLoader.fetchProjects(user: user, context: moc),
-            TagLoader.fetchTags(user: user, context: moc),
-            entryLoader.fetchRawEntries(
-                range: range,
+        /// request projects
+        loader = ProjectLoader.fetchProjects(user: user, context: moc)
+            .zip(TagLoader.fetchTags(user: user, context: moc))
+            .sink { (projects, tags) in
+            /// then use fresh projects when requesting entries
+            entryLoader.fetchEntries(
+                range: (
+                    /// grab a year's worth of work (should be enough for most users)
+                    start: Date() - (.day * 365),
+                    end: Date()
+                ),
                 user: user,
+                projects: projects,
+                tags: tags,
+                context: moc,
                 /// indicate that a loading screen SHOULD be shown
                 initialLogin: true
             )
