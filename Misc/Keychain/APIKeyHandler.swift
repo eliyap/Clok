@@ -18,19 +18,8 @@ enum KeychainError: Error {
 
 /// primarily for widget to get API Key only
 /// note: I couldn't get a shared data container to work, hence workspace request always failed.
-func getToken() -> String? {
-    do {
-        let (_, _, apiKey) = try getKey()
-        return apiKey
-    } catch KeychainError.unhandledError(code: errSecItemNotFound) {
-        print("No Key Found")
-    } catch KeychainError.unhandledError(code: let status) {
-        print("Keychain error with OSStatus: \(status)")
-    } catch {
-        // no other error type should come through!
-        fatalError()
-    }
-    return nil
+func getToken() throws -> String {
+    try getKey().2
 }
 
 /**
