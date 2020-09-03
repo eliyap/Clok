@@ -27,7 +27,7 @@ func getToken() throws -> String {
  */
 func loadCredentials() -> User? {
     do {
-        let (email, fullname, apiKey) = try getKey()
+        let (email, fullname, apiKey, _) = try getKey()
         guard
             let spaces = WorkspaceManager.workspaces,
             let chosen = WorkspaceManager.chosenWorkspace
@@ -70,6 +70,13 @@ func saveKeys(user: User) throws -> Void {
         kSecAttrAccount: user.email,                     // email
         kSecAttrCreator: user.fullName,                  // full name
         kSecValueData:   user.token.data(using: .utf8)!, // token
+        /**
+         NOTE: workspace ID, strictly speaking, is not super sensitive data.
+         It is stored here because it is a **required** field for toggl API requests.
+         Thus it needs to be accessible by the Widget, which cannot access the UserDefaults of the main app,
+         but *can* access the shared Keychain.
+         */
+        kSecAttrPort:    "\(user.chosen.wid)",           // workspace ID
         kSecClass:       kSecClassInternetPassword,
         kSecReturnData:  true
     ] as CFDictionary
@@ -89,7 +96,7 @@ func saveKeys(user: User) throws -> Void {
     }
 }
 
-func getKey() throws -> (String, String, String) {
+func getKey() throws -> (String, String, String, Int) {
     let query = [kSecClass: kSecClassInternetPassword,
                  kSecAttrServer: service,
                  kSecReturnAttributes: true,
@@ -109,7 +116,9 @@ func getKey() throws -> (String, String, String) {
     let keyData = dic[kSecValueData] as! Data
     let fullName = dic[kSecAttrCreator] as! String
     let apiKey = String(data: keyData, encoding: .utf8)!
-    return (email, fullName, apiKey)
+    let chosenWID = Int(dic[kSecAttrPort] as! String)!
+    
+    return (email, fullName, apiKey, chosenWID)
 }
 
 /// when user logs out, remove login credentials from the keychain
