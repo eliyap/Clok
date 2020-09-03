@@ -57,6 +57,9 @@
 		2277E8C924EB47B400702086 /* PaginatedLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E8C824EB47B400702086 /* PaginatedLoad.swift */; };
 		2277E8CB24EB48C200702086 /* DateRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E8CA24EB48C200702086 /* DateRange.swift */; };
 		228174C62501ACBF008E471D /* WidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228174C52501ACB3008E471D /* WidgetView.swift */; };
+		228174C92501B494008E471D /* SummaryLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228174C72501B399008E471D /* SummaryLoader.swift */; };
+		228174CA2501B49B008E471D /* Summary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228174C82501B3E0008E471D /* Summary.swift */; };
+		228174CB2501B7B7008E471D /* DateComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229D7A724EF6750004E1034 /* DateComponent.swift */; };
 		22885DAE24DA13E500A56FE3 /* DayStrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22885DAD24DA13E500A56FE3 /* DayStrip.swift */; };
 		22885DB024DA1C9600A56FE3 /* Divisions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22885DAF24DA1C9600A56FE3 /* Divisions.swift */; };
 		22885DB224DA1E2E00A56FE3 /* TimeIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22885DB124DA1E2E00A56FE3 /* TimeIndicator.swift */; };
@@ -901,9 +904,12 @@
 				22DC869B24BA7A5E00FF771F /* TimeEntryModel.xcdatamodeld in Sources */,
 				2229D7A624EF5C55004E1034 /* TimeIntervalExtension.swift in Sources */,
 				22B0783324B150C300256EB8 /* FormRequest.swift in Sources */,
+				228174CB2501B7B7008E471D /* DateComponent.swift in Sources */,
+				228174C92501B494008E471D /* SummaryLoader.swift in Sources */,
 				22B0783E24B166DE00256EB8 /* BackgroundRequest.swift in Sources */,
 				2229D7A424EF5C41004E1034 /* WorkspaceManager.swift in Sources */,
 				228174C62501ACBF008E471D /* WidgetView.swift in Sources */,
+				228174CA2501B49B008E471D /* Summary.swift in Sources */,
 				22B0783624B1513A00256EB8 /* User.swift in Sources */,
 				2229D7A524EF5C4C004E1034 /* GraphModel.swift in Sources */,
 				22AD5F8724B1467E006EF7FB /* ClokWidget.intentdefinition in Sources */,
