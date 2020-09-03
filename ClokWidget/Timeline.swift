@@ -18,12 +18,27 @@ struct Provider: IntentTimelineProvider {
         SimpleEntry(date: Date(), running: .noEntry)
     }
     
-    func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (SimpleEntry) -> Void) {
+    func getSnapshot(
+        for configuration: ConfigurationIntent,
+        in context: Context,
+        completion: @escaping (SimpleEntry) -> Void
+    ) -> Void {
         let entry = SimpleEntry(date: Date(), running: .noEntry)
         completion(entry)
     }
     
-    func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<SimpleEntry>) -> Void) {
+    func getTimeline(
+        for configuration: ConfigurationIntent,
+        in context: Context,
+        completion: @escaping (Timeline<SimpleEntry>) -> Void
+    ) -> Void {
+        
+        guard let apiKey = try? getKey() else {
+            let timeline = Timeline(entries: [SimpleEntry](), policy: .after(Date() + .hour))
+            completion(timeline)
+            return
+        }
+        
         getRunningEntry { (running, error) in
             guard let running = running else {
                 var entries: [SimpleEntry] = [
