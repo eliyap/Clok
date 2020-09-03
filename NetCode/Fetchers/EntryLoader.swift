@@ -44,15 +44,12 @@ final class EntryLoader: ObservableObject {
         }
         
         // assemble request URL (page is added later)
-        let df = DateFormatter()
-        df.dateFormat = "yyyy-MM-dd" // ISO 8601 format, day precision
-        
         // documented at https://github.com/toggl/toggl_api_docs/blob/master/reports.md
         let api_string = "\(REPORT_URL)details?" + [
             "user_agent=\(user_agent)",    // identifies my app
             "workspace_id=\(user.chosen.wid)", // provided by the User
-            "since=\(df.string(from: range.start))",
-            "until=\(df.string(from: range.end))"
+            "since=\(range.start.iso8601)",
+            "until=\(range.end.iso8601)"
         ].joined(separator: "&")
     
         loader = recursiveLoadPages(
