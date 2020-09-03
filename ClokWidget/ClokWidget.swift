@@ -11,8 +11,6 @@ import SwiftUI
 import Foundation
 import Intents
 
-
-
 @main
 struct ClokWidget: Widget {
     
