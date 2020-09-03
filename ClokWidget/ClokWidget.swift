@@ -11,35 +11,11 @@ import SwiftUI
 import Foundation
 import Intents
 
-struct PlaceholderView : View {
-    var entry: SimpleEntry
-    var body: some View {
-        Text("Placeholder View \(entry.running.description)")
-    }
-}
 
-struct ClokWidgetEntryView : View {
-    var entry: SimpleEntry
-    var body: some View {
-        GeometryReader{ geo in
-            VStack {
-                if entry.running == .noEntry {
-                    Text("Start a timer")
-                } else {
-                    Text("\(entry.running.description)")
-                    Text("\(entry.running.project.name)")
-                    Text(entry.running.start, style: .timer)
-                        .frame(maxWidth: geo.size.width)
-                }
-            }
-        }
-        .padding()
-    }
-    @Environment(\.widgetFamily) var family
-}
 
 @main
 struct ClokWidget: Widget {
+    
     private let kind: String = "ClokWidget"
 
     public var body: some WidgetConfiguration {
