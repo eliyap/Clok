@@ -227,6 +227,8 @@
 		2277E8C824EB47B400702086 /* PaginatedLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginatedLoad.swift; sourceTree = "<group>"; };
 		2277E8CA24EB48C200702086 /* DateRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateRange.swift; sourceTree = "<group>"; };
 		228174C52501ACB3008E471D /* WidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetView.swift; sourceTree = "<group>"; };
+		228174C72501B399008E471D /* SummaryLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryLoader.swift; sourceTree = "<group>"; };
+		228174C82501B3E0008E471D /* Summary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Summary.swift; sourceTree = "<group>"; };
 		22885DAD24DA13E500A56FE3 /* DayStrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayStrip.swift; sourceTree = "<group>"; };
 		22885DAF24DA1C9600A56FE3 /* Divisions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Divisions.swift; sourceTree = "<group>"; };
 		22885DB124DA1E2E00A56FE3 /* TimeIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIndicator.swift; sourceTree = "<group>"; };
@@ -534,6 +536,8 @@
 				22AD5F8124B1467D006EF7FB /* ClokWidget.swift */,
 				228174C52501ACB3008E471D /* WidgetView.swift */,
 				22B0784824B2629A00256EB8 /* Timeline.swift */,
+				228174C72501B399008E471D /* SummaryLoader.swift */,
+				228174C82501B3E0008E471D /* Summary.swift */,
 				22B0783C24B1630800256EB8 /* BackgroundRequest.swift */,
 				22AD5F8324B1467D006EF7FB /* ClokWidget.intentdefinition */,
 				22AD5F8424B1467E006EF7FB /* Assets.xcassets */,
