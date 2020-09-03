@@ -101,7 +101,6 @@
 		22B0783624B1513A00256EB8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221C3C5624A93C57006995C5 /* User.swift */; };
 		22B0783824B1519600256EB8 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B0783724B1519600256EB8 /* NetworkError.swift */; };
 		22B0783924B1519D00256EB8 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B0783724B1519600256EB8 /* NetworkError.swift */; };
-		22B0783B24B15B2E00256EB8 /* ReloadPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B0783A24B15B2E00256EB8 /* ReloadPolicy.swift */; };
 		22B0783D24B1630800256EB8 /* BackgroundRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B0783C24B1630800256EB8 /* BackgroundRequest.swift */; };
 		22B0783E24B166DE00256EB8 /* BackgroundRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B0783C24B1630800256EB8 /* BackgroundRequest.swift */; };
 		22B0783F24B1795300256EB8 /* APIKeyHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221D963B24A912B900C84F57 /* APIKeyHandler.swift */; };
@@ -266,7 +265,6 @@
 		22AD5F8424B1467E006EF7FB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		22AD5F8624B1467E006EF7FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22B0783724B1519600256EB8 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
-		22B0783A24B15B2E00256EB8 /* ReloadPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReloadPolicy.swift; sourceTree = "<group>"; };
 		22B0783C24B1630800256EB8 /* BackgroundRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundRequest.swift; sourceTree = "<group>"; };
 		22B0784124B17BEC00256EB8 /* RunningEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningEntry.swift; sourceTree = "<group>"; };
 		22B0784624B247D500256EB8 /* ClokWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ClokWidgetExtension.entitlements; sourceTree = "<group>"; };
@@ -536,7 +534,6 @@
 				22AD5F8124B1467D006EF7FB /* ClokWidget.swift */,
 				228174C52501ACB3008E471D /* WidgetView.swift */,
 				22B0784824B2629A00256EB8 /* Timeline.swift */,
-				22B0783A24B15B2E00256EB8 /* ReloadPolicy.swift */,
 				22B0783C24B1630800256EB8 /* BackgroundRequest.swift */,
 				22AD5F8324B1467D006EF7FB /* ClokWidget.intentdefinition */,
 				22AD5F8424B1467E006EF7FB /* Assets.xcassets */,
@@ -990,7 +987,6 @@
 				C6AAB3EC249F003100DFBA36 /* StatDisplayView.swift in Sources */,
 				C6751D8A2471E39F002965CC /* Position.swift in Sources */,
 				22A2CE2E24E59F88000820AD /* ColorHex.swift in Sources */,
-				22B0783B24B15B2E00256EB8 /* ReloadPolicy.swift in Sources */,
 				222D996324BB803800F66E0F /* Report.swift in Sources */,
 				224B3AFE24DE28C300B1C943 /* FilterModal.swift in Sources */,
 				C61D2658249BE1990056C9FA /* StatHelpers.swift in Sources */,
