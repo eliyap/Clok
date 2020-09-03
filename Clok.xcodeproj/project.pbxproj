@@ -62,6 +62,7 @@
 		228174CB2501B7B7008E471D /* DateComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229D7A724EF6750004E1034 /* DateComponent.swift */; };
 		228174CC2501B90C008E471D /* DataTaskMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B1D64824EBAD27001E87C1 /* DataTaskMonitor.swift */; };
 		228174CD2501B987008E471D /* DecoderExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D992524BAB2FD00F66E0F /* DecoderExtension.swift */; };
+		228174CE2501B9AF008E471D /* ToOptional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229646D624F335CA00FE14E5 /* ToOptional.swift */; };
 		22885DAE24DA13E500A56FE3 /* DayStrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22885DAD24DA13E500A56FE3 /* DayStrip.swift */; };
 		22885DB024DA1C9600A56FE3 /* Divisions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22885DAF24DA1C9600A56FE3 /* Divisions.swift */; };
 		22885DB224DA1E2E00A56FE3 /* TimeIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22885DB124DA1E2E00A56FE3 /* TimeIndicator.swift */; };
@@ -901,6 +902,7 @@
 			files = (
 				228174CC2501B90C008E471D /* DataTaskMonitor.swift in Sources */,
 				2229D7B424F05683004E1034 /* RunningEntry.swift in Sources */,
+				228174CE2501B9AF008E471D /* ToOptional.swift in Sources */,
 				22B0783524B1513A00256EB8 /* ClokWidget.swift in Sources */,
 				2238640324BBC6980041886B /* DoubleExtension.swift in Sources */,
 				228174CD2501B987008E471D /* DecoderExtension.swift in Sources */,
