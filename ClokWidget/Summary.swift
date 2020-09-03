@@ -11,3 +11,7 @@ import Foundation
 struct RawSummary: Decodable {
     
 }
+
+struct Summary: Decodable {
+    
+}
