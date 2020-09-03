@@ -11,10 +11,8 @@ func getRunningEntry(completion:@escaping (RunningEntry?, Error?) -> Void) {
     var project = StaticProject.noProject
     var runningData: [String: AnyObject]!
     
-    guard let token = getToken() else {
-        completion(nil, KeychainError.noData)
-        return
-    }
+    let token = try getToken()
+    
     URLSession.shared.dataTask(with: formRequest(
         url: runningURL,
         auth: auth(token: token)
