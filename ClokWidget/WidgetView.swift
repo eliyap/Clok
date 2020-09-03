@@ -9,13 +9,6 @@
 import Foundation
 import SwiftUI
 
-struct PlaceholderView : View {
-    var entry: SimpleEntry
-    var body: some View {
-        Text("Placeholder View \(entry.running.description)")
-    }
-}
-
 struct ClokWidgetEntryView : View {
     
     @Environment(\.widgetFamily) var family
