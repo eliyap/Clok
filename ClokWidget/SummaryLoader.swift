@@ -17,7 +17,7 @@ func fetchSummary(
     /// API URL documentation:
     /// https://github.com/toggl/toggl_api_docs/blob/master/reports/summary.md
     let url = [
-        "\(API_URL)/summary/projects?user_agent=\(user_agent)",
+        "\(REPORT_URL)/summary?user_agent=\(user_agent)",
         "workspace_id=\(wid)",
         "since=\(Date().midnight.iso8601)",
         "end=\(Date().midnight.advanced(by: .day).iso8601)"
@@ -43,7 +43,7 @@ func fetchSummary(
             return
         }
         do {
-            print(try! JSONSerialization.jsonObject(with: data, options: []) as! [[String : AnyObject]])
+            print(try! JSONSerialization.jsonObject(with: data, options: []) as! [String : AnyObject])
             let summary = try! JSONDecoder(dateStrategy: .iso8601).decode(Summary.self, from: data)
             print("fetch success")
         } catch {
