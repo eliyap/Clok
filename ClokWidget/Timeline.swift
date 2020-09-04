@@ -33,13 +33,14 @@ struct Provider: IntentTimelineProvider {
         in context: Context,
         completion: @escaping (Timeline<SummaryEntry>) -> Void
     ) -> Void {
-        
+        // fetch credentials from Keychain
         guard let (_, _, token, chosenWID) = try? getKey() else {
             let timeline = Timeline(entries: [SummaryEntry](), policy: .after(Date() + .hour))
             completion(timeline)
             return
         }
-        print("fetching")
+        
+        // fetch summary from Toggl
         fetchSummary(token: token, wid: chosenWID) { summary, error in
             guard let summary = summary, error == nil else {
                 print("Error \(String(describing: error))")
@@ -47,7 +48,9 @@ struct Provider: IntentTimelineProvider {
                 completion(timeline)
                 return
             }
-            print("fetched")
+            
+            // add fetched summary to Widget Timeline
+            // load again in an hour
             let timeline = Timeline(
                 entries: [SummaryEntry(date: Date(), summary: summary)],
                 policy: .after(Date() + .hour)
@@ -55,7 +58,6 @@ struct Provider: IntentTimelineProvider {
             completion(timeline)
             return
         }
-        print("finished?")
     }
 }
 
