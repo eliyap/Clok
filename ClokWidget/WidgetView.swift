@@ -16,15 +16,37 @@ struct ClokWidgetEntryView : View {
     var entry: SummaryEntry
     
     var body: some View {
-        GeometryReader{ geo in
-            VStack {
-                if entry.summary == .noSummary {
-                    Text("Nothing Here")
-                } else {
-                    Text("Awaiting Graphics")
-                }
+        return GeometryReader{ geo in
+            if entry.summary == .noSummary {
+                Text("Nothing Here")
+            } else {
+                Graph
             }
         }
         .padding()
+    }
+    
+    var Graph: some View {
+        VStack(alignment: .leading) {
+            ForEach(
+                entry.summary.projects.sorted(by: {$0.duration > $1.duration}),
+                id: \.id
+            ) { project in
+                HStack {
+                    Rings(project: project)
+                    Text(project.name)
+                        .foregroundColor(project.color)
+                        .font(.caption)
+                        .layoutPriority(1)
+                }
+            }
+        }
+    }
+    
+    func Rings(project: Summary.Project) -> some View {
+        ForEach(0..<Int(project.duration / .hour), id: \.self) {_ in
+            Circle()
+                .foregroundColor(project.color)
+        }
     }
 }
