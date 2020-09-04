@@ -115,10 +115,10 @@ func getKey() throws -> (String, String, String, Int) {
     let email = dic[kSecAttrAccount] as! String
     let keyData = dic[kSecValueData] as! Data
     let fullName = dic[kSecAttrCreator] as! String
-    let apiKey = String(data: keyData, encoding: .utf8)!
-    let chosenWID = Int(dic[kSecAttrPort] as! String)!
+    let token = String(data: keyData, encoding: .utf8)!
+    let chosenWID = dic[kSecAttrPort] as! Int
     
-    return (email, fullName, apiKey, chosenWID)
+    return (email, fullName, token, chosenWID)
 }
 
 /// when user logs out, remove login credentials from the keychain
