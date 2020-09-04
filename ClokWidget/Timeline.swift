@@ -40,13 +40,18 @@ struct Provider: IntentTimelineProvider {
             return
         }
         print("fetching")
-        fetchSummary(token: token, wid: chosenWID) { _, error in
-            if let error = error {
-                print(error)
+        fetchSummary(token: token, wid: chosenWID) { summary, error in
+            guard let summary = summary, error == nil else {
+                print("Error \(String(describing: error))")
+                let timeline = Timeline(entries: [SummaryEntry](), policy: .after(Date() + .hour))
+                completion(timeline)
+                return
             }
             print("fetched")
-            #warning("placeholder timeline")
-            let timeline = Timeline(entries: [SummaryEntry](), policy: .after(Date() + .hour))
+            let timeline = Timeline(
+                entries: [SummaryEntry(date: Date(), summary: summary)],
+                policy: .after(Date() + .hour)
+            )
             completion(timeline)
             return
         }

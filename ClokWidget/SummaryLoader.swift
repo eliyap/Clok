@@ -44,6 +44,7 @@ func fetchSummary(
         }
         do {
             let summary = try JSONDecoder(dateStrategy: .iso8601).decode(Summary.self, from: data)
+            completion(summary, nil)
         } catch {
             completion(nil, NetworkError.serialization)
         }
