@@ -9,7 +9,11 @@
 import Foundation
 import Combine
 
-func summaryPublisher(token: String, wid: Int) -> AnyPublisher<Summary?, Never> {
+func fetchSummary(
+    token: String,
+    wid: Int,
+    completion:@escaping (RunningEntry?, Error?) -> Void
+) -> Void {
     /// API URL documentation:
     /// https://github.com/toggl/toggl_api_docs/blob/master/reports/summary.md
     let url = [
@@ -24,10 +28,27 @@ func summaryPublisher(token: String, wid: Int) -> AnyPublisher<Summary?, Never> 
         auth: auth(token: token)
     )
     
-    return URLSession.shared.dataTaskPublisher(for: request)
-        .map(dataTaskMonitor)
-        .decode(type: Summary.self, decoder: JSONDecoder(dateStrategy: .iso8601))
-        .map(toOptional)
-        .replaceError(with: nil)
-        .eraseToAnyPublisher()
+    URLSession.shared.dataTask(with: request) { (data, response, error) -> Void in
+        guard error == nil else {
+            completion(nil, error!)
+            return
+        }
+        guard let data = data else {
+            completion(nil, NetworkError.other)
+            return
+        }
+        let code = (response as? HTTPURLResponse)?.statusCode ?? -1
+        guard 200...299 ~= code else {
+            completion(nil, NetworkError.statusCode(code: code))
+            return
+        }
+        do {
+            print(try! JSONSerialization.jsonObject(with: data, options: []) as! [[String : AnyObject]])
+            let summary = try! JSONDecoder(dateStrategy: .iso8601).decode(Summary.self, from: data)
+            print("fetch success")
+        } catch {
+            completion(nil, NetworkError.serialization)
+        }
+    }.resume()
+        
 }
