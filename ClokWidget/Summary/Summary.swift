@@ -9,33 +9,6 @@
 import Foundation
 import SwiftUI
 
-struct RawSummary: Decodable {
-    
-    let data: [Project]
-    let total_grand: Int /// total number of milliseconds
-    
-    struct Project: Decodable {
-        let id: Int?
-        let items: [Entry]
-        let time: Int /// number of milliseconds for this project
-        let title: RawSummaryProjectTitle
-        
-        struct RawSummaryProjectTitle: Decodable {
-            let hex_color: String?
-            let project: String?
-        }
-    }
-    
-    struct Entry: Decodable {
-        let time: Int /// number of milliseconds for this entry
-        let title: RawSummaryEntryTitle
-        
-        struct RawSummaryEntryTitle: Decodable {
-            let time_entry: String
-        }
-    }
-}
-
 struct Summary: Decodable {
     
     let total: TimeInterval
