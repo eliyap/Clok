@@ -468,6 +468,8 @@
 		228174D12501CB64008E471D /* Summary */ = {
 			isa = PBXGroup;
 			children = (
+				228174CF2501CAEA008E471D /* SummaryTimelineEntry.swift */,
+				228174C72501B399008E471D /* SummaryLoader.swift */,
 				228174C82501B3E0008E471D /* Summary.swift */,
 				228174D62501CD12008E471D /* SummaryEquatable.swift */,
 				228174D42501CBCB008E471D /* NoSummary.swift */,
@@ -571,8 +573,6 @@
 				22AD5F8124B1467D006EF7FB /* ClokWidget.swift */,
 				228174C52501ACB3008E471D /* WidgetView.swift */,
 				22B0784824B2629A00256EB8 /* Timeline.swift */,
-				228174CF2501CAEA008E471D /* SummaryTimelineEntry.swift */,
-				228174C72501B399008E471D /* SummaryLoader.swift */,
 				228174D12501CB64008E471D /* Summary */,
 				228174D82501D0EA008E471D /* Detailed */,
 				22B0783C24B1630800256EB8 /* BackgroundRequest.swift */,

@@ -60,8 +60,3 @@ struct Provider: IntentTimelineProvider {
         }
     }
 }
-
-struct SimpleEntry: TimelineEntry {
-    public let date: Date
-    public let running: RunningEntry
-}
