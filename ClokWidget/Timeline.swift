@@ -8,6 +8,7 @@ import WidgetKit
 import SwiftUI
 import Foundation
 import Intents
+import Combine
 
 struct Provider: IntentTimelineProvider {
     
@@ -33,34 +34,23 @@ struct Provider: IntentTimelineProvider {
         completion: @escaping (Timeline<SimpleEntry>) -> Void
     ) -> Void {
         
-        guard let apiKey = try? getKey() else {
+        guard let (_, _, token, chosenWID) = try? getKey() else {
             let timeline = Timeline(entries: [SimpleEntry](), policy: .after(Date() + .hour))
             completion(timeline)
             return
         }
-        
-        getRunningEntry { (running, error) in
-            guard let running = running else {
-                var entries: [SimpleEntry] = [
-                    SimpleEntry(date: Date(), running: .noEntry),
-                    SimpleEntry(date: Date() + 1.0, running: .noEntry),
-                    SimpleEntry(date: Date() + 5.0, running: .noEntry)
-                ]
-                let timeline = Timeline(
-                    entries: entries,
-                    policy: .never
-                )
-                completion(timeline)
-                return
+        print("fetching")
+        fetchSummary(token: token, wid: chosenWID) { _, error in
+            if let error = error {
+                print(error)
             }
-            
-            let timeline = Timeline(
-                entries: [SimpleEntry(date: Date(), running: running)],
-                policy: .never
-            )
+            print("fetched")
+            #warning("placeholder timeline")
+            let timeline = Timeline(entries: [SimpleEntry](), policy: .after(Date() + .hour))
             completion(timeline)
             return
         }
+        print("finished?")
     }
 }
 
