@@ -12,30 +12,30 @@ import Combine
 
 struct Provider: IntentTimelineProvider {
     
-    typealias Entry = SimpleEntry
+    typealias Entry = SummaryEntry
     typealias Intent = ConfigurationIntent
     
-    func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), running: .noEntry)
+    func placeholder(in context: Context) -> SummaryEntry {
+        SummaryEntry(date: Date(), summary: .noSummary)
     }
     
     func getSnapshot(
         for configuration: ConfigurationIntent,
         in context: Context,
-        completion: @escaping (SimpleEntry) -> Void
+        completion: @escaping (SummaryEntry) -> Void
     ) -> Void {
-        let entry = SimpleEntry(date: Date(), running: .noEntry)
-        completion(entry)
+        #warning("snapshot should be better formed")
+        completion(placeholder(in: context))
     }
     
     func getTimeline(
         for configuration: ConfigurationIntent,
         in context: Context,
-        completion: @escaping (Timeline<SimpleEntry>) -> Void
+        completion: @escaping (Timeline<SummaryEntry>) -> Void
     ) -> Void {
         
         guard let (_, _, token, chosenWID) = try? getKey() else {
-            let timeline = Timeline(entries: [SimpleEntry](), policy: .after(Date() + .hour))
+            let timeline = Timeline(entries: [SummaryEntry](), policy: .after(Date() + .hour))
             completion(timeline)
             return
         }
@@ -46,7 +46,7 @@ struct Provider: IntentTimelineProvider {
             }
             print("fetched")
             #warning("placeholder timeline")
-            let timeline = Timeline(entries: [SimpleEntry](), policy: .after(Date() + .hour))
+            let timeline = Timeline(entries: [SummaryEntry](), policy: .after(Date() + .hour))
             completion(timeline)
             return
         }

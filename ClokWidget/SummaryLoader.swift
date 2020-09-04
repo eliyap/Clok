@@ -12,7 +12,7 @@ import Combine
 func fetchSummary(
     token: String,
     wid: Int,
-    completion:@escaping (RunningEntry?, Error?) -> Void
+    completion:@escaping (Summary?, Error?) -> Void
 ) -> Void {
     /// API URL documentation:
     /// https://github.com/toggl/toggl_api_docs/blob/master/reports/summary.md

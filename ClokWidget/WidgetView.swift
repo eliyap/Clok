@@ -13,18 +13,15 @@ struct ClokWidgetEntryView : View {
     
     @Environment(\.widgetFamily) var family
     
-    var entry: SimpleEntry
+    var entry: SummaryEntry
     
     var body: some View {
         GeometryReader{ geo in
             VStack {
-                if entry.running == .noEntry {
-                    Text("Start a timer")
+                if entry.summary == .noSummary {
+                    Text("Nothing Here")
                 } else {
-                    Text("\(entry.running.description)")
-                    Text("\(entry.running.project.name)")
-                    Text(entry.running.start, style: .timer)
-                        .frame(maxWidth: geo.size.width)
+                    Text("Awaiting Graphics")
                 }
             }
         }
