@@ -43,12 +43,9 @@ func fetchSummary(
             return
         }
         do {
-            print(try! JSONSerialization.jsonObject(with: data, options: []) as! [String : AnyObject])
-            let summary = try! JSONDecoder(dateStrategy: .iso8601).decode(Summary.self, from: data)
-            print("fetch success")
+            let summary = try JSONDecoder(dateStrategy: .iso8601).decode(Summary.self, from: data)
         } catch {
             completion(nil, NetworkError.serialization)
         }
     }.resume()
-        
 }
