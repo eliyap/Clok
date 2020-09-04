@@ -65,6 +65,7 @@
 		228174CE2501B9AF008E471D /* ToOptional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229646D624F335CA00FE14E5 /* ToOptional.swift */; };
 		228174D02501CAFC008E471D /* SummaryTimelineEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228174CF2501CAEA008E471D /* SummaryTimelineEntry.swift */; };
 		228174D32501CB76008E471D /* RawSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228174D22501CB76008E471D /* RawSummary.swift */; };
+		228174D52501CBCB008E471D /* NoSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228174D42501CBCB008E471D /* NoSummary.swift */; };
 		22885DAE24DA13E500A56FE3 /* DayStrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22885DAD24DA13E500A56FE3 /* DayStrip.swift */; };
 		22885DB024DA1C9600A56FE3 /* Divisions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22885DAF24DA1C9600A56FE3 /* Divisions.swift */; };
 		22885DB224DA1E2E00A56FE3 /* TimeIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22885DB124DA1E2E00A56FE3 /* TimeIndicator.swift */; };
@@ -239,6 +240,7 @@
 		228174C82501B3E0008E471D /* Summary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Summary.swift; sourceTree = "<group>"; };
 		228174CF2501CAEA008E471D /* SummaryTimelineEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryTimelineEntry.swift; sourceTree = "<group>"; };
 		228174D22501CB76008E471D /* RawSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawSummary.swift; sourceTree = "<group>"; };
+		228174D42501CBCB008E471D /* NoSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoSummary.swift; sourceTree = "<group>"; };
 		22885DAD24DA13E500A56FE3 /* DayStrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayStrip.swift; sourceTree = "<group>"; };
 		22885DAF24DA1C9600A56FE3 /* Divisions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Divisions.swift; sourceTree = "<group>"; };
 		22885DB124DA1E2E00A56FE3 /* TimeIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIndicator.swift; sourceTree = "<group>"; };
@@ -463,6 +465,7 @@
 			isa = PBXGroup;
 			children = (
 				228174C82501B3E0008E471D /* Summary.swift */,
+				228174D42501CBCB008E471D /* NoSummary.swift */,
 				228174D22501CB76008E471D /* RawSummary.swift */,
 			);
 			path = Summary;
@@ -925,6 +928,7 @@
 				2229D7A624EF5C55004E1034 /* TimeIntervalExtension.swift in Sources */,
 				22B0783324B150C300256EB8 /* FormRequest.swift in Sources */,
 				228174CB2501B7B7008E471D /* DateComponent.swift in Sources */,
+				228174D52501CBCB008E471D /* NoSummary.swift in Sources */,
 				228174D32501CB76008E471D /* RawSummary.swift in Sources */,
 				228174C92501B494008E471D /* SummaryLoader.swift in Sources */,
 				22B0783E24B166DE00256EB8 /* BackgroundRequest.swift in Sources */,
