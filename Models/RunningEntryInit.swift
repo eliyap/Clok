@@ -56,6 +56,5 @@ extension RunningEntry {
         } else {
             project = StaticProject.noProject
         }
-        
     }
 }
