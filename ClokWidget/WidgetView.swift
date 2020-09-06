@@ -14,6 +14,8 @@ fileprivate let strokeStyle = StrokeStyle(
     lineCap: .round
 )
 
+fileprivate let rowCount = 5
+
 struct ClokWidgetEntryView : View {
     
     @Environment(\.widgetFamily) var family
@@ -34,57 +36,56 @@ struct ClokWidgetEntryView : View {
     var Graph: some View {
         VStack(alignment: .leading) {
             ForEach(
-                entry.summary.projects.sorted(by: {$0.duration > $1.duration}),
-                id: \.id
-            ) { project in
-                GeometryReader { geo in
-                    HStack {
-                        Rings(project: project, size: geo.size)
-                        Text(project.name)
-                            .foregroundColor(project.color)
-                            .font(.caption)
-                            .layoutPriority(1)
-                    }
+                Projects,
+                id: \.0
+            ) { idx, project in
+                HStack {
+                    ProjectLine(project: project)
                 }
             }
         }
     }
     
-    func Rings(project: Summary.Project, size: CGSize) -> some View {
+    func ProjectLine(project: Summary.Project?) -> some View {
+        Group {
+            if let project = project {
+                Rings(project: project)
+                Text(project.name)
+                    .foregroundColor(project.color)
+                    .font(.callout)
+                    .layoutPriority(1)
+            } else {
+                Text(" ")
+            }
+        }
+    }
+    
+    var Projects: [(Int, Summary.Project?)] {
+        Array((
+            entry.summary.projects.sorted(by: {$0.duration > $1.duration})
+            + Array(repeating: nil, count: rowCount)
+        )[1...rowCount].enumerated())
+    }
+    
+    func Rings(project: Summary.Project) -> some View {
         let remainder = project.duration.remainder(dividingBy: .hour) / .hour
         return Group {
             ForEach(0..<Int(project.duration / .hour), id: \.self) {_ in
                 Circle()
                     .stroke(style: strokeStyle)
-                    .frame(width: size.height, height: size.height)
+                    .foregroundColor(project.color)
+                    .aspectRatio(1, contentMode: .fit)
+            }
+            ZStack {
+                Circle()
+                    .stroke(style: strokeStyle)
+                    .foregroundColor(project.color)
+                    .opacity(0.25)
+                Arc(angle: Angle(radians: .tau * remainder) )
+                    .stroke(style: strokeStyle)
                     .foregroundColor(project.color)
             }
-            Arc(angle: Angle(radians: .tau * remainder))
-                .frame(width: size.height, height: size.height)
-                .foregroundColor(project.color)
-        }
-    }
-}
-
-struct Arc: Shape {
-    
-    let angle: Angle
-    
-    func path(in rect: CGRect) -> Path {
-        return Path { path in
-            path.move(to: CGPoint(x: rect.width / 2, y: .zero))
-            path.addRelativeArc(
-                center: CGPoint(x: rect.width / 2, y: rect.height / 2),
-                radius: rect.width / 2,
-                startAngle: Angle(radians: -.pi / 2),
-                delta: angle
-            )
-            path.addRelativeArc(
-                center: CGPoint(x: rect.width / 2, y: rect.height / 2),
-                radius: rect.width / 2,
-                startAngle: angle,
-                delta: -angle
-            )
+            .aspectRatio(1, contentMode: .fit)
         }
     }
 }
