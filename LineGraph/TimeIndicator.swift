@@ -11,9 +11,6 @@ import SwiftUI
 /// whitespace around time labels
 fileprivate let labelPadding = CGFloat(3)
 
-/// offset label upwards to rest on the line
-fileprivate let labelOffset = CGFloat.zero
-
 struct TimeIndicator: View {
     
     @EnvironmentObject var model: GraphModel
@@ -65,7 +62,6 @@ struct TimeIndicator: View {
         }
         return text
             .padding([.leading, .trailing], labelPadding)
-            .offset(y: labelOffset)
     }
     
     /// time indicators shown in `.graph` mode
@@ -92,6 +88,5 @@ struct TimeIndicator: View {
         }
         return Text("\(hours) h")
             .padding([.leading, .trailing], labelPadding)
-            .offset(y: -labelOffset)
     }
 }
