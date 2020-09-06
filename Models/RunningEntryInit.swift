@@ -9,7 +9,7 @@ import Foundation
 
 /** **NOTE**
  This file contains a parallel decoding of RawRunningEntry that does *not* build for Widget,
- as that created lots of import issues.
+ in order to avoid lots of import issues.
  */
 
 fileprivate struct RawRunningEntry: Decodable {
