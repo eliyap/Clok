@@ -10,6 +10,13 @@ import Foundation
 import Intents
 import Combine
 
+/**
+ Define the refresh rate centrally so it can be tweaked quickly
+ */
+fileprivate extension TimeInterval {
+    static let widgetPeriod: TimeInterval = .hour / 4
+}
+
 struct Provider: IntentTimelineProvider {
     
     typealias Entry = SummaryEntry
@@ -35,7 +42,7 @@ struct Provider: IntentTimelineProvider {
     ) -> Void {
         // fetch credentials from Keychain
         guard let (_, _, token, chosenWID) = try? getKey() else {
-            let timeline = Timeline(entries: [SummaryEntry](), policy: .after(Date() + .hour))
+            let timeline = Timeline(entries: [SummaryEntry](), policy: .after(Date() + .widgetPeriod))
             completion(timeline)
             return
         }
@@ -44,7 +51,7 @@ struct Provider: IntentTimelineProvider {
         fetchSummary(token: token, wid: chosenWID) { summary, error in
             guard let summary = summary, error == nil else {
                 print("Error \(String(describing: error))")
-                let timeline = Timeline(entries: [SummaryEntry](), policy: .after(Date() + .hour))
+                let timeline = Timeline(entries: [SummaryEntry](), policy: .after(Date() + .widgetPeriod))
                 completion(timeline)
                 return
             }
@@ -53,7 +60,7 @@ struct Provider: IntentTimelineProvider {
             // load again in an hour
             let timeline = Timeline(
                 entries: [SummaryEntry(date: Date(), summary: summary)],
-                policy: .after(Date() + .hour)
+                policy: .after(Date() + .widgetPeriod)
             )
             completion(timeline)
             return
