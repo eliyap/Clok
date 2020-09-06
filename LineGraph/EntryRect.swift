@@ -26,16 +26,15 @@ struct EntryRect: View {
     var border: Bool = false
     
     /// credit: https://www.hackingwithswift.com/quick-start/swiftui/how-to-create-a-marching-ants-border-effect
-    @State private var opacity = 0.25
+    @State private var phase: CGFloat = 0
     
     var body: some View {
         if border {
             /// animated border outline version
             RoundedRectangle(cornerRadius: size.width * cornerScale)
-                .strokeBorder(style: StrokeStyle(lineWidth: 2, dash: [10]))
-                .opacity(opacity)
-                .onAppear { opacity = 1.0 }
-                .animation(Animation.linear(duration: 1).repeatForever(autoreverses: true))
+                .strokeBorder(style: StrokeStyle(lineWidth: 2, dash: [10], dashPhase: phase))
+                .onAppear { phase -= 20 }
+                .animation(Animation.linear(duration: 1).repeatForever(autoreverses: false))
                 .frame(
                     width: size.width * thicc,
                     height: height
