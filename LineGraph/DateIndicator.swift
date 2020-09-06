@@ -13,12 +13,26 @@ struct DateIndicator: View {
     @EnvironmentObject var zero: ZeroDate
     
     let dayHeight: CGFloat
+    let state: GraphView.DateIndicatorState
+    
+    var offset: TimeInterval {
+        switch state {
+        case .yesterday: return -.day
+        case .today: return .zero
+        case .tomorrow: return +.day
+        }
+    }
     
     var body: some View {
         HStack(spacing: .zero) {
             WidthHelper
             ForEach(
-                Array(stride(from: zero.start, to: zero.end, by: .day)),
+                Array(stride(
+                        from: zero.start + offset,
+                        to: zero.end + offset,
+                        by: .day
+                
+                )),
                 id: \.timeIntervalSince1970
             ) { midnight in
                 /// short weekday and date labels

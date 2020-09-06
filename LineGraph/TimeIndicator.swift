@@ -12,7 +12,7 @@ import SwiftUI
 fileprivate let labelPadding = CGFloat(3)
 
 /// offset label upwards to rest on the line
-fileprivate let labelOffset = CGFloat(-10)
+fileprivate let labelOffset = CGFloat.zero
 
 struct TimeIndicator: View {
     
