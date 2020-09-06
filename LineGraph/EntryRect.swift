@@ -33,9 +33,10 @@ struct EntryRect: View {
             /// animated border outline version
             RoundedRectangle(cornerRadius: size.width * cornerScale)
                 .strokeBorder(style: StrokeStyle(lineWidth: 2, dash: [10]))
+                .animation(.none)
                 .opacity(opacity)
                 .onAppear { opacity = 1.0 }
-                .animation(Animation.linear(duration: 1).repeatForever(autoreverses: true))
+                .animation(Animation.linear(duration: 1.0).repeatForever(autoreverses: true))
                 .frame(
                     width: size.width * thicc,
                     height: height
