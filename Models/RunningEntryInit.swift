@@ -18,6 +18,7 @@ fileprivate struct RawRunningEntry: Decodable {
     
     struct WrappedEntry: Decodable {
         let id: Int
+        /// absence of a `pid` indicates no `Project`
         let pid: Int?
         let wid: Int
         let billable: Bool
