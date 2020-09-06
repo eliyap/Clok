@@ -18,7 +18,7 @@ fileprivate struct RawRunningEntry: Decodable {
     
     struct WrappedEntry: Decodable {
         let id: Int
-        let pid: Int
+        let pid: Int?
         let wid: Int
         let billable: Bool
         let start: Date
@@ -44,11 +44,18 @@ extension RunningEntry {
         start = rawRunningEntry.start
         description = rawRunningEntry.description
         pid = rawRunningEntry.pid
+            ?? StaticProject.noProject.wrappedID
         /**
          Since data comes from Toggl, `Project` should always be a valid project.
+         Or it can be `noProject`, represented as `nil` (i.e. the `pid` is missing in the JSON)
          If we cannot find the project in our system, mark it as unknown and try to pull it later.
          */
-        project = projects.first(where: {$0.id == rawRunningEntry.pid})
-            ?? StaticProject.unknown
+        if let pid = rawRunningEntry.pid {
+            project = projects.first(where: {$0.id == pid})
+                ?? StaticProject.unknown
+        } else {
+            project = StaticProject.noProject
+        }
+        
     }
 }
