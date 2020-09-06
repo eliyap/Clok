@@ -65,25 +65,7 @@ struct GraphView: View {
                 HStack(spacing: .zero) {
                     TimeIndicator(divisions: evenDivisions(for: dayHeight))
                     LineGraph(dayHeight: dayHeight)
-                    GeometryReader { geo in
-                        Run {
-                            let castBackHeight = CGFloat(model.castBack / .day) * dayHeight
-                            let topOffset = -geo.frame(in: .named(ScrollFrameName)).minY
-
-                            let castFwrdHeight = CGFloat((model.castFwrd - .day) / .day) * dayHeight
-                            let botOffset = geo.frame(in: .named(ScrollFrameName)).maxY - size.height
-
-                            withAnimation {
-                                topState = castBackHeight < topOffset
-                                    ? .today
-                                    : .yesterday
-                                bottomState = castFwrdHeight < botOffset
-                                    ? .today
-                                    : .tomorrow
-                            }
-                        }
-                    }
-                    .frame(width: 0)
+                    DayReader(dayHeight: dayHeight, size: size)
                 }
                     .frame(
                         width: size.width,
@@ -95,5 +77,45 @@ struct GraphView: View {
             }
         }
         .coordinateSpace(name: ScrollFrameName)
+    }
+    
+    /**
+     invisible view that harvests information about the scroll position of the graph
+     and tells the `DateIndicator`s whether to display yesterday, today, or tomorrow
+     */
+    func DayReader(dayHeight: CGFloat, size: CGSize) -> some View {
+        GeometryReader { geo in
+            Run {
+                let nBack = CGFloat(model.castBack / .day)
+                let topOffset = -geo.frame(in: .named(ScrollFrameName)).minY
+
+                let nFwrd = CGFloat(model.castFwrd / .day)
+                let botOffset = geo.frame(in: .named(ScrollFrameName)).maxY - size.height
+
+                withAnimation {
+                    topState = {
+                        switch topOffset / dayHeight {
+                        case let x where x < nBack:
+                            return .yesterday
+                        case let x where nBack <= x && x <= nBack + 1:
+                            return .today
+                        default:
+                            return .tomorrow
+                        }
+                    }()
+                    bottomState = {
+                        switch botOffset / dayHeight {
+                        case let x where x > nFwrd:
+                            return .yesterday
+                        case let x where nFwrd >= x && x >= nFwrd - 1:
+                            return .today
+                        default:
+                            return .tomorrow
+                        }
+                    }()
+                }
+            }
+        }
+        .frame(width: 0)
     }
 }
