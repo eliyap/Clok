@@ -104,12 +104,12 @@
 		2292C4FA2505CC1E005802B5 /* Piece12.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2253FFE02505AF5300BBDCE6 /* Piece12.swift */; };
 		2292C4FB2505CC1E005802B5 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2253FFBB2505A42800BBDCE6 /* Board.swift */; };
 		2292C4FE2505CC68005802B5 /* WidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2292C4FC2505CC42005802B5 /* WidgetView.swift */; };
+		2292C5012505D1E0005802B5 /* BoardEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2292C4FF2505D1D2005802B5 /* BoardEntry.swift */; };
 		2293CEE924EC50F0000B68F4 /* AsNSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2293CEE824EC50F0000B68F4 /* AsNSDate.swift */; };
 		2293CEEB24EC5289000B68F4 /* GraphSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2293CEEA24EC5289000B68F4 /* GraphSaver.swift */; };
 		2293CEED24EC5661000B68F4 /* ProjectLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2293CEEC24EC5661000B68F4 /* ProjectLoader.swift */; };
 		2293CEEF24EC5A84000B68F4 /* LoadEntries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2293CEEE24EC5A84000B68F4 /* LoadEntries.swift */; };
 		229521462505BD7600085055 /* NoSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228174D42501CBCB008E471D /* NoSummary.swift */; };
-		229521472505BD7600085055 /* SummaryTimelineEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228174CF2501CAEA008E471D /* SummaryTimelineEntry.swift */; };
 		229521482505BD7600085055 /* SummaryLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228174C72501B399008E471D /* SummaryLoader.swift */; };
 		229521492505BD7600085055 /* Summary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228174C82501B3E0008E471D /* Summary.swift */; };
 		2295214A2505BD7600085055 /* SummaryEquatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228174D62501CD12008E471D /* SummaryEquatable.swift */; };
@@ -345,6 +345,7 @@
 		22928AC624A423AA00DC9EC5 /* ButtonGlyph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonGlyph.swift; sourceTree = "<group>"; };
 		2292C4E42505C3C3005802B5 /* Timeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timeline.swift; sourceTree = "<group>"; };
 		2292C4FC2505CC42005802B5 /* WidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetView.swift; sourceTree = "<group>"; };
+		2292C4FF2505D1D2005802B5 /* BoardEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardEntry.swift; sourceTree = "<group>"; };
 		2293CEE824EC50F0000B68F4 /* AsNSDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsNSDate.swift; sourceTree = "<group>"; };
 		2293CEEA24EC5289000B68F4 /* GraphSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphSaver.swift; sourceTree = "<group>"; };
 		2293CEEC24EC5661000B68F4 /* ProjectLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectLoader.swift; sourceTree = "<group>"; };
@@ -596,6 +597,7 @@
 				227746D32505BC9200D17CA3 /* GridWidget.swift */,
 				2292C4FC2505CC42005802B5 /* WidgetView.swift */,
 				2292C4E42505C3C3005802B5 /* Timeline.swift */,
+				2292C4FF2505D1D2005802B5 /* BoardEntry.swift */,
 				2253FFBA2505A41500BBDCE6 /* Tetris */,
 				227746D52505BC9200D17CA3 /* GridWidget.intentdefinition */,
 				227746D62505BC9300D17CA3 /* Assets.xcassets */,
@@ -1133,7 +1135,6 @@
 				229521482505BD7600085055 /* SummaryLoader.swift in Sources */,
 				229521502505BDF800085055 /* FormRequest.swift in Sources */,
 				229521652505C07100085055 /* ColorCustom.swift in Sources */,
-				229521472505BD7600085055 /* SummaryTimelineEntry.swift in Sources */,
 				2292C4F62505CC1E005802B5 /* Piece3.swift in Sources */,
 				2292C4F92505CC1E005802B5 /* Piece11.swift in Sources */,
 				2292C4F72505CC1E005802B5 /* Piece9.swift in Sources */,
@@ -1147,6 +1148,7 @@
 				229521582505BF0F00085055 /* GetCredentials.swift in Sources */,
 				2292C4F32505CC1E005802B5 /* PieceLarge.swift in Sources */,
 				2292C4E92505CC1E005802B5 /* Piece5.swift in Sources */,
+				2292C5012505D1E0005802B5 /* BoardEntry.swift in Sources */,
 				227746D92505BC9300D17CA3 /* GridWidget.intentdefinition in Sources */,
 				2292C4E62505C3C7005802B5 /* Timeline.swift in Sources */,
 				229521622505C01E00085055 /* NetworkError.swift in Sources */,

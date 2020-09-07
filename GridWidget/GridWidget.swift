@@ -20,7 +20,11 @@ struct GridWidget: Widget {
     let kind: String = "GridWidget"
 
     var body: some WidgetConfiguration {
-        IntentConfiguration(kind: kind, intent: GridConfigurationIntent.self, provider: Provider()) { entry in
+        IntentConfiguration(
+            kind: kind,
+            intent: GridConfigurationIntent.self,
+            provider: Provider()
+        ) { entry in
             GridWidgetEntryView(entry: entry)
         }
         .configurationDisplayName("My Widget")

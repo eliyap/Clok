@@ -32,8 +32,16 @@ struct Board {
     static let starting = Board(openings: [
         [nil, nil, nil, nil, nil],
         [nil, nil, nil, nil, nil],
-        [nil, nil, Color(UIColor.systemBackground), nil, nil],
+        [nil, nil, .clear, nil, nil],
         [nil, nil, nil, nil, nil],
         [nil, nil, nil, nil, nil]
+    ])
+    
+    static let placeholder = Board(openings: [
+        [.blue, .blue, .blue, .blue, .green],
+        [.blue, .blue, .blue, .blue, .green],
+        [.purple, .purple, .clear, .orange, .green],
+        [.purple, .purple, .gray, .orange, .yellow],
+        [.purple, .purple, .gray, .orange, .yellow],
     ])
 }

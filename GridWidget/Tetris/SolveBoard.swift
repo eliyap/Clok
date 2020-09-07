@@ -16,7 +16,7 @@ func solve(sizes: [(Int, Color)]) -> Board? {
     }
     
     /// generate colored pieces
-    let cPieces: [(ConfigurablePiece, Color)] = sizes.sorted(by: {$0.0 < $1.0}).map {
+    let cPieces: [(ConfigurablePiece, Color)] = sizes.sorted(by: {$0.0 > $1.0}).map {
         (ConfigurablePiece.ofSize($0.0), $0.1)
     }
     

@@ -10,26 +10,36 @@ import Foundation
 import SwiftUI
 
 struct GridWidgetEntryView : View {
-    var entry: SummaryEntry
-    let board: Board? = solve(sizes: [
-        (1, .blue),
-        (12, .blue),
-        (7, .blue),
-    ])
+    
+    let board: Board?
+    
+    init(entry: BoardEntry){
+        self.board = entry.board
+    }
     
     var body: some View {
         if let board = board {
-            ForEach(0..<board.dimensions.width) { row in
-                VStack {
-                    ForEach(0..<board.dimensions.height) { col in
-                        Circle()
-                            .foregroundColor(board.openings[row][col] ?? .clear)
+            VStack {
+                ForEach(0..<board.dimensions.width) { row in
+                    HStack {
+                        ForEach(0..<board.dimensions.height) { col in
+                            Cell(row: row, col: col)
+                        }
                     }
                 }
             }
+            .padding()
         } else {
             Text("No soln. rip")
         }
-        
+    }
+    
+    func Cell(row: Int, col: Int) -> some View {
+        GeometryReader { geo in
+            RoundedRectangle(cornerRadius: geo.size.height / 4)
+                .foregroundColor(board!.openings[row][col] ?? .clear)
+        }
+//        Circle()
+//            .foregroundColor(board!.openings[row][col] ?? .clear)
     }
 }
