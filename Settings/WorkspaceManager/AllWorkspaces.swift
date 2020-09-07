@@ -1,25 +1,14 @@
 //
-//  DefaultWorkspace.swift
+//  Keys.swift
 //  Clok
 //
-//  Created by Secret Asian Man Dev on 1/7/20.
+//  Created by Secret Asian Man Dev on 6/9/20.
 //  Copyright © 2020 Secret Asian Man 3. All rights reserved.
 //
 
 import Foundation
 
-
-/**
- since workspace IDs can be derived from credentials,
- and do not by themselves grant access to sensitive data,
- and since they are lightweight integers
- we do not store them in the keychain, instead in the User Defaults area
- */
-struct WorkspaceManager {
-    
-    static let suiteName = "group.sam.clok"
-    static let suite = UserDefaults(suiteName: suiteName)
-    
+extension WorkspaceManager {
     // MARK:- All Workspaces
     private static let spacesKey = "Clok.WorkspaceIDs"
     /// user's stored `Workspace`s
@@ -89,51 +78,6 @@ struct WorkspaceManager {
         }
         set {
             suite?.set(newValue, forKey: zoomKey)
-        }
-    }
-    
-    // MARK:- Zero Start Date
-    private static let startKey = "zeroStart"
-    static var zeroStart: Date {
-        get {
-            suite?.object(forKey: startKey) as? Date
-                /// default index of 0
-                ?? Date()
-        }
-        set {
-            suite?.set(newValue, forKey: startKey)
-        }
-    }
-    
-    // MARK:- Graph Mode
-    private static let graphModeKey = "graphMode"
-    /**
-     what mode our `GraphView` is in
-     */
-    static var graphMode: Int {
-        get {
-            suite?.object(forKey: graphModeKey) as? Int
-                /// default index of 0
-                ?? GraphModel.Mode.calendar.rawValue
-        }
-        set {
-            suite?.set(newValue, forKey: graphModeKey)
-        }
-    }
-    
-    // MARK:- Search Terms Projects
-    private static let termsProjectsKey = "termsProjects"
-    /**
-     stores the `Project` ID's user was searching for
-     */
-    static var termsProjects: [Int] {
-        get {
-            suite?.object(forKey: termsProjectsKey) as? [Int]
-                /// default no projects
-                ?? []
-        }
-        set {
-            suite?.set(newValue, forKey: termsProjectsKey)
         }
     }
 }

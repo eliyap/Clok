@@ -8,7 +8,6 @@ import WidgetKit
 import SwiftUI
 import Foundation
 import Intents
-import Combine
 
 /**
  Define the refresh rate centrally so it can be tweaked quickly

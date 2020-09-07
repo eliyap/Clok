@@ -8,20 +8,6 @@
 
 import Foundation
 
-let service = "https://toggl.com/"
-
-enum KeychainError: Error {
-    case noData
-    case unexpectedData
-    case unhandledError(code: OSStatus)
-}
-
-/// primarily for widget to get API Key only
-/// note: I couldn't get a shared data container to work, hence workspace request always failed.
-func getToken() throws -> String {
-    try getKey().2
-}
-
 /**
  Load the user's login credentials from local KeyChain, if any
  */
@@ -94,31 +80,6 @@ func saveKeys(user: User) throws -> Void {
     default:
         throw KeychainError.unhandledError(code: status)
     }
-}
-
-func getKey() throws -> (String, String, String, Int) {
-    let query = [kSecClass: kSecClassInternetPassword,
-                 kSecAttrServer: service,
-                 kSecReturnAttributes: true,
-                 kSecReturnData: true
-        ] as CFDictionary
-
-    var result: AnyObject?
-    let status = SecItemCopyMatching(query, &result)
-    
-    guard status == 0 else {
-        throw KeychainError.unhandledError(code: status)
-    }
-    
-    // convert and return data
-    let dic = result as! NSDictionary
-    let email = dic[kSecAttrAccount] as! String
-    let keyData = dic[kSecValueData] as! Data
-    let fullName = dic[kSecAttrCreator] as! String
-    let token = String(data: keyData, encoding: .utf8)!
-    let chosenWID = dic[kSecAttrPort] as! Int
-    
-    return (email, fullName, token, chosenWID)
 }
 
 /// when user logs out, remove login credentials from the keychain

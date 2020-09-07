@@ -9,7 +9,10 @@
 import Foundation
 
 struct ConfigurablePiece {
+    /// how many tiles this would full
     let value: Int
+    
+    /// the possible shapes for this piece
     let pieces: [TetrisPiece]
     
     init(value: Int, pieces: [TetrisPiece]) {

@@ -11,7 +11,7 @@ func getRunningEntry(completion:@escaping (RunningEntry?, Error?) -> Void) {
     var project = StaticProject.noProject
     var runningData: [String: AnyObject]!
     
-    guard let token = try? getToken() else {
+    guard let token = try? getKey().2 else {
         completion(nil, KeychainError.noData)
         return
     }
