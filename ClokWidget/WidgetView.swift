@@ -31,14 +31,6 @@ struct ClokWidgetEntryView : View {
             }
         }
         .padding()
-        .onAppear {
-            print("now evaluating")
-            print(solve(sizes: [
-                (1, .blue),
-                (12, .blue),
-                (7, .blue),
-            ])?.openings)
-        }
     }
     
     var Graph: some View {

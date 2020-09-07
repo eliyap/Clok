@@ -7,20 +7,12 @@
 //
 
 import WidgetKit
-import SwiftUI
 import Intents
+import SwiftUI
 
 struct SimpleEntry: TimelineEntry {
     let date: Date
     let configuration: GridConfigurationIntent
-}
-
-struct GridWidgetEntryView : View {
-    var entry: SummaryEntry
-
-    var body: some View {
-        Text(entry.date, style: .time)
-    }
 }
 
 @main
