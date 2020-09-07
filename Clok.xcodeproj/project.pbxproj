@@ -497,6 +497,7 @@
 		221D963624A90BF100C84F57 /* Keychain */ = {
 			isa = PBXGroup;
 			children = (
+				229521592505BF2A00085055 /* KeychainError.swift */,
 				221D963B24A912B900C84F57 /* APIKeyHandler.swift */,
 				229521552505BF0300085055 /* GetCredentials.swift */,
 			);
@@ -666,6 +667,8 @@
 			children = (
 				2264CB3024AD250600ECBF2B /* WorkspaceManager.swift */,
 				229521672505C0C400085055 /* AllWorkspaces.swift */,
+				2295216B2505C16900085055 /* GraphMode.swift */,
+				2295216D2505C18200085055 /* ZeroStart.swift */,
 			);
 			path = WorkspaceManager;
 			sourceTree = "<group>";
@@ -849,9 +852,6 @@
 		C6C18D382448F96C000345D5 = {
 			isa = PBXGroup;
 			children = (
-				2295216B2505C16900085055 /* GraphMode.swift */,
-				2295216D2505C18200085055 /* ZeroStart.swift */,
-				229521592505BF2A00085055 /* KeychainError.swift */,
 				22B0784624B247D500256EB8 /* ClokWidgetExtension.entitlements */,
 				C6C18D432448F96C000345D5 /* Clok */,
 				C6B0FFA0246F52A700DED011 /* Models */,

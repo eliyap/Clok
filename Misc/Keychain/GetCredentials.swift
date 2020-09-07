@@ -12,8 +12,7 @@ func getKey() throws -> (String, String, String, Int) {
     let query = [kSecClass: kSecClassInternetPassword,
                  kSecAttrServer: service,
                  kSecReturnAttributes: true,
-                 kSecReturnData: true,
-                 kSecAttrPort: true
+                 kSecReturnData: true
         ] as CFDictionary
 
     var result: AnyObject?
