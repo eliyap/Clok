@@ -26,7 +26,7 @@ struct Provider: IntentTimelineProvider {
     }
     
     func getSnapshot(
-        for configuration: GridConfigurationIntent,
+        for configuration: Intent,
         in context: Context,
         completion: @escaping (Entry) -> Void
     ) -> Void {
@@ -35,7 +35,7 @@ struct Provider: IntentTimelineProvider {
     }
     
     func getTimeline(
-        for configuration: GridConfigurationIntent,
+        for configuration: Intent,
         in context: Context,
         completion: @escaping (Timeline<Entry>) -> Void
     ) -> Void {
