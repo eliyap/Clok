@@ -19,14 +19,14 @@ fileprivate extension TimeInterval {
 struct Provider: IntentTimelineProvider {
     
     typealias Entry = SummaryEntry
-    typealias Intent = ClokConfigurationIntent
+    typealias Intent = GridConfigurationIntent
     
     func placeholder(in context: Context) -> SummaryEntry {
         SummaryEntry(date: Date(), summary: .noSummary)
     }
     
     func getSnapshot(
-        for configuration: ClokConfigurationIntent,
+        for configuration: GridConfigurationIntent,
         in context: Context,
         completion: @escaping (SummaryEntry) -> Void
     ) -> Void {
@@ -35,7 +35,7 @@ struct Provider: IntentTimelineProvider {
     }
     
     func getTimeline(
-        for configuration: ClokConfigurationIntent,
+        for configuration: GridConfigurationIntent,
         in context: Context,
         completion: @escaping (Timeline<SummaryEntry>) -> Void
     ) -> Void {

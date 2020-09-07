@@ -12,7 +12,7 @@ import Intents
 
 struct SimpleEntry: TimelineEntry {
     let date: Date
-    let configuration: ConfigurationIntent
+    let configuration: GridConfigurationIntent
 }
 
 struct GridWidgetEntryView : View {
@@ -28,7 +28,7 @@ struct GridWidget: Widget {
     let kind: String = "GridWidget"
 
     var body: some WidgetConfiguration {
-        IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
+        IntentConfiguration(kind: kind, intent: GridConfigurationIntent.self, provider: Provider()) { entry in
             GridWidgetEntryView(entry: entry)
         }
         .configurationDisplayName("My Widget")

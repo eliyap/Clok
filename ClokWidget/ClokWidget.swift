@@ -19,7 +19,7 @@ struct ClokWidget: Widget {
     public var body: some WidgetConfiguration {
         IntentConfiguration(
             kind: kind,
-            intent: ConfigurationIntent.self,
+            intent: ClokConfigurationIntent.self,
             provider: Provider()
         ) { entry in
             ClokWidgetEntryView(entry: entry)

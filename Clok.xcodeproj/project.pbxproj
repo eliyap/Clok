@@ -27,7 +27,6 @@
 		22283DA824DFA166005AC0F3 /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22283DA724DFA166005AC0F3 /* FilterView.swift */; };
 		22283DAA24DFA27D005AC0F3 /* SearchTerms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22283DA924DFA27D005AC0F3 /* SearchTerms.swift */; };
 		2229D7A424EF5C41004E1034 /* WorkspaceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264CB3024AD250600ECBF2B /* WorkspaceManager.swift */; };
-		2229D7A524EF5C4C004E1034 /* GraphModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22283DA124DF9CE0005AC0F3 /* GraphModel.swift */; };
 		2229D7A624EF5C55004E1034 /* TimeIntervalExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69F02772496AFA200D1C650 /* TimeIntervalExtension.swift */; };
 		2229D7A824EF6750004E1034 /* DateComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229D7A724EF6750004E1034 /* DateComponent.swift */; };
 		2229D7AA24EF6BDB004E1034 /* CurrentTimeIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229D7A924EF6BDB004E1034 /* CurrentTimeIndicator.swift */; };
@@ -103,6 +102,7 @@
 		228B100624AECDFF0026AD4B /* EntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228B100524AECDFF0026AD4B /* EntryView.swift */; };
 		22905B8824DB449400D5AC09 /* LinedBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22905B8724DB449400D5AC09 /* LinedBackground.swift */; };
 		22928AC724A423AA00DC9EC5 /* ButtonGlyph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22928AC624A423AA00DC9EC5 /* ButtonGlyph.swift */; };
+		2292C4E62505C3C7005802B5 /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2292C4E42505C3C3005802B5 /* Timeline.swift */; };
 		2293CEE924EC50F0000B68F4 /* AsNSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2293CEE824EC50F0000B68F4 /* AsNSDate.swift */; };
 		2293CEEB24EC5289000B68F4 /* GraphSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2293CEEA24EC5289000B68F4 /* GraphSaver.swift */; };
 		2293CEED24EC5661000B68F4 /* ProjectLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2293CEEC24EC5661000B68F4 /* ProjectLoader.swift */; };
@@ -342,6 +342,7 @@
 		228B100524AECDFF0026AD4B /* EntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryView.swift; sourceTree = "<group>"; };
 		22905B8724DB449400D5AC09 /* LinedBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinedBackground.swift; sourceTree = "<group>"; };
 		22928AC624A423AA00DC9EC5 /* ButtonGlyph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonGlyph.swift; sourceTree = "<group>"; };
+		2292C4E42505C3C3005802B5 /* Timeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timeline.swift; sourceTree = "<group>"; };
 		2293CEE824EC50F0000B68F4 /* AsNSDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsNSDate.swift; sourceTree = "<group>"; };
 		2293CEEA24EC5289000B68F4 /* GraphSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphSaver.swift; sourceTree = "<group>"; };
 		2293CEEC24EC5661000B68F4 /* ProjectLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectLoader.swift; sourceTree = "<group>"; };
@@ -591,6 +592,7 @@
 			isa = PBXGroup;
 			children = (
 				227746D32505BC9200D17CA3 /* GridWidget.swift */,
+				2292C4E42505C3C3005802B5 /* Timeline.swift */,
 				227746D52505BC9200D17CA3 /* GridWidget.intentdefinition */,
 				227746D62505BC9300D17CA3 /* Assets.xcassets */,
 				227746D82505BC9300D17CA3 /* Info.plist */,
@@ -1135,6 +1137,7 @@
 				2295214E2505BDD700085055 /* DateComponent.swift in Sources */,
 				229521582505BF0F00085055 /* GetCredentials.swift in Sources */,
 				227746D92505BC9300D17CA3 /* GridWidget.intentdefinition in Sources */,
+				2292C4E62505C3C7005802B5 /* Timeline.swift in Sources */,
 				229521622505C01E00085055 /* NetworkError.swift in Sources */,
 				227746D42505BC9200D17CA3 /* GridWidget.swift in Sources */,
 				2295214F2505BDE900085055 /* TimeIntervalExtension.swift in Sources */,
@@ -1191,7 +1194,6 @@
 				228174C62501ACBF008E471D /* WidgetView.swift in Sources */,
 				228174CA2501B49B008E471D /* Summary.swift in Sources */,
 				22B0783624B1513A00256EB8 /* User.swift in Sources */,
-				2229D7A524EF5C4C004E1034 /* GraphModel.swift in Sources */,
 				22AD5F8724B1467E006EF7FB /* ClokWidget.intentdefinition in Sources */,
 				22B0784A24B262FA00256EB8 /* Timeline.swift in Sources */,
 				228174D02501CAFC008E471D /* SummaryTimelineEntry.swift in Sources */,
