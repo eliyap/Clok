@@ -216,20 +216,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		227746DB2505BC9300D17CA3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C6C18D392448F96C000345D5 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 227746CE2505BC9200D17CA3;
-			remoteInfo = GridWidgetExtension;
-		};
-		22AD5F8924B1467E006EF7FB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C6C18D392448F96C000345D5 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 22AD5F7924B1467D006EF7FB;
-			remoteInfo = ClokWidgetExtension;
-		};
 		C6C18D582448F96F000345D5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C6C18D392448F96C000345D5 /* Project object */;
@@ -996,8 +982,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				22AD5F8A24B1467E006EF7FB /* PBXTargetDependency */,
-				227746DC2505BC9300D17CA3 /* PBXTargetDependency */,
 			);
 			name = Clok;
 			productName = Landwarks;
@@ -1368,16 +1352,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		227746DC2505BC9300D17CA3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 227746CE2505BC9200D17CA3 /* GridWidgetExtension */;
-			targetProxy = 227746DB2505BC9300D17CA3 /* PBXContainerItemProxy */;
-		};
-		22AD5F8A24B1467E006EF7FB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 22AD5F7924B1467D006EF7FB /* ClokWidgetExtension */;
-			targetProxy = 22AD5F8924B1467E006EF7FB /* PBXContainerItemProxy */;
-		};
 		C6C18D592448F96F000345D5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = C6C18D402448F96C000345D5 /* Clok */;
@@ -1408,6 +1382,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 949D776DFQ;
 				INFOPLIST_FILE = GridWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1430,6 +1405,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 949D776DFQ;
 				INFOPLIST_FILE = GridWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1453,7 +1429,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = ClokWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 949D776DFQ;
 				INFOPLIST_FILE = ClokWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1477,7 +1453,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = ClokWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 949D776DFQ;
 				INFOPLIST_FILE = ClokWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1617,7 +1593,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Clok/Clok.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Clok/Preview Content\"";
 				DEVELOPMENT_TEAM = 949D776DFQ;
 				ENABLE_PREVIEWS = YES;
@@ -1642,7 +1618,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Clok/Clok.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Clok/Preview Content\"";
 				DEVELOPMENT_TEAM = 949D776DFQ;
 				ENABLE_PREVIEWS = YES;
