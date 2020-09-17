@@ -1,3 +1,6 @@
 *.DS_Store
 *.xcuserstate
 */xcuserdata
+
+#keep this private file out of source control
+local.txt
