@@ -59,7 +59,6 @@
 		227746D72505BC9300D17CA3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 227746D62505BC9300D17CA3 /* Assets.xcassets */; };
 		227746D92505BC9300D17CA3 /* GridWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 227746D52505BC9200D17CA3 /* GridWidget.intentdefinition */; };
 		227746DA2505BC9300D17CA3 /* GridWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 227746D52505BC9200D17CA3 /* GridWidget.intentdefinition */; };
-		227746DD2505BC9300D17CA3 /* GridWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 227746CF2505BC9200D17CA3 /* GridWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		2277E8C724EB44AC00702086 /* EntryLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E8C624EB44AC00702086 /* EntryLoader.swift */; };
 		2277E8C924EB47B400702086 /* PaginatedLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E8C824EB47B400702086 /* PaginatedLoad.swift */; };
 		2277E8CB24EB48C200702086 /* DateRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E8CA24EB48C200702086 /* DateRange.swift */; };
@@ -165,7 +164,6 @@
 		22AD5F8524B1467E006EF7FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22AD5F8424B1467E006EF7FB /* Assets.xcassets */; };
 		22AD5F8724B1467E006EF7FB /* ClokWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 22AD5F8324B1467D006EF7FB /* ClokWidget.intentdefinition */; };
 		22AD5F8824B1467E006EF7FB /* ClokWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 22AD5F8324B1467D006EF7FB /* ClokWidget.intentdefinition */; };
-		22AD5F8B24B1467E006EF7FB /* ClokWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 22AD5F7A24B1467D006EF7FB /* ClokWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		22B0783324B150C300256EB8 /* FormRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2296F15A24A994A400AF38B5 /* FormRequest.swift */; };
 		22B0783524B1513A00256EB8 /* ClokWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AD5F8124B1467D006EF7FB /* ClokWidget.swift */; };
 		22B0783624B1513A00256EB8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221C3C5624A93C57006995C5 /* User.swift */; };
@@ -239,8 +237,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				227746DD2505BC9300D17CA3 /* GridWidgetExtension.appex in Embed App Extensions */,
-				22AD5F8B24B1467E006EF7FB /* ClokWidgetExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
