@@ -65,7 +65,7 @@ struct CustomTabView: View {
     
     var TabButtons: some View {
         Group {
-            TabButton(select: .spiral, glyph: "arrow.counterclockwise")
+//            TabButton(select: .spiral, glyph: "arrow.counterclockwise")
             TabButton(select: .bar, glyph: "chart.bar.fill")
             TabButton(select: .settings, glyph: "gear")
         }
