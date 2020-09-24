@@ -18,5 +18,4 @@ Scroll down until you find a box labelled "API Token", which may look like this:
 
 Copy the text in that box and paste it in the Clok token field:
 
-
-
+![Token Field](https://eliyap.github.io/Clok/token/loginScreen.png)
