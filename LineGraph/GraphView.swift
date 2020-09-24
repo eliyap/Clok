@@ -27,8 +27,8 @@ struct GraphView: View {
         case tomorrow
     }
     
-    @State var topState: DateIndicatorState = .today
-    @State var bottomState: DateIndicatorState = .today
+    @State var topState: (DateIndicatorState, AnyTransition?) = (.today, .none)
+    @State var bottomState: (DateIndicatorState, AnyTransition?) = (.today, .none)
     
     var body: some View {
         GeometryReader { outer in
@@ -98,7 +98,7 @@ struct GraphView: View {
                 let botOffset = geo.frame(in: .named(ScrollFrameName)).maxY - size.height
 
                 withAnimation {
-                    topState = {
+                    topState.0 = {
                         switch topOffset / dayHeight {
                         case let x where x < nBack:
                             return .yesterday
@@ -108,7 +108,7 @@ struct GraphView: View {
                             return .tomorrow
                         }
                     }()
-                    bottomState = {
+                    bottomState.0 = {
                         switch botOffset / dayHeight {
                         case let x where x > nFwrd:
                             return .yesterday

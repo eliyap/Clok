@@ -13,10 +13,10 @@ struct DateIndicator: View {
     @EnvironmentObject var zero: ZeroDate
     
     let dayHeight: CGFloat
-    let state: GraphView.DateIndicatorState
+    let state: (GraphView.DateIndicatorState, AnyTransition?)
     
     var offset: TimeInterval {
-        switch state {
+        switch state.0 {
         case .yesterday: return -.day
         case .today: return .zero
         case .tomorrow: return +.day
