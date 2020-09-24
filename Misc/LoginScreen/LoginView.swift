@@ -19,8 +19,8 @@ struct LoginView: View {
     @EnvironmentObject var entryLoader: EntryLoader
     @EnvironmentObject var projectLoader: ProjectLoader
     
-    /// direct users to their profile, where they can copy the API Token
-    static let profileURL = URL(string: "https://toggl.com/app/profile")!
+    /// direct users to a help page which details how to get their token and log in with it
+    static let tokenGuideURL = URL(string: "https://eliyap.github.io/Clok/token.html")!
     
     enum loginPreference {
         case email
@@ -33,6 +33,7 @@ struct LoginView: View {
     @State var errorText = ""
     @State private var pref: loginPreference = .email
     @State private var pushup = false
+    @State var showingWebView = false
     
     @Binding var loaded: Bool
     

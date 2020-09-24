@@ -21,10 +21,15 @@ extension LoginView {
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .transition(.inAndOut(edge: .bottom))
             
-            HStack(spacing: .zero) {
-                Text("Find Toggl's API Token on your ")
-                Link("Profile", destination: LoginView.profileURL)
-            }
+                Button {
+                    showingWebView = true
+                } label: {
+                    Text("How to log in with a token")
+                }
+                .fullScreenCover(isPresented: $showingWebView) {
+                    TokenWebView(presenting: $showingWebView)
+                        .transition(.inAndOut(edge: .bottom))
+                }
                 .transition(.inAndOut(edge: .bottom))
         }
     }

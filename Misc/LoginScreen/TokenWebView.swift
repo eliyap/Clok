@@ -10,8 +10,19 @@ import SwiftUI
 import WebKit
 
 struct TokenWebView: View {
+    
+    @Binding var presenting: Bool
+    
     var body: some View {
-        WebView()
+        VStack(alignment: .leading) {
+            Button {
+                presenting = false
+            } label: {
+                Text("Done")
+                    .padding()
+            }
+            WebView()
+        }
     }
 }
 
@@ -21,7 +32,7 @@ struct WebView: UIViewRepresentable {
     
     func makeUIView(context: Context) -> WKWebView {
         let webView = WKWebView()
-        webView.load(URLRequest(url: URL(string: "https://www.google.com")!))
+        webView.load(URLRequest(url: LoginView.tokenGuideURL))
         return webView
     }
     
