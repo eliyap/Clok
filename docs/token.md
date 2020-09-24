@@ -6,11 +6,17 @@ Your token grants access to your Toggl Track account. This allows the app to req
 ### Getting Your Token
 Open your [Toggl Track Profile](https://track.toggl.com/profile) (you may need to log in first), which may look like this:
 
-![Profile Page](/token/profile.png)
+![Profile Page](https://eliyap.github.io/Clok/token/profile.png)
 
 
 
 Scroll down until you find a box labelled "API Token", which may look like this:
 
-![Token Field](/token/field.png)
+![Token Field](https://eliyap.github.io/Clok/token/field.png)
+
+
+
+Copy the text in that box and paste it in the Clok token field:
+
+
 
