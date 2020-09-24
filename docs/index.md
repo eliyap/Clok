@@ -7,3 +7,5 @@
 [Acknowledgements](/acknowledgements.html)
 
 Support: clok.sam.dev@gmail.com
+
+<link rel="shortcut icon" type="image/x-icon" href="Icon/Icon.png">
