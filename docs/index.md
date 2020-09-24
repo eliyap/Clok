@@ -4,4 +4,6 @@
 
 [About](/about.html)
 
+[Acknowledgements](/acknowledgements.html)
+
 Support: clok.sam.dev@gmail.com
