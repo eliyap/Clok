@@ -6,4 +6,4 @@ Your token grants access to your Toggl Track account. This allows the app to req
 ### Getting Your Token
 Open your [Toggl Track Profile](https://track.toggl.com/profile) (you may need to log in first), which may look like this:
 
-![Profile Page](Clok/token/profile.png)
+![Profile Page](/Clok/token/profile.png)
