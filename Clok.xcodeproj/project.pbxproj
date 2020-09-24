@@ -195,6 +195,7 @@
 		22DF92A8251D6000007E4635 /* PredictExtensionExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 22DF929A251D5FFE007E4635 /* PredictExtensionExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		22DF92C8251D60B3007E4635 /* ClokWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 22AD5F7A24B1467D006EF7FB /* ClokWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		22DF92C9251D60B3007E4635 /* GridWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 227746CF2505BC9200D17CA3 /* GridWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		22DF92D8251D6834007E4635 /* AnyTransitionSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DF92D7251D6834007E4635 /* AnyTransitionSlide.swift */; };
 		22FA071A251D0DC800E20C27 /* TokenWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FA0719251D0DC800E20C27 /* TokenWebView.swift */; };
 		C61D2658249BE1990056C9FA /* StatHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61D2657249BE1990056C9FA /* StatHelpers.swift */; };
 		C62F7B8824970E530076F64C /* StatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62F7B8724970E530076F64C /* StatView.swift */; };
@@ -424,6 +425,7 @@
 		22DF92A0251D5FFE007E4635 /* PredictExtension.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = PredictExtension.intentdefinition; sourceTree = "<group>"; };
 		22DF92A1251D6000007E4635 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		22DF92A3251D6000007E4635 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		22DF92D7251D6834007E4635 /* AnyTransitionSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyTransitionSlide.swift; sourceTree = "<group>"; };
 		22FA0719251D0DC800E20C27 /* TokenWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenWebView.swift; sourceTree = "<group>"; };
 		C61D2657249BE1990056C9FA /* StatHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatHelpers.swift; sourceTree = "<group>"; };
 		C62F7B8724970E530076F64C /* StatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatView.swift; sourceTree = "<group>"; };
@@ -842,6 +844,14 @@
 			path = PredictExtension;
 			sourceTree = "<group>";
 		};
+		22DF92D6251D681D007E4635 /* AnyTransition */ = {
+			isa = PBXGroup;
+			children = (
+				22DF92D7251D6834007E4635 /* AnyTransitionSlide.swift */,
+			);
+			path = AnyTransition;
+			sourceTree = "<group>";
+		};
 		C65B7D282497D1C100EED981 /* Statistics */ = {
 			isa = PBXGroup;
 			children = (
@@ -890,6 +900,7 @@
 		C6B0FFA1246F52B600DED011 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				22DF92D6251D681D007E4635 /* AnyTransition */,
 				C63FC2F9249BCFBD00747D49 /* DoubleExtension.swift */,
 				C69F02772496AFA200D1C650 /* TimeIntervalExtension.swift */,
 				C6AAB3E9249EF26800DFBA36 /* TimeEntryExtension.swift */,
@@ -1430,6 +1441,7 @@
 				22027DD624AFFA6500C0BA90 /* Bounds.swift in Sources */,
 				228B100624AECDFF0026AD4B /* EntryView.swift in Sources */,
 				222D992624BAB2FD00F66E0F /* DecoderExtension.swift in Sources */,
+				22DF92D8251D6834007E4635 /* AnyTransitionSlide.swift in Sources */,
 				C6B1D64924EBAD27001E87C1 /* DataTaskMonitor.swift in Sources */,
 				2229D7B324F0560C004E1034 /* RunningEntryInit.swift in Sources */,
 			);

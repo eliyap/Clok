@@ -50,23 +50,9 @@ final class ZeroDate: ObservableObject {
     var slideOver: AnyTransition {
         switch dateChange {
         case .fwrd:
-            return .asymmetric(
-                insertion: AnyTransition
-                    .move(edge: .trailing)
-                    .combined(with: .opacity),
-                removal: AnyTransition
-                    .move(edge: .leading)
-                    .combined(with: .opacity)
-            )
+            return .slideLeft
         case .back:
-            return .asymmetric(
-                insertion: AnyTransition
-                    .move(edge: .leading)
-                    .combined(with: .opacity),
-                removal: AnyTransition
-                    .move(edge: .trailing)
-                    .combined(with: .opacity)
-            )
+            return .slightRight
         default: // fallback option, fade in and out
             return .opacity
         }
