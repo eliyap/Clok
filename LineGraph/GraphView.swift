@@ -45,10 +45,12 @@ struct GraphView: View {
                 }
                 /// allow graph to consume maximum height
                 .layoutPriority(1)
-                DateIndicator(
-                    dayHeight: outer.size.height * zero.zoomLevel - timeIndicatorHeightEstimate,
-                    state: bottomState
-                )
+                if model.mode == .calendar {
+                    DateIndicator(
+                        dayHeight: outer.size.height * zero.zoomLevel - timeIndicatorHeightEstimate,
+                        state: bottomState
+                    )
+                }
             }
         }
     }
@@ -86,6 +88,9 @@ struct GraphView: View {
     func DayReader(dayHeight: CGFloat, size: CGSize) -> some View {
         GeometryReader { geo in
             Run {
+                /// no need for this if we are in graph mode
+                guard model.mode != .graph else { return }
+                
                 let nBack = CGFloat(model.castBack / .day)
                 let topOffset = -geo.frame(in: .named(ScrollFrameName)).minY
 
