@@ -31,7 +31,6 @@ struct DateIndicator: View {
                         from: zero.start + offset,
                         to: zero.end + offset,
                         by: .day
-                
                 )),
                 id: \.timeIntervalSince1970
             ) { midnight in
