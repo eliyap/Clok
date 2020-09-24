@@ -8,3 +8,9 @@ Open your [Toggl Track Profile](https://track.toggl.com/profile) (you may need t
 
 ![Profile Page](/token/profile.png)
 
+
+
+Scroll down until you find a box labelled "API Token", which may look like this:
+
+![Token Field](/token/field.png)
+
