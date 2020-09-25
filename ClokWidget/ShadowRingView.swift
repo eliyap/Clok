@@ -26,7 +26,7 @@ struct ShadowRing: View {
     
     /// how much to brighten / darken the view.
     /// bounded (0, 1)
-    let colorAdjustment = CGFloat(0.2)
+    let colorAdjustment = CGFloat(0.4)
     
     /// line weight
     var weight = CGFloat(8.5)
@@ -44,11 +44,13 @@ struct ShadowRing: View {
                 switch hours {
                 case 0:
                     EmptyRing
+                    HourArc(size: geo.size)
+                        .rotationEffect(.tau * 0.75)
                 default:
                     DarkHalf
-                        .rotationEffect(angle + .tau * 0.25)
-                    LightHalf
                         .rotationEffect(angle + .tau * 0.75)
+                    LightHalf
+                        .rotationEffect(angle + .tau * 0.25)
                 }
                 TimeIndicator
             }
@@ -63,7 +65,7 @@ struct ShadowRing: View {
                 AngularGradient(
                     gradient: Gradient(colors: [
                         color.darken(by: colorAdjustment),
-                        color.darken(by: colorAdjustment),
+                        color,
                         color
                     ]),
                     center: .center
@@ -79,9 +81,9 @@ struct ShadowRing: View {
                 AngularGradient(
                     gradient: Gradient(colors: [
                         /// this extra color makes the rounded tip light colored
-                        color.lighten(by: colorAdjustment),
                         color,
-                        color.lighten(by: colorAdjustment)
+                        color.lighten(by: colorAdjustment),
+                        color
                     ]),
                     center: .center
                 ),
@@ -101,8 +103,27 @@ struct ShadowRing: View {
             )
     }
     
-    private var HourArc: some View {
-        EmptyView()
+    /// rough guess as to the extrusion angle if the round cap from the end of the line
+    let del: CGFloat = 0.03
+    private func HourArc(size: CGSize) -> some View {
+        let stop = CGFloat(angle.radians / .tau)
+        return Group {
+            Arc(angle: angle)
+                .strokeBorder(
+                    AngularGradient(
+                        gradient: Gradient(stops: [
+                            Gradient.Stop(color: .clear, location: .zero),
+                            Gradient.Stop(color: color, location: stop + del),
+                            /// immediately clamp gradient back to clear, so that other cap does not show color
+                            Gradient.Stop(color: .clear, location: stop + del + 0.001),
+                            Gradient.Stop(color: .clear, location: 1),
+                        ]),
+                        center: .center
+                    ),
+                    style: StrokeStyle(lineWidth: weight, lineCap: .round)
+                )
+        }
+        
     }
     
     /// shows the amount of time spent on this project
@@ -113,6 +134,7 @@ struct ShadowRing: View {
             case 0:
                 Text("\(mins)m")
                     .font(.system(size: 12, design: .rounded))
+                    .bold()
                     .foregroundColor(color)
             default:
                 VStack {
@@ -124,10 +146,11 @@ struct ShadowRing: View {
                                     : 12,
                                 design: .rounded
                         ))
+                        .bold()
                         /// lighten or darken to improve contrast
                         .foregroundColor(mode == .dark
-                                            ? color.lighten()
-                                            : color.darken()
+                                            ? color.lighten(by: colorAdjustment)
+                                            : color.darken(by: colorAdjustment)
                         )
                 }
             }

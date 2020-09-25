@@ -22,15 +22,14 @@ struct Arc: InsettableShape {
     
     func path(in rect: CGRect) -> Path {
         return Path { path in
-            path.addArc(
+            path.addRelativeArc(
                 center: CGPoint(
                     x: rect.width / 2,
                     y: rect.height / 2
                 ),
                 radius: rect.width / 2 - insetAmount,
                 startAngle: .zero,
-                endAngle: angle,
-                clockwise: true
+                delta: angle
             )
         }
     }
