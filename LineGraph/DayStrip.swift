@@ -42,6 +42,11 @@ struct DayStrip: View {
                 /// show current time in `calendar` mode
                 if midnight == Date().midnight && model.mode == .calendar {
                     CurrentTimeIndicator(height: geo.size.height)
+                        .frame(
+                            width: geo.size.width,
+                            height: geo.size.height,
+                            alignment: .top
+                        )
                     RunningEntryView(terms: terms)
                 }
             }
