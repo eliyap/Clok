@@ -42,7 +42,6 @@
 		224B3AFE24DE28C300B1C943 /* FilterModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224B3AFD24DE28C300B1C943 /* FilterModal.swift */; };
 		224D10CE24E5AC8C00668FD8 /* WeekdaySelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224D10CD24E5AC8C00668FD8 /* WeekdaySelector.swift */; };
 		224D10D324E6FA8900668FD8 /* DateIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224D10D224E6FA8800668FD8 /* DateIndicator.swift */; };
-		2253FFB925057FF200BBDCE6 /* Arc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2253FFB825057FF200BBDCE6 /* Arc.swift */; };
 		225B044224B2A5FA00780424 /* LineGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225B044124B2A5FA00780424 /* LineGraphView.swift */; };
 		225F69B424AD8CE70012B5DB /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225F69B324AD8CE70012B5DB /* AppView.swift */; };
 		225F69B724AD8EF50012B5DB /* EntryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225F69B624AD8EF50012B5DB /* EntryList.swift */; };
@@ -109,7 +108,6 @@
 		2293CEED24EC5661000B68F4 /* ProjectLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2293CEEC24EC5661000B68F4 /* ProjectLoader.swift */; };
 		2293CEEF24EC5A84000B68F4 /* LoadEntries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2293CEEE24EC5A84000B68F4 /* LoadEntries.swift */; };
 		229428A9251E5DB0008C0BFF /* ShadowRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223AB139251E34AC00CA8B3C /* ShadowRingView.swift */; };
-		229428B6251E5DE5008C0BFF /* SemiCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DF92ED251D8B98007E4635 /* SemiCircle.swift */; };
 		229428BD251E5E18008C0BFF /* AngleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63FC2F7249BCEB900747D49 /* AngleExtension.swift */; };
 		229428C4251E5E19008C0BFF /* AngleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63FC2F7249BCEB900747D49 /* AngleExtension.swift */; };
 		229428D2251E7C61008C0BFF /* ColorAdjust.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229428D1251E7C61008C0BFF /* ColorAdjust.swift */; };
@@ -184,6 +182,7 @@
 		22B0784424B17CC000256EB8 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67F47D2249FD44500FD2E6E /* Project.swift */; };
 		22B0784524B17CD900256EB8 /* ColorCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B0FF9B246F124300DED011 /* ColorCustom.swift */; };
 		22B0784A24B262FA00256EB8 /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B0784824B2629A00256EB8 /* Timeline.swift */; };
+		22B6E473251EA38F00530539 /* Arc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2253FFB825057FF200BBDCE6 /* Arc.swift */; };
 		22B9E05C24B4FF550040C5AC /* WorkspaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B9E05B24B4FF550040C5AC /* WorkspaceView.swift */; };
 		22BE1FEF24A92B2300A9A739 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BE1FEE24A92B2300A9A739 /* SettingsView.swift */; };
 		22BE1FF424A92DE500A9A739 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BE1FF324A92DE500A9A739 /* Settings.swift */; };
@@ -439,7 +438,6 @@
 		22DF92A1251D6000007E4635 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		22DF92A3251D6000007E4635 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22DF92D7251D6834007E4635 /* AnyTransitionSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyTransitionSlide.swift; sourceTree = "<group>"; };
-		22DF92ED251D8B98007E4635 /* SemiCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SemiCircle.swift; sourceTree = "<group>"; };
 		22FA0719251D0DC800E20C27 /* TokenWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenWebView.swift; sourceTree = "<group>"; };
 		C61D2657249BE1990056C9FA /* StatHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatHelpers.swift; sourceTree = "<group>"; };
 		C62F7B8724970E530076F64C /* StatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatView.swift; sourceTree = "<group>"; };
@@ -700,8 +698,8 @@
 			children = (
 				C68F8C8C24A04CE8000D249B /* IceCreamStick.swift */,
 				228B100124AEA6E50026AD4B /* RoundBottomRect.swift */,
-				22DF92ED251D8B98007E4635 /* SemiCircle.swift */,
 				221810DD24B00FB900B63ECA /* EntryTab.swift */,
+				2253FFB825057FF200BBDCE6 /* Arc.swift */,
 			);
 			path = Shapes;
 			sourceTree = "<group>";
@@ -798,7 +796,6 @@
 			children = (
 				22AD5F8124B1467D006EF7FB /* ClokWidget.swift */,
 				228174C52501ACB3008E471D /* WidgetView.swift */,
-				2253FFB825057FF200BBDCE6 /* Arc.swift */,
 				223AB139251E34AC00CA8B3C /* ShadowRingView.swift */,
 				22B0784824B2629A00256EB8 /* Timeline.swift */,
 				229521692505C14200085055 /* SearchTermsProjects.swift */,
@@ -1319,7 +1316,6 @@
 				228174C92501B494008E471D /* SummaryLoader.swift in Sources */,
 				229428A9251E5DB0008C0BFF /* ShadowRingView.swift in Sources */,
 				22B0783E24B166DE00256EB8 /* BackgroundRequest.swift in Sources */,
-				229428B6251E5DE5008C0BFF /* SemiCircle.swift in Sources */,
 				2229D7A424EF5C41004E1034 /* WorkspaceManager.swift in Sources */,
 				228174C62501ACBF008E471D /* WidgetView.swift in Sources */,
 				228174CA2501B49B008E471D /* Summary.swift in Sources */,
@@ -1328,12 +1324,12 @@
 				22B0784A24B262FA00256EB8 /* Timeline.swift in Sources */,
 				228174D02501CAFC008E471D /* SummaryTimelineEntry.swift in Sources */,
 				22A2CE2F24E59F8B000820AD /* ColorHex.swift in Sources */,
-				2253FFB925057FF200BBDCE6 /* Arc.swift in Sources */,
 				229428DD251E7E7E008C0BFF /* Mod.swift in Sources */,
 				2262882324E88691006B330C /* Workspace.swift in Sources */,
 				229428D3251E7C61008C0BFF /* ColorAdjust.swift in Sources */,
 				22B0784424B17CC000256EB8 /* Project.swift in Sources */,
 				22B0784524B17CD900256EB8 /* ColorCustom.swift in Sources */,
+				22B6E473251EA38F00530539 /* Arc.swift in Sources */,
 				229646CC24F3220300FE14E5 /* RequestConstants.swift in Sources */,
 				229646CD24F3220600FE14E5 /* TimeConstants.swift in Sources */,
 				229428BD251E5E18008C0BFF /* AngleExtension.swift in Sources */,

@@ -10,6 +10,8 @@ import SwiftUI
 
 struct ShadowRing: View {
     
+    @Environment(\.colorScheme) var mode
+    
     /// the angle to rotate the ring
     let angle: Angle
     
@@ -27,7 +29,7 @@ struct ShadowRing: View {
     let colorAdjustment = CGFloat(0.2)
     
     /// line weight
-    let weight = CGFloat(8.5)
+    var weight = CGFloat(8.5)
     
     init(_ project: Summary.Project) {
         angle = Angle(radians: .tau * project.duration.mod(.hour) / .hour)
@@ -56,7 +58,7 @@ struct ShadowRing: View {
     
     /// the darkened half of the ring
     private var DarkHalf: some View {
-        SemiCircle()
+        Arc.semicircle
             .strokeBorder(
                 AngularGradient(
                     gradient: Gradient(colors: [
@@ -72,7 +74,7 @@ struct ShadowRing: View {
     
     /// the lighter half of the ring
     private var LightHalf: some View {
-        SemiCircle()
+        Arc.semicircle
             .strokeBorder(
                 AngularGradient(
                     gradient: Gradient(colors: [
@@ -103,6 +105,7 @@ struct ShadowRing: View {
         EmptyView()
     }
     
+    /// shows the amount of time spent on this project
     private var TimeIndicator: some View {
         /// (ab)use `Group` to erase type
         Group {
@@ -113,12 +116,19 @@ struct ShadowRing: View {
                     .foregroundColor(color)
             default:
                 VStack {
-                    Text("\(hours)h")
-                        .font(.system(size: 12, design: .rounded))
-                        .foregroundColor(color)
-                    Text("\(mins)m")
-                        .font(.system(size: 9, design: .rounded))
-                        .foregroundColor(color)
+                    Text(String(format: "%d:%02d", hours, mins))
+                        .font(.system(
+                            /// shrink slightly if hours are 2 digits
+                                size: hours >= 10
+                                    ? 14
+                                    : 12,
+                                design: .rounded
+                        ))
+                        /// lighten or darken to improve contrast
+                        .foregroundColor(mode == .dark
+                                            ? color.lighten()
+                                            : color.darken()
+                        )
                 }
             }
         }
