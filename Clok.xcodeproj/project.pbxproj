@@ -39,7 +39,6 @@
 		22351B0024D37F3C00E14DBC /* Run.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22351AFF24D37F3C00E14DBC /* Run.swift */; };
 		2238640024BBBD030041886B /* LoadProjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223863FF24BBBD030041886B /* LoadProjects.swift */; };
 		2238640324BBC6980041886B /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63FC2F9249BCFBD00747D49 /* DoubleExtension.swift */; };
-		223AB13A251E34AC00CA8B3C /* ShadowRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223AB139251E34AC00CA8B3C /* ShadowRingView.swift */; };
 		224B3AFE24DE28C300B1C943 /* FilterModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224B3AFD24DE28C300B1C943 /* FilterModal.swift */; };
 		224D10CE24E5AC8C00668FD8 /* WeekdaySelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224D10CD24E5AC8C00668FD8 /* WeekdaySelector.swift */; };
 		224D10D324E6FA8900668FD8 /* DateIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224D10D224E6FA8800668FD8 /* DateIndicator.swift */; };
@@ -109,6 +108,10 @@
 		2293CEEB24EC5289000B68F4 /* GraphSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2293CEEA24EC5289000B68F4 /* GraphSaver.swift */; };
 		2293CEED24EC5661000B68F4 /* ProjectLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2293CEEC24EC5661000B68F4 /* ProjectLoader.swift */; };
 		2293CEEF24EC5A84000B68F4 /* LoadEntries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2293CEEE24EC5A84000B68F4 /* LoadEntries.swift */; };
+		229428A9251E5DB0008C0BFF /* ShadowRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223AB139251E34AC00CA8B3C /* ShadowRingView.swift */; };
+		229428B6251E5DE5008C0BFF /* SemiCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DF92ED251D8B98007E4635 /* SemiCircle.swift */; };
+		229428BD251E5E18008C0BFF /* AngleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63FC2F7249BCEB900747D49 /* AngleExtension.swift */; };
+		229428C4251E5E19008C0BFF /* AngleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63FC2F7249BCEB900747D49 /* AngleExtension.swift */; };
 		229521462505BD7600085055 /* NoSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228174D42501CBCB008E471D /* NoSummary.swift */; };
 		229521482505BD7600085055 /* SummaryLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228174C72501B399008E471D /* SummaryLoader.swift */; };
 		229521492505BD7600085055 /* Summary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228174C82501B3E0008E471D /* Summary.swift */; };
@@ -197,8 +200,6 @@
 		22DF92C8251D60B3007E4635 /* ClokWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 22AD5F7A24B1467D006EF7FB /* ClokWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		22DF92C9251D60B3007E4635 /* GridWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 227746CF2505BC9200D17CA3 /* GridWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		22DF92D8251D6834007E4635 /* AnyTransitionSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DF92D7251D6834007E4635 /* AnyTransitionSlide.swift */; };
-		22DF92E6251D84C0007E4635 /* ShadowArcView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DF92E5251D84C0007E4635 /* ShadowArcView.swift */; };
-		22DF92EE251D8B98007E4635 /* SemiCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DF92ED251D8B98007E4635 /* SemiCircle.swift */; };
 		22FA071A251D0DC800E20C27 /* TokenWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FA0719251D0DC800E20C27 /* TokenWebView.swift */; };
 		C61D2658249BE1990056C9FA /* StatHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61D2657249BE1990056C9FA /* StatHelpers.swift */; };
 		C62F7B8824970E530076F64C /* StatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62F7B8724970E530076F64C /* StatView.swift */; };
@@ -430,7 +431,6 @@
 		22DF92A1251D6000007E4635 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		22DF92A3251D6000007E4635 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22DF92D7251D6834007E4635 /* AnyTransitionSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyTransitionSlide.swift; sourceTree = "<group>"; };
-		22DF92E5251D84C0007E4635 /* ShadowArcView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowArcView.swift; sourceTree = "<group>"; };
 		22DF92ED251D8B98007E4635 /* SemiCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SemiCircle.swift; sourceTree = "<group>"; };
 		22FA0719251D0DC800E20C27 /* TokenWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenWebView.swift; sourceTree = "<group>"; };
 		C61D2657249BE1990056C9FA /* StatHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatHelpers.swift; sourceTree = "<group>"; };
@@ -790,7 +790,6 @@
 				22AD5F8124B1467D006EF7FB /* ClokWidget.swift */,
 				228174C52501ACB3008E471D /* WidgetView.swift */,
 				2253FFB825057FF200BBDCE6 /* Arc.swift */,
-				22DF92E5251D84C0007E4635 /* ShadowArcView.swift */,
 				223AB139251E34AC00CA8B3C /* ShadowRingView.swift */,
 				22B0784824B2629A00256EB8 /* Timeline.swift */,
 				229521692505C14200085055 /* SearchTermsProjects.swift */,
@@ -1258,6 +1257,7 @@
 				229521622505C01E00085055 /* NetworkError.swift in Sources */,
 				2292C4FA2505CC1E005802B5 /* Piece12.swift in Sources */,
 				227746D42505BC9200D17CA3 /* GridWidget.swift in Sources */,
+				229428C4251E5E19008C0BFF /* AngleExtension.swift in Sources */,
 				2295214F2505BDE900085055 /* TimeIntervalExtension.swift in Sources */,
 				2292C4FE2505CC68005802B5 /* WidgetView.swift in Sources */,
 				229521492505BD7600085055 /* Summary.swift in Sources */,
@@ -1305,7 +1305,9 @@
 				228174D32501CB76008E471D /* RawSummary.swift in Sources */,
 				229521572505BF0F00085055 /* GetCredentials.swift in Sources */,
 				228174C92501B494008E471D /* SummaryLoader.swift in Sources */,
+				229428A9251E5DB0008C0BFF /* ShadowRingView.swift in Sources */,
 				22B0783E24B166DE00256EB8 /* BackgroundRequest.swift in Sources */,
+				229428B6251E5DE5008C0BFF /* SemiCircle.swift in Sources */,
 				2229D7A424EF5C41004E1034 /* WorkspaceManager.swift in Sources */,
 				228174C62501ACBF008E471D /* WidgetView.swift in Sources */,
 				228174CA2501B49B008E471D /* Summary.swift in Sources */,
@@ -1320,6 +1322,7 @@
 				22B0784524B17CD900256EB8 /* ColorCustom.swift in Sources */,
 				229646CC24F3220300FE14E5 /* RequestConstants.swift in Sources */,
 				229646CD24F3220600FE14E5 /* TimeConstants.swift in Sources */,
+				229428BD251E5E18008C0BFF /* AngleExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1345,7 +1348,6 @@
 				229646CB24F321AE00FE14E5 /* TimeConstants.swift in Sources */,
 				C6751D8C24723182002965CC /* ZeroDate.swift in Sources */,
 				22283DAA24DFA27D005AC0F3 /* SearchTerms.swift in Sources */,
-				223AB13A251E34AC00CA8B3C /* ShadowRingView.swift in Sources */,
 				C6F605AF246C6B1700D0FE82 /* DateExtension.swift in Sources */,
 				C68F8C8D24A04CE8000D249B /* IceCreamStick.swift in Sources */,
 				2207B22024B954F40006748A /* GraphView.swift in Sources */,
@@ -1354,7 +1356,6 @@
 				22A2CE1D24E59BB1000820AD /* DateStridable.swift in Sources */,
 				221D963C24A912B900C84F57 /* APIKeyHandler.swift in Sources */,
 				229646C924F3212700FE14E5 /* RequestConstants.swift in Sources */,
-				22DF92E6251D84C0007E4635 /* ShadowArcView.swift in Sources */,
 				2295216C2505C16900085055 /* GraphMode.swift in Sources */,
 				22027DD024AFF63F00C0BA90 /* OrientationView.swift in Sources */,
 				228B100224AEA6E50026AD4B /* RoundBottomRect.swift in Sources */,
@@ -1385,7 +1386,6 @@
 				2229D7A824EF6750004E1034 /* DateComponent.swift in Sources */,
 				2264CB3524AD330500ECBF2B /* IconView.swift in Sources */,
 				22A2CE2B24E59ED0000820AD /* AngleFromCartesian.swift in Sources */,
-				22DF92EE251D8B98007E4635 /* SemiCircle.swift in Sources */,
 				22A2CE2424E59DFE000820AD /* DateMean.swift in Sources */,
 				2277E8C724EB44AC00702086 /* EntryLoader.swift in Sources */,
 				229646D924F3367800FE14E5 /* PrintError.swift in Sources */,

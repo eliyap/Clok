@@ -14,7 +14,7 @@ fileprivate let strokeStyle = StrokeStyle(
     lineCap: .round
 )
 
-fileprivate let rowCount = 5
+fileprivate let rowCount = 4
 
 struct ClokWidgetEntryView : View {
     
@@ -23,69 +23,56 @@ struct ClokWidgetEntryView : View {
     var entry: SummaryEntry
     
     var body: some View {
-        GeometryReader{ geo in
-            if entry.summary == .noSummary {
-                Text("Nothing Here")
-            } else {
-                Graph
-            }
-        }
-        .padding()
+        Graph()
     }
     
-    var Graph: some View {
-        VStack(alignment: .leading) {
-            ForEach(
-                Projects,
-                id: \.0
-            ) { idx, project in
-                HStack {
-                    ProjectLine(project: project)
+    func Graph() -> some View {
+        let (p0, p1, p2, p3) = top4()
+        return GeometryReader { geo in
+            VStack(spacing: .zero) {
+                HStack(spacing: .zero) {
+                    ProjectLine(project: p0, size: geo.size)
+                    ProjectLine(project: p1, size: geo.size)
+                }
+            
+                HStack(spacing: .zero) {
+                    ProjectLine(project: p2, size: geo.size)
+                    ProjectLine(project: p3, size: geo.size)
                 }
             }
         }
     }
     
-    func ProjectLine(project: Summary.Project?) -> some View {
-        Group {
+    func ProjectLine(project: Summary.Project?, size: CGSize) -> some View {
+        VStack(spacing: .zero) {
             if let project = project {
-                Rings(project: project)
+                ShadowRing(project)
+                    .padding()
                 Text(project.name)
                     .foregroundColor(project.color)
-                    .font(.callout)
+                    .font(.caption)
+                    .lineLimit(1)
                     .layoutPriority(1)
             } else {
-                Text(" ")
+                Text("nil")
             }
         }
+        .border(Color.red)
+        .frame(
+            width: size.width / 2,
+            height: size.height / 2
+        )
     }
     
-    var Projects: [(Int, Summary.Project?)] {
-        Array((
-            entry.summary.projects.sorted(by: {$0.duration > $1.duration})
+    /// returns the 4 projects with the highest duration (if there are that many)
+    func top4() -> (Summary.Project?, Summary.Project?, Summary.Project?, Summary.Project?) {
+        let projs = entry.summary.projects.sorted(by: {$0.duration > $1.duration})
             + Array(repeating: nil, count: rowCount)
-        )[1...rowCount].enumerated())
-    }
-    
-    func Rings(project: Summary.Project) -> some View {
-        let remainder = project.duration.remainder(dividingBy: .hour) / .hour
-        return Group {
-            ForEach(0..<Int(project.duration / .hour), id: \.self) {_ in
-                Circle()
-                    .stroke(style: strokeStyle)
-                    .foregroundColor(project.color)
-                    .aspectRatio(1, contentMode: .fit)
-            }
-            ZStack {
-                Circle()
-                    .stroke(style: strokeStyle)
-                    .foregroundColor(project.color)
-                    .opacity(0.25)
-                Arc(angle: Angle(radians: .tau * remainder) )
-                    .stroke(style: strokeStyle)
-                    .foregroundColor(project.color)
-            }
-            .aspectRatio(1, contentMode: .fit)
-        }
+        return (
+            projs[0],
+            projs[1],
+            projs[2],
+            projs[3]
+        )
     }
 }

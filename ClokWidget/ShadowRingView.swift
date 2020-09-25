@@ -10,30 +10,32 @@ import SwiftUI
 
 struct ShadowRing: View {
     
-    @FetchRequest(entity: Project.entity(), sortDescriptors: []) var projects: FetchedResults<Project>
+    /// the angle to rotate the ring
+    let angle: Angle
     
-    let angle = Angle(degrees: 30)
+    /// the number of complete hours to be displayed
+    let hours: Int
     
-    var body: some View {
-        ForEach(projects, id: \.id) {
-            Ring(project: $0)
-        }
-        
+    /// the project color
+    let color: Color
+    
+    init(_ project: Summary.Project) {
+        let remainder = project.duration.remainder(dividingBy: .hour) / .hour
+        angle = Angle(radians: .tau * remainder)
+        hours = Int(project.duration / .hour)
+        color = project.color
     }
     
-    let colorAdjustment = CGFloat(0.17)
-    let weight = CGFloat(15)
-    
-    func Ring(project: ProjectLike) -> some View {
+    var body: some View {
         GeometryReader { geo in
             ZStack {
                 SemiCircle()
                     .stroke(
                         AngularGradient(
                             gradient: Gradient(colors: [
-                                project.wrappedColor.darken(by: colorAdjustment),
-                                project.wrappedColor.darken(by: colorAdjustment),
-                                project.wrappedColor
+                                color.darken(by: colorAdjustment),
+                                color.darken(by: colorAdjustment),
+                                color
                             ]),
                             center: .bottom
                         ),
@@ -45,16 +47,19 @@ struct ShadowRing: View {
                     )
                     .offset(y: geo.size.height / -4)
                 Circle()
-                    .frame(width: weight, height: weight)
-                    .foregroundColor(project.wrappedColor.lighten(by: colorAdjustment))
+                    .frame(
+                        width: weight,
+                        height: weight
+                    )
+                    .foregroundColor(color.lighten(by: colorAdjustment))
                     .offset(x: geo.size.height / -2)
                 SemiCircle()
                     .stroke(
                         AngularGradient(
                             gradient: Gradient(colors: [
-                                project.wrappedColor,
-                                project.wrappedColor,
-                                project.wrappedColor.lighten(by: colorAdjustment)
+                                color,
+                                color,
+                                color.lighten(by: colorAdjustment)
                             ]),
                             center: .bottom
                         ),
@@ -68,10 +73,14 @@ struct ShadowRing: View {
                     )
             }
             .rotationEffect(angle + .tau / 4)
+            .offset(y: geo.size.height / 4)
         }
-        .frame(width: 60, height: 60)
-        .padding()
+        .border(Color.green)
+        .aspectRatio(1, contentMode: .fill)
     }
+    
+    let colorAdjustment = CGFloat(0.17)
+    let weight = CGFloat(5)
 }
 
 extension Color {
