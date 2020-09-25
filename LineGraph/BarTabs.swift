@@ -46,8 +46,8 @@ struct BarTabs: View {
         let condition = bounds.device == .iPhone && bounds.mode == .portrait
         return Text(zero.weekString)
             .font(condition
-                    ? Font.title2
-                    : Font.title
+                ? Font.title2
+                : Font.title
             )
             .bold()
             .padding(.top, condition
