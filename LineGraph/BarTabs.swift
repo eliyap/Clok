@@ -51,8 +51,8 @@ struct BarTabs: View {
             )
             .bold()
             .padding(.top, condition
-                        ? listPadding / 2
-                        : listPadding
+                ? listPadding / 2
+                : listPadding
             )
     }
 }
