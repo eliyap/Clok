@@ -25,7 +25,10 @@ struct ClokWidgetEntryView : View {
     }
     
     func Graph() -> some View {
-        let (p0, p1, p2, p3) = top4()
+        #warning("need more flexible assignment in future")
+        let projects = topN(count: 4)
+        let (p0, p1, p2, p3) = (projects[0], projects[1], projects[2], projects[3])
+        
         return GeometryReader { geo in
             VStack(spacing: .zero) {
                 HStack(spacing: .zero) {
@@ -46,6 +49,9 @@ struct ClokWidgetEntryView : View {
             if let project = project {
                 ShadowRing(project)
                     .padding()
+//                Circle()
+//                    .foregroundColor(project.color)
+//                    .padding()
                 Text(project.name)
                     .foregroundColor(project.color)
                     .font(.caption)
@@ -61,15 +67,11 @@ struct ClokWidgetEntryView : View {
         )
     }
     
-    /// returns the 4 projects with the highest duration (if there are that many)
-    func top4() -> (Summary.Project?, Summary.Project?, Summary.Project?, Summary.Project?) {
+    /// returns the `count` projects in descending order duration
+    /// if there are fewer than `count` projects, the array is padded with nils
+    func topN(count: Int) -> [Summary.Project?] {
         let projs = entry.summary.projects.sorted(by: {$0.duration > $1.duration})
-            + Array(repeating: nil, count: 4)
-        return (
-            projs[0],
-            projs[1],
-            projs[2],
-            projs[3]
-        )
+            + Array(repeating: nil, count: count)
+        return Array(projs[0..<count])
     }
 }

@@ -30,7 +30,7 @@ struct ShadowRing: View {
         GeometryReader { geo in
             ZStack {
                 SemiCircle()
-                    .stroke(
+                    .strokeBorder(
                         AngularGradient(
                             gradient: Gradient(colors: [
                                 color.darken(by: colorAdjustment),
@@ -41,20 +41,15 @@ struct ShadowRing: View {
                         ),
                         lineWidth: weight
                     )
-                    .frame(
-                        width: geo.size.width,
-                        height: geo.size.height / 2
-                    )
-                    .offset(y: geo.size.height / -4)
                 Circle()
                     .frame(
                         width: weight,
                         height: weight
                     )
                     .foregroundColor(color.lighten(by: colorAdjustment))
-                    .offset(x: geo.size.height / -2)
+                    .offset(x: (geo.size.height - weight) / -2)
                 SemiCircle()
-                    .stroke(
+                    .strokeBorder(
                         AngularGradient(
                             gradient: Gradient(colors: [
                                 color,
@@ -65,22 +60,16 @@ struct ShadowRing: View {
                         ),
                         lineWidth: weight
                     )
-                    .offset(y: geo.size.height / -4)
                     .rotationEffect(.tau / 2)
-                    .frame(
-                        width: geo.size.width,
-                        height: geo.size.height / 2
-                    )
             }
             .rotationEffect(angle + .tau / 4)
-            .offset(y: geo.size.height / 4)
         }
-        .border(Color.green)
         .aspectRatio(1, contentMode: .fill)
+        .border(Color.green)
     }
     
     let colorAdjustment = CGFloat(0.17)
-    let weight = CGFloat(5)
+    let weight = CGFloat(7)
 }
 
 extension Color {
