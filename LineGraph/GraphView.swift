@@ -98,21 +98,18 @@ struct GraphView: View {
                 let botOffset = geo.frame(in: .named(ScrollFrameName)).maxY - size.height
 
                 /// update state and figure out animation
-                let newTopState: (DateIndicatorState, AnyTransition?) = (
-                    {
-                        switch topOffset / dayHeight {
-                        case let x where x < nBack:
-                            return .yesterday
-                        case let x where nBack <= x && x <= nBack + 1:
-                            return .today
-                        default:
-                            return .tomorrow
-                        }
-                    }(),
-                    .none
-                )
+                let newTopState: DateIndicatorState = {
+                    switch topOffset / dayHeight {
+                    case let x where x < nBack:
+                        return .yesterday
+                    case let x where nBack <= x && x <= nBack + 1:
+                        return .today
+                    default:
+                        return .tomorrow
+                    }
+                }()
                 topState.1 = {
-                    switch (newTopState.0.rawValue, topState.0.rawValue) {
+                    switch (newTopState.rawValue, topState.0.rawValue) {
                     case let (x, y) where x < y:
                         return .slideRight
                     case let (x, y) where x > y:
@@ -122,21 +119,18 @@ struct GraphView: View {
                     }
                 }()
                 
-                let newBottomState: (DateIndicatorState, AnyTransition?) = (
-                    {
-                        switch botOffset / dayHeight {
-                        case let x where x > nFwrd:
-                            return .yesterday
-                        case let x where nFwrd >= x && x >= nFwrd - 1:
-                            return .today
-                        default:
-                            return .tomorrow
-                        }
-                    }(),
-                    .none
-                )
+                let newBottomState: DateIndicatorState = {
+                    switch botOffset / dayHeight {
+                    case let x where x > nFwrd:
+                        return .yesterday
+                    case let x where nFwrd >= x && x >= nFwrd - 1:
+                        return .today
+                    default:
+                        return .tomorrow
+                    }
+                }()
                 bottomState.1 = {
-                    switch (newBottomState.0.rawValue, bottomState.0.rawValue) {
+                    switch (newBottomState.rawValue, bottomState.0.rawValue) {
                     case let (x, y) where x < y:
                         return .slideRight
                     case let (x, y) where x > y:
@@ -148,8 +142,8 @@ struct GraphView: View {
                 
                 /// now that animation is set, communicate state
                 withAnimation {
-                    topState.0 = newTopState.0
-                    bottomState.0 = newBottomState.0
+                    topState.0 = newTopState
+                    bottomState.0 = newBottomState
                 }
             }
         }
