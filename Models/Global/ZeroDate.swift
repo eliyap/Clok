@@ -52,7 +52,7 @@ final class ZeroDate: ObservableObject {
         case .fwrd:
             return .slideLeft
         case .back:
-            return .slightRight
+            return .slideRight
         default: // fallback option, fade in and out
             return .opacity
         }

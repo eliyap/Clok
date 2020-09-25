@@ -21,10 +21,10 @@ struct GraphView: View {
     @EnvironmentObject private var zero: ZeroDate
     @EnvironmentObject var model: GraphModel
     
-    enum DateIndicatorState {
-        case yesterday
-        case today
-        case tomorrow
+    enum DateIndicatorState: Int {
+        case yesterday = 0
+        case today = 1
+        case tomorrow = 2
     }
     
     @State var topState: (DateIndicatorState, AnyTransition?) = (.today, .none)
@@ -97,8 +97,9 @@ struct GraphView: View {
                 let nFwrd = CGFloat(model.castFwrd / .day)
                 let botOffset = geo.frame(in: .named(ScrollFrameName)).maxY - size.height
 
-                withAnimation {
-                    topState.0 = {
+                /// update state and figure out animation
+                let newTopState: (DateIndicatorState, AnyTransition?) = (
+                    {
                         switch topOffset / dayHeight {
                         case let x where x < nBack:
                             return .yesterday
@@ -107,8 +108,22 @@ struct GraphView: View {
                         default:
                             return .tomorrow
                         }
-                    }()
-                    bottomState.0 = {
+                    }(),
+                    .none
+                )
+                topState.1 = {
+                    switch (newTopState.0.rawValue, topState.0.rawValue) {
+                    case let (x, y) where x < y:
+                        return .slideRight
+                    case let (x, y) where x > y:
+                        return .slideLeft
+                    default:
+                        return .none
+                    }
+                }()
+                
+                let newBottomState: (DateIndicatorState, AnyTransition?) = (
+                    {
                         switch botOffset / dayHeight {
                         case let x where x > nFwrd:
                             return .yesterday
@@ -117,7 +132,24 @@ struct GraphView: View {
                         default:
                             return .tomorrow
                         }
-                    }()
+                    }(),
+                    .none
+                )
+                bottomState.1 = {
+                    switch (newBottomState.0.rawValue, bottomState.0.rawValue) {
+                    case let (x, y) where x < y:
+                        return .slideRight
+                    case let (x, y) where x > y:
+                        return .slideLeft
+                    default:
+                        return .none
+                    }
+                }()
+                
+                /// now that animation is set, communicate state
+                withAnimation {
+                    topState.0 = newTopState.0
+                    bottomState.0 = newBottomState.0
                 }
             }
         }

@@ -47,7 +47,7 @@ struct DateIndicator: View {
                 }
                 .frame(maxWidth: .infinity)
                 .background(Color.clokBG)
-                .transition(zero.slideOver)
+                .transition(state.1 ?? zero.slideOver)
             }
         }
     }

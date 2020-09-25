@@ -17,7 +17,7 @@ extension AnyTransition {
             .move(edge: .leading)
             .combined(with: .opacity)
     )
-    static let slightRight = AnyTransition.asymmetric(
+    static let slideRight = AnyTransition.asymmetric(
         insertion: AnyTransition
             .move(edge: .leading)
             .combined(with: .opacity),
