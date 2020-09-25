@@ -11,18 +11,16 @@ import SwiftUI
 struct SemiCircle: Shape {
     func path(in rect: CGRect) -> Path {
         return Path { path in
-            path.move(to: CGPoint(x: .zero, y: rect.height / 2))
             path.addArc(
                 center: CGPoint(
                     x: rect.width / 2,
-                    y: rect.height / 2
+                    y: rect.height
                 ),
-                radius: rect.height / 2,
+                radius: rect.width / 2,
                 startAngle: .zero,
                 endAngle: .tau/2,
                 clockwise: true
             )
-            path.closeSubpath()
         }
     }
 }

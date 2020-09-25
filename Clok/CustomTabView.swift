@@ -53,11 +53,7 @@ struct CustomTabView: View {
         Group {
             switch tab {
             case .spiral:
-                ShadowArcView(
-                    color: .red,
-                    angle: Angle(degrees: 120),
-                    hours: 5
-                )
+                ShadowRing()
             case .bar:
                 BarStack()
             case .settings:
