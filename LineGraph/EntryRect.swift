@@ -25,7 +25,6 @@ struct EntryRect: View {
     /// toggles solid fill or animated border
     var border: Bool = false
     
-    /// credit: https://www.hackingwithswift.com/quick-start/swiftui/how-to-create-a-marching-ants-border-effect
     @State private var opacity = 0.25
     
     var body: some View {

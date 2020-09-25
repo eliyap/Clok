@@ -22,21 +22,22 @@ struct DayStrip: View {
     
     var body: some View {
         GeometryReader { geo in
-            ZStack(alignment: .top) {
-                VStack(alignment: .center, spacing: .zero) {
-                    ForEach(entries, id: \.id) {
-                        EntryRect(
-                            range: ($0.start, $0.end),
-                            size: geo.size,
-                            midnight: midnight
-                        )
-                        .padding(.top, padding(for: $0, size: geo.size))
-                        .foregroundColor($0.wrappedColor)
-                        .opacity($0.matches(terms) ? 1 : 0.25)
-                    }
+            ZStack() {
+                ForEach(entries, id: \.id) {
+                    EntryRect(
+                        range: ($0.start, $0.end),
+                        size: geo.size,
+                        midnight: midnight
+                    )
+                    .offset(y: padding(for: $0, size: geo.size))
+                    .foregroundColor($0.wrappedColor)
+                    .opacity($0.matches(terms) ? 1 : 0.25)
                 }
-                .frame(width: geo.size.width)
-                .drawingGroup()
+                .frame(
+                    width: geo.size.width,
+                    height: geo.size.height,
+                    alignment: model.mode == .calendar ? .top : .bottom
+                )
                 
                 /// show current time in `calendar` mode
                 if midnight == Date().midnight && model.mode == .calendar {
@@ -51,30 +52,21 @@ struct DayStrip: View {
     func padding(for entry: TimeEntry, size: CGSize) -> CGFloat {
         let scale = size.height / CGFloat(.day * model.days)
         
-        let idx = entries.firstIndex(of: entry)!
-        guard entry != entries.first else {
-            switch model.mode {
-            /// if `entry` is cut off by the top of the graph, make it flush with the top, otherwise apply appropriate padding
-            case .calendar:
-                return entry.start < midnight - model.castBack
-                    ? .zero
-                    : CGFloat(entry.start - (midnight - model.castBack)) * scale
-            /// push the bar graph down to the bottom of the screen
-            case .graph:
-                let begin = midnight - model.castBack
-                let end = midnight + model.castFwrd
-                /// deduct all time today from 24 hours
-                return CGFloat(entries.reduce(.day, {$0 - (min($1.end, end) - max(begin, $1.start))})) * scale
-            }
-        }
-        
-        /// `entry` is not the first entry
         switch model.mode {
         case .calendar:
-            return CGFloat(entries[idx].start - entries[idx - 1].end) * scale
-        /// no spacing neccessary
+            /// how far off the bottom of the graph it should be
+            return CGFloat(max(entry.start - (midnight - model.castBack), .zero)) * scale
         case .graph:
-            return .zero
+            /// find the duration of some time entry within the day
+            let clampedDur = { (entry: TimeEntry) -> TimeInterval in
+                min(entry.end, midnight + .day) - max(midnight, entry.start)
+            }
+            
+            /// take all entries after this one
+            let entriesBelow = entries.suffix(entries.count - 1 - entries.firstIndex(of: entry)!)
+            
+            /// and sum their clamped durations
+            return -CGFloat(entriesBelow.reduce(0, {$0 + clampedDur($1)})) * scale
         }
     }
 }
