@@ -37,38 +37,36 @@ struct ShadowRing: View {
                                 color.darken(by: colorAdjustment),
                                 color
                             ]),
-                            center: .bottom
+                            center: .center
                         ),
                         lineWidth: weight
                     )
-                Circle()
-                    .frame(
-                        width: weight,
-                        height: weight
-                    )
-                    .foregroundColor(color.lighten(by: colorAdjustment))
-                    .offset(x: (geo.size.height - weight) / -2)
                 SemiCircle()
                     .strokeBorder(
                         AngularGradient(
                             gradient: Gradient(colors: [
-                                color,
+                                /// this extra color makes the rounded tip light colored
+                                color.lighten(by: colorAdjustment),
                                 color,
                                 color.lighten(by: colorAdjustment)
                             ]),
-                            center: .bottom
+                            center: .center
                         ),
-                        lineWidth: weight
+                        style: StrokeStyle(
+                            lineWidth: weight,
+                            /// rounded tip also patches over the seam between the 2 semicircles
+                            lineCap: .round
+                        )
                     )
                     .rotationEffect(.tau / 2)
             }
             .rotationEffect(angle + .tau / 4)
         }
-        .aspectRatio(1, contentMode: .fill)
-        .border(Color.green)
+        .aspectRatio(1, contentMode: .fit)
+        
     }
     
-    let colorAdjustment = CGFloat(0.17)
+    let colorAdjustment = CGFloat(0.2)
     let weight = CGFloat(7)
 }
 

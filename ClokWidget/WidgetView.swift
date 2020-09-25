@@ -42,16 +42,13 @@ struct ClokWidgetEntryView : View {
                 }
             }
         }
+        .padding(7)
     }
     
     func ProjectLine(project: Summary.Project?, size: CGSize) -> some View {
         VStack(spacing: .zero) {
             if let project = project {
                 ShadowRing(project)
-                    .padding()
-//                Circle()
-//                    .foregroundColor(project.color)
-//                    .padding()
                 Text(project.name)
                     .foregroundColor(project.color)
                     .font(.caption)
@@ -60,7 +57,6 @@ struct ClokWidgetEntryView : View {
                 Text("nil")
             }
         }
-        .border(Color.red)
         .frame(
             width: size.width / 2,
             height: size.height / 2
