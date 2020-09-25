@@ -14,8 +14,6 @@ fileprivate let strokeStyle = StrokeStyle(
     lineCap: .round
 )
 
-fileprivate let rowCount = 4
-
 struct ClokWidgetEntryView : View {
     
     @Environment(\.widgetFamily) var family
@@ -52,7 +50,6 @@ struct ClokWidgetEntryView : View {
                     .foregroundColor(project.color)
                     .font(.caption)
                     .lineLimit(1)
-                    .layoutPriority(1)
             } else {
                 Text("nil")
             }
@@ -67,7 +64,7 @@ struct ClokWidgetEntryView : View {
     /// returns the 4 projects with the highest duration (if there are that many)
     func top4() -> (Summary.Project?, Summary.Project?, Summary.Project?, Summary.Project?) {
         let projs = entry.summary.projects.sorted(by: {$0.duration > $1.duration})
-            + Array(repeating: nil, count: rowCount)
+            + Array(repeating: nil, count: 4)
         return (
             projs[0],
             projs[1],
