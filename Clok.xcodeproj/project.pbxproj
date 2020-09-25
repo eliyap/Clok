@@ -112,6 +112,12 @@
 		229428B6251E5DE5008C0BFF /* SemiCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DF92ED251D8B98007E4635 /* SemiCircle.swift */; };
 		229428BD251E5E18008C0BFF /* AngleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63FC2F7249BCEB900747D49 /* AngleExtension.swift */; };
 		229428C4251E5E19008C0BFF /* AngleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63FC2F7249BCEB900747D49 /* AngleExtension.swift */; };
+		229428D2251E7C61008C0BFF /* ColorAdjust.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229428D1251E7C61008C0BFF /* ColorAdjust.swift */; };
+		229428D3251E7C61008C0BFF /* ColorAdjust.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229428D1251E7C61008C0BFF /* ColorAdjust.swift */; };
+		229428D4251E7C61008C0BFF /* ColorAdjust.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229428D1251E7C61008C0BFF /* ColorAdjust.swift */; };
+		229428DC251E7E7E008C0BFF /* Mod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229428DB251E7E7E008C0BFF /* Mod.swift */; };
+		229428DD251E7E7E008C0BFF /* Mod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229428DB251E7E7E008C0BFF /* Mod.swift */; };
+		229428DE251E7E7E008C0BFF /* Mod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229428DB251E7E7E008C0BFF /* Mod.swift */; };
 		229521462505BD7600085055 /* NoSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228174D42501CBCB008E471D /* NoSummary.swift */; };
 		229521482505BD7600085055 /* SummaryLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228174C72501B399008E471D /* SummaryLoader.swift */; };
 		229521492505BD7600085055 /* Summary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228174C82501B3E0008E471D /* Summary.swift */; };
@@ -375,6 +381,8 @@
 		2293CEEA24EC5289000B68F4 /* GraphSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphSaver.swift; sourceTree = "<group>"; };
 		2293CEEC24EC5661000B68F4 /* ProjectLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectLoader.swift; sourceTree = "<group>"; };
 		2293CEEE24EC5A84000B68F4 /* LoadEntries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadEntries.swift; sourceTree = "<group>"; };
+		229428D1251E7C61008C0BFF /* ColorAdjust.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorAdjust.swift; sourceTree = "<group>"; };
+		229428DB251E7E7E008C0BFF /* Mod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mod.swift; sourceTree = "<group>"; };
 		229521552505BF0300085055 /* GetCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCredentials.swift; sourceTree = "<group>"; };
 		229521592505BF2A00085055 /* KeychainError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainError.swift; sourceTree = "<group>"; };
 		2295215E2505BFF500085055 /* KeychainConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainConstants.swift; sourceTree = "<group>"; };
@@ -761,6 +769,7 @@
 			isa = PBXGroup;
 			children = (
 				C6B0FF9B246F124300DED011 /* ColorCustom.swift */,
+				229428D1251E7C61008C0BFF /* ColorAdjust.swift */,
 				22A2CE2D24E59F88000820AD /* ColorHex.swift */,
 			);
 			name = Color;
@@ -916,6 +925,7 @@
 				22A2CE3024E5A20B000820AD /* CGPoint */,
 				22A2CE2C24E59F76000820AD /* Color */,
 				22A2CE1B24E59BA3000820AD /* Date */,
+				229428DB251E7E7E008C0BFF /* Mod.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1257,6 +1267,7 @@
 				229521622505C01E00085055 /* NetworkError.swift in Sources */,
 				2292C4FA2505CC1E005802B5 /* Piece12.swift in Sources */,
 				227746D42505BC9200D17CA3 /* GridWidget.swift in Sources */,
+				229428D4251E7C61008C0BFF /* ColorAdjust.swift in Sources */,
 				229428C4251E5E19008C0BFF /* AngleExtension.swift in Sources */,
 				2295214F2505BDE900085055 /* TimeIntervalExtension.swift in Sources */,
 				2292C4FE2505CC68005802B5 /* WidgetView.swift in Sources */,
@@ -1269,6 +1280,7 @@
 				2292C4ED2505CC1E005802B5 /* ConfigurablePiece.swift in Sources */,
 				2295214C2505BDB200085055 /* TimeConstants.swift in Sources */,
 				2292C4EC2505CC1E005802B5 /* EnumeratePiece.swift in Sources */,
+				229428DE251E7E7E008C0BFF /* Mod.swift in Sources */,
 				2292C4F82505CC1E005802B5 /* SolveBoard.swift in Sources */,
 				229521542505BEC300085055 /* Workspace.swift in Sources */,
 				2292C4EB2505CC1E005802B5 /* Piece10.swift in Sources */,
@@ -1317,7 +1329,9 @@
 				228174D02501CAFC008E471D /* SummaryTimelineEntry.swift in Sources */,
 				22A2CE2F24E59F8B000820AD /* ColorHex.swift in Sources */,
 				2253FFB925057FF200BBDCE6 /* Arc.swift in Sources */,
+				229428DD251E7E7E008C0BFF /* Mod.swift in Sources */,
 				2262882324E88691006B330C /* Workspace.swift in Sources */,
+				229428D3251E7C61008C0BFF /* ColorAdjust.swift in Sources */,
 				22B0784424B17CC000256EB8 /* Project.swift in Sources */,
 				22B0784524B17CD900256EB8 /* ColorCustom.swift in Sources */,
 				229646CC24F3220300FE14E5 /* RequestConstants.swift in Sources */,
@@ -1347,6 +1361,7 @@
 				22232B8B24A9532000F3C378 /* LoginView.swift in Sources */,
 				229646CB24F321AE00FE14E5 /* TimeConstants.swift in Sources */,
 				C6751D8C24723182002965CC /* ZeroDate.swift in Sources */,
+				229428D2251E7C61008C0BFF /* ColorAdjust.swift in Sources */,
 				22283DAA24DFA27D005AC0F3 /* SearchTerms.swift in Sources */,
 				C6F605AF246C6B1700D0FE82 /* DateExtension.swift in Sources */,
 				C68F8C8D24A04CE8000D249B /* IceCreamStick.swift in Sources */,
@@ -1433,6 +1448,7 @@
 				2295215F2505BFF500085055 /* KeychainConstants.swift in Sources */,
 				2229D7AC24F0435B004E1034 /* RunningEntryView.swift in Sources */,
 				222305AE24AE807000711031 /* CustomTabView.swift in Sources */,
+				229428DC251E7E7E008C0BFF /* Mod.swift in Sources */,
 				22928AC724A423AA00DC9EC5 /* ButtonGlyph.swift in Sources */,
 				2229D7B024F0459F004E1034 /* FetchRunningEntry.swift in Sources */,
 				22885DB224DA1E2E00A56FE3 /* TimeIndicator.swift in Sources */,

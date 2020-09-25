@@ -16,92 +16,102 @@ struct ShadowRing: View {
     /// the number of complete hours to be displayed
     let hours: Int
     
+    /// minutes to be displayed
+    let mins: Int
+    
     /// the project color
     let color: Color
     
+    /// how much to brighten / darken the view.
+    /// bounded (0, 1)
+    let colorAdjustment = CGFloat(0.2)
+    
+    /// line weight
+    let weight = CGFloat(8.5)
+    
     init(_ project: Summary.Project) {
-        let remainder = project.duration.remainder(dividingBy: .hour) / .hour
-        angle = Angle(radians: .tau * remainder)
+        angle = Angle(radians: .tau * project.duration.mod(.hour) / .hour)
         hours = Int(project.duration / .hour)
+        mins = Int(project.duration.mod(.hour) / 60)
         color = project.color
     }
     
     var body: some View {
         GeometryReader { geo in
             ZStack {
-                SemiCircle()
-                    .strokeBorder(
-                        AngularGradient(
-                            gradient: Gradient(colors: [
-                                color.darken(by: colorAdjustment),
-                                color.darken(by: colorAdjustment),
-                                color
-                            ]),
-                            center: .center
-                        ),
-                        lineWidth: weight
-                    )
-                SemiCircle()
-                    .strokeBorder(
-                        AngularGradient(
-                            gradient: Gradient(colors: [
-                                /// this extra color makes the rounded tip light colored
-                                color.lighten(by: colorAdjustment),
-                                color,
-                                color.lighten(by: colorAdjustment)
-                            ]),
-                            center: .center
-                        ),
-                        style: StrokeStyle(
-                            lineWidth: weight,
-                            /// rounded tip also patches over the seam between the 2 semicircles
-                            lineCap: .round
-                        )
-                    )
-                    .rotationEffect(.tau / 2)
+                DarkHalf
+                    .rotationEffect(angle + .tau * 0.25)
+                LightHalf
+                    .rotationEffect(angle + .tau * 0.75)
+                VStack {
+                    Text("\(hours)h")
+                        .font(.system(size: 12, design: .rounded))
+                        .foregroundColor(color)
+                    Text("\(mins)m")
+                        .font(.system(size: 9, design: .rounded))
+                        .foregroundColor(color)
+                }
             }
-            .rotationEffect(angle + .tau / 4)
         }
         .aspectRatio(1, contentMode: .fit)
-        
     }
     
-    let colorAdjustment = CGFloat(0.2)
-    let weight = CGFloat(7)
+    /// the darkened half of the ring
+    private var DarkHalf: some View {
+        SemiCircle()
+            .strokeBorder(
+                AngularGradient(
+                    gradient: Gradient(colors: [
+                        color.darken(by: colorAdjustment),
+                        color.darken(by: colorAdjustment),
+                        color
+                    ]),
+                    center: .center
+                ),
+                lineWidth: weight
+            )
+    }
+    
+    /// the lighter half of the ring
+    private var LightHalf: some View {
+        SemiCircle()
+            .strokeBorder(
+                AngularGradient(
+                    gradient: Gradient(colors: [
+                        /// this extra color makes the rounded tip light colored
+                        color.lighten(by: colorAdjustment),
+                        color,
+                        color.lighten(by: colorAdjustment)
+                    ]),
+                    center: .center
+                ),
+                style: StrokeStyle(
+                    lineWidth: weight,
+                    /// rounded tip also patches over the seam between the 2 semicircles
+                    lineCap: .round
+                )
+            )
+    }
+    
+    private var TimeIndicator: some View {
+        /// (ab)use `Group` to erase type
+        Group {
+            switch hours {
+            case 0:
+                Text("\(mins)m")
+                    .font(.system(size: 12, design: .rounded))
+                    .foregroundColor(color)
+            default:
+                VStack {
+                    Text("\(hours)h")
+                        .font(.system(size: 12, design: .rounded))
+                        .foregroundColor(color)
+                    Text("\(mins)m")
+                        .font(.system(size: 9, design: .rounded))
+                        .foregroundColor(color)
+                }
+            }
+        }
+    }
 }
 
-extension Color {
-    func darken(by percentage: CGFloat = 0.05) -> Color {
-        let (r,g,b,a) = components
-        let (red, green, blue, alpha) = (
-            Double(max(0, r * (1 - percentage))),
-            Double(max(0, g * (1 - percentage))),
-            Double(max(0, b * (1 - percentage))),
-            Double(a)
-        )
-        return Color(
-            .sRGB,
-            red: red,
-            green: green,
-            blue: blue,
-            opacity: alpha
-        )
-    }
-    
-    func lighten(by percentage: CGFloat = 0.05) -> Color {
-        let (r,g,b,a) = components
-        let (red, green, blue, alpha) = (
-            Double(min(1, r * (1 + percentage))),
-            Double(min(1, g * (1 + percentage))),
-            Double(min(1, b * (1 + percentage))),
-            Double(a)
-        )
-        return Color(
-            .sRGB,
-            red: red,
-            green: green,
-            blue: blue,
-            opacity: alpha
-        )
-    }
-}
