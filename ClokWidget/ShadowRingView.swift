@@ -39,18 +39,16 @@ struct ShadowRing: View {
     var body: some View {
         GeometryReader { geo in
             ZStack {
-                DarkHalf
-                    .rotationEffect(angle + .tau * 0.25)
-                LightHalf
-                    .rotationEffect(angle + .tau * 0.75)
-                VStack {
-                    Text("\(hours)h")
-                        .font(.system(size: 12, design: .rounded))
-                        .foregroundColor(color)
-                    Text("\(mins)m")
-                        .font(.system(size: 9, design: .rounded))
-                        .foregroundColor(color)
+                switch hours {
+                case 0:
+                    EmptyRing
+                default:
+                    DarkHalf
+                        .rotationEffect(angle + .tau * 0.25)
+                    LightHalf
+                        .rotationEffect(angle + .tau * 0.75)
                 }
+                TimeIndicator
             }
         }
         .aspectRatio(1, contentMode: .fit)
@@ -91,6 +89,18 @@ struct ShadowRing: View {
                     lineCap: .round
                 )
             )
+    }
+    
+    var EmptyRing: some View {
+        Circle()
+            .strokeBorder(
+                Color(UIColor.systemGray6),
+                style: StrokeStyle(lineWidth: weight)
+            )
+    }
+    
+    private var HourArc: some View {
+        EmptyView()
     }
     
     private var TimeIndicator: some View {
