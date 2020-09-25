@@ -53,7 +53,11 @@ struct CustomTabView: View {
         Group {
             switch tab {
             case .spiral:
-                EmptyView()
+                ShadowArcView(
+                    color: .red,
+                    angle: Angle(degrees: 120),
+                    hours: 5
+                )
             case .bar:
                 BarStack()
             case .settings:
@@ -64,7 +68,7 @@ struct CustomTabView: View {
     
     var TabButtons: some View {
         Group {
-//            TabButton(select: .spiral, glyph: "arrow.counterclockwise")
+            TabButton(select: .spiral, glyph: "arrow.counterclockwise")
             TabButton(select: .bar, glyph: "chart.bar.fill")
             TabButton(select: .settings, glyph: "gear")
         }
