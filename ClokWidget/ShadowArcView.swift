@@ -14,7 +14,7 @@ struct ShadowArcView: View {
     let angle: Angle
     let hours: Int
     
-    let ratio = CGFloat(0.7)
+    let ratio = CGFloat(0.6)
     var coratio: CGFloat {
         (1 - ratio) * 0.5
     }
@@ -36,7 +36,7 @@ struct ShadowArcView: View {
                     .rotationEffect(angle)
                     .shadow(
                         color: .primary,
-                        radius: 20
+                        radius: 2
                     )
                 /// cuts off the trailing half of the shadow
                 SemiCircle()
@@ -58,7 +58,7 @@ struct ShadowArcView: View {
         }
         .aspectRatio(1, contentMode: .fit)
         .padding()
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .frame(maxWidth: 80, maxHeight: 80)
     }
 }
 
