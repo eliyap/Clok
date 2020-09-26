@@ -21,18 +21,19 @@ struct ClokWidgetEntryView : View {
     var entry: SummaryEntry
     
     var body: some View {
-        HStack {
-            switch family {
-            case .systemMedium:
-                TripleRing()
-                TripleLabel()
-                
-            default:
-                TripleRing()
-            }
-        }
-        .frame(maxWidth: .infinity)
-        .padding(10)
+        Text(entry.test)
+//        HStack {
+//            switch family {
+//            case .systemMedium:
+//                TripleRing()
+//                TripleLabel()
+//
+//            default:
+//                TripleRing()
+//            }
+//        }
+//        .frame(maxWidth: .infinity)
+//        .padding(10)
     }
     
     func TripleLabel() -> some View {
@@ -95,41 +96,41 @@ struct ClokWidgetEntryView : View {
         var projs = entry.summary.projects.sorted(by: {$0.duration > $1.duration})
         
         /// try to match first ID
-        if
-            let pid1 = entry.pid1,
-            let match = projs.firstIndex(where: {$0.id == pid1})
-        {
-            result.0 = projs[match]
-            projs.remove(at: match)
-        } else if !projs.isEmpty {
-            result.0 = projs.first!
-            projs.removeFirst()
-        }
-
-        
-        /// try to match second ID
-        if
-            let pid2 = entry.pid2,
-            let match = projs.firstIndex(where: {$0.id == pid2})
-        {
-            result.1 = projs[match]
-            projs.remove(at: match)
-        } else if !projs.isEmpty {
-            result.1 = projs.first!
-            projs.removeFirst()
-        }
-
-        /// try to match third ID
-        if
-            let pid3 = entry.pid3,
-            let match = projs.firstIndex(where: {$0.id == pid3})
-        {
-            result.2 = projs[match]
-            projs.remove(at: match)
-        } else if !projs.isEmpty {
-            result.2 = projs.first!
-            projs.removeFirst()
-        }
+//        if
+//            let pid1 = entry.pid1,
+//            let match = projs.firstIndex(where: {$0.id == pid1})
+//        {
+//            result.0 = projs[match]
+//            projs.remove(at: match)
+//        } else if !projs.isEmpty {
+//            result.0 = projs.first!
+//            projs.removeFirst()
+//        }
+//
+//
+//        /// try to match second ID
+//        if
+//            let pid2 = entry.pid2,
+//            let match = projs.firstIndex(where: {$0.id == pid2})
+//        {
+//            result.1 = projs[match]
+//            projs.remove(at: match)
+//        } else if !projs.isEmpty {
+//            result.1 = projs.first!
+//            projs.removeFirst()
+//        }
+//
+//        /// try to match third ID
+//        if
+//            let pid3 = entry.pid3,
+//            let match = projs.firstIndex(where: {$0.id == pid3})
+//        {
+//            result.2 = projs[match]
+//            projs.remove(at: match)
+//        } else if !projs.isEmpty {
+//            result.2 = projs.first!
+//            projs.removeFirst()
+//        }
 
         return result
     }

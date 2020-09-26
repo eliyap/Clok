@@ -8,6 +8,7 @@ import WidgetKit
 import SwiftUI
 import Foundation
 import Intents
+import CoreData
 
 /**
  Define the refresh rate centrally so it can be tweaked quickly
@@ -21,8 +22,14 @@ struct Provider: IntentTimelineProvider {
     typealias Entry = SummaryEntry
     typealias Intent = ClokConfigurationIntent
     
+    var context: NSManagedObjectContext
+    
+    init(context: NSManagedObjectContext) {
+        self.context = context
+    }
+    
     func placeholder(in context: Context) -> SummaryEntry {
-        SummaryEntry(date: Date(), summary: .noSummary)
+        SummaryEntry(date: Date(), summary: .noSummary, test: "placeholder")
     }
     
     func getSnapshot(
@@ -61,9 +68,7 @@ struct Provider: IntentTimelineProvider {
                 entries: [SummaryEntry(
                     date: Date(),
                     summary: summary,
-                    pid1: configuration.Project1?.pid?.intValue,
-                    pid2: configuration.Project2?.pid?.intValue,
-                    pid3: configuration.Project3?.pid?.intValue
+                    test: "passed"
                 )],
                 policy: .after(Date() + .widgetPeriod)
             )

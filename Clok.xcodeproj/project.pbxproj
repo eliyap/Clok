@@ -214,6 +214,7 @@
 		22DF92C9251D60B3007E4635 /* GridWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 227746CF2505BC9200D17CA3 /* GridWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		22DF92D8251D6834007E4635 /* AnyTransitionSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DF92D7251D6834007E4635 /* AnyTransitionSlide.swift */; };
 		22FA071A251D0DC800E20C27 /* TokenWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FA0719251D0DC800E20C27 /* TokenWebView.swift */; };
+		C60856AB251FCB1E00E6D6C0 /* URLStoreExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60856AA251FCB1E00E6D6C0 /* URLStoreExtension.swift */; };
 		C61D2658249BE1990056C9FA /* StatHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61D2657249BE1990056C9FA /* StatHelpers.swift */; };
 		C6262B9A251F03950003D435 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22AD5F7C24B1467D006EF7FB /* WidgetKit.framework */; };
 		C6262B9B251F03950003D435 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22AD5F7E24B1467D006EF7FB /* SwiftUI.framework */; };
@@ -502,6 +503,7 @@
 		22DE58EF251EC86F00379396 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22DF92D7251D6834007E4635 /* AnyTransitionSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyTransitionSlide.swift; sourceTree = "<group>"; };
 		22FA0719251D0DC800E20C27 /* TokenWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenWebView.swift; sourceTree = "<group>"; };
+		C60856AA251FCB1E00E6D6C0 /* URLStoreExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLStoreExtension.swift; sourceTree = "<group>"; };
 		C61D2657249BE1990056C9FA /* StatHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatHelpers.swift; sourceTree = "<group>"; };
 		C6262B99251F03950003D435 /* MultiRingExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MultiRingExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6262B9D251F03950003D435 /* MultiRingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiRingView.swift; sourceTree = "<group>"; };
@@ -1044,6 +1046,7 @@
 				22A2CE2C24E59F76000820AD /* Color */,
 				22A2CE1B24E59BA3000820AD /* Date */,
 				229428DB251E7E7E008C0BFF /* Mod.swift */,
+				C60856AA251FCB1E00E6D6C0 /* URLStoreExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1603,6 +1606,7 @@
 				C6F605AF246C6B1700D0FE82 /* DateExtension.swift in Sources */,
 				C68F8C8D24A04CE8000D249B /* IceCreamStick.swift in Sources */,
 				2207B22024B954F40006748A /* GraphView.swift in Sources */,
+				C60856AB251FCB1E00E6D6C0 /* URLStoreExtension.swift in Sources */,
 				22D7459E2505E9F300013A80 /* FirstDayOfWeek.swift in Sources */,
 				2238640024BBBD030041886B /* LoadProjects.swift in Sources */,
 				22A2CE1D24E59BB1000820AD /* DateStridable.swift in Sources */,

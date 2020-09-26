@@ -10,17 +10,26 @@ import WidgetKit
 import SwiftUI
 import Foundation
 import Intents
+import CoreData
 
 @main
 struct ClokWidget: Widget {
     
     private let kind: String = "ClokWidget"
 
+    var persistentContainer: NSPersistentContainer {
+        let container = NSPersistentContainer(name: "TimeEntryModel")
+        container.loadPersistentStores { description, error in
+            if let error = error { fatalError("\(error)") }
+        }
+        return container
+    }
+    
     public var body: some WidgetConfiguration {
         IntentConfiguration(
             kind: kind,
             intent: ClokConfigurationIntent.self,
-            provider: Provider()
+            provider: Provider(context: persistentContainer.viewContext)
         ) { entry in
             ClokWidgetEntryView(entry: entry)
         }
