@@ -18,6 +18,15 @@
 		221810E424B01AAC00B63ECA /* InAndOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221810E324B01AAC00B63ECA /* InAndOut.swift */; };
 		221C3C5724A93C57006995C5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221C3C5624A93C57006995C5 /* User.swift */; };
 		221D963C24A912B900C84F57 /* APIKeyHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221D963B24A912B900C84F57 /* APIKeyHandler.swift */; };
+		221F621C251EE0FA000ECED9 /* FormRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2296F15A24A994A400AF38B5 /* FormRequest.swift */; };
+		221F6223251EE101000ECED9 /* GetCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229521552505BF0300085055 /* GetCredentials.swift */; };
+		221F622A251EE106000ECED9 /* KeychainConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2295215E2505BFF500085055 /* KeychainConstants.swift */; };
+		221F6231251EE10B000ECED9 /* KeychainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229521592505BF2A00085055 /* KeychainError.swift */; };
+		221F6241251EE157000ECED9 /* RawProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221F6240251EE157000ECED9 /* RawProject.swift */; };
+		221F624E251EE15D000ECED9 /* RawProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221F6240251EE157000ECED9 /* RawProject.swift */; };
+		221F625B251EE172000ECED9 /* RawProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221F6240251EE157000ECED9 /* RawProject.swift */; };
+		221F6262251EE18B000ECED9 /* RequestConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229646C824F3212700FE14E5 /* RequestConstants.swift */; };
+		221F6269251EE1A0000ECED9 /* DecoderExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D992524BAB2FD00F66E0F /* DecoderExtension.swift */; };
 		222305AE24AE807000711031 /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222305AD24AE807000711031 /* CustomTabView.swift */; };
 		22232B8B24A9532000F3C378 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22232B8A24A9532000F3C378 /* LoginView.swift */; };
 		22283DA024DF9959005AC0F3 /* BarTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22283D9F24DF9959005AC0F3 /* BarTabs.swift */; };
@@ -297,6 +306,7 @@
 		221810E324B01AAC00B63ECA /* InAndOut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAndOut.swift; sourceTree = "<group>"; };
 		221C3C5624A93C57006995C5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		221D963B24A912B900C84F57 /* APIKeyHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeyHandler.swift; sourceTree = "<group>"; };
+		221F6240251EE157000ECED9 /* RawProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawProject.swift; sourceTree = "<group>"; };
 		222305AD24AE807000711031 /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
 		22232B8A24A9532000F3C378 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		22283D9F24DF9959005AC0F3 /* BarTabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarTabs.swift; sourceTree = "<group>"; };
@@ -549,6 +559,14 @@
 				229521552505BF0300085055 /* GetCredentials.swift */,
 			);
 			path = Keychain;
+			sourceTree = "<group>";
+		};
+		221F623F251EE14D000ECED9 /* RawStructs */ = {
+			isa = PBXGroup;
+			children = (
+				221F6240251EE157000ECED9 /* RawProject.swift */,
+			);
+			path = RawStructs;
 			sourceTree = "<group>";
 		};
 		2229D7AD24F04574004E1034 /* Fetchers */ = {
@@ -826,6 +844,7 @@
 		22DC86A824BA839100FF771F /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				221F623F251EE14D000ECED9 /* RawStructs */,
 				22DC869C24BA838D00FF771F /* Project+CoreDataClass.swift */,
 				22DC869D24BA838D00FF771F /* Project+CoreDataProperties.swift */,
 				22DC869E24BA838D00FF771F /* TimeEntry+CoreDataClass.swift */,
@@ -1315,6 +1334,7 @@
 				228174CA2501B49B008E471D /* Summary.swift in Sources */,
 				22B0783624B1513A00256EB8 /* User.swift in Sources */,
 				22AD5F8724B1467E006EF7FB /* ClokWidget.intentdefinition in Sources */,
+				221F625B251EE172000ECED9 /* RawProject.swift in Sources */,
 				22B0784A24B262FA00256EB8 /* Timeline.swift in Sources */,
 				228174D02501CAFC008E471D /* SummaryTimelineEntry.swift in Sources */,
 				22A2CE2F24E59F8B000820AD /* ColorHex.swift in Sources */,
@@ -1334,8 +1354,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				221F622A251EE106000ECED9 /* KeychainConstants.swift in Sources */,
+				221F621C251EE0FA000ECED9 /* FormRequest.swift in Sources */,
+				221F6223251EE101000ECED9 /* GetCredentials.swift in Sources */,
+				221F6269251EE1A0000ECED9 /* DecoderExtension.swift in Sources */,
+				221F624E251EE15D000ECED9 /* RawProject.swift in Sources */,
 				22DE58EE251EC86F00379396 /* IntentHandler.swift in Sources */,
+				221F6231251EE10B000ECED9 /* KeychainError.swift in Sources */,
 				22DE591D251EC91200379396 /* ClokWidget.intentdefinition in Sources */,
+				221F6262251EE18B000ECED9 /* RequestConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1435,6 +1462,7 @@
 				22A2CE3224E5A218000820AD /* CGPointOperators.swift in Sources */,
 				22283DA024DF9959005AC0F3 /* BarTabs.swift in Sources */,
 				C688BFCA24A18BF00077CECF /* RaisedShape.swift in Sources */,
+				221F6241251EE157000ECED9 /* RawProject.swift in Sources */,
 				2295215F2505BFF500085055 /* KeychainConstants.swift in Sources */,
 				2229D7AC24F0435B004E1034 /* RunningEntryView.swift in Sources */,
 				222305AE24AE807000711031 /* CustomTabView.swift in Sources */,

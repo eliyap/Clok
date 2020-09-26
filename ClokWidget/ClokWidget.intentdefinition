@@ -105,7 +105,7 @@
 			<key>INTypeDisplayNameID</key>
 			<string>vH2aUl</string>
 			<key>INTypeLastPropertyTag</key>
-			<integer>99</integer>
+			<integer>101</integer>
 			<key>INTypeName</key>
 			<string>IntentProject</string>
 			<key>INTypeProperties</key>
@@ -159,6 +159,20 @@
 					<integer>4</integer>
 					<key>INTypePropertyType</key>
 					<string>SpeakableString</string>
+				</dict>
+				<dict>
+					<key>INTypePropertyDisplayName</key>
+					<string>Pid</string>
+					<key>INTypePropertyDisplayNameID</key>
+					<string>kfl78o</string>
+					<key>INTypePropertyDisplayPriority</key>
+					<integer>5</integer>
+					<key>INTypePropertyName</key>
+					<string>pid</string>
+					<key>INTypePropertyTag</key>
+					<integer>101</integer>
+					<key>INTypePropertyType</key>
+					<string>Integer</string>
 				</dict>
 			</array>
 		</dict>
