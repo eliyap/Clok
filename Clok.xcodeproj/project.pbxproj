@@ -288,6 +288,12 @@
 		C6D2E5F1251FA2CF0067C0B0 /* RunningRing.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = C6D2E5EC251FA2CD0067C0B0 /* RunningRing.intentdefinition */; };
 		C6D2E5F4251FA2CF0067C0B0 /* RunningRingExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C6D2E5E6251FA2CD0067C0B0 /* RunningRingExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		C6D448EC2484710E0072E7D4 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D448EB2484710E0072E7D4 /* ActivityIndicator.swift */; };
+		C6EB45C1251FEDB900FCD0CB /* CoreDataConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EB45C0251FEDB900FCD0CB /* CoreDataConstants.swift */; };
+		C6EB45CA251FEDBF00FCD0CB /* CoreDataConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EB45C0251FEDB900FCD0CB /* CoreDataConstants.swift */; };
+		C6EB45D3251FEDBF00FCD0CB /* CoreDataConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EB45C0251FEDB900FCD0CB /* CoreDataConstants.swift */; };
+		C6EB45D4251FEDC000FCD0CB /* CoreDataConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EB45C0251FEDB900FCD0CB /* CoreDataConstants.swift */; };
+		C6EB45DD251FEDC000FCD0CB /* CoreDataConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EB45C0251FEDB900FCD0CB /* CoreDataConstants.swift */; };
+		C6EB45E6251FEDC100FCD0CB /* CoreDataConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EB45C0251FEDB900FCD0CB /* CoreDataConstants.swift */; };
 		C6F605AF246C6B1700D0FE82 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F605AE246C6B1700D0FE82 /* DateExtension.swift */; };
 /* End PBXBuildFile section */
 
@@ -562,6 +568,7 @@
 		C6D2E5EF251FA2CF0067C0B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C6D2E600251FA2DC0067C0B0 /* RunningRingExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RunningRingExtension.entitlements; sourceTree = "<group>"; };
 		C6D448EB2484710E0072E7D4 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		C6EB45C0251FEDB900FCD0CB /* CoreDataConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataConstants.swift; sourceTree = "<group>"; };
 		C6F605AE246C6B1700D0FE82 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -852,6 +859,7 @@
 				229646C824F3212700FE14E5 /* RequestConstants.swift */,
 				2295215E2505BFF500085055 /* KeychainConstants.swift */,
 				229646CA24F321AE00FE14E5 /* TimeConstants.swift */,
+				C6EB45C0251FEDB900FCD0CB /* CoreDataConstants.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -1468,6 +1476,7 @@
 				2295214E2505BDD700085055 /* DateComponent.swift in Sources */,
 				229521582505BF0F00085055 /* GetCredentials.swift in Sources */,
 				2292C4F32505CC1E005802B5 /* PieceLarge.swift in Sources */,
+				C6EB45D3251FEDBF00FCD0CB /* CoreDataConstants.swift in Sources */,
 				2292C4E92505CC1E005802B5 /* Piece5.swift in Sources */,
 				2292C5012505D1E0005802B5 /* BoardEntry.swift in Sources */,
 				227746D92505BC9300D17CA3 /* GridWidget.intentdefinition in Sources */,
@@ -1553,6 +1562,7 @@
 				229428D3251E7C61008C0BFF /* ColorAdjust.swift in Sources */,
 				C60856B9251FCE1B00E6D6C0 /* LoadProjects.swift in Sources */,
 				22B0784424B17CC000256EB8 /* Project.swift in Sources */,
+				C6EB45CA251FEDBF00FCD0CB /* CoreDataConstants.swift in Sources */,
 				22B0784524B17CD900256EB8 /* ColorCustom.swift in Sources */,
 				22B6E473251EA38F00530539 /* Arc.swift in Sources */,
 				229646CC24F3220300FE14E5 /* RequestConstants.swift in Sources */,
@@ -1569,6 +1579,7 @@
 				221F621C251EE0FA000ECED9 /* FormRequest.swift in Sources */,
 				221F6223251EE101000ECED9 /* GetCredentials.swift in Sources */,
 				221F6269251EE1A0000ECED9 /* DecoderExtension.swift in Sources */,
+				C6EB45D4251FEDC000FCD0CB /* CoreDataConstants.swift in Sources */,
 				221F624E251EE15D000ECED9 /* RawProject.swift in Sources */,
 				22DE58EE251EC86F00379396 /* IntentHandler.swift in Sources */,
 				221F6231251EE10B000ECED9 /* KeychainError.swift in Sources */,
@@ -1596,6 +1607,7 @@
 				C6CDEC6D251F0A310031B81E /* DateComponent.swift in Sources */,
 				C6CDEBFD251F074A0031B81E /* ColorHex.swift in Sources */,
 				C6CDEC4D251F09AD0031B81E /* SummaryLoader.swift in Sources */,
+				C6EB45DD251FEDC000FCD0CB /* CoreDataConstants.swift in Sources */,
 				C6CDEC15251F078A0031B81E /* TimeConstants.swift in Sources */,
 				C6CDEBE5251F06FB0031B81E /* RawSummary.swift in Sources */,
 				C6262BA3251F03970003D435 /* MultiRing.intentdefinition in Sources */,
@@ -1672,6 +1684,7 @@
 				C63FC2F8249BCEB900747D49 /* AngleExtension.swift in Sources */,
 				2229D7AA24EF6BDB004E1034 /* CurrentTimeIndicator.swift in Sources */,
 				C6AAB3EA249EF26800DFBA36 /* TimeEntryExtension.swift in Sources */,
+				C6EB45C1251FEDB900FCD0CB /* CoreDataConstants.swift in Sources */,
 				C6C18D492448F96C000345D5 /* ContentView.swift in Sources */,
 				22D7459C2505E9B600013A80 /* ZoomLevel.swift in Sources */,
 				22885DB024DA1C9600A56FE3 /* Divisions.swift in Sources */,
@@ -1760,6 +1773,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6EB45E6251FEDC100FCD0CB /* CoreDataConstants.swift in Sources */,
 				C6D2E5F0251FA2CF0067C0B0 /* RunningRing.intentdefinition in Sources */,
 				C6D2E5EB251FA2CD0067C0B0 /* RunningRing.swift in Sources */,
 			);

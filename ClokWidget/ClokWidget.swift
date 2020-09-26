@@ -17,20 +17,30 @@ struct ClokWidget: Widget {
     
     private let kind: String = "ClokWidget"
 
-    var persistentContainer: NSPersistentContainer
+    var nspc: NSPersistentContainer
     
     init() {
-        persistentContainer = NSPersistentContainer(name: "TimeEntryModel")
-        persistentContainer.loadPersistentStores { description, error in
-            if let error = error { fatalError("\(error)") }
+        /// initialize Core Data container
+        nspc = NSPersistentContainer(name: "TimeEntryModel")
+        
+        /// set store URL
+        nspc.persistentStoreDescriptions = [NSPersistentStoreDescription(url: containerURL)]
+        
+        nspc.loadPersistentStores { description, error in
+            if let error = error {
+                print((error as NSError).code)
+                fatalError("\(error as NSError)")
+                
+            }
         }
+        
     }
     
     public var body: some WidgetConfiguration {
         IntentConfiguration(
             kind: kind,
             intent: ClokConfigurationIntent.self,
-            provider: Provider(context: persistentContainer.viewContext)
+            provider: Provider(context: nspc.viewContext)
         ) { entry in
             ClokWidgetEntryView(entry: entry)
         }

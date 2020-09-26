@@ -26,25 +26,29 @@ struct ClokApp: App {
     let tagLoader = TagLoader()
     let saver: PrefSaver
     
-    var persistentContainer: NSPersistentContainer
+    var nspc: NSPersistentContainer
         
     init(){
                 
         /// initialize Core Data container
-        persistentContainer = NSPersistentContainer(name: "TimeEntryModel")
-        persistentContainer.loadPersistentStores { description, error in
-            if let error = error { fatalError("\(error)") }
-        }
-        persistentContainer.viewContext.mergePolicy = NSOverwriteMergePolicy
-    
+        nspc = NSPersistentContainer(name: "TimeEntryModel")
+        
         /// set store URL
-        /// https://www.avanderlee.com/swift/core-data-app-extension-data-sharing/
-        let storeURL = URL.storeURL(for: "group.sam.clok", databaseName: "UserData")
-        let storeDescription = NSPersistentStoreDescription(url: storeURL)
-        persistentContainer.persistentStoreDescriptions = [storeDescription]
+        nspc.persistentStoreDescriptions = [NSPersistentStoreDescription(url: containerURL)]
+        
+        nspc.loadPersistentStores { description, error in
+            if let error = error {
+                print((error as NSError).code)
+                fatalError("\(error as NSError)")
+            }
+        }
+        
+        /// set merge policy after load
+        nspc.viewContext.mergePolicy = NSOverwriteMergePolicy
+        
         
         /// pull `Project`s from CoreData
-        data = TimeData(projects: loadProjects(context: persistentContainer.viewContext) ?? [])
+        data = TimeData(projects: loadProjects(context: nspc.viewContext) ?? [])
         
         /// pull `User` from KeyChain
         cred = Credentials(user: loadCredentials())
@@ -65,7 +69,7 @@ struct ClokApp: App {
                 .environmentObject(model)
                 .environmentObject(entryLoader)
                 .environmentObject(projectLoader)
-                .environment(\.managedObjectContext, persistentContainer.viewContext)
+                .environment(\.managedObjectContext, nspc.viewContext)
                 /// update on change to either user or space
                 /// also fires at app launch when user is logged in
                 .onReceive(cred.$user) { user in
@@ -74,9 +78,9 @@ struct ClokApp: App {
                     print(user.email)
                     #endif
                     /// fetch projects and tags, discard results
-                    projectLoader.loader = ProjectLoader.fetchProjects(user: user, context: persistentContainer.viewContext)
+                    projectLoader.loader = ProjectLoader.fetchProjects(user: user, context: nspc.viewContext)
                         .sink(receiveValue: { _ in })
-                    tagLoader.loader = TagLoader.fetchTags(user: user, context: persistentContainer.viewContext)
+                    tagLoader.loader = TagLoader.fetchTags(user: user, context: nspc.viewContext)
                         .sink(receiveValue: { _ in })
                 }
                 .onReceive(zero.limitedStart, perform: { date in
@@ -91,9 +95,9 @@ struct ClokApp: App {
                             end: date + .week + .day
                         ),
                         user: user,
-                        projects: loadProjects(context: persistentContainer.viewContext) ?? [],
-                        tags: loadTags(context: persistentContainer.viewContext) ?? [],
-                        context: persistentContainer.viewContext
+                        projects: loadProjects(context: nspc.viewContext) ?? [],
+                        tags: loadTags(context: nspc.viewContext) ?? [],
+                        context: nspc.viewContext
                     )
                 })
         }
