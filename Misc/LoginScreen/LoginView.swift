@@ -95,7 +95,7 @@ struct LoginView: View {
             entryLoader.fetchEntries(
                 range: (
                     /// grab a year's worth of work (should be enough for most users)
-                    start: Date() - (.day * 365),
+                    start: Date(),
                     end: Date()
                 ),
                 user: user,
