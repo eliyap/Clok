@@ -195,13 +195,6 @@
 		22DC86A224BA838D00FF771F /* Project+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC869D24BA838D00FF771F /* Project+CoreDataProperties.swift */; };
 		22DC86A424BA838D00FF771F /* TimeEntry+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC869E24BA838D00FF771F /* TimeEntry+CoreDataClass.swift */; };
 		22DC86A624BA838D00FF771F /* TimeEntry+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC869F24BA838D00FF771F /* TimeEntry+CoreDataProperties.swift */; };
-		22DF929B251D5FFE007E4635 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22AD5F7C24B1467D006EF7FB /* WidgetKit.framework */; };
-		22DF929C251D5FFE007E4635 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22AD5F7E24B1467D006EF7FB /* SwiftUI.framework */; };
-		22DF929F251D5FFE007E4635 /* PredictExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DF929E251D5FFE007E4635 /* PredictExtension.swift */; };
-		22DF92A2251D6000007E4635 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22DF92A1251D6000007E4635 /* Assets.xcassets */; };
-		22DF92A4251D6000007E4635 /* PredictExtension.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 22DF92A0251D5FFE007E4635 /* PredictExtension.intentdefinition */; };
-		22DF92A5251D6000007E4635 /* PredictExtension.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 22DF92A0251D5FFE007E4635 /* PredictExtension.intentdefinition */; };
-		22DF92A8251D6000007E4635 /* PredictExtensionExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 22DF929A251D5FFE007E4635 /* PredictExtensionExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		22DF92C8251D60B3007E4635 /* ClokWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 22AD5F7A24B1467D006EF7FB /* ClokWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		22DF92C9251D60B3007E4635 /* GridWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 227746CF2505BC9200D17CA3 /* GridWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		22DF92D8251D6834007E4635 /* AnyTransitionSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DF92D7251D6834007E4635 /* AnyTransitionSlide.swift */; };
@@ -248,13 +241,6 @@
 			remoteGlobalIDString = 227746CE2505BC9200D17CA3;
 			remoteInfo = GridWidgetExtension;
 		};
-		22DF92A6251D6000007E4635 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C6C18D392448F96C000345D5 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 22DF9299251D5FFE007E4635;
-			remoteInfo = PredictExtensionExtension;
-		};
 		C6C18D582448F96F000345D5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C6C18D392448F96C000345D5 /* Project object */;
@@ -278,7 +264,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				22DF92A8251D6000007E4635 /* PredictExtensionExtension.appex in Embed App Extensions */,
 				22DF92C8251D60B3007E4635 /* ClokWidgetExtension.appex in Embed App Extensions */,
 				22DF92C9251D60B3007E4635 /* GridWidgetExtension.appex in Embed App Extensions */,
 			);
@@ -432,11 +417,6 @@
 		22DC869D24BA838D00FF771F /* Project+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Project+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		22DC869E24BA838D00FF771F /* TimeEntry+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeEntry+CoreDataClass.swift"; sourceTree = "<group>"; };
 		22DC869F24BA838D00FF771F /* TimeEntry+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeEntry+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		22DF929A251D5FFE007E4635 /* PredictExtensionExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PredictExtensionExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		22DF929E251D5FFE007E4635 /* PredictExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictExtension.swift; sourceTree = "<group>"; };
-		22DF92A0251D5FFE007E4635 /* PredictExtension.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = PredictExtension.intentdefinition; sourceTree = "<group>"; };
-		22DF92A1251D6000007E4635 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		22DF92A3251D6000007E4635 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22DF92D7251D6834007E4635 /* AnyTransitionSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyTransitionSlide.swift; sourceTree = "<group>"; };
 		22FA0719251D0DC800E20C27 /* TokenWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenWebView.swift; sourceTree = "<group>"; };
 		C61D2657249BE1990056C9FA /* StatHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatHelpers.swift; sourceTree = "<group>"; };
@@ -488,15 +468,6 @@
 			files = (
 				22AD5F7F24B1467D006EF7FB /* SwiftUI.framework in Frameworks */,
 				22AD5F7D24B1467D006EF7FB /* WidgetKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		22DF9297251D5FFE007E4635 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				22DF929C251D5FFE007E4635 /* SwiftUI.framework in Frameworks */,
-				22DF929B251D5FFE007E4635 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -847,17 +818,6 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
-		22DF929D251D5FFE007E4635 /* PredictExtension */ = {
-			isa = PBXGroup;
-			children = (
-				22DF929E251D5FFE007E4635 /* PredictExtension.swift */,
-				22DF92A0251D5FFE007E4635 /* PredictExtension.intentdefinition */,
-				22DF92A1251D6000007E4635 /* Assets.xcassets */,
-				22DF92A3251D6000007E4635 /* Info.plist */,
-			);
-			path = PredictExtension;
-			sourceTree = "<group>";
-		};
 		22DF92D6251D681D007E4635 /* AnyTransition */ = {
 			isa = PBXGroup;
 			children = (
@@ -944,7 +904,6 @@
 				228174D12501CB64008E471D /* Summary */,
 				22AD5F8024B1467D006EF7FB /* ClokWidget */,
 				227746D22505BC9200D17CA3 /* GridWidget */,
-				22DF929D251D5FFE007E4635 /* PredictExtension */,
 				22AD5F7B24B1467D006EF7FB /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -957,7 +916,6 @@
 				C6C18D622448F96F000345D5 /* ClokUITests.xctest */,
 				22AD5F7A24B1467D006EF7FB /* ClokWidgetExtension.appex */,
 				227746CF2505BC9200D17CA3 /* GridWidgetExtension.appex */,
-				22DF929A251D5FFE007E4635 /* PredictExtensionExtension.appex */,
 			);
 			name = Products;
 			path = ..;
@@ -1055,23 +1013,6 @@
 			productReference = 22AD5F7A24B1467D006EF7FB /* ClokWidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
-		22DF9299251D5FFE007E4635 /* PredictExtensionExtension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 22DF92A9251D6000007E4635 /* Build configuration list for PBXNativeTarget "PredictExtensionExtension" */;
-			buildPhases = (
-				22DF9296251D5FFE007E4635 /* Sources */,
-				22DF9297251D5FFE007E4635 /* Frameworks */,
-				22DF9298251D5FFE007E4635 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = PredictExtensionExtension;
-			productName = PredictExtensionExtension;
-			productReference = 22DF929A251D5FFE007E4635 /* PredictExtensionExtension.appex */;
-			productType = "com.apple.product-type.app-extension";
-		};
 		C6C18D402448F96C000345D5 /* Clok */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C6C18D6B2448F96F000345D5 /* Build configuration list for PBXNativeTarget "Clok" */;
@@ -1086,7 +1027,6 @@
 			dependencies = (
 				22DF9288251D5EF0007E4635 /* PBXTargetDependency */,
 				22DF928A251D5EF0007E4635 /* PBXTargetDependency */,
-				22DF92A7251D6000007E4635 /* PBXTargetDependency */,
 			);
 			name = Clok;
 			productName = Landwarks;
@@ -1145,9 +1085,6 @@
 					22AD5F7924B1467D006EF7FB = {
 						CreatedOnToolsVersion = 12.0;
 					};
-					22DF9299251D5FFE007E4635 = {
-						CreatedOnToolsVersion = 12.0;
-					};
 					C6C18D402448F96C000345D5 = {
 						CreatedOnToolsVersion = 11.4.1;
 					};
@@ -1179,7 +1116,6 @@
 				C6C18D612448F96F000345D5 /* ClokUITests */,
 				22AD5F7924B1467D006EF7FB /* ClokWidgetExtension */,
 				227746CE2505BC9200D17CA3 /* GridWidgetExtension */,
-				22DF9299251D5FFE007E4635 /* PredictExtensionExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -1198,14 +1134,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				22AD5F8524B1467E006EF7FB /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		22DF9298251D5FFE007E4635 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				22DF92A2251D6000007E4635 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1336,15 +1264,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		22DF9296251D5FFE007E4635 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				22DF92A4251D6000007E4635 /* PredictExtension.intentdefinition in Sources */,
-				22DF929F251D5FFE007E4635 /* PredictExtension.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		C6C18D3D2448F96C000345D5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1416,7 +1335,6 @@
 				225F69B724AD8EF50012B5DB /* EntryList.swift in Sources */,
 				221810E424B01AAC00B63ECA /* InAndOut.swift in Sources */,
 				22AD5F8824B1467E006EF7FB /* ClokWidget.intentdefinition in Sources */,
-				22DF92A5251D6000007E4635 /* PredictExtension.intentdefinition in Sources */,
 				2295216A2505C14200085055 /* SearchTermsProjects.swift in Sources */,
 				22283DA824DFA166005AC0F3 /* FilterView.swift in Sources */,
 				229646CF24F322E600FE14E5 /* TagLoader.swift in Sources */,
@@ -1499,11 +1417,6 @@
 			isa = PBXTargetDependency;
 			target = 227746CE2505BC9200D17CA3 /* GridWidgetExtension */;
 			targetProxy = 22DF9289251D5EF0007E4635 /* PBXContainerItemProxy */;
-		};
-		22DF92A7251D6000007E4635 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 22DF9299251D5FFE007E4635 /* PredictExtensionExtension */;
-			targetProxy = 22DF92A6251D6000007E4635 /* PBXContainerItemProxy */;
 		};
 		C6C18D592448F96F000345D5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1616,48 +1529,6 @@
 				);
 				MARKETING_VERSION = 2020.11;
 				PRODUCT_BUNDLE_IDENTIFIER = sam.clok.ClokWidget;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		22DF92AA251D6000007E4635 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 949D776DFQ;
-				INFOPLIST_FILE = PredictExtension/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = sam.clok.PredictExtension;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		22DF92AB251D6000007E4635 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 949D776DFQ;
-				INFOPLIST_FILE = PredictExtension/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = sam.clok.PredictExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -1928,15 +1799,6 @@
 			buildConfigurations = (
 				22AD5F8D24B1467E006EF7FB /* Debug */,
 				22AD5F8E24B1467E006EF7FB /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		22DF92A9251D6000007E4635 /* Build configuration list for PBXNativeTarget "PredictExtensionExtension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				22DF92AA251D6000007E4635 /* Debug */,
-				22DF92AB251D6000007E4635 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

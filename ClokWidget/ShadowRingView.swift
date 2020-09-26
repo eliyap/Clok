@@ -13,7 +13,7 @@ struct ShadowRing: View {
     @Environment(\.colorScheme) var mode
     
     /// the angle to rotate the ring
-    let angle: Angle
+    var angle: Angle
     
     /// the number of complete hours to be displayed
     let hours: Int
@@ -31,11 +31,16 @@ struct ShadowRing: View {
     /// line weight
     var weight = CGFloat(8.5)
     
+    let beadAngle = 0.4
+    
     init(_ project: Summary.Project) {
         angle = Angle(radians: .tau * project.duration.mod(.hour) / .hour)
         hours = Int(project.duration / .hour)
         mins = Int(project.duration.mod(.hour) / 60)
         color = project.color
+//        if hours > 0 {
+//            angle -= Angle(radians: Double(hours) * beadAngle)
+//        }
     }
     
     var body: some View {
@@ -51,6 +56,7 @@ struct ShadowRing: View {
                         .rotationEffect(angle + .tau * 0.75)
                     LightHalf
                         .rotationEffect(angle + .tau * 0.25)
+                    Beads(size: geo.size)
                 }
                 TimeIndicator
             }
@@ -93,6 +99,20 @@ struct ShadowRing: View {
                     lineCap: .round
                 )
             )
+    }
+    
+    private func Beads(size: CGSize) -> some View {
+        ForEach(1...hours, id: \.self){ index in
+            Circle()
+                .fill(color.lighten(by: colorAdjustment))
+                .frame(width: weight/2, height: weight/2)
+                .offset(x: (size.width - weight) / 2)
+                .rotationEffect(
+                    Angle(radians: beadAngle * Double(index))
+                    + angle
+                    - .tau / 4
+                )
+        }
     }
     
     var EmptyRing: some View {
