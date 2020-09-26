@@ -22,10 +22,10 @@ struct Provider: IntentTimelineProvider {
     typealias Entry = SummaryEntry
     typealias Intent = ClokConfigurationIntent
     
-    var context: NSManagedObjectContext
+    var moc: NSManagedObjectContext
     
     init(context: NSManagedObjectContext) {
-        self.context = context
+        moc = context
     }
     
     func placeholder(in context: Context) -> SummaryEntry {
@@ -46,6 +46,14 @@ struct Provider: IntentTimelineProvider {
         in context: Context,
         completion: @escaping (Timeline<SummaryEntry>) -> Void
     ) -> Void {
+        #warning("experimental")
+        
+        let coreresult = (loadProjects(context: moc) ?? []).count
+        let e = SummaryEntry(date: Date(), summary: .noSummary, test: "\(coreresult)")
+        let timeline = Timeline(entries: [e], policy: .after(Date() + .widgetPeriod))
+        completion(timeline)
+        return
+        
         // fetch credentials from Keychain
         guard let (_, _, token, chosenWID) = try? getKey() else {
             let timeline = Timeline(entries: [SummaryEntry](), policy: .after(Date() + .widgetPeriod))

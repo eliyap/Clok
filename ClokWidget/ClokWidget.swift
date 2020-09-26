@@ -17,12 +17,13 @@ struct ClokWidget: Widget {
     
     private let kind: String = "ClokWidget"
 
-    var persistentContainer: NSPersistentContainer {
-        let container = NSPersistentContainer(name: "TimeEntryModel")
-        container.loadPersistentStores { description, error in
+    var persistentContainer: NSPersistentContainer
+    
+    init() {
+        persistentContainer = NSPersistentContainer(name: "TimeEntryModel")
+        persistentContainer.loadPersistentStores { description, error in
             if let error = error { fatalError("\(error)") }
         }
-        return container
     }
     
     public var body: some WidgetConfiguration {
