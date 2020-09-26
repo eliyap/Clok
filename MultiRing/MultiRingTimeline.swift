@@ -1,13 +1,13 @@
-//  Timeline.swift
+//
+//  MultiRingTimeline.swift
 //  Clok
 //
-//  Created by Secret Asian Man Dev on 5/7/20.
+//  Created by Secret Asian Man 3 on 20.09.25.
 //  Copyright © 2020 Secret Asian Man 3. All rights reserved.
+//
 
-import WidgetKit
-import SwiftUI
-import Foundation
 import Intents
+import WidgetKit
 
 /**
  Define the refresh rate centrally so it can be tweaked quickly
@@ -18,53 +18,45 @@ fileprivate extension TimeInterval {
 
 struct Provider: IntentTimelineProvider {
     
-    typealias Entry = BoardEntry
-    typealias Intent = GridConfigurationIntent
+    typealias Entry = MultiRingEntry
+    typealias Intent = MultiRingConfigurationIntent
     
     func placeholder(in context: Context) -> Entry {
-        Entry(date: Date(), board: .placeholder)
+        Entry(date: Date(), projects: [])
     }
-    
-    func getSnapshot(
-        for configuration: Intent,
-        in context: Context,
-        completion: @escaping (Entry) -> Void
-    ) -> Void {
-        #warning("snapshot should be better formed")
-        completion(placeholder(in: context))
+
+    func getSnapshot(for configuration: Intent, in context: Context, completion: @escaping (Entry) -> ()) {
+        let entry = Entry(date: Date(), projects: [])
+        completion(entry)
     }
-    
+
     func getTimeline(
         for configuration: Intent,
         in context: Context,
-        completion: @escaping (Timeline<Entry>) -> Void
-    ) -> Void {
-        // DEBUG
-        print("fetching timeline...")
-        
-        // fetch credentials from Keychain
+        completion: @escaping (Timeline<Entry>) -> ()
+    ) {
+        /// fetch credentials from Keychain
         guard let (_, _, token, chosenWID) = try? getKey() else {
             let timeline = Timeline(entries: [Entry](), policy: .after(Date() + .widgetPeriod))
             completion(timeline)
             return
         }
         
-        // fetch summary from Toggl
+        /// fetch summary from Toggl
         fetchSummary(token: token, wid: chosenWID) { summary, error in
             guard let summary = summary, error == nil else {
-                print("Fetch Summary Failed With Error \(String(describing: error))")
+                print("MultiRingWidget Fetch Failed With Error \(String(describing: error))")
                 let timeline = Timeline(entries: [Entry](), policy: .after(Date() + .widgetPeriod))
                 completion(timeline)
                 return
             }
             
-            // add fetched summary to Widget Timeline
+            /// add fetched summary to Widget Timeline
+            /// load again after `widgetPeriod`
             let timeline = Timeline(
-                entries: [Entry(
+                entries: [MultiRingEntry(
                     date: Date(),
-                    board: solve(sizes: summary.projects.map{
-                            (Int($0.duration / .hour), $0.color)
-                        })
+                    projects: summary.projects
                 )],
                 policy: .after(Date() + .widgetPeriod)
             )

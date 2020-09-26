@@ -215,6 +215,13 @@
 		22DF92D8251D6834007E4635 /* AnyTransitionSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DF92D7251D6834007E4635 /* AnyTransitionSlide.swift */; };
 		22FA071A251D0DC800E20C27 /* TokenWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FA0719251D0DC800E20C27 /* TokenWebView.swift */; };
 		C61D2658249BE1990056C9FA /* StatHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61D2657249BE1990056C9FA /* StatHelpers.swift */; };
+		C6262B9A251F03950003D435 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22AD5F7C24B1467D006EF7FB /* WidgetKit.framework */; };
+		C6262B9B251F03950003D435 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22AD5F7E24B1467D006EF7FB /* SwiftUI.framework */; };
+		C6262B9E251F03950003D435 /* MultiRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6262B9D251F03950003D435 /* MultiRingView.swift */; };
+		C6262BA1251F03970003D435 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6262BA0251F03970003D435 /* Assets.xcassets */; };
+		C6262BA3251F03970003D435 /* MultiRing.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = C6262B9F251F03950003D435 /* MultiRing.intentdefinition */; };
+		C6262BA4251F03970003D435 /* MultiRing.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = C6262B9F251F03950003D435 /* MultiRing.intentdefinition */; };
+		C6262BA7251F03970003D435 /* MultiRingExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C6262B99251F03950003D435 /* MultiRingExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		C62F7B8824970E530076F64C /* StatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62F7B8724970E530076F64C /* StatView.swift */; };
 		C63FC2F8249BCEB900747D49 /* AngleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63FC2F7249BCEB900747D49 /* AngleExtension.swift */; };
 		C63FC2FA249BCFBD00747D49 /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63FC2F9249BCFBD00747D49 /* DoubleExtension.swift */; };
@@ -237,6 +244,30 @@
 		C6C18D512448F96F000345D5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6C18D4F2448F96F000345D5 /* LaunchScreen.storyboard */; };
 		C6C18D5C2448F96F000345D5 /* LandwarksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C18D5B2448F96F000345D5 /* LandwarksTests.swift */; };
 		C6C18D672448F96F000345D5 /* LandwarksUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C18D662448F96F000345D5 /* LandwarksUITests.swift */; };
+		C6CDEB7A251F04410031B81E /* MultiRingWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CDEB69251F04150031B81E /* MultiRingWidget.swift */; };
+		C6CDEB92251F04860031B81E /* MultiRingTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CDEB82251F04730031B81E /* MultiRingTimeline.swift */; };
+		C6CDEB9B251F04BB0031B81E /* MultiRingEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CDEB9A251F04BB0031B81E /* MultiRingEntry.swift */; };
+		C6CDEBD5251F06700031B81E /* ProjectRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CDEBD4251F06700031B81E /* ProjectRing.swift */; };
+		C6CDEBDD251F06F60031B81E /* Summary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228174C82501B3E0008E471D /* Summary.swift */; };
+		C6CDEBE5251F06FB0031B81E /* RawSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228174D22501CB76008E471D /* RawSummary.swift */; };
+		C6CDEBED251F071C0031B81E /* AngleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63FC2F7249BCEB900747D49 /* AngleExtension.swift */; };
+		C6CDEBF5251F072F0031B81E /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63FC2F9249BCFBD00747D49 /* DoubleExtension.swift */; };
+		C6CDEBFD251F074A0031B81E /* ColorHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE2D24E59F88000820AD /* ColorHex.swift */; };
+		C6CDEC05251F07700031B81E /* ColorCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B0FF9B246F124300DED011 /* ColorCustom.swift */; };
+		C6CDEC0D251F07820031B81E /* TimeIntervalExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69F02772496AFA200D1C650 /* TimeIntervalExtension.swift */; };
+		C6CDEC15251F078A0031B81E /* TimeConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229646CA24F321AE00FE14E5 /* TimeConstants.swift */; };
+		C6CDEC1D251F079A0031B81E /* Mod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229428DB251E7E7E008C0BFF /* Mod.swift */; };
+		C6CDEC25251F07E90031B81E /* Arc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2253FFB825057FF200BBDCE6 /* Arc.swift */; };
+		C6CDEC2D251F07F50031B81E /* ColorAdjust.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229428D1251E7C61008C0BFF /* ColorAdjust.swift */; };
+		C6CDEC35251F098E0031B81E /* GetCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229521552505BF0300085055 /* GetCredentials.swift */; };
+		C6CDEC3D251F09960031B81E /* KeychainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229521592505BF2A00085055 /* KeychainError.swift */; };
+		C6CDEC45251F099C0031B81E /* KeychainConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2295215E2505BFF500085055 /* KeychainConstants.swift */; };
+		C6CDEC4D251F09AD0031B81E /* SummaryLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228174C72501B399008E471D /* SummaryLoader.swift */; };
+		C6CDEC55251F09B20031B81E /* RequestConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229646C824F3212700FE14E5 /* RequestConstants.swift */; };
+		C6CDEC5D251F09C10031B81E /* FormRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2296F15A24A994A400AF38B5 /* FormRequest.swift */; };
+		C6CDEC65251F0A160031B81E /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B0783724B1519600256EB8 /* NetworkError.swift */; };
+		C6CDEC6D251F0A310031B81E /* DateComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229D7A724EF6750004E1034 /* DateComponent.swift */; };
+		C6CDEC75251F0A4D0031B81E /* DecoderExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D992524BAB2FD00F66E0F /* DecoderExtension.swift */; };
 		C6D448EC2484710E0072E7D4 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D448EB2484710E0072E7D4 /* ActivityIndicator.swift */; };
 		C6F605AF246C6B1700D0FE82 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F605AE246C6B1700D0FE82 /* DateExtension.swift */; };
 /* End PBXBuildFile section */
@@ -263,6 +294,13 @@
 			remoteGlobalIDString = 227746CE2505BC9200D17CA3;
 			remoteInfo = GridWidgetExtension;
 		};
+		C6262BA5251F03970003D435 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C6C18D392448F96C000345D5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C6262B98251F03950003D435;
+			remoteInfo = MultiRingExtension;
+		};
 		C6C18D582448F96F000345D5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C6C18D392448F96C000345D5 /* Project object */;
@@ -286,6 +324,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				C6262BA7251F03970003D435 /* MultiRingExtension.appex in Embed App Extensions */,
 				22DE58F2251EC86F00379396 /* ProjectIntent.appex in Embed App Extensions */,
 				22DF92C8251D60B3007E4635 /* ClokWidgetExtension.appex in Embed App Extensions */,
 				22DF92C9251D60B3007E4635 /* GridWidgetExtension.appex in Embed App Extensions */,
@@ -449,6 +488,11 @@
 		22DF92D7251D6834007E4635 /* AnyTransitionSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyTransitionSlide.swift; sourceTree = "<group>"; };
 		22FA0719251D0DC800E20C27 /* TokenWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenWebView.swift; sourceTree = "<group>"; };
 		C61D2657249BE1990056C9FA /* StatHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatHelpers.swift; sourceTree = "<group>"; };
+		C6262B99251F03950003D435 /* MultiRingExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MultiRingExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6262B9D251F03950003D435 /* MultiRingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiRingView.swift; sourceTree = "<group>"; };
+		C6262B9F251F03950003D435 /* MultiRing.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = MultiRing.intentdefinition; sourceTree = "<group>"; };
+		C6262BA0251F03970003D435 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C6262BA2251F03970003D435 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C62F7B8724970E530076F64C /* StatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatView.swift; sourceTree = "<group>"; };
 		C63FC2F7249BCEB900747D49 /* AngleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AngleExtension.swift; sourceTree = "<group>"; };
 		C63FC2F9249BCFBD00747D49 /* DoubleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
@@ -477,6 +521,11 @@
 		C6C18D622448F96F000345D5 /* ClokUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClokUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6C18D662448F96F000345D5 /* LandwarksUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandwarksUITests.swift; sourceTree = "<group>"; };
 		C6C18D682448F96F000345D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C6CCD9D2251F14E00086368B /* MultiRingExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MultiRingExtension.entitlements; sourceTree = "<group>"; };
+		C6CDEB69251F04150031B81E /* MultiRingWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiRingWidget.swift; sourceTree = "<group>"; };
+		C6CDEB82251F04730031B81E /* MultiRingTimeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiRingTimeline.swift; sourceTree = "<group>"; };
+		C6CDEB9A251F04BB0031B81E /* MultiRingEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiRingEntry.swift; sourceTree = "<group>"; };
+		C6CDEBD4251F06700031B81E /* ProjectRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectRing.swift; sourceTree = "<group>"; };
 		C6D448EB2484710E0072E7D4 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		C6F605AE246C6B1700D0FE82 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -504,6 +553,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C6262B96251F03950003D435 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C6262B9B251F03950003D435 /* SwiftUI.framework in Frameworks */,
+				C6262B9A251F03950003D435 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -882,6 +940,21 @@
 			path = AnyTransition;
 			sourceTree = "<group>";
 		};
+		C6262B9C251F03950003D435 /* MultiRing */ = {
+			isa = PBXGroup;
+			children = (
+				C6CDEB69251F04150031B81E /* MultiRingWidget.swift */,
+				C6262B9D251F03950003D435 /* MultiRingView.swift */,
+				C6CDEB9A251F04BB0031B81E /* MultiRingEntry.swift */,
+				C6CDEBD4251F06700031B81E /* ProjectRing.swift */,
+				C6CDEB82251F04730031B81E /* MultiRingTimeline.swift */,
+				C6262B9F251F03950003D435 /* MultiRing.intentdefinition */,
+				C6262BA0251F03970003D435 /* Assets.xcassets */,
+				C6262BA2251F03970003D435 /* Info.plist */,
+			);
+			path = MultiRing;
+			sourceTree = "<group>";
+		};
 		C65B7D282497D1C100EED981 /* Statistics */ = {
 			isa = PBXGroup;
 			children = (
@@ -946,6 +1019,7 @@
 		C6C18D382448F96C000345D5 = {
 			isa = PBXGroup;
 			children = (
+				C6CCD9D2251F14E00086368B /* MultiRingExtension.entitlements */,
 				22B0784624B247D500256EB8 /* ClokWidgetExtension.entitlements */,
 				C6C18D432448F96C000345D5 /* Clok */,
 				C6B0FFA0246F52A700DED011 /* Models */,
@@ -961,6 +1035,7 @@
 				22AD5F8024B1467D006EF7FB /* ClokWidget */,
 				227746D22505BC9200D17CA3 /* GridWidget */,
 				22DE58EC251EC86F00379396 /* ProjectIntent */,
+				C6262B9C251F03950003D435 /* MultiRing */,
 				22AD5F7B24B1467D006EF7FB /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -974,6 +1049,7 @@
 				22AD5F7A24B1467D006EF7FB /* ClokWidgetExtension.appex */,
 				227746CF2505BC9200D17CA3 /* GridWidgetExtension.appex */,
 				22DE58EB251EC86F00379396 /* ProjectIntent.appex */,
+				C6262B99251F03950003D435 /* MultiRingExtension.appex */,
 			);
 			name = Products;
 			path = ..;
@@ -1088,6 +1164,23 @@
 			productReference = 22DE58EB251EC86F00379396 /* ProjectIntent.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		C6262B98251F03950003D435 /* MultiRingExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C6262BAA251F03970003D435 /* Build configuration list for PBXNativeTarget "MultiRingExtension" */;
+			buildPhases = (
+				C6262B95251F03950003D435 /* Sources */,
+				C6262B96251F03950003D435 /* Frameworks */,
+				C6262B97251F03950003D435 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MultiRingExtension;
+			productName = MultiRingExtension;
+			productReference = C6262B99251F03950003D435 /* MultiRingExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		C6C18D402448F96C000345D5 /* Clok */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C6C18D6B2448F96F000345D5 /* Build configuration list for PBXNativeTarget "Clok" */;
@@ -1103,6 +1196,7 @@
 				22DF9288251D5EF0007E4635 /* PBXTargetDependency */,
 				22DF928A251D5EF0007E4635 /* PBXTargetDependency */,
 				22DE58F1251EC86F00379396 /* PBXTargetDependency */,
+				C6262BA6251F03970003D435 /* PBXTargetDependency */,
 			);
 			name = Clok;
 			productName = Landwarks;
@@ -1164,6 +1258,9 @@
 					22DE58EA251EC86F00379396 = {
 						CreatedOnToolsVersion = 12.0;
 					};
+					C6262B98251F03950003D435 = {
+						CreatedOnToolsVersion = 12.0;
+					};
 					C6C18D402448F96C000345D5 = {
 						CreatedOnToolsVersion = 11.4.1;
 					};
@@ -1196,6 +1293,7 @@
 				22AD5F7924B1467D006EF7FB /* ClokWidgetExtension */,
 				227746CE2505BC9200D17CA3 /* GridWidgetExtension */,
 				22DE58EA251EC86F00379396 /* ProjectIntent */,
+				C6262B98251F03950003D435 /* MultiRingExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -1221,6 +1319,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C6262B97251F03950003D435 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C6262BA1251F03970003D435 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1370,6 +1476,39 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C6262B95251F03950003D435 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C6CDEBF5251F072F0031B81E /* DoubleExtension.swift in Sources */,
+				C6CDEC5D251F09C10031B81E /* FormRequest.swift in Sources */,
+				C6CDEC3D251F09960031B81E /* KeychainError.swift in Sources */,
+				C6CDEB92251F04860031B81E /* MultiRingTimeline.swift in Sources */,
+				C6CDEC75251F0A4D0031B81E /* DecoderExtension.swift in Sources */,
+				C6CDEC55251F09B20031B81E /* RequestConstants.swift in Sources */,
+				C6CDEC05251F07700031B81E /* ColorCustom.swift in Sources */,
+				C6CDEC35251F098E0031B81E /* GetCredentials.swift in Sources */,
+				C6CDEBD5251F06700031B81E /* ProjectRing.swift in Sources */,
+				C6CDEB7A251F04410031B81E /* MultiRingWidget.swift in Sources */,
+				C6CDEC65251F0A160031B81E /* NetworkError.swift in Sources */,
+				C6CDEC2D251F07F50031B81E /* ColorAdjust.swift in Sources */,
+				C6CDEC6D251F0A310031B81E /* DateComponent.swift in Sources */,
+				C6CDEBFD251F074A0031B81E /* ColorHex.swift in Sources */,
+				C6CDEC4D251F09AD0031B81E /* SummaryLoader.swift in Sources */,
+				C6CDEC15251F078A0031B81E /* TimeConstants.swift in Sources */,
+				C6CDEBE5251F06FB0031B81E /* RawSummary.swift in Sources */,
+				C6262BA3251F03970003D435 /* MultiRing.intentdefinition in Sources */,
+				C6CDEC1D251F079A0031B81E /* Mod.swift in Sources */,
+				C6CDEC25251F07E90031B81E /* Arc.swift in Sources */,
+				C6CDEB9B251F04BB0031B81E /* MultiRingEntry.swift in Sources */,
+				C6CDEC45251F099C0031B81E /* KeychainConstants.swift in Sources */,
+				C6262B9E251F03950003D435 /* MultiRingView.swift in Sources */,
+				C6CDEC0D251F07820031B81E /* TimeIntervalExtension.swift in Sources */,
+				C6CDEBDD251F06F60031B81E /* Summary.swift in Sources */,
+				C6CDEBED251F071C0031B81E /* AngleExtension.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C6C18D3D2448F96C000345D5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1416,6 +1555,7 @@
 				22885DAE24DA13E500A56FE3 /* DayStrip.swift in Sources */,
 				22283DA224DF9CE0005AC0F3 /* GraphModel.swift in Sources */,
 				22DC86A624BA838D00FF771F /* TimeEntry+CoreDataProperties.swift in Sources */,
+				C6262BA4251F03970003D435 /* MultiRing.intentdefinition in Sources */,
 				22283DA624DF9EFA005AC0F3 /* GraphButtons.swift in Sources */,
 				22A2CE1F24E59BCE000820AD /* DateAngle.swift in Sources */,
 				2295216E2505C18200085055 /* ZeroStart.swift in Sources */,
@@ -1530,6 +1670,11 @@
 			isa = PBXTargetDependency;
 			target = 227746CE2505BC9200D17CA3 /* GridWidgetExtension */;
 			targetProxy = 22DF9289251D5EF0007E4635 /* PBXContainerItemProxy */;
+		};
+		C6262BA6251F03970003D435 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C6262B98251F03950003D435 /* MultiRingExtension */;
+			targetProxy = C6262BA5251F03970003D435 /* PBXContainerItemProxy */;
 		};
 		C6C18D592448F96F000345D5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1682,6 +1827,50 @@
 					"@executable_path/../../Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = sam.clok.ProjectIntent;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C6262BA8251F03970003D435 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = MultiRingExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 949D776DFQ;
+				INFOPLIST_FILE = MultiRing/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = sam.clok.MultiRing;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C6262BA9251F03970003D435 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = MultiRingExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 949D776DFQ;
+				INFOPLIST_FILE = MultiRing/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = sam.clok.MultiRing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -1961,6 +2150,15 @@
 			buildConfigurations = (
 				22DE58F4251EC86F00379396 /* Debug */,
 				22DE58F5251EC86F00379396 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C6262BAA251F03970003D435 /* Build configuration list for PBXNativeTarget "MultiRingExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C6262BA8251F03970003D435 /* Debug */,
+				C6262BA9251F03970003D435 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

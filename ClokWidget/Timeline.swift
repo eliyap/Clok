@@ -49,7 +49,7 @@ struct Provider: IntentTimelineProvider {
         /// fetch summary from Toggl
         fetchSummary(token: token, wid: chosenWID) { summary, error in
             guard let summary = summary, error == nil else {
-                print("Error \(String(describing: error))")
+                print("ClokWidget Fetch Failed With Error \(String(describing: error))")
                 let timeline = Timeline(entries: [SummaryEntry](), policy: .after(Date() + .widgetPeriod))
                 completion(timeline)
                 return
