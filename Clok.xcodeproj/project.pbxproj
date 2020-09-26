@@ -268,6 +268,13 @@
 		C6CDEC65251F0A160031B81E /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B0783724B1519600256EB8 /* NetworkError.swift */; };
 		C6CDEC6D251F0A310031B81E /* DateComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229D7A724EF6750004E1034 /* DateComponent.swift */; };
 		C6CDEC75251F0A4D0031B81E /* DecoderExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D992524BAB2FD00F66E0F /* DecoderExtension.swift */; };
+		C6D2E5E7251FA2CD0067C0B0 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22AD5F7C24B1467D006EF7FB /* WidgetKit.framework */; };
+		C6D2E5E8251FA2CD0067C0B0 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22AD5F7E24B1467D006EF7FB /* SwiftUI.framework */; };
+		C6D2E5EB251FA2CD0067C0B0 /* RunningRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D2E5EA251FA2CD0067C0B0 /* RunningRing.swift */; };
+		C6D2E5EE251FA2CF0067C0B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6D2E5ED251FA2CF0067C0B0 /* Assets.xcassets */; };
+		C6D2E5F0251FA2CF0067C0B0 /* RunningRing.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = C6D2E5EC251FA2CD0067C0B0 /* RunningRing.intentdefinition */; };
+		C6D2E5F1251FA2CF0067C0B0 /* RunningRing.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = C6D2E5EC251FA2CD0067C0B0 /* RunningRing.intentdefinition */; };
+		C6D2E5F4251FA2CF0067C0B0 /* RunningRingExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C6D2E5E6251FA2CD0067C0B0 /* RunningRingExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		C6D448EC2484710E0072E7D4 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D448EB2484710E0072E7D4 /* ActivityIndicator.swift */; };
 		C6F605AF246C6B1700D0FE82 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F605AE246C6B1700D0FE82 /* DateExtension.swift */; };
 /* End PBXBuildFile section */
@@ -315,6 +322,13 @@
 			remoteGlobalIDString = C6C18D402448F96C000345D5;
 			remoteInfo = Landwarks;
 		};
+		C6D2E5F2251FA2CF0067C0B0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C6C18D392448F96C000345D5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C6D2E5E5251FA2CD0067C0B0;
+			remoteInfo = RunningRingExtension;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -324,6 +338,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				C6D2E5F4251FA2CF0067C0B0 /* RunningRingExtension.appex in Embed App Extensions */,
 				C6262BA7251F03970003D435 /* MultiRingExtension.appex in Embed App Extensions */,
 				22DE58F2251EC86F00379396 /* ProjectIntent.appex in Embed App Extensions */,
 				22DF92C8251D60B3007E4635 /* ClokWidgetExtension.appex in Embed App Extensions */,
@@ -497,6 +512,7 @@
 		C63FC2F7249BCEB900747D49 /* AngleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AngleExtension.swift; sourceTree = "<group>"; };
 		C63FC2F9249BCFBD00747D49 /* DoubleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
 		C65B7D2B2497DE4A00EED981 /* EntryOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryOperations.swift; sourceTree = "<group>"; };
+		C670E42B251FA27B0026610D /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
 		C6751D892471E39F002965CC /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
 		C6751D8B24723182002965CC /* ZeroDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZeroDate.swift; sourceTree = "<group>"; };
 		C67F47D2249FD44500FD2E6E /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
@@ -526,6 +542,12 @@
 		C6CDEB82251F04730031B81E /* MultiRingTimeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiRingTimeline.swift; sourceTree = "<group>"; };
 		C6CDEB9A251F04BB0031B81E /* MultiRingEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiRingEntry.swift; sourceTree = "<group>"; };
 		C6CDEBD4251F06700031B81E /* ProjectRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectRing.swift; sourceTree = "<group>"; };
+		C6D2E5E6251FA2CD0067C0B0 /* RunningRingExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = RunningRingExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6D2E5EA251FA2CD0067C0B0 /* RunningRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningRing.swift; sourceTree = "<group>"; };
+		C6D2E5EC251FA2CD0067C0B0 /* RunningRing.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = RunningRing.intentdefinition; sourceTree = "<group>"; };
+		C6D2E5ED251FA2CF0067C0B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C6D2E5EF251FA2CF0067C0B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C6D2E600251FA2DC0067C0B0 /* RunningRingExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RunningRingExtension.entitlements; sourceTree = "<group>"; };
 		C6D448EB2484710E0072E7D4 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		C6F605AE246C6B1700D0FE82 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -583,6 +605,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C6D2E5E3251FA2CD0067C0B0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C6D2E5E8251FA2CD0067C0B0 /* SwiftUI.framework in Frameworks */,
+				C6D2E5E7251FA2CD0067C0B0 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -860,6 +891,7 @@
 			children = (
 				22AD5F7C24B1467D006EF7FB /* WidgetKit.framework */,
 				22AD5F7E24B1467D006EF7FB /* SwiftUI.framework */,
+				C670E42B251FA27B0026610D /* IntentsUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1019,6 +1051,7 @@
 		C6C18D382448F96C000345D5 = {
 			isa = PBXGroup;
 			children = (
+				C6D2E600251FA2DC0067C0B0 /* RunningRingExtension.entitlements */,
 				C6CCD9D2251F14E00086368B /* MultiRingExtension.entitlements */,
 				22B0784624B247D500256EB8 /* ClokWidgetExtension.entitlements */,
 				C6C18D432448F96C000345D5 /* Clok */,
@@ -1036,6 +1069,7 @@
 				227746D22505BC9200D17CA3 /* GridWidget */,
 				22DE58EC251EC86F00379396 /* ProjectIntent */,
 				C6262B9C251F03950003D435 /* MultiRing */,
+				C6D2E5E9251FA2CD0067C0B0 /* RunningRing */,
 				22AD5F7B24B1467D006EF7FB /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -1050,6 +1084,7 @@
 				227746CF2505BC9200D17CA3 /* GridWidgetExtension.appex */,
 				22DE58EB251EC86F00379396 /* ProjectIntent.appex */,
 				C6262B99251F03950003D435 /* MultiRingExtension.appex */,
+				C6D2E5E6251FA2CD0067C0B0 /* RunningRingExtension.appex */,
 			);
 			name = Products;
 			path = ..;
@@ -1100,6 +1135,17 @@
 				C6C18D682448F96F000345D5 /* Info.plist */,
 			);
 			path = ClokUITests;
+			sourceTree = "<group>";
+		};
+		C6D2E5E9251FA2CD0067C0B0 /* RunningRing */ = {
+			isa = PBXGroup;
+			children = (
+				C6D2E5EA251FA2CD0067C0B0 /* RunningRing.swift */,
+				C6D2E5EC251FA2CD0067C0B0 /* RunningRing.intentdefinition */,
+				C6D2E5ED251FA2CF0067C0B0 /* Assets.xcassets */,
+				C6D2E5EF251FA2CF0067C0B0 /* Info.plist */,
+			);
+			path = RunningRing;
 			sourceTree = "<group>";
 		};
 		C6D448ED248471250072E7D4 /* Activity */ = {
@@ -1197,6 +1243,7 @@
 				22DF928A251D5EF0007E4635 /* PBXTargetDependency */,
 				22DE58F1251EC86F00379396 /* PBXTargetDependency */,
 				C6262BA6251F03970003D435 /* PBXTargetDependency */,
+				C6D2E5F3251FA2CF0067C0B0 /* PBXTargetDependency */,
 			);
 			name = Clok;
 			productName = Landwarks;
@@ -1239,6 +1286,23 @@
 			productReference = C6C18D622448F96F000345D5 /* ClokUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		C6D2E5E5251FA2CD0067C0B0 /* RunningRingExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C6D2E5F7251FA2CF0067C0B0 /* Build configuration list for PBXNativeTarget "RunningRingExtension" */;
+			buildPhases = (
+				C6D2E5E2251FA2CD0067C0B0 /* Sources */,
+				C6D2E5E3251FA2CD0067C0B0 /* Frameworks */,
+				C6D2E5E4251FA2CD0067C0B0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RunningRingExtension;
+			productName = RunningRingExtension;
+			productReference = C6D2E5E6251FA2CD0067C0B0 /* RunningRingExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1272,6 +1336,9 @@
 						CreatedOnToolsVersion = 11.4.1;
 						TestTargetID = C6C18D402448F96C000345D5;
 					};
+					C6D2E5E5251FA2CD0067C0B0 = {
+						CreatedOnToolsVersion = 12.0;
+					};
 				};
 			};
 			buildConfigurationList = C6C18D3C2448F96C000345D5 /* Build configuration list for PBXProject "Clok" */;
@@ -1294,6 +1361,7 @@
 				227746CE2505BC9200D17CA3 /* GridWidgetExtension */,
 				22DE58EA251EC86F00379396 /* ProjectIntent */,
 				C6262B98251F03950003D435 /* MultiRingExtension */,
+				C6D2E5E5251FA2CD0067C0B0 /* RunningRingExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -1352,6 +1420,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C6D2E5E4251FA2CD0067C0B0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C6D2E5EE251FA2CF0067C0B0 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1587,6 +1663,7 @@
 				22B0784224B17BEC00256EB8 /* RunningEntry.swift in Sources */,
 				2264CB3924AD33D900ECBF2B /* EmailFields.swift in Sources */,
 				2264CB3124AD250600ECBF2B /* WorkspaceManager.swift in Sources */,
+				C6D2E5F1251FA2CF0067C0B0 /* RunningRing.intentdefinition in Sources */,
 				221810E024B0158500B63ECA /* Get24hourPref.swift in Sources */,
 				C67F47D3249FD44500FD2E6E /* Project.swift in Sources */,
 				C6D448EC2484710E0072E7D4 /* ActivityIndicator.swift in Sources */,
@@ -1653,6 +1730,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C6D2E5E2251FA2CD0067C0B0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C6D2E5F0251FA2CF0067C0B0 /* RunningRing.intentdefinition in Sources */,
+				C6D2E5EB251FA2CD0067C0B0 /* RunningRing.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -1685,6 +1771,11 @@
 			isa = PBXTargetDependency;
 			target = C6C18D402448F96C000345D5 /* Clok */;
 			targetProxy = C6C18D632448F96F000345D5 /* PBXContainerItemProxy */;
+		};
+		C6D2E5F3251FA2CF0067C0B0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C6D2E5E5251FA2CD0067C0B0 /* RunningRingExtension */;
+			targetProxy = C6D2E5F2251FA2CF0067C0B0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -2124,6 +2215,50 @@
 			};
 			name = Release;
 		};
+		C6D2E5F5251FA2CF0067C0B0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = RunningRingExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 949D776DFQ;
+				INFOPLIST_FILE = RunningRing/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = sam.clok.RunningRing;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C6D2E5F6251FA2CF0067C0B0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = RunningRingExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 949D776DFQ;
+				INFOPLIST_FILE = RunningRing/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = sam.clok.RunningRing;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -2195,6 +2330,15 @@
 			buildConfigurations = (
 				C6C18D722448F96F000345D5 /* Debug */,
 				C6C18D732448F96F000345D5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C6D2E5F7251FA2CF0067C0B0 /* Build configuration list for PBXNativeTarget "RunningRingExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C6D2E5F5251FA2CF0067C0B0 /* Debug */,
+				C6D2E5F6251FA2CF0067C0B0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
