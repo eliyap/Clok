@@ -38,9 +38,6 @@ struct ShadowRing: View {
         hours = Int(project.duration / .hour)
         mins = Int(project.duration.mod(.hour) / 60)
         color = project.color
-//        if hours > 0 {
-//            angle -= Angle(radians: Double(hours) * beadAngle)
-//        }
     }
     
     var body: some View {
