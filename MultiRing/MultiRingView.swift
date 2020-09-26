@@ -30,7 +30,6 @@ struct MultiRingEntryView : View {
             case .systemLarge:
                 Grid4(topN[0], topN[1], topN[2], topN[3])
             }
-            
         }
         .padding(padded)
     }

@@ -15,10 +15,15 @@ struct MultiRing: Widget {
     let kind: String = "MultiRing"
 
     var body: some WidgetConfiguration {
-        IntentConfiguration(kind: kind, intent: MultiRingConfigurationIntent.self, provider: Provider()) { entry in
+        IntentConfiguration(
+            kind: kind,
+            intent: MultiRingConfigurationIntent.self,
+            provider: Provider()
+        ) { entry in
             MultiRingEntryView(entry: entry)
         }
-        .configurationDisplayName("My Widget")
-        .description("This is an example widget.")
+            .configurationDisplayName("My Widget")
+            .description("This is an example widget.")
+            .supportedFamilies([.systemSmall, .systemMedium])
     }
 }
