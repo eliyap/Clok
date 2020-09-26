@@ -8,14 +8,18 @@
 
 import SwiftUI
 
-/// the angle at which to distribute beads
-/// should allow them to just touch when at full size
-fileprivate let beadAngle = 0.4
-
-/// line weight
-fileprivate let ringWeight = CGFloat(8.5)
-
 struct ProjectRing: View {
+    enum RingSize {
+        case small
+        case large
+    }
+    /// the angle at which to distribute beads
+    /// should allow them to just touch when at full size
+    var beadAngle = 0.3
+
+    /// line weight
+    var ringWeight = CGFloat(8.5)
+
     
     @Environment(\.colorScheme) var mode
     
@@ -37,12 +41,20 @@ struct ProjectRing: View {
     
     let name: String
     
-    init(_ project: Summary.Project) {
+    let size: RingSize
+    
+    init(_ project: Summary.Project?, size: RingSize = .small) {
+        let project = project ?? .empty
         angle = Angle(radians: .tau * project.duration.mod(.hour) / .hour)
         hours = Int(project.duration / .hour)
         mins = Int(project.duration.mod(.hour) / 60)
         color = project.color
         name = project.name
+        
+        self.size = size
+        if size == .large {
+            ringWeight = 18.5
+        }
     }
     
     var body: some View {
@@ -64,16 +76,15 @@ struct ProjectRing: View {
                         TimeIndicator
                         Text(name)
                             .foregroundColor(color)
-                            .font(.system(size: 10, design: .rounded))
+                            .font(.system(size: nameFont, design: .rounded))
                             .bold()
                             .lineLimit(1)
                     }
-                    
+                    /// gives text a little more room
+                    .offset(y: -5)
                 }
             }
             .aspectRatio(1, contentMode: .fit)
-//            .border(Color.red)
-            
     }
     
     private func Beads(size: CGSize) -> some View {
@@ -103,19 +114,13 @@ struct ProjectRing: View {
             switch hours {
             case 0:
                 Text("\(mins)m")
-                    .font(.system(size: 12, design: .rounded))
+                    .font(.system(size: minuteFont, design: .rounded))
                     .bold()
                     .foregroundColor(color)
             default:
                 VStack {
                     Text(String(format: "%d:%02d", hours, mins))
-                        .font(.system(
-                            /// shrink slightly if hours are 2 digits
-                                size: hours >= 10
-                                    ? 14
-                                    : 12,
-                                design: .rounded
-                        ))
+                        .font(.system(size: hourFont, design: .rounded))
                         .bold()
                         /// lighten or darken to improve contrast
                         .foregroundColor(mode == .dark
@@ -124,6 +129,39 @@ struct ProjectRing: View {
                         )
                 }
             }
+        }
+    }
+}
+
+extension ProjectRing {
+    var minuteFont: CGFloat {
+        switch size {
+        case .small:
+            return 12
+        default:
+            return 20
+        }
+    }
+    var hourFont: CGFloat {
+        switch size {
+        case .small:
+            /// shrink slightly if hours are 2 digits
+            return hours >= 10
+                ? 14
+                : 12
+        default:
+            /// shrink slightly if hours are 2 digits
+            return hours >= 10
+                ? 28
+                : 24
+        }
+    }
+    var nameFont: CGFloat {
+        switch size {
+        case .small:
+            return 9
+        default:
+            return 16
         }
     }
 }

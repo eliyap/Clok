@@ -20,15 +20,37 @@ struct MultiRingEntryView : View {
     var entry: Provider.Entry
 
     var body: some View {
-        GeometryReader { geo in
-            LazyVGrid(columns: cols(size: geo.size), spacing: spaced) {
-                ForEach(topN.compactMap({$0}), id: \.id) { project in
-                    ProjectRing(project)
-                        .frame(maxHeight: rowHeight(geo.size))
-                }
+        HStack {
+            switch family {
+            case .systemSmall:
+                Grid4(topN[0], topN[1], topN[2], topN[3])
+            case .systemMedium:
+                ProjectRing(topN[0], size: .large)
+                Grid4(topN[1], topN[2], topN[3], topN[4])
+            case .systemLarge:
+                Grid4(topN[0], topN[1], topN[2], topN[3])
             }
+            
         }
         .padding(padded)
+    }
+    
+    func Grid4(
+        _ p1: Summary.Project?,
+        _ p2: Summary.Project?,
+        _ p3: Summary.Project?,
+        _ p4: Summary.Project?
+    ) -> some View {
+        VStack(spacing: spaced) {
+            HStack(spacing: spaced) {
+                ProjectRing(p1)
+                ProjectRing(p2)
+            }
+            HStack(spacing: spaced) {
+                ProjectRing(p3)
+                ProjectRing(p4)
+            }
+        }
     }
 }
 
@@ -53,50 +75,5 @@ extension MultiRingEntryView {
         let projs = entry.projects.sorted(by: {$0.duration > $1.duration})
             + Array(repeating: nil, count: ringCount)
         return Array(projs[0..<ringCount])
-    }
-}
-
-// MARK: - Row Division
-extension MultiRingEntryView {
-    
-    var numCols: Int {
-        switch family {
-        case .systemSmall:
-            return 2
-        case .systemMedium:
-            return 4
-        case .systemLarge:
-            return 4
-        @unknown default:
-            fatalError()
-        }
-    }
-    
-    var numRows: Int {
-        switch family {
-        case .systemSmall:
-            return 2
-        case .systemMedium:
-            return 2
-        case .systemLarge:
-            return 4
-        @unknown default:
-            fatalError()
-        }
-    }
-    
-    func colWidth(_ size: CGSize) -> CGFloat {
-        (size.width - spaced * CGFloat(numCols - 1)) / CGFloat(numCols)
-    }
-    
-    func rowHeight(_ size: CGSize) -> CGFloat {
-        (size.height - spaced * CGFloat(numRows - 1)) / CGFloat(numRows)
-    }
-    
-    func cols(size: CGSize) -> [GridItem] {
-        Array(
-            repeating: GridItem(.fixed(colWidth(size)), spacing: spaced),
-            count: numCols
-        )
     }
 }
