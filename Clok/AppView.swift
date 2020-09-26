@@ -29,13 +29,19 @@ struct ClokApp: App {
     var persistentContainer: NSPersistentContainer
         
     init(){
+                
         /// initialize Core Data container
-        let container = NSPersistentContainer(name: "TimeEntryModel")
-        container.loadPersistentStores { description, error in
+        persistentContainer = NSPersistentContainer(name: "TimeEntryModel")
+        persistentContainer.loadPersistentStores { description, error in
             if let error = error { fatalError("\(error)") }
         }
-        persistentContainer = container
-        container.viewContext.mergePolicy = NSOverwriteMergePolicy
+        persistentContainer.viewContext.mergePolicy = NSOverwriteMergePolicy
+    
+        /// set store URL
+        /// https://www.avanderlee.com/swift/core-data-app-extension-data-sharing/
+        let storeURL = URL.storeURL(for: "group.sam.clok", databaseName: "UserData")
+        let storeDescription = NSPersistentStoreDescription(url: storeURL)
+        persistentContainer.persistentStoreDescriptions = [storeDescription]
         
         /// pull `Project`s from CoreData
         data = TimeData(projects: loadProjects(context: persistentContainer.viewContext) ?? [])
