@@ -57,7 +57,6 @@
 		227746D42505BC9200D17CA3 /* GridWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227746D32505BC9200D17CA3 /* GridWidget.swift */; };
 		227746D72505BC9300D17CA3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 227746D62505BC9300D17CA3 /* Assets.xcassets */; };
 		227746D92505BC9300D17CA3 /* GridWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 227746D52505BC9200D17CA3 /* GridWidget.intentdefinition */; };
-		227746DA2505BC9300D17CA3 /* GridWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 227746D52505BC9200D17CA3 /* GridWidget.intentdefinition */; };
 		2277E8C724EB44AC00702086 /* EntryLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E8C624EB44AC00702086 /* EntryLoader.swift */; };
 		2277E8C924EB47B400702086 /* PaginatedLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E8C824EB47B400702086 /* PaginatedLoad.swift */; };
 		2277E8CB24EB48C200702086 /* DateRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E8CA24EB48C200702086 /* DateRange.swift */; };
@@ -171,7 +170,6 @@
 		22AD5F7F24B1467D006EF7FB /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22AD5F7E24B1467D006EF7FB /* SwiftUI.framework */; };
 		22AD5F8524B1467E006EF7FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22AD5F8424B1467E006EF7FB /* Assets.xcassets */; };
 		22AD5F8724B1467E006EF7FB /* ClokWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 22AD5F8324B1467D006EF7FB /* ClokWidget.intentdefinition */; };
-		22AD5F8824B1467E006EF7FB /* ClokWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 22AD5F8324B1467D006EF7FB /* ClokWidget.intentdefinition */; };
 		22B0783324B150C300256EB8 /* FormRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2296F15A24A994A400AF38B5 /* FormRequest.swift */; };
 		22B0783524B1513A00256EB8 /* ClokWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AD5F8124B1467D006EF7FB /* ClokWidget.swift */; };
 		22B0783624B1513A00256EB8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221C3C5624A93C57006995C5 /* User.swift */; };
@@ -195,6 +193,13 @@
 		22DC86A224BA838D00FF771F /* Project+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC869D24BA838D00FF771F /* Project+CoreDataProperties.swift */; };
 		22DC86A424BA838D00FF771F /* TimeEntry+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC869E24BA838D00FF771F /* TimeEntry+CoreDataClass.swift */; };
 		22DC86A624BA838D00FF771F /* TimeEntry+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC869F24BA838D00FF771F /* TimeEntry+CoreDataProperties.swift */; };
+		22DE58E1251EC81B00379396 /* ClokWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 22AD5F8324B1467D006EF7FB /* ClokWidget.intentdefinition */; };
+		22DE58EE251EC86F00379396 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DE58ED251EC86F00379396 /* IntentHandler.swift */; };
+		22DE58F2251EC86F00379396 /* ProjectIntent.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 22DE58EB251EC86F00379396 /* ProjectIntent.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		22DE58FC251EC87900379396 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DE58ED251EC86F00379396 /* IntentHandler.swift */; };
+		22DE5903251EC87900379396 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DE58ED251EC86F00379396 /* IntentHandler.swift */; };
+		22DE591D251EC91200379396 /* ClokWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 22AD5F8324B1467D006EF7FB /* ClokWidget.intentdefinition */; };
+		22DE5925251EC91700379396 /* GridWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 227746D52505BC9200D17CA3 /* GridWidget.intentdefinition */; };
 		22DF92C8251D60B3007E4635 /* ClokWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 22AD5F7A24B1467D006EF7FB /* ClokWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		22DF92C9251D60B3007E4635 /* GridWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 227746CF2505BC9200D17CA3 /* GridWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		22DF92D8251D6834007E4635 /* AnyTransitionSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DF92D7251D6834007E4635 /* AnyTransitionSlide.swift */; };
@@ -227,6 +232,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		22DE58F0251EC86F00379396 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C6C18D392448F96C000345D5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 22DE58EA251EC86F00379396;
+			remoteInfo = ProjectIntent;
+		};
 		22DF9287251D5EF0007E4635 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C6C18D392448F96C000345D5 /* Project object */;
@@ -264,6 +276,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				22DE58F2251EC86F00379396 /* ProjectIntent.appex in Embed App Extensions */,
 				22DF92C8251D60B3007E4635 /* ClokWidgetExtension.appex in Embed App Extensions */,
 				22DF92C9251D60B3007E4635 /* GridWidgetExtension.appex in Embed App Extensions */,
 			);
@@ -301,6 +314,7 @@
 		222D996224BB803800F66E0F /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
 		22351AFF24D37F3C00E14DBC /* Run.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Run.swift; sourceTree = "<group>"; };
 		223863FF24BBBD030041886B /* LoadProjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadProjects.swift; sourceTree = "<group>"; };
+		223A8ADB251ECCF80010143C /* ProjectIntent.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ProjectIntent.entitlements; sourceTree = "<group>"; };
 		223AB139251E34AC00CA8B3C /* ShadowRingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowRingView.swift; sourceTree = "<group>"; };
 		224B3AFD24DE28C300B1C943 /* FilterModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterModal.swift; sourceTree = "<group>"; };
 		224D10CD24E5AC8C00668FD8 /* WeekdaySelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekdaySelector.swift; sourceTree = "<group>"; };
@@ -417,6 +431,9 @@
 		22DC869D24BA838D00FF771F /* Project+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Project+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		22DC869E24BA838D00FF771F /* TimeEntry+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeEntry+CoreDataClass.swift"; sourceTree = "<group>"; };
 		22DC869F24BA838D00FF771F /* TimeEntry+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeEntry+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		22DE58EB251EC86F00379396 /* ProjectIntent.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ProjectIntent.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		22DE58ED251EC86F00379396 /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
+		22DE58EF251EC86F00379396 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22DF92D7251D6834007E4635 /* AnyTransitionSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyTransitionSlide.swift; sourceTree = "<group>"; };
 		22FA0719251D0DC800E20C27 /* TokenWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenWebView.swift; sourceTree = "<group>"; };
 		C61D2657249BE1990056C9FA /* StatHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatHelpers.swift; sourceTree = "<group>"; };
@@ -468,6 +485,13 @@
 			files = (
 				22AD5F7F24B1467D006EF7FB /* SwiftUI.framework in Frameworks */,
 				22AD5F7D24B1467D006EF7FB /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		22DE58E8251EC86F00379396 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -818,6 +842,16 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
+		22DE58EC251EC86F00379396 /* ProjectIntent */ = {
+			isa = PBXGroup;
+			children = (
+				223A8ADB251ECCF80010143C /* ProjectIntent.entitlements */,
+				22DE58ED251EC86F00379396 /* IntentHandler.swift */,
+				22DE58EF251EC86F00379396 /* Info.plist */,
+			);
+			path = ProjectIntent;
+			sourceTree = "<group>";
+		};
 		22DF92D6251D681D007E4635 /* AnyTransition */ = {
 			isa = PBXGroup;
 			children = (
@@ -904,6 +938,7 @@
 				228174D12501CB64008E471D /* Summary */,
 				22AD5F8024B1467D006EF7FB /* ClokWidget */,
 				227746D22505BC9200D17CA3 /* GridWidget */,
+				22DE58EC251EC86F00379396 /* ProjectIntent */,
 				22AD5F7B24B1467D006EF7FB /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -916,6 +951,7 @@
 				C6C18D622448F96F000345D5 /* ClokUITests.xctest */,
 				22AD5F7A24B1467D006EF7FB /* ClokWidgetExtension.appex */,
 				227746CF2505BC9200D17CA3 /* GridWidgetExtension.appex */,
+				22DE58EB251EC86F00379396 /* ProjectIntent.appex */,
 			);
 			name = Products;
 			path = ..;
@@ -1013,6 +1049,23 @@
 			productReference = 22AD5F7A24B1467D006EF7FB /* ClokWidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		22DE58EA251EC86F00379396 /* ProjectIntent */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 22DE58F3251EC86F00379396 /* Build configuration list for PBXNativeTarget "ProjectIntent" */;
+			buildPhases = (
+				22DE58E7251EC86F00379396 /* Sources */,
+				22DE58E8251EC86F00379396 /* Frameworks */,
+				22DE58E9251EC86F00379396 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ProjectIntent;
+			productName = ProjectIntent;
+			productReference = 22DE58EB251EC86F00379396 /* ProjectIntent.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		C6C18D402448F96C000345D5 /* Clok */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C6C18D6B2448F96F000345D5 /* Build configuration list for PBXNativeTarget "Clok" */;
@@ -1027,6 +1080,7 @@
 			dependencies = (
 				22DF9288251D5EF0007E4635 /* PBXTargetDependency */,
 				22DF928A251D5EF0007E4635 /* PBXTargetDependency */,
+				22DE58F1251EC86F00379396 /* PBXTargetDependency */,
 			);
 			name = Clok;
 			productName = Landwarks;
@@ -1085,6 +1139,9 @@
 					22AD5F7924B1467D006EF7FB = {
 						CreatedOnToolsVersion = 12.0;
 					};
+					22DE58EA251EC86F00379396 = {
+						CreatedOnToolsVersion = 12.0;
+					};
 					C6C18D402448F96C000345D5 = {
 						CreatedOnToolsVersion = 11.4.1;
 					};
@@ -1116,6 +1173,7 @@
 				C6C18D612448F96F000345D5 /* ClokUITests */,
 				22AD5F7924B1467D006EF7FB /* ClokWidgetExtension */,
 				227746CE2505BC9200D17CA3 /* GridWidgetExtension */,
+				22DE58EA251EC86F00379396 /* ProjectIntent */,
 			);
 		};
 /* End PBXProject section */
@@ -1134,6 +1192,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				22AD5F8524B1467E006EF7FB /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		22DE58E9251EC86F00379396 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1232,6 +1297,7 @@
 				2238640324BBC6980041886B /* DoubleExtension.swift in Sources */,
 				229521602505BFFB00085055 /* KeychainConstants.swift in Sources */,
 				228174CD2501B987008E471D /* DecoderExtension.swift in Sources */,
+				22DE5903251EC87900379396 /* IntentHandler.swift in Sources */,
 				22B0783924B1519D00256EB8 /* NetworkError.swift in Sources */,
 				22DC869B24BA7A5E00FF771F /* TimeEntryModel.xcdatamodeld in Sources */,
 				2295215B2505BF3200085055 /* KeychainError.swift in Sources */,
@@ -1264,6 +1330,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		22DE58E7251EC86F00379396 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22DE58EE251EC86F00379396 /* IntentHandler.swift in Sources */,
+				22DE591D251EC91200379396 /* ClokWidget.intentdefinition in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C6C18D3D2448F96C000345D5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1277,6 +1352,7 @@
 				229646CB24F321AE00FE14E5 /* TimeConstants.swift in Sources */,
 				C6751D8C24723182002965CC /* ZeroDate.swift in Sources */,
 				229428D2251E7C61008C0BFF /* ColorAdjust.swift in Sources */,
+				22DE58E1251EC81B00379396 /* ClokWidget.intentdefinition in Sources */,
 				22283DAA24DFA27D005AC0F3 /* SearchTerms.swift in Sources */,
 				C6F605AF246C6B1700D0FE82 /* DateExtension.swift in Sources */,
 				C68F8C8D24A04CE8000D249B /* IceCreamStick.swift in Sources */,
@@ -1299,6 +1375,7 @@
 				2264B82A24A437F800FA4F08 /* DescriptionButton.swift in Sources */,
 				22DC869A24BA7A5E00FF771F /* TimeEntryModel.xcdatamodeld in Sources */,
 				22FA071A251D0DC800E20C27 /* TokenWebView.swift in Sources */,
+				22DE58FC251EC87900379396 /* IntentHandler.swift in Sources */,
 				229521562505BF0300085055 /* GetCredentials.swift in Sources */,
 				22D745982505E93900013A80 /* ChosenWorkspace.swift in Sources */,
 				2207E46224E0820600311F10 /* GraphButton.swift in Sources */,
@@ -1308,7 +1385,6 @@
 				22885DAE24DA13E500A56FE3 /* DayStrip.swift in Sources */,
 				22283DA224DF9CE0005AC0F3 /* GraphModel.swift in Sources */,
 				22DC86A624BA838D00FF771F /* TimeEntry+CoreDataProperties.swift in Sources */,
-				227746DA2505BC9300D17CA3 /* GridWidget.intentdefinition in Sources */,
 				22283DA624DF9EFA005AC0F3 /* GraphButtons.swift in Sources */,
 				22A2CE1F24E59BCE000820AD /* DateAngle.swift in Sources */,
 				2295216E2505C18200085055 /* ZeroStart.swift in Sources */,
@@ -1334,7 +1410,6 @@
 				22027DD424AFF92000C0BA90 /* Fullscreen.swift in Sources */,
 				225F69B724AD8EF50012B5DB /* EntryList.swift in Sources */,
 				221810E424B01AAC00B63ECA /* InAndOut.swift in Sources */,
-				22AD5F8824B1467E006EF7FB /* ClokWidget.intentdefinition in Sources */,
 				2295216A2505C14200085055 /* SearchTermsProjects.swift in Sources */,
 				22283DA824DFA166005AC0F3 /* FilterView.swift in Sources */,
 				229646CF24F322E600FE14E5 /* TagLoader.swift in Sources */,
@@ -1351,6 +1426,7 @@
 				224B3AFE24DE28C300B1C943 /* FilterModal.swift in Sources */,
 				C61D2658249BE1990056C9FA /* StatHelpers.swift in Sources */,
 				22351B0024D37F3C00E14DBC /* Run.swift in Sources */,
+				22DE5925251EC91700379396 /* GridWidget.intentdefinition in Sources */,
 				229521682505C0C400085055 /* AllWorkspaces.swift in Sources */,
 				22B0783824B1519600256EB8 /* NetworkError.swift in Sources */,
 				22283DA424DF9D8B005AC0F3 /* BarStack.swift in Sources */,
@@ -1408,6 +1484,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		22DE58F1251EC86F00379396 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 22DE58EA251EC86F00379396 /* ProjectIntent */;
+			targetProxy = 22DE58F0251EC86F00379396 /* PBXContainerItemProxy */;
+		};
 		22DF9288251D5EF0007E4635 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 22AD5F7924B1467D006EF7FB /* ClokWidgetExtension */;
@@ -1529,6 +1610,46 @@
 				);
 				MARKETING_VERSION = 2020.11;
 				PRODUCT_BUNDLE_IDENTIFIER = sam.clok.ClokWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		22DE58F4251EC86F00379396 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = ProjectIntent/ProjectIntent.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 949D776DFQ;
+				INFOPLIST_FILE = ProjectIntent/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = sam.clok.ProjectIntent;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		22DE58F5251EC86F00379396 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = ProjectIntent/ProjectIntent.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 949D776DFQ;
+				INFOPLIST_FILE = ProjectIntent/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = sam.clok.ProjectIntent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -1799,6 +1920,15 @@
 			buildConfigurations = (
 				22AD5F8D24B1467E006EF7FB /* Debug */,
 				22AD5F8E24B1467E006EF7FB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		22DE58F3251EC86F00379396 /* Build configuration list for PBXNativeTarget "ProjectIntent" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22DE58F4251EC86F00379396 /* Debug */,
+				22DE58F5251EC86F00379396 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
