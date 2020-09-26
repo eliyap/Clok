@@ -6,5 +6,9 @@
 	<array>
 		<string>group.sam.clok</string>
 	</array>
+	<key>keychain-access-groups</key>
+	<array>
+		<string>$(AppIdentifierPrefix)sam.clok</string>
+	</array>
 </dict>
 </plist>
