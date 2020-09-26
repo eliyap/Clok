@@ -26,6 +26,6 @@ struct ClokWidget: Widget {
         }
             .configurationDisplayName("My Widget")
             .description("This is an example widget.")
-        .supportedFamilies([.systemSmall, .systemMedium])
+            .supportedFamilies([.systemSmall, .systemMedium])
     }
 }

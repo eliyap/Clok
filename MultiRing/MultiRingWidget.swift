@@ -12,6 +12,7 @@ import Intents
 
 @main
 struct MultiRing: Widget {
+    
     let kind: String = "MultiRing"
 
     var body: some WidgetConfiguration {
