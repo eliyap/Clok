@@ -61,7 +61,5 @@ class IntentHandler: INExtension, ClokConfigurationIntentHandling {
                 completion(INObjectCollection(items: []), nil)
             }
         }.resume()
-        
-        
     }
 }
