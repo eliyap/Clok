@@ -112,7 +112,10 @@ struct ShadowRing: View {
         ForEach(1...hours, id: \.self){ index in
             Circle()
                 .fill(lighter)
-                .frame(width: ringWeight, height: ringWeight)
+                .frame(
+                    width: ringWeight / 2,
+                    height: ringWeight / 2
+                )
                 .offset(x: (size.width - ringWeight) / 2)
                 .rotationEffect(
                     Angle(radians: beadAngle * Double(index))
@@ -123,7 +126,7 @@ struct ShadowRing: View {
     }
     
     /// rough guess as to the extrusion angle if the round cap from the end of the line
-    let del: CGFloat = 0.03
+    let del: CGFloat = 0.04
     private func HourArc(size: CGSize) -> some View {
         let stop = CGFloat(angle.radians / .tau)
         return Group {
