@@ -46,7 +46,7 @@ struct Provider: IntentTimelineProvider {
             return
         }
         
-        // fetch summary from Toggl
+        /// fetch summary from Toggl
         fetchSummary(token: token, wid: chosenWID) { summary, error in
             guard let summary = summary, error == nil else {
                 print("Error \(String(describing: error))")
@@ -55,10 +55,16 @@ struct Provider: IntentTimelineProvider {
                 return
             }
             
-            // add fetched summary to Widget Timeline
-            // load again in an hour
+            /// add fetched summary to Widget Timeline
+            /// load again after `widgetPeriod`
             let timeline = Timeline(
-                entries: [SummaryEntry(date: Date(), summary: summary)],
+                entries: [SummaryEntry(
+                    date: Date(),
+                    summary: summary,
+                    pid1: configuration.Project1?.pid?.intValue,
+                    pid2: configuration.Project2?.pid?.intValue,
+                    pid3: configuration.Project3?.pid?.intValue
+                )],
                 policy: .after(Date() + .widgetPeriod)
             )
             completion(timeline)

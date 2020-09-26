@@ -27,6 +27,7 @@
 		221F625B251EE172000ECED9 /* RawProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221F6240251EE157000ECED9 /* RawProject.swift */; };
 		221F6262251EE18B000ECED9 /* RequestConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229646C824F3212700FE14E5 /* RequestConstants.swift */; };
 		221F6269251EE1A0000ECED9 /* DecoderExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D992524BAB2FD00F66E0F /* DecoderExtension.swift */; };
+		221F6285251EE5DD000ECED9 /* EmptyRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221F6276251EE5B3000ECED9 /* EmptyRingView.swift */; };
 		222305AE24AE807000711031 /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222305AD24AE807000711031 /* CustomTabView.swift */; };
 		22232B8B24A9532000F3C378 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22232B8A24A9532000F3C378 /* LoginView.swift */; };
 		22283DA024DF9959005AC0F3 /* BarTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22283D9F24DF9959005AC0F3 /* BarTabs.swift */; };
@@ -307,6 +308,7 @@
 		221C3C5624A93C57006995C5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		221D963B24A912B900C84F57 /* APIKeyHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeyHandler.swift; sourceTree = "<group>"; };
 		221F6240251EE157000ECED9 /* RawProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawProject.swift; sourceTree = "<group>"; };
+		221F6276251EE5B3000ECED9 /* EmptyRingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyRingView.swift; sourceTree = "<group>"; };
 		222305AD24AE807000711031 /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
 		22232B8A24A9532000F3C378 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		22283D9F24DF9959005AC0F3 /* BarTabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarTabs.swift; sourceTree = "<group>"; };
@@ -810,6 +812,7 @@
 				22AD5F8124B1467D006EF7FB /* ClokWidget.swift */,
 				228174C52501ACB3008E471D /* WidgetView.swift */,
 				223AB139251E34AC00CA8B3C /* ShadowRingView.swift */,
+				221F6276251EE5B3000ECED9 /* EmptyRingView.swift */,
 				22B0784824B2629A00256EB8 /* Timeline.swift */,
 				229521692505C14200085055 /* SearchTermsProjects.swift */,
 				22B0783C24B1630800256EB8 /* BackgroundRequest.swift */,
@@ -1308,6 +1311,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				221F6285251EE5DD000ECED9 /* EmptyRingView.swift in Sources */,
 				228174CC2501B90C008E471D /* DataTaskMonitor.swift in Sources */,
 				2229D7B424F05683004E1034 /* RunningEntry.swift in Sources */,
 				228174D72501CD12008E471D /* SummaryEquatable.swift in Sources */,

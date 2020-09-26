@@ -33,6 +33,16 @@ struct Summary: Decodable {
             }
             entries = raw.items.map { Summary.Entry(from: $0) }
         }
+        
+        fileprivate init() {
+            id = NSNotFound
+            entries = []
+            color = .clear
+            name = ""
+            duration = .zero
+        }
+        
+        static let empty = Summary.Project()
     }
     
     struct Entry {

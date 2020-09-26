@@ -12,4 +12,7 @@ import WidgetKit
 struct SummaryEntry: TimelineEntry {
     public let date: Date
     public let summary: Summary
+    public var pid1: Int? = nil
+    public var pid2: Int? = nil
+    public var pid3: Int? = nil
 }

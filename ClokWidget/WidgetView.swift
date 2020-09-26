@@ -25,49 +25,65 @@ struct ClokWidgetEntryView : View {
     }
     
     func Graph() -> some View {
-        #warning("need more flexible assignment in future")
-        let projects = topN(count: 4)
-        let (p0, p1, p2, p3) = (projects[0], projects[1], projects[2], projects[3])
-        
+        let (p1, p2, p3) = top3()
         return GeometryReader { geo in
-            VStack(spacing: .zero) {
-                HStack(spacing: .zero) {
-                    ProjectLine(project: p0, size: geo.size)
-                    ProjectLine(project: p1, size: geo.size)
-                }
-            
-                HStack(spacing: .zero) {
-                    ProjectLine(project: p2, size: geo.size)
-                    ProjectLine(project: p3, size: geo.size)
-                }
+            ZStack {
+                ShadowRing(p1, weight: 15, beadAngle: 0.25)
+                ShadowRing(p2, weight: 12, beadAngle: 0.32)
+                    .frame(
+                        width: geo.size.width * 0.67,
+                        height: geo.size.height * 0.67
+                    )
+                ShadowRing(p3, weight: 10, beadAngle: 0.5)
+                    .frame(
+                        width: geo.size.width * 0.4,
+                        height: geo.size.height * 0.4
+                    )
             }
         }
-        .padding(7)
-    }
-    
-    func ProjectLine(project: Summary.Project?, size: CGSize) -> some View {
-        VStack(spacing: .zero) {
-            if let project = project {
-                ShadowRing(project)
-                Text(project.name)
-                    .foregroundColor(project.color)
-                    .font(.caption)
-                    .lineLimit(1)
-            } else {
-                Text("nil")
-            }
-        }
-        .frame(
-            width: size.width / 2,
-            height: size.height / 2
-        )
+        .padding(10)
     }
     
     /// returns the `count` projects in descending order duration
     /// if there are fewer than `count` projects, the array is padded with nils
-    func topN(count: Int) -> [Summary.Project?] {
-        let projs = entry.summary.projects.sorted(by: {$0.duration > $1.duration})
-            + Array(repeating: nil, count: count)
-        return Array(projs[0..<count])
+    func top3() -> (Summary.Project, Summary.Project, Summary.Project) {
+        var result: (Summary.Project, Summary.Project, Summary.Project) = (.empty, .empty, .empty)
+        /// sort projects by duration
+        var projs = entry.summary.projects.sorted(by: {$0.duration > $1.duration})
+        
+        /// try to match first ID
+        if let pid1 = entry.pid1 {
+            if let match = projs.firstIndex(where: {$0.id == pid1}) {
+                result.0 = projs[match]
+                projs.remove(at: match)
+            } else {
+                result.0 = projs.first
+                    ?? .empty
+            }
+        }
+        
+        /// try to match second ID
+        if let pid2 = entry.pid2 {
+            if let match = projs.firstIndex(where: {$0.id == pid2}) {
+                result.1 = projs[match]
+                projs.remove(at: match)
+            } else {
+                result.1 = projs.first
+                    ?? .empty
+            }
+        }
+        
+        /// try to match third ID
+        if let pid3 = entry.pid3 {
+            if let match = projs.firstIndex(where: {$0.id == pid3}) {
+                result.2 = projs[match]
+                projs.remove(at: match)
+            } else {
+                result.2 = projs.first
+                    ?? .empty
+            }
+        }
+        
+        return result
     }
 }

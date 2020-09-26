@@ -18,6 +18,18 @@ class IntentHandler: INExtension, ClokConfigurationIntentHandling {
         return self
     }
     
+    func provideProject1OptionsCollection(for intent: ClokConfigurationIntent, with completion: @escaping (INObjectCollection<IntentProject>?, Error?) -> Void) {
+        provideProjectOptionsCollection(for: intent, with: completion)
+    }
+    
+    func provideProject2OptionsCollection(for intent: ClokConfigurationIntent, with completion: @escaping (INObjectCollection<IntentProject>?, Error?) -> Void) {
+        provideProjectOptionsCollection(for: intent, with: completion)
+    }
+    
+    func provideProject3OptionsCollection(for intent: ClokConfigurationIntent, with completion: @escaping (INObjectCollection<IntentProject>?, Error?) -> Void) {
+        provideProjectOptionsCollection(for: intent, with: completion)
+    }
+    
     func provideProjectOptionsCollection(for intent: ClokConfigurationIntent, with completion: @escaping (INObjectCollection<IntentProject>?, Error?) -> Void) {
         // fetch credentials from Keychain
         guard let (_, _, token, chosenWID) = try? getKey() else {

@@ -8,10 +8,15 @@
 
 import SwiftUI
 
+
 struct ShadowRing: View {
     
     @Environment(\.colorScheme) var mode
     
+    /// how much to brighten / darken the view.
+    /// bounded (0, 1)
+    static let colorAdjustment = CGFloat(0.4)
+
     /// the angle to rotate the ring
     var angle: Angle
     
@@ -24,20 +29,26 @@ struct ShadowRing: View {
     /// the project color
     let color: Color
     
-    /// how much to brighten / darken the view.
-    /// bounded (0, 1)
-    let colorAdjustment = CGFloat(0.4)
-    
+    var beadAngle = 0.4
+
     /// line weight
-    var weight = CGFloat(8.5)
-    
-    let beadAngle = 0.4
-    
-    init(_ project: Summary.Project) {
+    var ringWeight = CGFloat(18.5)
+
+    init(_ project: Summary.Project, weight: CGFloat, beadAngle: Double) {
         angle = Angle(radians: .tau * project.duration.mod(.hour) / .hour)
         hours = Int(project.duration / .hour)
         mins = Int(project.duration.mod(.hour) / 60)
         color = project.color
+        ringWeight = weight
+        self.beadAngle = beadAngle
+    }
+    
+    var lighter: Color {
+        color.lighten(by: ShadowRing.colorAdjustment)
+    }
+    
+    var darker: Color {
+        color.darken(by: ShadowRing.colorAdjustment)
     }
     
     var body: some View {
@@ -45,7 +56,7 @@ struct ShadowRing: View {
             ZStack {
                 switch hours {
                 case 0:
-                    EmptyRing
+                    EmptyRing(ringWeight: ringWeight)
                     HourArc(size: geo.size)
                         .rotationEffect(.tau * 0.75)
                 default:
@@ -55,7 +66,6 @@ struct ShadowRing: View {
                         .rotationEffect(angle + .tau * 0.25)
                     Beads(size: geo.size)
                 }
-                TimeIndicator
             }
         }
         .aspectRatio(1, contentMode: .fit)
@@ -67,13 +77,13 @@ struct ShadowRing: View {
             .strokeBorder(
                 AngularGradient(
                     gradient: Gradient(colors: [
-                        color.darken(by: colorAdjustment),
+                        darker,
                         color,
                         color
                     ]),
                     center: .center
                 ),
-                lineWidth: weight
+                lineWidth: ringWeight
             )
     }
     
@@ -85,13 +95,13 @@ struct ShadowRing: View {
                     gradient: Gradient(colors: [
                         /// this extra color makes the rounded tip light colored
                         color,
-                        color.lighten(by: colorAdjustment),
+                        lighter,
                         color
                     ]),
                     center: .center
                 ),
                 style: StrokeStyle(
-                    lineWidth: weight,
+                    lineWidth: ringWeight,
                     /// rounded tip also patches over the seam between the 2 semicircles
                     lineCap: .round
                 )
@@ -101,23 +111,15 @@ struct ShadowRing: View {
     private func Beads(size: CGSize) -> some View {
         ForEach(1...hours, id: \.self){ index in
             Circle()
-                .fill(color.lighten(by: colorAdjustment))
-                .frame(width: weight/2, height: weight/2)
-                .offset(x: (size.width - weight) / 2)
+                .fill(lighter)
+                .frame(width: ringWeight, height: ringWeight)
+                .offset(x: (size.width - ringWeight) / 2)
                 .rotationEffect(
                     Angle(radians: beadAngle * Double(index))
                     + angle
                     - .tau / 4
                 )
         }
-    }
-    
-    var EmptyRing: some View {
-        Circle()
-            .strokeBorder(
-                Color(UIColor.systemGray6),
-                style: StrokeStyle(lineWidth: weight)
-            )
     }
     
     /// rough guess as to the extrusion angle if the round cap from the end of the line
@@ -137,41 +139,10 @@ struct ShadowRing: View {
                         ]),
                         center: .center
                     ),
-                    style: StrokeStyle(lineWidth: weight, lineCap: .round)
+                    style: StrokeStyle(lineWidth: ringWeight, lineCap: .round)
                 )
         }
         
-    }
-    
-    /// shows the amount of time spent on this project
-    private var TimeIndicator: some View {
-        /// (ab)use `Group` to erase type
-        Group {
-            switch hours {
-            case 0:
-                Text("\(mins)m")
-                    .font(.system(size: 12, design: .rounded))
-                    .bold()
-                    .foregroundColor(color)
-            default:
-                VStack {
-                    Text(String(format: "%d:%02d", hours, mins))
-                        .font(.system(
-                            /// shrink slightly if hours are 2 digits
-                                size: hours >= 10
-                                    ? 14
-                                    : 12,
-                                design: .rounded
-                        ))
-                        .bold()
-                        /// lighten or darken to improve contrast
-                        .foregroundColor(mode == .dark
-                                            ? color.lighten(by: colorAdjustment)
-                                            : color.darken(by: colorAdjustment)
-                        )
-                }
-            }
-        }
     }
 }
 
