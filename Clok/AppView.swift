@@ -29,23 +29,11 @@ struct ClokApp: App {
     var nspc: NSPersistentContainer
         
     init(){
-                
-        /// initialize Core Data container
-        nspc = NSPersistentContainer(name: "TimeEntryModel")
-        
-        /// set store URL
-        nspc.persistentStoreDescriptions = [NSPersistentStoreDescription(url: containerURL)]
-        
-        nspc.loadPersistentStores { description, error in
-            if let error = error {
-                print((error as NSError).code)
-                fatalError("\(error as NSError)")
-            }
-        }
+        /// initialize `NSPersistentContainer`
+        nspc = makeNSPC()
         
         /// set merge policy after load
         nspc.viewContext.mergePolicy = NSOverwriteMergePolicy
-        
         
         /// pull `Project`s from CoreData
         data = TimeData(projects: loadProjects(context: nspc.viewContext) ?? [])

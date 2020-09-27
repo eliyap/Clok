@@ -9,16 +9,23 @@
 import WidgetKit
 import SwiftUI
 import Intents
+import CoreData
 
 @main
 struct RunningRing: Widget {
     let kind: String = "RunningRing"
 
+    var nspc: NSPersistentContainer
+    
+    init(){
+        nspc = makeNSPC()
+    }
+    
     var body: some WidgetConfiguration {
         IntentConfiguration(
             kind: kind,
             intent: Provider.Intent.self,
-            provider: Provider()
+            provider: Provider(context: nspc.viewContext)
         ) { entry in
             RunningRingEntryView(entry: entry)
         }

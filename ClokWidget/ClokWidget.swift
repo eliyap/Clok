@@ -20,20 +20,7 @@ struct ClokWidget: Widget {
     var nspc: NSPersistentContainer
     
     init() {
-        /// initialize Core Data container
-        nspc = NSPersistentContainer(name: "TimeEntryModel")
-        
-        /// set store URL
-        nspc.persistentStoreDescriptions = [NSPersistentStoreDescription(url: containerURL)]
-        
-        nspc.loadPersistentStores { description, error in
-            if let error = error {
-                print((error as NSError).code)
-                fatalError("\(error as NSError)")
-                
-            }
-        }
-        
+        nspc = makeNSPC()
     }
     
     public var body: some WidgetConfiguration {

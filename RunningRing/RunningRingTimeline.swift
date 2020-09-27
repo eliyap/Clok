@@ -8,6 +8,7 @@
 
 import Intents
 import WidgetKit
+import CoreData
 
 /**
  Define the refresh rate centrally so it can be tweaked quickly
@@ -20,6 +21,12 @@ struct Provider: IntentTimelineProvider {
     
     typealias Entry = RunningRingEntry
     typealias Intent = RunningRingConfigurationIntent
+    
+    var moc: NSManagedObjectContext
+    
+    init(context: NSManagedObjectContext) {
+        moc = context
+    }
     
     func placeholder(in context: Context) -> Entry {
         Entry(date: Date(), entry: .noEntry)
@@ -42,10 +49,9 @@ struct Provider: IntentTimelineProvider {
             return
         }
         
-        /// fetch summary from Toggl
-        fetchSummary(token: token, wid: chosenWID) { summary, error in
-            guard let summary = summary, error == nil else {
-                print("MultiRingWidget Fetch Failed With Error \(String(describing: error))")
+        fetchRunningEntry(context: moc) { running, error in
+            guard let running = running, error == nil else {
+                print("RunningRingWidget Fetch Failed With Error \(String(describing: error))")
                 let timeline = Timeline(entries: [Entry](), policy: .after(Date() + .widgetPeriod))
                 completion(timeline)
                 return
@@ -56,7 +62,7 @@ struct Provider: IntentTimelineProvider {
             let timeline = Timeline(
                 entries: [RunningRingEntry(
                     date: Date(),
-                    entry: .noEntry
+                    entry: running
                 )],
                 policy: .after(Date() + .widgetPeriod)
             )

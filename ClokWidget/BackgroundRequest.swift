@@ -7,7 +7,7 @@
 import Foundation
 import CoreData
 
-func getRunningEntry(context: NSManagedObjectContext, completion:@escaping (RunningEntry?, Error?) -> Void) {
+func fetchRunningEntry(context: NSManagedObjectContext, completion:@escaping (RunningEntry?, Error?) -> Void) {
     let sem = DispatchSemaphore(value: 0)
     var runningData: [String: AnyObject]!
     

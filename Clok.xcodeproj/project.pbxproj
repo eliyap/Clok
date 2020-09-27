@@ -322,6 +322,9 @@
 		C6EB47162520123500FCD0CB /* TimeEntry+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC869F24BA838D00FF771F /* TimeEntry+CoreDataProperties.swift */; };
 		C6EB471F2520123F00FCD0CB /* Tag+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229646D124F3294900FE14E5 /* Tag+CoreDataProperties.swift */; };
 		C6EB47202520123F00FCD0CB /* Tag+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229646D024F3294900FE14E5 /* Tag+CoreDataClass.swift */; };
+		C6EB472A2520138100FCD0CB /* PersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EB47292520138100FCD0CB /* PersistentContainer.swift */; };
+		C6EB4733252013B800FCD0CB /* PersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EB47292520138100FCD0CB /* PersistentContainer.swift */; };
+		C6EB473C252013B900FCD0CB /* PersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EB47292520138100FCD0CB /* PersistentContainer.swift */; };
 		C6F605AF246C6B1700D0FE82 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F605AE246C6B1700D0FE82 /* DateExtension.swift */; };
 /* End PBXBuildFile section */
 
@@ -600,6 +603,7 @@
 		C6EB465125200B4A00FCD0CB /* RunningRingTimeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningRingTimeline.swift; sourceTree = "<group>"; };
 		C6EB465B25200BDA00FCD0CB /* RunningRingEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningRingEntry.swift; sourceTree = "<group>"; };
 		C6EB46D725200DCC00FCD0CB /* RunningRingEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningRingEntryView.swift; sourceTree = "<group>"; };
+		C6EB47292520138100FCD0CB /* PersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentContainer.swift; sourceTree = "<group>"; };
 		C6F605AE246C6B1700D0FE82 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1002,6 +1006,7 @@
 				2293CEEE24EC5A84000B68F4 /* LoadEntries.swift */,
 				222D996224BB803800F66E0F /* Report.swift */,
 				22DC869824BA7A5E00FF771F /* TimeEntryModel.xcdatamodeld */,
+				C6EB47292520138100FCD0CB /* PersistentContainer.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -1582,6 +1587,7 @@
 				228174C62501ACBF008E471D /* WidgetView.swift in Sources */,
 				228174CA2501B49B008E471D /* Summary.swift in Sources */,
 				22B0783624B1513A00256EB8 /* User.swift in Sources */,
+				C6EB473C252013B900FCD0CB /* PersistentContainer.swift in Sources */,
 				C60856CE251FCE4C00E6D6C0 /* AsNSDate.swift in Sources */,
 				22AD5F8724B1467E006EF7FB /* ClokWidget.intentdefinition in Sources */,
 				221F625B251EE172000ECED9 /* RawProject.swift in Sources */,
@@ -1671,6 +1677,7 @@
 				22DE58E1251EC81B00379396 /* ClokWidget.intentdefinition in Sources */,
 				22283DAA24DFA27D005AC0F3 /* SearchTerms.swift in Sources */,
 				C6F605AF246C6B1700D0FE82 /* DateExtension.swift in Sources */,
+				C6EB4733252013B800FCD0CB /* PersistentContainer.swift in Sources */,
 				C68F8C8D24A04CE8000D249B /* IceCreamStick.swift in Sources */,
 				2207B22024B954F40006748A /* GraphView.swift in Sources */,
 				C60856AB251FCB1E00E6D6C0 /* URLStoreExtension.swift in Sources */,
@@ -1820,6 +1827,7 @@
 				C6EB462D2520092800FCD0CB /* ColorCustom.swift in Sources */,
 				C6D2E5F0251FA2CF0067C0B0 /* RunningRing.intentdefinition in Sources */,
 				C6EB47142520123500FCD0CB /* RawProject.swift in Sources */,
+				C6EB472A2520138100FCD0CB /* PersistentContainer.swift in Sources */,
 				C6EB47012520120400FCD0CB /* LoadProjects.swift in Sources */,
 				C6EB461B2520091000FCD0CB /* KeychainConstants.swift in Sources */,
 				C6EB4609252008FB00FCD0CB /* GetCredentials.swift in Sources */,
