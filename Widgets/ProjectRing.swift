@@ -27,15 +27,6 @@ struct ProjectRing: View {
     /// bounded (0, 1)
     static let colorAdjustment = CGFloat(0.4)
 
-    /// the angle to rotate the ring
-    var angle: Angle
-    
-    /// the number of complete hours to be displayed
-    let hours: Int
-    
-    /// minutes to be displayed
-    let mins: Int
-    
     /// the project color
     let color: Color
     
@@ -43,11 +34,30 @@ struct ProjectRing: View {
     
     let size: RingSize
     
-    init(_ project: Summary.Project?, size: RingSize = .small) {
+    var project: Summary.Project = .empty
+    
+    /// the number of complete hours to be displayed
+    var hours: Int {
+        Int(project.duration / .hour)
+    }
+    
+    /// minutes to be displayed
+    var mins: Int {
+        Int(project.duration.mod(.hour) / 60)
+    }
+    
+    /// the angle to rotate the ring
+    var angle: Angle {
+        Angle(radians: .tau * project.duration.mod(.hour) / .hour)
+    }
+    
+    init(
+        _ project: Summary.Project?,
+        size: RingSize = .small
+    ) {
         let project = project ?? .empty
-        angle = Angle(radians: .tau * project.duration.mod(.hour) / .hour)
-        hours = Int(project.duration / .hour)
-        mins = Int(project.duration.mod(.hour) / 60)
+        
+        
         color = project.color
         name = project.name
         

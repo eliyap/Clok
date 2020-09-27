@@ -12,7 +12,10 @@ struct RunningRingEntryView : View {
     var entry: Provider.Entry
 
     var body: some View {
-        Text(entry.date, style: .time)
+        VStack {
+            Text(entry.entry.description)
+            Text(entry.entry.project.name)
+        }
     }
 }
 

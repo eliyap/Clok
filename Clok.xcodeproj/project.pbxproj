@@ -325,6 +325,57 @@
 		C6EB472A2520138100FCD0CB /* PersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EB47292520138100FCD0CB /* PersistentContainer.swift */; };
 		C6EB4733252013B800FCD0CB /* PersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EB47292520138100FCD0CB /* PersistentContainer.swift */; };
 		C6EB473C252013B900FCD0CB /* PersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EB47292520138100FCD0CB /* PersistentContainer.swift */; };
+		C6EB474D252015AD00FCD0CB /* TimeEntryModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22DC869824BA7A5E00FF771F /* TimeEntryModel.xcdatamodeld */; };
+		C6EB4757252015FA00FCD0CB /* ProjectRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CDEBD4251F06700031B81E /* ProjectRing.swift */; };
+		C6EB4760252016B700FCD0CB /* Mod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229428DB251E7E7E008C0BFF /* Mod.swift */; };
+		C6EB47692520170100FCD0CB /* AngleAsDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE2824E59E8C000820AD /* AngleAsDate.swift */; };
+		C6EB476A2520170100FCD0CB /* AngleOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE2624E59E4D000820AD /* AngleOperators.swift */; };
+		C6EB476B2520170100FCD0CB /* URLStoreExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60856AA251FCB1E00E6D6C0 /* URLStoreExtension.swift */; };
+		C6EB476C2520170100FCD0CB /* AngleFromCartesian.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE2A24E59ED0000820AD /* AngleFromCartesian.swift */; };
+		C6EB476E2520170100FCD0CB /* DateMean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE2324E59DFE000820AD /* DateMean.swift */; };
+		C6EB476F2520170100FCD0CB /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F605AE246C6B1700D0FE82 /* DateExtension.swift */; };
+		C6EB47702520170100FCD0CB /* CGPointOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE3124E5A218000820AD /* CGPointOperators.swift */; };
+		C6EB47712520170100FCD0CB /* AnyTransitionSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DF92D7251D6834007E4635 /* AnyTransitionSlide.swift */; };
+		C6EB47722520170100FCD0CB /* DateStridable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE1C24E59BB1000820AD /* DateStridable.swift */; };
+		C6EB47732520170100FCD0CB /* DateAngle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE1E24E59BCE000820AD /* DateAngle.swift */; };
+		C6EB477C2520170100FCD0CB /* AngleAsDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE2824E59E8C000820AD /* AngleAsDate.swift */; };
+		C6EB477D2520170100FCD0CB /* AngleOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE2624E59E4D000820AD /* AngleOperators.swift */; };
+		C6EB477E2520170100FCD0CB /* AsNSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2293CEE824EC50F0000B68F4 /* AsNSDate.swift */; };
+		C6EB477F2520170100FCD0CB /* URLStoreExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60856AA251FCB1E00E6D6C0 /* URLStoreExtension.swift */; };
+		C6EB47802520170100FCD0CB /* AngleFromCartesian.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE2A24E59ED0000820AD /* AngleFromCartesian.swift */; };
+		C6EB47812520170100FCD0CB /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63FC2F9249BCFBD00747D49 /* DoubleExtension.swift */; };
+		C6EB47832520170100FCD0CB /* DateMean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE2324E59DFE000820AD /* DateMean.swift */; };
+		C6EB47842520170100FCD0CB /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F605AE246C6B1700D0FE82 /* DateExtension.swift */; };
+		C6EB47852520170100FCD0CB /* CGPointOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE3124E5A218000820AD /* CGPointOperators.swift */; };
+		C6EB47862520170100FCD0CB /* AnyTransitionSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DF92D7251D6834007E4635 /* AnyTransitionSlide.swift */; };
+		C6EB47872520170100FCD0CB /* DateStridable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE1C24E59BB1000820AD /* DateStridable.swift */; };
+		C6EB47882520170100FCD0CB /* DateAngle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE1E24E59BCE000820AD /* DateAngle.swift */; };
+		C6EB47892520170200FCD0CB /* AngleAsDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE2824E59E8C000820AD /* AngleAsDate.swift */; };
+		C6EB478A2520170200FCD0CB /* AngleOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE2624E59E4D000820AD /* AngleOperators.swift */; };
+		C6EB478B2520170200FCD0CB /* AsNSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2293CEE824EC50F0000B68F4 /* AsNSDate.swift */; };
+		C6EB478C2520170200FCD0CB /* URLStoreExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60856AA251FCB1E00E6D6C0 /* URLStoreExtension.swift */; };
+		C6EB478D2520170200FCD0CB /* AngleFromCartesian.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE2A24E59ED0000820AD /* AngleFromCartesian.swift */; };
+		C6EB478F2520170200FCD0CB /* DateMean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE2324E59DFE000820AD /* DateMean.swift */; };
+		C6EB47902520170200FCD0CB /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F605AE246C6B1700D0FE82 /* DateExtension.swift */; };
+		C6EB47912520170200FCD0CB /* CGPointOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE3124E5A218000820AD /* CGPointOperators.swift */; };
+		C6EB47922520170200FCD0CB /* AnyTransitionSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DF92D7251D6834007E4635 /* AnyTransitionSlide.swift */; };
+		C6EB47932520170200FCD0CB /* DateStridable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE1C24E59BB1000820AD /* DateStridable.swift */; };
+		C6EB47942520170200FCD0CB /* DateAngle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE1E24E59BCE000820AD /* DateAngle.swift */; };
+		C6EB47952520170300FCD0CB /* AngleAsDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE2824E59E8C000820AD /* AngleAsDate.swift */; };
+		C6EB47962520170300FCD0CB /* AngleOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE2624E59E4D000820AD /* AngleOperators.swift */; };
+		C6EB47972520170300FCD0CB /* ColorAdjust.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229428D1251E7C61008C0BFF /* ColorAdjust.swift */; };
+		C6EB47982520170300FCD0CB /* AsNSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2293CEE824EC50F0000B68F4 /* AsNSDate.swift */; };
+		C6EB47992520170300FCD0CB /* URLStoreExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60856AA251FCB1E00E6D6C0 /* URLStoreExtension.swift */; };
+		C6EB479A2520170300FCD0CB /* AngleFromCartesian.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE2A24E59ED0000820AD /* AngleFromCartesian.swift */; };
+		C6EB479B2520170300FCD0CB /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63FC2F9249BCFBD00747D49 /* DoubleExtension.swift */; };
+		C6EB479D2520170300FCD0CB /* DateMean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE2324E59DFE000820AD /* DateMean.swift */; };
+		C6EB479E2520170300FCD0CB /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F605AE246C6B1700D0FE82 /* DateExtension.swift */; };
+		C6EB479F2520170300FCD0CB /* AngleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63FC2F7249BCEB900747D49 /* AngleExtension.swift */; };
+		C6EB47A02520170300FCD0CB /* CGPointOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE3124E5A218000820AD /* CGPointOperators.swift */; };
+		C6EB47A12520170300FCD0CB /* AnyTransitionSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DF92D7251D6834007E4635 /* AnyTransitionSlide.swift */; };
+		C6EB47A22520170300FCD0CB /* DateStridable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE1C24E59BB1000820AD /* DateStridable.swift */; };
+		C6EB47A32520170300FCD0CB /* DateAngle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE1E24E59BCE000820AD /* DateAngle.swift */; };
+		C6EB47DC2520178500FCD0CB /* Arc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2253FFB825057FF200BBDCE6 /* Arc.swift */; };
 		C6F605AF246C6B1700D0FE82 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F605AE246C6B1700D0FE82 /* DateExtension.swift */; };
 /* End PBXBuildFile section */
 
@@ -1035,7 +1086,6 @@
 				C6CDEB69251F04150031B81E /* MultiRingWidget.swift */,
 				C6262B9D251F03950003D435 /* MultiRingView.swift */,
 				C6CDEB9A251F04BB0031B81E /* MultiRingEntry.swift */,
-				C6CDEBD4251F06700031B81E /* ProjectRing.swift */,
 				C6CDEB82251F04730031B81E /* MultiRingTimeline.swift */,
 				C6262B9F251F03950003D435 /* MultiRing.intentdefinition */,
 				C6262BA0251F03970003D435 /* Assets.xcassets */,
@@ -1109,7 +1159,6 @@
 		C6C18D382448F96C000345D5 = {
 			isa = PBXGroup;
 			children = (
-				C6EB46D725200DCC00FCD0CB /* RunningRingEntryView.swift */,
 				C6D2E600251FA2DC0067C0B0 /* RunningRingExtension.entitlements */,
 				C6CCD9D2251F14E00086368B /* MultiRingExtension.entitlements */,
 				22B0784624B247D500256EB8 /* ClokWidgetExtension.entitlements */,
@@ -1124,6 +1173,7 @@
 				22BE1FEB24A9246400A9A739 /* NetCode */,
 				C688BFC624A18BA00077CECF /* Misc */,
 				228174D12501CB64008E471D /* Summary */,
+				C6EB4756252015E800FCD0CB /* Widgets */,
 				22AD5F8024B1467D006EF7FB /* ClokWidget */,
 				227746D22505BC9200D17CA3 /* GridWidget */,
 				22DE58EC251EC86F00379396 /* ProjectIntent */,
@@ -1201,6 +1251,7 @@
 			children = (
 				C6D2E5EA251FA2CD0067C0B0 /* RunningRing.swift */,
 				C6EB465B25200BDA00FCD0CB /* RunningRingEntry.swift */,
+				C6EB46D725200DCC00FCD0CB /* RunningRingEntryView.swift */,
 				C6EB465125200B4A00FCD0CB /* RunningRingTimeline.swift */,
 				C6D2E5EC251FA2CD0067C0B0 /* RunningRing.intentdefinition */,
 				C6D2E5ED251FA2CF0067C0B0 /* Assets.xcassets */,
@@ -1215,6 +1266,14 @@
 				C6D448EB2484710E0072E7D4 /* ActivityIndicator.swift */,
 			);
 			path = Activity;
+			sourceTree = "<group>";
+		};
+		C6EB4756252015E800FCD0CB /* Widgets */ = {
+			isa = PBXGroup;
+			children = (
+				C6CDEBD4251F06700031B81E /* ProjectRing.swift */,
+			);
+			path = Widgets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1503,6 +1562,7 @@
 				229521482505BD7600085055 /* SummaryLoader.swift in Sources */,
 				229521502505BDF800085055 /* FormRequest.swift in Sources */,
 				229521652505C07100085055 /* ColorCustom.swift in Sources */,
+				C6EB477E2520170100FCD0CB /* AsNSDate.swift in Sources */,
 				2292C4F62505CC1E005802B5 /* Piece3.swift in Sources */,
 				2292C4F92505CC1E005802B5 /* Piece11.swift in Sources */,
 				2292C4F72505CC1E005802B5 /* Piece9.swift in Sources */,
@@ -1510,9 +1570,12 @@
 				2292C4F42505CC1E005802B5 /* Types.swift in Sources */,
 				2292C4F22505CC1E005802B5 /* Piece8.swift in Sources */,
 				229521612505BFFB00085055 /* KeychainConstants.swift in Sources */,
+				C6EB47852520170100FCD0CB /* CGPointOperators.swift in Sources */,
 				2295214A2505BD7600085055 /* SummaryEquatable.swift in Sources */,
 				2295214B2505BD7600085055 /* RawSummary.swift in Sources */,
+				C6EB47882520170100FCD0CB /* DateAngle.swift in Sources */,
 				2295214E2505BDD700085055 /* DateComponent.swift in Sources */,
+				C6EB47842520170100FCD0CB /* DateExtension.swift in Sources */,
 				229521582505BF0F00085055 /* GetCredentials.swift in Sources */,
 				2292C4F32505CC1E005802B5 /* PieceLarge.swift in Sources */,
 				C6EB45D3251FEDBF00FCD0CB /* CoreDataConstants.swift in Sources */,
@@ -1521,14 +1584,20 @@
 				227746D92505BC9300D17CA3 /* GridWidget.intentdefinition in Sources */,
 				2292C4E62505C3C7005802B5 /* Timeline.swift in Sources */,
 				229521622505C01E00085055 /* NetworkError.swift in Sources */,
+				C6EB47872520170100FCD0CB /* DateStridable.swift in Sources */,
 				2292C4FA2505CC1E005802B5 /* Piece12.swift in Sources */,
 				227746D42505BC9200D17CA3 /* GridWidget.swift in Sources */,
+				C6EB47862520170100FCD0CB /* AnyTransitionSlide.swift in Sources */,
+				C6EB47812520170100FCD0CB /* DoubleExtension.swift in Sources */,
+				C6EB477F2520170100FCD0CB /* URLStoreExtension.swift in Sources */,
 				229428D4251E7C61008C0BFF /* ColorAdjust.swift in Sources */,
 				229428C4251E5E19008C0BFF /* AngleExtension.swift in Sources */,
 				2295214F2505BDE900085055 /* TimeIntervalExtension.swift in Sources */,
 				2292C4FE2505CC68005802B5 /* WidgetView.swift in Sources */,
+				C6EB47832520170100FCD0CB /* DateMean.swift in Sources */,
 				229521492505BD7600085055 /* Summary.swift in Sources */,
 				2292C4E82505CC1E005802B5 /* Piece7.swift in Sources */,
+				C6EB47802520170100FCD0CB /* AngleFromCartesian.swift in Sources */,
 				2292C4FB2505CC1E005802B5 /* Board.swift in Sources */,
 				2292C4EE2505CC1E005802B5 /* PrettyPrint.swift in Sources */,
 				229521532505BEAB00085055 /* WorkspaceManager.swift in Sources */,
@@ -1544,9 +1613,11 @@
 				2292C4E72505CC1E005802B5 /* TetrisPiece.swift in Sources */,
 				2292C4F02505CC1E005802B5 /* Piece2.swift in Sources */,
 				229521632505C04400085055 /* ColorHex.swift in Sources */,
+				C6EB477C2520170100FCD0CB /* AngleAsDate.swift in Sources */,
 				2292C4EF2505CC1E005802B5 /* Piece1.swift in Sources */,
 				2295214D2505BDB200085055 /* RequestConstants.swift in Sources */,
 				2292C4F52505CC1E005802B5 /* Fill.swift in Sources */,
+				C6EB477D2520170100FCD0CB /* AngleOperators.swift in Sources */,
 				2292C4F12505CC1E005802B5 /* Piece6.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1556,25 +1627,32 @@
 			buildActionMask = 2147483647;
 			files = (
 				221F6285251EE5DD000ECED9 /* EmptyRingView.swift in Sources */,
+				C6EB47732520170100FCD0CB /* DateAngle.swift in Sources */,
 				228174CC2501B90C008E471D /* DataTaskMonitor.swift in Sources */,
+				C6EB476E2520170100FCD0CB /* DateMean.swift in Sources */,
 				2229D7B424F05683004E1034 /* RunningEntry.swift in Sources */,
 				C60856B6251FCE1B00E6D6C0 /* Project+CoreDataClass.swift in Sources */,
 				228174D72501CD12008E471D /* SummaryEquatable.swift in Sources */,
 				228174CE2501B9AF008E471D /* ToOptional.swift in Sources */,
 				22B0783524B1513A00256EB8 /* ClokWidget.swift in Sources */,
+				C6EB476A2520170100FCD0CB /* AngleOperators.swift in Sources */,
+				C6EB47712520170100FCD0CB /* AnyTransitionSlide.swift in Sources */,
 				2238640324BBC6980041886B /* DoubleExtension.swift in Sources */,
 				229521602505BFFB00085055 /* KeychainConstants.swift in Sources */,
 				228174CD2501B987008E471D /* DecoderExtension.swift in Sources */,
 				C60856B4251FCE1B00E6D6C0 /* Tag+CoreDataClass.swift in Sources */,
+				C6EB476F2520170100FCD0CB /* DateExtension.swift in Sources */,
 				C60856BC251FCE1B00E6D6C0 /* Tag+CoreDataProperties.swift in Sources */,
 				C60856B5251FCE1B00E6D6C0 /* Project+CoreDataProperties.swift in Sources */,
 				22DE5903251EC87900379396 /* IntentHandler.swift in Sources */,
+				C6EB47692520170100FCD0CB /* AngleAsDate.swift in Sources */,
 				C60856BB251FCE1B00E6D6C0 /* TimeEntry+CoreDataClass.swift in Sources */,
 				C60856B7251FCE1B00E6D6C0 /* TimeEntry+CoreDataProperties.swift in Sources */,
 				22B0783924B1519D00256EB8 /* NetworkError.swift in Sources */,
 				22DC869B24BA7A5E00FF771F /* TimeEntryModel.xcdatamodeld in Sources */,
 				2295215B2505BF3200085055 /* KeychainError.swift in Sources */,
 				2229D7A624EF5C55004E1034 /* TimeIntervalExtension.swift in Sources */,
+				C6EB47702520170100FCD0CB /* CGPointOperators.swift in Sources */,
 				22B0783324B150C300256EB8 /* FormRequest.swift in Sources */,
 				228174CB2501B7B7008E471D /* DateComponent.swift in Sources */,
 				228174D52501CBCB008E471D /* NoSummary.swift in Sources */,
@@ -1585,6 +1663,7 @@
 				2229D7A424EF5C41004E1034 /* WorkspaceManager.swift in Sources */,
 				C60856C5251FCE2900E6D6C0 /* DateRange.swift in Sources */,
 				228174C62501ACBF008E471D /* WidgetView.swift in Sources */,
+				C6EB476C2520170100FCD0CB /* AngleFromCartesian.swift in Sources */,
 				228174CA2501B49B008E471D /* Summary.swift in Sources */,
 				22B0783624B1513A00256EB8 /* User.swift in Sources */,
 				C6EB473C252013B900FCD0CB /* PersistentContainer.swift in Sources */,
@@ -1601,12 +1680,14 @@
 				229428D3251E7C61008C0BFF /* ColorAdjust.swift in Sources */,
 				C60856B9251FCE1B00E6D6C0 /* LoadProjects.swift in Sources */,
 				22B0784424B17CC000256EB8 /* Project.swift in Sources */,
+				C6EB47722520170100FCD0CB /* DateStridable.swift in Sources */,
 				C6EB45CA251FEDBF00FCD0CB /* CoreDataConstants.swift in Sources */,
 				22B0784524B17CD900256EB8 /* ColorCustom.swift in Sources */,
 				22B6E473251EA38F00530539 /* Arc.swift in Sources */,
 				229646CC24F3220300FE14E5 /* RequestConstants.swift in Sources */,
 				229646CD24F3220600FE14E5 /* TimeConstants.swift in Sources */,
 				229428BD251E5E18008C0BFF /* AngleExtension.swift in Sources */,
+				C6EB476B2520170100FCD0CB /* URLStoreExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1631,32 +1712,43 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6EB478F2520170200FCD0CB /* DateMean.swift in Sources */,
+				C6EB47902520170200FCD0CB /* DateExtension.swift in Sources */,
+				C6EB478B2520170200FCD0CB /* AsNSDate.swift in Sources */,
+				C6EB478C2520170200FCD0CB /* URLStoreExtension.swift in Sources */,
 				C6CDEBF5251F072F0031B81E /* DoubleExtension.swift in Sources */,
 				C6CDEC5D251F09C10031B81E /* FormRequest.swift in Sources */,
 				C6CDEC3D251F09960031B81E /* KeychainError.swift in Sources */,
 				C6CDEB92251F04860031B81E /* MultiRingTimeline.swift in Sources */,
 				C6CDEC75251F0A4D0031B81E /* DecoderExtension.swift in Sources */,
 				C6CDEC55251F09B20031B81E /* RequestConstants.swift in Sources */,
+				C6EB478D2520170200FCD0CB /* AngleFromCartesian.swift in Sources */,
 				C6CDEC05251F07700031B81E /* ColorCustom.swift in Sources */,
+				C6EB47912520170200FCD0CB /* CGPointOperators.swift in Sources */,
 				C6CDEC35251F098E0031B81E /* GetCredentials.swift in Sources */,
 				C6CDEBD5251F06700031B81E /* ProjectRing.swift in Sources */,
 				C6CDEB7A251F04410031B81E /* MultiRingWidget.swift in Sources */,
+				C6EB47932520170200FCD0CB /* DateStridable.swift in Sources */,
 				C6CDEC65251F0A160031B81E /* NetworkError.swift in Sources */,
 				C6CDEC2D251F07F50031B81E /* ColorAdjust.swift in Sources */,
+				C6EB478A2520170200FCD0CB /* AngleOperators.swift in Sources */,
 				C6CDEC6D251F0A310031B81E /* DateComponent.swift in Sources */,
 				C6CDEBFD251F074A0031B81E /* ColorHex.swift in Sources */,
 				C6CDEC4D251F09AD0031B81E /* SummaryLoader.swift in Sources */,
 				C6EB45DD251FEDC000FCD0CB /* CoreDataConstants.swift in Sources */,
 				C6CDEC15251F078A0031B81E /* TimeConstants.swift in Sources */,
+				C6EB47892520170200FCD0CB /* AngleAsDate.swift in Sources */,
 				C6CDEBE5251F06FB0031B81E /* RawSummary.swift in Sources */,
 				C6262BA3251F03970003D435 /* MultiRing.intentdefinition in Sources */,
 				C6CDEC1D251F079A0031B81E /* Mod.swift in Sources */,
 				C6CDEC25251F07E90031B81E /* Arc.swift in Sources */,
+				C6EB47942520170200FCD0CB /* DateAngle.swift in Sources */,
 				C6CDEB9B251F04BB0031B81E /* MultiRingEntry.swift in Sources */,
 				C6CDEC45251F099C0031B81E /* KeychainConstants.swift in Sources */,
 				C6262B9E251F03950003D435 /* MultiRingView.swift in Sources */,
 				C6CDEC0D251F07820031B81E /* TimeIntervalExtension.swift in Sources */,
 				C6CDEBDD251F06F60031B81E /* Summary.swift in Sources */,
+				C6EB47922520170200FCD0CB /* AnyTransitionSlide.swift in Sources */,
 				C6CDEBED251F071C0031B81E /* AngleExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1813,6 +1905,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6EB47A22520170300FCD0CB /* DateStridable.swift in Sources */,
+				C6EB4760252016B700FCD0CB /* Mod.swift in Sources */,
 				C6EB45E6251FEDC100FCD0CB /* CoreDataConstants.swift in Sources */,
 				C6EB4600252008F000FCD0CB /* FormRequest.swift in Sources */,
 				C6EB470A2520122500FCD0CB /* Project+CoreDataProperties.swift in Sources */,
@@ -1826,21 +1920,37 @@
 				C6EB46B325200D5200FCD0CB /* TimeConstants.swift in Sources */,
 				C6EB462D2520092800FCD0CB /* ColorCustom.swift in Sources */,
 				C6D2E5F0251FA2CF0067C0B0 /* RunningRing.intentdefinition in Sources */,
+				C6EB47992520170300FCD0CB /* URLStoreExtension.swift in Sources */,
 				C6EB47142520123500FCD0CB /* RawProject.swift in Sources */,
 				C6EB472A2520138100FCD0CB /* PersistentContainer.swift in Sources */,
 				C6EB47012520120400FCD0CB /* LoadProjects.swift in Sources */,
 				C6EB461B2520091000FCD0CB /* KeychainConstants.swift in Sources */,
 				C6EB4609252008FB00FCD0CB /* GetCredentials.swift in Sources */,
+				C6EB47962520170300FCD0CB /* AngleOperators.swift in Sources */,
+				C6EB47982520170300FCD0CB /* AsNSDate.swift in Sources */,
+				C6EB4757252015FA00FCD0CB /* ProjectRing.swift in Sources */,
 				C6EB46482520095700FCD0CB /* RunningEntry.swift in Sources */,
+				C6EB479D2520170300FCD0CB /* DateMean.swift in Sources */,
 				C6EB47202520123F00FCD0CB /* Tag+CoreDataClass.swift in Sources */,
 				C6D2E5EB251FA2CD0067C0B0 /* RunningRing.swift in Sources */,
 				C6EB46A125200CB200FCD0CB /* RawSummary.swift in Sources */,
 				C6EB471F2520123F00FCD0CB /* Tag+CoreDataProperties.swift in Sources */,
+				C6EB479F2520170300FCD0CB /* AngleExtension.swift in Sources */,
+				C6EB474D252015AD00FCD0CB /* TimeEntryModel.xcdatamodeld in Sources */,
 				C6EB469825200CAD00FCD0CB /* Summary.swift in Sources */,
+				C6EB479B2520170300FCD0CB /* DoubleExtension.swift in Sources */,
 				C6EB46C525200DA000FCD0CB /* DateComponent.swift in Sources */,
+				C6EB47DC2520178500FCD0CB /* Arc.swift in Sources */,
 				C6EB46122520090900FCD0CB /* Project.swift in Sources */,
+				C6EB47A02520170300FCD0CB /* CGPointOperators.swift in Sources */,
+				C6EB479A2520170300FCD0CB /* AngleFromCartesian.swift in Sources */,
+				C6EB47972520170300FCD0CB /* ColorAdjust.swift in Sources */,
+				C6EB479E2520170300FCD0CB /* DateExtension.swift in Sources */,
 				C6EB46CE25200DAA00FCD0CB /* DecoderExtension.swift in Sources */,
+				C6EB47A12520170300FCD0CB /* AnyTransitionSlide.swift in Sources */,
+				C6EB47A32520170300FCD0CB /* DateAngle.swift in Sources */,
 				C6EB46242520091700FCD0CB /* KeychainError.swift in Sources */,
+				C6EB47952520170300FCD0CB /* AngleAsDate.swift in Sources */,
 				C6EB46362520093A00FCD0CB /* NetworkError.swift in Sources */,
 				C6EB45F7252008E600FCD0CB /* BackgroundRequest.swift in Sources */,
 				C6EB47162520123500FCD0CB /* TimeEntry+CoreDataProperties.swift in Sources */,

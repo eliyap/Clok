@@ -42,13 +42,6 @@ struct Provider: IntentTimelineProvider {
         in context: Context,
         completion: @escaping (Timeline<Entry>) -> ()
     ) {
-        /// fetch credentials from Keychain
-        guard let (_, _, token, chosenWID) = try? getKey() else {
-            let timeline = Timeline(entries: [Entry](), policy: .after(Date() + .widgetPeriod))
-            completion(timeline)
-            return
-        }
-        
         fetchRunningEntry(context: moc) { running, error in
             guard let running = running, error == nil else {
                 print("RunningRingWidget Fetch Failed With Error \(String(describing: error))")
