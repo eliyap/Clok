@@ -10,8 +10,8 @@ import WidgetKit
 import SwiftUI
 import Intents
 
-fileprivate let padded = CGFloat(10)
-fileprivate let spaced = CGFloat(5)
+fileprivate let padded = CGFloat(7)
+fileprivate let spaced = CGFloat(7)
 
 struct MultiRingEntryView : View {
     

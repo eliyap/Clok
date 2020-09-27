@@ -9,12 +9,11 @@
 import SwiftUI
 
 struct ProjectRing: View {
+    
     enum RingSize {
         case small
         case large
     }
-    
-    
     
     /// how much to brighten / darken the view.
     /// bounded (0, 1)
@@ -97,8 +96,8 @@ struct ProjectRing: View {
                         .bold()
                         /// lighten or darken to improve contrast
                         .foregroundColor(mode == .dark
-                            ? project.color.lighten(by: ProjectRing.colorAdjustment)
-                            : project.color.darken(by: ProjectRing.colorAdjustment)
+                            ? lighter
+                            : darker
                         )
                 }
             }

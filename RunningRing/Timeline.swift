@@ -14,7 +14,7 @@ import CoreData
  Define the refresh rate centrally so it can be tweaked quickly
  */
 fileprivate extension TimeInterval {
-    static let widgetPeriod: TimeInterval = .hour / 4
+    static let widgetPeriod: TimeInterval = .hour / 6
 }
 
 struct Provider: IntentTimelineProvider {
@@ -50,13 +50,15 @@ struct Provider: IntentTimelineProvider {
                 return
             }
             
-            /// add fetched summary to Widget Timeline
             /// load again after `widgetPeriod`
             let timeline = Timeline(
-                entries: [RunningRingEntry(
-                    date: Date(),
-                    entry: running
-                )],
+                /// update every minute
+                entries: (0..<Int(TimeInterval.widgetPeriod / 60)).map {
+                    RunningRingEntry(
+                        date: Date() + 60.0 * Double($0),
+                        entry: running
+                    )
+                },
                 policy: .after(Date() + .widgetPeriod)
             )
             completion(timeline)
