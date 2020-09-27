@@ -13,59 +13,22 @@ struct ProjectRing: View {
         case small
         case large
     }
-    /// the angle at which to distribute beads
-    /// should allow them to just touch when at full size
-    var beadAngle = 0.3
-
-    /// line weight
-    var ringWeight = CGFloat(8.5)
-
     
-    @Environment(\.colorScheme) var mode
+    
     
     /// how much to brighten / darken the view.
     /// bounded (0, 1)
     static let colorAdjustment = CGFloat(0.4)
 
-    /// the project color
-    let color: Color
-    
-    let name: String
-    
-    let size: RingSize
-    
     var project: Summary.Project = .empty
     
-    /// the number of complete hours to be displayed
-    var hours: Int {
-        Int(project.duration / .hour)
-    }
+    var size: RingSize = .small
     
-    /// minutes to be displayed
-    var mins: Int {
-        Int(project.duration.mod(.hour) / 60)
-    }
+    /// the angle at which to distribute beads
+    /// should allow them to just touch when at full size
+    var beadAngle = 0.3
     
-    /// the angle to rotate the ring
-    var angle: Angle {
-        Angle(radians: .tau * project.duration.mod(.hour) / .hour)
-    }
-    
-    init(
-        _ project: Summary.Project?,
-        size: RingSize = .small
-    ) {
-        let project = project ?? .empty
-        
-        
-        color = project.color
-        name = project.name
-        
-        self.size = size
-        if size == .large {
-            ringWeight = 18.5
-        }
-    }
+    @Environment(\.colorScheme) var mode
     
     var body: some View {
             GeometryReader { geo in
@@ -84,8 +47,8 @@ struct ProjectRing: View {
                     }
                     VStack {
                         TimeIndicator
-                        Text(name)
-                            .foregroundColor(color)
+                        Text(project.name)
+                            .foregroundColor(project.color)
                             .font(.system(size: nameFont, design: .rounded))
                             .bold()
                             .lineLimit(1)
@@ -126,7 +89,7 @@ struct ProjectRing: View {
                 Text("\(mins)m")
                     .font(.system(size: minuteFont, design: .rounded))
                     .bold()
-                    .foregroundColor(color)
+                    .foregroundColor(project.color)
             default:
                 VStack {
                     Text(String(format: "%d:%02d", hours, mins))
@@ -134,8 +97,8 @@ struct ProjectRing: View {
                         .bold()
                         /// lighten or darken to improve contrast
                         .foregroundColor(mode == .dark
-                            ? color.lighten(by: ProjectRing.colorAdjustment)
-                            : color.darken(by: ProjectRing.colorAdjustment)
+                            ? project.color.lighten(by: ProjectRing.colorAdjustment)
+                            : project.color.darken(by: ProjectRing.colorAdjustment)
                         )
                 }
             }
@@ -143,6 +106,25 @@ struct ProjectRing: View {
     }
 }
 
+// MARK: - Project Based Properties
+extension ProjectRing {
+    /// the number of complete hours to be displayed
+    var hours: Int {
+        Int(project.duration / .hour)
+    }
+    
+    /// minutes to be displayed
+    var mins: Int {
+        Int(project.duration.mod(.hour) / 60)
+    }
+    
+    /// the angle to rotate the ring
+    var angle: Angle {
+        Angle(radians: .tau * project.duration.mod(.hour) / .hour)
+    }
+}
+
+// MARK: - Size Based Properties
 extension ProjectRing {
     var minuteFont: CGFloat {
         switch size {
@@ -174,16 +156,25 @@ extension ProjectRing {
             return 16
         }
     }
+    /// line weight
+    var ringWeight: CGFloat{
+        switch size {
+        case .small:
+        return 8.5
+        case .large:
+        return 18.5
+        }
+    }
 }
 
 // MARK: - Adjusted Colors
 extension ProjectRing {
     var lighter: Color {
-        color.lighten(by: ProjectRing.colorAdjustment)
+        project.color.lighten(by: ProjectRing.colorAdjustment)
     }
     
     var darker: Color {
-        color.darken(by: ProjectRing.colorAdjustment)
+        project.color.darken(by: ProjectRing.colorAdjustment)
     }
 }
 
@@ -196,8 +187,8 @@ extension ProjectRing {
                 AngularGradient(
                     gradient: Gradient(colors: [
                         darker,
-                        color,
-                        color
+                        project.color,
+                        project.color
                     ]),
                     center: .center
                 ),
@@ -212,9 +203,9 @@ extension ProjectRing {
                 AngularGradient(
                     gradient: Gradient(colors: [
                         /// this extra color makes the rounded tip light colored
-                        color,
+                        project.color,
                         lighter,
-                        color
+                        project.color
                     ]),
                     center: .center
                 ),
@@ -237,7 +228,7 @@ extension ProjectRing {
                     AngularGradient(
                         gradient: Gradient(stops: [
                             Gradient.Stop(color: .clear, location: .zero),
-                            Gradient.Stop(color: color, location: stop + del),
+                            Gradient.Stop(color: project.color, location: stop + del),
                             /// immediately clamp gradient back to clear, so that other cap does not show color
                             Gradient.Stop(color: .clear, location: stop + del + 0.001),
                             Gradient.Stop(color: .clear, location: 1),
