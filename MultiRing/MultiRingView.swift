@@ -29,6 +29,8 @@ struct MultiRingEntryView : View {
                 Grid4(topN[1], topN[2], topN[3], topN[4])
             case .systemLarge:
                 Grid4(topN[0], topN[1], topN[2], topN[3])
+            @unknown default:
+                fatalError("Unsupported Widget Size!")
             }
         }
         .padding(padded)

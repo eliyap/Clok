@@ -62,6 +62,7 @@ func getRunningEntry(completion:@escaping (RunningEntry?, Error?) -> Void) {
     
     #warning("reimplement project fetch here! now have core data")
     
+    
     // sanity check, the project we requested was the one we received
     guard project.wrappedID == pid else { fatalError("\(project.wrappedID) and \(pid) do not match!") }
     guard let running = RunningEntry(from: runningData, project: project) else {

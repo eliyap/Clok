@@ -27,6 +27,7 @@
 		<string>ClokConfigurationIntent</string>
 		<string>GridConfigurationIntent</string>
 		<string>MultiRingConfigurationIntent</string>
+		<string>RunningRingConfigurationIntent</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
