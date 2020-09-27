@@ -5,10 +5,10 @@
 //  Copyright © 2020 Secret Asian Man 3. All rights reserved.
 
 import Foundation
+import CoreData
 
-func getRunningEntry(completion:@escaping (RunningEntry?, Error?) -> Void) {
+func getRunningEntry(context: NSManagedObjectContext, completion:@escaping (RunningEntry?, Error?) -> Void) {
     let sem = DispatchSemaphore(value: 0)
-    var project = StaticProject.noProject
     var runningData: [String: AnyObject]!
     
     guard let token = try? getKey().2 else {
@@ -61,10 +61,15 @@ func getRunningEntry(completion:@escaping (RunningEntry?, Error?) -> Void) {
     }
     
     #warning("reimplement project fetch here! now have core data")
+    let project: ProjectLike = loadProjects(context: context)?
+        .first(where: {$0.wrappedID == pid})
+        ?? StaticProject.unknown
     
+    /// sanity check, the project we requested was the one we received
+    guard project.wrappedID == pid else {
+        fatalError("\(project.wrappedID) and \(pid) do not match!")
+    }
     
-    // sanity check, the project we requested was the one we received
-    guard project.wrappedID == pid else { fatalError("\(project.wrappedID) and \(pid) do not match!") }
     guard let running = RunningEntry(from: runningData, project: project) else {
         completion(nil, NetworkError.serialization)
         return
@@ -72,3 +77,4 @@ func getRunningEntry(completion:@escaping (RunningEntry?, Error?) -> Void) {
     /// success!
     completion(running, nil)
 }
+

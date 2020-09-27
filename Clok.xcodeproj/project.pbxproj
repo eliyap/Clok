@@ -314,6 +314,14 @@
 		C6EB46C525200DA000FCD0CB /* DateComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229D7A724EF6750004E1034 /* DateComponent.swift */; };
 		C6EB46CE25200DAA00FCD0CB /* DecoderExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D992524BAB2FD00F66E0F /* DecoderExtension.swift */; };
 		C6EB46D825200DCC00FCD0CB /* RunningRingEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EB46D725200DCC00FCD0CB /* RunningRingEntryView.swift */; };
+		C6EB47012520120400FCD0CB /* LoadProjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223863FF24BBBD030041886B /* LoadProjects.swift */; };
+		C6EB470A2520122500FCD0CB /* Project+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC869D24BA838D00FF771F /* Project+CoreDataProperties.swift */; };
+		C6EB470B2520122500FCD0CB /* Project+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC869C24BA838D00FF771F /* Project+CoreDataClass.swift */; };
+		C6EB47142520123500FCD0CB /* RawProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221F6240251EE157000ECED9 /* RawProject.swift */; };
+		C6EB47152520123500FCD0CB /* TimeEntry+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC869E24BA838D00FF771F /* TimeEntry+CoreDataClass.swift */; };
+		C6EB47162520123500FCD0CB /* TimeEntry+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC869F24BA838D00FF771F /* TimeEntry+CoreDataProperties.swift */; };
+		C6EB471F2520123F00FCD0CB /* Tag+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229646D124F3294900FE14E5 /* Tag+CoreDataProperties.swift */; };
+		C6EB47202520123F00FCD0CB /* Tag+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229646D024F3294900FE14E5 /* Tag+CoreDataClass.swift */; };
 		C6F605AF246C6B1700D0FE82 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F605AE246C6B1700D0FE82 /* DateExtension.swift */; };
 /* End PBXBuildFile section */
 
@@ -1800,19 +1808,26 @@
 			files = (
 				C6EB45E6251FEDC100FCD0CB /* CoreDataConstants.swift in Sources */,
 				C6EB4600252008F000FCD0CB /* FormRequest.swift in Sources */,
+				C6EB470A2520122500FCD0CB /* Project+CoreDataProperties.swift in Sources */,
+				C6EB470B2520122500FCD0CB /* Project+CoreDataClass.swift in Sources */,
 				C6EB466D25200BFA00FCD0CB /* RunningRingTimeline.swift in Sources */,
 				C6EB46D825200DCC00FCD0CB /* RunningRingEntryView.swift in Sources */,
 				C6EB468F25200CA500FCD0CB /* SummaryLoader.swift in Sources */,
 				C6EB46AA25200D4D00FCD0CB /* TimeIntervalExtension.swift in Sources */,
+				C6EB47152520123500FCD0CB /* TimeEntry+CoreDataClass.swift in Sources */,
 				C6EB467E25200C1400FCD0CB /* RunningRingEntry.swift in Sources */,
 				C6EB46B325200D5200FCD0CB /* TimeConstants.swift in Sources */,
 				C6EB462D2520092800FCD0CB /* ColorCustom.swift in Sources */,
 				C6D2E5F0251FA2CF0067C0B0 /* RunningRing.intentdefinition in Sources */,
+				C6EB47142520123500FCD0CB /* RawProject.swift in Sources */,
+				C6EB47012520120400FCD0CB /* LoadProjects.swift in Sources */,
 				C6EB461B2520091000FCD0CB /* KeychainConstants.swift in Sources */,
 				C6EB4609252008FB00FCD0CB /* GetCredentials.swift in Sources */,
 				C6EB46482520095700FCD0CB /* RunningEntry.swift in Sources */,
+				C6EB47202520123F00FCD0CB /* Tag+CoreDataClass.swift in Sources */,
 				C6D2E5EB251FA2CD0067C0B0 /* RunningRing.swift in Sources */,
 				C6EB46A125200CB200FCD0CB /* RawSummary.swift in Sources */,
+				C6EB471F2520123F00FCD0CB /* Tag+CoreDataProperties.swift in Sources */,
 				C6EB469825200CAD00FCD0CB /* Summary.swift in Sources */,
 				C6EB46C525200DA000FCD0CB /* DateComponent.swift in Sources */,
 				C6EB46122520090900FCD0CB /* Project.swift in Sources */,
@@ -1820,6 +1835,7 @@
 				C6EB46242520091700FCD0CB /* KeychainError.swift in Sources */,
 				C6EB46362520093A00FCD0CB /* NetworkError.swift in Sources */,
 				C6EB45F7252008E600FCD0CB /* BackgroundRequest.swift in Sources */,
+				C6EB47162520123500FCD0CB /* TimeEntry+CoreDataProperties.swift in Sources */,
 				C6EB46BC25200D6200FCD0CB /* ColorHex.swift in Sources */,
 				C6EB463F2520094D00FCD0CB /* RequestConstants.swift in Sources */,
 			);
