@@ -1175,7 +1175,6 @@
 				22BE1FEB24A9246400A9A739 /* NetCode */,
 				C688BFC624A18BA00077CECF /* Misc */,
 				228174D12501CB64008E471D /* Summary */,
-				C6EB4756252015E800FCD0CB /* Widgets */,
 				22AD5F8024B1467D006EF7FB /* ClokWidget */,
 				227746D22505BC9200D17CA3 /* GridWidget */,
 				22DE58EC251EC86F00379396 /* ProjectIntent */,
@@ -1269,13 +1268,6 @@
 				C6D448EB2484710E0072E7D4 /* ActivityIndicator.swift */,
 			);
 			path = Activity;
-			sourceTree = "<group>";
-		};
-		C6EB4756252015E800FCD0CB /* Widgets */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Widgets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
