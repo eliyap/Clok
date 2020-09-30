@@ -29,7 +29,15 @@ struct RunningEntryRing: View {
 
     var entry: Provider.Entry
     var color: Color { entry.entry.project.wrappedColor }
-    var name: String { entry.entry.project.name }
+    var name: String {
+        if entry.entry == .noEntry {
+            return ""
+        } else if StaticProject.noProject  == entry.entry.project {
+            return ""
+        } else {
+            return entry.entry.project.name
+        }
+    }
     var duration: TimeInterval { entry.date - entry.entry.start }
     
     /// the angle at which to distribute beads
@@ -61,7 +69,7 @@ struct RunningEntryRing: View {
                             .foregroundColor(color)
                             .font(.system(size: 16, design: .rounded))
                             .bold()
-                            .lineLimit(1)
+                            .multilineTextAlignment(.center)
                     }
                 }
             }
@@ -104,7 +112,7 @@ struct RunningEntryRing: View {
     
     /// shows the amount of time spent on this project
     private var TimeIndicator: some View {
-        Text(entry.entry.start, style: .timer)
+        Time
             .font(.system(size: 16, design: .rounded))
             .bold()
             /// lighten or darken to improve contrast
@@ -112,6 +120,15 @@ struct RunningEntryRing: View {
                 ? lighter
                 : darker
             )
+    }
+    
+    private var Time: Text {
+        switch entry.entry {
+        case .noEntry:
+            return Text(placeholderTime)
+        default:
+            return Text(entry.entry.start, style: .timer)
+        }
     }
 }
 
