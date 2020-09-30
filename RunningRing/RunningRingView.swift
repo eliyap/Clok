@@ -42,8 +42,10 @@ struct RunningEntryRing: View {
         VStack(spacing: spaced) {
             GeometryReader { geo in
                 ZStack {
-                    switch hours {
-                    case 0:
+                    switch (entry.entry, hours) {
+                    case (.noEntry, _):
+                        EmptyRing
+                    case (_, 0):
                         EmptyRing
                         HourArc(size: geo.size)
                             .rotationEffect(.tau * 0.75)

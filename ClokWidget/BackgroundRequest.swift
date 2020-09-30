@@ -8,8 +8,7 @@ import Foundation
 import CoreData
 
 func fetchRunningEntry(context: NSManagedObjectContext, completion:@escaping (RunningEntry?, Error?) -> Void) {
-    let sem = DispatchSemaphore(value: 0)
-    var runningData: [String: AnyObject]!
+    var data: [String: AnyObject]!
     
     guard let token = try? getKey().2 else {
         completion(nil, KeychainError.noData)
@@ -20,61 +19,55 @@ func fetchRunningEntry(context: NSManagedObjectContext, completion:@escaping (Ru
         url: runningURL,
         auth: auth(token: token)
     )) {(data: Data?, resp: URLResponse?, error: Error?) -> Void in
-        // release semaphore on exit
-        defer{ sem.signal() }
         
+        /// check the status code
+        let code = (resp as? HTTPURLResponse)?.statusCode
+            ?? -1
+        if !(200...299).contains(code) {
+            print(resp.debugDescription)
+            completion(nil, NetworkError.statusCode(code: code))
+            return
+        }
+
         guard let data = data else {
             completion(nil, error)
             return
         }
         do {
             let json = try JSONSerialization.jsonObject(with: data, options: []) as! [String : AnyObject]
-            guard
-                json["data"] != nil,
-                let data = json["data"] as? [String : AnyObject]
+            
+            /// timer might not be running, in which case `null` is returned
+            guard let
+                data = json["data"] as? [String : AnyObject]
             else {
-                completion (nil, NetworkError.serialization)
+                completion (.noEntry, nil)
                 return
             }
-            runningData = data
+            
+            var project: ProjectLike = StaticProject.unknown
+                
+            if let pid = data["pid"] as? Int {
+                project = loadProjects(context: context)?
+                    .first(where: {$0.wrappedID == pid})
+                    ?? StaticProject.unknown
+            } else {
+                /// if no PID, means no project
+                project = StaticProject.noProject
+            }
+            
+            /// initialize object with known project
+            guard let running = RunningEntry(from: data, project: project) else {
+                completion(nil, NetworkError.serialization)
+                return
+            }
+            
+            /// success!
+            completion(running, nil)
+            return
         } catch {
             completion(nil, NetworkError.serialization)
             return
         }
     }.resume()
-    
-    // wait for prior request to complete
-    if sem.wait(timeout: .now() + 15) == .timedOut {
-        completion(nil, NetworkError.timeout)
-        return
-    }
-    
-    /// timer might not be running
-    guard
-        runningData != nil,
-        runningData["pid"] != nil,
-        let pid = runningData["pid"] as? Int
-    else {
-        /// signal that no entry is currently running
-        completion(RunningEntry.noEntry, nil)
-        return
-    }
-    
-    #warning("reimplement project fetch here! now have core data")
-    let project: ProjectLike = loadProjects(context: context)?
-        .first(where: {$0.wrappedID == pid})
-        ?? StaticProject.unknown
-    
-    /// sanity check, the project we requested was the one we received
-    guard project.wrappedID == pid else {
-        fatalError("\(project.wrappedID) and \(pid) do not match!")
-    }
-    
-    guard let running = RunningEntry(from: runningData, project: project) else {
-        completion(nil, NetworkError.serialization)
-        return
-    }
-    /// success!
-    completion(running, nil)
 }
 

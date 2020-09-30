@@ -13,8 +13,16 @@ enum NetworkError: Error {
     case request(error: NSError)
     case server
     case timeout
+    
+    /// call returned ok, but contained no useful data
+    case emptyReply
+    
+    /// could not de-serialize the data that came back
     case serialization
+    
+    /// returned with a bad status code
     case statusCode(code: Int)
+    
     case other // bad practice, in future try to figure out how I can have some
     // generic error for handling non-network errors
 }
