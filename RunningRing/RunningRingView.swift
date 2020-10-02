@@ -68,7 +68,7 @@ struct RunningEntryRing: View {
                     }
                     VStack {
                         Text(entry.entry.description)
-                            .foregroundColor(color)
+                            .foregroundColor(highContrast)
                             .font(.system(size: 16, design: .rounded))
                             .bold()
                             .multilineTextAlignment(.center)
@@ -82,11 +82,7 @@ struct RunningEntryRing: View {
                     .font(.system(size: 16, design: .rounded))
                     .bold()
                     .lineLimit(1)
-                    /// lighten or darken to improve contrast
-                    .foregroundColor(mode == .dark
-                        ? lighter
-                        : darker
-                    )
+                    .foregroundColor(highContrast)
             }
         }
         .padding(padded)
@@ -113,7 +109,7 @@ struct RunningEntryRing: View {
     var del: Angle {
         switch size {
         case .large:
-            return Angle(radians: 0.14)
+            return Angle(radians: 0.2)
         case .small:
             return Angle(radians: 0.04)
         }
@@ -125,10 +121,7 @@ struct RunningEntryRing: View {
             .font(.system(size: 16, design: .rounded))
             .bold()
             /// lighten or darken to improve contrast
-            .foregroundColor(mode == .dark
-                ? lighter
-                : darker
-            )
+            .foregroundColor(highContrast)
     }
     
     private var Time: Text {
@@ -167,6 +160,13 @@ extension RunningEntryRing {
     
     var darker: Color {
         color.darken(by: RunningEntryRing.colorAdjustment)
+    }
+    
+    /// lighten or darken to improve contrast
+    var highContrast: Color {
+        mode == .dark
+            ? lighter
+            : darker
     }
 }
 
