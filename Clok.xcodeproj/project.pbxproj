@@ -2118,6 +2118,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = ProjectIntent/ProjectIntent.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 949D776DFQ;
 				INFOPLIST_FILE = ProjectIntent/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2125,6 +2126,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MARKETING_VERSION = 2020.11;
 				PRODUCT_BUNDLE_IDENTIFIER = sam.clok.ProjectIntent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -2138,6 +2140,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = ProjectIntent/ProjectIntent.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 949D776DFQ;
 				INFOPLIST_FILE = ProjectIntent/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2145,6 +2148,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MARKETING_VERSION = 2020.11;
 				PRODUCT_BUNDLE_IDENTIFIER = sam.clok.ProjectIntent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -2160,6 +2164,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = MultiRingExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 949D776DFQ;
 				INFOPLIST_FILE = MultiRing/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2167,6 +2172,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MARKETING_VERSION = 2020.11;
 				PRODUCT_BUNDLE_IDENTIFIER = sam.clok.MultiRing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -2182,6 +2188,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = MultiRingExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 949D776DFQ;
 				INFOPLIST_FILE = MultiRing/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2189,6 +2196,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MARKETING_VERSION = 2020.11;
 				PRODUCT_BUNDLE_IDENTIFIER = sam.clok.MultiRing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -2450,6 +2458,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = RunningRingExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 949D776DFQ;
 				INFOPLIST_FILE = RunningRing/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2457,6 +2466,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MARKETING_VERSION = 2020.11;
 				PRODUCT_BUNDLE_IDENTIFIER = sam.clok.RunningRing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -2472,6 +2482,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = RunningRingExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 949D776DFQ;
 				INFOPLIST_FILE = RunningRing/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2479,6 +2490,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MARKETING_VERSION = 2020.11;
 				PRODUCT_BUNDLE_IDENTIFIER = sam.clok.RunningRing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
