@@ -232,6 +232,7 @@
 		C60856C5251FCE2900E6D6C0 /* DateRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E8CA24EB48C200702086 /* DateRange.swift */; };
 		C60856CE251FCE4C00E6D6C0 /* AsNSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2293CEE824EC50F0000B68F4 /* AsNSDate.swift */; };
 		C61D2658249BE1990056C9FA /* StatHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61D2657249BE1990056C9FA /* StatHelpers.swift */; };
+		C6243D442526C421002E1B6E /* RightTriangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6243D432526C421002E1B6E /* RightTriangle.swift */; };
 		C6262B9A251F03950003D435 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22AD5F7C24B1467D006EF7FB /* WidgetKit.framework */; };
 		C6262B9B251F03950003D435 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22AD5F7E24B1467D006EF7FB /* SwiftUI.framework */; };
 		C6262B9E251F03950003D435 /* MultiRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6262B9D251F03950003D435 /* MultiRingView.swift */; };
@@ -611,6 +612,7 @@
 		22FA0719251D0DC800E20C27 /* TokenWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenWebView.swift; sourceTree = "<group>"; };
 		C60856AA251FCB1E00E6D6C0 /* URLStoreExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLStoreExtension.swift; sourceTree = "<group>"; };
 		C61D2657249BE1990056C9FA /* StatHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatHelpers.swift; sourceTree = "<group>"; };
+		C6243D432526C421002E1B6E /* RightTriangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightTriangle.swift; sourceTree = "<group>"; };
 		C6262B99251F03950003D435 /* MultiRingExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MultiRingExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6262B9D251F03950003D435 /* MultiRingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiRingView.swift; sourceTree = "<group>"; };
 		C6262B9F251F03950003D435 /* MultiRing.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = MultiRing.intentdefinition; sourceTree = "<group>"; };
@@ -918,6 +920,7 @@
 				228B100124AEA6E50026AD4B /* RoundBottomRect.swift */,
 				221810DD24B00FB900B63ECA /* EntryTab.swift */,
 				2253FFB825057FF200BBDCE6 /* Arc.swift */,
+				C6243D432526C421002E1B6E /* RightTriangle.swift */,
 			);
 			path = Shapes;
 			sourceTree = "<group>";
@@ -1766,6 +1769,7 @@
 				221810DE24B00FB900B63ECA /* EntryTab.swift in Sources */,
 				22A2CE2924E59E8C000820AD /* AngleAsDate.swift in Sources */,
 				22905B8824DB449400D5AC09 /* LinedBackground.swift in Sources */,
+				C6243D442526C421002E1B6E /* RightTriangle.swift in Sources */,
 				224D10CE24E5AC8C00668FD8 /* WeekdaySelector.swift in Sources */,
 				2264CB3B24AD344F00ECBF2B /* TokenFields.swift in Sources */,
 				22232B8B24A9532000F3C378 /* LoginView.swift in Sources */,
