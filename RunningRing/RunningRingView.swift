@@ -238,6 +238,6 @@ extension RunningEntryRing {
 
 extension RunningEntryRing {
     private func ArrowHead(size: CGSize) -> some View {
-        EmptyView()
+        RightTriangle()
     }
 }

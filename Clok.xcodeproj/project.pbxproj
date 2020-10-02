@@ -232,7 +232,7 @@
 		C60856C5251FCE2900E6D6C0 /* DateRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E8CA24EB48C200702086 /* DateRange.swift */; };
 		C60856CE251FCE4C00E6D6C0 /* AsNSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2293CEE824EC50F0000B68F4 /* AsNSDate.swift */; };
 		C61D2658249BE1990056C9FA /* StatHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61D2657249BE1990056C9FA /* StatHelpers.swift */; };
-		C6243D442526C421002E1B6E /* RightTriangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6243D432526C421002E1B6E /* RightTriangle.swift */; };
+		C6243D672526C4AF002E1B6E /* RightTriangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6243D432526C421002E1B6E /* RightTriangle.swift */; };
 		C6262B9A251F03950003D435 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22AD5F7C24B1467D006EF7FB /* WidgetKit.framework */; };
 		C6262B9B251F03950003D435 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22AD5F7E24B1467D006EF7FB /* SwiftUI.framework */; };
 		C6262B9E251F03950003D435 /* MultiRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6262B9D251F03950003D435 /* MultiRingView.swift */; };
@@ -1769,7 +1769,6 @@
 				221810DE24B00FB900B63ECA /* EntryTab.swift in Sources */,
 				22A2CE2924E59E8C000820AD /* AngleAsDate.swift in Sources */,
 				22905B8824DB449400D5AC09 /* LinedBackground.swift in Sources */,
-				C6243D442526C421002E1B6E /* RightTriangle.swift in Sources */,
 				224D10CE24E5AC8C00668FD8 /* WeekdaySelector.swift in Sources */,
 				2264CB3B24AD344F00ECBF2B /* TokenFields.swift in Sources */,
 				22232B8B24A9532000F3C378 /* LoginView.swift in Sources */,
@@ -1934,6 +1933,7 @@
 				C6D2E5F0251FA2CF0067C0B0 /* RunningRing.intentdefinition in Sources */,
 				C6EB47992520170300FCD0CB /* URLStoreExtension.swift in Sources */,
 				C6EB47142520123500FCD0CB /* RawProject.swift in Sources */,
+				C6243D672526C4AF002E1B6E /* RightTriangle.swift in Sources */,
 				C6EB472A2520138100FCD0CB /* PersistentContainer.swift in Sources */,
 				C6EB47012520120400FCD0CB /* LoadProjects.swift in Sources */,
 				C6EB461B2520091000FCD0CB /* KeychainConstants.swift in Sources */,
