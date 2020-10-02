@@ -69,6 +69,10 @@ struct RunningEntryRing: View {
                             .font(.system(size: 16, design: .rounded))
                             .bold()
                             .multilineTextAlignment(.center)
+                            .background(
+                                RoundedRectangle(cornerRadius: 4)
+                                    .foregroundColor(translucency)
+                            )
                     }
                 }
             }
@@ -165,6 +169,12 @@ extension RunningEntryRing {
             ? lighter
             : darker
     }
+    
+    var translucency: Color {
+        mode == .dark
+            ? Color(.sRGB, red: 0, green: 0, blue: 0, opacity: 0.3)
+            : Color(.sRGB, red: 1, green: 1, blue: 1, opacity: 0.3)
+    }
 }
 
 // MARK: - SemiCircles
@@ -241,3 +251,4 @@ extension RunningEntryRing {
         RightTriangle()
     }
 }
+
