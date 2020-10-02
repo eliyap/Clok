@@ -18,7 +18,8 @@ struct SimpleEntry: TimelineEntry {
 @main
 struct GridWidget: Widget {
     let kind: String = "GridWidget"
-
+    
+    #warning("not ready to ship")
     var body: some WidgetConfiguration {
         IntentConfiguration(
             kind: kind,
@@ -29,7 +30,6 @@ struct GridWidget: Widget {
         }
             .configurationDisplayName("My Widget")
             .description("This is an example widget.")
-            #warning("not ready to ship")
             .supportedFamilies([])
     }
 }
