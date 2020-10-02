@@ -10,11 +10,6 @@ import SwiftUI
 
 struct ProjectRing: View {
     
-    enum RingSize {
-        case small
-        case large
-    }
-    
     /// how much to brighten / darken the view.
     /// bounded (0, 1)
     static let colorAdjustment = CGFloat(0.4)

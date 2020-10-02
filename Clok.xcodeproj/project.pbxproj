@@ -193,6 +193,12 @@
 		22B9E05C24B4FF550040C5AC /* WorkspaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B9E05B24B4FF550040C5AC /* WorkspaceView.swift */; };
 		22BE1FEF24A92B2300A9A739 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BE1FEE24A92B2300A9A739 /* SettingsView.swift */; };
 		22BE1FF424A92DE500A9A739 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BE1FF324A92DE500A9A739 /* Settings.swift */; };
+		22D56F042526BB030011C4AC /* RingSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D56F032526BB030011C4AC /* RingSize.swift */; };
+		22D56F0D2526BB080011C4AC /* RingSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D56F032526BB030011C4AC /* RingSize.swift */; };
+		22D56F162526BB090011C4AC /* RingSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D56F032526BB030011C4AC /* RingSize.swift */; };
+		22D56F172526BB090011C4AC /* RingSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D56F032526BB030011C4AC /* RingSize.swift */; };
+		22D56F182526BB0A0011C4AC /* RingSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D56F032526BB030011C4AC /* RingSize.swift */; };
+		22D56F192526BB0A0011C4AC /* RingSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D56F032526BB030011C4AC /* RingSize.swift */; };
 		22D745982505E93900013A80 /* ChosenWorkspace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D745972505E93900013A80 /* ChosenWorkspace.swift */; };
 		22D7459C2505E9B600013A80 /* ZoomLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D7459B2505E9B600013A80 /* ZoomLevel.swift */; };
 		22D7459E2505E9F300013A80 /* FirstDayOfWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D7459D2505E9F300013A80 /* FirstDayOfWeek.swift */; };
@@ -589,6 +595,7 @@
 		22B9E05B24B4FF550040C5AC /* WorkspaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceView.swift; sourceTree = "<group>"; };
 		22BE1FEE24A92B2300A9A739 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		22BE1FF324A92DE500A9A739 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		22D56F032526BB030011C4AC /* RingSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingSize.swift; sourceTree = "<group>"; };
 		22D745972505E93900013A80 /* ChosenWorkspace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChosenWorkspace.swift; sourceTree = "<group>"; };
 		22D7459B2505E9B600013A80 /* ZoomLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomLevel.swift; sourceTree = "<group>"; };
 		22D7459D2505E9F300013A80 /* FirstDayOfWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstDayOfWeek.swift; sourceTree = "<group>"; };
@@ -1111,6 +1118,7 @@
 			isa = PBXGroup;
 			children = (
 				22885DAF24DA1C9600A56FE3 /* Divisions.swift */,
+				22D56F032526BB030011C4AC /* RingSize.swift */,
 				22351AFF24D37F3C00E14DBC /* Run.swift */,
 				2277E8CA24EB48C200702086 /* DateRange.swift */,
 				C6B0FFA1246F52B600DED011 /* Extensions */,
@@ -1588,6 +1596,7 @@
 				229428C4251E5E19008C0BFF /* AngleExtension.swift in Sources */,
 				2295214F2505BDE900085055 /* TimeIntervalExtension.swift in Sources */,
 				2292C4FE2505CC68005802B5 /* WidgetView.swift in Sources */,
+				22D56F162526BB090011C4AC /* RingSize.swift in Sources */,
 				C6EB47832520170100FCD0CB /* DateMean.swift in Sources */,
 				229521492505BD7600085055 /* Summary.swift in Sources */,
 				2292C4E82505CC1E005802B5 /* Piece7.swift in Sources */,
@@ -1646,6 +1655,7 @@
 				22DC869B24BA7A5E00FF771F /* TimeEntryModel.xcdatamodeld in Sources */,
 				2295215B2505BF3200085055 /* KeychainError.swift in Sources */,
 				2229D7A624EF5C55004E1034 /* TimeIntervalExtension.swift in Sources */,
+				22D56F0D2526BB080011C4AC /* RingSize.swift in Sources */,
 				C6EB47702520170100FCD0CB /* CGPointOperators.swift in Sources */,
 				22B0783324B150C300256EB8 /* FormRequest.swift in Sources */,
 				228174CB2501B7B7008E471D /* DateComponent.swift in Sources */,
@@ -1698,6 +1708,7 @@
 				22DE58EE251EC86F00379396 /* IntentHandler.swift in Sources */,
 				221F6231251EE10B000ECED9 /* KeychainError.swift in Sources */,
 				22DE591D251EC91200379396 /* ClokWidget.intentdefinition in Sources */,
+				22D56F172526BB090011C4AC /* RingSize.swift in Sources */,
 				221F6262251EE18B000ECED9 /* RequestConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1711,6 +1722,7 @@
 				C6EB478B2520170200FCD0CB /* AsNSDate.swift in Sources */,
 				C6EB478C2520170200FCD0CB /* URLStoreExtension.swift in Sources */,
 				C6CDEBF5251F072F0031B81E /* DoubleExtension.swift in Sources */,
+				22D56F182526BB0A0011C4AC /* RingSize.swift in Sources */,
 				C6CDEC5D251F09C10031B81E /* FormRequest.swift in Sources */,
 				C6CDEC3D251F09960031B81E /* KeychainError.swift in Sources */,
 				C6CDEB92251F04860031B81E /* MultiRingTimeline.swift in Sources */,
@@ -1777,6 +1789,7 @@
 				228B100224AEA6E50026AD4B /* RoundBottomRect.swift in Sources */,
 				2295215A2505BF2A00085055 /* KeychainError.swift in Sources */,
 				C65B7D2C2497DE4A00EED981 /* EntryOperations.swift in Sources */,
+				22D56F042526BB030011C4AC /* RingSize.swift in Sources */,
 				22DC86A424BA838D00FF771F /* TimeEntry+CoreDataClass.swift in Sources */,
 				C688A8882479A8D6003260CE /* TimeFrame.swift in Sources */,
 				C69F02782496AFA200D1C650 /* TimeIntervalExtension.swift in Sources */,
@@ -1943,6 +1956,7 @@
 				C6EB46CE25200DAA00FCD0CB /* DecoderExtension.swift in Sources */,
 				C6EB47A12520170300FCD0CB /* AnyTransitionSlide.swift in Sources */,
 				C6EB47A32520170300FCD0CB /* DateAngle.swift in Sources */,
+				22D56F192526BB0A0011C4AC /* RingSize.swift in Sources */,
 				C6EB46242520091700FCD0CB /* KeychainError.swift in Sources */,
 				C6EB47952520170300FCD0CB /* AngleAsDate.swift in Sources */,
 				C6EB46362520093A00FCD0CB /* NetworkError.swift in Sources */,
