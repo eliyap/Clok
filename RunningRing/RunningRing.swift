@@ -29,8 +29,8 @@ struct RunningRing: Widget {
         ) { entry in
             RunningRingEntryView(entry: entry)
         }
-            .configurationDisplayName("My Widget")
-            .description("This is an example widget.")
+            .configurationDisplayName("Timer")
+            .description("Show the running time entry.")
             .supportedFamilies([.systemSmall])
     }
 }
