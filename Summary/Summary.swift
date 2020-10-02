@@ -22,8 +22,8 @@ struct Summary: Decodable {
         let duration: TimeInterval
         
         init(from raw: RawSummary.Project) {
-            id = raw.id ?? NSNotFound
-            name = raw.title.project ?? "No Project"
+            id = raw.id ?? Summary.Project.empty.id
+            name = raw.title.project ?? Summary.Project.empty.name
             duration = TimeInterval(raw.time) / 1000.0
             switch raw.title.hex_color {
             case .none:
@@ -31,14 +31,16 @@ struct Summary: Decodable {
             case let .some(hex):
                 color = Color(hex: hex)
             }
-            entries = raw.items.map { Summary.Entry(from: $0) }
+            entries = raw.items.map {
+                Summary.Entry(from: $0)
+            }
         }
         
         fileprivate init() {
             id = NSNotFound
             entries = []
             color = .clear
-            name = ""
+            name = "No Project"
             duration = .zero
         }
         
