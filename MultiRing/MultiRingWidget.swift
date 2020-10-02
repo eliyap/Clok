@@ -23,8 +23,8 @@ struct MultiRing: Widget {
         ) { entry in
             MultiRingEntryView(entry: entry)
         }
-            .configurationDisplayName("My Widget")
-            .description("This is an example widget.")
+            .configurationDisplayName("Summary")
+            .description("See the projects you've spent time on today.")
             .supportedFamilies([.systemSmall, .systemMedium])
     }
 }
