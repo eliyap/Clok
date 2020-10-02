@@ -27,7 +27,9 @@ struct GridWidget: Widget {
         ) { entry in
             GridWidgetEntryView(entry: entry)
         }
-        .configurationDisplayName("My Widget")
-        .description("This is an example widget.")
+            .configurationDisplayName("My Widget")
+            .description("This is an example widget.")
+            #warning("not ready to ship")
+            .supportedFamilies([])
     }
 }
