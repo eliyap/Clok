@@ -106,7 +106,7 @@ struct RunningEntryRing: View {
     var del: Angle {
         switch size {
         case .large:
-            return Angle(radians: 0.18)
+            return Angle(radians: 0.2)
         case .small:
             return Angle(radians: 0.04)
         }
@@ -233,5 +233,11 @@ extension RunningEntryRing {
                 Color(UIColor.systemGray6),
                 style: StrokeStyle(lineWidth: ringWeight)
             )
+    }
+}
+
+extension RunningEntryRing {
+    private func ArrowHead(size: CGSize) -> some View {
+        EmptyView()
     }
 }
