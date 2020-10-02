@@ -23,10 +23,7 @@ fileprivate let padded: CGFloat = 7
 fileprivate let spaced: CGFloat = 5
 
 struct RunningEntryRing: View {
-    /// how much to brighten / darken the view.
-    /// bounded (0, 1)
-    static let colorAdjustment = CGFloat(0.4)
-
+    
     var entry: Provider.Entry
     var size: RingSize = .large
     
@@ -109,7 +106,7 @@ struct RunningEntryRing: View {
     var del: Angle {
         switch size {
         case .large:
-            return Angle(radians: 0.2)
+            return Angle(radians: 0.18)
         case .small:
             return Angle(radians: 0.04)
         }
@@ -155,11 +152,11 @@ extension RunningEntryRing {
 // MARK: - Adjusted Colors
 extension RunningEntryRing {
     var lighter: Color {
-        color.lighten(by: RunningEntryRing.colorAdjustment)
+        color.lighten(by: 0.4)
     }
     
     var darker: Color {
-        color.darken(by: RunningEntryRing.colorAdjustment)
+        color.darken(by: 0.2)
     }
     
     /// lighten or darken to improve contrast
@@ -221,7 +218,7 @@ extension RunningEntryRing {
                     AngularGradient(
                         gradient: Gradient(stops: [
                             Gradient.Stop(color: color.clearer(), location: .zero),
-                            Gradient.Stop(color: color, location: stop)
+                            Gradient.Stop(color: highContrast, location: stop)
                         ]),
                         center: .center
                     ),
