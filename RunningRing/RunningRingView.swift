@@ -28,6 +28,8 @@ struct RunningEntryRing: View {
     static let colorAdjustment = CGFloat(0.4)
 
     var entry: Provider.Entry
+    var size: RingSize = .large
+    
     var color: Color { entry.entry.project.wrappedColor }
     var name: String {
         if entry.entry == .noEntry {
@@ -108,7 +110,14 @@ struct RunningEntryRing: View {
     }
     
     /// rough guess as to the extrusion angle if the round cap from the end of the line
-    let del: CGFloat = 0.04
+    var del: Angle {
+        switch size {
+        case .large:
+            return Angle(radians: 0.14)
+        case .small:
+            return Angle(radians: 0.04)
+        }
+    }
     
     /// shows the amount of time spent on this project
     private var TimeIndicator: some View {
@@ -206,15 +215,13 @@ extension RunningEntryRing {
     private func HourArc(size: CGSize) -> some View {
         let stop = CGFloat(angle.radians / .tau)
         return Group {
-            Arc(angle: angle)
+            Arc(angle: angle - del)
+                .rotation(del)
                 .strokeBorder(
                     AngularGradient(
                         gradient: Gradient(stops: [
-                            Gradient.Stop(color: .clear, location: .zero),
-                            Gradient.Stop(color: color, location: stop + del),
-                            /// immediately clamp gradient back to clear, so that other cap does not show color
-                            Gradient.Stop(color: .clear, location: stop + del + 0.001),
-                            Gradient.Stop(color: .clear, location: 1),
+                            Gradient.Stop(color: color.clearer(), location: .zero),
+                            Gradient.Stop(color: color, location: stop)
                         ]),
                         center: .center
                     ),

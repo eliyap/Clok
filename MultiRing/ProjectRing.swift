@@ -24,6 +24,16 @@ struct ProjectRing: View {
     
     @Environment(\.colorScheme) var mode
     
+    /// rough guess as to the extrusion angle if the round cap from the end of the line
+    var del: Angle {
+        switch size {
+        case .large:
+            return Angle(radians: 0.14)
+        case .small:
+            return Angle(radians: 0.04)
+        }
+    }
+    
     var body: some View {
             GeometryReader { geo in
                 ZStack {
@@ -208,9 +218,6 @@ extension ProjectRing {
             )
     }
 }
-
-/// rough guess as to the extrusion angle if the round cap from the end of the line
-let del = Angle(radians: 0.14)
 
 // MARK: - Under 1 Hour
 extension ProjectRing {
