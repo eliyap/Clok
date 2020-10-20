@@ -28,9 +28,9 @@ struct ProjectRing: View {
     var del: Angle {
         switch size {
         case .large:
-            return Angle(radians: 0.14)
+            return Angle(radians: 0.15)
         case .small:
-            return Angle(radians: 0.04)
+            return Angle(radians: 0.13)
         }
     }
     
@@ -224,7 +224,7 @@ extension ProjectRing {
     private func HourArc(size: CGSize) -> some View {
         let stop = CGFloat(angle.radians / .tau)
         return Group {
-            Arc(angle: angle - del)
+            Arc(angle: angle)
                 .rotation(del)
                 .strokeBorder(
                     AngularGradient(
@@ -236,6 +236,16 @@ extension ProjectRing {
                     ),
                     style: StrokeStyle(lineWidth: ringWeight, lineCap: .round)
                 )
+                .rotationEffect(-del)
+            /**
+             when the time approaches 1 full hour, the Gradient cannot be fixed.
+             So we cover the misaligned section with a solid color circle.
+            **/
+            Circle()
+                .frame(width: ringWeight, height: ringWeight)
+                .foregroundColor(lighter)
+                .offset(x: (size.width - ringWeight) / 2)
+                .rotationEffect(angle)
         }
     }
     
