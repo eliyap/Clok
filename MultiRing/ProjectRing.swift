@@ -13,7 +13,7 @@ struct ProjectRing: View {
     /// how much to brighten / darken the view.
     /// bounded (0, 1)
     static let colorAdjustment = CGFloat(0.1)
-
+    
     var project: Summary.Project = .empty
     
     var size: RingSize = .small
@@ -34,6 +34,15 @@ struct ProjectRing: View {
         }
     }
     
+    var spacerWidth: CGFloat {
+        switch size {
+        case .large:
+            return 4
+        case .small:
+            return 2
+        }
+    }
+    
     var body: some View {
             GeometryReader { geo in
                 ZStack {
@@ -41,13 +50,10 @@ struct ProjectRing: View {
                     case 0:
                         EmptyRing
                         HourArc(size: geo.size)
-                            .rotationEffect(.tau * 0.75)
+                            .rotationEffect(.tau * -0.25)
                     default:
-                        DarkHalf
-                            .rotationEffect(angle + .tau * 0.75)
-                        LightHalf
-                            .rotationEffect(angle + .tau * 0.25)
-                        Beads(size: geo.size)
+                        MultiHourRing(size: geo.size)
+                            .rotationEffect(.tau * -0.25)
                     }
                     VStack {
                         TimeIndicator
@@ -66,23 +72,6 @@ struct ProjectRing: View {
                 }
             }
             .aspectRatio(1, contentMode: .fit)
-    }
-    
-    private func Beads(size: CGSize) -> some View {
-        ForEach(0..<hours, id: \.self){ index in
-            Circle()
-                .fill(darker)
-                .frame(
-                    width: ringWeight / 2,
-                    height: ringWeight / 2
-                )
-                .offset(x: (size.width - ringWeight) / 2)
-                .rotationEffect(
-                    -Angle(radians: beadAngle * Double(index))
-                    + angle
-                    - .tau / 4
-                )
-        }
     }
     
     /// shows the amount of time spent on this project
@@ -183,8 +172,25 @@ extension ProjectRing {
     }
 }
 
-// MARK: - SemiCircles
+// MARK: - Over 1 Hour
 extension ProjectRing {
+    private func MultiHourRing(size: CGSize) -> some View {
+        Group {
+            DarkHalf
+            Circle()
+                .strokeBorder(Color(UIColor.systemBackground), style: StrokeStyle(lineWidth: spacerWidth))
+                .frame(
+                    width: ringWeight + 2 * spacerWidth,
+                    height: ringWeight + 2 * spacerWidth
+                )
+                .offset(x: (size.width - ringWeight) / 2)
+            LightHalf
+                .rotationEffect(.tau * 0.5)
+            Beads(size: size)
+        }
+        .rotationEffect(angle)
+    }
+    
     /// the darkened half of the ring
     private var DarkHalf: some View {
         Arc.semicircle
@@ -221,6 +227,22 @@ extension ProjectRing {
                 )
             )
     }
+    
+    /// counts up number of full hours
+    private func Beads(size: CGSize) -> some View {
+        ForEach(0..<hours, id: \.self){ index in
+            Circle()
+                /// NOTE: to improve contrast, darken beads by extra amount
+                .fill(project.color.darken(by: 0.3))
+                .frame(
+                    width: ringWeight / 2,
+                    height: ringWeight / 2
+                )
+                .offset(x: (size.width - ringWeight) / 2)
+                .rotationEffect(-Angle(radians: beadAngle * Double(index)))
+        }
+    }
+    
 }
 
 // MARK: - Under 1 Hour
