@@ -52,7 +52,11 @@ struct ProjectRing: View {
                     VStack {
                         TimeIndicator
                         Text(project.name)
-                            .foregroundColor(project.color)
+                            /// lighten or darken to improve contrast
+                            .foregroundColor(mode == .dark
+                                ? lighter
+                                : darker
+                            )
                             .font(.system(size: nameFont, design: .rounded))
                             .bold()
                             .lineLimit(1)
