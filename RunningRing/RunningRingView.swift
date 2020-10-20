@@ -222,18 +222,28 @@ extension RunningEntryRing {
     private func HourArc(size: CGSize) -> some View {
         let stop = CGFloat(angle.radians / .tau)
         return Group {
-            Arc(angle: angle - del)
+            Arc(angle: angle)
                 .rotation(del)
                 .strokeBorder(
                     AngularGradient(
                         gradient: Gradient(stops: [
-                            Gradient.Stop(color: color.clearer(), location: .zero),
-                            Gradient.Stop(color: highContrast, location: stop)
+                            Gradient.Stop(color: darker, location: .zero),
+                            Gradient.Stop(color: lighter, location: stop)
                         ]),
                         center: .center
                     ),
                     style: StrokeStyle(lineWidth: ringWeight, lineCap: .round)
                 )
+                .rotationEffect(-del)
+            /**
+             when the time approaches 1 full hour, the Gradient cannot be fixed.
+             So we cover the misaligned section with a solid color circle.
+            **/
+            Circle()
+                .frame(width: ringWeight, height: ringWeight)
+                .foregroundColor(lighter)
+                .offset(x: (size.width - ringWeight) / 2)
+                .rotationEffect(angle)
         }
     }
     
