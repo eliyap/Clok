@@ -46,8 +46,11 @@ struct ProjectRing: View {
     var body: some View {
             GeometryReader { geo in
                 ZStack {
-                    switch hours {
-                    case 0:
+                    switch (project, hours) {
+                    /// special case to avoid visual glitch, explicitly check if `.empty`
+                    case (.empty, _):
+                        EmptyRing
+                    case (_, 0):
                         EmptyRing
                         HourArc(size: geo.size)
                             .rotationEffect(.tau * -0.25)
@@ -79,6 +82,9 @@ struct ProjectRing: View {
         /// (ab)use `Group` to erase type
         Group {
             switch hours {
+            /// signals `.empty`
+            case -1:
+                EmptyRing
             case 0:
                 Text("\(mins)m")
                     .font(.system(size: minuteFont, design: .rounded))
@@ -280,7 +286,7 @@ extension ProjectRing {
         }
     }
     
-    private var EmptyRing: some View {
+    var EmptyRing: some View {
         Circle()
             .strokeBorder(
                 Color(UIColor.systemGray6),

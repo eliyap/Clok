@@ -14,7 +14,15 @@ struct Summary: Decodable {
     let total: TimeInterval
     let projects: [Summary.Project]
     
-    struct Project {
+    struct Project: Equatable {
+        static func == (lhs: Summary.Project, rhs: Summary.Project) -> Bool {
+            return lhs.id == rhs.id &&
+                lhs.entries.count == rhs.entries.count &&
+                lhs.color == rhs.color &&
+                lhs.duration == rhs.duration &&
+                lhs.name == rhs.name
+        }
+        
         let id: Int
         let entries: [Summary.Entry]
         let color: Color
@@ -22,8 +30,8 @@ struct Summary: Decodable {
         let duration: TimeInterval
         
         init(from raw: RawSummary.Project) {
-            id = raw.id ?? Summary.Project.empty.id
-            name = raw.title.project ?? Summary.Project.empty.name
+            id = raw.id ?? NSNotFound
+            name = raw.title.project ?? "No Project"
             duration = TimeInterval(raw.time) / 1000.0
             switch raw.title.hex_color {
             case .none:
@@ -44,6 +52,7 @@ struct Summary: Decodable {
             self.duration = duration
         }
         
+        /// placeholder project when there are not enough to populate the widget.
         static let empty = Summary.Project(id: NSNotFound, color: .clear, name: "", duration: .zero)
         static let placeholder_1 = Summary.Project(id: -1, color: .red, name: "Work", duration: .hour)
     }
