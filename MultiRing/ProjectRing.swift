@@ -177,13 +177,7 @@ extension ProjectRing {
     private func MultiHourRing(size: CGSize) -> some View {
         Group {
             DarkHalf
-            Circle()
-                .strokeBorder(Color(UIColor.systemBackground), style: StrokeStyle(lineWidth: spacerWidth))
-                .frame(
-                    width: ringWeight + 2 * spacerWidth,
-                    height: ringWeight + 2 * spacerWidth
-                )
-                .offset(x: (size.width - ringWeight) / 2)
+            SpacerRing(size: size)
             LightHalf
                 .rotationEffect(.tau * 0.5)
             Beads(size: size)
@@ -226,6 +220,17 @@ extension ProjectRing {
                     lineCap: .round
                 )
             )
+    }
+    
+    /// makes it easier to see where the boundary os
+    private func SpacerRing(size: CGSize) -> some View {
+        Circle()
+            .strokeBorder(Color(UIColor.systemBackground), style: StrokeStyle(lineWidth: spacerWidth))
+            .frame(
+                width: ringWeight + 2 * spacerWidth,
+                height: ringWeight + 2 * spacerWidth
+            )
+            .offset(x: (size.width - ringWeight) / 2)
     }
     
     /// counts up number of full hours
