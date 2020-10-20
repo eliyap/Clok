@@ -44,7 +44,7 @@ struct Summary: Decodable {
             self.duration = duration
         }
         
-        static let empty = Summary.Project(id: NSNotFound, color: .clear, name: "No Project", duration: .zero)
+        static let empty = Summary.Project(id: NSNotFound, color: .clear, name: "", duration: .zero)
         static let placeholder_1 = Summary.Project(id: -1, color: .red, name: "Work", duration: .hour)
     }
     
