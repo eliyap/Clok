@@ -62,10 +62,7 @@ struct ProjectRing: View {
                         TimeIndicator
                         Text(project.name)
                             /// lighten or darken to improve contrast
-                            .foregroundColor(mode == .dark
-                                ? lighter
-                                : darker
-                            )
+                            .foregroundColor(highContrast)
                             .font(.system(size: nameFont, design: .rounded))
                             .bold()
                             .lineLimit(1)
@@ -96,10 +93,7 @@ struct ProjectRing: View {
                         .font(.system(size: hourFont, design: .rounded))
                         .bold()
                         /// lighten or darken to improve contrast
-                        .foregroundColor(mode == .dark
-                            ? lighter
-                            : darker
-                        )
+                        .foregroundColor(highContrast)
                 }
             }
         }
@@ -175,6 +169,13 @@ extension ProjectRing {
     
     var darker: Color {
         project.color.darken(by: ProjectRing.colorAdjustment)
+    }
+    
+    /// lighten or darken to improve contrast
+    var highContrast: Color {
+        mode == .dark
+            ? lighter
+            : darker
     }
 }
 
