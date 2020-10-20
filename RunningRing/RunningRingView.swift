@@ -43,6 +43,9 @@ struct RunningEntryRing: View {
     /// should allow them to just touch when at full size
     var beadAngle = 0.3
     
+    /// width of the spacing ring
+    let spacerWidth = CGFloat(4)
+    
     @Environment(\.colorScheme) var mode
     
     var body: some View {
@@ -55,13 +58,10 @@ struct RunningEntryRing: View {
                     case (_, 0):
                         EmptyRing
                         HourArc(size: geo.size)
-                            .rotationEffect(.tau * 0.75)
+                            .rotationEffect(.tau * -0.25)
                     default:
-                        DarkHalf
-                            .rotationEffect(angle + .tau * 0.75)
-                        LightHalf
-                            .rotationEffect(angle + .tau * 0.25)
-                        Beads(size: geo.size)
+                        MultiHourRing(size: geo.size)
+                            .rotationEffect(.tau * -0.25)
                     }
                     VStack {
                         Text(entry.entry.description)
@@ -87,23 +87,6 @@ struct RunningEntryRing: View {
             }
         }
         .padding(padded)
-    }
-    
-    private func Beads(size: CGSize) -> some View {
-        ForEach(0..<max(hours, 0), id: \.self){ index in
-            Circle()
-                .fill(darker)
-                .frame(
-                    width: ringWeight / 2,
-                    height: ringWeight / 2
-                )
-                .offset(x: (size.width - ringWeight) / 2)
-                .rotationEffect(
-                    -Angle(radians: beadAngle * Double(index))
-                    + angle
-                    - .tau / 4
-                )
-        }
     }
     
     /// rough guess as to the extrusion angle if the round cap from the end of the line
@@ -175,10 +158,28 @@ extension RunningEntryRing {
             ? Color(.sRGB, red: 0, green: 0, blue: 0, opacity: 0.3)
             : Color(.sRGB, red: 1, green: 1, blue: 1, opacity: 0.3)
     }
+    
+    /// for some reason, dark mode is returning a very dark gray, so workaround
+    var modeBG: Color {
+        mode == .dark
+            ? .black
+            : .white
+    }
 }
 
-// MARK: - SemiCircles
+// MARK: - Over 1 Hour
 extension RunningEntryRing {
+    private func MultiHourRing(size: CGSize) -> some View {
+        Group {
+            DarkHalf
+            SpacerRing(size: size)
+            LightHalf
+                .rotationEffect(.tau * 0.5)
+            Beads(size: size)
+        }
+        .rotationEffect(angle)
+    }
+    
     /// the darkened half of the ring
     private var DarkHalf: some View {
         Arc.semicircle
@@ -214,6 +215,31 @@ extension RunningEntryRing {
                     lineCap: .round
                 )
             )
+    }
+    
+    /// makes it easier to see where the boundary os
+    private func SpacerRing(size: CGSize) -> some View {
+        Circle()
+            .strokeBorder(modeBG, style: StrokeStyle(lineWidth: spacerWidth))
+            .frame(
+                width: ringWeight + 2 * spacerWidth,
+                height: ringWeight + 2 * spacerWidth
+            )
+            .offset(x: (size.width - ringWeight) / 2)
+    }
+    
+    private func Beads(size: CGSize) -> some View {
+        ForEach(0..<max(hours, 0), id: \.self){ index in
+            Circle()
+                /// NOTE: to improve contrast, darken beads by extra amount
+                .fill(color.darken(by: 0.3))
+                .frame(
+                    width: ringWeight / 2,
+                    height: ringWeight / 2
+                )
+                .offset(x: (size.width - ringWeight) / 2)
+                .rotationEffect(-Angle(radians: beadAngle * Double(index)))
+        }
     }
 }
 

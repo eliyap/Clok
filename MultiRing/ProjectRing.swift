@@ -34,6 +34,7 @@ struct ProjectRing: View {
         }
     }
     
+    /// width of the spacing ring
     var spacerWidth: CGFloat {
         switch size {
         case .large:
@@ -177,6 +178,13 @@ extension ProjectRing {
             ? lighter
             : darker
     }
+    
+    /// for some reason, dark mode is returning a very dark gray, so workaround
+    var modeBG: Color {
+        mode == .dark
+            ? .black
+            : .white
+    }
 }
 
 // MARK: - Over 1 Hour
@@ -232,7 +240,7 @@ extension ProjectRing {
     /// makes it easier to see where the boundary os
     private func SpacerRing(size: CGSize) -> some View {
         Circle()
-            .strokeBorder(Color(UIColor.systemBackground), style: StrokeStyle(lineWidth: spacerWidth))
+            .strokeBorder(modeBG, style: StrokeStyle(lineWidth: spacerWidth))
             .frame(
                 width: ringWeight + 2 * spacerWidth,
                 height: ringWeight + 2 * spacerWidth
