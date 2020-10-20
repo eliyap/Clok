@@ -254,7 +254,6 @@ extension ProjectRing {
                 .rotationEffect(-Angle(radians: beadAngle * Double(index)))
         }
     }
-    
 }
 
 // MARK: - Under 1 Hour
