@@ -12,7 +12,8 @@ struct RunningRingEntryView : View {
     var entry: Provider.Entry
 
     var body: some View {
-        RunningEntryRing(entry: entry)
+        RunningSquare()
+//        RunningEntryRing(entry: entry)
     }
 }
 
