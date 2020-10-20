@@ -36,15 +36,16 @@ struct Summary: Decodable {
             }
         }
         
-        fileprivate init() {
-            id = NSNotFound
+        fileprivate init(id: Int, color: Color, name: String, duration: TimeInterval){
+            self.id = id
             entries = []
-            color = .clear
-            name = "No Project"
-            duration = .zero
+            self.color = color
+            self.name = name
+            self.duration = duration
         }
         
-        static let empty = Summary.Project()
+        static let empty = Summary.Project(id: NSNotFound, color: .clear, name: "No Project", duration: .zero)
+        static let placeholder_1 = Summary.Project(id: -1, color: .red, name: "Work", duration: .hour)
     }
     
     struct Entry {

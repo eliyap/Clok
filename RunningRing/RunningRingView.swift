@@ -156,11 +156,11 @@ extension RunningEntryRing {
 // MARK: - Adjusted Colors
 extension RunningEntryRing {
     var lighter: Color {
-        color.lighten(by: 0.4)
+        color.lighten(by: 0.1)
     }
     
     var darker: Color {
-        color.darken(by: 0.2)
+        color.darken(by: 0.1)
     }
     
     /// lighten or darken to improve contrast

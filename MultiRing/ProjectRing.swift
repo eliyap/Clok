@@ -12,7 +12,7 @@ struct ProjectRing: View {
     
     /// how much to brighten / darken the view.
     /// bounded (0, 1)
-    static let colorAdjustment = CGFloat(0.4)
+    static let colorAdjustment = CGFloat(0.1)
 
     var project: Summary.Project = .empty
     

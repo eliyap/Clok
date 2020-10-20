@@ -26,7 +26,7 @@ struct Provider: IntentTimelineProvider {
     }
 
     func getSnapshot(for configuration: Intent, in context: Context, completion: @escaping (Entry) -> ()) {
-        let entry = Entry(date: Date(), projects: [])
+        let entry = Entry(date: Date(), projects: [.placeholder_1])
         completion(entry)
     }
 
