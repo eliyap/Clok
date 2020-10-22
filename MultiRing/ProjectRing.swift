@@ -253,7 +253,7 @@ extension ProjectRing {
         ForEach(0..<hours, id: \.self){ index in
             Circle()
                 /// NOTE: to improve contrast, darken beads by extra amount
-                .fill(project.color.darken(by: 0.3))
+                .fill(modeBG)
                 .frame(
                     width: ringWeight / 2,
                     height: ringWeight / 2
