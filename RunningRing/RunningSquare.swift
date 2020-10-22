@@ -39,7 +39,6 @@ struct RunningSquare: View {
                 Spacer()
                 HStack(alignment: .bottom) {
                     VStack(alignment: .leading) {
-                        Text("\(adjustedOpacity)")
                         ProjectLabel
                         TimeIndicator
                     }
