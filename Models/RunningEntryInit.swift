@@ -59,5 +59,7 @@ extension RunningEntry {
         } else {
             project = StaticProject.noProject
         }
+        /// update `pid` from previously set `unknown` pid
+        self.pid = project.wrappedID
     }
 }
