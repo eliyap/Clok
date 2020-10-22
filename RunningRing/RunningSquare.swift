@@ -31,23 +31,23 @@ struct RunningSquare: View {
                     .rotationEffect(-.tau / 4)
                 HourDots(count: hours)
             }
-            VStack(alignment: .leading) {
-                Text(entry.entry.entryDescription)
-                    .font(.headline)
-                    /// allow for something as long as `Troublemaker General`, but don't allow it to overwhelm the widget
-                    .lineLimit(1)
-                Spacer()
-                HStack(alignment: .bottom) {
-                    VStack(alignment: .leading) {
-                        ProjectLabel
-                        TimeIndicator
-                    }
+            GeometryReader { geo in
+                VStack(alignment: .leading) {
+                    EntryLabel
+                    TagStack(size: geo.size)
                     Spacer()
-                    Image(systemName: "arrow.counterclockwise")
-                        .font(Font.system(size: 16).weight(.semibold))
-                        /// not inset properly for some reason
-                        .padding(strokeWidth / 2)
-                        .opacity(0.5)
+                    HStack(alignment: .bottom) {
+                        VStack(alignment: .leading) {
+                            ProjectLabel
+                            TimeIndicator
+                        }
+                        Spacer()
+                        Image(systemName: "arrow.counterclockwise")
+                            .font(Font.system(size: 16).weight(.semibold))
+                            /// not inset properly for some reason
+                            .padding(strokeWidth / 2)
+                            .opacity(0.5)
+                    }
                 }
             }
                 .padding(strokeWidth * 2.5)
@@ -161,6 +161,13 @@ extension RunningSquare {
 // MARK: - Text Bits
 extension RunningSquare {
     
+    private var EntryLabel: some View {
+        Text(entry.entry.entryDescription)
+            .font(.headline)
+            /// allow for something as long as `Troublemaker General`, but don't allow it to overwhelm the widget
+            .lineLimit(1)
+    }
+    
     private var ProjectLabel: some View {
         Text(entry.entry == .noEntry
              ? ""
@@ -186,6 +193,32 @@ extension RunningSquare {
         default:
             return Text(entry.entry.start, style: .timer)
         }
+    }
+}
+
+// MARK: -Tags {
+extension RunningSquare {
+    private func TagStack(size: CGSize) -> some View {
+        HStack {
+            if !entry.entry.tags.isEmpty {
+                Image(systemName: "tag")
+                    .font(.caption)
+            }
+            /// I trust that toggl's servers will not feed us duplicates, so hashing is safe
+            ForEach(entry.entry.tags, id: \.self.hash) { tag in
+                Text(tag)
+                    .lineLimit(1)
+                    .font(.caption)
+                    .padding(3)
+                    .background(
+                        RoundedRectangle(cornerRadius: 5)
+                            .foregroundColor(Color(UIColor.systemGray6))
+                    )
+            }
+        }
+            .fixedSize()
+            .frame(maxWidth: size.width, alignment: .leading)
+            .clipped()
     }
 }
 
