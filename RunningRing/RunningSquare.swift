@@ -166,9 +166,9 @@ extension RunningSquare {
              ? ""
              : entry.entry.project.name
         )
-            .lineLimit(1)
             .font(.subheadline)
             .bold()
+            .lineLimit(1)
             .foregroundColor(highContrast)
     }
     
