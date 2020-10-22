@@ -35,7 +35,7 @@ struct RunningSquare: View {
                 Text(entry.entry.entryDescription)
                     .font(.headline)
                     /// allow for something as long as `Troublemaker General`, but don't allow it to overwhelm the widget
-                    .lineLimit(2)
+                    .lineLimit(1)
                 Spacer()
                 HStack(alignment: .bottom) {
                     VStack(alignment: .leading) {
@@ -166,6 +166,7 @@ extension RunningSquare {
              ? ""
              : entry.entry.project.name
         )
+            .lineLimit(1)
             .font(.subheadline)
             .bold()
             .foregroundColor(highContrast)
