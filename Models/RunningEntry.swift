@@ -68,7 +68,7 @@ final class RunningEntry: NSObject, NSSecureCoding {
             lhs.start == rhs.start &&
             lhs.entryDescription == rhs.entryDescription &&
             /// remember to check if the project was updated
-            lhs.project.wrappedID == rhs.project.wrappedID
+            lhs.pid == rhs.pid
        }
     
     //MARK:- NSSecureCoding Compliance

@@ -77,6 +77,9 @@ struct RunningEntryView: View {
         )
         /// if fetch is successful, save to `UserDefaults`
         .map { runningEntry in
+            if WidgetManager.running != runningEntry {
+                
+            }
             WidgetManager.running = runningEntry
             return runningEntry
         }
