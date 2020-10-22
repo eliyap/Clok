@@ -16,8 +16,6 @@ import Foundation
  we do not store them in the keychain, instead in the User Defaults area
  */
 struct WorkspaceManager {
-    
     static let suiteName = "group.sam.clok"
     static let suite = UserDefaults(suiteName: suiteName)
-    
 }

@@ -8,6 +8,6 @@
 
 import Foundation
 struct WidgetManager {
-    static let suiteName = "widgets.sam.clok"
+    static let suiteName = "group.sam.clokwidgets"
     static let suite = UserDefaults(suiteName: suiteName)
 }
