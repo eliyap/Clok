@@ -15,6 +15,9 @@ import CoreData
  */
 fileprivate extension TimeInterval {
     static let widgetPeriod: TimeInterval = .hour / 6
+    /// how often to request a redraw, in seconds
+    /// turn up if the widget gets frozen by the OS
+    static let redrawPeriod: TimeInterval = 180
 }
 
 struct Provider: IntentTimelineProvider {
@@ -53,9 +56,9 @@ struct Provider: IntentTimelineProvider {
             /// load again after `widgetPeriod`
             let timeline = Timeline(
                 /// update every minute
-                entries: (0..<Int(TimeInterval.widgetPeriod / 60)).map {
+                entries: (0..<Int(TimeInterval.widgetPeriod / .redrawPeriod)).map {
                     RunningRingEntry(
-                        date: Date() + 60.0 * Double($0),
+                        date: Date() + TimeInterval.redrawPeriod * Double($0),
                         entry: running
                     )
                 },
