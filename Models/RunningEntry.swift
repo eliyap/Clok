@@ -22,6 +22,7 @@ final class RunningEntry: NSObject, NSSecureCoding {
         self.id = id
         self.start = start
         self.project = project
+        self.pid = project.wrappedID
         self.entryDescription = entryDescription
     }
     
@@ -117,11 +118,16 @@ extension RunningEntry {
     /// expressly for seeing if the running entry has had substantial updates to be displayed on the widget
     /// note that the `UserDefaults` copy will have stripped down information
     static func widgetMatch(_ lhs: RunningEntry?, _ rhs: RunningEntry?) -> Bool {
-        guard lhs != .none || rhs != .none else { return true }
+        guard !(lhs == .none && rhs == .none) else { return true }
         guard
             let lhs = lhs,
             let rhs = rhs
         else { return false }
-        return lhs.start != rhs.start
+        print(lhs.pid)
+        print(rhs.pid)
+        return lhs.start == rhs.start
+            && lhs.id == rhs.id
+            && lhs.entryDescription == rhs.entryDescription
+            && lhs.pid == rhs.pid
     }
 }

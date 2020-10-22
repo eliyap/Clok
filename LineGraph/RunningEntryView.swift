@@ -84,9 +84,9 @@ struct RunningEntryView: View {
             ) {
                 #if DEBUG
                 print("Difference Detected, Reloading Widget Timeline")
+                #endif
                 WidgetManager.running = runningEntry
                 WidgetCenter.shared.reloadAllTimelines()
-                #endif
             }
             return runningEntry
         }
