@@ -88,7 +88,12 @@ struct RunningEntryView: View {
                 WidgetManager.running = runningEntry
                 WidgetCenter.shared.reloadAllTimelines()
             }
-            return runningEntry
+            return WidgetManager.running
+        }
+        .map { (run: RunningEntry?) in
+            print(run?.tags)
+            return run
+            
         }
         .assign(to: \.running, on: self)
     }

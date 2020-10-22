@@ -45,7 +45,8 @@ extension RunningEntry {
             id: rawRunningEntry.id,
             start: rawRunningEntry.start,
             project: StaticProject.unknown,
-            entryDescription: rawRunningEntry.description
+            entryDescription: rawRunningEntry.description,
+            tags: rawRunningEntry.tags
         )
         
         /**

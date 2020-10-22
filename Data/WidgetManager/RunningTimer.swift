@@ -15,11 +15,13 @@ extension WidgetManager {
     static var running: RunningEntry? {
         get {
             guard let decoded = suite?.object(forKey: runningKey) as? Data else {
-                print("failed to decode")
                 return nil
-                
             }
-            return try? NSKeyedUnarchiver.unarchivedObject(ofClasses: [RunningEntry.self, NSDate.self], from: decoded) as? RunningEntry
+            #warning("forced conversion!")
+            return try! NSKeyedUnarchiver.unarchivedObject(
+                ofClasses: [RunningEntry.self, NSDate.self, NSString.self, NSArray.self],
+                from: decoded
+            ) as? RunningEntry
         }
         set {
             guard let running = newValue else { return }

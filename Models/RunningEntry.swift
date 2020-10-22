@@ -16,14 +16,22 @@ final class RunningEntry: NSObject, NSSecureCoding {
     var start: Date
     var project: ProjectLike
     var entryDescription: String
+    var tags: [String] = []
     let df = DateFormatter()
     
-    init(id: Int, start: Date, project: ProjectLike, entryDescription: String){
+    init(
+        id: Int,
+        start: Date,
+        project: ProjectLike,
+        entryDescription: String,
+        tags: [String]?
+    ){
         self.id = id
         self.start = start
         self.project = project
         self.pid = project.wrappedID
         self.entryDescription = entryDescription
+        self.tags = tags ?? []
     }
     
     // parse from JSON for Widget
@@ -46,6 +54,8 @@ final class RunningEntry: NSObject, NSSecureCoding {
         self.entryDescription = entryDescription
         self.start = start
         self.project = project
+        self.tags = data["tags"] as? [String]
+            ?? []
     }
     
     /// Headlining description,
@@ -85,14 +95,16 @@ final class RunningEntry: NSObject, NSSecureCoding {
         coder.encode(pid, forKey: "pid")
         coder.encode(start, forKey: "start")
         coder.encode(entryDescription, forKey: "entryDescription")
+        coder.encode(tags, forKey: "tags")
     }
     
     init?(coder: NSCoder) {
         id = coder.decodeInteger(forKey: "id")
         pid = coder.decodeInteger(forKey: "pid")
-        
         /// note: we will assign project later, for now leave `unknown`
-        self.project = StaticProject.unknown
+        project = StaticProject.unknown
+        tags = coder.decodeObject(forKey: "tags") as? [String]
+            ?? []
         
         guard
             let start = coder.decodeObject(forKey: "start") as? Date,
@@ -100,8 +112,8 @@ final class RunningEntry: NSObject, NSSecureCoding {
         else { return nil }
         self.start = start
         self.entryDescription = entryDescription
+        
     }
-    
 }
 
 extension RunningEntry {
@@ -110,7 +122,8 @@ extension RunningEntry {
         id: NSNotFound,
         start: Date.distantFuture,
         project: StaticProject.noProject,
-        entryDescription: "No Entry Running"
+        entryDescription: "No Entry Running",
+        tags: []
     )
 }
 
