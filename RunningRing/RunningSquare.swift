@@ -17,7 +17,7 @@ struct RunningSquare: View {
     let strokeWidth = CGFloat(7)
     
     var body: some View {
-        ZStack(alignment: .leading) {
+        ZStack {
             switch (entry.entry, hours) {
             case (.noEntry, _):
                 EmptyRing
@@ -31,20 +31,23 @@ struct RunningSquare: View {
                     .rotationEffect(-.tau / 4)
                 HourDots(count: hours)
             }
-            VStack(alignment: .leading) {
-                Text(entry.entry.description)
-                    .font(.headline)
-                    /// allow for something as long as `Troublemaker General`, but don't allow it to overwhelm the widget
-                    .lineLimit(2)
+            HStack {
+                VStack(alignment: .leading) {
+                    Text(entry.entry.description)
+                        .font(.headline)
+                        /// allow for something as long as `Troublemaker General`, but don't allow it to overwhelm the widget
+                        .lineLimit(2)
+                    Spacer()
+                    Text(entry.entry == .noEntry
+                         ? ""
+                         : entry.entry.project.name
+                    )
+                        .font(.subheadline)
+                        .bold()
+                        .foregroundColor(highContrast)
+                    TimeIndicator
+                }
                 Spacer()
-                Text(entry.entry == .noEntry
-                     ? ""
-                     : entry.entry.project.name
-                )
-                    .font(.subheadline)
-                    .bold()
-                    .foregroundColor(highContrast)
-                TimeIndicator
             }
                 .padding(strokeWidth * 2.5)
         }
