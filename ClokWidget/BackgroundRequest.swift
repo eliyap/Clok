@@ -8,8 +8,6 @@ import Foundation
 import CoreData
 
 func fetchRunningEntry(context: NSManagedObjectContext, completion:@escaping (RunningEntry?, Error?) -> Void) {
-    var data: [String: AnyObject]!
-    
     guard let token = try? getKey().2 else {
         completion(nil, KeychainError.noData)
         return

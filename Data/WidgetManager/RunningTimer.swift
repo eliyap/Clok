@@ -17,8 +17,7 @@ extension WidgetManager {
             guard let decoded = suite?.object(forKey: runningKey) as? Data else {
                 return nil
             }
-            #warning("forced conversion!")
-            return try! NSKeyedUnarchiver.unarchivedObject(
+            return try? NSKeyedUnarchiver.unarchivedObject(
                 ofClasses: [RunningEntry.self, NSDate.self, NSString.self, NSArray.self],
                 from: decoded
             ) as? RunningEntry

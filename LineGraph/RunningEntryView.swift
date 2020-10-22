@@ -78,7 +78,6 @@ struct RunningEntryView: View {
         )
         /// if fetch is successful, save to `UserDefaults`
         .map { runningEntry in
-            print(runningEntry?.tags)
             if !RunningEntry.widgetMatch(
                 WidgetManager.running,
                 runningEntry
@@ -90,11 +89,6 @@ struct RunningEntryView: View {
                 WidgetCenter.shared.reloadAllTimelines()
             }
             return WidgetManager.running
-        }
-        .map { (run: RunningEntry?) in
-            print(run?.tags)
-            return run
-            
         }
         .assign(to: \.running, on: self)
     }
