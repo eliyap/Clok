@@ -44,8 +44,10 @@ func fetchRunningEntry(context: NSManagedObjectContext, completion:@escaping (Ru
                 return
             }
             
+            /// project is `unknown` by default
             var project: ProjectLike = StaticProject.unknown
-                
+            
+            /// check Project ID against Core Data list
             if let pid = data["pid"] as? Int {
                 project = loadProjects(context: context)?
                     .first(where: {$0.wrappedID == pid})

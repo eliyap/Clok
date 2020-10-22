@@ -53,7 +53,7 @@ extension StaticProject {
     static let all = [noProject, unknown, any]
     
     static let noProject = StaticProject(
-        name: "No Project",
+        name: "[None]",
         color: Color.noProject,
         id: NSNotFound /// just a random named number
     )
