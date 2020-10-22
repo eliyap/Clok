@@ -73,7 +73,7 @@ struct RunningSquare: View {
         /// (ab)use `Group` to erase type
         return Group {
             switch count {
-            case 0:
+            case let x where x <= 0:
                 dot(Color(UIColor.systemGray6))
             case 1:
                 dot(color)
