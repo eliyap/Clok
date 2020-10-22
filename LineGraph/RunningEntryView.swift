@@ -78,6 +78,7 @@ struct RunningEntryView: View {
         )
         /// if fetch is successful, save to `UserDefaults`
         .map { runningEntry in
+            print(runningEntry?.tags)
             if !RunningEntry.widgetMatch(
                 WidgetManager.running,
                 runningEntry

@@ -140,5 +140,6 @@ extension RunningEntry {
             && lhs.id == rhs.id
             && lhs.entryDescription == rhs.entryDescription
             && lhs.pid == rhs.pid
+            && lhs.tags == rhs.tags
     }
 }
