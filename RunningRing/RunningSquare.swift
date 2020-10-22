@@ -43,10 +43,12 @@ struct RunningSquare: View {
                         TimeIndicator
                     }
                     Spacer()
-                    Image(systemName: "arrow.counterclockwise.circle.fill")
-                        .font(Font.system(size: 24).bold())
+                    Image(systemName: "arrow.counterclockwise")
+                        .font(Font.system(size: 16).weight(.semibold))
+                        /// not inset properly for some reason
+                        .padding(strokeWidth / 2)
+                        .opacity(0.5)
                 }
-                
             }
                 .padding(strokeWidth * 2.5)
         }
@@ -92,7 +94,6 @@ struct RunningSquare: View {
                 dotRing()
             }
         }
-        
     }
 }
 
