@@ -13,9 +13,7 @@ struct ProjectRing: View {
     /// how much to brighten / darken the view.
     /// bounded (0, 1)
     static let colorAdjustment = CGFloat(0.1)
-    
     var project: Summary.Project = .empty
-    
     var size: RingSize = .small
     
     /// the angle at which to distribute beads
@@ -23,26 +21,6 @@ struct ProjectRing: View {
     var beadAngle = 0.3
     
     @Environment(\.colorScheme) var mode
-    
-    /// rough guess as to the extrusion angle if the round cap from the end of the line
-    var del: Angle {
-        switch size {
-        case .large:
-            return Angle(radians: 0.15)
-        case .small:
-            return Angle(radians: 0.13)
-        }
-    }
-    
-    /// width of the spacing ring
-    var spacerWidth: CGFloat {
-        switch size {
-        case .large:
-            return 4
-        case .small:
-            return 2
-        }
-    }
     
     var body: some View {
             GeometryReader { geo in
@@ -55,10 +33,13 @@ struct ProjectRing: View {
                         EmptyRing
                         HourArc(size: geo.size)
                             .rotationEffect(.tau * -0.25)
+                        
                     default:
                         MultiHourRing(size: geo.size)
                             .rotationEffect(.tau * -0.25)
                     }
+                    SpacerRing(size: geo.size)
+                        .rotationEffect(angle - .tau * 0.25)
                     VStack {
                         TimeIndicator
                         Text(project.name)
@@ -160,6 +141,26 @@ extension ProjectRing {
         return 18.5
         }
     }
+    
+    /// rough guess as to the extrusion angle if the round cap from the end of the line
+    var del: Angle {
+        switch size {
+        case .large:
+            return Angle(radians: 0.15)
+        case .small:
+            return Angle(radians: 0.13)
+        }
+    }
+    
+    /// width of the spacing ring
+    var spacerWidth: CGFloat {
+        switch size {
+        case .large:
+            return 4
+        case .small:
+            return 2
+        }
+    }
 }
 
 // MARK: - Adjusted Colors
@@ -192,7 +193,6 @@ extension ProjectRing {
     private func MultiHourRing(size: CGSize) -> some View {
         Group {
             DarkHalf
-            SpacerRing(size: size)
             LightHalf
                 .rotationEffect(.tau * 0.5)
             Beads(size: size)
@@ -239,11 +239,12 @@ extension ProjectRing {
     
     /// makes it easier to see where the boundary os
     private func SpacerRing(size: CGSize) -> some View {
-        Circle()
+        Arc(angle: .tau / 2)
             .strokeBorder(modeBG, style: StrokeStyle(lineWidth: spacerWidth))
             .frame(
                 width: ringWeight + 2 * spacerWidth,
-                height: ringWeight + 2 * spacerWidth
+                height: ringWeight + 2 * spacerWidth,
+                alignment: .leading
             )
             .offset(x: (size.width - ringWeight) / 2)
     }
