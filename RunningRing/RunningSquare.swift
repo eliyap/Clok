@@ -35,15 +35,59 @@ struct RunningSquare: View {
                     .font(.headline)
                     /// allow for something as long as `Troublemaker General`, but don't allow it to overwhelm the widget
                     .lineLimit(2)
+                Spacer()
                 Text(entry.entry.project.name)
                     .font(.subheadline)
                     .bold()
                     .foregroundColor(highContrast)
-                Spacer()
                 TimeIndicator
             }
-            .padding(strokeWidth * 2.5)
+                .padding(strokeWidth * 2.5)
+            HourDots(count: 3)
         }
+    }
+    
+    func HourDots(count: Int) -> some View {
+        let dotDiameter = CGFloat(6)
+        
+        func dot(_ color: Color) -> some View {
+            return Circle()
+                .frame(width: dotDiameter, height: dotDiameter)
+                .foregroundColor(color)
+        }
+        
+        func dotRing() -> some View {
+            let radius: CGFloat = dotDiameter * CGFloat(count) / CGFloat.pi
+            return ForEach(0..<count, id: \.self) { idx in
+                dot(color)
+                    .offset(x: radius)
+                    .rotationEffect(.tau * Double(idx) / Double(count))
+            }
+            .rotationEffect(.tau * -0.25)
+            .rotationEffect(count.isMultiple(of: 2)
+                                ? Angle(radians: .pi / Double(count))
+                                : .zero
+            )
+        }
+        
+        /// (ab)use `Group` to erase type
+        return Group {
+            switch count {
+            case 0:
+                dot(Color(UIColor.systemGray6))
+            case 1:
+                dot(color)
+            case 2:
+                HStack(spacing: .zero) {
+                    dot(color)
+                    dot(.clear)
+                    dot(color)
+                }
+            default:
+                dotRing()
+            }
+        }
+        
     }
 }
 
