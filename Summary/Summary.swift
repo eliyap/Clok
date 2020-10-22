@@ -31,7 +31,7 @@ struct Summary: Decodable {
         
         init(from raw: RawSummary.Project) {
             id = raw.id ?? NSNotFound
-            name = raw.title.project ?? "No Project"
+            name = raw.title.project ?? "[None]"
             duration = TimeInterval(raw.time) / 1000.0
             switch raw.title.hex_color {
             case .none:
