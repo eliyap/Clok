@@ -31,23 +31,22 @@ struct RunningSquare: View {
                     .rotationEffect(-.tau / 4)
                 HourDots(count: hours)
             }
-            HStack {
-                VStack(alignment: .leading) {
-                    Text(entry.entry.entryDescription)
-                        .font(.headline)
-                        /// allow for something as long as `Troublemaker General`, but don't allow it to overwhelm the widget
-                        .lineLimit(2)
-                    Spacer()
-                    Text(entry.entry == .noEntry
-                         ? ""
-                         : entry.entry.project.name
-                    )
-                        .font(.subheadline)
-                        .bold()
-                        .foregroundColor(highContrast)
-                    TimeIndicator
-                }
+            VStack(alignment: .leading) {
+                Text(entry.entry.entryDescription)
+                    .font(.headline)
+                    /// allow for something as long as `Troublemaker General`, but don't allow it to overwhelm the widget
+                    .lineLimit(2)
                 Spacer()
+                HStack(alignment: .bottom) {
+                    VStack(alignment: .leading) {
+                        ProjectLabel
+                        TimeIndicator
+                    }
+                    Spacer()
+                    Image(systemName: "arrow.counterclockwise.circle.fill")
+                        .font(Font.system(size: 24).bold())
+                }
+                
             }
                 .padding(strokeWidth * 2.5)
         }
@@ -144,8 +143,19 @@ extension RunningSquare {
     }
 }
 
-// MARK: - Time Indicator
+// MARK: - Text Bits
 extension RunningSquare {
+    
+    private var ProjectLabel: some View {
+        Text(entry.entry == .noEntry
+             ? ""
+             : entry.entry.project.name
+        )
+            .font(.subheadline)
+            .bold()
+            .foregroundColor(highContrast)
+    }
+    
     /// shows the amount of time spent on this project
     private var TimeIndicator: some View {
         Time
@@ -156,7 +166,7 @@ extension RunningSquare {
     private var Time: Text {
         switch entry.entry {
         case .noEntry:
-            return Text(placeholderTime)
+            return Text("00:00")
         default:
             return Text(entry.entry.start, style: .timer)
         }
