@@ -33,7 +33,7 @@ struct RunningSquare: View {
             }
             HStack {
                 VStack(alignment: .leading) {
-                    Text(entry.entry.description)
+                    Text(entry.entry.entryDescription)
                         .font(.headline)
                         /// allow for something as long as `Troublemaker General`, but don't allow it to overwhelm the widget
                         .lineLimit(2)
