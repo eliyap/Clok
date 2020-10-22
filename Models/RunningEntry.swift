@@ -123,8 +123,6 @@ extension RunningEntry {
             let lhs = lhs,
             let rhs = rhs
         else { return false }
-        print(lhs.pid)
-        print(rhs.pid)
         return lhs.start == rhs.start
             && lhs.id == rhs.id
             && lhs.entryDescription == rhs.entryDescription
