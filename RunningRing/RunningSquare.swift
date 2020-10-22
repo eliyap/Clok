@@ -17,7 +17,7 @@ struct RunningSquare: View {
     let strokeWidth = CGFloat(7)
     
     var body: some View {
-        ZStack {
+        ZStack(alignment: .leading) {
             switch (entry.entry, hours) {
             case (.noEntry, _):
                 EmptyRing
@@ -29,6 +29,7 @@ struct RunningSquare: View {
                     .fill(angleGradient(start: color, end: color))
                     .opacity(0.2)
                     .rotationEffect(-.tau / 4)
+                HourDots(count: hours)
             }
             VStack(alignment: .leading) {
                 Text(entry.entry.description)
@@ -43,7 +44,6 @@ struct RunningSquare: View {
                 TimeIndicator
             }
                 .padding(strokeWidth * 2.5)
-            HourDots(count: hours)
         }
     }
     
