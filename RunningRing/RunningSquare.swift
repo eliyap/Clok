@@ -53,48 +53,6 @@ struct RunningSquare: View {
                 .padding(strokeWidth * 2.5)
         }
     }
-    
-    func HourDots(count: Int) -> some View {
-        let dotDiameter = CGFloat(6)
-        
-        func dot(_ color: Color) -> some View {
-            return Circle()
-                .frame(width: dotDiameter, height: dotDiameter)
-                .foregroundColor(color)
-        }
-        
-        func dotRing() -> some View {
-            let radius: CGFloat = dotDiameter * CGFloat(count) / CGFloat.pi
-            return ForEach(0..<count, id: \.self) { idx in
-                dot(color)
-                    .offset(x: radius)
-                    .rotationEffect(.tau * Double(idx) / Double(count))
-            }
-            .rotationEffect(.tau * -0.25)
-            .rotationEffect(count.isMultiple(of: 2)
-                ? Angle(radians: .pi / Double(count))
-                : .zero
-            )
-        }
-        
-        /// (ab)use `Group` to erase type
-        return Group {
-            switch count {
-            case let x where x <= 0:
-                dot(Color(UIColor.systemGray6))
-            case 1:
-                dot(color)
-            case 2:
-                HStack(spacing: .zero) {
-                    dot(color)
-                    dot(.clear)
-                    dot(color)
-                }
-            default:
-                dotRing()
-            }
-        }
-    }
 }
 
 // MARK: - Computed Vars
@@ -196,29 +154,28 @@ extension RunningSquare {
     }
 }
 
-// MARK: -Tags {
+// MARK: - Tags {
 extension RunningSquare {
     private func TagStack(size: CGSize) -> some View {
-        HStack {
+        Group {
             if !entry.entry.tags.isEmpty {
-                Image(systemName: "tag")
-                    .font(.caption)
-            }
-            /// I trust that toggl's servers will not feed us duplicates, so hashing is safe
-            ForEach(entry.entry.tags, id: \.self.hash) { tag in
-                Text(tag)
-                    .lineLimit(1)
-                    .font(.caption)
-                    .padding(3)
-                    .background(
-                        RoundedRectangle(cornerRadius: 5)
-                            .foregroundColor(Color(UIColor.systemGray6))
+                HStack {
+                    Image(systemName: "tag")
+                        .font(.caption)
+                    Text(entry.entry.tags.count == 1
+                            ? entry.entry.tags.first!
+                            : "\(entry.entry.tags.count) tags"
                     )
+                        .lineLimit(1)
+                        .font(.caption)
+                        .padding(3)
+                        .background(
+                            RoundedRectangle(cornerRadius: 5)
+                                .foregroundColor(Color(UIColor.systemGray6))
+                        )
+                }
             }
         }
-            .fixedSize()
-            .frame(maxWidth: size.width, alignment: .leading)
-            .clipped()
     }
 }
 
@@ -242,21 +199,45 @@ extension RunningSquare {
 
 // MARK: - Over 1 Hour
 extension RunningSquare {
-    private var MultiHourRing: some View {
-        ContainerRelativeShape()
-            .inset(by: strokeWidth)
-            .strokeBorder(
-                AngularGradient(
-                    gradient: Gradient(stops: [
-//                        Gradient.Stop(color: .clear, location: .zero),
-//                        Gradient.Stop(color: darker, location: 0.001),
-                        Gradient.Stop(color: lighter, location: stop),
-                        Gradient.Stop(color: darker, location: stop + 0.001),
-//                        Gradient.Stop(color: .clear, location: 1)
-                    ]),
-                    center: .center
-                ),
-                style: StrokeStyle(lineWidth: strokeWidth))
+    private func HourDots(count: Int) -> some View {
+        let dotDiameter = CGFloat(6)
+        
+        func dot(_ color: Color) -> some View {
+            return Circle()
+                .frame(width: dotDiameter, height: dotDiameter)
+                .foregroundColor(color)
+        }
+        
+        func dotRing() -> some View {
+            let radius: CGFloat = dotDiameter * CGFloat(count) / CGFloat.pi
+            return ForEach(0..<count, id: \.self) { idx in
+                dot(color)
+                    .offset(x: radius)
+                    .rotationEffect(.tau * Double(idx) / Double(count))
+            }
             .rotationEffect(.tau * -0.25)
+            .rotationEffect(count.isMultiple(of: 2)
+                ? Angle(radians: .pi / Double(count))
+                : .zero
+            )
+        }
+        
+        /// (ab)use `Group` to erase type
+        return Group {
+            switch count {
+            case let x where x <= 0:
+                dot(Color(UIColor.systemGray6))
+            case 1:
+                dot(color)
+            case 2:
+                HStack(spacing: .zero) {
+                    dot(color)
+                    dot(.clear)
+                    dot(color)
+                }
+            default:
+                dotRing()
+            }
+        }
     }
 }
