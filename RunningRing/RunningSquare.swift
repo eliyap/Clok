@@ -37,7 +37,10 @@ struct RunningSquare: View {
                     /// allow for something as long as `Troublemaker General`, but don't allow it to overwhelm the widget
                     .lineLimit(2)
                 Spacer()
-                Text(entry.entry.project.name)
+                Text(entry.entry == .noEntry
+                     ? ""
+                     : entry.entry.project.name
+                )
                     .font(.subheadline)
                     .bold()
                     .foregroundColor(highContrast)
