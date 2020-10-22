@@ -43,7 +43,7 @@ struct RunningSquare: View {
                 TimeIndicator
             }
                 .padding(strokeWidth * 2.5)
-            HourDots(count: 3)
+            HourDots(count: hours)
         }
     }
     
@@ -65,8 +65,8 @@ struct RunningSquare: View {
             }
             .rotationEffect(.tau * -0.25)
             .rotationEffect(count.isMultiple(of: 2)
-                                ? Angle(radians: .pi / Double(count))
-                                : .zero
+                ? Angle(radians: .pi / Double(count))
+                : .zero
             )
         }
         
