@@ -17,6 +17,11 @@
 		2207E46524E0BEAD00311F10 /* DPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2207E46424E0BEAD00311F10 /* DPad.swift */; };
 		22128E09254206E6004913AF /* WidgetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2206C5532541DD0600C78477 /* WidgetManager.swift */; };
 		22128E12254206FB004913AF /* RunningTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F4655B2541FAD1008BF6F0 /* RunningTimer.swift */; };
+		22128E2425422D59004913AF /* ColorScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22128E2325422D59004913AF /* ColorScore.swift */; };
+		22128E2525422D59004913AF /* ColorScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22128E2325422D59004913AF /* ColorScore.swift */; };
+		22128E2625422D59004913AF /* ColorScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22128E2325422D59004913AF /* ColorScore.swift */; };
+		22128E2725422D59004913AF /* ColorScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22128E2325422D59004913AF /* ColorScore.swift */; };
+		22128E2825422D59004913AF /* ColorScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22128E2325422D59004913AF /* ColorScore.swift */; };
 		221810DE24B00FB900B63ECA /* EntryTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221810DD24B00FB900B63ECA /* EntryTab.swift */; };
 		221810E024B0158500B63ECA /* Get24hourPref.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221810DF24B0158500B63ECA /* Get24hourPref.swift */; };
 		221810E424B01AAC00B63ECA /* InAndOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221810E324B01AAC00B63ECA /* InAndOut.swift */; };
@@ -470,6 +475,7 @@
 		2207B21F24B954F40006748A /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		2207E46124E0820600311F10 /* GraphButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphButton.swift; sourceTree = "<group>"; };
 		2207E46424E0BEAD00311F10 /* DPad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPad.swift; sourceTree = "<group>"; };
+		22128E2325422D59004913AF /* ColorScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorScore.swift; sourceTree = "<group>"; };
 		221810DD24B00FB900B63ECA /* EntryTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryTab.swift; sourceTree = "<group>"; };
 		221810DF24B0158500B63ECA /* Get24hourPref.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Get24hourPref.swift; sourceTree = "<group>"; };
 		221810E324B01AAC00B63ECA /* InAndOut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAndOut.swift; sourceTree = "<group>"; };
@@ -1007,6 +1013,7 @@
 			children = (
 				C6B0FF9B246F124300DED011 /* ColorCustom.swift */,
 				229428D1251E7C61008C0BFF /* ColorAdjust.swift */,
+				22128E2325422D59004913AF /* ColorScore.swift */,
 				22A2CE2D24E59F88000820AD /* ColorHex.swift */,
 			);
 			name = Color;
@@ -1607,6 +1614,7 @@
 				2292C5012505D1E0005802B5 /* BoardEntry.swift in Sources */,
 				227746D92505BC9300D17CA3 /* GridWidget.intentdefinition in Sources */,
 				2292C4E62505C3C7005802B5 /* Timeline.swift in Sources */,
+				22128E2625422D59004913AF /* ColorScore.swift in Sources */,
 				229521622505C01E00085055 /* NetworkError.swift in Sources */,
 				C6EB47872520170100FCD0CB /* DateStridable.swift in Sources */,
 				2292C4FA2505CC1E005802B5 /* Piece12.swift in Sources */,
@@ -1689,6 +1697,7 @@
 				2229D7A424EF5C41004E1034 /* WorkspaceManager.swift in Sources */,
 				C60856C5251FCE2900E6D6C0 /* DateRange.swift in Sources */,
 				228174C62501ACBF008E471D /* WidgetView.swift in Sources */,
+				22128E2525422D59004913AF /* ColorScore.swift in Sources */,
 				C6EB476C2520170100FCD0CB /* AngleFromCartesian.swift in Sources */,
 				228174CA2501B49B008E471D /* Summary.swift in Sources */,
 				22B0783624B1513A00256EB8 /* User.swift in Sources */,
@@ -1769,6 +1778,7 @@
 				C6CDEBE5251F06FB0031B81E /* RawSummary.swift in Sources */,
 				C6262BA3251F03970003D435 /* MultiRing.intentdefinition in Sources */,
 				C6CDEC1D251F079A0031B81E /* Mod.swift in Sources */,
+				22128E2725422D59004913AF /* ColorScore.swift in Sources */,
 				C6CDEC25251F07E90031B81E /* Arc.swift in Sources */,
 				C6EB47942520170200FCD0CB /* DateAngle.swift in Sources */,
 				C6CDEB9B251F04BB0031B81E /* MultiRingEntry.swift in Sources */,
@@ -1882,6 +1892,7 @@
 				22283DA424DF9D8B005AC0F3 /* BarStack.swift in Sources */,
 				2277E8CB24EB48C200702086 /* DateRange.swift in Sources */,
 				221C3C5724A93C57006995C5 /* User.swift in Sources */,
+				22128E2425422D59004913AF /* ColorScore.swift in Sources */,
 				22A2CE3224E5A218000820AD /* CGPointOperators.swift in Sources */,
 				22283DA024DF9959005AC0F3 /* BarTabs.swift in Sources */,
 				C688BFCA24A18BF00077CECF /* RaisedShape.swift in Sources */,
@@ -1988,6 +1999,7 @@
 				C6EB46362520093A00FCD0CB /* NetworkError.swift in Sources */,
 				C6EB45F7252008E600FCD0CB /* BackgroundRequest.swift in Sources */,
 				2206C549253F508D00C78477 /* RunningSquare.swift in Sources */,
+				22128E2825422D59004913AF /* ColorScore.swift in Sources */,
 				C6EB47162520123500FCD0CB /* TimeEntry+CoreDataProperties.swift in Sources */,
 				C6EB46BC25200D6200FCD0CB /* ColorHex.swift in Sources */,
 				C6EB463F2520094D00FCD0CB /* RequestConstants.swift in Sources */,

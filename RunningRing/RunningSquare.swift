@@ -27,7 +27,7 @@ struct RunningSquare: View {
                 ContainerRelativeShape()
                     .inset(by: strokeWidth * 2)
                     .fill(angleGradient(start: color, end: color))
-                    .opacity(0.2)
+                    .opacity(Double(adjustedOpacity))
                     .rotationEffect(-.tau / 4)
                 HourDots(count: hours)
             }
@@ -39,6 +39,7 @@ struct RunningSquare: View {
                 Spacer()
                 HStack(alignment: .bottom) {
                     VStack(alignment: .leading) {
+                        Text("\(adjustedOpacity)")
                         ProjectLabel
                         TimeIndicator
                     }
@@ -122,6 +123,20 @@ extension RunningSquare {
             ]),
             center: .center
         )
+    }
+    
+    /**
+     adjusts base opacity based on a few factors
+     - saturation: more saturated colors are adjusted more
+     - brightness: brighter colors are adjusted less
+     - mode: dark mode is more translucent, light mode is more opaque
+     */
+    var adjustedOpacity: CGFloat {
+        let darkness: CGFloat = (1+color.saturation)*(1-color.brightness)
+        let adjustment = mode == .dark
+            ? +0.4 * darkness
+            : -0.25 * darkness
+        return 0.2 * (1 + adjustment)
     }
 }
 
