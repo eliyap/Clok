@@ -78,7 +78,7 @@ struct RunningEntryView: View {
         /// if fetch is successful, save to `UserDefaults`
         .map { runningEntry in
             WidgetManager.running = runningEntry
-            return WidgetManager.running
+            return runningEntry
         }
         .assign(to: \.running, on: self)
     }

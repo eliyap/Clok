@@ -74,6 +74,11 @@ final class RunningEntry: NSObject, NSSecureCoding {
     //MARK:- NSSecureCoding Compliance
     static var supportsSecureCoding = true
     
+    /**
+     NOTE: this init only finds `pid`, it does not use that to get the associated `project`
+     This is so that we do not need to make `projectLike` `NSSecureCoding` compliant.
+     Whatever decodes this will need to do its own work to find the `project`.
+     */
     func encode(with coder: NSCoder) {
         coder.encode(id, forKey: "id")
         coder.encode(pid, forKey: "pid")
