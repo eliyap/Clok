@@ -88,7 +88,7 @@ struct RunningEntryView: View {
                 WidgetManager.running = runningEntry
                 WidgetCenter.shared.reloadAllTimelines()
             }
-            return WidgetManager.running
+            return runningEntry
         }
         .assign(to: \.running, on: self)
     }
