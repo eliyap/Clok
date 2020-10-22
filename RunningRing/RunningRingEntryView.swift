@@ -13,7 +13,6 @@ struct RunningRingEntryView : View {
 
     var body: some View {
         RunningSquare(entry: entry)
-//        RunningEntryRing(entry: entry)
     }
 }
 
