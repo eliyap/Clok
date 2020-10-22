@@ -75,6 +75,11 @@ struct RunningEntryView: View {
             projects: Array(projects),
             context: moc
         )
+        /// if fetch is successful, save to `UserDefaults`
+        .map { runningEntry in
+            WidgetManager.running = runningEntry
+            return WidgetManager.running
+        }
         .assign(to: \.running, on: self)
     }
 }

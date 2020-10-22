@@ -13,7 +13,23 @@ extension WidgetManager {
     private static let runningKey = "ClokWidgets.RunningTimer"
     /// currently running timer information
     static var running: RunningEntry? {
-        guard let decoded = suite?.object(forKey: runningKey) as? Data else { return nil }
-        return try? NSKeyedUnarchiver.unarchivedObject(ofClass: RunningEntry.self, from: decoded) as? RunningEntry
+        get {
+            guard let decoded = suite?.object(forKey: runningKey) as? Data else {
+                print("failed to decode")
+                return nil
+                
+            }
+            return try? NSKeyedUnarchiver.unarchivedObject(ofClasses: [RunningEntry.self, NSDate.self], from: decoded) as? RunningEntry
+        }
+        set {
+            guard let running = newValue else { return }
+            try! suite?.setValue(
+                NSKeyedArchiver.archivedData(
+                    withRootObject: running,
+                    requiringSecureCoding: false
+                ),
+                forKey: runningKey
+            )
+        }
     }
 }

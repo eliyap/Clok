@@ -9,30 +9,8 @@
 import Foundation
 import SwiftUI
 
-final class RunningEntry: NSObject, NSCoding {
-    func encode(with coder: NSCoder) {
-        coder.encode(id, forKey: "id")
-        coder.encode(pid, forKey: "pid")
-        coder.encode(start, forKey: "start")
-        coder.encode(entryDescription, forKey: "entryDescription")
-    }
+final class RunningEntry: NSObject, NSSecureCoding {
     
-    init?(coder: NSCoder) {
-        id = coder.decodeInteger(forKey: "id")
-        pid = coder.decodeInteger(forKey: "pid")
-        
-        /// note: we will assign project later, for now leave `unknown`
-        self.project = StaticProject.unknown
-        
-        guard
-            let start = coder.decodeObject(forKey: "start") as? Date,
-            let entryDescription = coder.decodeObject(forKey: "entryDescription") as? String
-        else { return nil }
-        self.start = start
-        self.entryDescription = entryDescription
-    }
-    
-
     var id: Int
     var pid: Int = NSNotFound
     var start: Date
@@ -92,6 +70,32 @@ final class RunningEntry: NSObject, NSCoding {
             /// remember to check if the project was updated
             lhs.project.wrappedID == rhs.project.wrappedID
        }
+    
+    //MARK:- NSSecureCoding Compliance
+    static var supportsSecureCoding = true
+    
+    func encode(with coder: NSCoder) {
+        coder.encode(id, forKey: "id")
+        coder.encode(pid, forKey: "pid")
+        coder.encode(start, forKey: "start")
+        coder.encode(entryDescription, forKey: "entryDescription")
+    }
+    
+    init?(coder: NSCoder) {
+        id = coder.decodeInteger(forKey: "id")
+        pid = coder.decodeInteger(forKey: "pid")
+        
+        /// note: we will assign project later, for now leave `unknown`
+        self.project = StaticProject.unknown
+        
+        guard
+            let start = coder.decodeObject(forKey: "start") as? Date,
+            let entryDescription = coder.decodeObject(forKey: "entryDescription") as? String
+        else { return nil }
+        self.start = start
+        self.entryDescription = entryDescription
+    }
+    
 }
 
 extension RunningEntry {
