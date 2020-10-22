@@ -67,7 +67,7 @@ final class RunningEntry: NSObject, NSSecureCoding {
             lhs.id == rhs.id &&
             lhs.start == rhs.start &&
             lhs.entryDescription == rhs.entryDescription &&
-            /// remember to check if the project was updated
+            /// perform a shallow Project ID check
             lhs.pid == rhs.pid
        }
     
@@ -111,4 +111,17 @@ extension RunningEntry {
         project: StaticProject.noProject,
         entryDescription: "No Entry Running"
     )
+}
+
+extension RunningEntry {
+    /// expressly for seeing if the running entry has had substantial updates to be displayed on the widget
+    /// note that the `UserDefaults` copy will have stripped down information
+    static func widgetMatch(_ lhs: RunningEntry?, _ rhs: RunningEntry?) -> Bool {
+        guard lhs != .none || rhs != .none else { return true }
+        guard
+            let lhs = lhs,
+            let rhs = rhs
+        else { return false }
+        return lhs.start != rhs.start
+    }
 }

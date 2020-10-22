@@ -8,6 +8,7 @@
 
 import SwiftUI
 import Combine
+import WidgetKit
 
 /// how long to wait before checking `RunningEntry` again
 fileprivate let interval = TimeInterval(10)
@@ -77,10 +78,16 @@ struct RunningEntryView: View {
         )
         /// if fetch is successful, save to `UserDefaults`
         .map { runningEntry in
-            if WidgetManager.running != runningEntry {
-                
+            if !RunningEntry.widgetMatch(
+                WidgetManager.running,
+                runningEntry
+            ) {
+                #if DEBUG
+                print("Difference Detected, Reloading Widget Timeline")
+                WidgetManager.running = runningEntry
+                WidgetCenter.shared.reloadAllTimelines()
+                #endif
             }
-            WidgetManager.running = runningEntry
             return runningEntry
         }
         .assign(to: \.running, on: self)
