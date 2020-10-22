@@ -8,11 +8,12 @@
 
 import Foundation
 
-//extension WidgetManager {
-//    //MARK:- Running Timer
-//    private static let runningKey = "ClokWidgets.RunningTimer"
-//    /// currently running timer information
-//    static var running: RunningEntry? {
-//        
-//    }
-//}
+extension WidgetManager {
+    //MARK:- Running Timer
+    private static let runningKey = "ClokWidgets.RunningTimer"
+    /// currently running timer information
+    static var running: RunningEntry? {
+        guard let decoded = suite?.object(forKey: runningKey) as? Data else { return nil }
+        return try? NSKeyedUnarchiver.unarchivedObject(ofClass: RunningEntry.self, from: decoded) as? RunningEntry
+    }
+}

@@ -9,20 +9,42 @@
 import Foundation
 import SwiftUI
 
-struct RunningEntry: Equatable {
+final class RunningEntry: NSObject, NSCoding {
+    func encode(with coder: NSCoder) {
+        coder.encode(id, forKey: "id")
+        coder.encode(pid, forKey: "pid")
+        coder.encode(start, forKey: "start")
+        coder.encode(entryDescription, forKey: "entryDescription")
+    }
+    
+    init?(coder: NSCoder) {
+        id = coder.decodeInteger(forKey: "id")
+        pid = coder.decodeInteger(forKey: "pid")
+        
+        /// note: we will assign project later, for now leave `unknown`
+        self.project = StaticProject.unknown
+        
+        guard
+            let start = coder.decodeObject(forKey: "start") as? Date,
+            let entryDescription = coder.decodeObject(forKey: "entryDescription") as? String
+        else { return nil }
+        self.start = start
+        self.entryDescription = entryDescription
+    }
+    
 
-    let id: Int
+    var id: Int
     var pid: Int = NSNotFound
-    let start: Date
+    var start: Date
     var project: ProjectLike
-    let description: String
+    var entryDescription: String
     let df = DateFormatter()
     
-    private init(id: Int, start: Date, project: ProjectLike, description: String){
+    init(id: Int, start: Date, project: ProjectLike, entryDescription: String){
         self.id = id
         self.start = start
         self.project = project
-        self.description = description
+        self.entryDescription = entryDescription
     }
     
     // parse from JSON for Widget
@@ -34,7 +56,7 @@ struct RunningEntry: Equatable {
         guard
             let id = data["id"] as? Int,
             data["description"] != nil,
-            let description = data["description"] as? String,
+            let entryDescription = data["description"] as? String,
             // get Dates from ISO8601 string
             data["start"] != nil,
             let startString = data["start"] as? String,
@@ -42,7 +64,7 @@ struct RunningEntry: Equatable {
         else { return nil }
         
         self.id = id
-        self.description = description
+        self.entryDescription = entryDescription
         self.start = start
         self.project = project
     }
@@ -51,12 +73,12 @@ struct RunningEntry: Equatable {
     /// or project if there's no description,
     /// or placeholder if no info whatsoever
     func descriptionString() -> String {
-        if description == "" && StaticProject.noProject == project {
+        if entryDescription == "" && StaticProject.noProject == project {
             return "No Description"
-        } else if description == "" {
+        } else if entryDescription == "" {
             return project.name
         } else {
-            return description
+            return entryDescription
         }
     }
 
@@ -66,7 +88,7 @@ struct RunningEntry: Equatable {
         return
             lhs.id == rhs.id &&
             lhs.start == rhs.start &&
-            lhs.description == rhs.description &&
+            lhs.entryDescription == rhs.entryDescription &&
             /// remember to check if the project was updated
             lhs.project.wrappedID == rhs.project.wrappedID
        }
@@ -78,6 +100,6 @@ extension RunningEntry {
         id: NSNotFound,
         start: Date.distantFuture,
         project: StaticProject.noProject,
-        description: "No Entry Running"
+        entryDescription: "No Entry Running"
     )
 }

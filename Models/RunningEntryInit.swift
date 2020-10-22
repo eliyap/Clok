@@ -35,17 +35,19 @@ fileprivate struct RawRunningEntry: Decodable {
 }
 
 extension RunningEntry {
-    init(data: Data, projects: [Project]) throws {
+    convenience init(data: Data, projects: [Project]) throws {
         let decoder = JSONDecoder(dateStrategy: .iso8601)
         guard let rawRunningEntry = try decoder.decode(RawRunningEntry.self, from: data).data else {
             /// no `data` simply means no timer is running, trust Combine to deal with the error nicely
             throw NetworkError.serialization
         }
-        id = rawRunningEntry.id
-        start = rawRunningEntry.start
-        description = rawRunningEntry.description
-        pid = rawRunningEntry.pid
-            ?? StaticProject.noProject.wrappedID
+        self.init(
+            id: rawRunningEntry.id,
+            start: rawRunningEntry.start,
+            project: StaticProject.unknown,
+            entryDescription: rawRunningEntry.description
+        )
+        
         /**
          Since data comes from Toggl, `Project` should always be a valid project.
          Or it can be `noProject`, represented as `nil` (i.e. the `pid` is missing in the JSON)
