@@ -122,8 +122,16 @@ extension RunningEntry {
         id: NSNotFound,
         start: Date.distantFuture,
         project: StaticProject.noProject,
-        entryDescription: "No Entry Running",
+        entryDescription: "Not Running",
         tags: []
+    )
+    
+    static let placeholder = RunningEntry(
+        id: NSNotFound,
+        start: Date(),
+        project: StaticProject.noProject,
+        entryDescription: "Placeholder",
+        tags: ["Tag"]
     )
 }
 

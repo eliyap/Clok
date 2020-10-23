@@ -32,11 +32,11 @@ struct Provider: IntentTimelineProvider {
     }
     
     func placeholder(in context: Context) -> Entry {
-        Entry(date: Date(), entry: .noEntry)
+        Entry(date: Date(), entry: WidgetManager.running ?? .placeholder)
     }
 
     func getSnapshot(for configuration: Intent, in context: Context, completion: @escaping (Entry) -> ()) {
-        let entry = Entry(date: Date(), entry: .noEntry)
+        let entry = Entry(date: Date(), entry: WidgetManager.running ?? .placeholder)
         completion(entry)
     }
 

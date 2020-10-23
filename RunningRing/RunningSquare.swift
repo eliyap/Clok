@@ -50,7 +50,7 @@ struct RunningSquare: View {
                     }
                 }
             }
-                .padding(strokeWidth * 2.5)
+                .padding(strokeWidth * 3)
         }
     }
 }
