@@ -33,13 +33,14 @@ struct ProjectRing: View {
                         EmptyRing
                         HourArc(size: geo.size)
                             .rotationEffect(.tau * -0.25)
-                        
+                        SpacerRing(size: geo.size)
+                            .rotationEffect(angle - .tau * 0.25)
                     default:
                         MultiHourRing(size: geo.size)
                             .rotationEffect(.tau * -0.25)
+                        SpacerRing(size: geo.size)
+                            .rotationEffect(angle - .tau * 0.25)
                     }
-                    SpacerRing(size: geo.size)
-                        .rotationEffect(angle - .tau * 0.25)
                     VStack {
                         TimeIndicator
                         Text(project.name)
