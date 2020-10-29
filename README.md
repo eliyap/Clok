@@ -9,7 +9,7 @@ Welcome to the source repository for Clok! Clok is an iOS + iPadOS application d
 - local week length calendar view
 - widgets: see your running timer, daily summary, and more
 
-![](/Marketing/Large%20Phone/1.png =100x)
+<img src="/Marketing/Large%20Phone/1.png" alt="Marketing 1" style="zoom:25%;" />
 
 
 
