@@ -12,4 +12,5 @@ import Intents
 struct MultiRingEntry: TimelineEntry {
     let date: Date
     let projects: [Summary.Project]
+    let running: RunningEntry
 }

@@ -202,6 +202,10 @@
 		22B9E05C24B4FF550040C5AC /* WorkspaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B9E05B24B4FF550040C5AC /* WorkspaceView.swift */; };
 		22BE1FEF24A92B2300A9A739 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BE1FEE24A92B2300A9A739 /* SettingsView.swift */; };
 		22BE1FF424A92DE500A9A739 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BE1FF324A92DE500A9A739 /* Settings.swift */; };
+		22CAA496254B85CF0048C471 /* RunningEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B0784124B17BEC00256EB8 /* RunningEntry.swift */; };
+		22CAA49F254B85DB0048C471 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67F47D2249FD44500FD2E6E /* Project.swift */; };
+		22CAA4A8254B86170048C471 /* WidgetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2206C5532541DD0600C78477 /* WidgetManager.swift */; };
+		22CAA4B1254B86250048C471 /* RunningTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F4655B2541FAD1008BF6F0 /* RunningTimer.swift */; };
 		22D56F042526BB030011C4AC /* RingSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D56F032526BB030011C4AC /* RingSize.swift */; };
 		22D56F0D2526BB080011C4AC /* RingSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D56F032526BB030011C4AC /* RingSize.swift */; };
 		22D56F162526BB090011C4AC /* RingSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D56F032526BB030011C4AC /* RingSize.swift */; };
@@ -1753,17 +1757,21 @@
 				C6EB478B2520170200FCD0CB /* AsNSDate.swift in Sources */,
 				C6EB478C2520170200FCD0CB /* URLStoreExtension.swift in Sources */,
 				C6CDEBF5251F072F0031B81E /* DoubleExtension.swift in Sources */,
+				22CAA49F254B85DB0048C471 /* Project.swift in Sources */,
 				22D56F182526BB0A0011C4AC /* RingSize.swift in Sources */,
 				C6CDEC5D251F09C10031B81E /* FormRequest.swift in Sources */,
 				C6CDEC3D251F09960031B81E /* KeychainError.swift in Sources */,
 				C6CDEB92251F04860031B81E /* MultiRingTimeline.swift in Sources */,
 				C6CDEC75251F0A4D0031B81E /* DecoderExtension.swift in Sources */,
 				C6CDEC55251F09B20031B81E /* RequestConstants.swift in Sources */,
+				22CAA4A8254B86170048C471 /* WidgetManager.swift in Sources */,
 				C6EB478D2520170200FCD0CB /* AngleFromCartesian.swift in Sources */,
 				C6CDEC05251F07700031B81E /* ColorCustom.swift in Sources */,
+				22CAA4B1254B86250048C471 /* RunningTimer.swift in Sources */,
 				C6EB47912520170200FCD0CB /* CGPointOperators.swift in Sources */,
 				C6CDEC35251F098E0031B81E /* GetCredentials.swift in Sources */,
 				C6CDEBD5251F06700031B81E /* ProjectRing.swift in Sources */,
+				22CAA496254B85CF0048C471 /* RunningEntry.swift in Sources */,
 				C6CDEB7A251F04410031B81E /* MultiRingWidget.swift in Sources */,
 				C6EB47932520170200FCD0CB /* DateStridable.swift in Sources */,
 				C6CDEC65251F0A160031B81E /* NetworkError.swift in Sources */,
