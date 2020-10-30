@@ -583,10 +583,7 @@
 		C60856AA251FCB1E00E6D6C0 /* URLStoreExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLStoreExtension.swift; sourceTree = "<group>"; };
 		C61D2657249BE1990056C9FA /* StatHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatHelpers.swift; sourceTree = "<group>"; };
 		C6243D432526C421002E1B6E /* RightTriangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightTriangle.swift; sourceTree = "<group>"; };
-		C6262B9D251F03950003D435 /* MultiRingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiRingView.swift; sourceTree = "<group>"; };
 		C6262B9F251F03950003D435 /* MultiRing.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = MultiRing.intentdefinition; sourceTree = "<group>"; };
-		C6262BA0251F03970003D435 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		C6262BA2251F03970003D435 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C62F7B8724970E530076F64C /* StatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatView.swift; sourceTree = "<group>"; };
 		C63FC2F7249BCEB900747D49 /* AngleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AngleExtension.swift; sourceTree = "<group>"; };
 		C63FC2F9249BCFBD00747D49 /* DoubleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
@@ -617,10 +614,6 @@
 		C6C18D662448F96F000345D5 /* LandwarksUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandwarksUITests.swift; sourceTree = "<group>"; };
 		C6C18D682448F96F000345D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C6CCD9D2251F14E00086368B /* MultiRingExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MultiRingExtension.entitlements; sourceTree = "<group>"; };
-		C6CDEB69251F04150031B81E /* MultiRingWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiRingWidget.swift; sourceTree = "<group>"; };
-		C6CDEB82251F04730031B81E /* MultiRingTimeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiRingTimeline.swift; sourceTree = "<group>"; };
-		C6CDEB9A251F04BB0031B81E /* MultiRingEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiRingEntry.swift; sourceTree = "<group>"; };
-		C6CDEBD4251F06700031B81E /* ProjectRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectRing.swift; sourceTree = "<group>"; };
 		C6D2E5EC251FA2CD0067C0B0 /* RunningRing.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = RunningRing.intentdefinition; sourceTree = "<group>"; };
 		C6D2E600251FA2DC0067C0B0 /* RunningRingExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RunningRingExtension.entitlements; sourceTree = "<group>"; };
 		C6D448EB2484710E0072E7D4 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
@@ -1092,20 +1085,6 @@
 			path = AnyTransition;
 			sourceTree = "<group>";
 		};
-		C6262B9C251F03950003D435 /* MultiRing */ = {
-			isa = PBXGroup;
-			children = (
-				C6CDEB69251F04150031B81E /* MultiRingWidget.swift */,
-				C6262B9D251F03950003D435 /* MultiRingView.swift */,
-				C6CDEB9A251F04BB0031B81E /* MultiRingEntry.swift */,
-				C6CDEBD4251F06700031B81E /* ProjectRing.swift */,
-				C6CDEB82251F04730031B81E /* MultiRingTimeline.swift */,
-				C6262BA0251F03970003D435 /* Assets.xcassets */,
-				C6262BA2251F03970003D435 /* Info.plist */,
-			);
-			path = MultiRing;
-			sourceTree = "<group>";
-		};
 		C65B7D282497D1C100EED981 /* Statistics */ = {
 			isa = PBXGroup;
 			children = (
@@ -1189,7 +1168,6 @@
 				22AD5F8024B1467D006EF7FB /* ClokWidget */,
 				227746D22505BC9200D17CA3 /* GridWidget */,
 				22DE58EC251EC86F00379396 /* ProjectIntent */,
-				C6262B9C251F03950003D435 /* MultiRing */,
 				22B261DE254B9AF300182236 /* WidgetBundle */,
 				22AD5F7B24B1467D006EF7FB /* Frameworks */,
 			);
