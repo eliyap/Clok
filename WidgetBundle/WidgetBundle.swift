@@ -13,6 +13,6 @@ import Intents
 @main
 struct GameWidgets: WidgetBundle {
     var body: some Widget {
-        
+        RunningRing()
     }
 }
