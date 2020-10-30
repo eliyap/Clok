@@ -14,5 +14,6 @@ import Intents
 struct GameWidgets: WidgetBundle {
     var body: some Widget {
         RunningRing()
+        MultiRing()
     }
 }

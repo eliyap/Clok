@@ -50,7 +50,6 @@
 		22128E2425422D59004913AF /* ColorScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22128E2325422D59004913AF /* ColorScore.swift */; };
 		22128E2525422D59004913AF /* ColorScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22128E2325422D59004913AF /* ColorScore.swift */; };
 		22128E2625422D59004913AF /* ColorScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22128E2325422D59004913AF /* ColorScore.swift */; };
-		22128E2725422D59004913AF /* ColorScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22128E2325422D59004913AF /* ColorScore.swift */; };
 		221810DE24B00FB900B63ECA /* EntryTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221810DD24B00FB900B63ECA /* EntryTab.swift */; };
 		221810E024B0158500B63ECA /* Get24hourPref.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221810DF24B0158500B63ECA /* Get24hourPref.swift */; };
 		221810E424B01AAC00B63ECA /* InAndOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221810E324B01AAC00B63ECA /* InAndOut.swift */; };
@@ -255,15 +254,10 @@
 		22B9E05C24B4FF550040C5AC /* WorkspaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B9E05B24B4FF550040C5AC /* WorkspaceView.swift */; };
 		22BE1FEF24A92B2300A9A739 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BE1FEE24A92B2300A9A739 /* SettingsView.swift */; };
 		22BE1FF424A92DE500A9A739 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BE1FF324A92DE500A9A739 /* Settings.swift */; };
-		22CAA496254B85CF0048C471 /* RunningEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B0784124B17BEC00256EB8 /* RunningEntry.swift */; };
-		22CAA49F254B85DB0048C471 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67F47D2249FD44500FD2E6E /* Project.swift */; };
-		22CAA4A8254B86170048C471 /* WidgetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2206C5532541DD0600C78477 /* WidgetManager.swift */; };
-		22CAA4B1254B86250048C471 /* RunningTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F4655B2541FAD1008BF6F0 /* RunningTimer.swift */; };
 		22D56F042526BB030011C4AC /* RingSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D56F032526BB030011C4AC /* RingSize.swift */; };
 		22D56F0D2526BB080011C4AC /* RingSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D56F032526BB030011C4AC /* RingSize.swift */; };
 		22D56F162526BB090011C4AC /* RingSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D56F032526BB030011C4AC /* RingSize.swift */; };
 		22D56F172526BB090011C4AC /* RingSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D56F032526BB030011C4AC /* RingSize.swift */; };
-		22D56F182526BB0A0011C4AC /* RingSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D56F032526BB030011C4AC /* RingSize.swift */; };
 		22D745982505E93900013A80 /* ChosenWorkspace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D745972505E93900013A80 /* ChosenWorkspace.swift */; };
 		22D7459C2505E9B600013A80 /* ZoomLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D7459B2505E9B600013A80 /* ZoomLevel.swift */; };
 		22D7459E2505E9F300013A80 /* FirstDayOfWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D7459D2505E9F300013A80 /* FirstDayOfWeek.swift */; };
@@ -297,12 +291,7 @@
 		C60856C5251FCE2900E6D6C0 /* DateRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E8CA24EB48C200702086 /* DateRange.swift */; };
 		C60856CE251FCE4C00E6D6C0 /* AsNSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2293CEE824EC50F0000B68F4 /* AsNSDate.swift */; };
 		C61D2658249BE1990056C9FA /* StatHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61D2657249BE1990056C9FA /* StatHelpers.swift */; };
-		C6262B9A251F03950003D435 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22AD5F7C24B1467D006EF7FB /* WidgetKit.framework */; };
-		C6262B9B251F03950003D435 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22AD5F7E24B1467D006EF7FB /* SwiftUI.framework */; };
-		C6262B9E251F03950003D435 /* MultiRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6262B9D251F03950003D435 /* MultiRingView.swift */; };
-		C6262BA1251F03970003D435 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6262BA0251F03970003D435 /* Assets.xcassets */; };
 		C6262BA4251F03970003D435 /* MultiRing.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = C6262B9F251F03950003D435 /* MultiRing.intentdefinition */; };
-		C6262BA7251F03970003D435 /* MultiRingExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C6262B99251F03950003D435 /* MultiRingExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		C62F7B8824970E530076F64C /* StatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62F7B8724970E530076F64C /* StatView.swift */; };
 		C63FC2F8249BCEB900747D49 /* AngleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63FC2F7249BCEB900747D49 /* AngleExtension.swift */; };
 		C63FC2FA249BCFBD00747D49 /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63FC2F9249BCFBD00747D49 /* DoubleExtension.swift */; };
@@ -325,37 +314,12 @@
 		C6C18D512448F96F000345D5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6C18D4F2448F96F000345D5 /* LaunchScreen.storyboard */; };
 		C6C18D5C2448F96F000345D5 /* LandwarksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C18D5B2448F96F000345D5 /* LandwarksTests.swift */; };
 		C6C18D672448F96F000345D5 /* LandwarksUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C18D662448F96F000345D5 /* LandwarksUITests.swift */; };
-		C6CDEB7A251F04410031B81E /* MultiRingWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CDEB69251F04150031B81E /* MultiRingWidget.swift */; };
-		C6CDEB92251F04860031B81E /* MultiRingTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CDEB82251F04730031B81E /* MultiRingTimeline.swift */; };
-		C6CDEB9B251F04BB0031B81E /* MultiRingEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CDEB9A251F04BB0031B81E /* MultiRingEntry.swift */; };
-		C6CDEBD5251F06700031B81E /* ProjectRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CDEBD4251F06700031B81E /* ProjectRing.swift */; };
-		C6CDEBDD251F06F60031B81E /* Summary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228174C82501B3E0008E471D /* Summary.swift */; };
-		C6CDEBE5251F06FB0031B81E /* RawSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228174D22501CB76008E471D /* RawSummary.swift */; };
-		C6CDEBED251F071C0031B81E /* AngleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63FC2F7249BCEB900747D49 /* AngleExtension.swift */; };
-		C6CDEBF5251F072F0031B81E /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63FC2F9249BCFBD00747D49 /* DoubleExtension.swift */; };
-		C6CDEBFD251F074A0031B81E /* ColorHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE2D24E59F88000820AD /* ColorHex.swift */; };
-		C6CDEC05251F07700031B81E /* ColorCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B0FF9B246F124300DED011 /* ColorCustom.swift */; };
-		C6CDEC0D251F07820031B81E /* TimeIntervalExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69F02772496AFA200D1C650 /* TimeIntervalExtension.swift */; };
-		C6CDEC15251F078A0031B81E /* TimeConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229646CA24F321AE00FE14E5 /* TimeConstants.swift */; };
-		C6CDEC1D251F079A0031B81E /* Mod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229428DB251E7E7E008C0BFF /* Mod.swift */; };
-		C6CDEC25251F07E90031B81E /* Arc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2253FFB825057FF200BBDCE6 /* Arc.swift */; };
-		C6CDEC2D251F07F50031B81E /* ColorAdjust.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229428D1251E7C61008C0BFF /* ColorAdjust.swift */; };
-		C6CDEC35251F098E0031B81E /* GetCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229521552505BF0300085055 /* GetCredentials.swift */; };
-		C6CDEC3D251F09960031B81E /* KeychainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229521592505BF2A00085055 /* KeychainError.swift */; };
-		C6CDEC45251F099C0031B81E /* KeychainConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2295215E2505BFF500085055 /* KeychainConstants.swift */; };
-		C6CDEC4D251F09AD0031B81E /* SummaryLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228174C72501B399008E471D /* SummaryLoader.swift */; };
-		C6CDEC55251F09B20031B81E /* RequestConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229646C824F3212700FE14E5 /* RequestConstants.swift */; };
-		C6CDEC5D251F09C10031B81E /* FormRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2296F15A24A994A400AF38B5 /* FormRequest.swift */; };
-		C6CDEC65251F0A160031B81E /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B0783724B1519600256EB8 /* NetworkError.swift */; };
-		C6CDEC6D251F0A310031B81E /* DateComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229D7A724EF6750004E1034 /* DateComponent.swift */; };
-		C6CDEC75251F0A4D0031B81E /* DecoderExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D992524BAB2FD00F66E0F /* DecoderExtension.swift */; };
 		C6D2E5F1251FA2CF0067C0B0 /* RunningRing.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = C6D2E5EC251FA2CD0067C0B0 /* RunningRing.intentdefinition */; };
 		C6D448EC2484710E0072E7D4 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D448EB2484710E0072E7D4 /* ActivityIndicator.swift */; };
 		C6EB45C1251FEDB900FCD0CB /* CoreDataConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EB45C0251FEDB900FCD0CB /* CoreDataConstants.swift */; };
 		C6EB45CA251FEDBF00FCD0CB /* CoreDataConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EB45C0251FEDB900FCD0CB /* CoreDataConstants.swift */; };
 		C6EB45D3251FEDBF00FCD0CB /* CoreDataConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EB45C0251FEDB900FCD0CB /* CoreDataConstants.swift */; };
 		C6EB45D4251FEDC000FCD0CB /* CoreDataConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EB45C0251FEDB900FCD0CB /* CoreDataConstants.swift */; };
-		C6EB45DD251FEDC000FCD0CB /* CoreDataConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EB45C0251FEDB900FCD0CB /* CoreDataConstants.swift */; };
 		C6EB4733252013B800FCD0CB /* PersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EB47292520138100FCD0CB /* PersistentContainer.swift */; };
 		C6EB473C252013B900FCD0CB /* PersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EB47292520138100FCD0CB /* PersistentContainer.swift */; };
 		C6EB47692520170100FCD0CB /* AngleAsDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE2824E59E8C000820AD /* AngleAsDate.swift */; };
@@ -380,17 +344,6 @@
 		C6EB47862520170100FCD0CB /* AnyTransitionSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DF92D7251D6834007E4635 /* AnyTransitionSlide.swift */; };
 		C6EB47872520170100FCD0CB /* DateStridable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE1C24E59BB1000820AD /* DateStridable.swift */; };
 		C6EB47882520170100FCD0CB /* DateAngle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE1E24E59BCE000820AD /* DateAngle.swift */; };
-		C6EB47892520170200FCD0CB /* AngleAsDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE2824E59E8C000820AD /* AngleAsDate.swift */; };
-		C6EB478A2520170200FCD0CB /* AngleOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE2624E59E4D000820AD /* AngleOperators.swift */; };
-		C6EB478B2520170200FCD0CB /* AsNSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2293CEE824EC50F0000B68F4 /* AsNSDate.swift */; };
-		C6EB478C2520170200FCD0CB /* URLStoreExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60856AA251FCB1E00E6D6C0 /* URLStoreExtension.swift */; };
-		C6EB478D2520170200FCD0CB /* AngleFromCartesian.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE2A24E59ED0000820AD /* AngleFromCartesian.swift */; };
-		C6EB478F2520170200FCD0CB /* DateMean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE2324E59DFE000820AD /* DateMean.swift */; };
-		C6EB47902520170200FCD0CB /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F605AE246C6B1700D0FE82 /* DateExtension.swift */; };
-		C6EB47912520170200FCD0CB /* CGPointOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE3124E5A218000820AD /* CGPointOperators.swift */; };
-		C6EB47922520170200FCD0CB /* AnyTransitionSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DF92D7251D6834007E4635 /* AnyTransitionSlide.swift */; };
-		C6EB47932520170200FCD0CB /* DateStridable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE1C24E59BB1000820AD /* DateStridable.swift */; };
-		C6EB47942520170200FCD0CB /* DateAngle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE1E24E59BCE000820AD /* DateAngle.swift */; };
 		C6F605AF246C6B1700D0FE82 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F605AE246C6B1700D0FE82 /* DateExtension.swift */; };
 /* End PBXBuildFile section */
 
@@ -423,13 +376,6 @@
 			remoteGlobalIDString = 227746CE2505BC9200D17CA3;
 			remoteInfo = GridWidgetExtension;
 		};
-		C6262BA5251F03970003D435 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C6C18D392448F96C000345D5 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = C6262B98251F03950003D435;
-			remoteInfo = MultiRingExtension;
-		};
 		C6C18D582448F96F000345D5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C6C18D392448F96C000345D5 /* Project object */;
@@ -453,7 +399,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				C6262BA7251F03970003D435 /* MultiRingExtension.appex in Embed App Extensions */,
 				22B261E9254B9AF500182236 /* WidgetBundleExtension.appex in Embed App Extensions */,
 				22DE58F2251EC86F00379396 /* ProjectIntent.appex in Embed App Extensions */,
 				22DF92C8251D60B3007E4635 /* ClokWidgetExtension.appex in Embed App Extensions */,
@@ -638,7 +583,6 @@
 		C60856AA251FCB1E00E6D6C0 /* URLStoreExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLStoreExtension.swift; sourceTree = "<group>"; };
 		C61D2657249BE1990056C9FA /* StatHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatHelpers.swift; sourceTree = "<group>"; };
 		C6243D432526C421002E1B6E /* RightTriangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightTriangle.swift; sourceTree = "<group>"; };
-		C6262B99251F03950003D435 /* MultiRingExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MultiRingExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6262B9D251F03950003D435 /* MultiRingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiRingView.swift; sourceTree = "<group>"; };
 		C6262B9F251F03950003D435 /* MultiRing.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = MultiRing.intentdefinition; sourceTree = "<group>"; };
 		C6262BA0251F03970003D435 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -717,15 +661,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C6262B96251F03950003D435 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C6262B9B251F03950003D435 /* SwiftUI.framework in Frameworks */,
-				C6262B9A251F03950003D435 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1269,7 +1204,6 @@
 				22AD5F7A24B1467D006EF7FB /* ClokWidgetExtension.appex */,
 				227746CF2505BC9200D17CA3 /* GridWidgetExtension.appex */,
 				22DE58EB251EC86F00379396 /* ProjectIntent.appex */,
-				C6262B99251F03950003D435 /* MultiRingExtension.appex */,
 				22B261DB254B9AF300182236 /* WidgetBundleExtension.appex */,
 			);
 			name = Products;
@@ -1402,23 +1336,6 @@
 			productReference = 22DE58EB251EC86F00379396 /* ProjectIntent.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
-		C6262B98251F03950003D435 /* MultiRingExtension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C6262BAA251F03970003D435 /* Build configuration list for PBXNativeTarget "MultiRingExtension" */;
-			buildPhases = (
-				C6262B95251F03950003D435 /* Sources */,
-				C6262B96251F03950003D435 /* Frameworks */,
-				C6262B97251F03950003D435 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = MultiRingExtension;
-			productName = MultiRingExtension;
-			productReference = C6262B99251F03950003D435 /* MultiRingExtension.appex */;
-			productType = "com.apple.product-type.app-extension";
-		};
 		C6C18D402448F96C000345D5 /* Clok */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C6C18D6B2448F96F000345D5 /* Build configuration list for PBXNativeTarget "Clok" */;
@@ -1434,7 +1351,6 @@
 				22DF9288251D5EF0007E4635 /* PBXTargetDependency */,
 				22DF928A251D5EF0007E4635 /* PBXTargetDependency */,
 				22DE58F1251EC86F00379396 /* PBXTargetDependency */,
-				C6262BA6251F03970003D435 /* PBXTargetDependency */,
 				22B261E8254B9AF500182236 /* PBXTargetDependency */,
 			);
 			name = Clok;
@@ -1500,9 +1416,6 @@
 					22DE58EA251EC86F00379396 = {
 						CreatedOnToolsVersion = 12.0;
 					};
-					C6262B98251F03950003D435 = {
-						CreatedOnToolsVersion = 12.0;
-					};
 					C6C18D402448F96C000345D5 = {
 						CreatedOnToolsVersion = 11.4.1;
 					};
@@ -1535,7 +1448,6 @@
 				22AD5F7924B1467D006EF7FB /* ClokWidgetExtension */,
 				227746CE2505BC9200D17CA3 /* GridWidgetExtension */,
 				22DE58EA251EC86F00379396 /* ProjectIntent */,
-				C6262B98251F03950003D435 /* MultiRingExtension */,
 				22B261DA254B9AF300182236 /* WidgetBundleExtension */,
 			);
 		};
@@ -1570,14 +1482,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C6262B97251F03950003D435 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C6262BA1251F03970003D435 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1826,56 +1730,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C6262B95251F03950003D435 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C6EB478F2520170200FCD0CB /* DateMean.swift in Sources */,
-				C6EB47902520170200FCD0CB /* DateExtension.swift in Sources */,
-				C6EB478B2520170200FCD0CB /* AsNSDate.swift in Sources */,
-				C6EB478C2520170200FCD0CB /* URLStoreExtension.swift in Sources */,
-				C6CDEBF5251F072F0031B81E /* DoubleExtension.swift in Sources */,
-				22CAA49F254B85DB0048C471 /* Project.swift in Sources */,
-				22D56F182526BB0A0011C4AC /* RingSize.swift in Sources */,
-				C6CDEC5D251F09C10031B81E /* FormRequest.swift in Sources */,
-				C6CDEC3D251F09960031B81E /* KeychainError.swift in Sources */,
-				C6CDEB92251F04860031B81E /* MultiRingTimeline.swift in Sources */,
-				C6CDEC75251F0A4D0031B81E /* DecoderExtension.swift in Sources */,
-				C6CDEC55251F09B20031B81E /* RequestConstants.swift in Sources */,
-				22CAA4A8254B86170048C471 /* WidgetManager.swift in Sources */,
-				C6EB478D2520170200FCD0CB /* AngleFromCartesian.swift in Sources */,
-				C6CDEC05251F07700031B81E /* ColorCustom.swift in Sources */,
-				22CAA4B1254B86250048C471 /* RunningTimer.swift in Sources */,
-				C6EB47912520170200FCD0CB /* CGPointOperators.swift in Sources */,
-				C6CDEC35251F098E0031B81E /* GetCredentials.swift in Sources */,
-				C6CDEBD5251F06700031B81E /* ProjectRing.swift in Sources */,
-				22CAA496254B85CF0048C471 /* RunningEntry.swift in Sources */,
-				C6CDEB7A251F04410031B81E /* MultiRingWidget.swift in Sources */,
-				C6EB47932520170200FCD0CB /* DateStridable.swift in Sources */,
-				C6CDEC65251F0A160031B81E /* NetworkError.swift in Sources */,
-				C6CDEC2D251F07F50031B81E /* ColorAdjust.swift in Sources */,
-				C6EB478A2520170200FCD0CB /* AngleOperators.swift in Sources */,
-				C6CDEC6D251F0A310031B81E /* DateComponent.swift in Sources */,
-				C6CDEBFD251F074A0031B81E /* ColorHex.swift in Sources */,
-				C6CDEC4D251F09AD0031B81E /* SummaryLoader.swift in Sources */,
-				C6EB45DD251FEDC000FCD0CB /* CoreDataConstants.swift in Sources */,
-				C6CDEC15251F078A0031B81E /* TimeConstants.swift in Sources */,
-				C6EB47892520170200FCD0CB /* AngleAsDate.swift in Sources */,
-				C6CDEBE5251F06FB0031B81E /* RawSummary.swift in Sources */,
-				C6CDEC1D251F079A0031B81E /* Mod.swift in Sources */,
-				22128E2725422D59004913AF /* ColorScore.swift in Sources */,
-				C6CDEC25251F07E90031B81E /* Arc.swift in Sources */,
-				C6EB47942520170200FCD0CB /* DateAngle.swift in Sources */,
-				C6CDEB9B251F04BB0031B81E /* MultiRingEntry.swift in Sources */,
-				C6CDEC45251F099C0031B81E /* KeychainConstants.swift in Sources */,
-				C6262B9E251F03950003D435 /* MultiRingView.swift in Sources */,
-				C6CDEC0D251F07820031B81E /* TimeIntervalExtension.swift in Sources */,
-				C6CDEBDD251F06F60031B81E /* Summary.swift in Sources */,
-				C6EB47922520170200FCD0CB /* AnyTransitionSlide.swift in Sources */,
-				C6CDEBED251F071C0031B81E /* AngleExtension.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		C6C18D3D2448F96C000345D5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2051,11 +1905,6 @@
 			isa = PBXTargetDependency;
 			target = 227746CE2505BC9200D17CA3 /* GridWidgetExtension */;
 			targetProxy = 22DF9289251D5EF0007E4635 /* PBXContainerItemProxy */;
-		};
-		C6262BA6251F03970003D435 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = C6262B98251F03950003D435 /* MultiRingExtension */;
-			targetProxy = C6262BA5251F03970003D435 /* PBXContainerItemProxy */;
 		};
 		C6C18D592448F96F000345D5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2254,54 +2103,6 @@
 				);
 				MARKETING_VERSION = 2020.12;
 				PRODUCT_BUNDLE_IDENTIFIER = sam.clok.ProjectIntent;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		C6262BA8251F03970003D435 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = MultiRingExtension.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 949D776DFQ;
-				INFOPLIST_FILE = MultiRing/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 2020.12;
-				PRODUCT_BUNDLE_IDENTIFIER = sam.clok.MultiRing;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		C6262BA9251F03970003D435 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = MultiRingExtension.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 949D776DFQ;
-				INFOPLIST_FILE = MultiRing/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 2020.12;
-				PRODUCT_BUNDLE_IDENTIFIER = sam.clok.MultiRing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -2590,15 +2391,6 @@
 			buildConfigurations = (
 				22DE58F4251EC86F00379396 /* Debug */,
 				22DE58F5251EC86F00379396 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		C6262BAA251F03970003D435 /* Build configuration list for PBXNativeTarget "MultiRingExtension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				C6262BA8251F03970003D435 /* Debug */,
-				C6262BA9251F03970003D435 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
