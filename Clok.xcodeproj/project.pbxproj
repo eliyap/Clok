@@ -30,6 +30,18 @@
 		2205DCC0254BA01400146EAB /* KeychainConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2295215E2505BFF500085055 /* KeychainConstants.swift */; };
 		2205DCD3254BA03000146EAB /* RunningRing.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = C6D2E5EC251FA2CD0067C0B0 /* RunningRing.intentdefinition */; };
 		2205DCE6254BA05500146EAB /* DecoderExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D992524BAB2FD00F66E0F /* DecoderExtension.swift */; };
+		2205DD0A254BA0C600146EAB /* MR_Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2205DD09254BA0C600146EAB /* MR_Widget.swift */; };
+		2205DD1D254BA0EE00146EAB /* MR_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2205DD13254BA0DF00146EAB /* MR_View.swift */; };
+		2205DD30254BA10600146EAB /* Summary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228174C82501B3E0008E471D /* Summary.swift */; };
+		2205DD41254BA11500146EAB /* MR_Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2205DD26254BA0FB00146EAB /* MR_Entry.swift */; };
+		2205DD4A254BA12800146EAB /* RawSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228174D22501CB76008E471D /* RawSummary.swift */; };
+		2205DD54254BA14300146EAB /* MR_Ring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2205DD53254BA14300146EAB /* MR_Ring.swift */; };
+		2205DD5E254BA16000146EAB /* MR_Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2205DD5D254BA16000146EAB /* MR_Timeline.swift */; };
+		2205DD77254BA17700146EAB /* MultiRing.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = C6262B9F251F03950003D435 /* MultiRing.intentdefinition */; };
+		2205DD88254BA1B000146EAB /* Arc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2253FFB825057FF200BBDCE6 /* Arc.swift */; };
+		2205DD91254BA1CE00146EAB /* RingSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D56F032526BB030011C4AC /* RingSize.swift */; };
+		2205DD9A254BA1F200146EAB /* SummaryLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228174C72501B399008E471D /* SummaryLoader.swift */; };
+		2205DDA3254BA20500146EAB /* DateComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229D7A724EF6750004E1034 /* DateComponent.swift */; };
 		2207B22024B954F40006748A /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2207B21F24B954F40006748A /* GraphView.swift */; };
 		2207E46224E0820600311F10 /* GraphButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2207E46124E0820600311F10 /* GraphButton.swift */; };
 		2207E46524E0BEAD00311F10 /* DPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2207E46424E0BEAD00311F10 /* DPad.swift */; };
@@ -289,7 +301,6 @@
 		C6262B9B251F03950003D435 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22AD5F7E24B1467D006EF7FB /* SwiftUI.framework */; };
 		C6262B9E251F03950003D435 /* MultiRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6262B9D251F03950003D435 /* MultiRingView.swift */; };
 		C6262BA1251F03970003D435 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6262BA0251F03970003D435 /* Assets.xcassets */; };
-		C6262BA3251F03970003D435 /* MultiRing.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = C6262B9F251F03950003D435 /* MultiRing.intentdefinition */; };
 		C6262BA4251F03970003D435 /* MultiRing.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = C6262B9F251F03950003D435 /* MultiRing.intentdefinition */; };
 		C6262BA7251F03970003D435 /* MultiRingExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C6262B99251F03950003D435 /* MultiRingExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		C62F7B8824970E530076F64C /* StatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62F7B8724970E530076F64C /* StatView.swift */; };
@@ -457,6 +468,11 @@
 		22027DCF24AFF63F00C0BA90 /* OrientationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrientationView.swift; sourceTree = "<group>"; };
 		22027DD324AFF92000C0BA90 /* Fullscreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fullscreen.swift; sourceTree = "<group>"; };
 		22027DD524AFFA6500C0BA90 /* Bounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bounds.swift; sourceTree = "<group>"; };
+		2205DD09254BA0C600146EAB /* MR_Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MR_Widget.swift; sourceTree = "<group>"; };
+		2205DD13254BA0DF00146EAB /* MR_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MR_View.swift; sourceTree = "<group>"; };
+		2205DD26254BA0FB00146EAB /* MR_Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MR_Entry.swift; sourceTree = "<group>"; };
+		2205DD53254BA14300146EAB /* MR_Ring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MR_Ring.swift; sourceTree = "<group>"; };
+		2205DD5D254BA16000146EAB /* MR_Timeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MR_Timeline.swift; sourceTree = "<group>"; };
 		2206C5532541DD0600C78477 /* WidgetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetManager.swift; sourceTree = "<group>"; };
 		2207B21F24B954F40006748A /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		2207E46124E0820600311F10 /* GraphButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphButton.swift; sourceTree = "<group>"; };
@@ -747,6 +763,19 @@
 				2264CB3A24AD344F00ECBF2B /* TokenFields.swift */,
 			);
 			path = LoginScreen;
+			sourceTree = "<group>";
+		};
+		2205DD00254BA0A800146EAB /* MultiRing */ = {
+			isa = PBXGroup;
+			children = (
+				2205DD09254BA0C600146EAB /* MR_Widget.swift */,
+				2205DD13254BA0DF00146EAB /* MR_View.swift */,
+				2205DD26254BA0FB00146EAB /* MR_Entry.swift */,
+				2205DD53254BA14300146EAB /* MR_Ring.swift */,
+				2205DD5D254BA16000146EAB /* MR_Timeline.swift */,
+				C6262B9F251F03950003D435 /* MultiRing.intentdefinition */,
+			);
+			path = MultiRing;
 			sourceTree = "<group>";
 		};
 		2206C5522541DCEE00C78477 /* WidgetManager */ = {
@@ -1045,6 +1074,7 @@
 		22B261DE254B9AF300182236 /* WidgetBundle */ = {
 			isa = PBXGroup;
 			children = (
+				2205DD00254BA0A800146EAB /* MultiRing */,
 				22B261F6254B9B3B00182236 /* RunningRing */,
 				22B261DF254B9AF300182236 /* WidgetBundle.swift */,
 				22B261E1254B9AF300182236 /* WidgetBundle.intentdefinition */,
@@ -1135,7 +1165,6 @@
 				C6CDEB9A251F04BB0031B81E /* MultiRingEntry.swift */,
 				C6CDEBD4251F06700031B81E /* ProjectRing.swift */,
 				C6CDEB82251F04730031B81E /* MultiRingTimeline.swift */,
-				C6262B9F251F03950003D435 /* MultiRing.intentdefinition */,
 				C6262BA0251F03970003D435 /* Assets.xcassets */,
 				C6262BA2251F03970003D435 /* Info.plist */,
 			);
@@ -1743,6 +1772,7 @@
 				22B2629A254B9D7700182236 /* ColorCustom.swift in Sources */,
 				22B26272254B9D3800182236 /* TimeConstants.swift in Sources */,
 				22B2620E254B9BBB00182236 /* RR_Timeline.swift in Sources */,
+				2205DD77254BA17700146EAB /* MultiRing.intentdefinition in Sources */,
 				2205DC50254B9F4A00146EAB /* Mod.swift in Sources */,
 				2205DC3B254B9F0200146EAB /* DoubleExtension.swift in Sources */,
 				22B2627C254B9D3E00182236 /* Project.swift in Sources */,
@@ -1750,20 +1780,31 @@
 				22B26203254B9B9600182236 /* RR_Entry.swift in Sources */,
 				2205DCB6254BA00B00146EAB /* Tag+CoreDataClass.swift in Sources */,
 				22B262A4254B9D7B00182236 /* ColorScore.swift in Sources */,
+				2205DD88254BA1B000146EAB /* Arc.swift in Sources */,
 				2205DC46254B9F1C00146EAB /* RunningTimer.swift in Sources */,
 				2205DCAA254B9FFE00146EAB /* TimeEntry+CoreDataClass.swift in Sources */,
+				2205DD5E254BA16000146EAB /* MR_Timeline.swift in Sources */,
 				2205DC5A254B9F6600146EAB /* RequestConstants.swift in Sources */,
+				2205DDA3254BA20500146EAB /* DateComponent.swift in Sources */,
+				2205DD0A254BA0C600146EAB /* MR_Widget.swift in Sources */,
 				2205DC96254B9FDE00146EAB /* DateStridable.swift in Sources */,
 				2205DC64254B9F7A00146EAB /* CoreDataConstants.swift in Sources */,
+				2205DD41254BA11500146EAB /* MR_Entry.swift in Sources */,
+				2205DD9A254BA1F200146EAB /* SummaryLoader.swift in Sources */,
 				2205DCE6254BA05500146EAB /* DecoderExtension.swift in Sources */,
 				2205DC6E254B9F8600146EAB /* GetCredentials.swift in Sources */,
 				2205DCA0254B9FF100146EAB /* Project+CoreDataProperties.swift in Sources */,
+				2205DD54254BA14300146EAB /* MR_Ring.swift in Sources */,
+				2205DD30254BA10600146EAB /* Summary.swift in Sources */,
 				2205DCD3254BA03000146EAB /* RunningRing.intentdefinition in Sources */,
 				22B26240254B9CC600182236 /* KeychainError.swift in Sources */,
+				2205DD1D254BA0EE00146EAB /* MR_View.swift in Sources */,
 				22B26268254B9D2200182236 /* TimeIntervalExtension.swift in Sources */,
 				2205DC45254B9F1C00146EAB /* WidgetManager.swift in Sources */,
 				22B26254254B9CE000182236 /* NetworkError.swift in Sources */,
 				22B261E0254B9AF300182236 /* WidgetBundle.swift in Sources */,
+				2205DD91254BA1CE00146EAB /* RingSize.swift in Sources */,
+				2205DD4A254BA12800146EAB /* RawSummary.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1821,7 +1862,6 @@
 				C6CDEC15251F078A0031B81E /* TimeConstants.swift in Sources */,
 				C6EB47892520170200FCD0CB /* AngleAsDate.swift in Sources */,
 				C6CDEBE5251F06FB0031B81E /* RawSummary.swift in Sources */,
-				C6262BA3251F03970003D435 /* MultiRing.intentdefinition in Sources */,
 				C6CDEC1D251F079A0031B81E /* Mod.swift in Sources */,
 				22128E2725422D59004913AF /* ColorScore.swift in Sources */,
 				C6CDEC25251F07E90031B81E /* Arc.swift in Sources */,
