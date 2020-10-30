@@ -457,7 +457,6 @@
 		22027DCF24AFF63F00C0BA90 /* OrientationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrientationView.swift; sourceTree = "<group>"; };
 		22027DD324AFF92000C0BA90 /* Fullscreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fullscreen.swift; sourceTree = "<group>"; };
 		22027DD524AFFA6500C0BA90 /* Bounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bounds.swift; sourceTree = "<group>"; };
-		2206C548253F508D00C78477 /* RunningSquare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningSquare.swift; sourceTree = "<group>"; };
 		2206C5532541DD0600C78477 /* WidgetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetManager.swift; sourceTree = "<group>"; };
 		2207B21F24B954F40006748A /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		2207E46124E0820600311F10 /* GraphButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphButton.swift; sourceTree = "<group>"; };
@@ -662,18 +661,11 @@
 		C6CDEB82251F04730031B81E /* MultiRingTimeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiRingTimeline.swift; sourceTree = "<group>"; };
 		C6CDEB9A251F04BB0031B81E /* MultiRingEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiRingEntry.swift; sourceTree = "<group>"; };
 		C6CDEBD4251F06700031B81E /* ProjectRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectRing.swift; sourceTree = "<group>"; };
-		C6D2E5EA251FA2CD0067C0B0 /* RunningRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningRing.swift; sourceTree = "<group>"; };
 		C6D2E5EC251FA2CD0067C0B0 /* RunningRing.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = RunningRing.intentdefinition; sourceTree = "<group>"; };
-		C6D2E5ED251FA2CF0067C0B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		C6D2E5EF251FA2CF0067C0B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C6D2E600251FA2DC0067C0B0 /* RunningRingExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RunningRingExtension.entitlements; sourceTree = "<group>"; };
 		C6D448EB2484710E0072E7D4 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		C6EB45C0251FEDB900FCD0CB /* CoreDataConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataConstants.swift; sourceTree = "<group>"; };
-		C6EB465125200B4A00FCD0CB /* Timeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timeline.swift; sourceTree = "<group>"; };
-		C6EB465B25200BDA00FCD0CB /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
-		C6EB46D725200DCC00FCD0CB /* RunningRingEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningRingEntryView.swift; sourceTree = "<group>"; };
 		C6EB47292520138100FCD0CB /* PersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentContainer.swift; sourceTree = "<group>"; };
-		C6EB47FD25201CE500FCD0CB /* RunningRingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningRingView.swift; sourceTree = "<group>"; };
 		C6F605AE246C6B1700D0FE82 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1234,7 +1226,6 @@
 				227746D22505BC9200D17CA3 /* GridWidget */,
 				22DE58EC251EC86F00379396 /* ProjectIntent */,
 				C6262B9C251F03950003D435 /* MultiRing */,
-				C6D2E5E9251FA2CD0067C0B0 /* RunningRing */,
 				22B261DE254B9AF300182236 /* WidgetBundle */,
 				22AD5F7B24B1467D006EF7FB /* Frameworks */,
 			);
@@ -1301,21 +1292,6 @@
 				C6C18D682448F96F000345D5 /* Info.plist */,
 			);
 			path = ClokUITests;
-			sourceTree = "<group>";
-		};
-		C6D2E5E9251FA2CD0067C0B0 /* RunningRing */ = {
-			isa = PBXGroup;
-			children = (
-				C6D2E5EA251FA2CD0067C0B0 /* RunningRing.swift */,
-				C6EB465B25200BDA00FCD0CB /* Entry.swift */,
-				C6EB46D725200DCC00FCD0CB /* RunningRingEntryView.swift */,
-				C6EB465125200B4A00FCD0CB /* Timeline.swift */,
-				C6EB47FD25201CE500FCD0CB /* RunningRingView.swift */,
-				2206C548253F508D00C78477 /* RunningSquare.swift */,
-				C6D2E5ED251FA2CF0067C0B0 /* Assets.xcassets */,
-				C6D2E5EF251FA2CF0067C0B0 /* Info.plist */,
-			);
-			path = RunningRing;
 			sourceTree = "<group>";
 		};
 		C6D448ED248471250072E7D4 /* Activity */ = {
