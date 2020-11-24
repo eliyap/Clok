@@ -18,7 +18,7 @@ struct MultiRingEntryView : View {
     @Environment(\.widgetFamily) var family
     
     var entry: MultiRingProvider.Entry
-
+    
     var body: some View {
         HStack {
             switch family {

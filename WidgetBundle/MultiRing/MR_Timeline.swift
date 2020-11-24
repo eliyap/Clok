@@ -57,7 +57,8 @@ struct MultiRingProvider: IntentTimelineProvider {
                 entries: [MultiRingEntry(
                     date: Date(),
                     projects: summary.projects,
-                    running: WidgetManager.running ?? .noEntry
+                    running: WidgetManager.running ?? .noEntry,
+                    theme: configuration.Theme
                 )],
                 policy: .after(Date() + .widgetPeriod)
             )

@@ -8,9 +8,12 @@
 
 import WidgetKit
 import Intents
+import SwiftUI
 
 struct MultiRingEntry: TimelineEntry {
     let date: Date
     let projects: [Summary.Project]
     let running: RunningEntry
+    /// light / dark theme, use system by default
+    var theme: Mode = .system
 }
