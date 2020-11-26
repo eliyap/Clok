@@ -7,3 +7,16 @@
 //
 
 import Foundation
+
+struct Detailed: Decodable {
+    
+    let total: TimeInterval
+//    let projects: [Detailed.Project]
+    
+    init(from decoder: Decoder) throws {
+        let rawSummary = try RawSummary(from: decoder)
+        /// convert to seconds
+        total = TimeInterval(rawSummary.total_grand) / 1000.0
+//        projects = rawSummary.data.map{ Summary.Project(from: $0) }
+    }
+}
