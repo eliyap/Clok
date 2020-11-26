@@ -867,13 +867,13 @@
 			path = Global;
 			sourceTree = "<group>";
 		};
-		228174D12501CB64008E471D /* Summary */ = {
+		228174D12501CB64008E471D /* Report */ = {
 			isa = PBXGroup;
 			children = (
-				22D5F3D2256F894B00806992 /* Detailed */,
 				22D5F3D1256F893900806992 /* Summary */,
+				22D5F3D2256F894B00806992 /* Detailed */,
 			);
-			path = Summary;
+			path = Report;
 			sourceTree = "<group>";
 		};
 		228B100024AEA6CA0026AD4B /* Shapes */ = {
@@ -1044,9 +1044,9 @@
 		22D5F3D1256F893900806992 /* Summary */ = {
 			isa = PBXGroup;
 			children = (
+				228174C82501B3E0008E471D /* Summary.swift */,
 				228174CF2501CAEA008E471D /* SummaryTimelineEntry.swift */,
 				228174C72501B399008E471D /* SummaryLoader.swift */,
-				228174C82501B3E0008E471D /* Summary.swift */,
 				228174D62501CD12008E471D /* SummaryEquatable.swift */,
 				228174D42501CBCB008E471D /* NoSummary.swift */,
 				228174D22501CB76008E471D /* RawSummary.swift */,
@@ -1179,7 +1179,7 @@
 				22DC86A824BA839100FF771F /* Data */,
 				22BE1FEB24A9246400A9A739 /* NetCode */,
 				C688BFC624A18BA00077CECF /* Misc */,
-				228174D12501CB64008E471D /* Summary */,
+				228174D12501CB64008E471D /* Report */,
 				22AD5F8024B1467D006EF7FB /* ClokWidget */,
 				227746D22505BC9200D17CA3 /* GridWidget */,
 				22DE58EC251EC86F00379396 /* ProjectIntent */,
