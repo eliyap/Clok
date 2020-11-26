@@ -26,8 +26,29 @@ struct MultiRingProvider: IntentTimelineProvider {
     }
 
     func getSnapshot(for configuration: Intent, in context: Context, completion: @escaping (Entry) -> ()) {
-        let entry = Entry(date: Date(), projects: [.placeholder_1], running: .noEntry)
-        completion(entry)
+        /// fetch credentials from Keychain
+        guard let (_, _, token, chosenWID) = try? getKey() else {
+            completion(placeholder(in: context))
+            return
+        }
+        
+        /// fetch summary from Toggl
+        fetchSummary(token: token, wid: chosenWID) { summary, error in
+            guard let summary = summary, error == nil else {
+                print("MultiRingWidget Fetch Failed With Error \(String(describing: error))")
+                completion(placeholder(in: context))
+                return
+            }
+            
+            /// submit fetched summary
+            completion(MultiRingEntry(
+                date: Date(),
+                projects: summary.projects,
+                running: WidgetManager.running ?? .noEntry,
+                theme: configuration.Theme
+            ))
+            return
+        }
     }
 
     func getTimeline(
