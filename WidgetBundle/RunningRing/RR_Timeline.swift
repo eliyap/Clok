@@ -36,8 +36,16 @@ struct RunningRingProvider: IntentTimelineProvider {
     }
 
     func getSnapshot(for configuration: Intent, in context: Context, completion: @escaping (Entry) -> ()) {
-        let entry = Entry(date: Date(), entry: WidgetManager.running ?? .placeholder)
-        completion(entry)
+        fetchRunningEntry(context: moc) { running, error in
+            guard let running = running, error == nil else {
+                print("RunningRingWidget Fetch Failed With Error \(String(describing: error))")
+                completion(placeholder(in: context))
+                return
+            }
+            
+            completion(RunningRingEntry(date: Date(), entry: running))
+            return
+        }
     }
 
     func getTimeline(
