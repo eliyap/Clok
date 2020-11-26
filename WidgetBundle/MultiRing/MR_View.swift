@@ -16,6 +16,7 @@ fileprivate let spaced = CGFloat(7)
 struct MultiRingEntryView : View {
     
     @Environment(\.widgetFamily) var family
+    @Environment(\.colorScheme) var mode: ColorScheme
     
     var entry: MultiRingProvider.Entry
     
@@ -34,6 +35,29 @@ struct MultiRingEntryView : View {
             }
         }
         .padding(padded)
+        /// enforce the user's preferred scheme, if any, otherwise pass through the default
+        .environment(\.colorScheme, {
+            switch entry.theme {
+            case .system, .unknown:
+                return mode
+            case .dark:
+                return .dark
+            case .light:
+                return .light
+            }
+        }())
+        .background({ () -> Color in
+            switch entry.theme {
+            case .system, .unknown:
+                return mode == .dark
+                    ? .black
+                    : .white
+            case .dark:
+                return .black
+            case .light:
+                return .white
+            }
+        }())
     }
     
     func Grid4(
