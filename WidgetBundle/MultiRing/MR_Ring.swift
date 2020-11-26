@@ -23,38 +23,38 @@ struct ProjectRing: View {
     @Environment(\.colorScheme) var mode
     
     var body: some View {
-            GeometryReader { geo in
-                ZStack {
-                    switch (project, hours) {
-                    /// special case to avoid visual glitch, explicitly check if `.empty`
-                    case (.empty, _):
-                        EmptyRing
-                    case (_, 0):
-                        EmptyRing
-                        HourArc(size: geo.size)
-                            .rotationEffect(.tau * -0.25)
-                        SpacerRing(size: geo.size)
-                            .rotationEffect(angle - .tau * 0.25)
-                    default:
-                        MultiHourRing(size: geo.size)
-                            .rotationEffect(.tau * -0.25)
-                        SpacerRing(size: geo.size)
-                            .rotationEffect(angle - .tau * 0.25)
-                    }
-                    VStack {
-                        TimeIndicator
-                        Text(project.name)
-                            /// lighten or darken to improve contrast
-                            .foregroundColor(highContrast)
-                            .font(.system(size: nameFont, design: .rounded))
-                            .bold()
-                            .lineLimit(1)
-                    }
-                    /// gives text a little more room
-                    .offset(y: -5)
+        GeometryReader { geo in
+            ZStack {
+                switch (project, hours) {
+                /// special case to avoid visual glitch, explicitly check if `.empty`
+                case (.empty, _):
+                    EmptyRing
+                case (_, 0):
+                    EmptyRing
+                    HourArc(size: geo.size)
+                        .rotationEffect(.tau * -0.25)
+                    SpacerRing(size: geo.size)
+                        .rotationEffect(angle - .tau * 0.25)
+                default:
+                    MultiHourRing(size: geo.size)
+                        .rotationEffect(.tau * -0.25)
+                    SpacerRing(size: geo.size)
+                        .rotationEffect(angle - .tau * 0.25)
                 }
+                VStack {
+                    TimeIndicator
+                    Text(project.name)
+                        /// lighten or darken to improve contrast
+                        .foregroundColor(highContrast)
+                        .font(.system(size: nameFont, design: .rounded))
+                        .bold()
+                        .lineLimit(1)
+                }
+                /// gives text a little more room
+                .offset(y: -5)
             }
-            .aspectRatio(1, contentMode: .fit)
+        }
+        .aspectRatio(1, contentMode: .fit)
     }
     
     /// shows the amount of time spent on this project
@@ -238,13 +238,14 @@ extension ProjectRing {
             )
     }
     
-    /// makes it easier to see where the boundary os
+    /// makes it easier to see where the boundary is
     private func SpacerRing(size: CGSize) -> some View {
         Arc(angle: .tau / 2)
             .strokeBorder(modeBG, style: StrokeStyle(lineWidth: spacerWidth))
             .frame(
-                width: ringWeight + 2 * spacerWidth,
-                height: ringWeight + 2 * spacerWidth,
+                /// 1.03 multiplier avoids a pixel perfect error around the half hour area
+                width: (ringWeight + 2 * spacerWidth) * 1.03,
+                height: (ringWeight + 2 * spacerWidth) * 1.03,
                 alignment: .leading
             )
             .offset(x: (size.width - ringWeight) / 2)
@@ -289,7 +290,8 @@ extension ProjectRing {
              So we cover the misaligned section with a solid color circle.
             **/
             Circle()
-                .frame(width: ringWeight, height: ringWeight)
+                /// 0.97 adjustment prevents a pixel perfect error around the half hour area
+                .frame(width: ringWeight * 0.97, height: ringWeight * 0.97)
                 .foregroundColor(lighter)
                 .offset(x: (size.width - ringWeight) / 2)
                 .rotationEffect(angle)
