@@ -12,7 +12,7 @@ import Foundation
  */
 struct RawDetailed: Decodable {
     
-    let data: [RawTimeEntry]
+    var data: [RawTimeEntry]
     
     /// total number of milliseconds
     let total_grand: Int

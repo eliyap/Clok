@@ -305,6 +305,9 @@
 		22FFF63B2570EA1D00A54471 /* WidgetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2206C5532541DD0600C78477 /* WidgetManager.swift */; };
 		22FFF6432570EA2500A54471 /* FirstDayOfWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D5F52C2570E49C00806992 /* FirstDayOfWeek.swift */; };
 		22FFF64D2570F8B200A54471 /* BeginningOfWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FFF64C2570F8B200A54471 /* BeginningOfWeek.swift */; };
+		22FFF6632570FC9F00A54471 /* WidgetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2206C5532541DD0600C78477 /* WidgetManager.swift */; };
+		22FFF66B2570FCA900A54471 /* FirstDayOfWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D5F52C2570E49C00806992 /* FirstDayOfWeek.swift */; };
+		22FFF6732570FCB400A54471 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F605AE246C6B1700D0FE82 /* DateExtension.swift */; };
 		C60856AB251FCB1E00E6D6C0 /* URLStoreExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60856AA251FCB1E00E6D6C0 /* URLStoreExtension.swift */; };
 		C60856B4251FCE1B00E6D6C0 /* Tag+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229646D024F3294900FE14E5 /* Tag+CoreDataClass.swift */; };
 		C60856B5251FCE1B00E6D6C0 /* Project+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC869D24BA838D00FF771F /* Project+CoreDataProperties.swift */; };
@@ -1593,9 +1596,11 @@
 				2292C4FA2505CC1E005802B5 /* Piece12.swift in Sources */,
 				227746D42505BC9200D17CA3 /* GridWidget.swift in Sources */,
 				C6EB47862520170100FCD0CB /* AnyTransitionSlide.swift in Sources */,
+				22FFF6632570FC9F00A54471 /* WidgetManager.swift in Sources */,
 				22D5F4762570ADB600806992 /* MultiRing.intentdefinition in Sources */,
 				C6EB47812520170100FCD0CB /* DoubleExtension.swift in Sources */,
 				C6EB477F2520170100FCD0CB /* URLStoreExtension.swift in Sources */,
+				22FFF66B2570FCA900A54471 /* FirstDayOfWeek.swift in Sources */,
 				229428D4251E7C61008C0BFF /* ColorAdjust.swift in Sources */,
 				229428C4251E5E19008C0BFF /* AngleExtension.swift in Sources */,
 				2295214F2505BDE900085055 /* TimeIntervalExtension.swift in Sources */,
@@ -1728,6 +1733,7 @@
 				2205DC82254B9FAD00146EAB /* Project+CoreDataClass.swift in Sources */,
 				22B78A08256C80AA00780213 /* TimeEntryModel.xcdatamodeld in Sources */,
 				22B26290254B9D6B00182236 /* ColorAdjust.swift in Sources */,
+				22FFF6732570FCB400A54471 /* DateExtension.swift in Sources */,
 				2205DC78254B9FA300146EAB /* LoadProjects.swift in Sources */,
 				2205DCB5254BA00B00146EAB /* Tag+CoreDataProperties.swift in Sources */,
 				22B2625E254B9CF200182236 /* RunningEntry.swift in Sources */,

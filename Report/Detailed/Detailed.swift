@@ -18,8 +18,16 @@ struct Detailed: Decodable {
     var projects: [Detailed.Project] = []
     
     init(from decoder: Decoder) throws {
-        let rawDetailed = try RawDetailed(from: decoder)
+        var rawDetailed = try RawDetailed(from: decoder)
+        
         self.period = decoder.userInfo[.detailedPeriod] as! Period
+        /// drop all entries that ended before cutoff time
+        switch period {
+        case .day, .unknown:
+            rawDetailed.data.removeAll(where: {$0.end < Date().midnight})
+        case .week:
+            rawDetailed.data.removeAll(where: {$0.end < Date().startOfWeek(day: WidgetManager.firstDayOfWeek)})
+        }
         
         /// convert total time from ms to seconds
         total = TimeInterval(rawDetailed.total_grand) / 1000.0

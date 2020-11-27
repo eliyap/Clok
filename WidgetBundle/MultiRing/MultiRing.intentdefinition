@@ -123,7 +123,7 @@
 				</dict>
 				<dict>
 					<key>INEnumValueDisplayName</key>
-					<string>included</string>
+					<string>are included</string>
 					<key>INEnumValueDisplayNameID</key>
 					<string>AmmGSw</string>
 					<key>INEnumValueIndex</key>
@@ -133,7 +133,7 @@
 				</dict>
 				<dict>
 					<key>INEnumValueDisplayName</key>
-					<string>included from midnight</string>
+					<string>are included from midnight</string>
 					<key>INEnumValueDisplayNameID</key>
 					<string>1SlCJt</string>
 					<key>INEnumValueIndex</key>
@@ -143,7 +143,7 @@
 				</dict>
 				<dict>
 					<key>INEnumValueDisplayName</key>
-					<string>excluded</string>
+					<string>are excluded</string>
 					<key>INEnumValueDisplayNameID</key>
 					<string>j4Fevg</string>
 					<key>INEnumValueIndex</key>
@@ -317,7 +317,7 @@
 					<key>INIntentParameterCustomDisambiguation</key>
 					<true/>
 					<key>INIntentParameterDisplayName</key>
-					<string>Prior Day's Entries are</string>
+					<string>Prior Day's Entries</string>
 					<key>INIntentParameterDisplayNameID</key>
 					<string>amYMoD</string>
 					<key>INIntentParameterDisplayPriority</key>
