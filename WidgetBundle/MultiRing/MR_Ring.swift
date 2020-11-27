@@ -130,31 +130,6 @@ extension ProjectRing {
     }
 }
 
-// MARK: - Adjusted Colors
-extension ProjectRing {
-    var lighter: Color {
-        project.color.lighten(by: ProjectRing.colorAdjustment)
-    }
-    
-    var darker: Color {
-        project.color.darken(by: ProjectRing.colorAdjustment)
-    }
-    
-    /// lighten or darken to improve contrast
-    var highContrast: Color {
-        mode == .dark
-            ? lighter
-            : darker
-    }
-    
-    /// for some reason, dark mode is returning a very dark gray, so workaround
-    var modeBG: Color {
-        mode == .dark
-            ? .black
-            : .white
-    }
-}
-
 // MARK: - Over 1 Hour
 extension ProjectRing {
     private func MultiHourRing(size: CGSize) -> some View {
