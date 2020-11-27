@@ -7,6 +7,7 @@
 //
 
 import Foundation
+
 func fetchDetailed(
     token: String,
     wid: Int,
@@ -19,7 +20,9 @@ func fetchDetailed(
         "workspace_id=\(wid)",
         /// cast 1 day into the past for roll-over entries
         "since=\(Date().midnight.advanced(by: -.day).iso8601)",
-        "end=\(Date().midnight.advanced(by: .day).iso8601)",
+        "until=\(Date().midnight.advanced(by: .day).iso8601)",
+        /// **warning** ("only loads 1 page!")
+        "page=0",
     ].joined(separator: "&")
     
     let request = formRequest(

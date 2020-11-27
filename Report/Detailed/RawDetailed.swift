@@ -12,27 +12,18 @@ import Foundation
  */
 struct RawDetailed: Decodable {
     
-    let data: [Project]
-    let total_grand: Int /// total number of milliseconds
+    let data: [RawTimeEntry]
     
-    struct Project: Decodable {
-        let id: Int?
-        let items: [Entry]
-        let time: Int /// number of milliseconds for this project
-        let title: RawSummary.Project.Title
-        
-        struct Title: Decodable {
-            let hex_color: String?
-            let project: String?
-        }
-    }
+    /// total number of milliseconds
+    let total_grand: Int
     
-    struct Entry: Decodable {
-        let time: Int /// number of milliseconds for this entry
-        let title: RawSummary.Entry.Title
-        
-        struct Title: Decodable {
-            let time_entry: String
-        }
-    }
+    /// total number of entries in the requested date range
+    let total_count: Int
+    
+    /// number of entries returned in a single request
+    /// typically 50
+    let per_page: Int
+    
+    /// currencies represented for billing
+    //let total_currencies: NSNull /// I don't care
 }

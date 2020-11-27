@@ -267,6 +267,14 @@
 		22D5F410256F8BEA00806992 /* RawDetailed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D5F407256F8BE600806992 /* RawDetailed.swift */; };
 		22D5F411256F8BEB00806992 /* RawDetailed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D5F407256F8BE600806992 /* RawDetailed.swift */; };
 		22D5F412256F8BEB00806992 /* RawDetailed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D5F407256F8BE600806992 /* RawDetailed.swift */; };
+		22D5F43525707F9600806992 /* TimeEntry+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC869E24BA838D00FF771F /* TimeEntry+CoreDataClass.swift */; };
+		22D5F43625707F9600806992 /* Project+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC869D24BA838D00FF771F /* Project+CoreDataProperties.swift */; };
+		22D5F43725707F9600806992 /* TimeEntry+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC869F24BA838D00FF771F /* TimeEntry+CoreDataProperties.swift */; };
+		22D5F43825707F9600806992 /* Tag+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229646D024F3294900FE14E5 /* Tag+CoreDataClass.swift */; };
+		22D5F43925707F9600806992 /* Tag+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229646D124F3294900FE14E5 /* Tag+CoreDataProperties.swift */; };
+		22D5F43A25707F9600806992 /* Project+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC869C24BA838D00FF771F /* Project+CoreDataClass.swift */; };
+		22D5F44225707FA000806992 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67F47D2249FD44500FD2E6E /* Project.swift */; };
+		22D5F44A25707FA800806992 /* RawProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221F6240251EE157000ECED9 /* RawProject.swift */; };
 		22D745982505E93900013A80 /* ChosenWorkspace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D745972505E93900013A80 /* ChosenWorkspace.swift */; };
 		22D7459C2505E9B600013A80 /* ZoomLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D7459B2505E9B600013A80 /* ZoomLevel.swift */; };
 		22D7459E2505E9F300013A80 /* FirstDayOfWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D7459D2505E9F300013A80 /* FirstDayOfWeek.swift */; };
@@ -1528,6 +1536,8 @@
 				229521642505C06100085055 /* DecoderExtension.swift in Sources */,
 				229521482505BD7600085055 /* SummaryLoader.swift in Sources */,
 				229521502505BDF800085055 /* FormRequest.swift in Sources */,
+				22D5F44225707FA000806992 /* Project.swift in Sources */,
+				22D5F43925707F9600806992 /* Tag+CoreDataProperties.swift in Sources */,
 				229521652505C07100085055 /* ColorCustom.swift in Sources */,
 				C6EB477E2520170100FCD0CB /* AsNSDate.swift in Sources */,
 				22D5F3FC256F8A7A00806992 /* Detailed.swift in Sources */,
@@ -1539,16 +1549,19 @@
 				2292C4F22505CC1E005802B5 /* Piece8.swift in Sources */,
 				229521612505BFFB00085055 /* KeychainConstants.swift in Sources */,
 				C6EB47852520170100FCD0CB /* CGPointOperators.swift in Sources */,
+				22D5F44A25707FA800806992 /* RawProject.swift in Sources */,
 				2295214A2505BD7600085055 /* SummaryEquatable.swift in Sources */,
 				2295214B2505BD7600085055 /* RawSummary.swift in Sources */,
 				C6EB47882520170100FCD0CB /* DateAngle.swift in Sources */,
 				2295214E2505BDD700085055 /* DateComponent.swift in Sources */,
 				C6EB47842520170100FCD0CB /* DateExtension.swift in Sources */,
 				229521582505BF0F00085055 /* GetCredentials.swift in Sources */,
+				22D5F43825707F9600806992 /* Tag+CoreDataClass.swift in Sources */,
 				2292C4F32505CC1E005802B5 /* PieceLarge.swift in Sources */,
 				C6EB45D3251FEDBF00FCD0CB /* CoreDataConstants.swift in Sources */,
 				2292C4E92505CC1E005802B5 /* Piece5.swift in Sources */,
 				2292C5012505D1E0005802B5 /* BoardEntry.swift in Sources */,
+				22D5F43725707F9600806992 /* TimeEntry+CoreDataProperties.swift in Sources */,
 				227746D92505BC9300D17CA3 /* GridWidget.intentdefinition in Sources */,
 				2292C4E62505C3C7005802B5 /* Timeline.swift in Sources */,
 				22128E2625422D59004913AF /* ColorScore.swift in Sources */,
@@ -1571,6 +1584,7 @@
 				C6EB47802520170100FCD0CB /* AngleFromCartesian.swift in Sources */,
 				2292C4FB2505CC1E005802B5 /* Board.swift in Sources */,
 				2292C4EE2505CC1E005802B5 /* PrettyPrint.swift in Sources */,
+				22D5F43625707F9600806992 /* Project+CoreDataProperties.swift in Sources */,
 				229521532505BEAB00085055 /* WorkspaceManager.swift in Sources */,
 				229521462505BD7600085055 /* NoSummary.swift in Sources */,
 				22D5F411256F8BEB00806992 /* RawDetailed.swift in Sources */,
@@ -1578,6 +1592,7 @@
 				2295214C2505BDB200085055 /* TimeConstants.swift in Sources */,
 				2292C4EC2505CC1E005802B5 /* EnumeratePiece.swift in Sources */,
 				229428DE251E7E7E008C0BFF /* Mod.swift in Sources */,
+				22D5F43A25707F9600806992 /* Project+CoreDataClass.swift in Sources */,
 				2292C4F82505CC1E005802B5 /* SolveBoard.swift in Sources */,
 				229521542505BEC300085055 /* Workspace.swift in Sources */,
 				2292C4EB2505CC1E005802B5 /* Piece10.swift in Sources */,
@@ -1587,6 +1602,7 @@
 				229521632505C04400085055 /* ColorHex.swift in Sources */,
 				C6EB477C2520170100FCD0CB /* AngleAsDate.swift in Sources */,
 				2292C4EF2505CC1E005802B5 /* Piece1.swift in Sources */,
+				22D5F43525707F9600806992 /* TimeEntry+CoreDataClass.swift in Sources */,
 				2295214D2505BDB200085055 /* RequestConstants.swift in Sources */,
 				2292C4F52505CC1E005802B5 /* Fill.swift in Sources */,
 				C6EB477D2520170100FCD0CB /* AngleOperators.swift in Sources */,

@@ -8,7 +8,6 @@
 
 import Intents
 import WidgetKit
-
 /**
  Define the refresh rate centrally so it can be tweaked quickly
  */
@@ -74,10 +73,12 @@ struct MultiRingProvider: IntentTimelineProvider {
             
             /// add fetched summary to Widget Timeline
             /// load again after `widgetPeriod`
+            #warning("BROKEN!")
             let timeline = Timeline(
                 entries: [MultiRingEntry(
                     date: Date(),
-                    projects: summary.projects,
+//                    projects: summary.projects,
+                    projects: [],
                     running: WidgetManager.running ?? .noEntry,
                     theme: configuration.Theme
                 )],
