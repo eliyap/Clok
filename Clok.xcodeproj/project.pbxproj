@@ -236,7 +236,6 @@
 		22B2620E254B9BBB00182236 /* RR_Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B2620D254B9BBB00182236 /* RR_Timeline.swift */; };
 		22B26222254B9BE300182236 /* RR_Square.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B26221254B9BE300182236 /* RR_Square.swift */; };
 		22B2622C254B9C3800182236 /* PersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EB47292520138100FCD0CB /* PersistentContainer.swift */; };
-		22B26236254B9CC100182236 /* BackgroundRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B0783C24B1630800256EB8 /* BackgroundRequest.swift */; };
 		22B26240254B9CC600182236 /* KeychainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229521592505BF2A00085055 /* KeychainError.swift */; };
 		22B2624A254B9CD300182236 /* FormRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2296F15A24A994A400AF38B5 /* FormRequest.swift */; };
 		22B26254254B9CE000182236 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B0783724B1519600256EB8 /* NetworkError.swift */; };
@@ -308,6 +307,13 @@
 		22FFF6632570FC9F00A54471 /* WidgetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2206C5532541DD0600C78477 /* WidgetManager.swift */; };
 		22FFF66B2570FCA900A54471 /* FirstDayOfWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D5F52C2570E49C00806992 /* FirstDayOfWeek.swift */; };
 		22FFF6732570FCB400A54471 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F605AE246C6B1700D0FE82 /* DateExtension.swift */; };
+		22FFF698257101DE00A54471 /* RR_Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FFF697257101DE00A54471 /* RR_Fetcher.swift */; };
+		22FFF6A12571020B00A54471 /* DataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FFF6A02571020B00A54471 /* DataFetcher.swift */; };
+		22FFF6A92571022700A54471 /* DataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FFF6A02571020B00A54471 /* DataFetcher.swift */; };
+		22FFF6B12571022C00A54471 /* RR_Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FFF697257101DE00A54471 /* RR_Fetcher.swift */; };
+		22FFF6C8257103AF00A54471 /* DataTaskMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B1D64824EBAD27001E87C1 /* DataTaskMonitor.swift */; };
+		22FFF6D0257109C400A54471 /* RunningEntryInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229D7B224F055FC004E1034 /* RunningEntryInit.swift */; };
+		22FFF6D825710CA800A54471 /* PrintError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229646D824F3367800FE14E5 /* PrintError.swift */; };
 		C60856AB251FCB1E00E6D6C0 /* URLStoreExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60856AA251FCB1E00E6D6C0 /* URLStoreExtension.swift */; };
 		C60856B4251FCE1B00E6D6C0 /* Tag+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229646D024F3294900FE14E5 /* Tag+CoreDataClass.swift */; };
 		C60856B5251FCE1B00E6D6C0 /* Project+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC869D24BA838D00FF771F /* Project+CoreDataProperties.swift */; };
@@ -578,7 +584,6 @@
 		22AD5F8424B1467E006EF7FB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		22AD5F8624B1467E006EF7FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22B0783724B1519600256EB8 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
-		22B0783C24B1630800256EB8 /* BackgroundRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundRequest.swift; sourceTree = "<group>"; };
 		22B0784124B17BEC00256EB8 /* RunningEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningEntry.swift; sourceTree = "<group>"; };
 		22B0784624B247D500256EB8 /* ClokWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ClokWidgetExtension.entitlements; sourceTree = "<group>"; };
 		22B0784724B249BA00256EB8 /* Clok.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Clok.entitlements; sourceTree = "<group>"; };
@@ -617,6 +622,8 @@
 		22F4655B2541FAD1008BF6F0 /* RunningTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningTimer.swift; sourceTree = "<group>"; };
 		22FA0719251D0DC800E20C27 /* TokenWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenWebView.swift; sourceTree = "<group>"; };
 		22FFF64C2570F8B200A54471 /* BeginningOfWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeginningOfWeek.swift; sourceTree = "<group>"; };
+		22FFF697257101DE00A54471 /* RR_Fetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RR_Fetcher.swift; sourceTree = "<group>"; };
+		22FFF6A02571020B00A54471 /* DataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFetcher.swift; sourceTree = "<group>"; };
 		C60856AA251FCB1E00E6D6C0 /* URLStoreExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLStoreExtension.swift; sourceTree = "<group>"; };
 		C61D2657249BE1990056C9FA /* StatHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatHelpers.swift; sourceTree = "<group>"; };
 		C6243D432526C421002E1B6E /* RightTriangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightTriangle.swift; sourceTree = "<group>"; };
@@ -789,6 +796,7 @@
 				2293CEEC24EC5661000B68F4 /* ProjectLoader.swift */,
 				2229D7AF24F0459F004E1034 /* FetchRunningEntry.swift */,
 				229646CE24F322E600FE14E5 /* TagLoader.swift */,
+				22FFF6A02571020B00A54471 /* DataFetcher.swift */,
 			);
 			path = Fetchers;
 			sourceTree = "<group>";
@@ -1024,7 +1032,6 @@
 				221F6276251EE5B3000ECED9 /* EmptyRingView.swift */,
 				22B0784824B2629A00256EB8 /* Timeline.swift */,
 				229521692505C14200085055 /* SearchTermsProjects.swift */,
-				22B0783C24B1630800256EB8 /* BackgroundRequest.swift */,
 				22AD5F8324B1467D006EF7FB /* ClokWidget.intentdefinition */,
 				22AD5F8424B1467E006EF7FB /* Assets.xcassets */,
 				22AD5F8624B1467E006EF7FB /* Info.plist */,
@@ -1049,6 +1056,7 @@
 			isa = PBXGroup;
 			children = (
 				22B261F7254B9B6D00182236 /* RR_Widget.swift */,
+				22FFF697257101DE00A54471 /* RR_Fetcher.swift */,
 				22B26202254B9B9600182236 /* RR_Entry.swift */,
 				22B2620D254B9BBB00182236 /* RR_Timeline.swift */,
 				22B26221254B9BE300182236 /* RR_Square.swift */,
@@ -1722,6 +1730,7 @@
 			files = (
 				22D5F5352570E4A300806992 /* FirstDayOfWeek.swift in Sources */,
 				22B26222254B9BE300182236 /* RR_Square.swift in Sources */,
+				22FFF6D825710CA800A54471 /* PrintError.swift in Sources */,
 				2205DC31254B9EEB00146EAB /* ColorHex.swift in Sources */,
 				2205DC8C254B9FC700146EAB /* RawProject.swift in Sources */,
 				22D5F5062570CFE000806992 /* MR_TimeIndicator.swift in Sources */,
@@ -1733,13 +1742,14 @@
 				2205DC82254B9FAD00146EAB /* Project+CoreDataClass.swift in Sources */,
 				22B78A08256C80AA00780213 /* TimeEntryModel.xcdatamodeld in Sources */,
 				22B26290254B9D6B00182236 /* ColorAdjust.swift in Sources */,
+				22FFF6C8257103AF00A54471 /* DataTaskMonitor.swift in Sources */,
 				22FFF6732570FCB400A54471 /* DateExtension.swift in Sources */,
 				2205DC78254B9FA300146EAB /* LoadProjects.swift in Sources */,
+				22FFF6A92571022700A54471 /* DataFetcher.swift in Sources */,
 				2205DCB5254BA00B00146EAB /* Tag+CoreDataProperties.swift in Sources */,
 				22B2625E254B9CF200182236 /* RunningEntry.swift in Sources */,
 				2205DCC0254BA01400146EAB /* KeychainConstants.swift in Sources */,
 				22D5F412256F8BEB00806992 /* RawDetailed.swift in Sources */,
-				22B26236254B9CC100182236 /* BackgroundRequest.swift in Sources */,
 				22B2629A254B9D7700182236 /* ColorCustom.swift in Sources */,
 				22B26272254B9D3800182236 /* TimeConstants.swift in Sources */,
 				22B2620E254B9BBB00182236 /* RR_Timeline.swift in Sources */,
@@ -1759,6 +1769,7 @@
 				2205DC5A254B9F6600146EAB /* RequestConstants.swift in Sources */,
 				2205DDA3254BA20500146EAB /* DateComponent.swift in Sources */,
 				2205DD0A254BA0C600146EAB /* MR_Widget.swift in Sources */,
+				22FFF6D0257109C400A54471 /* RunningEntryInit.swift in Sources */,
 				2205DC96254B9FDE00146EAB /* DateStridable.swift in Sources */,
 				2205DC64254B9F7A00146EAB /* CoreDataConstants.swift in Sources */,
 				2205DD41254BA11500146EAB /* MR_Entry.swift in Sources */,
@@ -1766,6 +1777,7 @@
 				2205DCE6254BA05500146EAB /* DecoderExtension.swift in Sources */,
 				2205DC6E254B9F8600146EAB /* GetCredentials.swift in Sources */,
 				2205DCA0254B9FF100146EAB /* Project+CoreDataProperties.swift in Sources */,
+				22FFF6B12571022C00A54471 /* RR_Fetcher.swift in Sources */,
 				2205DD54254BA14300146EAB /* MR_Ring.swift in Sources */,
 				2205DD30254BA10600146EAB /* Summary.swift in Sources */,
 				2205DCD3254BA03000146EAB /* RunningRing.intentdefinition in Sources */,
@@ -1828,6 +1840,7 @@
 				221D963C24A912B900C84F57 /* APIKeyHandler.swift in Sources */,
 				229646C924F3212700FE14E5 /* RequestConstants.swift in Sources */,
 				2295216C2505C16900085055 /* GraphMode.swift in Sources */,
+				22FFF698257101DE00A54471 /* RR_Fetcher.swift in Sources */,
 				22027DD024AFF63F00C0BA90 /* OrientationView.swift in Sources */,
 				228B100224AEA6E50026AD4B /* RoundBottomRect.swift in Sources */,
 				2295215A2505BF2A00085055 /* KeychainError.swift in Sources */,
@@ -1868,6 +1881,7 @@
 				2229D7AA24EF6BDB004E1034 /* CurrentTimeIndicator.swift in Sources */,
 				C6AAB3EA249EF26800DFBA36 /* TimeEntryExtension.swift in Sources */,
 				C6EB45C1251FEDB900FCD0CB /* CoreDataConstants.swift in Sources */,
+				22FFF6A12571020B00A54471 /* DataFetcher.swift in Sources */,
 				C6C18D492448F96C000345D5 /* ContentView.swift in Sources */,
 				22D7459C2505E9B600013A80 /* ZoomLevel.swift in Sources */,
 				22885DB024DA1C9600A56FE3 /* Divisions.swift in Sources */,
