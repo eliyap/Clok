@@ -278,6 +278,7 @@
 		22D5F4762570ADB600806992 /* MultiRing.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = C6262B9F251F03950003D435 /* MultiRing.intentdefinition */; };
 		22D5F4852570B1A700806992 /* DecoderExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D992524BAB2FD00F66E0F /* DecoderExtension.swift */; };
 		22D5F48D2570B1B900806992 /* MultiRing.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = C6262B9F251F03950003D435 /* MultiRing.intentdefinition */; };
+		22D5F5062570CFE000806992 /* MR_TimeIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D5F4F62570CFDB00806992 /* MR_TimeIndicator.swift */; };
 		22D745982505E93900013A80 /* ChosenWorkspace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D745972505E93900013A80 /* ChosenWorkspace.swift */; };
 		22D7459C2505E9B600013A80 /* ZoomLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D7459B2505E9B600013A80 /* ZoomLevel.swift */; };
 		22D7459E2505E9F300013A80 /* FirstDayOfWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D7459D2505E9F300013A80 /* FirstDayOfWeek.swift */; };
@@ -590,6 +591,7 @@
 		22D5F3E1256F8A0D00806992 /* Detailed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detailed.swift; sourceTree = "<group>"; };
 		22D5F3EA256F8A6600806992 /* DetailedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedLoader.swift; sourceTree = "<group>"; };
 		22D5F407256F8BE600806992 /* RawDetailed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawDetailed.swift; sourceTree = "<group>"; };
+		22D5F4F62570CFDB00806992 /* MR_TimeIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MR_TimeIndicator.swift; sourceTree = "<group>"; };
 		22D745972505E93900013A80 /* ChosenWorkspace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChosenWorkspace.swift; sourceTree = "<group>"; };
 		22D7459B2505E9B600013A80 /* ZoomLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomLevel.swift; sourceTree = "<group>"; };
 		22D7459D2505E9F300013A80 /* FirstDayOfWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstDayOfWeek.swift; sourceTree = "<group>"; };
@@ -723,6 +725,7 @@
 				2205DD13254BA0DF00146EAB /* MR_View.swift */,
 				2205DD26254BA0FB00146EAB /* MR_Entry.swift */,
 				2205DD53254BA14300146EAB /* MR_Ring.swift */,
+				22D5F4F62570CFDB00806992 /* MR_TimeIndicator.swift */,
 				2205DD5D254BA16000146EAB /* MR_Timeline.swift */,
 				C6262B9F251F03950003D435 /* MultiRing.intentdefinition */,
 			);
@@ -1696,6 +1699,7 @@
 				22B26222254B9BE300182236 /* RR_Square.swift in Sources */,
 				2205DC31254B9EEB00146EAB /* ColorHex.swift in Sources */,
 				2205DC8C254B9FC700146EAB /* RawProject.swift in Sources */,
+				22D5F5062570CFE000806992 /* MR_TimeIndicator.swift in Sources */,
 				22B2624A254B9CD300182236 /* FormRequest.swift in Sources */,
 				22B261E5254B9AF500182236 /* WidgetBundle.intentdefinition in Sources */,
 				22B26286254B9D5600182236 /* AngleExtension.swift in Sources */,

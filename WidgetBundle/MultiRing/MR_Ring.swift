@@ -59,33 +59,7 @@ struct ProjectRing: View {
         }
         .aspectRatio(1, contentMode: .fit)
     }
-    
-    /// shows the amount of time spent on this project
-    private var TimeIndicator: some View {
-        /// (ab)use `Group` to erase type
-        Group {
-            switch hours {
-            /// signals `.empty`
-            case -1:
-                EmptyRing
-            case 0:
-                Text("\(mins)m")
-                    .font(.system(size: minuteFont, design: .rounded))
-                    .bold()
-                    .foregroundColor(project.color)
-            default:
-                VStack {
-                    Text(String(format: "%d:%02d", hours, mins))
-                        .font(.system(size: hourFont, design: .rounded))
-                        .bold()
-                        /// lighten or darken to improve contrast
-                        .foregroundColor(highContrast)
-                }
-            }
-        }
-    }
 }
-
 extension ProjectRing {
     var unit: TimeInterval {
         switch period {
@@ -117,28 +91,6 @@ extension ProjectRing {
 
 // MARK: - Size Based Properties
 extension ProjectRing {
-    var minuteFont: CGFloat {
-        switch size {
-        case .small:
-            return 12
-        default:
-            return 20
-        }
-    }
-    var hourFont: CGFloat {
-        switch size {
-        case .small:
-            /// shrink slightly if hours are 2 digits
-            return hours >= 10
-                ? 14
-                : 12
-        default:
-            /// shrink slightly if hours are 2 digits
-            return hours >= 10
-                ? 28
-                : 24
-        }
-    }
     var nameFont: CGFloat {
         switch size {
         case .small:
