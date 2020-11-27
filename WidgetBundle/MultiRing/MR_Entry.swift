@@ -12,7 +12,7 @@ import SwiftUI
 
 struct MultiRingEntry: TimelineEntry {
     let date: Date
-    let projects: [Summary.Project]
+    let projects: [Detailed.Project]
     let running: RunningEntry
     /// light / dark theme, use system by default
     var theme: Mode = .system

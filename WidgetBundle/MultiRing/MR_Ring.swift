@@ -13,7 +13,7 @@ struct ProjectRing: View {
     /// how much to brighten / darken the view.
     /// bounded (0, 1)
     static let colorAdjustment = CGFloat(0.1)
-    var project: Summary.Project = .empty
+    var project: Detailed.Project = .empty
     var size: RingSize = .small
     
     /// the angle at which to distribute beads

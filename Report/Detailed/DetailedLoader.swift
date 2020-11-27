@@ -48,8 +48,8 @@ func fetchDetailed(
             #warning("DEBUG")
             let json = try JSONSerialization.jsonObject(with: data, options: []) as! [String : AnyObject]
             print(json)
-            let summary = try JSONDecoder(dateStrategy: .iso8601).decode(Detailed.self, from: data)
-            completion(summary, nil)
+            let detailed = try JSONDecoder(dateStrategy: .iso8601).decode(Detailed.self, from: data)
+            completion(detailed, nil)
         } catch {
             completion(nil, NetworkError.serialization)
         }

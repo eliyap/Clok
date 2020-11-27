@@ -61,10 +61,10 @@ struct MultiRingEntryView : View {
     }
     
     func Grid4(
-        _ p1: Summary.Project,
-        _ p2: Summary.Project,
-        _ p3: Summary.Project,
-        _ p4: Summary.Project
+        _ p1: Detailed.Project,
+        _ p2: Detailed.Project,
+        _ p3: Detailed.Project,
+        _ p4: Detailed.Project
     ) -> some View {
         VStack(spacing: spaced) {
             HStack(spacing: spaced) {
@@ -95,7 +95,7 @@ extension MultiRingEntryView {
     }
     
     /// return exactly enough projects, padded with `empty`s to make the count
-    var topN: [Summary.Project] {
+    var topN: [Detailed.Project] {
         /// sorted by duration and padded with enough `empty`s
         let projs = entry.projects.sorted(by: {$0.duration > $1.duration})
             + Array(repeating: .empty, count: ringCount)

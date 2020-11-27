@@ -13,8 +13,8 @@ struct Detailed: Decodable {
     
     let total: TimeInterval
     
-    /// initialize with `noProject`
-    var projects: [Detailed.Project:[Detailed.Entry]] = [Detailed.Project.noProject:[]]
+    /// Note: sorted by duration
+    var projects: [Detailed.Project] = []
     
     init(from decoder: Decoder) throws {
         let rawDetailed = try RawDetailed(from: decoder)
@@ -22,48 +22,33 @@ struct Detailed: Decodable {
         /// convert total time from ms to seconds
         total = TimeInterval(rawDetailed.total_grand) / 1000.0
         
-        /// assemble dictionary
-        rawDetailed.data.forEach{ raw in
-            let (project, entry) = split(entry: raw)
-            if projects.keys.contains(project){
-                projects[project]?.append(entry)
+        /// initialize `noProject` file
+        var noProject = Detailed.Project.noProject
+        
+        /// file away entries
+        rawDetailed.data.forEach { rawEntry in
+            var project: Detailed.Project!
+            if rawEntry.pid == nil {
+                noProject.append(Detailed.Entry(raw: rawEntry))
+            } else if var match = projects.first(where: {$0.id == rawEntry.pid}) {
+                match.append(Detailed.Entry(raw: rawEntry))
             } else {
-                projects[project] = [entry]
+                var newProject = Detailed.Project(
+                    color: Color(hex: rawEntry.project_hex_color!),
+                    name: rawEntry.project!,
+                    id: rawEntry.pid!,
+                    entries: [],
+                    duration: .zero
+                )
+                newProject.append(Detailed.Entry(raw: rawEntry))
+                projects.append(newProject)
             }
         }
-    }
-}
-
-// MARK:- Split
-extension Detailed {
-    /**
-     Breaks the raw time entry into entry data and project data
-     */
-    func split(entry: RawTimeEntry) -> (Detailed.Project, Detailed.Entry){
-        var project: Detailed.Project!
-        switch entry.pid {
-        case .none:
-            project = Detailed.Project.noProject
-        default:
-            project = Detailed.Project(
-                color: Color(hex: entry.project_hex_color
-                    ?? StaticProject.unknown.wrappedColor.toHex
-                ),
-                name: entry.project
-                    ?? StaticProject.unknown.name,
-                id: entry.pid
-                    ?? StaticProject.unknown.wrappedID
-            )
+        
+        /// only include `noProject` if there are entries in it
+        if noProject.entries.count > 0 {
+            projects.append(noProject)
         }
-        return (project, Detailed.Entry(
-            description: entry.description,
-            start: entry.start,
-            end: entry.end,
-            dur: entry.dur / 1000.0, /// convert from ms to seconds
-            id: entry.id,
-            billable: entry.is_billable,
-            tags: entry.tags
-        ))
     }
 }
 
@@ -73,13 +58,31 @@ extension Detailed {
         let color: Color
         let name: String
         let id: Int
+        var entries: [Detailed.Entry]
+        var duration: TimeInterval
         
         /// copy from main app to keep consistency
         static let noProject = Detailed.Project(
             color: StaticProject.noProject.wrappedColor,
             name: StaticProject.noProject.name,
-            id: StaticProject.noProject.wrappedID
+            id: StaticProject.noProject.wrappedID,
+            entries: [],
+            duration: .zero
         )
+        
+        /// placeholder project when there are not enough to populate the widget.
+        static let empty = Detailed.Project(
+            color: .clear,
+            name: "",
+            id: NSNotFound,
+            entries: [],
+            duration: .zero
+        )
+        
+        mutating func append(_ entry: Detailed.Entry) {
+            entries.append(entry)
+            duration += entry.dur
+        }
     }
 }
 
@@ -102,5 +105,15 @@ extension Detailed {
         // let uid: Int; // user ID
         // let use_stop: Bool
         // let user: String
+        
+        init(raw: RawTimeEntry){
+            self.description = raw.description
+            self.start = raw.start
+            self.end = raw.end
+            self.dur = raw.dur / 1000 /// convert from ms to s
+            self.id = raw.id
+            self.billable = raw.is_billable
+            self.tags = raw.tags
+        }
     }
 }

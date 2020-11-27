@@ -32,8 +32,8 @@ struct MultiRingProvider: IntentTimelineProvider {
         }
         
         /// fetch summary from Toggl
-        fetchSummary(token: token, wid: chosenWID) { summary, error in
-            guard let summary = summary, error == nil else {
+        fetchDetailed(token: token, wid: chosenWID) { detailed, error in
+            guard let detailed = detailed, error == nil else {
                 print("MultiRingWidget Fetch Failed With Error \(String(describing: error))")
                 completion(placeholder(in: context))
                 return
@@ -42,7 +42,7 @@ struct MultiRingProvider: IntentTimelineProvider {
             /// submit fetched summary
             completion(MultiRingEntry(
                 date: Date(),
-                projects: summary.projects,
+                projects: detailed.projects,
                 running: WidgetManager.running ?? .noEntry,
                 theme: configuration.Theme
             ))
@@ -63,8 +63,8 @@ struct MultiRingProvider: IntentTimelineProvider {
         }
         
         /// fetch summary from Toggl
-        fetchDetailed(token: token, wid: chosenWID) { summary, error in
-            guard let summary = summary, error == nil else {
+        fetchDetailed(token: token, wid: chosenWID) { detailed, error in
+            guard let detailed = detailed, error == nil else {
                 print("MultiRingWidget Fetch Failed With Error \(String(describing: error))")
                 let timeline = Timeline(entries: [Entry](), policy: .after(Date() + .widgetPeriod))
                 completion(timeline)
@@ -73,12 +73,10 @@ struct MultiRingProvider: IntentTimelineProvider {
             
             /// add fetched summary to Widget Timeline
             /// load again after `widgetPeriod`
-            #warning("BROKEN!")
             let timeline = Timeline(
                 entries: [MultiRingEntry(
                     date: Date(),
-//                    projects: summary.projects,
-                    projects: [],
+                    projects: detailed.projects,
                     running: WidgetManager.running ?? .noEntry,
                     theme: configuration.Theme
                 )],
