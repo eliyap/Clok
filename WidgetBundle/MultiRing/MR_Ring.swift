@@ -28,7 +28,7 @@ struct ProjectRing: View {
     var body: some View {
         GeometryReader { geo in
             ZStack {
-                switch (project, hours) {
+                switch (project, unitCount) {
                 /// special case to avoid visual glitch, explicitly check if `.empty`
                 case (.empty, _):
                     EmptyRing
@@ -60,6 +60,7 @@ struct ProjectRing: View {
         .aspectRatio(1, contentMode: .fit)
     }
 }
+
 extension ProjectRing {
     var unit: TimeInterval {
         switch period {
@@ -68,6 +69,16 @@ extension ProjectRing {
         case .week:
             return .day
         }
+    }
+    
+    /// number of complete units
+    var unitCount: Int {
+        Int(project.duration / unit)
+    }
+    
+    /// remaining partial units
+    var remainder: Double {
+        (project.duration / unit) - Double(unitCount)
     }
 }
 
@@ -85,7 +96,7 @@ extension ProjectRing {
     
     /// the angle to rotate the ring
     var angle: Angle {
-        Angle(radians: .tau * project.duration.mod(.hour) / .hour)
+        Angle(radians: .tau * remainder)
     }
 }
 
@@ -109,7 +120,7 @@ extension ProjectRing {
         }
     }
     
-    /// rough guess as to the extrusion angle if the round cap from the end of the line
+    /// rough guess as to angle subtended by `round` cap, which extrudes from the end of the line segment
     var del: Angle {
         switch size {
         case .large:
@@ -119,7 +130,7 @@ extension ProjectRing {
         }
     }
     
-    /// width of the spacing ring
+    /// line weight of the spacing ring
     var spacerWidth: CGFloat {
         switch size {
         case .large:
@@ -137,10 +148,7 @@ extension ProjectRing {
             DarkHalf
             LightHalf
                 .rotationEffect(.tau * 0.5)
-            /// `week` mode quickly shows too many beads, so turn if off
-            if period == .day {
-                Beads(size: size)
-            }
+            Beads(size: size)
         }
         .rotationEffect(angle)
     }
@@ -197,7 +205,7 @@ extension ProjectRing {
     
     /// counts up number of full hours
     private func Beads(size: CGSize) -> some View {
-        ForEach(0..<hours, id: \.self){ index in
+        ForEach(0..<unitCount, id: \.self){ index in
             Circle()
                 /// NOTE: to improve contrast, darken beads by extra amount
                 .fill(modeBG)
