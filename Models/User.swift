@@ -15,6 +15,7 @@ fileprivate struct RawUserData: Decodable {
         var email: String
         var fullname: String
         var workspaces: [Workspace]
+        var beginning_of_week: Int
     }
 }
 
@@ -24,6 +25,7 @@ struct User: Decodable {
     var fullName: String
     var workspaces: [Workspace]
     var chosen: Workspace
+    var firstDayOfWeek: Int
     
     init(from decoder: Decoder) throws {
         let rawUser = try RawUserData(from: decoder).data
@@ -36,20 +38,30 @@ struct User: Decodable {
         
         /// default to first workspace
         chosen = workspaces[0]
+        
+        /** https://github.com/toggl/toggl_api_docs/blob/master/chapters/users.md
+         Refer to documentation, Toggl runs 0-6 (Sunday = 0),
+         whereas Apple runs 1-7 (Sunday = 1).
+         Hence we adjust by 1 when converting
+         */
+        firstDayOfWeek = rawUser.beginning_of_week + 1
+        WidgetManager.firstDayOfWeek = firstDayOfWeek
     }
     
     init?(
-        token token_: String,
-        email email_: String,
+        token: String,
+        email: String,
         name: String,
         spaces: [Workspace]?,
-        chosen chosen_: Workspace
+        chosen: Workspace,
+        firstDayOfWeek: Int
     ){
-        token = token_
-        email = email_
-        fullName = name
+        self.token = token
+        self.email = email
+        self.fullName = name
         guard let spaces = spaces else { return nil }
-        workspaces = spaces
-        chosen = chosen_
+        self.workspaces = spaces
+        self.chosen = chosen
+        self.firstDayOfWeek = firstDayOfWeek
     }
 }

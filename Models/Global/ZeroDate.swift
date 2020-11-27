@@ -14,7 +14,7 @@ final class ZeroDate: ObservableObject {
     init(){
         /// initialize to chosen start day
         /// usually, this will do nothing, but if user changed `firstDayOfWeek`, it should bring start up to speed
-        start = WorkspaceManager.zeroStart.startOfWeek(day: WorkspaceManager.firstDayOfWeek)
+        start = WorkspaceManager.zeroStart.startOfWeek(day: WidgetManager.firstDayOfWeek)
         
         zoomIdx = WorkspaceManager.zoomIdx
         limitedStart = $start

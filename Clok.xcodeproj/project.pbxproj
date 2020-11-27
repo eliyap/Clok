@@ -280,9 +280,10 @@
 		22D5F48D2570B1B900806992 /* MultiRing.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = C6262B9F251F03950003D435 /* MultiRing.intentdefinition */; };
 		22D5F5062570CFE000806992 /* MR_TimeIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D5F4F62570CFDB00806992 /* MR_TimeIndicator.swift */; };
 		22D5F50F2570D08700806992 /* MR_Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D5F50E2570D08700806992 /* MR_Colors.swift */; };
+		22D5F52D2570E49C00806992 /* FirstDayOfWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D5F52C2570E49C00806992 /* FirstDayOfWeek.swift */; };
+		22D5F5352570E4A300806992 /* FirstDayOfWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D5F52C2570E49C00806992 /* FirstDayOfWeek.swift */; };
 		22D745982505E93900013A80 /* ChosenWorkspace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D745972505E93900013A80 /* ChosenWorkspace.swift */; };
 		22D7459C2505E9B600013A80 /* ZoomLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D7459B2505E9B600013A80 /* ZoomLevel.swift */; };
-		22D7459E2505E9F300013A80 /* FirstDayOfWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D7459D2505E9F300013A80 /* FirstDayOfWeek.swift */; };
 		22DC869A24BA7A5E00FF771F /* TimeEntryModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22DC869824BA7A5E00FF771F /* TimeEntryModel.xcdatamodeld */; };
 		22DC869B24BA7A5E00FF771F /* TimeEntryModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22DC869824BA7A5E00FF771F /* TimeEntryModel.xcdatamodeld */; };
 		22DC86A024BA838D00FF771F /* Project+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC869C24BA838D00FF771F /* Project+CoreDataClass.swift */; };
@@ -301,6 +302,8 @@
 		22DF92D8251D6834007E4635 /* AnyTransitionSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DF92D7251D6834007E4635 /* AnyTransitionSlide.swift */; };
 		22F2CD60254BA744008DEB9C /* RunningTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F4655B2541FAD1008BF6F0 /* RunningTimer.swift */; };
 		22FA071A251D0DC800E20C27 /* TokenWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FA0719251D0DC800E20C27 /* TokenWebView.swift */; };
+		22FFF63B2570EA1D00A54471 /* WidgetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2206C5532541DD0600C78477 /* WidgetManager.swift */; };
+		22FFF6432570EA2500A54471 /* FirstDayOfWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D5F52C2570E49C00806992 /* FirstDayOfWeek.swift */; };
 		C60856AB251FCB1E00E6D6C0 /* URLStoreExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60856AA251FCB1E00E6D6C0 /* URLStoreExtension.swift */; };
 		C60856B4251FCE1B00E6D6C0 /* Tag+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229646D024F3294900FE14E5 /* Tag+CoreDataClass.swift */; };
 		C60856B5251FCE1B00E6D6C0 /* Project+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC869D24BA838D00FF771F /* Project+CoreDataProperties.swift */; };
@@ -594,9 +597,9 @@
 		22D5F407256F8BE600806992 /* RawDetailed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawDetailed.swift; sourceTree = "<group>"; };
 		22D5F4F62570CFDB00806992 /* MR_TimeIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MR_TimeIndicator.swift; sourceTree = "<group>"; };
 		22D5F50E2570D08700806992 /* MR_Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MR_Colors.swift; sourceTree = "<group>"; };
+		22D5F52C2570E49C00806992 /* FirstDayOfWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstDayOfWeek.swift; sourceTree = "<group>"; };
 		22D745972505E93900013A80 /* ChosenWorkspace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChosenWorkspace.swift; sourceTree = "<group>"; };
 		22D7459B2505E9B600013A80 /* ZoomLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomLevel.swift; sourceTree = "<group>"; };
-		22D7459D2505E9F300013A80 /* FirstDayOfWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstDayOfWeek.swift; sourceTree = "<group>"; };
 		22DC869924BA7A5E00FF771F /* TimeEntryModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TimeEntryModel.xcdatamodel; sourceTree = "<group>"; };
 		22DC869C24BA838D00FF771F /* Project+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Project+CoreDataClass.swift"; sourceTree = "<group>"; };
 		22DC869D24BA838D00FF771F /* Project+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Project+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -740,6 +743,7 @@
 			children = (
 				2206C5532541DD0600C78477 /* WidgetManager.swift */,
 				22F4655B2541FAD1008BF6F0 /* RunningTimer.swift */,
+				22D5F52C2570E49C00806992 /* FirstDayOfWeek.swift */,
 			);
 			path = WidgetManager;
 			sourceTree = "<group>";
@@ -934,7 +938,6 @@
 				2264CB3024AD250600ECBF2B /* WorkspaceManager.swift */,
 				229521672505C0C400085055 /* AllWorkspaces.swift */,
 				22D745972505E93900013A80 /* ChosenWorkspace.swift */,
-				22D7459D2505E9F300013A80 /* FirstDayOfWeek.swift */,
 				22D7459B2505E9B600013A80 /* ZoomLevel.swift */,
 				2295216B2505C16900085055 /* GraphMode.swift */,
 				2295216D2505C18200085055 /* ZeroStart.swift */,
@@ -1632,6 +1635,7 @@
 				C60856B6251FCE1B00E6D6C0 /* Project+CoreDataClass.swift in Sources */,
 				22D5F46E2570ADB500806992 /* MultiRing.intentdefinition in Sources */,
 				228174D72501CD12008E471D /* SummaryEquatable.swift in Sources */,
+				22FFF63B2570EA1D00A54471 /* WidgetManager.swift in Sources */,
 				228174CE2501B9AF008E471D /* ToOptional.swift in Sources */,
 				22B0783524B1513A00256EB8 /* ClokWidget.swift in Sources */,
 				22D5F3FA256F8A7A00806992 /* Detailed.swift in Sources */,
@@ -1671,6 +1675,7 @@
 				22B0783624B1513A00256EB8 /* User.swift in Sources */,
 				C6EB473C252013B900FCD0CB /* PersistentContainer.swift in Sources */,
 				C60856CE251FCE4C00E6D6C0 /* AsNSDate.swift in Sources */,
+				22FFF6432570EA2500A54471 /* FirstDayOfWeek.swift in Sources */,
 				22AD5F8724B1467E006EF7FB /* ClokWidget.intentdefinition in Sources */,
 				221F625B251EE172000ECED9 /* RawProject.swift in Sources */,
 				22B0784A24B262FA00256EB8 /* Timeline.swift in Sources */,
@@ -1699,6 +1704,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22D5F5352570E4A300806992 /* FirstDayOfWeek.swift in Sources */,
 				22B26222254B9BE300182236 /* RR_Square.swift in Sources */,
 				2205DC31254B9EEB00146EAB /* ColorHex.swift in Sources */,
 				2205DC8C254B9FC700146EAB /* RawProject.swift in Sources */,
@@ -1798,7 +1804,6 @@
 				C68F8C8D24A04CE8000D249B /* IceCreamStick.swift in Sources */,
 				2207B22024B954F40006748A /* GraphView.swift in Sources */,
 				C60856AB251FCB1E00E6D6C0 /* URLStoreExtension.swift in Sources */,
-				22D7459E2505E9F300013A80 /* FirstDayOfWeek.swift in Sources */,
 				22128E09254206E6004913AF /* WidgetManager.swift in Sources */,
 				2238640024BBBD030041886B /* LoadProjects.swift in Sources */,
 				22A2CE1D24E59BB1000820AD /* DateStridable.swift in Sources */,
@@ -1827,6 +1832,7 @@
 				2277E8C924EB47B400702086 /* PaginatedLoad.swift in Sources */,
 				22885DAE24DA13E500A56FE3 /* DayStrip.swift in Sources */,
 				22283DA224DF9CE0005AC0F3 /* GraphModel.swift in Sources */,
+				22D5F52D2570E49C00806992 /* FirstDayOfWeek.swift in Sources */,
 				22DC86A624BA838D00FF771F /* TimeEntry+CoreDataProperties.swift in Sources */,
 				C6262BA4251F03970003D435 /* MultiRing.intentdefinition in Sources */,
 				22283DA624DF9EFA005AC0F3 /* GraphButtons.swift in Sources */,
