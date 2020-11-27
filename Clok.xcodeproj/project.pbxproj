@@ -307,13 +307,14 @@
 		22FFF6632570FC9F00A54471 /* WidgetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2206C5532541DD0600C78477 /* WidgetManager.swift */; };
 		22FFF66B2570FCA900A54471 /* FirstDayOfWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D5F52C2570E49C00806992 /* FirstDayOfWeek.swift */; };
 		22FFF6732570FCB400A54471 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F605AE246C6B1700D0FE82 /* DateExtension.swift */; };
-		22FFF698257101DE00A54471 /* RR_Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FFF697257101DE00A54471 /* RR_Fetcher.swift */; };
+		22FFF698257101DE00A54471 /* RunningEntryFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FFF697257101DE00A54471 /* RunningEntryFetcher.swift */; };
 		22FFF6A12571020B00A54471 /* DataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FFF6A02571020B00A54471 /* DataFetcher.swift */; };
 		22FFF6A92571022700A54471 /* DataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FFF6A02571020B00A54471 /* DataFetcher.swift */; };
-		22FFF6B12571022C00A54471 /* RR_Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FFF697257101DE00A54471 /* RR_Fetcher.swift */; };
+		22FFF6B12571022C00A54471 /* RunningEntryFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FFF697257101DE00A54471 /* RunningEntryFetcher.swift */; };
 		22FFF6C8257103AF00A54471 /* DataTaskMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B1D64824EBAD27001E87C1 /* DataTaskMonitor.swift */; };
 		22FFF6D0257109C400A54471 /* RunningEntryInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229D7B224F055FC004E1034 /* RunningEntryInit.swift */; };
 		22FFF6D825710CA800A54471 /* PrintError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229646D824F3367800FE14E5 /* PrintError.swift */; };
+		22FFF6EF2571A77500A54471 /* DetailedReportFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FFF6EE2571A77500A54471 /* DetailedReportFetcher.swift */; };
 		C60856AB251FCB1E00E6D6C0 /* URLStoreExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60856AA251FCB1E00E6D6C0 /* URLStoreExtension.swift */; };
 		C60856B4251FCE1B00E6D6C0 /* Tag+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229646D024F3294900FE14E5 /* Tag+CoreDataClass.swift */; };
 		C60856B5251FCE1B00E6D6C0 /* Project+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC869D24BA838D00FF771F /* Project+CoreDataProperties.swift */; };
@@ -622,8 +623,9 @@
 		22F4655B2541FAD1008BF6F0 /* RunningTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningTimer.swift; sourceTree = "<group>"; };
 		22FA0719251D0DC800E20C27 /* TokenWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenWebView.swift; sourceTree = "<group>"; };
 		22FFF64C2570F8B200A54471 /* BeginningOfWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeginningOfWeek.swift; sourceTree = "<group>"; };
-		22FFF697257101DE00A54471 /* RR_Fetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RR_Fetcher.swift; sourceTree = "<group>"; };
+		22FFF697257101DE00A54471 /* RunningEntryFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningEntryFetcher.swift; sourceTree = "<group>"; };
 		22FFF6A02571020B00A54471 /* DataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFetcher.swift; sourceTree = "<group>"; };
+		22FFF6EE2571A77500A54471 /* DetailedReportFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedReportFetcher.swift; sourceTree = "<group>"; };
 		C60856AA251FCB1E00E6D6C0 /* URLStoreExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLStoreExtension.swift; sourceTree = "<group>"; };
 		C61D2657249BE1990056C9FA /* StatHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatHelpers.swift; sourceTree = "<group>"; };
 		C6243D432526C421002E1B6E /* RightTriangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightTriangle.swift; sourceTree = "<group>"; };
@@ -797,6 +799,8 @@
 				2229D7AF24F0459F004E1034 /* FetchRunningEntry.swift */,
 				229646CE24F322E600FE14E5 /* TagLoader.swift */,
 				22FFF6A02571020B00A54471 /* DataFetcher.swift */,
+				22FFF697257101DE00A54471 /* RunningEntryFetcher.swift */,
+				22FFF6EE2571A77500A54471 /* DetailedReportFetcher.swift */,
 			);
 			path = Fetchers;
 			sourceTree = "<group>";
@@ -1056,7 +1060,6 @@
 			isa = PBXGroup;
 			children = (
 				22B261F7254B9B6D00182236 /* RR_Widget.swift */,
-				22FFF697257101DE00A54471 /* RR_Fetcher.swift */,
 				22B26202254B9B9600182236 /* RR_Entry.swift */,
 				22B2620D254B9BBB00182236 /* RR_Timeline.swift */,
 				22B26221254B9BE300182236 /* RR_Square.swift */,
@@ -1743,6 +1746,7 @@
 				22B78A08256C80AA00780213 /* TimeEntryModel.xcdatamodeld in Sources */,
 				22B26290254B9D6B00182236 /* ColorAdjust.swift in Sources */,
 				22FFF6C8257103AF00A54471 /* DataTaskMonitor.swift in Sources */,
+				22FFF6EF2571A77500A54471 /* DetailedReportFetcher.swift in Sources */,
 				22FFF6732570FCB400A54471 /* DateExtension.swift in Sources */,
 				2205DC78254B9FA300146EAB /* LoadProjects.swift in Sources */,
 				22FFF6A92571022700A54471 /* DataFetcher.swift in Sources */,
@@ -1777,7 +1781,7 @@
 				2205DCE6254BA05500146EAB /* DecoderExtension.swift in Sources */,
 				2205DC6E254B9F8600146EAB /* GetCredentials.swift in Sources */,
 				2205DCA0254B9FF100146EAB /* Project+CoreDataProperties.swift in Sources */,
-				22FFF6B12571022C00A54471 /* RR_Fetcher.swift in Sources */,
+				22FFF6B12571022C00A54471 /* RunningEntryFetcher.swift in Sources */,
 				2205DD54254BA14300146EAB /* MR_Ring.swift in Sources */,
 				2205DD30254BA10600146EAB /* Summary.swift in Sources */,
 				2205DCD3254BA03000146EAB /* RunningRing.intentdefinition in Sources */,
@@ -1840,7 +1844,7 @@
 				221D963C24A912B900C84F57 /* APIKeyHandler.swift in Sources */,
 				229646C924F3212700FE14E5 /* RequestConstants.swift in Sources */,
 				2295216C2505C16900085055 /* GraphMode.swift in Sources */,
-				22FFF698257101DE00A54471 /* RR_Fetcher.swift in Sources */,
+				22FFF698257101DE00A54471 /* RunningEntryFetcher.swift in Sources */,
 				22027DD024AFF63F00C0BA90 /* OrientationView.swift in Sources */,
 				228B100224AEA6E50026AD4B /* RoundBottomRect.swift in Sources */,
 				2295215A2505BF2A00085055 /* KeychainError.swift in Sources */,
