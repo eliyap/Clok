@@ -9,34 +9,31 @@
 import Foundation
 import SwiftUI
 
-struct Detailed: Decodable {
+struct Detailed {
     
-    let total: TimeInterval
     let period: Period
     
     /// Note: not sorted by duration
     var projects: [Detailed.Project] = []
     
-    init(from decoder: Decoder) throws {
-        var rawDetailed = try RawDetailed(from: decoder)
+    init(entries: [RawTimeEntry], period: Period) {
         
-        self.period = decoder.userInfo[.detailedPeriod] as! Period
+        var entries = entries
+        self.period = period
+        
         /// drop all entries that ended before cutoff time
         switch period {
         case .day, .unknown:
-            rawDetailed.data.removeAll(where: {$0.end < Date().midnight})
+            entries.removeAll(where: {$0.end < Date().midnight})
         case .week:
-            rawDetailed.data.removeAll(where: {$0.end < Date().startOfWeek(day: WidgetManager.firstDayOfWeek)})
+            entries.removeAll(where: {$0.end < Date().startOfWeek(day: WidgetManager.firstDayOfWeek)})
         }
-        
-        /// convert total time from ms to seconds
-        total = TimeInterval(rawDetailed.total_grand) / 1000.0
-        
+                
         /// initialize `noProject` file
         var noProject = Detailed.Project.noProject
         
         /// file away entries
-        rawDetailed.data.forEach { rawEntry in
+        entries.forEach { rawEntry in
             if rawEntry.pid == nil {
                 noProject.append(Detailed.Entry(raw: rawEntry))
             } else if let index = projects.firstIndex(where: {$0.id == rawEntry.pid}) {

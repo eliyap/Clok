@@ -257,14 +257,8 @@
 		22D56F162526BB090011C4AC /* RingSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D56F032526BB030011C4AC /* RingSize.swift */; };
 		22D56F172526BB090011C4AC /* RingSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D56F032526BB030011C4AC /* RingSize.swift */; };
 		22D5F3FA256F8A7A00806992 /* Detailed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D5F3E1256F8A0D00806992 /* Detailed.swift */; };
-		22D5F3FB256F8A7A00806992 /* DetailedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D5F3EA256F8A6600806992 /* DetailedLoader.swift */; };
 		22D5F3FC256F8A7A00806992 /* Detailed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D5F3E1256F8A0D00806992 /* Detailed.swift */; };
-		22D5F3FD256F8A7A00806992 /* DetailedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D5F3EA256F8A6600806992 /* DetailedLoader.swift */; };
 		22D5F3FE256F8A7B00806992 /* Detailed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D5F3E1256F8A0D00806992 /* Detailed.swift */; };
-		22D5F3FF256F8A7B00806992 /* DetailedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D5F3EA256F8A6600806992 /* DetailedLoader.swift */; };
-		22D5F410256F8BEA00806992 /* RawDetailed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D5F407256F8BE600806992 /* RawDetailed.swift */; };
-		22D5F411256F8BEB00806992 /* RawDetailed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D5F407256F8BE600806992 /* RawDetailed.swift */; };
-		22D5F412256F8BEB00806992 /* RawDetailed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D5F407256F8BE600806992 /* RawDetailed.swift */; };
 		22D5F43525707F9600806992 /* TimeEntry+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC869E24BA838D00FF771F /* TimeEntry+CoreDataClass.swift */; };
 		22D5F43625707F9600806992 /* Project+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC869D24BA838D00FF771F /* Project+CoreDataProperties.swift */; };
 		22D5F43725707F9600806992 /* TimeEntry+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC869F24BA838D00FF771F /* TimeEntry+CoreDataProperties.swift */; };
@@ -315,6 +309,7 @@
 		22FFF6D0257109C400A54471 /* RunningEntryInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229D7B224F055FC004E1034 /* RunningEntryInit.swift */; };
 		22FFF6D825710CA800A54471 /* PrintError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229646D824F3367800FE14E5 /* PrintError.swift */; };
 		22FFF6EF2571A77500A54471 /* DetailedReportFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FFF6EE2571A77500A54471 /* DetailedReportFetcher.swift */; };
+		22FFF6F72571A84F00A54471 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D996224BB803800F66E0F /* Report.swift */; };
 		C60856AB251FCB1E00E6D6C0 /* URLStoreExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60856AA251FCB1E00E6D6C0 /* URLStoreExtension.swift */; };
 		C60856B4251FCE1B00E6D6C0 /* Tag+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229646D024F3294900FE14E5 /* Tag+CoreDataClass.swift */; };
 		C60856B5251FCE1B00E6D6C0 /* Project+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC869D24BA838D00FF771F /* Project+CoreDataProperties.swift */; };
@@ -603,8 +598,6 @@
 		22BE1FF324A92DE500A9A739 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		22D56F032526BB030011C4AC /* RingSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingSize.swift; sourceTree = "<group>"; };
 		22D5F3E1256F8A0D00806992 /* Detailed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detailed.swift; sourceTree = "<group>"; };
-		22D5F3EA256F8A6600806992 /* DetailedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedLoader.swift; sourceTree = "<group>"; };
-		22D5F407256F8BE600806992 /* RawDetailed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawDetailed.swift; sourceTree = "<group>"; };
 		22D5F4F62570CFDB00806992 /* MR_TimeIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MR_TimeIndicator.swift; sourceTree = "<group>"; };
 		22D5F50E2570D08700806992 /* MR_Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MR_Colors.swift; sourceTree = "<group>"; };
 		22D5F52C2570E49C00806992 /* FirstDayOfWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstDayOfWeek.swift; sourceTree = "<group>"; };
@@ -1107,8 +1100,6 @@
 			isa = PBXGroup;
 			children = (
 				22D5F3E1256F8A0D00806992 /* Detailed.swift */,
-				22D5F407256F8BE600806992 /* RawDetailed.swift */,
-				22D5F3EA256F8A6600806992 /* DetailedLoader.swift */,
 			);
 			path = Detailed;
 			sourceTree = "<group>";
@@ -1617,7 +1608,6 @@
 				2295214F2505BDE900085055 /* TimeIntervalExtension.swift in Sources */,
 				2292C4FE2505CC68005802B5 /* WidgetView.swift in Sources */,
 				22D56F162526BB090011C4AC /* RingSize.swift in Sources */,
-				22D5F3FD256F8A7A00806992 /* DetailedLoader.swift in Sources */,
 				C6EB47832520170100FCD0CB /* DateMean.swift in Sources */,
 				229521492505BD7600085055 /* Summary.swift in Sources */,
 				2292C4E82505CC1E005802B5 /* Piece7.swift in Sources */,
@@ -1627,7 +1617,6 @@
 				22D5F43625707F9600806992 /* Project+CoreDataProperties.swift in Sources */,
 				229521532505BEAB00085055 /* WorkspaceManager.swift in Sources */,
 				229521462505BD7600085055 /* NoSummary.swift in Sources */,
-				22D5F411256F8BEB00806992 /* RawDetailed.swift in Sources */,
 				2292C4ED2505CC1E005802B5 /* ConfigurablePiece.swift in Sources */,
 				2295214C2505BDB200085055 /* TimeConstants.swift in Sources */,
 				2292C4EC2505CC1E005802B5 /* EnumeratePiece.swift in Sources */,
@@ -1667,7 +1656,6 @@
 				22B0783524B1513A00256EB8 /* ClokWidget.swift in Sources */,
 				22D5F3FA256F8A7A00806992 /* Detailed.swift in Sources */,
 				C6EB476A2520170100FCD0CB /* AngleOperators.swift in Sources */,
-				22D5F410256F8BEA00806992 /* RawDetailed.swift in Sources */,
 				C6EB47712520170100FCD0CB /* AnyTransitionSlide.swift in Sources */,
 				2238640324BBC6980041886B /* DoubleExtension.swift in Sources */,
 				229521602505BFFB00085055 /* KeychainConstants.swift in Sources */,
@@ -1718,7 +1706,6 @@
 				C6EB47722520170100FCD0CB /* DateStridable.swift in Sources */,
 				C6EB45CA251FEDBF00FCD0CB /* CoreDataConstants.swift in Sources */,
 				22B0784524B17CD900256EB8 /* ColorCustom.swift in Sources */,
-				22D5F3FB256F8A7A00806992 /* DetailedLoader.swift in Sources */,
 				22B6E473251EA38F00530539 /* Arc.swift in Sources */,
 				229646CC24F3220300FE14E5 /* RequestConstants.swift in Sources */,
 				229646CD24F3220600FE14E5 /* TimeConstants.swift in Sources */,
@@ -1753,7 +1740,6 @@
 				2205DCB5254BA00B00146EAB /* Tag+CoreDataProperties.swift in Sources */,
 				22B2625E254B9CF200182236 /* RunningEntry.swift in Sources */,
 				2205DCC0254BA01400146EAB /* KeychainConstants.swift in Sources */,
-				22D5F412256F8BEB00806992 /* RawDetailed.swift in Sources */,
 				22B2629A254B9D7700182236 /* ColorCustom.swift in Sources */,
 				22B26272254B9D3800182236 /* TimeConstants.swift in Sources */,
 				22B2620E254B9BBB00182236 /* RR_Timeline.swift in Sources */,
@@ -1762,13 +1748,13 @@
 				2205DC3B254B9F0200146EAB /* DoubleExtension.swift in Sources */,
 				22B2627C254B9D3E00182236 /* Project.swift in Sources */,
 				22B2622C254B9C3800182236 /* PersistentContainer.swift in Sources */,
+				22FFF6F72571A84F00A54471 /* Report.swift in Sources */,
 				22B26203254B9B9600182236 /* RR_Entry.swift in Sources */,
 				2205DCB6254BA00B00146EAB /* Tag+CoreDataClass.swift in Sources */,
 				22B262A4254B9D7B00182236 /* ColorScore.swift in Sources */,
 				2205DD88254BA1B000146EAB /* Arc.swift in Sources */,
 				2205DC46254B9F1C00146EAB /* RunningTimer.swift in Sources */,
 				2205DCAA254B9FFE00146EAB /* TimeEntry+CoreDataClass.swift in Sources */,
-				22D5F3FF256F8A7B00806992 /* DetailedLoader.swift in Sources */,
 				2205DD5E254BA16000146EAB /* MR_Timeline.swift in Sources */,
 				2205DC5A254B9F6600146EAB /* RequestConstants.swift in Sources */,
 				2205DDA3254BA20500146EAB /* DateComponent.swift in Sources */,
