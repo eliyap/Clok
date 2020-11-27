@@ -13,7 +13,7 @@ struct Detailed: Decodable {
     
     let total: TimeInterval
     
-    /// Note: sorted by duration
+    /// Note: not sorted by duration
     var projects: [Detailed.Project] = []
     
     init(from decoder: Decoder) throws {
@@ -27,11 +27,10 @@ struct Detailed: Decodable {
         
         /// file away entries
         rawDetailed.data.forEach { rawEntry in
-            var project: Detailed.Project!
             if rawEntry.pid == nil {
                 noProject.append(Detailed.Entry(raw: rawEntry))
-            } else if var match = projects.first(where: {$0.id == rawEntry.pid}) {
-                match.append(Detailed.Entry(raw: rawEntry))
+            } else if let index = projects.firstIndex(where: {$0.id == rawEntry.pid}) {
+                projects[index].append(Detailed.Entry(raw: rawEntry))
             } else {
                 var newProject = Detailed.Project(
                     color: Color(hex: rawEntry.project_hex_color!),
