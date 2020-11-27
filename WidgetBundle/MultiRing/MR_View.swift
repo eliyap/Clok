@@ -26,7 +26,7 @@ struct MultiRingEntryView : View {
             case .systemSmall:
                 Grid4(topN[0], topN[1], topN[2], topN[3])
             case .systemMedium:
-                ProjectRing(project: topN[0], size: .large)
+                ProjectRing(project: topN[0], size: .large, period: entry.period)
                 Grid4(topN[1], topN[2], topN[3], topN[4])
             case .systemLarge:
                 Grid4(topN[0], topN[1], topN[2], topN[3])
@@ -68,12 +68,12 @@ struct MultiRingEntryView : View {
     ) -> some View {
         VStack(spacing: spaced) {
             HStack(spacing: spaced) {
-                ProjectRing(project: p1)
-                ProjectRing(project: p2)
+                ProjectRing(project: p1, period: entry.period)
+                ProjectRing(project: p2, period: entry.period)
             }
             HStack(spacing: spaced) {
-                ProjectRing(project: p3)
-                ProjectRing(project: p4)
+                ProjectRing(project: p3, period: entry.period)
+                ProjectRing(project: p4, period: entry.period)
             }
         }
     }

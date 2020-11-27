@@ -20,6 +20,9 @@ struct ProjectRing: View {
     /// should allow them to just touch when at full size
     var beadAngle = 0.3
     
+    /// whether we are in week or day mode
+    let period: Period
+    
     @Environment(\.colorScheme) var mode
     
     var body: some View {
@@ -79,6 +82,17 @@ struct ProjectRing: View {
                         .foregroundColor(highContrast)
                 }
             }
+        }
+    }
+}
+
+extension ProjectRing {
+    var unit: TimeInterval {
+        switch period {
+        case .day, .unknown:
+            return .hour
+        case .week:
+            return .day
         }
     }
 }
@@ -196,7 +210,10 @@ extension ProjectRing {
             DarkHalf
             LightHalf
                 .rotationEffect(.tau * 0.5)
-            Beads(size: size)
+            /// `week` mode quickly shows too many beads, so turn if off
+            if period == .day {
+                Beads(size: size)
+            }
         }
         .rotationEffect(angle)
     }

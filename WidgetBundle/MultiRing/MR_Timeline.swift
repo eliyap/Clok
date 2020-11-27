@@ -21,7 +21,7 @@ struct MultiRingProvider: IntentTimelineProvider {
     typealias Intent = MultiRingConfigurationIntent
     
     func placeholder(in context: Context) -> Entry {
-        Entry(date: Date(), projects: [], running: .noEntry)
+        Entry(date: Date(), projects: [], running: .noEntry, period: .day)
     }
 
     func getSnapshot(for configuration: Intent, in context: Context, completion: @escaping (Entry) -> ()) {
@@ -44,6 +44,7 @@ struct MultiRingProvider: IntentTimelineProvider {
                 date: Date(),
                 projects: detailed.projects,
                 running: WidgetManager.running ?? .noEntry,
+                period: configuration.Period,
                 theme: configuration.Theme
             ))
             return
@@ -78,6 +79,7 @@ struct MultiRingProvider: IntentTimelineProvider {
                     date: Date(),
                     projects: detailed.projects,
                     running: WidgetManager.running ?? .noEntry,
+                    period: configuration.Period,
                     theme: configuration.Theme
                 )],
                 policy: .after(Date() + .widgetPeriod)
