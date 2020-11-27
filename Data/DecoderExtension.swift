@@ -28,3 +28,14 @@ extension JSONDecoder {
         self.dateDecodingStrategy = dateStrategy
     }
 }
+
+//MARK:- Detailed Report Period
+extension CodingUserInfoKey {
+    static let detailedPeriod = CodingUserInfoKey(rawValue: "detailedPeriod")!
+}
+
+extension JSONDecoder {
+    func setPeriod(_ period: Period) {
+        self.userInfo[.detailedPeriod] = period
+    }
+}

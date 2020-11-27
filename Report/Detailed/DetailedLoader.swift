@@ -63,7 +63,9 @@ func fetchDetailed(
             return
         }
         do {
-            let detailed = try JSONDecoder(dateStrategy: .iso8601).decode(Detailed.self, from: data)
+            let decoder = JSONDecoder(dateStrategy: .iso8601)
+            decoder.setPeriod(period)
+            let detailed = try decoder.decode(Detailed.self, from: data)
             completion(detailed, nil)
         } catch {
             completion(nil, NetworkError.serialization)

@@ -47,7 +47,7 @@
 				</dict>
 				<dict>
 					<key>INEnumValueDisplayName</key>
-					<string>System</string>
+					<string>Match System</string>
 					<key>INEnumValueDisplayNameID</key>
 					<string>i5HgW2</string>
 					<key>INEnumValueIndex</key>
@@ -200,7 +200,7 @@
 					<key>INIntentParameterCustomDisambiguation</key>
 					<true/>
 					<key>INIntentParameterDisplayName</key>
-					<string>Period</string>
+					<string>Time Period</string>
 					<key>INIntentParameterDisplayNameID</key>
 					<string>00MeC8</string>
 					<key>INIntentParameterDisplayPriority</key>

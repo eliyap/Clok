@@ -12,12 +12,14 @@ import SwiftUI
 struct Detailed: Decodable {
     
     let total: TimeInterval
+    let period: Period
     
     /// Note: not sorted by duration
     var projects: [Detailed.Project] = []
     
     init(from decoder: Decoder) throws {
         let rawDetailed = try RawDetailed(from: decoder)
+        self.period = decoder.userInfo[.detailedPeriod] as! Period
         
         /// convert total time from ms to seconds
         total = TimeInterval(rawDetailed.total_grand) / 1000.0
