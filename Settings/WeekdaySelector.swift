@@ -23,6 +23,9 @@ struct WeekdaySelector: View {
                     Text(newDay(idx: idx).weekdaySymbol)
                 }
             }
+            Text("Changes will be reflected on your Toggl Profile.")
+                .font(.caption)
+                .foregroundColor(.gray)
         }
         .listStyle(InsetGroupedListStyle())
         .navigationTitle("Week starts on")

@@ -304,6 +304,7 @@
 		22FA071A251D0DC800E20C27 /* TokenWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FA0719251D0DC800E20C27 /* TokenWebView.swift */; };
 		22FFF63B2570EA1D00A54471 /* WidgetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2206C5532541DD0600C78477 /* WidgetManager.swift */; };
 		22FFF6432570EA2500A54471 /* FirstDayOfWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D5F52C2570E49C00806992 /* FirstDayOfWeek.swift */; };
+		22FFF64D2570F8B200A54471 /* BeginningOfWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FFF64C2570F8B200A54471 /* BeginningOfWeek.swift */; };
 		C60856AB251FCB1E00E6D6C0 /* URLStoreExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60856AA251FCB1E00E6D6C0 /* URLStoreExtension.swift */; };
 		C60856B4251FCE1B00E6D6C0 /* Tag+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229646D024F3294900FE14E5 /* Tag+CoreDataClass.swift */; };
 		C60856B5251FCE1B00E6D6C0 /* Project+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC869D24BA838D00FF771F /* Project+CoreDataProperties.swift */; };
@@ -612,6 +613,7 @@
 		22F2CD51254BA3EE008DEB9C /* WidgetBundleExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WidgetBundleExtension.entitlements; sourceTree = "<group>"; };
 		22F4655B2541FAD1008BF6F0 /* RunningTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningTimer.swift; sourceTree = "<group>"; };
 		22FA0719251D0DC800E20C27 /* TokenWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenWebView.swift; sourceTree = "<group>"; };
+		22FFF64C2570F8B200A54471 /* BeginningOfWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeginningOfWeek.swift; sourceTree = "<group>"; };
 		C60856AA251FCB1E00E6D6C0 /* URLStoreExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLStoreExtension.swift; sourceTree = "<group>"; };
 		C61D2657249BE1990056C9FA /* StatHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatHelpers.swift; sourceTree = "<group>"; };
 		C6243D432526C421002E1B6E /* RightTriangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightTriangle.swift; sourceTree = "<group>"; };
@@ -1055,6 +1057,7 @@
 		22BE1FEB24A9246400A9A739 /* NetCode */ = {
 			isa = PBXGroup;
 			children = (
+				22FFF64B2570F8A000A54471 /* Putters */,
 				2229D7AD24F04574004E1034 /* Fetchers */,
 				2229D7AE24F04586004E1034 /* Helpers */,
 			);
@@ -1134,6 +1137,14 @@
 				22DF92D7251D6834007E4635 /* AnyTransitionSlide.swift */,
 			);
 			path = AnyTransition;
+			sourceTree = "<group>";
+		};
+		22FFF64B2570F8A000A54471 /* Putters */ = {
+			isa = PBXGroup;
+			children = (
+				22FFF64C2570F8B200A54471 /* BeginningOfWeek.swift */,
+			);
+			path = Putters;
 			sourceTree = "<group>";
 		};
 		C65B7D282497D1C100EED981 /* Statistics */ = {
@@ -1799,6 +1810,7 @@
 				229428D2251E7C61008C0BFF /* ColorAdjust.swift in Sources */,
 				22DE58E1251EC81B00379396 /* ClokWidget.intentdefinition in Sources */,
 				22283DAA24DFA27D005AC0F3 /* SearchTerms.swift in Sources */,
+				22FFF64D2570F8B200A54471 /* BeginningOfWeek.swift in Sources */,
 				C6F605AF246C6B1700D0FE82 /* DateExtension.swift in Sources */,
 				C6EB4733252013B800FCD0CB /* PersistentContainer.swift in Sources */,
 				C68F8C8D24A04CE8000D249B /* IceCreamStick.swift in Sources */,

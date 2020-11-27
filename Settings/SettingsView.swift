@@ -7,6 +7,7 @@
 //
 import CoreData
 import SwiftUI
+import Combine
 
 struct SettingsView: View {
     
@@ -16,6 +17,7 @@ struct SettingsView: View {
     @Environment(\.managedObjectContext) var moc
     
     @State var weekday: Int = WidgetManager.firstDayOfWeek
+    @State var weekdaySetter: AnyCancellable? = nil
     
     var body: some View {
         NavigationView {
@@ -105,7 +107,9 @@ extension SettingsView {
         /// update `UserDefaults`
         WidgetManager.firstDayOfWeek = weekday
         
-        #warning("place network update here")
+        if let token = settings.user?.token {
+            putWeekday(weekday, token: token)
+        }
         
         /// update `ZeroDate.start` to keep app in sync
         zero.start = zero.start.startOfWeek(day: weekday)
