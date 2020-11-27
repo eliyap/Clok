@@ -49,9 +49,7 @@ extension Date {
     /**
      returns 0000h of the first day of the week this `Date` is contained in.
      
-     NOTE: the first day of the week is provided, NOT deduced from `Calendar`.
-     In my testing, `Calendar`'s `.firstWeekday` straight up ignores the user's selected weekday (in Settings)
-     and is just completely unreliable.
+     NOTE: the first day of the week is Toggl's, NOT deduced from the iOS `Calendar`.
      */
     func startOfWeek(day: Int) -> Date {
         /// `day` is indexed 1 to 7, Sunday to Saturday
