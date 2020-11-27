@@ -8,18 +8,36 @@
 
 import Foundation
 
+/// Fetch Detailed Report
+/// - Parameters:
+///   - token: authentication token
+///   - wid: workspace ID
+///   - period: whether user is requesting 1 day or 1 week
+///   - completion: closure to call when finished fetching / on failure
+/// - Returns: nil
 func fetchDetailed(
     token: String,
     wid: Int,
+    period: Period,
     completion:@escaping (Detailed?, Error?) -> Void
 ) -> Void {
+    
+    /// determine start date based on user preference
+    var start = Date().midnight
+    switch period {
+    case .day, .unknown: /// if unknown, default to 1 day
+        start = start.advanced(by: -.day)
+    case .week:
+        start = start.advanced(by: -.week)
+    }
+    
     /// API URL documentation:
     /// https://github.com/toggl/toggl_api_docs/blob/master/reports/detailed.md
-    let url = [
-        "\(REPORT_URL)/details?user_agent=\(user_agent)",
+    let url = "\(REPORT_URL)/details?" + [
+        "user_agent=\(user_agent)",
         "workspace_id=\(wid)",
         /// cast 1 day into the past for roll-over entries
-        "since=\(Date().midnight.advanced(by: -.day).iso8601)",
+        "since=\(start.iso8601)",
         "until=\(Date().midnight.advanced(by: .day).iso8601)",
         /// **warning** ("only loads 1 page!")
         "page=0",
@@ -45,9 +63,6 @@ func fetchDetailed(
             return
         }
         do {
-            #warning("DEBUG")
-            let json = try JSONSerialization.jsonObject(with: data, options: []) as! [String : AnyObject]
-            print(json)
             let detailed = try JSONDecoder(dateStrategy: .iso8601).decode(Detailed.self, from: data)
             completion(detailed, nil)
         } catch {

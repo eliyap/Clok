@@ -275,6 +275,8 @@
 		22D5F43A25707F9600806992 /* Project+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC869C24BA838D00FF771F /* Project+CoreDataClass.swift */; };
 		22D5F44225707FA000806992 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67F47D2249FD44500FD2E6E /* Project.swift */; };
 		22D5F44A25707FA800806992 /* RawProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221F6240251EE157000ECED9 /* RawProject.swift */; };
+		22D5F46E2570ADB500806992 /* MultiRing.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = C6262B9F251F03950003D435 /* MultiRing.intentdefinition */; };
+		22D5F4762570ADB600806992 /* MultiRing.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = C6262B9F251F03950003D435 /* MultiRing.intentdefinition */; };
 		22D745982505E93900013A80 /* ChosenWorkspace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D745972505E93900013A80 /* ChosenWorkspace.swift */; };
 		22D7459C2505E9B600013A80 /* ZoomLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D7459B2505E9B600013A80 /* ZoomLevel.swift */; };
 		22D7459E2505E9F300013A80 /* FirstDayOfWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D7459D2505E9F300013A80 /* FirstDayOfWeek.swift */; };
@@ -1570,6 +1572,7 @@
 				2292C4FA2505CC1E005802B5 /* Piece12.swift in Sources */,
 				227746D42505BC9200D17CA3 /* GridWidget.swift in Sources */,
 				C6EB47862520170100FCD0CB /* AnyTransitionSlide.swift in Sources */,
+				22D5F4762570ADB600806992 /* MultiRing.intentdefinition in Sources */,
 				C6EB47812520170100FCD0CB /* DoubleExtension.swift in Sources */,
 				C6EB477F2520170100FCD0CB /* URLStoreExtension.swift in Sources */,
 				229428D4251E7C61008C0BFF /* ColorAdjust.swift in Sources */,
@@ -1620,6 +1623,7 @@
 				C6EB476E2520170100FCD0CB /* DateMean.swift in Sources */,
 				2229D7B424F05683004E1034 /* RunningEntry.swift in Sources */,
 				C60856B6251FCE1B00E6D6C0 /* Project+CoreDataClass.swift in Sources */,
+				22D5F46E2570ADB500806992 /* MultiRing.intentdefinition in Sources */,
 				228174D72501CD12008E471D /* SummaryEquatable.swift in Sources */,
 				228174CE2501B9AF008E471D /* ToOptional.swift in Sources */,
 				22B0783524B1513A00256EB8 /* ClokWidget.swift in Sources */,
