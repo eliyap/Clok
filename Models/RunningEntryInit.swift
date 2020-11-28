@@ -36,17 +36,17 @@ fileprivate struct RawRunningEntry: Decodable {
 
 extension RunningEntry {
     convenience init?(data: Data, projects: [Project]) throws {
-        let runningData = try JSONDecoder(dateStrategy: .iso8601).decode(RawRunningEntry.self, from: data)
-        guard let rawRunningEntry = runningData.data else {
+        let rawRunning = try JSONDecoder(dateStrategy: .iso8601).decode(RawRunningEntry.self, from: data)
+        guard let runningData = rawRunning.data else {
             /// no `data` simply means no timer is running, signal this by returning `nil`
             return nil
         }
         self.init(
-            id: rawRunningEntry.id,
-            start: rawRunningEntry.start,
+            id: runningData.id,
+            start: runningData.start,
             project: StaticProject.unknown,
-            entryDescription: rawRunningEntry.description,
-            tags: rawRunningEntry.tags
+            entryDescription: runningData.description,
+            tags: runningData.tags
         )
         
         /**
@@ -54,7 +54,7 @@ extension RunningEntry {
          Or it can be `noProject`, represented as `nil` (i.e. the `pid` is missing in the JSON)
          If we cannot find the project in our system, mark it as unknown and try to pull it later.
          */
-        if let pid = rawRunningEntry.pid {
+        if let pid = runningData.pid {
             project = projects.first(where: {$0.id == pid})
                 ?? StaticProject.unknown
         } else {
