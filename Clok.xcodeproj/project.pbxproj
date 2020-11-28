@@ -117,6 +117,8 @@
 		228174D52501CBCB008E471D /* NoSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228174D42501CBCB008E471D /* NoSummary.swift */; };
 		228174D72501CD12008E471D /* SummaryEquatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228174D62501CD12008E471D /* SummaryEquatable.swift */; };
 		228724272571D89E0082A490 /* MR_Intent_Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2287241E2571D88E0082A490 /* MR_Intent_Default.swift */; };
+		22872437257214530082A490 /* AssignCancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22872436257214530082A490 /* AssignCancellable.swift */; };
+		2287243F257214570082A490 /* AssignCancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22872436257214530082A490 /* AssignCancellable.swift */; };
 		22885DAE24DA13E500A56FE3 /* DayStrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22885DAD24DA13E500A56FE3 /* DayStrip.swift */; };
 		22885DB024DA1C9600A56FE3 /* Divisions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22885DAF24DA1C9600A56FE3 /* Divisions.swift */; };
 		22885DB224DA1E2E00A56FE3 /* TimeIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22885DB124DA1E2E00A56FE3 /* TimeIndicator.swift */; };
@@ -532,6 +534,7 @@
 		228174D42501CBCB008E471D /* NoSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoSummary.swift; sourceTree = "<group>"; };
 		228174D62501CD12008E471D /* SummaryEquatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryEquatable.swift; sourceTree = "<group>"; };
 		2287241E2571D88E0082A490 /* MR_Intent_Default.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MR_Intent_Default.swift; sourceTree = "<group>"; };
+		22872436257214530082A490 /* AssignCancellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignCancellable.swift; sourceTree = "<group>"; };
 		22885DAD24DA13E500A56FE3 /* DayStrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayStrip.swift; sourceTree = "<group>"; };
 		22885DAF24DA1C9600A56FE3 /* Divisions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Divisions.swift; sourceTree = "<group>"; };
 		22885DB124DA1E2E00A56FE3 /* TimeIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIndicator.swift; sourceTree = "<group>"; };
@@ -795,6 +798,7 @@
 				2229D7AF24F0459F004E1034 /* FetchRunningEntry.swift */,
 				229646CE24F322E600FE14E5 /* TagLoader.swift */,
 				22FFF6A02571020B00A54471 /* DataFetcher.swift */,
+				22872436257214530082A490 /* AssignCancellable.swift */,
 				22FFF697257101DE00A54471 /* RunningEntryFetcher.swift */,
 				22FFF6EE2571A77500A54471 /* DetailedReportFetcher.swift */,
 			);
@@ -1726,6 +1730,7 @@
 				22FFF6D825710CA800A54471 /* PrintError.swift in Sources */,
 				2205DC31254B9EEB00146EAB /* ColorHex.swift in Sources */,
 				2205DC8C254B9FC700146EAB /* RawProject.swift in Sources */,
+				2287243F257214570082A490 /* AssignCancellable.swift in Sources */,
 				22D5F5062570CFE000806992 /* MR_TimeIndicator.swift in Sources */,
 				228724272571D89E0082A490 /* MR_Intent_Default.swift in Sources */,
 				22B2624A254B9CD300182236 /* FormRequest.swift in Sources */,
@@ -1908,6 +1913,7 @@
 				22DE5925251EC91700379396 /* GridWidget.intentdefinition in Sources */,
 				229521682505C0C400085055 /* AllWorkspaces.swift in Sources */,
 				22B0783824B1519600256EB8 /* NetworkError.swift in Sources */,
+				22872437257214530082A490 /* AssignCancellable.swift in Sources */,
 				22283DA424DF9D8B005AC0F3 /* BarStack.swift in Sources */,
 				2277E8CB24EB48C200702086 /* DateRange.swift in Sources */,
 				221C3C5724A93C57006995C5 /* User.swift in Sources */,

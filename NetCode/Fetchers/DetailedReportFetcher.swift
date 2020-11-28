@@ -10,7 +10,7 @@ import Foundation
 import Combine
 
 extension DataFetcher {
-    
+    /// Formulates a publisher for `Detailed` reports
     func DetailedReportRequest(
         token: String,
         wid: Int,

@@ -45,5 +45,4 @@ extension DataFetcher {
             })
             .store(in: &cancellable)
     }
-
 }
