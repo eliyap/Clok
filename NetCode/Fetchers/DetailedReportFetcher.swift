@@ -22,7 +22,7 @@ extension DataFetcher {
         token: String,
         wid: Int,
         config: MultiRingConfigurationIntent,
-        completion:@escaping (Detailed?, Error?) -> Void
+        completion:@escaping (Result<Detailed, Error>) -> Void
     ) -> Void {
         
         /// determine start date based on user preference
@@ -52,7 +52,7 @@ extension DataFetcher {
         ].joined(separator: "&")
         
         recursiveLoadPages(api_string: api_string, auth: auth(token: token))
-            .map { (rawEntries: [RawTimeEntry]) -> Detailed? in
+            .map { (rawEntries: [RawTimeEntry]) -> Detailed in
                 return Detailed(entries: rawEntries, config: config)
             }
             .sink(receiveCompletion: { completed in
@@ -60,10 +60,10 @@ extension DataFetcher {
                 case .finished:
                     break
                 case .failure(let error):
-                    completion(nil, error)
+                    completion(.failure(error))
                 }
             }, receiveValue: { entry in
-                completion(entry, nil)
+                completion(.success(entry))
             })
             .store(in: &cancellable)
     }

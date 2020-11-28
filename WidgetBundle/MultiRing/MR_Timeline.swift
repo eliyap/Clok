@@ -36,21 +36,20 @@ struct MultiRingProvider: IntentTimelineProvider {
             token: token,
             wid: chosenWID,
             config: configuration
-        ) { detailed, error in
-            guard let detailed = detailed, error == nil else {
+        ) { result in
+            switch result {
+            case .failure(let error):
                 print("MultiRingWidget Fetch Failed With Error \(String(describing: error))")
                 completion(placeholder(in: context))
-                return
+            case .success(let detailed):
+                /// submit fetched summary
+                completion(MultiRingEntry(
+                    date: Date(),
+                    projects: detailed.projects,
+                    running: WidgetManager.running ?? .noEntry,
+                    config: configuration
+                ))
             }
-            
-            /// submit fetched summary
-            completion(MultiRingEntry(
-                date: Date(),
-                projects: detailed.projects,
-                running: WidgetManager.running ?? .noEntry,
-                config: configuration
-            ))
-            return
         }
     }
 
@@ -71,27 +70,27 @@ struct MultiRingProvider: IntentTimelineProvider {
             token: token,
             wid: chosenWID,
             config: configuration
-        ) { detailed, error in
-            guard let detailed = detailed, error == nil else {
+        ) { result in
+            
+            switch result {
+            case .failure(let error):
                 print("MultiRingWidget Fetch Failed With Error \(String(describing: error))")
                 let timeline = Timeline(entries: [Entry](), policy: .after(Date() + .widgetPeriod))
                 completion(timeline)
-                return
+            case .success(let detailed):
+                /// add fetched summary to Widget Timeline
+                /// load again after `widgetPeriod`
+                let timeline = Timeline(
+                    entries: [MultiRingEntry(
+                        date: Date(),
+                        projects: detailed.projects,
+                        running: WidgetManager.running ?? .noEntry,
+                        config: configuration
+                    )],
+                    policy: .after(Date() + .widgetPeriod)
+                )
+                completion(timeline)
             }
-            
-            /// add fetched summary to Widget Timeline
-            /// load again after `widgetPeriod`
-            let timeline = Timeline(
-                entries: [MultiRingEntry(
-                    date: Date(),
-                    projects: detailed.projects,
-                    running: WidgetManager.running ?? .noEntry,
-                    config: configuration
-                )],
-                policy: .after(Date() + .widgetPeriod)
-            )
-            completion(timeline)
-            return
         }
     }
 }
