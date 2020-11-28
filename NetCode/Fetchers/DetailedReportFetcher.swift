@@ -11,19 +11,11 @@ import Combine
 
 extension DataFetcher {
     
-    
-    /// Fetches a complete Detailed Report from Toggl, requesting multiple pages if necessary
-    /// - Parameters:
-    ///   - token: authentication token
-    ///   - wid: user's chosen Workspace ID
-    ///   - config: Configuration Intent. Determines some parameters of the GET request
-    ///   - completion: completion block
-    func fetchDetailedReport(
+    func DetailedReportRequest(
         token: String,
         wid: Int,
-        config: MultiRingConfigurationIntent,
-        completion:@escaping (Result<Detailed, Error>) -> Void
-    ) -> Void {
+        config: MultiRingConfigurationIntent
+    ) -> AnyPublisher<Detailed, Error> {
         
         /// determine start date based on user preference
         /** NOTE: in both cases, we roll back 1 day to check for entries spanning the midnight boundary. */
@@ -51,10 +43,26 @@ extension DataFetcher {
             "page=0",
         ].joined(separator: "&")
         
-        recursiveLoadPages(api_string: api_string, auth: auth(token: token))
+        return recursiveLoadPages(api_string: api_string, auth: auth(token: token))
             .map { (rawEntries: [RawTimeEntry]) -> Detailed in
                 return Detailed(entries: rawEntries, config: config)
             }
+            .eraseToAnyPublisher()
+    }
+    
+    /// Fetches a complete Detailed Report from Toggl, requesting multiple pages if necessary
+    /// - Parameters:
+    ///   - token: authentication token
+    ///   - wid: user's chosen Workspace ID
+    ///   - config: Configuration Intent. Determines some parameters of the GET request
+    ///   - completion: completion block
+    func fetchDetailedReport(
+        token: String,
+        wid: Int,
+        config: MultiRingConfigurationIntent,
+        completion:@escaping (Result<Detailed, Error>) -> Void
+    ) -> Void {
+        DetailedReportRequest(token: token, wid: wid, config: config)
             .sink(receiveCompletion: { completed in
                 switch completed {
                 case .finished:
