@@ -106,7 +106,7 @@ extension Detailed {
                 
         let tags: [String]
 
-        /// ignore this attributes
+        /// ignore these attributes
         // let updated: Date
         // let uid: Int; // user ID
         // let use_stop: Bool
