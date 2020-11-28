@@ -121,6 +121,7 @@
 		2287243F257214570082A490 /* AssignCancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22872436257214530082A490 /* AssignCancellable.swift */; };
 		2287246425721D970082A490 /* DetailedProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2287244725721D860082A490 /* DetailedProject.swift */; };
 		2287246525721D970082A490 /* DetailedEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2287245025721D930082A490 /* DetailedEntry.swift */; };
+		228724BA257223630082A490 /* RawRunningMatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228724B7257223630082A490 /* RawRunningMatch.swift */; };
 		22885DAE24DA13E500A56FE3 /* DayStrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22885DAD24DA13E500A56FE3 /* DayStrip.swift */; };
 		22885DB024DA1C9600A56FE3 /* Divisions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22885DAF24DA1C9600A56FE3 /* Divisions.swift */; };
 		22885DB224DA1E2E00A56FE3 /* TimeIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22885DB124DA1E2E00A56FE3 /* TimeIndicator.swift */; };
@@ -537,6 +538,7 @@
 		22872436257214530082A490 /* AssignCancellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignCancellable.swift; sourceTree = "<group>"; };
 		2287244725721D860082A490 /* DetailedProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedProject.swift; sourceTree = "<group>"; };
 		2287245025721D930082A490 /* DetailedEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedEntry.swift; sourceTree = "<group>"; };
+		228724B7257223630082A490 /* RawRunningMatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawRunningMatch.swift; sourceTree = "<group>"; };
 		22885DAD24DA13E500A56FE3 /* DayStrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayStrip.swift; sourceTree = "<group>"; };
 		22885DAF24DA1C9600A56FE3 /* Divisions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Divisions.swift; sourceTree = "<group>"; };
 		22885DB124DA1E2E00A56FE3 /* TimeIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIndicator.swift; sourceTree = "<group>"; };
@@ -1111,6 +1113,7 @@
 				22D5F3E1256F8A0D00806992 /* Detailed.swift */,
 				2287244725721D860082A490 /* DetailedProject.swift */,
 				2287245025721D930082A490 /* DetailedEntry.swift */,
+				228724B7257223630082A490 /* RawRunningMatch.swift */,
 			);
 			path = Detailed;
 			sourceTree = "<group>";
@@ -1791,6 +1794,7 @@
 				22B26268254B9D2200182236 /* TimeIntervalExtension.swift in Sources */,
 				2205DC45254B9F1C00146EAB /* WidgetManager.swift in Sources */,
 				22B26254254B9CE000182236 /* NetworkError.swift in Sources */,
+				228724BA257223630082A490 /* RawRunningMatch.swift in Sources */,
 				22B261E0254B9AF300182236 /* WidgetBundle.swift in Sources */,
 				2205DD91254BA1CE00146EAB /* RingSize.swift in Sources */,
 				2205DD4A254BA12800146EAB /* RawSummary.swift in Sources */,

@@ -13,6 +13,6 @@ import SwiftUI
 struct MultiRingEntry: TimelineEntry {
     let date: Date
     let projects: [Detailed.Project]
-    let running: RawRunningEntry
+    let running: RunningEntry
     let config: MultiRingConfigurationIntent
 }

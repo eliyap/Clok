@@ -12,7 +12,7 @@ import WidgetKit
  Define the refresh rate centrally so it can be tweaked quickly
  */
 fileprivate extension TimeInterval {
-    static let widgetPeriod: TimeInterval = .hour / 12
+    static let widgetPeriod: TimeInterval = .hour / 6
 }
 
 struct MultiRingProvider: IntentTimelineProvider {
@@ -24,7 +24,7 @@ struct MultiRingProvider: IntentTimelineProvider {
         Entry(
             date: Date(),
             projects: [],
-            running: RawRunningEntry(data: nil),
+            running: .noEntry,
             config: Intent.Default
         )
     }
@@ -55,7 +55,7 @@ struct MultiRingProvider: IntentTimelineProvider {
                 completion(MultiRingEntry(
                     date: Date(),
                     projects: detailed.projects,
-                    running: rawRunning,
+                    running: detailed.match(rawRunning),
                     config: configuration
                 ))
             }
@@ -96,7 +96,7 @@ struct MultiRingProvider: IntentTimelineProvider {
                     entries: [MultiRingEntry(
                         date: Date(),
                         projects: detailed.projects,
-                        running: rawRunning,
+                        running: detailed.match(rawRunning),
                         config: configuration
                     )],
                     policy: .after(Date() + .widgetPeriod)
