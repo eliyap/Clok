@@ -119,6 +119,12 @@
 		228724272571D89E0082A490 /* MR_Intent_Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2287241E2571D88E0082A490 /* MR_Intent_Default.swift */; };
 		22872437257214530082A490 /* AssignCancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22872436257214530082A490 /* AssignCancellable.swift */; };
 		2287243F257214570082A490 /* AssignCancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22872436257214530082A490 /* AssignCancellable.swift */; };
+		2287245925721D960082A490 /* DetailedProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2287244725721D860082A490 /* DetailedProject.swift */; };
+		2287245A25721D960082A490 /* DetailedEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2287245025721D930082A490 /* DetailedEntry.swift */; };
+		2287246225721D970082A490 /* DetailedProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2287244725721D860082A490 /* DetailedProject.swift */; };
+		2287246325721D970082A490 /* DetailedEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2287245025721D930082A490 /* DetailedEntry.swift */; };
+		2287246425721D970082A490 /* DetailedProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2287244725721D860082A490 /* DetailedProject.swift */; };
+		2287246525721D970082A490 /* DetailedEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2287245025721D930082A490 /* DetailedEntry.swift */; };
 		22885DAE24DA13E500A56FE3 /* DayStrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22885DAD24DA13E500A56FE3 /* DayStrip.swift */; };
 		22885DB024DA1C9600A56FE3 /* Divisions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22885DAF24DA1C9600A56FE3 /* Divisions.swift */; };
 		22885DB224DA1E2E00A56FE3 /* TimeIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22885DB124DA1E2E00A56FE3 /* TimeIndicator.swift */; };
@@ -535,6 +541,8 @@
 		228174D62501CD12008E471D /* SummaryEquatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryEquatable.swift; sourceTree = "<group>"; };
 		2287241E2571D88E0082A490 /* MR_Intent_Default.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MR_Intent_Default.swift; sourceTree = "<group>"; };
 		22872436257214530082A490 /* AssignCancellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignCancellable.swift; sourceTree = "<group>"; };
+		2287244725721D860082A490 /* DetailedProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedProject.swift; sourceTree = "<group>"; };
+		2287245025721D930082A490 /* DetailedEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedEntry.swift; sourceTree = "<group>"; };
 		22885DAD24DA13E500A56FE3 /* DayStrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayStrip.swift; sourceTree = "<group>"; };
 		22885DAF24DA1C9600A56FE3 /* Divisions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Divisions.swift; sourceTree = "<group>"; };
 		22885DB124DA1E2E00A56FE3 /* TimeIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIndicator.swift; sourceTree = "<group>"; };
@@ -1107,6 +1115,8 @@
 			isa = PBXGroup;
 			children = (
 				22D5F3E1256F8A0D00806992 /* Detailed.swift */,
+				2287244725721D860082A490 /* DetailedProject.swift */,
+				2287245025721D930082A490 /* DetailedEntry.swift */,
 			);
 			path = Detailed;
 			sourceTree = "<group>";
@@ -1587,6 +1597,7 @@
 				22D5F44A25707FA800806992 /* RawProject.swift in Sources */,
 				2295214A2505BD7600085055 /* SummaryEquatable.swift in Sources */,
 				2295214B2505BD7600085055 /* RawSummary.swift in Sources */,
+				2287246225721D970082A490 /* DetailedProject.swift in Sources */,
 				C6EB47882520170100FCD0CB /* DateAngle.swift in Sources */,
 				2295214E2505BDD700085055 /* DateComponent.swift in Sources */,
 				C6EB47842520170100FCD0CB /* DateExtension.swift in Sources */,
@@ -1630,6 +1641,7 @@
 				229428DE251E7E7E008C0BFF /* Mod.swift in Sources */,
 				22D5F43A25707F9600806992 /* Project+CoreDataClass.swift in Sources */,
 				2292C4F82505CC1E005802B5 /* SolveBoard.swift in Sources */,
+				2287246325721D970082A490 /* DetailedEntry.swift in Sources */,
 				229521542505BEC300085055 /* Workspace.swift in Sources */,
 				2292C4EB2505CC1E005802B5 /* Piece10.swift in Sources */,
 				2295215C2505BF3200085055 /* KeychainError.swift in Sources */,
@@ -1677,6 +1689,8 @@
 				C60856B7251FCE1B00E6D6C0 /* TimeEntry+CoreDataProperties.swift in Sources */,
 				22B0783924B1519D00256EB8 /* NetworkError.swift in Sources */,
 				22DC869B24BA7A5E00FF771F /* TimeEntryModel.xcdatamodeld in Sources */,
+				2287245925721D960082A490 /* DetailedProject.swift in Sources */,
+				2287245A25721D960082A490 /* DetailedEntry.swift in Sources */,
 				2295215B2505BF3200085055 /* KeychainError.swift in Sources */,
 				2229D7A624EF5C55004E1034 /* TimeIntervalExtension.swift in Sources */,
 				22D56F0D2526BB080011C4AC /* RingSize.swift in Sources */,
@@ -1734,6 +1748,7 @@
 				22D5F5062570CFE000806992 /* MR_TimeIndicator.swift in Sources */,
 				228724272571D89E0082A490 /* MR_Intent_Default.swift in Sources */,
 				22B2624A254B9CD300182236 /* FormRequest.swift in Sources */,
+				2287246425721D970082A490 /* DetailedProject.swift in Sources */,
 				22B261E5254B9AF500182236 /* WidgetBundle.intentdefinition in Sources */,
 				22B26286254B9D5600182236 /* AngleExtension.swift in Sources */,
 				22B261F8254B9B6D00182236 /* RR_Widget.swift in Sources */,
@@ -1774,6 +1789,7 @@
 				2205DD41254BA11500146EAB /* MR_Entry.swift in Sources */,
 				2205DD9A254BA1F200146EAB /* SummaryLoader.swift in Sources */,
 				2205DCE6254BA05500146EAB /* DecoderExtension.swift in Sources */,
+				2287246525721D970082A490 /* DetailedEntry.swift in Sources */,
 				2205DC6E254B9F8600146EAB /* GetCredentials.swift in Sources */,
 				2205DCA0254B9FF100146EAB /* Project+CoreDataProperties.swift in Sources */,
 				22FFF6B12571022C00A54471 /* RunningEntryFetcher.swift in Sources */,
