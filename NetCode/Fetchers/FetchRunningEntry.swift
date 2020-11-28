@@ -30,6 +30,7 @@ final class RunningEntryLoader: ObservableObject {
             .map(dataTaskMonitor)
             .tryMap { (data: Data) -> RunningEntry in
                 return try RunningEntry(data: data, projects: projects)
+                    ?? .noEntry
             }
             /**
              If project could not be found, request a replacement

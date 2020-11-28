@@ -28,6 +28,7 @@ extension DataFetcher {
             .map(dataTaskMonitor)
             .tryMap { (data: Data) -> RunningEntry in
                 return try RunningEntry(data: data, projects: projects ?? [])
+                    ?? .noEntry
             }
             .sink(receiveCompletion: { completed in
                 switch completed {

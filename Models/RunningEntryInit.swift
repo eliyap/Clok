@@ -35,11 +35,12 @@ fileprivate struct RawRunningEntry: Decodable {
 }
 
 extension RunningEntry {
-    convenience init(data: Data, projects: [Project]) throws {
+    convenience init?(data: Data, projects: [Project]) throws {
         let decoder = JSONDecoder(dateStrategy: .iso8601)
-        guard let rawRunningEntry = try decoder.decode(RawRunningEntry.self, from: data).data else {
-            /// no `data` simply means no timer is running, trust Combine to deal with the error nicely
-            throw NetworkError.serialization
+        let runningData = try decoder.decode(RawRunningEntry.self, from: data)
+        guard let rawRunningEntry = runningData.data else {
+            /// no `data` simply means no timer is running, signal this by returning `nil`
+            return nil
         }
         self.init(
             id: rawRunningEntry.id,
