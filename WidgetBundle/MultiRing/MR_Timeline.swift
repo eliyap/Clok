@@ -21,7 +21,12 @@ struct MultiRingProvider: IntentTimelineProvider {
     typealias Intent = MultiRingConfigurationIntent
     
     func placeholder(in context: Context) -> Entry {
-        Entry(date: Date(), projects: [], running: .noEntry, config: Intent.Default)
+        Entry(
+            date: Date(),
+            projects: [],
+            running: RawRunningEntry(data: nil),
+            config: Intent.Default
+        )
     }
 
     func getSnapshot(for configuration: Intent, in context: Context, completion: @escaping (Entry) -> ()) {
@@ -32,21 +37,25 @@ struct MultiRingProvider: IntentTimelineProvider {
         }
         
         /// fetch summary from Toggl
-        DataFetcher.shared.AssignCancellable(pub: DetailedReportRequest(
-            token: token,
-            wid: chosenWID,
-            config: configuration
-        )) { result in
+        DataFetcher.shared.AssignCancellable(
+            pub: DetailedReportRequest(
+                token: token,
+                wid: chosenWID,
+                config: configuration
+            )
+                .zip(RawRunningEntryRequest())
+                .eraseToAnyPublisher()
+        ) { result in
             switch result {
             case .failure(let error):
                 print("MultiRingWidget Fetch Failed With Error \(String(describing: error))")
                 completion(placeholder(in: context))
-            case .success(let detailed):
+            case .success(let (detailed, rawRunning)):
                 /// submit fetched summary
                 completion(MultiRingEntry(
                     date: Date(),
                     projects: detailed.projects,
-                    running: WidgetManager.running ?? .noEntry,
+                    running: rawRunning,
                     config: configuration
                 ))
             }
@@ -87,7 +96,7 @@ struct MultiRingProvider: IntentTimelineProvider {
                     entries: [MultiRingEntry(
                         date: Date(),
                         projects: detailed.projects,
-                        running: WidgetManager.running ?? .noEntry,
+                        running: rawRunning,
                         config: configuration
                     )],
                     policy: .after(Date() + .widgetPeriod)
