@@ -11,6 +11,13 @@ import Combine
 
 extension DataFetcher {
     
+    
+    /// Fetches a complete Detailed Report from Toggl, requesting multiple pages if necessary
+    /// - Parameters:
+    ///   - token: authentication token
+    ///   - wid: user's chosen Workspace ID
+    ///   - config: Configuration Intent. Determines some parameters of the GET request
+    ///   - completion: completion block
     func fetchDetailedReport(
         token: String,
         wid: Int,
@@ -19,12 +26,17 @@ extension DataFetcher {
     ) -> Void {
         
         /// determine start date based on user preference
-        var start = Date().midnight
+        /** NOTE: in both cases, we roll back 1 day to check for entries spanning the midnight boundary. */
+        var start: Date!
         switch config.Period {
         case .day, .unknown: /// if unknown, default to 1 day
-            start = start.advanced(by: -.day)
+            start = Date()
+                .midnight
+                .advanced(by: -.day)
         case .week:
-            start = start.advanced(by: -.week)
+            start = Date()
+                .startOfWeek(day: WidgetManager.firstDayOfWeek)
+                .advanced(by: -.day)
         }
         
         // assemble request URL (page is added later)
