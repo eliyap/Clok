@@ -44,9 +44,9 @@ struct Detailed {
         /// file away entries
         entries.forEach { rawEntry in
             if rawEntry.pid == nil {
-                noProject.append(Detailed.Entry(raw: rawEntry))
+                noProject.append(Detailed.Entry(raw: rawEntry), config: config)
             } else if let index = projects.firstIndex(where: {$0.id == rawEntry.pid}) {
-                projects[index].append(Detailed.Entry(raw: rawEntry))
+                projects[index].append(Detailed.Entry(raw: rawEntry), config: config)
             } else {
                 var newProject = Detailed.Project(
                     color: Color(hex: rawEntry.project_hex_color!),
@@ -55,7 +55,7 @@ struct Detailed {
                     entries: [],
                     duration: .zero
                 )
-                newProject.append(Detailed.Entry(raw: rawEntry))
+                newProject.append(Detailed.Entry(raw: rawEntry), config: config)
                 projects.append(newProject)
             }
         }
@@ -96,12 +96,13 @@ extension Detailed {
         
         mutating func append(_ entry: Detailed.Entry, config: MultiRingConfigurationIntent) {
             entries.append(entry)
-            /// taking only the post-midnight portion
+            let start = config.Period == .week
+                ? Date().startOfWeek(day: WidgetManager.firstDayOfWeek)
+                : Date().midnight
+            
             if config.PriorDay == .fromMidnight {
-                let start = config.Period == .week
-                    ? Date().startOfWeek(day: WidgetManager.firstDayOfWeek)
-                    : Date().midnight
-                duration += (entry.end - start)
+                /// take only the post midnight portion
+                duration += (entry.end - max(start, entry.start))
             } else {
                 duration += entry.dur
             }
