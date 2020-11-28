@@ -24,9 +24,18 @@ struct Detailed {
         /// drop all entries that ended before cutoff time
         switch config.Period {
         case .day, .unknown:
-            entries.removeAll(where: {$0.end < Date().midnight})
+            if config.PriorDay == .exclude {
+                entries.removeAll(where: {$0.start < Date().midnight})
+            } else {
+                entries.removeAll(where: {$0.end < Date().midnight})
+            }
         case .week:
-            entries.removeAll(where: {$0.end < Date().startOfWeek(day: WidgetManager.firstDayOfWeek)})
+            let startOfWeek = Date().startOfWeek(day: WidgetManager.firstDayOfWeek)
+            if config.PriorDay == .exclude {
+                entries.removeAll(where: {$0.start < startOfWeek})
+            } else {
+                entries.removeAll(where: {$0.end < startOfWeek})
+            }
         }
                 
         /// initialize `noProject` file
