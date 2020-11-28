@@ -42,7 +42,11 @@ struct ProjectRing: View {
                         .rotationEffect(angle - .tau * 0.25)
                 }
                 VStack {
-                    TimeIndicator
+                    if isRunning {
+                        RunningTimeIndicator
+                    } else {
+                        TimeIndicator
+                    }
                     Text(project.name)
                         /// lighten or darken to improve contrast
                         .foregroundColor(highContrast)
@@ -77,6 +81,12 @@ extension ProjectRing {
     var remainder: Double {
         (project.duration / unit) - Double(unitCount)
     }
+    
+    /** whether this project currently has a running timer*/
+    var isRunning: Bool {
+        entry.running.project.wrappedID == project.id
+    }
+    
 }
 
 // MARK: - Project Based Properties
