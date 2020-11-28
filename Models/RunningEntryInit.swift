@@ -12,7 +12,7 @@ import Foundation
  in order to avoid lots of import issues.
  */
 
-fileprivate struct RawRunningEntry: Decodable {
+struct RawRunningEntry: Decodable {
     /// wrapped in a `data` tag, for some reason
     let data: WrappedEntry?
     
@@ -36,7 +36,8 @@ fileprivate struct RawRunningEntry: Decodable {
 
 extension RunningEntry {
     convenience init?(data: Data, projects: [Project]) throws {
-        let rawRunning = try JSONDecoder(dateStrategy: .iso8601).decode(RawRunningEntry.self, from: data)
+        let rawRunning = try JSONDecoder(dateStrategy: .iso8601)
+            .decode(RawRunningEntry.self, from: data)
         guard let runningData = rawRunning.data else {
             /// no `data` simply means no timer is running, signal this by returning `nil`
             return nil
