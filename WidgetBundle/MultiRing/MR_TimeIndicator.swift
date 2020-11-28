@@ -21,15 +21,12 @@ extension ProjectRing {
                 Text("\(mins)m")
                     .font(.system(size: minuteFont, design: .rounded))
                     .bold()
-                    .foregroundColor(project.color)
+                    .foregroundColor(highContrast)
             default:
-                VStack {
-                    Text(String(format: "%d:%02d", hours, mins))
-                        .font(.system(size: hourFont, design: .rounded))
-                        .bold()
-                        /// lighten or darken to improve contrast
-                        .foregroundColor(highContrast)
-                }
+                Text(String(format: "%d:%02d", hours, mins))
+                    .font(.system(size: hourFont, design: .rounded))
+                    .bold()
+                    .foregroundColor(highContrast)
             }
         }
     }
