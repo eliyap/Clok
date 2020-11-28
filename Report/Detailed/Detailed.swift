@@ -11,18 +11,18 @@ import SwiftUI
 
 struct Detailed {
     
-    let period: Period
+    let config: MultiRingConfigurationIntent
     
     /// Note: not sorted by duration
     var projects: [Detailed.Project] = []
     
-    init(entries: [RawTimeEntry], period: Period) {
+    init(entries: [RawTimeEntry], config: MultiRingConfigurationIntent) {
         
         var entries = entries
-        self.period = period
+        self.config = config
         
         /// drop all entries that ended before cutoff time
-        switch period {
+        switch config.Period {
         case .day, .unknown:
             entries.removeAll(where: {$0.end < Date().midnight})
         case .week:

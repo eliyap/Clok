@@ -32,7 +32,11 @@ struct MultiRingProvider: IntentTimelineProvider {
         }
         
         /// fetch summary from Toggl
-        DataFetcher.shared.fetchDetailedReport(token: token, wid: chosenWID, period: configuration.Period) { detailed, error in
+        DataFetcher.shared.fetchDetailedReport(
+            token: token,
+            wid: chosenWID,
+            config: configuration
+        ) { detailed, error in
             guard let detailed = detailed, error == nil else {
                 print("MultiRingWidget Fetch Failed With Error \(String(describing: error))")
                 completion(placeholder(in: context))
@@ -63,7 +67,11 @@ struct MultiRingProvider: IntentTimelineProvider {
         }
         
         /// fetch summary from Toggl
-        DataFetcher.shared.fetchDetailedReport(token: token, wid: chosenWID, period: configuration.Period) { detailed, error in
+        DataFetcher.shared.fetchDetailedReport(
+            token: token,
+            wid: chosenWID,
+            config: configuration
+        ) { detailed, error in
             guard let detailed = detailed, error == nil else {
                 print("MultiRingWidget Fetch Failed With Error \(String(describing: error))")
                 let timeline = Timeline(entries: [Entry](), policy: .after(Date() + .widgetPeriod))

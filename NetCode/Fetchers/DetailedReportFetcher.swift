@@ -14,13 +14,13 @@ extension DataFetcher {
     func fetchDetailedReport(
         token: String,
         wid: Int,
-        period: Period,
+        config: MultiRingConfigurationIntent,
         completion:@escaping (Detailed?, Error?) -> Void
     ) -> Void {
         
         /// determine start date based on user preference
         var start = Date().midnight
-        switch period {
+        switch config.Period {
         case .day, .unknown: /// if unknown, default to 1 day
             start = start.advanced(by: -.day)
         case .week:
@@ -41,7 +41,7 @@ extension DataFetcher {
         
         recursiveLoadPages(api_string: api_string, auth: auth(token: token))
             .map { (rawEntries: [RawTimeEntry]) -> Detailed? in
-                return Detailed(entries: rawEntries, period: period)
+                return Detailed(entries: rawEntries, config: config)
             }
             .sink(receiveCompletion: { completed in
                 switch completed {
