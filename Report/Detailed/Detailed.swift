@@ -94,9 +94,17 @@ extension Detailed {
             duration: .zero
         )
         
-        mutating func append(_ entry: Detailed.Entry) {
+        mutating func append(_ entry: Detailed.Entry, config: MultiRingConfigurationIntent) {
             entries.append(entry)
-            duration += entry.dur
+            /// taking only the post-midnight portion
+            if config.PriorDay == .fromMidnight {
+                let start = config.Period == .week
+                    ? Date().startOfWeek(day: WidgetManager.firstDayOfWeek)
+                    : Date().midnight
+                duration += (entry.end - start)
+            } else {
+                duration += entry.dur
+            }
         }
     }
 }
