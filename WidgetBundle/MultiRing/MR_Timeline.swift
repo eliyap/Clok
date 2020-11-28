@@ -66,12 +66,11 @@ struct MultiRingProvider: IntentTimelineProvider {
         }
         
         /// fetch summary from Toggl
-        DataFetcher.shared.fetchDetailedReport(
+        DataFetcher.shared.AssignCancellable(pub: DetailedReportRequest(
             token: token,
             wid: chosenWID,
             config: configuration
-        ) { result in
-            
+        )) { result in
             switch result {
             case .failure(let error):
                 print("MultiRingWidget Fetch Failed With Error \(String(describing: error))")
