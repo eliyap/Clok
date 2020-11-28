@@ -17,7 +17,7 @@ fileprivate extension TimeInterval {
     static let widgetPeriod: TimeInterval = .hour / 6
     /// how often to request a redraw, in seconds
     /// turn up if the widget gets frozen by the OS
-    static let redrawPeriod: TimeInterval = 180
+    static let redrawPeriod: TimeInterval = 240
 }
 
 struct RunningRingProvider: IntentTimelineProvider {
