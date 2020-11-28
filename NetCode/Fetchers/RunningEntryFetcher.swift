@@ -12,10 +12,13 @@ import CoreData
 
 extension DataFetcher {
     
-    func fetchRunningEntry(context: NSManagedObjectContext, completion:@escaping (RunningEntry?, Error?) -> Void){
+    func fetchRunningEntry(
+        context: NSManagedObjectContext,
+        completion:@escaping (Result<RunningEntry, Error>) -> Void
+    ){
         
         guard let token = try? getKey().2 else {
-            completion(nil, KeychainError.noData)
+            completion(.failure(KeychainError.noData))
             return
         }
         
@@ -35,10 +38,10 @@ extension DataFetcher {
                 case .finished:
                     break
                 case .failure(let error):
-                    completion(nil, error)
+                    completion(.failure(error))
                 }
             }, receiveValue: { running in
-                completion(running, nil)
+                completion(.success(running))
             })
             .store(in: &cancellable)
     }

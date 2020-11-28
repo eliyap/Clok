@@ -36,15 +36,14 @@ struct RunningRingProvider: IntentTimelineProvider {
     }
 
     func getSnapshot(for configuration: Intent, in context: Context, completion: @escaping (Entry) -> ()) {
-        DataFetcher.shared.fetchRunningEntry(context: moc) { running, error in
-            guard let running = running, error == nil else {
+        DataFetcher.shared.fetchRunningEntry(context: moc) { result in
+            switch result {
+            case .failure(let error):
                 print("RunningRingWidget Fetch Failed With Error \(String(describing: error))")
                 completion(placeholder(in: context))
-                return
+            case .success(let running):
+                completion(RunningRingEntry(date: Date(), entry: running))
             }
-            
-            completion(RunningRingEntry(date: Date(), entry: running))
-            return
         }
     }
 
@@ -53,27 +52,26 @@ struct RunningRingProvider: IntentTimelineProvider {
         in context: Context,
         completion: @escaping (Timeline<Entry>) -> ()
     ) {
-        DataFetcher.shared.fetchRunningEntry(context: moc) { running, error in
-            guard let running = running, error == nil else {
+        DataFetcher.shared.fetchRunningEntry(context: moc) { result in
+            switch result {
+            case .failure(let error):
                 print("RunningRingWidget Fetch Failed With Error \(String(describing: error))")
                 let timeline = Timeline(entries: [Entry](), policy: .after(Date() + .widgetPeriod))
                 completion(timeline)
-                return
+            case .success(let running):
+                /// load again after `widgetPeriod`
+                let timeline = Timeline(
+                    /// update every minute
+                    entries: (0..<Int(TimeInterval.widgetPeriod / .redrawPeriod)).map {
+                        RunningRingEntry(
+                            date: Date() + TimeInterval.redrawPeriod * Double($0),
+                            entry: running
+                        )
+                    },
+                    policy: .after(Date() + .widgetPeriod)
+                )
+                completion(timeline)
             }
-            
-            /// load again after `widgetPeriod`
-            let timeline = Timeline(
-                /// update every minute
-                entries: (0..<Int(TimeInterval.widgetPeriod / .redrawPeriod)).map {
-                    RunningRingEntry(
-                        date: Date() + TimeInterval.redrawPeriod * Double($0),
-                        entry: running
-                    )
-                },
-                policy: .after(Date() + .widgetPeriod)
-            )
-            completion(timeline)
-            return
         }
     }
 }
