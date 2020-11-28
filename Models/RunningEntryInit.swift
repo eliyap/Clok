@@ -36,8 +36,7 @@ fileprivate struct RawRunningEntry: Decodable {
 
 extension RunningEntry {
     convenience init?(data: Data, projects: [Project]) throws {
-        let decoder = JSONDecoder(dateStrategy: .iso8601)
-        let runningData = try decoder.decode(RawRunningEntry.self, from: data)
+        let runningData = try JSONDecoder(dateStrategy: .iso8601).decode(RawRunningEntry.self, from: data)
         guard let rawRunningEntry = runningData.data else {
             /// no `data` simply means no timer is running, signal this by returning `nil`
             return nil
