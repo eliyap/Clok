@@ -119,12 +119,9 @@
 		228724272571D89E0082A490 /* MR_Intent_Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2287241E2571D88E0082A490 /* MR_Intent_Default.swift */; };
 		22872437257214530082A490 /* AssignCancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22872436257214530082A490 /* AssignCancellable.swift */; };
 		2287243F257214570082A490 /* AssignCancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22872436257214530082A490 /* AssignCancellable.swift */; };
-		2287245925721D960082A490 /* DetailedProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2287244725721D860082A490 /* DetailedProject.swift */; };
-		2287245A25721D960082A490 /* DetailedEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2287245025721D930082A490 /* DetailedEntry.swift */; };
-		2287246225721D970082A490 /* DetailedProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2287244725721D860082A490 /* DetailedProject.swift */; };
-		2287246325721D970082A490 /* DetailedEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2287245025721D930082A490 /* DetailedEntry.swift */; };
 		2287246425721D970082A490 /* DetailedProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2287244725721D860082A490 /* DetailedProject.swift */; };
 		2287246525721D970082A490 /* DetailedEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2287245025721D930082A490 /* DetailedEntry.swift */; };
+		2287247025721E820082A490 /* IntegrateRunningEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2287246D25721E820082A490 /* IntegrateRunningEntry.swift */; };
 		22885DAE24DA13E500A56FE3 /* DayStrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22885DAD24DA13E500A56FE3 /* DayStrip.swift */; };
 		22885DB024DA1C9600A56FE3 /* Divisions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22885DAF24DA1C9600A56FE3 /* Divisions.swift */; };
 		22885DB224DA1E2E00A56FE3 /* TimeIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22885DB124DA1E2E00A56FE3 /* TimeIndicator.swift */; };
@@ -265,8 +262,6 @@
 		22D56F0D2526BB080011C4AC /* RingSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D56F032526BB030011C4AC /* RingSize.swift */; };
 		22D56F162526BB090011C4AC /* RingSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D56F032526BB030011C4AC /* RingSize.swift */; };
 		22D56F172526BB090011C4AC /* RingSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D56F032526BB030011C4AC /* RingSize.swift */; };
-		22D5F3FA256F8A7A00806992 /* Detailed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D5F3E1256F8A0D00806992 /* Detailed.swift */; };
-		22D5F3FC256F8A7A00806992 /* Detailed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D5F3E1256F8A0D00806992 /* Detailed.swift */; };
 		22D5F3FE256F8A7B00806992 /* Detailed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D5F3E1256F8A0D00806992 /* Detailed.swift */; };
 		22D5F43525707F9600806992 /* TimeEntry+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC869E24BA838D00FF771F /* TimeEntry+CoreDataClass.swift */; };
 		22D5F43625707F9600806992 /* Project+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC869D24BA838D00FF771F /* Project+CoreDataProperties.swift */; };
@@ -543,6 +538,7 @@
 		22872436257214530082A490 /* AssignCancellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignCancellable.swift; sourceTree = "<group>"; };
 		2287244725721D860082A490 /* DetailedProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedProject.swift; sourceTree = "<group>"; };
 		2287245025721D930082A490 /* DetailedEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedEntry.swift; sourceTree = "<group>"; };
+		2287246D25721E820082A490 /* IntegrateRunningEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegrateRunningEntry.swift; sourceTree = "<group>"; };
 		22885DAD24DA13E500A56FE3 /* DayStrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayStrip.swift; sourceTree = "<group>"; };
 		22885DAF24DA1C9600A56FE3 /* Divisions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Divisions.swift; sourceTree = "<group>"; };
 		22885DB124DA1E2E00A56FE3 /* TimeIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIndicator.swift; sourceTree = "<group>"; };
@@ -1117,6 +1113,7 @@
 				22D5F3E1256F8A0D00806992 /* Detailed.swift */,
 				2287244725721D860082A490 /* DetailedProject.swift */,
 				2287245025721D930082A490 /* DetailedEntry.swift */,
+				2287246D25721E820082A490 /* IntegrateRunningEntry.swift */,
 			);
 			path = Detailed;
 			sourceTree = "<group>";
@@ -1585,7 +1582,6 @@
 				22D5F43925707F9600806992 /* Tag+CoreDataProperties.swift in Sources */,
 				229521652505C07100085055 /* ColorCustom.swift in Sources */,
 				C6EB477E2520170100FCD0CB /* AsNSDate.swift in Sources */,
-				22D5F3FC256F8A7A00806992 /* Detailed.swift in Sources */,
 				2292C4F62505CC1E005802B5 /* Piece3.swift in Sources */,
 				2292C4F92505CC1E005802B5 /* Piece11.swift in Sources */,
 				2292C4F72505CC1E005802B5 /* Piece9.swift in Sources */,
@@ -1597,7 +1593,6 @@
 				22D5F44A25707FA800806992 /* RawProject.swift in Sources */,
 				2295214A2505BD7600085055 /* SummaryEquatable.swift in Sources */,
 				2295214B2505BD7600085055 /* RawSummary.swift in Sources */,
-				2287246225721D970082A490 /* DetailedProject.swift in Sources */,
 				C6EB47882520170100FCD0CB /* DateAngle.swift in Sources */,
 				2295214E2505BDD700085055 /* DateComponent.swift in Sources */,
 				C6EB47842520170100FCD0CB /* DateExtension.swift in Sources */,
@@ -1641,7 +1636,6 @@
 				229428DE251E7E7E008C0BFF /* Mod.swift in Sources */,
 				22D5F43A25707F9600806992 /* Project+CoreDataClass.swift in Sources */,
 				2292C4F82505CC1E005802B5 /* SolveBoard.swift in Sources */,
-				2287246325721D970082A490 /* DetailedEntry.swift in Sources */,
 				229521542505BEC300085055 /* Workspace.swift in Sources */,
 				2292C4EB2505CC1E005802B5 /* Piece10.swift in Sources */,
 				2295215C2505BF3200085055 /* KeychainError.swift in Sources */,
@@ -1673,7 +1667,6 @@
 				22FFF63B2570EA1D00A54471 /* WidgetManager.swift in Sources */,
 				228174CE2501B9AF008E471D /* ToOptional.swift in Sources */,
 				22B0783524B1513A00256EB8 /* ClokWidget.swift in Sources */,
-				22D5F3FA256F8A7A00806992 /* Detailed.swift in Sources */,
 				C6EB476A2520170100FCD0CB /* AngleOperators.swift in Sources */,
 				C6EB47712520170100FCD0CB /* AnyTransitionSlide.swift in Sources */,
 				2238640324BBC6980041886B /* DoubleExtension.swift in Sources */,
@@ -1689,8 +1682,6 @@
 				C60856B7251FCE1B00E6D6C0 /* TimeEntry+CoreDataProperties.swift in Sources */,
 				22B0783924B1519D00256EB8 /* NetworkError.swift in Sources */,
 				22DC869B24BA7A5E00FF771F /* TimeEntryModel.xcdatamodeld in Sources */,
-				2287245925721D960082A490 /* DetailedProject.swift in Sources */,
-				2287245A25721D960082A490 /* DetailedEntry.swift in Sources */,
 				2295215B2505BF3200085055 /* KeychainError.swift in Sources */,
 				2229D7A624EF5C55004E1034 /* TimeIntervalExtension.swift in Sources */,
 				22D56F0D2526BB080011C4AC /* RingSize.swift in Sources */,
@@ -1763,6 +1754,7 @@
 				22FFF6A92571022700A54471 /* DataFetcher.swift in Sources */,
 				2205DCB5254BA00B00146EAB /* Tag+CoreDataProperties.swift in Sources */,
 				22B2625E254B9CF200182236 /* RunningEntry.swift in Sources */,
+				2287247025721E820082A490 /* IntegrateRunningEntry.swift in Sources */,
 				2205DCC0254BA01400146EAB /* KeychainConstants.swift in Sources */,
 				22B2629A254B9D7700182236 /* ColorCustom.swift in Sources */,
 				22B26272254B9D3800182236 /* TimeConstants.swift in Sources */,
