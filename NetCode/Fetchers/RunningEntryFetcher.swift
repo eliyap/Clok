@@ -30,3 +30,20 @@ func RunningEntryRequest(context: NSManagedObjectContext) -> AnyPublisher<Runnin
         }
         .eraseToAnyPublisher()
 }
+
+func RawRunningEntryRequest() -> AnyPublisher<RawRunningEntry, Error> {
+    guard let token = try? getKey().2 else {
+        return Fail(error: KeychainError.noData)
+            .eraseToAnyPublisher()
+    }
+    return URLSession.shared.dataTaskPublisher(for: formRequest(
+        url: runningURL,
+        auth: auth(token: token)
+    ))
+        .map(dataTaskMonitor)
+        .tryMap {
+            return try JSONDecoder(dateStrategy: .iso8601)
+                .decode(RawRunningEntry.self, from: $0)
+        }
+        .eraseToAnyPublisher()
+}
