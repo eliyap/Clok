@@ -20,8 +20,8 @@ struct ProjectRing: View {
     /// should allow them to just touch when at full size
     var beadAngle = 0.3
     
-    /// whether we are in week or day mode
-    let period: Period
+    /// Widget Configuration
+    let config: MultiRingConfigurationIntent
     
     @Environment(\.colorScheme) var mode
     
@@ -63,7 +63,7 @@ struct ProjectRing: View {
 
 extension ProjectRing {
     var unit: TimeInterval {
-        switch period {
+        switch config.Period {
         case .day, .unknown:
             return .hour
         case .week:

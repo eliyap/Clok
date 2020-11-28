@@ -26,7 +26,7 @@ struct MultiRingEntryView : View {
             case .systemSmall:
                 Grid4(topN[0], topN[1], topN[2], topN[3])
             case .systemMedium:
-                ProjectRing(project: topN[0], size: .large, period: entry.period)
+                ProjectRing(project: topN[0], size: .large, config: entry.config)
                 Grid4(topN[1], topN[2], topN[3], topN[4])
             case .systemLarge:
                 Grid4(topN[0], topN[1], topN[2], topN[3])
@@ -37,7 +37,7 @@ struct MultiRingEntryView : View {
         .padding(padded)
         /// enforce the user's preferred scheme, if any, otherwise pass through the default
         .environment(\.colorScheme, {
-            switch entry.theme {
+            switch entry.config.Theme {
             case .system, .unknown:
                 return mode
             case .dark:
@@ -47,7 +47,7 @@ struct MultiRingEntryView : View {
             }
         }())
         .background({ () -> Color in
-            switch entry.theme {
+            switch entry.config.Theme {
             case .system, .unknown:
                 return mode == .dark
                     ? .black
@@ -68,12 +68,12 @@ struct MultiRingEntryView : View {
     ) -> some View {
         VStack(spacing: spaced) {
             HStack(spacing: spaced) {
-                ProjectRing(project: p1, period: entry.period)
-                ProjectRing(project: p2, period: entry.period)
+                ProjectRing(project: p1, config: entry.config)
+                ProjectRing(project: p2, config: entry.config)
             }
             HStack(spacing: spaced) {
-                ProjectRing(project: p3, period: entry.period)
-                ProjectRing(project: p4, period: entry.period)
+                ProjectRing(project: p3, config: entry.config)
+                ProjectRing(project: p4, config: entry.config)
             }
         }
     }

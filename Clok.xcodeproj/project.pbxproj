@@ -116,6 +116,7 @@
 		228174D32501CB76008E471D /* RawSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228174D22501CB76008E471D /* RawSummary.swift */; };
 		228174D52501CBCB008E471D /* NoSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228174D42501CBCB008E471D /* NoSummary.swift */; };
 		228174D72501CD12008E471D /* SummaryEquatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228174D62501CD12008E471D /* SummaryEquatable.swift */; };
+		228724272571D89E0082A490 /* MR_Intent_Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2287241E2571D88E0082A490 /* MR_Intent_Default.swift */; };
 		22885DAE24DA13E500A56FE3 /* DayStrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22885DAD24DA13E500A56FE3 /* DayStrip.swift */; };
 		22885DB024DA1C9600A56FE3 /* Divisions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22885DAF24DA1C9600A56FE3 /* Divisions.swift */; };
 		22885DB224DA1E2E00A56FE3 /* TimeIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22885DB124DA1E2E00A56FE3 /* TimeIndicator.swift */; };
@@ -530,6 +531,7 @@
 		228174D22501CB76008E471D /* RawSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawSummary.swift; sourceTree = "<group>"; };
 		228174D42501CBCB008E471D /* NoSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoSummary.swift; sourceTree = "<group>"; };
 		228174D62501CD12008E471D /* SummaryEquatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryEquatable.swift; sourceTree = "<group>"; };
+		2287241E2571D88E0082A490 /* MR_Intent_Default.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MR_Intent_Default.swift; sourceTree = "<group>"; };
 		22885DAD24DA13E500A56FE3 /* DayStrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayStrip.swift; sourceTree = "<group>"; };
 		22885DAF24DA1C9600A56FE3 /* Divisions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Divisions.swift; sourceTree = "<group>"; };
 		22885DB124DA1E2E00A56FE3 /* TimeIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIndicator.swift; sourceTree = "<group>"; };
@@ -741,6 +743,7 @@
 				22D5F4F62570CFDB00806992 /* MR_TimeIndicator.swift */,
 				2205DD5D254BA16000146EAB /* MR_Timeline.swift */,
 				C6262B9F251F03950003D435 /* MultiRing.intentdefinition */,
+				2287241E2571D88E0082A490 /* MR_Intent_Default.swift */,
 			);
 			path = MultiRing;
 			sourceTree = "<group>";
@@ -1724,6 +1727,7 @@
 				2205DC31254B9EEB00146EAB /* ColorHex.swift in Sources */,
 				2205DC8C254B9FC700146EAB /* RawProject.swift in Sources */,
 				22D5F5062570CFE000806992 /* MR_TimeIndicator.swift in Sources */,
+				228724272571D89E0082A490 /* MR_Intent_Default.swift in Sources */,
 				22B2624A254B9CD300182236 /* FormRequest.swift in Sources */,
 				22B261E5254B9AF500182236 /* WidgetBundle.intentdefinition in Sources */,
 				22B26286254B9D5600182236 /* AngleExtension.swift in Sources */,

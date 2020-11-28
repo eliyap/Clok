@@ -14,7 +14,5 @@ struct MultiRingEntry: TimelineEntry {
     let date: Date
     let projects: [Detailed.Project]
     let running: RunningEntry
-    let period: Period
-    /// light / dark theme, use system by default
-    var theme: Mode = .system
+    let config: MultiRingConfigurationIntent
 }
