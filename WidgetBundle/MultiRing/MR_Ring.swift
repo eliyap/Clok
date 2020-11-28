@@ -13,12 +13,9 @@ struct ProjectRing: View {
     /// how much to brighten / darken the view.
     /// bounded (0, 1)
     static let colorAdjustment = CGFloat(0.1)
+    
     var project: Detailed.Project = .empty
     var size: RingSize = .small
-    
-    /// the angle at which to distribute beads
-    /// should allow them to just touch when at full size
-    var beadAngle = 0.3
     
     /// Widget Configuration
     let config: MultiRingConfigurationIntent
@@ -205,7 +202,10 @@ extension ProjectRing {
     
     /// counts up number of full hours
     private func Beads(size: CGSize) -> some View {
-        ForEach(0..<unitCount, id: \.self){ index in
+        /// the angle at which to distribute beads
+        /// should allow them to just touch when at full size
+        let beadAngle = 0.3
+        return ForEach(0..<unitCount, id: \.self){ index in
             Circle()
                 /// NOTE: to improve contrast, darken beads by extra amount
                 .fill(modeBG)
