@@ -29,8 +29,14 @@ extension DataFetcher {
             .tryMap { (data: Data) -> RunningEntry in
                 return try RunningEntry(data: data, projects: projects ?? [])
             }
-            .catch(printAndReturnNil)
-            .sink(receiveValue: { running in
+            .sink(receiveCompletion: { completed in
+                switch completed {
+                case .finished:
+                    break
+                case .failure(let error):
+                    completion(nil, error)
+                }
+            }, receiveValue: { running in
                 completion(running, nil)
             })
             .store(in: &cancellable)
