@@ -121,7 +121,6 @@
 		2287243F257214570082A490 /* AssignCancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22872436257214530082A490 /* AssignCancellable.swift */; };
 		2287246425721D970082A490 /* DetailedProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2287244725721D860082A490 /* DetailedProject.swift */; };
 		2287246525721D970082A490 /* DetailedEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2287245025721D930082A490 /* DetailedEntry.swift */; };
-		2287247025721E820082A490 /* IntegrateRunningEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2287246D25721E820082A490 /* IntegrateRunningEntry.swift */; };
 		22885DAE24DA13E500A56FE3 /* DayStrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22885DAD24DA13E500A56FE3 /* DayStrip.swift */; };
 		22885DB024DA1C9600A56FE3 /* Divisions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22885DAF24DA1C9600A56FE3 /* Divisions.swift */; };
 		22885DB224DA1E2E00A56FE3 /* TimeIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22885DB124DA1E2E00A56FE3 /* TimeIndicator.swift */; };
@@ -538,7 +537,6 @@
 		22872436257214530082A490 /* AssignCancellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignCancellable.swift; sourceTree = "<group>"; };
 		2287244725721D860082A490 /* DetailedProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedProject.swift; sourceTree = "<group>"; };
 		2287245025721D930082A490 /* DetailedEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedEntry.swift; sourceTree = "<group>"; };
-		2287246D25721E820082A490 /* IntegrateRunningEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegrateRunningEntry.swift; sourceTree = "<group>"; };
 		22885DAD24DA13E500A56FE3 /* DayStrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayStrip.swift; sourceTree = "<group>"; };
 		22885DAF24DA1C9600A56FE3 /* Divisions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Divisions.swift; sourceTree = "<group>"; };
 		22885DB124DA1E2E00A56FE3 /* TimeIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIndicator.swift; sourceTree = "<group>"; };
@@ -1113,7 +1111,6 @@
 				22D5F3E1256F8A0D00806992 /* Detailed.swift */,
 				2287244725721D860082A490 /* DetailedProject.swift */,
 				2287245025721D930082A490 /* DetailedEntry.swift */,
-				2287246D25721E820082A490 /* IntegrateRunningEntry.swift */,
 			);
 			path = Detailed;
 			sourceTree = "<group>";
@@ -1754,7 +1751,6 @@
 				22FFF6A92571022700A54471 /* DataFetcher.swift in Sources */,
 				2205DCB5254BA00B00146EAB /* Tag+CoreDataProperties.swift in Sources */,
 				22B2625E254B9CF200182236 /* RunningEntry.swift in Sources */,
-				2287247025721E820082A490 /* IntegrateRunningEntry.swift in Sources */,
 				2205DCC0254BA01400146EAB /* KeychainConstants.swift in Sources */,
 				22B2629A254B9D7700182236 /* ColorCustom.swift in Sources */,
 				22B26272254B9D3800182236 /* TimeConstants.swift in Sources */,
