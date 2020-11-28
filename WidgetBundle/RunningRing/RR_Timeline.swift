@@ -36,7 +36,7 @@ struct RunningRingProvider: IntentTimelineProvider {
     }
 
     func getSnapshot(for configuration: Intent, in context: Context, completion: @escaping (Entry) -> ()) {
-        DataFetcher.shared.fetchRunningEntry(context: moc) { result in
+        DataFetcher.shared.AssignCancellable(pub: RunningEntryRequest(context: moc)) { result in
             switch result {
             case .failure(let error):
                 print("RunningRingWidget Fetch Failed With Error \(String(describing: error))")
@@ -52,7 +52,7 @@ struct RunningRingProvider: IntentTimelineProvider {
         in context: Context,
         completion: @escaping (Timeline<Entry>) -> ()
     ) {
-        DataFetcher.shared.fetchRunningEntry(context: moc) { result in
+        DataFetcher.shared.AssignCancellable(pub: RunningEntryRequest(context: moc)) { result in
             switch result {
             case .failure(let error):
                 print("RunningRingWidget Fetch Failed With Error \(String(describing: error))")
