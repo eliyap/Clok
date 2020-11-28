@@ -97,8 +97,18 @@ extension MultiRingEntryView {
     /// return exactly enough projects, padded with `empty`s to make the count
     var topN: [Detailed.Project] {
         /// sorted by duration and padded with enough `empty`s
-        let projs = entry.projects.sorted(by: {$0.duration > $1.duration})
+        var projs = entry.projects.sorted(by: {$0.duration > $1.duration})
             + Array(repeating: .empty, count: ringCount)
+        
+        /// if in `medium` size, big ring should be the running ring
+        if
+            family == .systemMedium,
+            entry.running != .noEntry,
+            let idx = projs.firstIndex(where: {$0.id == entry.running.project.wrappedID})
+        {
+            projs.swapAt(0, idx)
+        }
+        
         return Array(projs[0..<ringCount])
     }
 }
