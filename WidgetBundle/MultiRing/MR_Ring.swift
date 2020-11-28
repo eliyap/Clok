@@ -18,7 +18,7 @@ struct ProjectRing: View {
     var size: RingSize = .small
     
     /// Widget Configuration
-    let config: MultiRingConfigurationIntent
+    let entry: MultiRingEntry
     
     @Environment(\.colorScheme) var mode
     
@@ -60,7 +60,7 @@ struct ProjectRing: View {
 
 extension ProjectRing {
     var unit: TimeInterval {
-        switch config.Period {
+        switch entry.config.Period {
         case .day, .unknown:
             return .hour
         case .week:
