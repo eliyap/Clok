@@ -12,9 +12,6 @@ fileprivate let scrollLimit = 10000
 
 struct NewGraph: View {
     
-    @State var xOffset: CGFloat = .zero
-    @State var recentPos: CGFloat? = .none
-    
     var DayList = Array(0..<(365 + scrollLimit))
     var df = DateFormatter()
     
@@ -37,23 +34,6 @@ struct NewGraph: View {
                 }
             }
         }
-        .gesture(
-            DragGesture()
-                .onChanged { gesture in
-                    recentPos = recentPos == .none ? gesture.startLocation.x : recentPos
-                    withAnimation(.linear(duration: 0.05)) {
-                        self.xOffset += gesture.location.x - recentPos!
-                    }
-                    
-                    recentPos = gesture.location.x
-                }
-                .onEnded { _ in
-                    recentPos = .none
-                    withAnimation {
-                        self.xOffset = 0
-                    }
-                }
-        )
     }
     
     func DaySection(idx: Int, size: CGSize) -> some View {
@@ -82,7 +62,6 @@ struct NewGraph: View {
                 dayHeight: size.height,
                 start: Date().midnight.advanced(by: Double(idx - scrollLimit) * .day)
             )
-                .offset(x: xOffset)
         }
     }
     
