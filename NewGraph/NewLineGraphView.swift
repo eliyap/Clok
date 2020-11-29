@@ -10,7 +10,6 @@ import SwiftUI
 
 struct NewLineGraphView: View {
     
-    @EnvironmentObject var zero: ZeroDate
     @EnvironmentObject var data: TimeData
     @FetchRequest(
         entity: TimeEntry.entity(),
@@ -18,6 +17,7 @@ struct NewLineGraphView: View {
     ) var entries: FetchedResults<TimeEntry>
 
     let dayHeight: CGFloat     /// visual height for 1 day
+    let start: Date
     
     var body: some View {
         /// check whether the provided time entry coincides with a particular *date* range
@@ -26,7 +26,7 @@ struct NewLineGraphView: View {
         HStack(spacing: .zero) {
             /// use date enum so SwiftUI can identify horizontal swipes without redrawing everything
             ForEach(
-                Array(stride(from: zero.start, to: zero.end, by: .day)),
+                Array(stride(from: start, to: start + .week, by: .day)),
                 id: \.timeIntervalSince1970
             ) { midnight in
                 Divider()
@@ -35,8 +35,7 @@ struct NewLineGraphView: View {
                     midnight: midnight,
                     terms: data.terms
                 )
-                .transition(zero.slideOver)
-                .frame(height: dayHeight)
+                    .frame(height: dayHeight)
             }
         }
         /// NOTE: apply lined background to whole stack, NOT individual `DayStrip`!
