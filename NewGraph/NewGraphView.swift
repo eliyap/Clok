@@ -36,6 +36,8 @@ struct NewGraph: View {
                                                 .foregroundColor(.clokBG)
                                         )
                                 }
+                                    /// drop a hair to allow the red divider to show through
+                                    .offset(y: 1)
                             ) {
                                 DayRect(idx: idx, size: geo.size)
                                     .padding(.top, -40)
