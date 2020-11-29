@@ -47,8 +47,9 @@ struct NewGraph: View {
     }
     
     func DayRect(idx: Int, size: CGSize) -> some View {
-        ZStack {
-            LineGraph(dayHeight: size.height)
+        HStack(spacing: .zero) {
+            NewTimeIndicator(divisions: evenDivisions(for: size.height))
+            NewLineGraphView(dayHeight: size.height)
         }
     }
     
