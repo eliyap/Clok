@@ -210,7 +210,6 @@ extension ProjectRing {
                 .frame(width: ringWeight * 0.97, height: ringWeight * 0.97)
                 .foregroundColor(lighter)
                 .offset(x: (size.width - ringWeight) / 2)
-                .rotationEffect(angle)
             Arc(angle: .tau / 2)
                 .strokeBorder(modeBG, style: StrokeStyle(lineWidth: spacerWidth))
                 .frame(
