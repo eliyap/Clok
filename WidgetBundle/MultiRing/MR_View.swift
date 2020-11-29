@@ -106,7 +106,8 @@ extension MultiRingEntryView {
             entry.running != .noEntry,
             let idx = projs.firstIndex(where: {$0.id == entry.running.project.wrappedID})
         {
-            projs.swapAt(0, idx)
+            let popped = projs.remove(at: idx)
+            projs = [popped] + projs
         }
         
         return Array(projs[0..<ringCount])
