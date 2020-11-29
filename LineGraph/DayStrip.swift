@@ -22,7 +22,7 @@ struct DayStrip: View {
     
     var body: some View {
         GeometryReader { geo in
-            ZStack() {
+            ZStack {
                 ForEach(entries, id: \.id) {
                     EntryRect(
                         range: ($0.start, $0.end),
