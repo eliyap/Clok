@@ -40,6 +40,8 @@ struct ProjectRing: View {
                         .rotationEffect(.tau * -0.25)
                     SpacerRing(size: geo.size)
                         .rotationEffect(angle - .tau * 0.25)
+                    Beads(size: geo.size)
+                        .rotationEffect(angle - .tau * 0.25)
                 }
                 VStack {
                     TimeIndicator
@@ -150,12 +152,11 @@ extension ProjectRing {
 
 // MARK: - Over 1 Hour
 extension ProjectRing {
-    private func MultiHourRing(size: CGSize) -> some View {
+    private func  MultiHourRing(size: CGSize) -> some View {
         Group {
             DarkHalf
             LightHalf
                 .rotationEffect(.tau * 0.5)
-            Beads(size: size)
         }
         .rotationEffect(angle)
     }
