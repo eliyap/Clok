@@ -29,7 +29,13 @@ struct NewGraph: View {
                         }
                     }
                     .onAppear {
-                        proxy.scrollTo(scrollLimit)
+                        /** Swift is cursed
+                         Look, if I don't include this async block, for some reason the call just doesn't happen.
+                         No idea what on earth is going on here.
+                         */
+                        DispatchQueue.main.asyncAfter(deadline: .now()) {
+                            proxy.scrollTo(scrollLimit)
+                        }
                     }
                 }
             }

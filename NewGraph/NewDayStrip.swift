@@ -15,7 +15,7 @@ fileprivate let labelPadding = CGFloat(3)
 struct NewDayStrip: View {
     
     @EnvironmentObject var bounds: Bounds
-
+    @EnvironmentObject var ChosenEntry: _TimeEntry
     let entries: [TimeEntry]
     let midnight: Date
     let terms: SearchTerms
@@ -23,15 +23,18 @@ struct NewDayStrip: View {
     var body: some View {
         GeometryReader { geo in
             ZStack {
-                ForEach(entries, id: \.id) {
+                ForEach(entries, id: \.id) { entry in
                     NewEntryRect(
-                        range: ($0.start, $0.end),
+                        range: (entry.start, entry.end),
                         size: geo.size,
                         midnight: midnight
                     )
-                    .offset(y: padding(for: $0, size: geo.size))
-                    .foregroundColor($0.wrappedColor)
-                    .opacity($0.matches(terms) ? 1 : 0.25)
+                        .offset(y: padding(for: entry, size: geo.size))
+                        .foregroundColor(entry.wrappedColor)
+                        .opacity(entry.matches(terms) ? 1 : 0.25)
+                        .onTapGesture {
+                            ChosenEntry.entry = entry
+                        }
                 }
                 .frame(
                     width: geo.size.width,

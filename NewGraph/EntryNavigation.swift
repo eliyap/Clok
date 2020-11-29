@@ -8,10 +8,22 @@
 
 import SwiftUI
 
+/// wrapper to allow observable
+final class _TimeEntry: ObservableObject {
+    @Published var entry: TimeEntry? = nil
+}
+
 struct EntryNavigation: View {
+    
+    @ObservedObject var ChosenEntry: _TimeEntry = _TimeEntry()
+    
     var body: some View {
         NavigationView {
             NewGraph()
         }
+            .environmentObject(ChosenEntry)
+            .onChange(of: ChosenEntry.entry) { entry in
+                print(entry?.description)
+            }
     }
 }
