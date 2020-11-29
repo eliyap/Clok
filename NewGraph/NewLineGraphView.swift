@@ -22,7 +22,7 @@ struct NewLineGraphView: View {
     var body: some View {
         /// check whether the provided time entry coincides with a particular *date* range
         /// if our entry ends before the interval even began
-        /// or started after the interval finished, it cannot possibly fall coincide
+        /// or started after the interval finished, it cannot possibly coincide
         HStack(spacing: .zero) {
             /// use date enum so SwiftUI can identify horizontal swipes without redrawing everything
             ForEach(
