@@ -42,11 +42,7 @@ struct ProjectRing: View {
                         .rotationEffect(angle - .tau * 0.25)
                 }
                 VStack {
-                    if isRunning {
-                        RunningTimeIndicator
-                    } else {
-                        TimeIndicator
-                    }
+                    TimeIndicator
                     Text(project.name)
                         /// lighten or darken to improve contrast
                         .foregroundColor(highContrast)
@@ -74,31 +70,35 @@ extension ProjectRing {
     
     /// number of complete units
     var unitCount: Int {
-        Int(project.duration / unit)
+        Int(duration / unit)
     }
     
     /// remaining partial units
     var remainder: Double {
-        (project.duration / unit) - Double(unitCount)
-    }
-    
-    /** whether this project currently has a running timer*/
-    var isRunning: Bool {
-        entry.running.project.wrappedID == project.id
+        (duration / unit) - Double(unitCount)
     }
     
 }
 
 // MARK: - Project Based Properties
 extension ProjectRing {
+    
+    /// factors in the running timer, if any
+    var duration: TimeInterval {
+        project.duration + (entry.running.project.wrappedID == project.id
+            ? Date() - entry.running.start
+            : .zero
+        )
+    }
+    
     /// the number of complete hours to be displayed
     var hours: Int {
-        Int(project.duration / .hour)
+        Int(duration / .hour)
     }
     
     /// minutes to be displayed
     var mins: Int {
-        Int(project.duration.mod(.hour) / 60)
+        Int(duration.mod(.hour) / 60)
     }
     
     /// the angle to rotate the ring

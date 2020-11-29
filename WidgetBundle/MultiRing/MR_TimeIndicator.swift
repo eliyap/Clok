@@ -57,15 +57,3 @@ extension ProjectRing {
         }
     }
 }
-
-//MARK:- Running Time Indicator
-extension ProjectRing {
-    /// shows the amount of time spent on this project
-    var RunningTimeIndicator: some View {
-        /// fakes a `Date` so that a `timer` style text will count the right amount of time
-        Text(entry.running.start.advanced(by: -project.duration), style: .timer)
-            .font(.system(size: hourFont, design: .rounded))
-            .bold()
-            .foregroundColor(project.color)
-    }
-}
