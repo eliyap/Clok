@@ -253,6 +253,7 @@ extension ProjectRing {
                 .foregroundColor(modeBG)
                 .offset(x: (size.width - ringWeight) / 2)
         }
+        .rotationEffect(del / 2)
     }
     
     /// counts up number of full hours
