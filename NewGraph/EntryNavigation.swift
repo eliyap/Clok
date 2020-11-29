@@ -16,14 +16,22 @@ final class _TimeEntry: ObservableObject {
 struct EntryNavigation: View {
     
     @ObservedObject var ChosenEntry: _TimeEntry = _TimeEntry()
+    @State var hasEntry: Bool = false
     
     var body: some View {
         NavigationView {
-            NewGraph()
+            VStack { /// swift is cursed. this makes the nav link work. don't know why
+                NewGraph()
+                NavigationLink(destination: Text(ChosenEntry.entry?.wrappedDescription ?? "Oops"), isActive: $hasEntry) {
+                    EmptyView()
+                }
+            }
+            
         }
             .environmentObject(ChosenEntry)
             .onChange(of: ChosenEntry.entry) { entry in
-                print(entry?.description)
+                self.hasEntry = entry != nil
+                print(hasEntry)
             }
     }
 }
