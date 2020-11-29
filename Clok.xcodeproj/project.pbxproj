@@ -122,6 +122,9 @@
 		2287246425721D970082A490 /* DetailedProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2287244725721D860082A490 /* DetailedProject.swift */; };
 		2287246525721D970082A490 /* DetailedEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2287245025721D930082A490 /* DetailedEntry.swift */; };
 		228724BA257223630082A490 /* RawRunningMatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228724B7257223630082A490 /* RawRunningMatch.swift */; };
+		2287251025731C520082A490 /* DetailedWithRunningFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2287250725731BF20082A490 /* DetailedWithRunningFetcher.swift */; };
+		2287252725731F450082A490 /* ProjectDetailFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2287252625731F450082A490 /* ProjectDetailFetcher.swift */; };
+		2287252825731F450082A490 /* ProjectDetailFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2287252625731F450082A490 /* ProjectDetailFetcher.swift */; };
 		22885DAE24DA13E500A56FE3 /* DayStrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22885DAD24DA13E500A56FE3 /* DayStrip.swift */; };
 		22885DB024DA1C9600A56FE3 /* Divisions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22885DAF24DA1C9600A56FE3 /* Divisions.swift */; };
 		22885DB224DA1E2E00A56FE3 /* TimeIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22885DB124DA1E2E00A56FE3 /* TimeIndicator.swift */; };
@@ -539,6 +542,8 @@
 		2287244725721D860082A490 /* DetailedProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedProject.swift; sourceTree = "<group>"; };
 		2287245025721D930082A490 /* DetailedEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedEntry.swift; sourceTree = "<group>"; };
 		228724B7257223630082A490 /* RawRunningMatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawRunningMatch.swift; sourceTree = "<group>"; };
+		2287250725731BF20082A490 /* DetailedWithRunningFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedWithRunningFetcher.swift; sourceTree = "<group>"; };
+		2287252625731F450082A490 /* ProjectDetailFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailFetcher.swift; sourceTree = "<group>"; };
 		22885DAD24DA13E500A56FE3 /* DayStrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayStrip.swift; sourceTree = "<group>"; };
 		22885DAF24DA1C9600A56FE3 /* Divisions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Divisions.swift; sourceTree = "<group>"; };
 		22885DB124DA1E2E00A56FE3 /* TimeIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIndicator.swift; sourceTree = "<group>"; };
@@ -799,12 +804,14 @@
 				2277E8C624EB44AC00702086 /* EntryLoader.swift */,
 				2277E8C824EB47B400702086 /* PaginatedLoad.swift */,
 				2293CEEC24EC5661000B68F4 /* ProjectLoader.swift */,
+				2287252625731F450082A490 /* ProjectDetailFetcher.swift */,
 				2229D7AF24F0459F004E1034 /* FetchRunningEntry.swift */,
 				229646CE24F322E600FE14E5 /* TagLoader.swift */,
 				22FFF6A02571020B00A54471 /* DataFetcher.swift */,
 				22872436257214530082A490 /* AssignCancellable.swift */,
 				22FFF697257101DE00A54471 /* RunningEntryFetcher.swift */,
 				22FFF6EE2571A77500A54471 /* DetailedReportFetcher.swift */,
+				2287250725731BF20082A490 /* DetailedWithRunningFetcher.swift */,
 			);
 			path = Fetchers;
 			sourceTree = "<group>";
@@ -1734,6 +1741,7 @@
 				22B26222254B9BE300182236 /* RR_Square.swift in Sources */,
 				22FFF6D825710CA800A54471 /* PrintError.swift in Sources */,
 				2205DC31254B9EEB00146EAB /* ColorHex.swift in Sources */,
+				2287252825731F450082A490 /* ProjectDetailFetcher.swift in Sources */,
 				2205DC8C254B9FC700146EAB /* RawProject.swift in Sources */,
 				2287243F257214570082A490 /* AssignCancellable.swift in Sources */,
 				22D5F5062570CFE000806992 /* MR_TimeIndicator.swift in Sources */,
@@ -1749,6 +1757,7 @@
 				22B26290254B9D6B00182236 /* ColorAdjust.swift in Sources */,
 				22FFF6C8257103AF00A54471 /* DataTaskMonitor.swift in Sources */,
 				22FFF6EF2571A77500A54471 /* DetailedReportFetcher.swift in Sources */,
+				2287251025731C520082A490 /* DetailedWithRunningFetcher.swift in Sources */,
 				22FFF6732570FCB400A54471 /* DateExtension.swift in Sources */,
 				2205DC78254B9FA300146EAB /* LoadProjects.swift in Sources */,
 				22FFF6A92571022700A54471 /* DataFetcher.swift in Sources */,
@@ -1833,6 +1842,7 @@
 				229646CB24F321AE00FE14E5 /* TimeConstants.swift in Sources */,
 				C6751D8C24723182002965CC /* ZeroDate.swift in Sources */,
 				229428D2251E7C61008C0BFF /* ColorAdjust.swift in Sources */,
+				2287252725731F450082A490 /* ProjectDetailFetcher.swift in Sources */,
 				22DE58E1251EC81B00379396 /* ClokWidget.intentdefinition in Sources */,
 				22283DAA24DFA27D005AC0F3 /* SearchTerms.swift in Sources */,
 				22FFF64D2570F8B200A54471 /* BeginningOfWeek.swift in Sources */,
