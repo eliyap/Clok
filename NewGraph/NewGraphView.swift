@@ -27,8 +27,15 @@ struct NewGraph: View {
                     LazyVStack(alignment: .leading, spacing: .zero, pinnedViews: .sectionHeaders) {
                         ForEach(DayList, id: \.self) { idx in
                             Section(header:
-                                Text(dateString(at: idx))
+                                HStack(spacing: .zero) {
+                                    WidthHelper(size: geo.size)
+                                    Text(dateString(at: idx))
                                         .frame(height: 40)
+                                        .background(
+                                            RoundedRectangle(cornerRadius: 10)
+                                                .foregroundColor(.clokBG)
+                                        )
+                                }
                             ) {
                                 DayRect(idx: idx, size: geo.size)
                                     .padding(.top, -40)
@@ -55,5 +62,22 @@ struct NewGraph: View {
     
     func dateString(at idx: Int) -> String {
         df.string(from: Date().advanced(by: Double(idx - scrollLimit) * .day))
+    }
+    
+    /**
+     Wrapper around  an invisible`TimeIndicator`.
+     Keeps the labels aligned correctly above their respective days
+     */
+    func WidthHelper(size: CGSize) -> some View {
+        /// `TimeIndicator` is very tall, so wrap it in a `ScrollView`
+        /// to allow it to collapse its height without messing up the width
+        ScrollView {
+            NewTimeIndicator(divisions: evenDivisions(for: size.height))
+        }
+            /// view should be invisible and non-interactable
+            .opacity(0)
+            .allowsHitTesting(false)
+            .disabled(true)
+            .frame(height: .zero)
     }
 }
