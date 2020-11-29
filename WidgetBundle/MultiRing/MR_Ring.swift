@@ -33,12 +33,12 @@ struct ProjectRing: View {
                     EmptyRing
                     HourArc(size: geo.size)
                         .rotationEffect(.tau * -0.25)
-                    SpacerRing(size: geo.size)
+                    Spacer(size: geo.size)
                         .rotationEffect(angle - .tau * 0.25)
                 default:
                     MultiHourRing(size: geo.size)
                         .rotationEffect(.tau * -0.25)
-                    SpacerRing(size: geo.size)
+                    Spacer(size: geo.size)
                         .rotationEffect(angle - .tau * 0.25)
                     Beads(size: geo.size)
                         .rotationEffect(angle - .tau * 0.25)
@@ -199,16 +199,28 @@ extension ProjectRing {
     }
     
     /// makes it easier to see where the boundary is
-    private func SpacerRing(size: CGSize) -> some View {
-        Arc(angle: .tau / 2)
-            .strokeBorder(modeBG, style: StrokeStyle(lineWidth: spacerWidth))
-            .frame(
-                /// 1.03 multiplier avoids a pixel perfect error around the half hour area
-                width: (ringWeight + 2 * spacerWidth) * 1.03,
-                height: (ringWeight + 2 * spacerWidth) * 1.03,
-                alignment: .leading
-            )
-            .offset(x: (size.width - ringWeight) / 2)
+    private func Spacer(size: CGSize) -> some View {
+        Group {
+            /**
+             when the time approaches 1 full hour, the Gradient cannot be fixed.
+             So we cover the misaligned section with a solid color circle.
+            **/
+            Circle()
+                /// 0.97 adjustment prevents a pixel perfect error around the half hour area
+                .frame(width: ringWeight * 0.97, height: ringWeight * 0.97)
+                .foregroundColor(lighter)
+                .offset(x: (size.width - ringWeight) / 2)
+                .rotationEffect(angle)
+            Arc(angle: .tau / 2)
+                .strokeBorder(modeBG, style: StrokeStyle(lineWidth: spacerWidth))
+                .frame(
+                    /// 1.03 multiplier avoids a pixel perfect error around the half hour area
+                    width: (ringWeight + 2 * spacerWidth) * 1.03,
+                    height: (ringWeight + 2 * spacerWidth) * 1.03,
+                    alignment: .leading
+                )
+                .offset(x: (size.width - ringWeight) / 2)
+        }
     }
     
     /// counts up number of full hours
@@ -248,16 +260,6 @@ extension ProjectRing {
                     style: StrokeStyle(lineWidth: ringWeight, lineCap: .round)
                 )
                 .rotationEffect(-del)
-            /**
-             when the time approaches 1 full hour, the Gradient cannot be fixed.
-             So we cover the misaligned section with a solid color circle.
-            **/
-            Circle()
-                /// 0.97 adjustment prevents a pixel perfect error around the half hour area
-                .frame(width: ringWeight * 0.97, height: ringWeight * 0.97)
-                .foregroundColor(lighter)
-                .offset(x: (size.width - ringWeight) / 2)
-                .rotationEffect(angle)
         }
     }
     
