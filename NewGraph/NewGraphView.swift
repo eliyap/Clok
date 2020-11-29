@@ -8,10 +8,12 @@
 
 import SwiftUI
 
+fileprivate let scrollLimit = 10000
+
 struct NewGraph: View {
     
-    var DayList = Array(0..<10365)
-    var offSet = -10000
+    
+    var DayList = Array(0..<(365 + scrollLimit))
     var df = DateFormatter()
     
     init() {
@@ -34,11 +36,10 @@ struct NewGraph: View {
                                     .frame(height: 1)
                                     .foregroundColor(.black)
                             }
-                            
                         }
                     }
                     .onAppear {
-                        proxy.scrollTo(10000)
+                        proxy.scrollTo(scrollLimit)
                     }
                 }
             }
@@ -52,6 +53,6 @@ struct NewGraph: View {
     }
     
     func dateString(at idx: Int) -> String {
-        df.string(from: Date().advanced(by: Double(offSet + idx) * .day))
+        df.string(from: Date().advanced(by: Double(idx - scrollLimit) * .day))
     }
 }
