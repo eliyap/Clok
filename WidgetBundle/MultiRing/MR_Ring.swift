@@ -33,12 +33,12 @@ struct ProjectRing: View {
                     EmptyRing
                     HourArc(size: geo.size)
                         .rotationEffect(.tau * -0.25)
-                    Spacer(size: geo.size)
+                    CircleSpacer(size: geo.size)
                         .rotationEffect(angle - .tau * 0.25)
                 default:
                     MultiHourRing(size: geo.size)
                         .rotationEffect(.tau * -0.25)
-                    Spacer(size: geo.size)
+                    CircleSpacer(size: geo.size)
                         .rotationEffect(angle - .tau * 0.25)
                     Beads(size: geo.size)
                         .rotationEffect(angle - .tau * 0.25)
@@ -199,7 +199,7 @@ extension ProjectRing {
     }
     
     /// makes it easier to see where the boundary is
-    private func Spacer(size: CGSize) -> some View {
+    private func CircleSpacer(size: CGSize) -> some View {
         Group {
             /**
              when the time approaches 1 full hour, the Gradient cannot be fixed.
