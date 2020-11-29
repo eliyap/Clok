@@ -55,7 +55,16 @@ func DetailedWithRunningRequest(
             /// make a further request to get some details
                 return FetchProjectDetails(pid: pid, token: token)
                     .map { staticProject in
-                        (detailed, RunningEntry(
+                        var detailed = detailed
+                        /// append this project so it will show up in the widget
+                        detailed.projects.append(Detailed.Project(
+                            color: staticProject.wrappedColor,
+                            name: staticProject.name,
+                            id: staticProject.wrappedID,
+                            entries: [],
+                            duration: .zero
+                        ))
+                        return (detailed, RunningEntry(
                             id: raw.id,
                             start: raw.start,
                             project: staticProject,

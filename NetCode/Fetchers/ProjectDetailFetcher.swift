@@ -10,6 +10,11 @@ import Foundation
 import Combine
 import SwiftUI
 
+/// wrapper because of the data formatting
+struct RawProjectResponse: Decodable {
+    let data: RawProject?
+}
+
 func FetchProjectDetails(
     pid: Int,
     token: String
@@ -23,7 +28,9 @@ func FetchProjectDetails(
     return URLSession.shared.dataTaskPublisher(for: request)
         .map(dataTaskMonitor)
         .tryMap { data -> StaticProject in
-            let rawProject = try JSONDecoder(dateStrategy: .iso8601).decode(RawProject.self, from: data)
+            guard let rawProject = try JSONDecoder(dateStrategy: .iso8601).decode(RawProjectResponse.self, from: data).data else {
+                throw NetworkError.emptyReply
+            }
             return StaticProject(name: rawProject.name, color: Color(hex: rawProject.hex_color), id: rawProject.id)
         }
         .eraseToAnyPublisher()
