@@ -33,12 +33,12 @@ struct ProjectRing: View {
                     EmptyRing
                     HourArc(size: geo.size)
                         .rotationEffect(.tau * -0.25)
-                    CircleSpacer(size: geo.size)
+                    Spacer(size: geo.size)
                         .rotationEffect(angle - .tau * 0.25)
                 default:
                     MultiHourRing(size: geo.size)
                         .rotationEffect(.tau * -0.25)
-                    CircleSpacer(size: geo.size)
+                    Spacer(size: geo.size)
                         .rotationEffect(angle - .tau * 0.25)
                     Beads(size: geo.size)
                         .rotationEffect(angle - .tau * 0.25)
@@ -199,6 +199,18 @@ extension ProjectRing {
     }
     
     /// makes it easier to see where the boundary is
+    private func Spacer(size: CGSize) -> some View {
+        Group {
+            if entry.running.project.wrappedID == project.id {
+                SquareSpacer(size: size)
+            } else {
+                CircleSpacer(size: size)
+            }
+        }
+    }
+    
+    
+    /// makes it easier to see where the boundary is
     private func CircleSpacer(size: CGSize) -> some View {
         Group {
             /**
@@ -218,6 +230,27 @@ extension ProjectRing {
                     height: (ringWeight + 2 * spacerWidth) * 1.03,
                     alignment: .leading
                 )
+                .offset(x: (size.width - ringWeight) / 2)
+        }
+    }
+    
+    /// makes it easier to see where the boundary is, for running timers
+    private func SquareSpacer(size: CGSize) -> some View {
+        Group {
+            /**
+             when the time approaches 1 full hour, the Gradient cannot be fixed.
+             So we cover the misaligned section with a solid color circle.
+            **/
+            RightTriangle()
+                .frame(width: ringWeight * 0.97 / CGFloat(2).squareRoot(), height: ringWeight * 0.97 / CGFloat(2).squareRoot())
+                .rotationEffect(-.tau / 8)
+                .foregroundColor(lighter)
+                .offset(x: (size.width - ringWeight) / 2)
+            RightTriangle(insetAmount: .zero, closed: false)
+                .stroke(style: StrokeStyle(lineWidth: spacerWidth, lineCap: .butt, lineJoin: .miter))
+                .frame(width: spacerWidth + (ringWeight / CGFloat(2).squareRoot()), height: spacerWidth + (ringWeight / CGFloat(2).squareRoot()))
+                .rotationEffect(-.tau / 8)
+                .foregroundColor(modeBG)
                 .offset(x: (size.width - ringWeight) / 2)
         }
     }

@@ -125,6 +125,7 @@
 		2287251025731C520082A490 /* DetailedWithRunningFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2287250725731BF20082A490 /* DetailedWithRunningFetcher.swift */; };
 		2287252725731F450082A490 /* ProjectDetailFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2287252625731F450082A490 /* ProjectDetailFetcher.swift */; };
 		2287252825731F450082A490 /* ProjectDetailFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2287252625731F450082A490 /* ProjectDetailFetcher.swift */; };
+		2287253025733A080082A490 /* RightTriangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6243D432526C421002E1B6E /* RightTriangle.swift */; };
 		22885DAE24DA13E500A56FE3 /* DayStrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22885DAD24DA13E500A56FE3 /* DayStrip.swift */; };
 		22885DB024DA1C9600A56FE3 /* Divisions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22885DAF24DA1C9600A56FE3 /* Divisions.swift */; };
 		22885DB224DA1E2E00A56FE3 /* TimeIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22885DB124DA1E2E00A56FE3 /* TimeIndicator.swift */; };
@@ -1789,6 +1790,7 @@
 				2205DD41254BA11500146EAB /* MR_Entry.swift in Sources */,
 				2205DD9A254BA1F200146EAB /* SummaryLoader.swift in Sources */,
 				2205DCE6254BA05500146EAB /* DecoderExtension.swift in Sources */,
+				2287253025733A080082A490 /* RightTriangle.swift in Sources */,
 				2287246525721D970082A490 /* DetailedEntry.swift in Sources */,
 				2205DC6E254B9F8600146EAB /* GetCredentials.swift in Sources */,
 				2205DCA0254B9FF100146EAB /* Project+CoreDataProperties.swift in Sources */,
