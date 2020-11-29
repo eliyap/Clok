@@ -72,7 +72,7 @@ extension ProjectRing {
     
     /// number of complete units
     var unitCount: Int {
-        Int(duration / unit)
+        max(Int(duration / unit), 0) /// ensure cannot be negative
     }
     
     /// remaining partial units
