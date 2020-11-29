@@ -21,7 +21,7 @@ struct NewGraph: View {
     
     var body: some View {
         GeometryReader { geo in
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 ScrollViewReader { proxy in
                     LazyVStack(alignment: .leading, spacing: .zero, pinnedViews: .sectionHeaders) {
                         ForEach(DayList, id: \.self) { idx in
