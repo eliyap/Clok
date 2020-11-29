@@ -41,9 +41,9 @@ struct NewGraph: View {
             DragGesture()
                 .onChanged { gesture in
                     recentPos = recentPos == .none ? gesture.startLocation.x : recentPos
-                    withAnimation(.linear(duration: 0.05)) {
+//                    withAnimation(.linear(duration: 0.05)) {
                         self.xOffset += gesture.location.x - recentPos!
-                    }
+//                    }
                     
                     recentPos = gesture.location.x
                 }
@@ -69,6 +69,7 @@ struct NewGraph: View {
             }
                 /// drop a hair to allow the red divider to show through
                 .offset(y: 1)
+                .offset(x: xOffset)
         ) {
             DayRect(idx: idx, size: size)
                 .padding(.top, -40)
@@ -82,7 +83,6 @@ struct NewGraph: View {
                 dayHeight: size.height,
                 start: Date().midnight.advanced(by: Double(idx - scrollLimit) * .day)
             )
-                .offset(x: xOffset)
         }
     }
     
