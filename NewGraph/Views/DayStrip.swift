@@ -15,7 +15,7 @@ fileprivate let labelPadding = CGFloat(3)
 struct NewDayStrip: View {
     
     @EnvironmentObject var bounds: Bounds
-    @EnvironmentObject var ChosenEntry: _TimeEntry
+    @EnvironmentObject var model: NewGraphModel
     let entries: [TimeEntry]
     let midnight: Date
     let terms: SearchTerms
@@ -33,7 +33,7 @@ struct NewDayStrip: View {
                         .foregroundColor(entry.wrappedColor)
                         .opacity(entry.matches(terms) ? 1 : 0.25)
                         .onTapGesture {
-                            ChosenEntry.entry = entry
+                            model.entry = entry
                         }
                 }
                 .frame(

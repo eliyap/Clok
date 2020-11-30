@@ -8,47 +8,30 @@
 
 import SwiftUI
 
-/// wrapper to allow observable
-final class _TimeEntry: ObservableObject {
-    @Published var entry: TimeEntry? = nil
-}
-
-final class GraphModeInfo: ObservableObject {
-    @Published var graphMode: EntryNavigation.GraphMode = .weekMode
-}
-
 struct EntryNavigation: View {
     
-    @ObservedObject var ChosenEntry: _TimeEntry = _TimeEntry()
+    @ObservedObject var model = NewGraphModel()
     @State var hasEntry: Bool = false
-    @State var graphModeInfo: GraphModeInfo = GraphModeInfo()
-    
-    enum GraphMode: Int {
-        case weekMode
-        case dayMode
-    }
     
     var body: some View {
         NavigationView {
             VStack { /// swift is cursed. this makes the nav link work. don't know why
                 NewGraph()
-                NavigationLink(destination: Text(ChosenEntry.entry?.wrappedDescription ?? "Oops"), isActive: $hasEntry) {
+                NavigationLink(destination: Text(model.entry?.wrappedDescription ?? "Oops"), isActive: $hasEntry) {
                     EmptyView()
                 }
             }
                 .navigationBarTitle(Text("Text"), displayMode: .inline)
             .navigationBarItems(trailing: Button {
-                self.graphModeInfo.graphMode = .dayMode
+                model.mode = .dayMode
             } label: {
                 Text("Transform!")
             })
                 /// hide NavBar to prevent it changing size during scroll
 //                .navigationBarHidden(true)
         }
-            
-            .environmentObject(ChosenEntry)
-            .environmentObject(graphModeInfo)
-            .onChange(of: ChosenEntry.entry) { entry in
+            .environmentObject(model)
+            .onChange(of: model.entry) { entry in
                 self.hasEntry = entry != nil
                 print(hasEntry)
             }

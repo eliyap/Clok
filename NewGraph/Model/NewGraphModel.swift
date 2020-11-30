@@ -7,3 +7,17 @@
 //
 
 import Foundation
+final class NewGraphModel: ObservableObject {
+    
+    enum GraphMode: Int {
+        case weekMode
+        case dayMode
+        case listMode
+    }
+    
+    /// registers the selection of `TimeEntry`s
+    @Published var entry: TimeEntry? = nil
+    
+    /// registers what mode the view is in
+    @Published var mode: GraphMode = .weekMode
+}

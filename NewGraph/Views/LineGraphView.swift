@@ -11,7 +11,7 @@ import SwiftUI
 struct NewLineGraphView: View {
     
     @EnvironmentObject var data: TimeData
-    @EnvironmentObject var graphModeInfo: GraphModeInfo
+    @EnvironmentObject var model: NewGraphModel
     @FetchRequest(
         entity: TimeEntry.entity(),
         sortDescriptors: []
@@ -21,11 +21,12 @@ struct NewLineGraphView: View {
     let start: Date
     
     var duration: TimeInterval {
-        switch graphModeInfo.graphMode {
+        switch model.mode {
         case .dayMode:
             return .day
         case .weekMode:
             return .week
+        case .listMode: return .day
         }
     }
     
