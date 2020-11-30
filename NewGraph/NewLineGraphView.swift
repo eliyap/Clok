@@ -11,6 +11,7 @@ import SwiftUI
 struct NewLineGraphView: View {
     
     @EnvironmentObject var data: TimeData
+    @EnvironmentObject var graphModeInfo: GraphModeInfo
     @FetchRequest(
         entity: TimeEntry.entity(),
         sortDescriptors: []
@@ -19,6 +20,15 @@ struct NewLineGraphView: View {
     let dayHeight: CGFloat     /// visual height for 1 day
     let start: Date
     
+    var duration: TimeInterval {
+        switch graphModeInfo.graphMode {
+        case .dayMode:
+            return .day
+        case .weekMode:
+            return .week
+        }
+    }
+    
     var body: some View {
         /// check whether the provided time entry coincides with a particular *date* range
         /// if our entry ends before the interval even began
@@ -26,7 +36,7 @@ struct NewLineGraphView: View {
         HStack(spacing: .zero) {
             /// use date enum so SwiftUI can identify horizontal swipes without redrawing everything
             ForEach(
-                Array(stride(from: start, to: start + .week, by: .day)),
+                Array(stride(from: start, to: start + duration, by: .day)),
                 id: \.timeIntervalSince1970
             ) { midnight in
                 Divider()

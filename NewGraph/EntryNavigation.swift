@@ -13,10 +13,20 @@ final class _TimeEntry: ObservableObject {
     @Published var entry: TimeEntry? = nil
 }
 
+final class GraphModeInfo: ObservableObject {
+    @Published var graphMode: EntryNavigation.GraphMode = .weekMode
+}
+
 struct EntryNavigation: View {
     
     @ObservedObject var ChosenEntry: _TimeEntry = _TimeEntry()
     @State var hasEntry: Bool = false
+    @State var graphModeInfo: GraphModeInfo = GraphModeInfo()
+    
+    enum GraphMode: Int {
+        case weekMode
+        case dayMode
+    }
     
     var body: some View {
         NavigationView {
@@ -26,11 +36,18 @@ struct EntryNavigation: View {
                     EmptyView()
                 }
             }
+                .navigationBarTitle(Text("Text"), displayMode: .inline)
+            .navigationBarItems(trailing: Button {
+                self.graphModeInfo.graphMode = .dayMode
+            } label: {
+                Text("Transform!")
+            })
                 /// hide NavBar to prevent it changing size during scroll
-                .navigationBarHidden(true)
+//                .navigationBarHidden(true)
         }
             
             .environmentObject(ChosenEntry)
+            .environmentObject(graphModeInfo)
             .onChange(of: ChosenEntry.entry) { entry in
                 self.hasEntry = entry != nil
                 print(hasEntry)
