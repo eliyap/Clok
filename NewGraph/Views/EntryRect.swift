@@ -74,7 +74,7 @@ struct NewEntryRect: View {
 // MARK:- Drawing Components
 extension NewEntryRect {
     var BaseRect: some InsettableShape {
-        RoundedRectangle(cornerRadius: size.width * cornerScale)
+        RoundedRectangle(cornerRadius: min(size.width * cornerScale, height / 2))
     }
     
     /// animated border outline version
