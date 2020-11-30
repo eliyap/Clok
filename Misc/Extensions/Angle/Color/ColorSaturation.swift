@@ -14,6 +14,7 @@ extension Color {
     /// Saturates a Color by the given `amount`
     /// - Parameter amount: the percentage to saturate the color by. Must be within [-1, 1]
     /// - Returns: saturated Color
+    /// Credit: https://stackoverflow.com/a/62994667
     func saturated(by amount: CGFloat) -> Color {
         precondition(-1 <= amount && amount <= 1, "amount must be between -1 and 1!")
         var h: CGFloat = 0, s: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
