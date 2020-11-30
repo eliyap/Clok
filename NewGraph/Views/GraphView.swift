@@ -30,29 +30,31 @@ struct NewGraph: View {
         /// a giant, monstrous hack
         GeometryReader { geo in
             ScrollView(showsIndicators: false) {
-                LazyVStack(alignment: .leading, spacing: .zero, pinnedViews: .sectionFooters) {
-                    ForEach(DayList, id: \.self) { idx in
-                        Section(footer: Footer(
-                            idx: idx,
-                            size: CGSize(width: geo.size.width, height: geo.size.height * model.zoom)
-                        )) {
-                            HStack(spacing: .zero) {
-                                NewTimeIndicator(divisions: evenDivisions(for: geo.size.height * model.zoom))
-                                NewLineGraphView(
-                                    dayHeight: geo.size.height * model.zoom,
-                                    start: Date().midnight.advanced(by: Double(idx) * .day)
-                                )
-                            }
-                                .padding(.top, -footerHeight)
-                        }
-                            /// flip view back over
-                            .rotationEffect(.tau / 2)
-                            /// if user hits the "last" (visually top) date, add another one "above" (by appending)
-                            .onAppear {
-                                if idx == DayList.last {
-                                    DayList.insert(DayList.last! - 1, at: DayList.count)
+                ScrollViewReader { proxy in
+                    LazyVStack(alignment: .leading, spacing: .zero, pinnedViews: .sectionFooters) {
+                        ForEach(DayList, id: \.self) { idx in
+                            Section(footer: Footer(
+                                idx: idx,
+                                size: CGSize(width: geo.size.width, height: geo.size.height * model.zoom)
+                            )) {
+                                HStack(spacing: .zero) {
+                                    NewTimeIndicator(divisions: evenDivisions(for: geo.size.height * model.zoom))
+                                    NewLineGraphView(
+                                        dayHeight: geo.size.height * model.zoom,
+                                        start: Date().midnight.advanced(by: Double(idx) * .day)
+                                    )
                                 }
+                                    .padding(.top, -footerHeight)
                             }
+                                /// flip view back over
+                                .rotationEffect(.tau / 2)
+                                /// if user hits the "last" (visually top) date, add another one "above" (by appending)
+                                .onAppear {
+                                    if idx == DayList.last {
+                                        DayList.insert(DayList.last! - 1, at: DayList.count)
+                                    }
+                                }
+                        }
                     }
                 }
             }
