@@ -10,7 +10,7 @@ import SwiftUI
 
 struct EntryNavigation: View {
     
-    @ObservedObject var model = NewGraphModel()
+    @StateObject var model = NewGraphModel()
     @State var hasEntry: Bool = false
     @State var showSheet: Bool = false
     
