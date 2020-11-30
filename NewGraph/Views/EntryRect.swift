@@ -62,7 +62,7 @@ struct NewEntryRect: View {
                 BorderRect
             } else {
                 BaseRect
-                    .foregroundColor(entry.color)
+                    .foregroundColor(modeAdjusted)
                     .overlay(EntryDetails, alignment: .top)
                     .clipped() /// prevent details spilling over
             }
@@ -87,7 +87,7 @@ extension NewEntryRect {
             .opacity(opacity)
             .onAppear { opacity = 1.0 }
             .animation(Animation.linear(duration: 1.0).repeatForever(autoreverses: true))
-            .foregroundColor(entry.color)
+            .foregroundColor(modeAdjusted)
     }
     
     var EntryDetails: some View {
@@ -119,9 +119,17 @@ extension NewEntryRect {
     }
 }
 
-// MARK:- Misc
+// MARK:- Colors
 extension NewEntryRect {
-    var ContrastColor: Color {
-        mode == .dark ? .white : .black
+    /// how much to brighten / darken the view.
+    /// bounded (0, 1)
+    /// not *technically* a stored property
+    var colorAdjustment: CGFloat { 0.1 }
+    
+    /// lighten or darken to improve contrast
+    var modeAdjusted: Color {
+        mode == .dark
+            ? entry.color.darken(by: colorAdjustment)
+            : entry.color.lighten(by: colorAdjustment)
     }
 }
