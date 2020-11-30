@@ -178,9 +178,9 @@
 		229428A9251E5DB0008C0BFF /* ShadowRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223AB139251E34AC00CA8B3C /* ShadowRingView.swift */; };
 		229428BD251E5E18008C0BFF /* AngleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63FC2F7249BCEB900747D49 /* AngleExtension.swift */; };
 		229428C4251E5E19008C0BFF /* AngleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63FC2F7249BCEB900747D49 /* AngleExtension.swift */; };
-		229428D2251E7C61008C0BFF /* ColorAdjust.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229428D1251E7C61008C0BFF /* ColorAdjust.swift */; };
-		229428D3251E7C61008C0BFF /* ColorAdjust.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229428D1251E7C61008C0BFF /* ColorAdjust.swift */; };
-		229428D4251E7C61008C0BFF /* ColorAdjust.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229428D1251E7C61008C0BFF /* ColorAdjust.swift */; };
+		229428D2251E7C61008C0BFF /* ColorBrightness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229428D1251E7C61008C0BFF /* ColorBrightness.swift */; };
+		229428D3251E7C61008C0BFF /* ColorBrightness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229428D1251E7C61008C0BFF /* ColorBrightness.swift */; };
+		229428D4251E7C61008C0BFF /* ColorBrightness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229428D1251E7C61008C0BFF /* ColorBrightness.swift */; };
 		229428DC251E7E7E008C0BFF /* Mod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229428DB251E7E7E008C0BFF /* Mod.swift */; };
 		229428DD251E7E7E008C0BFF /* Mod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229428DB251E7E7E008C0BFF /* Mod.swift */; };
 		229428DE251E7E7E008C0BFF /* Mod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229428DB251E7E7E008C0BFF /* Mod.swift */; };
@@ -268,7 +268,7 @@
 		22B26272254B9D3800182236 /* TimeConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229646CA24F321AE00FE14E5 /* TimeConstants.swift */; };
 		22B2627C254B9D3E00182236 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67F47D2249FD44500FD2E6E /* Project.swift */; };
 		22B26286254B9D5600182236 /* AngleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63FC2F7249BCEB900747D49 /* AngleExtension.swift */; };
-		22B26290254B9D6B00182236 /* ColorAdjust.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229428D1251E7C61008C0BFF /* ColorAdjust.swift */; };
+		22B26290254B9D6B00182236 /* ColorBrightness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229428D1251E7C61008C0BFF /* ColorBrightness.swift */; };
 		22B2629A254B9D7700182236 /* ColorCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B0FF9B246F124300DED011 /* ColorCustom.swift */; };
 		22B262A4254B9D7B00182236 /* ColorScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22128E2325422D59004913AF /* ColorScore.swift */; };
 		22B6E473251EA38F00530539 /* Arc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2253FFB825057FF200BBDCE6 /* Arc.swift */; };
@@ -584,7 +584,7 @@
 		2293CEEA24EC5289000B68F4 /* GraphSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphSaver.swift; sourceTree = "<group>"; };
 		2293CEEC24EC5661000B68F4 /* ProjectLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectLoader.swift; sourceTree = "<group>"; };
 		2293CEEE24EC5A84000B68F4 /* LoadEntries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadEntries.swift; sourceTree = "<group>"; };
-		229428D1251E7C61008C0BFF /* ColorAdjust.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorAdjust.swift; sourceTree = "<group>"; };
+		229428D1251E7C61008C0BFF /* ColorBrightness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorBrightness.swift; sourceTree = "<group>"; };
 		229428DB251E7E7E008C0BFF /* Mod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mod.swift; sourceTree = "<group>"; };
 		229521552505BF0300085055 /* GetCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCredentials.swift; sourceTree = "<group>"; };
 		229521592505BF2A00085055 /* KeychainError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainError.swift; sourceTree = "<group>"; };
@@ -1071,7 +1071,7 @@
 			isa = PBXGroup;
 			children = (
 				C6B0FF9B246F124300DED011 /* ColorCustom.swift */,
-				229428D1251E7C61008C0BFF /* ColorAdjust.swift */,
+				229428D1251E7C61008C0BFF /* ColorBrightness.swift */,
 				22128E2325422D59004913AF /* ColorScore.swift */,
 				22A2CE2D24E59F88000820AD /* ColorHex.swift */,
 			);
@@ -1685,7 +1685,7 @@
 				C6EB47812520170100FCD0CB /* DoubleExtension.swift in Sources */,
 				C6EB477F2520170100FCD0CB /* URLStoreExtension.swift in Sources */,
 				22FFF66B2570FCA900A54471 /* FirstDayOfWeek.swift in Sources */,
-				229428D4251E7C61008C0BFF /* ColorAdjust.swift in Sources */,
+				229428D4251E7C61008C0BFF /* ColorBrightness.swift in Sources */,
 				229428C4251E5E19008C0BFF /* AngleExtension.swift in Sources */,
 				2295214F2505BDE900085055 /* TimeIntervalExtension.swift in Sources */,
 				2292C4FE2505CC68005802B5 /* WidgetView.swift in Sources */,
@@ -1782,7 +1782,7 @@
 				C60856B8251FCE1B00E6D6C0 /* LoadTags.swift in Sources */,
 				C60856BA251FCE1B00E6D6C0 /* LoadEntries.swift in Sources */,
 				2262882324E88691006B330C /* Workspace.swift in Sources */,
-				229428D3251E7C61008C0BFF /* ColorAdjust.swift in Sources */,
+				229428D3251E7C61008C0BFF /* ColorBrightness.swift in Sources */,
 				C60856B9251FCE1B00E6D6C0 /* LoadProjects.swift in Sources */,
 				22B0784424B17CC000256EB8 /* Project.swift in Sources */,
 				C6EB47722520170100FCD0CB /* DateStridable.swift in Sources */,
@@ -1817,7 +1817,7 @@
 				2205DCAB254B9FFE00146EAB /* TimeEntry+CoreDataProperties.swift in Sources */,
 				2205DC82254B9FAD00146EAB /* Project+CoreDataClass.swift in Sources */,
 				22B78A08256C80AA00780213 /* TimeEntryModel.xcdatamodeld in Sources */,
-				22B26290254B9D6B00182236 /* ColorAdjust.swift in Sources */,
+				22B26290254B9D6B00182236 /* ColorBrightness.swift in Sources */,
 				22FFF6C8257103AF00A54471 /* DataTaskMonitor.swift in Sources */,
 				22FFF6EF2571A77500A54471 /* DetailedReportFetcher.swift in Sources */,
 				2287251025731C520082A490 /* DetailedWithRunningFetcher.swift in Sources */,
@@ -1907,7 +1907,7 @@
 				22232B8B24A9532000F3C378 /* LoginView.swift in Sources */,
 				229646CB24F321AE00FE14E5 /* TimeConstants.swift in Sources */,
 				C6751D8C24723182002965CC /* ZeroDate.swift in Sources */,
-				229428D2251E7C61008C0BFF /* ColorAdjust.swift in Sources */,
+				229428D2251E7C61008C0BFF /* ColorBrightness.swift in Sources */,
 				2287252725731F450082A490 /* ProjectDetailFetcher.swift in Sources */,
 				22DE58E1251EC81B00379396 /* ClokWidget.intentdefinition in Sources */,
 				22283DAA24DFA27D005AC0F3 /* SearchTerms.swift in Sources */,
