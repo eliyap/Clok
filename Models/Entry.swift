@@ -15,6 +15,7 @@ protocol TimeEntryLike {
     var end: Date { get }
     var color: Color { get }
     var description: String { get }
+    var tagStrings: [String] { get }
     /**
      Note: after numerous searches and some pain, I found
      https://stackoverflow.com/questions/55996678/associated-protocol-in-swift

@@ -22,6 +22,7 @@ final class RunningEntry: NSObject, NSSecureCoding, TimeEntryLike {
     /// `TimeEntryLike` compliance
     var end: Date { Date() } /// always return current time
     var color: Color { project.wrappedColor }
+    var tagStrings: [String] { tags }
     
     init(
         id: Int,

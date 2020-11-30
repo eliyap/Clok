@@ -49,6 +49,9 @@ extension TimeEntry {
         return Array(tags as? Set<Tag> ?? [])
     }
     
+    /// just the names of the tags please
+    public var tagStrings: [String] { tagArray.map{$0.name} }
+    
     public var sortedTags: [Tag] {
         return (tags as? Set<Tag>)?
             .sorted(by: {$0.name < $1.name})
