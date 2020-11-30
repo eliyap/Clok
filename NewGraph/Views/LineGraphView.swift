@@ -46,7 +46,7 @@ struct NewLineGraphView: View {
                     midnight: midnight,
                     terms: data.terms
                 )
-                    .frame(height: dayHeight)
+                    .frame(height: heightConstraint)
             }
         }
         /// NOTE: apply lined background to whole stack, NOT individual `DayStrip`!
@@ -62,5 +62,14 @@ struct NewLineGraphView: View {
             .filter{$0.start < midnight + .day}
             /// chronological sort
             .sorted{$0.start < $1.start}
+    }
+    
+    var heightConstraint: CGFloat? {
+        switch model.mode {
+        case .weekMode, .dayMode:
+            return dayHeight
+        case .listMode:
+            return .none
+        }
     }
 }
