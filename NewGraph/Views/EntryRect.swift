@@ -125,7 +125,7 @@ extension NewEntryRect {
     /// lighten or darken to improve contrast
     var modeAdjusted: Color {
         mode == .dark
-            ? entry.color.darken(by: colorAdjustment)
-            : entry.color.lighten(by: colorAdjustment)
+            ? entry.color.darken(by: 0.3)
+            : UIColor.white.tinted(with: entry.color)
     }
 }
