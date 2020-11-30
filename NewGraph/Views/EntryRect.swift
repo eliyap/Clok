@@ -100,13 +100,9 @@ extension NewEntryRect {
                     HStack {
                         Text(entry.entryDescription)
                             .lineLimit(1)
-                            .shadow(color: .background, radius: 1)
-                            .shadow(color: .background, radius: 1)
                         Spacer()
                         Text(entry.projectName)
                             .lineLimit(1)
-                            .shadow(color: .background, radius: 1)
-                            .shadow(color: .background, radius: 1)
                     }
                     Spacer()
                     if type(of: entry) == TimeEntry.self {
@@ -124,7 +120,7 @@ extension NewEntryRect {
     /// how much to brighten / darken the view.
     /// bounded (0, 1)
     /// not *technically* a stored property
-    var colorAdjustment: CGFloat { 0.1 }
+    var colorAdjustment: CGFloat { 0.3 }
     
     /// lighten or darken to improve contrast
     var modeAdjusted: Color {
