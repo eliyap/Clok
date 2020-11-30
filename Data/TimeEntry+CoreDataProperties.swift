@@ -56,5 +56,5 @@ extension TimeEntry {
     public var color: Color { wrappedColor }
     public var projectName: String { wrappedProject.name }
     public var tagStrings: [String] { tagArray.map{$0.name} } /// just the names of the tags please
-    
+    public var entryDescription: String { wrappedDescription }
 }

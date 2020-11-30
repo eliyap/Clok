@@ -60,7 +60,12 @@ struct NewEntryRect: View {
             if border {
                 BorderRect
             } else {
-                BaseRect
+                switch model.mode {
+                case .weekMode:
+                    BaseRect
+                default:
+                    DetailedRect
+                }
             }
         }
             .frame(width: size.width * thicc, height: height)
@@ -83,5 +88,18 @@ extension NewEntryRect {
             .opacity(opacity)
             .onAppear { opacity = 1.0 }
             .animation(Animation.linear(duration: 1.0).repeatForever(autoreverses: true))
+    }
+    
+    var DetailedRect: some View {
+        VStack {
+            Text(entry.entryDescription)
+            Text(entry.projectName)
+            Spacer()
+            if type(of: entry) == TimeEntry.self {
+                Text((entry.end - entry.start).toString())
+            }
+        }
+            .background(BaseRect)
+            .clipped()
     }
 }

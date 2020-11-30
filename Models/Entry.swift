@@ -14,7 +14,7 @@ protocol TimeEntryLike {
     var start: Date { get }
     var end: Date { get }
     var color: Color { get }
-    var description: String { get }
+    var entryDescription: String { get } /// note: `description` is a reserved word in iOS
     var projectName: String { get }
     var tagStrings: [String] { get }
     /**
@@ -22,5 +22,5 @@ protocol TimeEntryLike {
      https://stackoverflow.com/questions/55996678/associated-protocol-in-swift
      What I want is an `associatedprotocol`, which does not exist
      */
-    //var project: ProjectType { get }
+    //var project: ProjectLike { get }
 }
