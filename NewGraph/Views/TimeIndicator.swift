@@ -34,6 +34,7 @@ struct NewTimeIndicator: View {
                     by: .day / Double(divisions)
                 )), id: \.self) {
                     TimeLabel(interval: $0)
+                        .foregroundColor(.gray)
                     Spacer()
             }
         }
