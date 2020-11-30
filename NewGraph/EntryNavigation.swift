@@ -26,8 +26,10 @@ struct EntryNavigation: View {
                     EmptyView()
                 }
             }
-            
+                /// hide NavBar to prevent it changing size during scroll
+                .navigationBarHidden(true)
         }
+            
             .environmentObject(ChosenEntry)
             .onChange(of: ChosenEntry.entry) { entry in
                 self.hasEntry = entry != nil
