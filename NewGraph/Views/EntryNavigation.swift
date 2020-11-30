@@ -12,6 +12,7 @@ struct EntryNavigation: View {
     
     @ObservedObject var model = NewGraphModel()
     @State var hasEntry: Bool = false
+    @State var showSheet: Bool = false
     
     var body: some View {
         NavigationView {
@@ -23,7 +24,7 @@ struct EntryNavigation: View {
             }
                 .navigationBarTitle(Text("Text"), displayMode: .inline)
             .navigationBarItems(trailing: Button {
-                model.mode = .dayMode
+                showSheet = true
             } label: {
                 Text("Transform!")
             })
@@ -35,5 +36,24 @@ struct EntryNavigation: View {
                 self.hasEntry = entry != nil
                 print(hasEntry)
             }
+            .actionSheet(isPresented: $showSheet) { ModeSheet }
+    }
+}
+
+// MARK:- ActionSheet
+extension EntryNavigation {
+    var ModeSheet: ActionSheet {
+        ActionSheet(title: Text("Graph Mode"), buttons: [
+            .default(Text("Day")) {
+                withAnimation { model.mode = .dayMode }
+            },
+            .default(Text("Week")) {
+                withAnimation { model.mode = .weekMode }
+            },
+            .default(Text("List")) {
+                withAnimation { model.mode = .listMode }
+            },
+            .cancel()
+        ])
     }
 }
