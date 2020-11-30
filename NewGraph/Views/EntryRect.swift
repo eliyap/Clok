@@ -11,18 +11,28 @@ import SwiftUI
 /// determines what proportion of available horizontal space to consume
 fileprivate let thicc = CGFloat(0.8)
 
-/// adapt scale to taste
-fileprivate let cornerScale = CGFloat(1.0/18.0)
-
 struct NewEntryRect: View {
     
     let range: DateRange
     let size: CGSize
     let midnight: Date
     let height: CGFloat
-    
     /// toggles solid fill or animated border
     var border: Bool = false
+
+    @State private var opacity = 0.25
+    @EnvironmentObject var model: NewGraphModel
+    
+    /// adapt scale to taste
+    var cornerScale: CGFloat {
+        switch model.mode {
+        case .weekMode:
+            return CGFloat(1.0/18.0)
+        case .dayMode, .listMode:
+            return CGFloat(1.0/80.0)
+        }
+    }
+    
     
     init?(
         range: DateRange,
@@ -45,23 +55,15 @@ struct NewEntryRect: View {
         self.height = height
     }
     
-    @State private var opacity = 0.25
-    @EnvironmentObject var model: NewGraphModel
-    
     var body: some View {
-        if border {
-            BorderRect
-                .frame(
-                    width: size.width * thicc,
-                    height: height
-                )
-        } else {
-            BaseRect
-                .frame(
-                    width: size.width * thicc,
-                    height: height
-                )
+        Group {
+            if border {
+                BorderRect
+            } else {
+                BaseRect
+            }
         }
+            .frame(width: size.width * thicc, height: height)
     }
 }
 
