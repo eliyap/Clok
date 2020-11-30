@@ -38,9 +38,6 @@ extension TimeEntry {
         wrappedProject.wrappedColor
     }
     
-    /// compliance to `TimeEntryLike` protocol
-    public var color: Color { wrappedColor }
-    
     var wrappedProject: ProjectLike {
         project ?? StaticProject.noProject
     }
@@ -49,12 +46,15 @@ extension TimeEntry {
         return Array(tags as? Set<Tag> ?? [])
     }
     
-    /// just the names of the tags please
-    public var tagStrings: [String] { tagArray.map{$0.name} }
-    
     public var sortedTags: [Tag] {
         return (tags as? Set<Tag>)?
             .sorted(by: {$0.name < $1.name})
             ?? []
     }
+    
+    /// compliance to `TimeEntryLike` protocol
+    public var color: Color { wrappedColor }
+    public var projectName: String { wrappedProject.name }
+    public var tagStrings: [String] { tagArray.map{$0.name} } /// just the names of the tags please
+    
 }
