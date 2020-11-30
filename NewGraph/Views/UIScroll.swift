@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 import SwiftUI
 
-/// https://stackoverflow.com/a/64110231
 struct ZoomableScrollView<Content: View>: UIViewRepresentable {
     private var content: Content
 
@@ -28,7 +27,7 @@ struct ZoomableScrollView<Content: View>: UIViewRepresentable {
 
         // create a UIHostingController to hold our SwiftUI content
         let hostedView = context.coordinator.hostingController.view!
-//        hostedView.translatesAutoresizingMaskIntoConstraints = true
+        hostedView.translatesAutoresizingMaskIntoConstraints = true
         hostedView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         hostedView.frame = scrollView.bounds
         scrollView.addSubview(hostedView)

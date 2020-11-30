@@ -29,7 +29,7 @@ struct NewGraph: View {
     var body: some View {
         /// a giant, monstrous hack
         GeometryReader { geo in
-            ZoomableScrollView {
+            ScrollView(showsIndicators: false) {
                 LazyVStack(alignment: .leading, spacing: .zero, pinnedViews: .sectionFooters) {
                     ForEach(DayList, id: \.self) { idx in
                         Section(footer: Footer(
@@ -48,11 +48,11 @@ struct NewGraph: View {
                             /// flip view back over
                             .rotationEffect(.tau / 2)
                             /// if user hits the "last" (visually top) date, add another one "above" (by appending)
-//                            .onAppear {
-//                                if idx == DayList.last {
-//                                    DayList.insert(DayList.last! - 1, at: DayList.count)
-//                                }
-//                            }
+                            .onAppear {
+                                if idx == DayList.last {
+                                    DayList.insert(DayList.last! - 1, at: DayList.count)
+                                }
+                            }
                     }
                 }
             }
@@ -61,21 +61,21 @@ struct NewGraph: View {
              */
             .rotationEffect(.tau / 2)
         }
-//            .gesture(
-//                MagnificationGesture()
-//                    .onChanged { state in
-//                        if initialZoom == .none { initialZoom = model.zoom }
-//                        #warning("placeholder bounds!")
-//                        withAnimation {
-//                            model.zoom = clamp(initialZoom! * state, between: (0.5, 2))
-//                        }
-//                        
-//                    }
-//                    .onEnded { _ in
-//                        /// wipe zoom level
-//                        initialZoom = .none
-//                    }
-//            )
+            .gesture(
+                MagnificationGesture()
+                    .onChanged { state in
+                        if initialZoom == .none { initialZoom = model.zoom }
+                        #warning("placeholder bounds!")
+                        withAnimation {
+                            model.zoom = clamp(initialZoom! * state, between: (0.5, 2))
+                        }
+                        
+                    }
+                    .onEnded { _ in
+                        /// wipe zoom level
+                        initialZoom = .none
+                    }
+            )
     }
 }
 
