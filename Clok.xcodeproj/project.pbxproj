@@ -85,6 +85,7 @@
 		22351B0024D37F3C00E14DBC /* Run.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22351AFF24D37F3C00E14DBC /* Run.swift */; };
 		2238640024BBBD030041886B /* LoadProjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223863FF24BBBD030041886B /* LoadProjects.swift */; };
 		2238640324BBC6980041886B /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63FC2F9249BCFBD00747D49 /* DoubleExtension.swift */; };
+		223AC3A4257494F9002ABD9F /* NewGraphModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223AC3A3257494F9002ABD9F /* NewGraphModel.swift */; };
 		224B3AFE24DE28C300B1C943 /* FilterModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224B3AFD24DE28C300B1C943 /* FilterModal.swift */; };
 		224D10CE24E5AC8C00668FD8 /* WeekdaySelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224D10CD24E5AC8C00668FD8 /* WeekdaySelector.swift */; };
 		224D10D324E6FA8900668FD8 /* DateIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224D10D224E6FA8800668FD8 /* DateIndicator.swift */; };
@@ -499,6 +500,7 @@
 		223863FF24BBBD030041886B /* LoadProjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadProjects.swift; sourceTree = "<group>"; };
 		223A8ADB251ECCF80010143C /* ProjectIntent.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ProjectIntent.entitlements; sourceTree = "<group>"; };
 		223AB139251E34AC00CA8B3C /* ShadowRingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowRingView.swift; sourceTree = "<group>"; };
+		223AC3A3257494F9002ABD9F /* NewGraphModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGraphModel.swift; sourceTree = "<group>"; };
 		224B3AFD24DE28C300B1C943 /* FilterModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterModal.swift; sourceTree = "<group>"; };
 		224D10CD24E5AC8C00668FD8 /* WeekdaySelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekdaySelector.swift; sourceTree = "<group>"; };
 		224D10D224E6FA8800668FD8 /* DateIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateIndicator.swift; sourceTree = "<group>"; };
@@ -863,6 +865,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		223AC3A2257494ED002ABD9F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				223AC3A3257494F9002ABD9F /* NewGraphModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		2253FFBA2505A41500BBDCE6 /* Tetris */ = {
 			isa = PBXGroup;
 			children = (
@@ -975,6 +985,7 @@
 		2287255B257378A50082A490 /* NewGraph */ = {
 			isa = PBXGroup;
 			children = (
+				223AC3A2257494ED002ABD9F /* Model */,
 				223AC3A1257494C8002ABD9F /* Views */,
 			);
 			path = NewGraph;
@@ -2012,6 +2023,7 @@
 				2293CEED24EC5661000B68F4 /* ProjectLoader.swift in Sources */,
 				2207E46524E0BEAD00311F10 /* DPad.swift in Sources */,
 				224D10D324E6FA8900668FD8 /* DateIndicator.swift in Sources */,
+				223AC3A4257494F9002ABD9F /* NewGraphModel.swift in Sources */,
 				22DC86A024BA838D00FF771F /* Project+CoreDataClass.swift in Sources */,
 				2296F15B24A994A400AF38B5 /* FormRequest.swift in Sources */,
 				22027DD624AFFA6500C0BA90 /* Bounds.swift in Sources */,
