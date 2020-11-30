@@ -858,6 +858,7 @@
 				22872587257386C60082A490 /* NewTimeIndicator.swift */,
 				22872599257389E10082A490 /* NewEntryRect.swift */,
 				228725A225738A300082A490 /* NewCurrentTimeIndicator.swift */,
+				228725AB25738A810082A490 /* NewRunningEntryView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -975,7 +976,6 @@
 			isa = PBXGroup;
 			children = (
 				223AC3A1257494C8002ABD9F /* Views */,
-				228725AB25738A810082A490 /* NewRunningEntryView.swift */,
 			);
 			path = NewGraph;
 			sourceTree = "<group>";
