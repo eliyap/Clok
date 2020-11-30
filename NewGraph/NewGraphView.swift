@@ -12,7 +12,7 @@ fileprivate let scrollLimit = 10000
 
 struct NewGraph: View {
     
-    var DayList = Array(0..<(365 + scrollLimit))
+    @State var DayList = [0]
     var df = DateFormatter()
     
     init() {
@@ -23,31 +23,32 @@ struct NewGraph: View {
         GeometryReader { geo in
             ScrollView(showsIndicators: false) {
                 ScrollViewReader { proxy in
-                    LazyVStack(alignment: .leading, spacing: .zero, pinnedViews: .sectionHeaders) {
+                    LazyVStack(alignment: .leading, spacing: .zero, pinnedViews: .sectionFooters) {
                         ForEach(DayList, id: \.self) { idx in
                             DaySection(idx: idx, size: geo.size)
+                                .rotationEffect(.tau / 2)
+                                .onAppear {
+                                    if idx == DayList.last {
+                                        DayList.insert(DayList.last! - 1, at: DayList.count)
+                                    }
+                                }
                         }
                     }
-                    .onAppear {
-                        /** Swift is cursed
-                         Look, if I don't include this async block, for some reason the call just doesn't happen.
-                         No idea what on earth is going on here.
-                         */
-                        DispatchQueue.main.asyncAfter(deadline: .now()) {
-                            proxy.scrollTo(scrollLimit)
-                        }
-                    }
+                    
                 }
             }
+            .frame(width: geo.size.width, height: geo.size.height)
+            .border(Color.pink)
+            .rotationEffect(.tau / 2)
         }
     }
     
     func DaySection(idx: Int, size: CGSize) -> some View {
-        Section(header:
+        Section(footer:
             HStack(spacing: .zero) {
                 WidthHelper(size: size)
                 Text(dateString(at: idx))
-                    .frame(height: 40)
+//                    .frame(height: 40)
                     .background(
                         RoundedRectangle(cornerRadius: 10)
                             .foregroundColor(.clokBG)
@@ -57,7 +58,7 @@ struct NewGraph: View {
                 .offset(y: 1)
         ) {
             DayRect(idx: idx, size: size)
-                .padding(.top, -40)
+//                .padding(.top, -40)
         }
     }
     
@@ -66,13 +67,13 @@ struct NewGraph: View {
             NewTimeIndicator(divisions: evenDivisions(for: size.height))
             NewLineGraphView(
                 dayHeight: size.height,
-                start: Date().midnight.advanced(by: Double(idx - scrollLimit) * .day)
+                start: Date().midnight.advanced(by: Double(idx) * .day)
             )
         }
     }
     
     func dateString(at idx: Int) -> String {
-        df.string(from: Date().advanced(by: Double(idx - scrollLimit) * .day))
+        df.string(from: Date().advanced(by: Double(idx) * .day))
     }
     
     /**
