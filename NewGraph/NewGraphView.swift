@@ -43,6 +43,7 @@ struct NewGraph: View {
     func DaySection(idx: Int, size: CGSize) -> some View {
         Section(footer:
             HStack(spacing: .zero) {
+                /// prevents the `DateIndicator` from covering the `TimeIndicator`
                 WidthHelper(size: size)
                 Text(dateString(at: idx))
                     .frame(height: 40)
@@ -50,6 +51,8 @@ struct NewGraph: View {
                         RoundedRectangle(cornerRadius: 10)
                             .foregroundColor(.clokBG)
                     )
+                /// push view against the left edge of the graph
+                Spacer()
             }
                 /// drop a hair to allow the red divider to show through
                 .offset(y: 1)
