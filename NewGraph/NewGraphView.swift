@@ -28,9 +28,9 @@ struct NewGraph: View {
                 ScrollViewReader { proxy in
                     LazyVStack(alignment: .leading, spacing: .zero, pinnedViews: .sectionFooters) {
                         ForEach(DayList, id: \.self) { idx in
-                            Section(footer:Footer(idx: idx, size: geo.size)) {
+                            Section(footer: Footer(idx: idx, size: geo.size)) {
                                 DayRect(idx: idx, size: geo.size)
-                                    .padding(.bottom, -footerHeight)
+                                    .padding(.top, -footerHeight)
                             }
                                 .rotationEffect(.tau / 2)
                                 .onAppear {
@@ -89,16 +89,13 @@ extension NewGraph {
                 .font(.system(size: footerHeight - 5))
                 .bold()
                 .frame(height: footerHeight)
-                .padding(.trailing, 3)
+                .padding([.leading, .trailing], 3)
                 .background(
                     RoundedCornerRectangle(radius: 4, corners: [.bottomRight, .topRight])
                         .foregroundColor(.red)
                 )
-                .offset(y: footerHeight)
             /// push view against the left edge of the graph
             Spacer()
         }
-            /// drop a hair to allow the red divider to show through
-            .offset(y: 1)
     }
 }
