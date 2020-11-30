@@ -23,20 +23,23 @@ struct EntryNavigation: View {
                 }
             }
                 .navigationBarTitle(Text("Text"), displayMode: .inline)
-                .navigationBarItems(trailing: Button {
-                    showSheet = true
-                } label: {
-                    Text("Transform!")
-                })
+                .navigationBarItems(trailing:
+                    Button {
+                        showSheet = true
+                    } label: {
+                        Text("Transform!")
+                    }
+                        .actionSheet(isPresented: $showSheet) { ModeSheet }
+                )
                 /// hide NavBar to prevent it changing size during scroll
 //                .navigationBarHidden(true)
         }
+            .navigationViewStyle(StackNavigationViewStyle())
             .environmentObject(model)
             .onChange(of: model.entry) { entry in
                 self.hasEntry = entry != nil
                 print(hasEntry)
             }
-            .actionSheet(isPresented: $showSheet) { ModeSheet }
     }
 }
 
