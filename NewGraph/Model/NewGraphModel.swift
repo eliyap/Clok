@@ -7,8 +7,6 @@
 //
 
 import Foundation
-import SwiftUI
-
 final class NewGraphModel: ObservableObject {
     
     enum GraphMode: Int {
@@ -22,6 +20,4 @@ final class NewGraphModel: ObservableObject {
     
     /// registers what mode the view is in
     @Published var mode: GraphMode = .weekMode
-    
-    @Published var zoom: CGFloat = 1
 }

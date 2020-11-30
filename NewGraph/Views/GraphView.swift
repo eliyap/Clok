@@ -14,11 +14,7 @@ fileprivate let footerHeight: CGFloat = 20
 struct NewGraph: View {
     
     @State var DayList = [0]
-    
-    /// stores the zoom level before `MagnificationGesture` began
-    @State var initialZoom: CGFloat? = nil
     @Environment(\.colorScheme) var mode
-    @EnvironmentObject var model: NewGraphModel
     
     var df = DateFormatter()
     
@@ -33,14 +29,11 @@ struct NewGraph: View {
                 ScrollViewReader { proxy in
                     LazyVStack(alignment: .leading, spacing: .zero, pinnedViews: .sectionFooters) {
                         ForEach(DayList, id: \.self) { idx in
-                            Section(footer: Footer(
-                                idx: idx,
-                                size: CGSize(width: geo.size.width, height: geo.size.height * model.zoom)
-                            )) {
+                            Section(footer: Footer(idx: idx, size: geo.size)) {
                                 HStack(spacing: .zero) {
-                                    NewTimeIndicator(divisions: evenDivisions(for: geo.size.height * model.zoom))
+                                    NewTimeIndicator(divisions: evenDivisions(for: geo.size.height))
                                     NewLineGraphView(
-                                        dayHeight: geo.size.height * model.zoom,
+                                        dayHeight: geo.size.height,
                                         start: Date().midnight.advanced(by: Double(idx) * .day)
                                     )
                                 }
@@ -63,21 +56,6 @@ struct NewGraph: View {
              */
             .rotationEffect(.tau / 2)
         }
-            .gesture(
-                MagnificationGesture()
-                    .onChanged { state in
-                        if initialZoom == .none { initialZoom = model.zoom }
-                        #warning("placeholder bounds!")
-                        withAnimation {
-                            model.zoom = clamp(initialZoom! * state, between: (0.5, 2))
-                        }
-                        
-                    }
-                    .onEnded { _ in
-                        /// wipe zoom level
-                        initialZoom = .none
-                    }
-            )
     }
 }
 
