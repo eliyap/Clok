@@ -30,7 +30,6 @@ struct NewDayStrip: View {
                         midnight: midnight
                     )
                         .offset(y: padding(for: entry, size: geo.size))
-                        .foregroundColor(entry.wrappedColor)
                         .opacity(entry.matches(terms) ? 1 : 0.25)
                         .onTapGesture {
                             model.entry = entry

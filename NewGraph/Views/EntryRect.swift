@@ -63,6 +63,7 @@ struct NewEntryRect: View {
                 switch model.mode {
                 case .weekMode:
                     BaseRect
+                        .foregroundColor(entry.color)
                 default:
                     DetailedRect
                 }
@@ -88,18 +89,22 @@ extension NewEntryRect {
             .opacity(opacity)
             .onAppear { opacity = 1.0 }
             .animation(Animation.linear(duration: 1.0).repeatForever(autoreverses: true))
+            .foregroundColor(entry.color)
     }
     
     var DetailedRect: some View {
-        VStack {
-            Text(entry.entryDescription)
-            Text(entry.projectName)
-            Spacer()
-            if type(of: entry) == TimeEntry.self {
-                Text((entry.end - entry.start).toString())
-            }
-        }
-            .background(BaseRect)
+        BaseRect
+            .foregroundColor(entry.color)
+            .overlay(
+                VStack {
+                    Text(entry.entryDescription)
+                    Text(entry.projectName)
+                    Spacer()
+                    if type(of: entry) == TimeEntry.self {
+                        Text((entry.end - entry.start).toString())
+                    }
+                }
+            )
             .clipped()
     }
 }
