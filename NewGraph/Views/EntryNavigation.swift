@@ -23,11 +23,11 @@ struct EntryNavigation: View {
                 }
             }
                 .navigationBarTitle(Text("Text"), displayMode: .inline)
-            .navigationBarItems(trailing: Button {
-                showSheet = true
-            } label: {
-                Text("Transform!")
-            })
+                .navigationBarItems(trailing: Button {
+                    showSheet = true
+                } label: {
+                    Text("Transform!")
+                })
                 /// hide NavBar to prevent it changing size during scroll
 //                .navigationBarHidden(true)
         }
