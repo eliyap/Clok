@@ -29,9 +29,9 @@ struct DayStrip: View {
                         size: geo.size,
                         midnight: midnight
                     )
-                    .offset(y: padding(for: $0, size: geo.size))
-                    .foregroundColor($0.wrappedColor)
-                    .opacity($0.matches(terms) ? 1 : 0.24)
+                        .offset(y: padding(for: $0, size: geo.size))
+                        .foregroundColor($0.wrappedColor)
+                        .opacity($0.matches(terms) ? 1 : 0.24)
                 }
                 .frame(
                     width: geo.size.width,
