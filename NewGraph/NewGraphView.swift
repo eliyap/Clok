@@ -14,6 +14,8 @@ fileprivate let footerHeight: CGFloat = 20
 struct NewGraph: View {
     
     @State var DayList = [0]
+    @Environment(\.colorScheme) var mode
+    
     var df = DateFormatter()
     
     init() {
@@ -83,10 +85,13 @@ extension NewGraph {
             /// prevents the `DateIndicator` from covering the `TimeIndicator`
             WidthHelper(size: size)
             Text(dateString(at: idx))
+                .foregroundColor(mode == .dark ? .black : .white)
                 .font(.system(size: footerHeight - 5))
+                .bold()
                 .frame(height: footerHeight)
+                .padding(.trailing, 3)
                 .background(
-                    RoundedCornerRectangle(radius: 10, corners: [.bottomRight, .topRight])
+                    RoundedCornerRectangle(radius: 4, corners: [.bottomRight, .topRight])
                         .foregroundColor(.red)
                 )
                 .offset(y: footerHeight)
