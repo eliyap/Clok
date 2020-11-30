@@ -36,11 +36,11 @@ struct NewDayStrip: View {
                             model.entry = entry
                         }
                 }
-                .frame(
-                    width: geo.size.width,
-                    height: geo.size.height,
-                    alignment: .top
-                )
+                    .frame(
+                        width: geo.size.width,
+                        height: geo.size.height,
+                        alignment: .top
+                    )
                 
                 /// show current time in `calendar` mode
                 if midnight == Date().midnight {
