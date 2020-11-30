@@ -10,10 +10,6 @@ import SwiftUI
 
 struct ProjectRing: View {
     
-    /// how much to brighten / darken the view.
-    /// bounded (0, 1)
-    static let colorAdjustment = CGFloat(0.1)
-    
     var project: Detailed.Project = .empty
     var size: RingSize = .small
     

@@ -10,12 +10,18 @@ import SwiftUI
 
 // MARK: - Adjusted Colors
 extension ProjectRing {
+    
+    /// how much to brighten / darken the view.
+    /// bounded (0, 1)
+    /// not *technically* a stored property
+    var colorAdjustment: CGFloat { 0.1 }
+    
     var lighter: Color {
-        project.color.lighten(by: ProjectRing.colorAdjustment)
+        project.color.lighten(by: colorAdjustment)
     }
     
     var darker: Color {
-        project.color.darken(by: ProjectRing.colorAdjustment)
+        project.color.darken(by: colorAdjustment)
     }
     
     /// lighten or darken to improve contrast
