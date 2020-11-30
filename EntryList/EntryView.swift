@@ -51,7 +51,7 @@ struct EntryView: View {
         }
         .background(
             RoundedRectangle(cornerRadius: radius)
-                .foregroundColor(Color(UIColor.systemBackground))
+                .foregroundColor(.background)
         )
         .padding([.leading, .trailing, .bottom], listPadding)
     }

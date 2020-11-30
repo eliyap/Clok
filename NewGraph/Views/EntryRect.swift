@@ -21,6 +21,7 @@ struct NewEntryRect: View {
     var border: Bool = false
 
     @State private var opacity = 0.25
+    @Environment(\.colorScheme) var mode
     @EnvironmentObject var model: NewGraphModel
     
     /// adapt scale to taste
@@ -46,9 +47,9 @@ struct NewEntryRect: View {
         self.border = border
         
         /// Calculate the appropriate height for a time entry.
-        let start = max(entry.start, midnight)
-        let end = min(entry.end, midnight + .day)
-        let height = size.height * CGFloat((end - start) / .day)
+//        let start = max(entry.start, midnight)
+//        let end = min(entry.end, midnight + .day)
+        let height = size.height * CGFloat((entry.end - entry.start) / .day)
         
         /// avoids invalid dimension warning
         guard height > 0 else { return nil }
@@ -60,16 +61,13 @@ struct NewEntryRect: View {
             if border {
                 BorderRect
             } else {
-                switch model.mode {
-                case .weekMode:
-                    BaseRect
-                        .foregroundColor(entry.color)
-                default:
-                    DetailedRect
-                }
+                BaseRect
+                    .foregroundColor(entry.color)
+                    .overlay(EntryDetails, alignment: .top)
+                    .clipped() /// prevent details spilling over
             }
         }
-            .frame(width: size.width * thicc, height: height)
+        .frame(width: size.width * thicc, height: height)
     }
 }
 
@@ -92,19 +90,38 @@ extension NewEntryRect {
             .foregroundColor(entry.color)
     }
     
-    var DetailedRect: some View {
-        BaseRect
-            .foregroundColor(entry.color)
-            .overlay(
-                VStack {
-                    Text(entry.entryDescription)
-                    Text(entry.projectName)
+    var EntryDetails: some View {
+        Group {
+            switch model.mode {
+            case .weekMode:
+                EmptyView()
+            case .dayMode, .listMode:
+                VStack(alignment: .leading) {
+                    HStack {
+                        Text(entry.entryDescription)
+                            .lineLimit(1)
+                            .shadow(color: .background, radius: 1)
+                            .shadow(color: .background, radius: 1)
+                        Spacer()
+                        Text(entry.projectName)
+                            .lineLimit(1)
+                            .shadow(color: .background, radius: 1)
+                            .shadow(color: .background, radius: 1)
+                    }
                     Spacer()
                     if type(of: entry) == TimeEntry.self {
                         Text((entry.end - entry.start).toString())
                     }
                 }
-            )
-            .clipped()
+                .padding(3)
+            }
+        }
+    }
+}
+
+// MARK:- Misc
+extension NewEntryRect {
+    var ContrastColor: Color {
+        mode == .dark ? .white : .black
     }
 }

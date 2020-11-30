@@ -37,7 +37,7 @@ struct NewLinedBackground: View {
             if interval < 0 || interval >= .day { /// outside the highlighted 1 day range
                 Rectangle().foregroundColor(.clokBG)
             } else {
-                Rectangle().foregroundColor(Color(UIColor.systemBackground))
+                Rectangle().foregroundColor(.background)
             }
         }
     }

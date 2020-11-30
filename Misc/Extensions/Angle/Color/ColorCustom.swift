@@ -18,4 +18,6 @@ extension Color {
     )
     
     static let clokBG = Color(UIColor.systemGray6)
+    
+    static let background = Color(UIColor.systemBackground)
 }

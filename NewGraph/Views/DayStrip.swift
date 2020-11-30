@@ -58,6 +58,6 @@ struct NewDayStrip: View {
     /// calculate appropriate distance to next `entry`
     func padding(for entry: TimeEntry, size: CGSize) -> CGFloat {
         let scale = size.height / CGFloat(.day)
-        return CGFloat(max(entry.start - midnight, .zero)) * scale
+        return CGFloat(entry.start - midnight) * scale
     }
 }
