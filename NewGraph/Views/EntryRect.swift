@@ -19,42 +19,67 @@ struct NewEntryRect: View {
     let range: DateRange
     let size: CGSize
     let midnight: Date
+    let height: CGFloat
     
     /// toggles solid fill or animated border
     var border: Bool = false
     
+    init?(
+        range: DateRange,
+        size: CGSize,
+        midnight: Date,
+        border: Bool = false
+    ) {
+        self.range = range
+        self.size = size
+        self.midnight = midnight
+        self.border = border
+        
+        /// Calculate the appropriate height for a time entry.
+        let start = max(range.start, midnight)
+        let end = min(range.end, midnight + .day)
+        let height = size.height * CGFloat((end - start) / .day)
+        
+        /// avoids invalid dimension warning
+        guard height > 0 else { return nil }
+        self.height = height
+    }
+    
     @State private var opacity = 0.25
+    @EnvironmentObject var model: NewGraphModel
     
     var body: some View {
         if border {
-            /// animated border outline version
-            RoundedRectangle(cornerRadius: size.width * cornerScale)
-                .strokeBorder(style: StrokeStyle(lineWidth: 2, dash: [10]))
-                .animation(.none)
-                .opacity(opacity)
-                .onAppear { opacity = 1.0 }
-                .animation(Animation.linear(duration: 1.0).repeatForever(autoreverses: true))
+            BorderRect
                 .frame(
                     width: size.width * thicc,
                     height: height
                 )
-        }
-        /// avoid an invalid size warning
-        else if height > 0 {
-            RoundedRectangle(cornerRadius: size.width * cornerScale)
+        } else {
+            BaseRect
                 .frame(
                     width: size.width * thicc,
                     height: height
                 )
         }
     }
+}
+
+// MARK:- Drawing Components
+extension NewEntryRect {
+    var BaseRect: some InsettableShape {
+        RoundedRectangle(cornerRadius: size.width * cornerScale)
+    }
     
-    /**
-     Calculate the appropriate height for a time entry.
-     */
-    var height: CGFloat {
-        let start = max(range.start, midnight)
-        let end = min(range.end, midnight + .day)
-        return size.height * CGFloat((end - start) / .day)
+    /// animated border outline version
+    var BorderRect: some View {
+        BaseRect
+            /// stroke the border, but do not animate it (caused strange drifting glitches)
+            .strokeBorder(style: StrokeStyle(lineWidth: 2, dash: [10]))
+            .animation(.none)
+            /// add a pulsing opacity animation
+            .opacity(opacity)
+            .onAppear { opacity = 1.0 }
+            .animation(Animation.linear(duration: 1.0).repeatForever(autoreverses: true))
     }
 }
