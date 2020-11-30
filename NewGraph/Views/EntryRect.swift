@@ -13,7 +13,7 @@ fileprivate let thicc = CGFloat(0.8)
 
 struct NewEntryRect: View {
     
-    let range: DateRange
+    let entry: TimeEntryLike
     let size: CGSize
     let midnight: Date
     let height: CGFloat
@@ -35,19 +35,19 @@ struct NewEntryRect: View {
     
     
     init?(
-        range: DateRange,
+        entry: TimeEntryLike,
         size: CGSize,
         midnight: Date,
         border: Bool = false
     ) {
-        self.range = range
+        self.entry = entry
         self.size = size
         self.midnight = midnight
         self.border = border
         
         /// Calculate the appropriate height for a time entry.
-        let start = max(range.start, midnight)
-        let end = min(range.end, midnight + .day)
+        let start = max(entry.start, midnight)
+        let end = min(entry.end, midnight + .day)
         let height = size.height * CGFloat((end - start) / .day)
         
         /// avoids invalid dimension warning

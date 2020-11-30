@@ -25,7 +25,7 @@ struct NewDayStrip: View {
             ZStack {
                 ForEach(entries, id: \.id) { entry in
                     NewEntryRect(
-                        range: (entry.start, entry.end),
+                        entry: entry,
                         size: geo.size,
                         midnight: midnight
                     )

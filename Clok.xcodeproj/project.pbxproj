@@ -90,6 +90,9 @@
 		224D10CE24E5AC8C00668FD8 /* WeekdaySelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224D10CD24E5AC8C00668FD8 /* WeekdaySelector.swift */; };
 		224D10D324E6FA8900668FD8 /* DateIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224D10D224E6FA8800668FD8 /* DateIndicator.swift */; };
 		22556B3A2574C885003DEB7D /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22556B392574C885003DEB7D /* Entry.swift */; };
+		22556B612574C97F003DEB7D /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22556B392574C885003DEB7D /* Entry.swift */; };
+		22556B692574C97F003DEB7D /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22556B392574C885003DEB7D /* Entry.swift */; };
+		22556B6A2574C980003DEB7D /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22556B392574C885003DEB7D /* Entry.swift */; };
 		225B044224B2A5FA00780424 /* OldLineGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225B044124B2A5FA00780424 /* OldLineGraphView.swift */; };
 		225F69B424AD8CE70012B5DB /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225F69B324AD8CE70012B5DB /* AppView.swift */; };
 		225F69B724AD8EF50012B5DB /* EntryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225F69B624AD8EF50012B5DB /* EntryList.swift */; };
@@ -1640,6 +1643,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22556B692574C97F003DEB7D /* Entry.swift in Sources */,
 				229521642505C06100085055 /* DecoderExtension.swift in Sources */,
 				229521482505BD7600085055 /* SummaryLoader.swift in Sources */,
 				229521502505BDF800085055 /* FormRequest.swift in Sources */,
@@ -1773,6 +1777,7 @@
 				22B0784A24B262FA00256EB8 /* Timeline.swift in Sources */,
 				228174D02501CAFC008E471D /* SummaryTimelineEntry.swift in Sources */,
 				22A2CE2F24E59F8B000820AD /* ColorHex.swift in Sources */,
+				22556B612574C97F003DEB7D /* Entry.swift in Sources */,
 				229428DD251E7E7E008C0BFF /* Mod.swift in Sources */,
 				C60856B8251FCE1B00E6D6C0 /* LoadTags.swift in Sources */,
 				C60856BA251FCE1B00E6D6C0 /* LoadEntries.swift in Sources */,
@@ -1819,6 +1824,7 @@
 				22FFF6732570FCB400A54471 /* DateExtension.swift in Sources */,
 				2205DC78254B9FA300146EAB /* LoadProjects.swift in Sources */,
 				22FFF6A92571022700A54471 /* DataFetcher.swift in Sources */,
+				22556B6A2574C980003DEB7D /* Entry.swift in Sources */,
 				2205DCB5254BA00B00146EAB /* Tag+CoreDataProperties.swift in Sources */,
 				22B2625E254B9CF200182236 /* RunningEntry.swift in Sources */,
 				2205DCC0254BA01400146EAB /* KeychainConstants.swift in Sources */,

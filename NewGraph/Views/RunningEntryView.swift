@@ -32,7 +32,7 @@ struct NewRunningEntryView: View {
             VStack(alignment: .center, spacing: .zero) {
                 if let running = running {
                     NewEntryRect(
-                        range: (running.start, Date()),
+                        entry: running,
                         size: geo.size,
                         midnight: Date().midnight
                     )
@@ -40,7 +40,7 @@ struct NewRunningEntryView: View {
                         .opacity(0.5)
                         .overlay(
                             NewEntryRect(
-                                range: (running.start, Date()),
+                                entry: running,
                                 size: geo.size,
                                 midnight: Date().midnight,
                                 border: true
