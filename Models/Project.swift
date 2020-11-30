@@ -9,6 +9,7 @@
 import Foundation
 import SwiftUI
 
+/// a data type with the general shape of a `Project`
 protocol ProjectLike {
     var wrappedID: Int { get }
     var wrappedColor: Color { get }
