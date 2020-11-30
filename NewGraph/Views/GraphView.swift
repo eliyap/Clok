@@ -23,16 +23,25 @@ struct NewGraph: View {
     }
     
     var body: some View {
+        /// a giant, monstrous hack
         GeometryReader { geo in
             ScrollView(showsIndicators: false) {
                 ScrollViewReader { proxy in
                     LazyVStack(alignment: .leading, spacing: .zero, pinnedViews: .sectionFooters) {
                         ForEach(DayList, id: \.self) { idx in
                             Section(footer: Footer(idx: idx, size: geo.size)) {
-                                DayRect(idx: idx, size: geo.size)
+                                HStack(spacing: .zero) {
+                                    NewTimeIndicator(divisions: evenDivisions(for: geo.size.height))
+                                    NewLineGraphView(
+                                        dayHeight: geo.size.height,
+                                        start: Date().midnight.advanced(by: Double(idx) * .day)
+                                    )
+                                }
                                     .padding(.top, -footerHeight)
                             }
+                                /// flip view back over
                                 .rotationEffect(.tau / 2)
+                                /// if user hits the "last" (visually top) date, add another one "above" (by appending)
                                 .onAppear {
                                     if idx == DayList.last {
                                         DayList.insert(DayList.last! - 1, at: DayList.count)
@@ -42,24 +51,38 @@ struct NewGraph: View {
                     }
                 }
             }
+            /**
+             Flipped over so user can infinitely scroll "up" (actually down) to previous days
+             */
             .rotationEffect(.tau / 2)
         }
     }
-    
-    func DayRect(idx: Int, size: CGSize) -> some View {
+}
+
+// MARK:- Section Footer
+extension NewGraph {
+    func Footer(idx: Int, size: CGSize) -> some View {
         HStack(spacing: .zero) {
-            NewTimeIndicator(divisions: evenDivisions(for: size.height))
-            NewLineGraphView(
-                dayHeight: size.height,
-                start: Date().midnight.advanced(by: Double(idx) * .day)
-            )
+            /// prevents the `DateIndicator` from covering the `TimeIndicator`
+            WidthHelper(size: size)
+            Text(df.string(from: Date().advanced(by: Double(idx) * .day)))
+                .foregroundColor(mode == .dark ? .black : .white)
+                .font(.system(size: footerHeight - 5))
+                .bold()
+                .frame(height: footerHeight)
+                .padding([.leading, .trailing], 3)
+                .background(
+                    RoundedCornerRectangle(radius: 4, corners: [.bottomRight, .topRight])
+                        .foregroundColor(.red)
+                )
+            /// push view against the left edge of the graph
+            Spacer()
         }
     }
-    
-    func dateString(at idx: Int) -> String {
-        df.string(from: Date().advanced(by: Double(idx) * .day))
-    }
-    
+}
+
+// MARK:- Width Helper
+extension NewGraph {
     /**
      Wrapper around  an invisible`TimeIndicator`.
      Keeps the labels aligned correctly above their respective days
@@ -75,27 +98,5 @@ struct NewGraph: View {
             .allowsHitTesting(false)
             .disabled(true)
             .frame(height: .zero)
-    }
-}
-
-// MARK:- Section Footer
-extension NewGraph {
-    func Footer(idx: Int, size: CGSize) -> some View {
-        HStack(spacing: .zero) {
-            /// prevents the `DateIndicator` from covering the `TimeIndicator`
-            WidthHelper(size: size)
-            Text(dateString(at: idx))
-                .foregroundColor(mode == .dark ? .black : .white)
-                .font(.system(size: footerHeight - 5))
-                .bold()
-                .frame(height: footerHeight)
-                .padding([.leading, .trailing], 3)
-                .background(
-                    RoundedCornerRectangle(radius: 4, corners: [.bottomRight, .topRight])
-                        .foregroundColor(.red)
-                )
-            /// push view against the left edge of the graph
-            Spacer()
-        }
     }
 }
