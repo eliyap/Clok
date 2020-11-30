@@ -34,11 +34,8 @@ struct NewGraph: View {
                                 }
                         }
                     }
-                    
                 }
             }
-            .frame(width: geo.size.width, height: geo.size.height)
-            .border(Color.pink)
             .rotationEffect(.tau / 2)
         }
     }
@@ -48,7 +45,7 @@ struct NewGraph: View {
             HStack(spacing: .zero) {
                 WidthHelper(size: size)
                 Text(dateString(at: idx))
-//                    .frame(height: 40)
+                    .frame(height: 40)
                     .background(
                         RoundedRectangle(cornerRadius: 10)
                             .foregroundColor(.clokBG)
@@ -58,7 +55,7 @@ struct NewGraph: View {
                 .offset(y: 1)
         ) {
             DayRect(idx: idx, size: size)
-//                .padding(.top, -40)
+                .padding(.top, -40)
         }
     }
     
