@@ -49,10 +49,10 @@ struct NewGraph: View {
                     }
                 }
             }
-            /**
-             Flipped over so user can infinitely scroll "up" (actually down) to previous days
-             */
-            .rotationEffect(.tau / 2)
+                /**
+                 Flipped over so user can infinitely scroll "up" (actually down) to previous days
+                 */
+                .rotationEffect(.tau / 2)
         }
     }
 }
