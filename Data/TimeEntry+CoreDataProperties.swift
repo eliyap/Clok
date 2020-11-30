@@ -38,6 +38,9 @@ extension TimeEntry {
         wrappedProject.wrappedColor
     }
     
+    /// compliance to `TimeEntryLike` protocol
+    public var color: Color { wrappedColor }
+    
     var wrappedProject: ProjectLike {
         project ?? StaticProject.noProject
     }

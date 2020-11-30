@@ -9,7 +9,7 @@
 import Foundation
 import SwiftUI
 
-final class RunningEntry: NSObject, NSSecureCoding {
+final class RunningEntry: NSObject, NSSecureCoding, TimeEntryLike {
     
     var id: Int
     var pid: Int = NSNotFound
@@ -18,6 +18,10 @@ final class RunningEntry: NSObject, NSSecureCoding {
     var entryDescription: String
     var tags: [String] = []
     let df = DateFormatter()
+    
+    /// `TimeEntryLike` compliance
+    var end: Date { Date() } /// always return current time
+    var color: Color { project.wrappedColor }
     
     init(
         id: Int,

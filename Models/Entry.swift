@@ -7,10 +7,17 @@
 //
 
 import Foundation
+import SwiftUI
 
 /// a data type with the general shape of a `TimeEntry`
 protocol TimeEntryLike {
     var start: Date { get }
     var end: Date { get }
-    var project: ProjectLike { get }
+    var color: Color { get }
+    /**
+     Note: after numerous searches and some pain, I found
+     https://stackoverflow.com/questions/55996678/associated-protocol-in-swift
+     What I want is an `associatedprotocol`, which does not exist
+     */
+    //var project: ProjectType { get }
 }

@@ -43,8 +43,8 @@ struct GraphView: View {
                         GraphButtons()
                     }
                 }
-                /// allow graph to consume maximum height
-                .layoutPriority(1)
+                    /// allow graph to consume maximum height
+                    .layoutPriority(1)
                 if model.mode == .calendar {
                     DateIndicator(
                         dayHeight: outer.size.height * zero.zoomLevel - timeIndicatorHeightEstimate,
