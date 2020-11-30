@@ -8,7 +8,8 @@
 
 import SwiftUI
 
-fileprivate let scrollLimit = 10000
+/// fixed size footer, unfortunate but necessary
+fileprivate let footerHeight: CGFloat = 20
 
 struct NewGraph: View {
     
@@ -16,7 +17,7 @@ struct NewGraph: View {
     var df = DateFormatter()
     
     init() {
-        df.dateStyle = .short
+        df.setLocalizedDateFormatFromTemplate("MMMdd")
     }
     
     var body: some View {
@@ -25,7 +26,10 @@ struct NewGraph: View {
                 ScrollViewReader { proxy in
                     LazyVStack(alignment: .leading, spacing: .zero, pinnedViews: .sectionFooters) {
                         ForEach(DayList, id: \.self) { idx in
-                            DaySection(idx: idx, size: geo.size)
+                            Section(footer:Footer(idx: idx, size: geo.size)) {
+                                DayRect(idx: idx, size: geo.size)
+                                    .padding(.bottom, -footerHeight)
+                            }
                                 .rotationEffect(.tau / 2)
                                 .onAppear {
                                     if idx == DayList.last {
@@ -37,28 +41,6 @@ struct NewGraph: View {
                 }
             }
             .rotationEffect(.tau / 2)
-        }
-    }
-    
-    func DaySection(idx: Int, size: CGSize) -> some View {
-        Section(footer:
-            HStack(spacing: .zero) {
-                /// prevents the `DateIndicator` from covering the `TimeIndicator`
-                WidthHelper(size: size)
-                Text(dateString(at: idx))
-                    .frame(height: 40)
-                    .background(
-                        RoundedRectangle(cornerRadius: 10)
-                            .foregroundColor(.clokBG)
-                    )
-                /// push view against the left edge of the graph
-                Spacer()
-            }
-                /// drop a hair to allow the red divider to show through
-                .offset(y: 1)
-        ) {
-            DayRect(idx: idx, size: size)
-                .padding(.top, -40)
         }
     }
     
@@ -91,5 +73,27 @@ struct NewGraph: View {
             .allowsHitTesting(false)
             .disabled(true)
             .frame(height: .zero)
+    }
+}
+
+// MARK:- Section Footer
+extension NewGraph {
+    func Footer(idx: Int, size: CGSize) -> some View {
+        HStack(spacing: .zero) {
+            /// prevents the `DateIndicator` from covering the `TimeIndicator`
+            WidthHelper(size: size)
+            Text(dateString(at: idx))
+                .font(.system(size: footerHeight - 5))
+                .frame(height: footerHeight)
+                .background(
+                    RoundedCornerRectangle(radius: 10, corners: [.bottomRight, .topRight])
+                        .foregroundColor(.red)
+                )
+                .offset(y: footerHeight)
+            /// push view against the left edge of the graph
+            Spacer()
+        }
+            /// drop a hair to allow the red divider to show through
+            .offset(y: 1)
     }
 }
