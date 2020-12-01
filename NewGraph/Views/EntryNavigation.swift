@@ -21,7 +21,7 @@ struct EntryNavigation: View {
                 Rectangle()
                     .foregroundColor(model.selected?.entry.color)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .matchedGeometryEffect(id: model.selected!, in: namespace, anchor: .center)
+                    .matchedGeometryEffect(id: model.selected!, in: namespace)
                     
             } else {
                 VStack {

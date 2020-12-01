@@ -66,8 +66,7 @@ struct WeekRect: View {
                     row: animationInfo.row,
                     col: animationInfo.col
                 ),
-                in: animationInfo.namespace,
-                anchor: .center
+                in: animationInfo.namespace
             )
     }
 }

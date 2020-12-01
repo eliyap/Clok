@@ -17,6 +17,7 @@ extension NewGraph {
             GeometryReader { geo in
                 ZStack {
                     ForEach(entries
+                        /// entries where any part falls within this 24 hour day
                         .filter{$0.end > start}
                         .filter{$0.start < start + .day}
                         /// chronological sort
@@ -27,8 +28,11 @@ extension NewGraph {
                             size: geo.size,
                             midnight: start
                         )
+                            /// push `View` down to `(proportion through the day x height)`
                             .offset(y: CGFloat((entry.start - start) / .day) * geo.size.height)
+                            /// fade out views that do not match the filter
                             .opacity(entry.matches(data.terms) ? 1 : 0.25)
+                            /// push View to stack when tapped
                             .onTapGesture {
                                 withAnimation {
                                     model.selected = NamespaceModel(
@@ -44,15 +48,10 @@ extension NewGraph {
                                     row: idx,
                                     col: start.timeIntervalSince1970
                                 ),
-                                in: namespace,
-                                anchor: .bottomTrailing
+                                in: namespace
                             )
                     }
-                        .frame(
-                            width: geo.size.width,
-                            height: geo.size.height,
-                            alignment: .top
-                        )
+                        .frame(width: geo.size.width, height: geo.size.height, alignment: .top)
                     
                     /// show current time in `calendar` mode
                     if start == Date().midnight {
@@ -67,10 +66,9 @@ extension NewGraph {
                 }
             }
                 .frame(height: size.height)
-                /// NOTE: apply lined background to whole stack, NOT individual `DayStrip`!
                 .background(NewLinedBackground(divisions: evenDivisions(for: size.height)))
                 .drawingGroup()
         }
-        .padding(.top, -NewGraph.footerHeight)
+            .padding(.top, -NewGraph.footerHeight)
     }
 }
