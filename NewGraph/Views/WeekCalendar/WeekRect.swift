@@ -25,15 +25,7 @@ struct WeekRect: View {
     @EnvironmentObject var model: NewGraphModel
     
     /// adapt scale to taste
-    var cornerScale: CGFloat {
-        switch model.mode {
-        case .weekMode:
-            return CGFloat(1.0/18.0)
-        case .dayMode, .listMode:
-            return CGFloat(1.0/80.0)
-        }
-    }
-    
+    static let cornerScale: CGFloat = CGFloat(1.0/18.0)
     
     init?(
         entry: TimeEntryLike,
@@ -72,7 +64,7 @@ struct WeekRect: View {
 // MARK:- Drawing Components
 extension WeekRect {
     var BaseRect: some InsettableShape {
-        RoundedRectangle(cornerRadius: min(size.width * cornerScale, height / 2))
+        RoundedRectangle(cornerRadius: min(size.width * WeekRect.cornerScale, height / 2))
     }
     
     /// animated border outline version
