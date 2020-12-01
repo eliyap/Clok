@@ -20,8 +20,8 @@ struct NewDayStrip: View {
     let entries: [TimeEntry]
     let midnight: Date
     let terms: SearchTerms
-    let namespace: Namespace.ID
-    
+    let animationInfo: (namespace: Namespace.ID, row: Int, col: TimeInterval)
+
     var body: some View {
         GeometryReader { geo in
             ZStack {
@@ -36,7 +36,14 @@ struct NewDayStrip: View {
                         .onTapGesture {
                             model.entry = entry
                         }
-                        .matchedGeometryEffect(id: entry.id, in: namespace)
+                        .matchedGeometryEffect(
+                            id: NamespaceModel(
+                                entryID: entry.id,
+                                row: animationInfo.row,
+                                col: animationInfo.col
+                            ),
+                            in: animationInfo.namespace
+                        )
                 }
                     .frame(
                         width: geo.size.width,

@@ -35,7 +35,7 @@ struct NewGraph: View {
                                 NewLineGraphView(
                                     dayHeight: geo.size.height,
                                     start: Date().midnight.advanced(by: Double(idx) * .day),
-                                    namespace: namespace
+                                    animationInfo: (namespace, idx)
                                 )
                             }
                                 .padding(.top, -footerHeight)

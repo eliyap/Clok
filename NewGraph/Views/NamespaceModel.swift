@@ -13,6 +13,9 @@ struct NamespaceModel: Hashable {
     /// id of a `TimeEntry`
     let entryID: Int64
     
-    /// array index of the day in which the `TimeEntry` is contained
-    let dayIdx: Int
+    /// array index of the week (row) in which the `TimeEntry` is contained
+    let row: Int
+    
+    /// array index of the day (column) in that week (row) in which the `TimeEntry` is contained
+    let col: Double
 }
