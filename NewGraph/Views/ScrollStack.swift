@@ -14,8 +14,9 @@ fileprivate let footerHeight: CGFloat = 20
 struct NewGraph: View {
     
     @State private var DayList = [0]
-    @Environment(\.colorScheme) private var mode
     @Namespace private var namespace
+    @Environment(\.colorScheme) private var mode
+    @EnvironmentObject var model: NewGraphModel
     
     private var df = DateFormatter()
     
@@ -30,15 +31,12 @@ struct NewGraph: View {
                 LazyVStack(alignment: .leading, spacing: .zero, pinnedViews: .sectionFooters) {
                     ForEach(DayList, id: \.self) { idx in
                         Section(footer: Footer(idx: idx, size: geo.size)) {
-                            HStack(spacing: .zero) {
-                                NewTimeIndicator(divisions: evenDivisions(for: geo.size.height))
-                                CalendarView(
-                                    dayHeight: geo.size.height,
-                                    start: Date().midnight.advanced(by: Double(idx) * .day),
-                                    animationInfo: (namespace, idx)
-                                )
+                            switch model.mode {
+                            case .dayMode, .weekMode:
+                                CalendarBody(size: geo.size, idx: idx)
+                            case .listMode:
+                                ListBody(idx: idx)
                             }
-                                .padding(.top, -footerHeight)
                         }
                             /// flip view back over
                             .rotationEffect(.tau / 2)
@@ -56,6 +54,31 @@ struct NewGraph: View {
                  */
                 .rotationEffect(.tau / 2)
         }
+    }
+}
+
+// MARK:- Calendar Body
+extension NewGraph {
+    func CalendarBody(size: CGSize, idx: Int) -> some View {
+        HStack(spacing: .zero) {
+            NewTimeIndicator(divisions: evenDivisions(for: size.height))
+            CalendarView(
+                dayHeight: size.height,
+                start: Date().midnight.advanced(by: Double(idx) * .day),
+                animationInfo: (namespace, idx)
+            )
+        }
+            .padding(.top, -footerHeight)
+    }
+}
+
+// MARK:- List Body
+extension NewGraph {
+    func ListBody(idx: Int) -> some View {
+        ListView(
+            start: Date().midnight.advanced(by: Double(idx) * .day),
+            animationInfo: (namespace, idx)
+        )
     }
 }
 
