@@ -48,8 +48,8 @@ struct ProjectRing: View {
                         .bold()
                         .lineLimit(1)
                 }
-                /// gives text a little more room
-                .offset(y: -5)
+                    /// gives text a little more room
+                    .offset(y: -5)
             }
         }
         .aspectRatio(1, contentMode: .fit)
