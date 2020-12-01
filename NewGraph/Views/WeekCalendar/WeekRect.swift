@@ -1,5 +1,5 @@
 //
-//  EntryRect.swift
+//  WeekRect.swift
 //  Clok
 //
 //  Created by Secret Asian Man Dev on 21/8/20.
@@ -11,7 +11,7 @@ import SwiftUI
 /// determines what proportion of available horizontal space to consume
 fileprivate let thicc = CGFloat(0.8)
 
-struct NewEntryRect: View {
+struct WeekRect: View {
     
     let entry: TimeEntryLike
     let size: CGSize
@@ -70,7 +70,7 @@ struct NewEntryRect: View {
 }
 
 // MARK:- Drawing Components
-extension NewEntryRect {
+extension WeekRect {
     var BaseRect: some InsettableShape {
         RoundedRectangle(cornerRadius: min(size.width * cornerScale, height / 2))
     }
@@ -114,7 +114,7 @@ extension NewEntryRect {
 }
 
 // MARK:- Colors
-extension NewEntryRect {
+extension WeekRect {
     /// how much to brighten / darken the view.
     /// bounded (0, 1)
     /// not *technically* a stored property

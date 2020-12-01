@@ -149,7 +149,7 @@
 		2287257F257385710082A490 /* LinedBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2287257E257385710082A490 /* LinedBackground.swift */; };
 		22872588257386C60082A490 /* TimeIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22872587257386C60082A490 /* TimeIndicator.swift */; };
 		22872591257387A30082A490 /* DayStrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22872590257387A30082A490 /* DayStrip.swift */; };
-		2287259A257389E10082A490 /* EntryRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22872599257389E10082A490 /* EntryRect.swift */; };
+		2287259A257389E10082A490 /* WeekRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22872599257389E10082A490 /* WeekRect.swift */; };
 		228725A325738A300082A490 /* CurrentTimeIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228725A225738A300082A490 /* CurrentTimeIndicator.swift */; };
 		228725AC25738A810082A490 /* RunningEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228725AB25738A810082A490 /* RunningEntryView.swift */; };
 		22885DAE24DA13E500A56FE3 /* OldDayStrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22885DAD24DA13E500A56FE3 /* OldDayStrip.swift */; };
@@ -585,7 +585,7 @@
 		2287257E257385710082A490 /* LinedBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinedBackground.swift; sourceTree = "<group>"; };
 		22872587257386C60082A490 /* TimeIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIndicator.swift; sourceTree = "<group>"; };
 		22872590257387A30082A490 /* DayStrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayStrip.swift; sourceTree = "<group>"; };
-		22872599257389E10082A490 /* EntryRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryRect.swift; sourceTree = "<group>"; };
+		22872599257389E10082A490 /* WeekRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekRect.swift; sourceTree = "<group>"; };
 		228725A225738A300082A490 /* CurrentTimeIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTimeIndicator.swift; sourceTree = "<group>"; };
 		228725AB25738A810082A490 /* RunningEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningEntryView.swift; sourceTree = "<group>"; };
 		22885DAD24DA13E500A56FE3 /* OldDayStrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldDayStrip.swift; sourceTree = "<group>"; };
@@ -936,7 +936,6 @@
 				2287257E257385710082A490 /* LinedBackground.swift */,
 				22872590257387A30082A490 /* DayStrip.swift */,
 				22872587257386C60082A490 /* TimeIndicator.swift */,
-				22872599257389E10082A490 /* EntryRect.swift */,
 				228725A225738A300082A490 /* CurrentTimeIndicator.swift */,
 				228725AB25738A810082A490 /* RunningEntryView.swift */,
 			);
@@ -955,6 +954,7 @@
 			isa = PBXGroup;
 			children = (
 				2287256D2573849A0082A490 /* WeekCalendar.swift */,
+				22872599257389E10082A490 /* WeekRect.swift */,
 			);
 			path = WeekCalendar;
 			sourceTree = "<group>";
@@ -1960,7 +1960,7 @@
 			files = (
 				221810DE24B00FB900B63ECA /* EntryTab.swift in Sources */,
 				22A2CE2924E59E8C000820AD /* AngleAsDate.swift in Sources */,
-				2287259A257389E10082A490 /* EntryRect.swift in Sources */,
+				2287259A257389E10082A490 /* WeekRect.swift in Sources */,
 				22905B8824DB449400D5AC09 /* OldLinedBackground.swift in Sources */,
 				224D10CE24E5AC8C00668FD8 /* WeekdaySelector.swift in Sources */,
 				2264CB3B24AD344F00ECBF2B /* TokenFields.swift in Sources */,

@@ -31,7 +31,7 @@ struct NewRunningEntryView: View {
         GeometryReader { geo in
             VStack(alignment: .center, spacing: .zero) {
                 if let running = running {
-                    NewEntryRect(
+                    WeekRect(
                         entry: running,
                         size: geo.size,
                         midnight: Date().midnight
@@ -39,7 +39,7 @@ struct NewRunningEntryView: View {
                         /// placeholder styling
                         .opacity(0.5)
                         .overlay(
-                            NewEntryRect(
+                            WeekRect(
                                 entry: running,
                                 size: geo.size,
                                 midnight: Date().midnight,
