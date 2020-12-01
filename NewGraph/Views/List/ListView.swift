@@ -13,13 +13,14 @@ struct ListView: View {
     
     @EnvironmentObject private var data: TimeData
     @EnvironmentObject private var model: NewGraphModel
+    @Environment(\.namespace) var namespace
     @FetchRequest(
         entity: TimeEntry.entity(),
         sortDescriptors: []
     ) private var entries: FetchedResults<TimeEntry>
 
     let start: Date
-    let animationInfo: (namespace: Namespace.ID, row: Int)
+    let row: Int
     
     var body: some View {
         VStack {
@@ -59,10 +60,10 @@ struct ListView: View {
             .matchedGeometryEffect(id:
                 NamespaceModel(
                     entry: entry,
-                    row: animationInfo.row,
+                    row: row,
                     col: start.timeIntervalSince1970
                 ),
-               in: animationInfo.namespace
+               in: namespace
             )
     }
 }

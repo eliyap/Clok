@@ -16,11 +16,12 @@ struct NewDayStrip: View {
     
     @EnvironmentObject var bounds: Bounds
     @EnvironmentObject var model: NewGraphModel
+    @Environment(\.namespace) var namespace
     
     let entries: [TimeEntry]
     let midnight: Date
     let terms: SearchTerms
-    let animationInfo: (namespace: Namespace.ID, row: Int, col: TimeInterval)
+    let animationInfo: (row: Int, col: TimeInterval)
 
     var body: some View {
         GeometryReader { geo in
@@ -48,7 +49,7 @@ struct NewDayStrip: View {
                                 row: animationInfo.row,
                                 col: animationInfo.col
                             ),
-                            in: animationInfo.namespace,
+                            in: namespace,
                             anchor: .bottomTrailing
                         )
                 }

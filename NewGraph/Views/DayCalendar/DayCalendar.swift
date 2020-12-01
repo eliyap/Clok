@@ -19,18 +19,14 @@ struct DayCalendar: View {
     
     let dayHeight: CGFloat     /// visual height for 1 day
     let start: Date
-    let animationInfo: (namespace: Namespace.ID, row: Int)
+    let row: Int
     
     var body: some View {
         NewDayStrip(
             entries: timeEntries,
             midnight: start,
             terms: data.terms,
-            animationInfo: (
-                animationInfo.namespace,
-                animationInfo.row,
-                start.timeIntervalSince1970
-            )
+            animationInfo: (row, start.timeIntervalSince1970)
         )
             .frame(height: dayHeight)
             /// NOTE: apply lined background to whole stack, NOT individual `DayStrip`!

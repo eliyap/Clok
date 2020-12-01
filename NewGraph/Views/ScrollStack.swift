@@ -16,12 +16,10 @@ struct NewGraph: View {
     @State private var DayList = [0]
     @Environment(\.colorScheme) private var mode
     @EnvironmentObject var model: NewGraphModel
-    let namespace: Namespace.ID
     
     private var df = DateFormatter()
     
-    init(namespace: Namespace.ID) {
-        self.namespace = namespace
+    init() {
         df.setLocalizedDateFormatFromTemplate("MMMdd")
     }
     
@@ -68,7 +66,7 @@ extension NewGraph {
             DayCalendar(
                 dayHeight: size.height,
                 start: Date().midnight.advanced(by: Double(idx) * .day),
-                animationInfo: (namespace, idx)
+                row: idx
             )
         }
             .padding(.top, -footerHeight)
@@ -83,7 +81,7 @@ extension NewGraph {
             WeekCalendar(
                 dayHeight: size.height,
                 start: Date().midnight.advanced(by: Double(idx) * .day),
-                animationInfo: (namespace, idx)
+                row: idx
             )
             Rectangle()
                 .foregroundColor(.background)
@@ -100,7 +98,7 @@ extension NewGraph {
     func ListBody(idx: Int) -> some View {
         ListView(
             start: Date().midnight.advanced(by: Double(idx) * .day),
-            animationInfo: (namespace, idx)
+            row: idx
         )
     }
 }

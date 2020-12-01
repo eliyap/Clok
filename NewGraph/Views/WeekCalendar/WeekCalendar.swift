@@ -11,6 +11,7 @@ import SwiftUI
 struct WeekCalendar: View {
     
     @EnvironmentObject var data: TimeData
+    @Environment(\.namespace) var namespace
     @FetchRequest(
         entity: TimeEntry.entity(),
         sortDescriptors: []
@@ -18,7 +19,7 @@ struct WeekCalendar: View {
 
     let dayHeight: CGFloat     /// visual height for 1 day
     let start: Date
-    let animationInfo: (namespace: Namespace.ID, row: Int)
+    let row: Int
     
     var body: some View {
         /// check whether the provided time entry coincides with a particular *date* range
@@ -36,8 +37,8 @@ struct WeekCalendar: View {
                     midnight: midnight,
                     terms: data.terms,
                     animationInfo: (
-                        animationInfo.namespace,
-                        animationInfo.row,
+                        namespace,
+                        row,
                         midnight.timeIntervalSince1970
                     )
                 )

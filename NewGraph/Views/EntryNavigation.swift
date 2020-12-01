@@ -24,10 +24,11 @@ struct EntryNavigation: View {
                     .matchedGeometryEffect(id: model.selected!, in: namespace, anchor: .center)
                     
             } else {
-                NewGraph(namespace: namespace)
+                NewGraph()
             }
         }
             .environmentObject(model)
+            .environment(\.namespace, namespace)
 //            .onChange(of: model.selected?.entry) { entry in
 //                self.hasEntry = entry != nil
 //                print(hasEntry)
