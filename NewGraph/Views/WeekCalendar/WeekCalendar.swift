@@ -31,7 +31,7 @@ struct WeekCalendar: View {
                 id: \.timeIntervalSince1970
             ) { midnight in
                 Divider()
-                NewDayStrip(
+                WeekStrip(
                     entries: entries(midnight: midnight),
                     midnight: midnight,
                     terms: data.terms,

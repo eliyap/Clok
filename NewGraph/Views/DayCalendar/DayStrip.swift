@@ -26,7 +26,7 @@ struct NewDayStrip: View {
         GeometryReader { geo in
             ZStack {
                 ForEach(entries, id: \.id) { entry in
-                    WeekRect(
+                    DayRect(
                         entry: entry,
                         size: geo.size,
                         midnight: midnight
