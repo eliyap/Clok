@@ -24,7 +24,15 @@ struct EntryNavigation: View {
                     .matchedGeometryEffect(id: model.selected!, in: namespace, anchor: .center)
                     
             } else {
-                NewGraph()
+                VStack {
+                    Button {
+                        showSheet = true
+                    } label: {
+                        Text("Transform!")
+                    }
+                        .actionSheet(isPresented: $showSheet) { ModeSheet }
+                    NewGraph()
+                }
             }
         }
             .environmentObject(model)

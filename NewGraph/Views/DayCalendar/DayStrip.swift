@@ -31,7 +31,7 @@ struct NewDayStrip: View {
                         size: geo.size,
                         midnight: midnight
                     )
-                        .offset(y: padding(for: entry, size: geo.size))
+                        .offset(y: CGFloat((entry.start - midnight) / .day) * geo.size.height)
                         .opacity(entry.matches(terms) ? 1 : 0.25)
                         .onTapGesture {
                             withAnimation {
@@ -70,11 +70,5 @@ struct NewDayStrip: View {
                 }
             }
         }
-    }
-    
-    /// calculate appropriate distance to next `entry`
-    func padding(for entry: TimeEntry, size: CGSize) -> CGFloat {
-        let scale = size.height / CGFloat(.day)
-        return CGFloat(entry.start - midnight) * scale
     }
 }

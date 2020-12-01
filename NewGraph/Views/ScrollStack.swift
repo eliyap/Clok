@@ -13,6 +13,7 @@ struct NewGraph: View {
     
     @State private var DayList = [0]
     @Environment(\.colorScheme) private var mode
+    @Environment(\.namespace) var namespace
     @EnvironmentObject var model: NewGraphModel
     @EnvironmentObject var data: TimeData
     @FetchRequest(
