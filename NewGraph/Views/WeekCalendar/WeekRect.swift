@@ -89,7 +89,7 @@ extension WeekRect {
     /// lighten or darken to improve contrast
     var modeAdjusted: Color {
         mode == .dark
-            ? entry.color.darken(by: 0.3)
+            ? entry.color.darken(by: colorAdjustment)
             : UIColor.white.tinted(with: entry.color)
     }
 }
