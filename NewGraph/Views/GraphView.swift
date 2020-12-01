@@ -34,7 +34,8 @@ struct NewGraph: View {
                                 NewTimeIndicator(divisions: evenDivisions(for: geo.size.height))
                                 NewLineGraphView(
                                     dayHeight: geo.size.height,
-                                    start: Date().midnight.advanced(by: Double(idx) * .day)
+                                    start: Date().midnight.advanced(by: Double(idx) * .day),
+                                    namespace: namespace
                                 )
                             }
                                 .padding(.top, -footerHeight)

@@ -19,6 +19,7 @@ struct NewLineGraphView: View {
 
     let dayHeight: CGFloat     /// visual height for 1 day
     let start: Date
+    let namespace: Namespace.ID
     
     var duration: TimeInterval {
         switch model.mode {
@@ -43,7 +44,8 @@ struct NewLineGraphView: View {
                 NewDayStrip(
                     entries: entries(midnight: midnight),
                     midnight: midnight,
-                    terms: data.terms
+                    terms: data.terms,
+                    namespace: namespace
                 )
                     .frame(height: dayHeight)
             }

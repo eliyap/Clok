@@ -16,9 +16,11 @@ struct NewDayStrip: View {
     
     @EnvironmentObject var bounds: Bounds
     @EnvironmentObject var model: NewGraphModel
+    
     let entries: [TimeEntry]
     let midnight: Date
     let terms: SearchTerms
+    let namespace: Namespace.ID
     
     var body: some View {
         GeometryReader { geo in
@@ -34,6 +36,7 @@ struct NewDayStrip: View {
                         .onTapGesture {
                             model.entry = entry
                         }
+                        .matchedGeometryEffect(id: entry.id, in: namespace)
                 }
                     .frame(
                         width: geo.size.width,
