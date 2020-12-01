@@ -75,14 +75,22 @@ extension NewGraph {
     
     func WeekCalendarBody(size: CGSize, idx: Int) -> some View {
         HStack(spacing: .zero) {
+            Rectangle()
+                .foregroundColor(.background)
+                .frame(width: size.width, height: size.height)
             NewTimeIndicator(divisions: evenDivisions(for: size.height))
             WeekCalendar(
                 dayHeight: size.height,
                 start: Date().midnight.advanced(by: Double(idx) * .day),
                 animationInfo: (namespace, idx)
             )
+            Rectangle()
+                .foregroundColor(.background)
+                .frame(width: size.width, height: size.height)
         }
+            .frame(width: 3 * size.width)
             .padding(.top, -footerHeight)
+            .offset(x: size.width)
     }
 }
 

@@ -879,11 +879,11 @@
 		223AC3A1257494C8002ABD9F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2217D6532573C1C10093C491 /* EntryNavigation.swift */,
+				2287255C257378BB0082A490 /* ScrollStack.swift */,
 				22556BF02575F315003DEB7D /* Calendar */,
 				22556C7A2575FD52003DEB7D /* DayCalendar */,
 				22556C792575FD48003DEB7D /* WeekCalendar */,
-				2217D6532573C1C10093C491 /* EntryNavigation.swift */,
-				2287255C257378BB0082A490 /* ScrollStack.swift */,
 				22556BFF2575F39A003DEB7D /* List */,
 				22556BCC2575EDE2003DEB7D /* NamespaceModel.swift */,
 			);
