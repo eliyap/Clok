@@ -83,7 +83,9 @@ extension ProjectRing {
     
     /// factors in the running timer, if any
     var duration: TimeInterval {
-        project.duration + (entry.running.project.wrappedID == project.id
+        /// if there IS a running entry, and it matches IDs, add its time
+        /// NOTE: must check entry is running, otherwise `.noEntry` and `.noProject` conditions get confused
+        project.duration + ((entry.running != .noEntry && entry.running.project.wrappedID == project.id)
             ? Date() - entry.running.start
             : .zero
         )
