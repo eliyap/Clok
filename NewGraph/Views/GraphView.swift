@@ -15,7 +15,7 @@ struct NewGraph: View {
     
     @State var DayList = [0]
     @Environment(\.colorScheme) var mode
-    
+    @EnvironmentObject var model: NewGraphModel
     var df = DateFormatter()
     
     init() {
@@ -30,7 +30,13 @@ struct NewGraph: View {
                     ForEach(DayList, id: \.self) { idx in
                         Section(footer: Footer(idx: idx, size: geo.size)) {
                             HStack(spacing: .zero) {
-                                NewTimeIndicator(divisions: evenDivisions(for: geo.size.height))
+                                switch model.mode {
+                                case .dayMode, .weekMode:
+                                    NewTimeIndicator(divisions: evenDivisions(for: geo.size.height))
+                                case .listMode:
+                                    EmptyView()
+                                }
+                                
                                 NewLineGraphView(
                                     dayHeight: geo.size.height,
                                     start: Date().midnight.advanced(by: Double(idx) * .day)
