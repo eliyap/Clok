@@ -22,11 +22,10 @@ struct NewLineGraphView: View {
     
     var duration: TimeInterval {
         switch model.mode {
-        case .dayMode:
+        case .dayMode, .listMode:
             return .day
         case .weekMode:
             return .week
-        case .listMode: return .day
         }
     }
     
