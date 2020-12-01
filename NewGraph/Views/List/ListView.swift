@@ -23,16 +23,7 @@ struct ListView: View {
     var body: some View {
         VStack {
             ForEach(entries(midnight: start), id: \.id) { entry in
-                Text(entry.entryDescription)
-                    .background(entry.color)
-                    .matchedGeometryEffect(id:
-                        NamespaceModel(
-                            entryID: entry.id,
-                            row: animationInfo.row,
-                            col: start.timeIntervalSince1970
-                        ),
-                       in: animationInfo.namespace
-                    )
+                DetailView(entry: entry)
             }
         }
     }
@@ -41,9 +32,36 @@ struct ListView: View {
     /// the day begins at provided `midnight`
     func entries(midnight: Date) -> [TimeEntry] {
         entries
-            .filter{$0.end > midnight}
+            /// **NOTE**: this filter EXCLUDES entries that started before midnight, to prevent `matchedGeometryEffect` duplicates
+            .filter{$0.start > midnight}
             .filter{$0.start < midnight + .day}
             /// chronological sort
             .sorted{$0.start < $1.start}
+    }
+    
+    func DetailView(entry: TimeEntry) -> some View {
+        VStack(alignment: .leading) {
+            HStack {
+                Text(entry.entryDescription)
+                    .lineLimit(1)
+                Spacer()
+                Text(entry.projectName)
+                    .lineLimit(1)
+            }
+            Spacer()
+            if type(of: entry) == TimeEntry.self {
+                Text((entry.end - entry.start).toString())
+            }
+        }
+            .padding(3)
+            .background(entry.color)
+            .matchedGeometryEffect(id:
+                NamespaceModel(
+                    entryID: entry.id,
+                    row: animationInfo.row,
+                    col: start.timeIntervalSince1970
+                ),
+               in: animationInfo.namespace
+            )
     }
 }
