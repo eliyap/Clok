@@ -53,8 +53,6 @@ struct WeekRect: View {
             } else {
                 BaseRect
                     .foregroundColor(modeAdjusted)
-                    .overlay(EntryDetails, alignment: .top)
-                    .clipped() /// prevent details spilling over
             }
         }
         .frame(width: size.width * thicc, height: height)
@@ -78,30 +76,6 @@ extension WeekRect {
             .onAppear { opacity = 1.0 }
             .animation(Animation.linear(duration: 1.0).repeatForever(autoreverses: true))
             .foregroundColor(modeAdjusted)
-    }
-    
-    var EntryDetails: some View {
-        Group {
-            switch model.mode {
-            case .weekMode:
-                EmptyView()
-            case .dayMode, .listMode:
-                VStack(alignment: .leading) {
-                    HStack {
-                        Text(entry.entryDescription)
-                            .lineLimit(1)
-                        Spacer()
-                        Text(entry.projectName)
-                            .lineLimit(1)
-                    }
-                    Spacer()
-                    if type(of: entry) == TimeEntry.self {
-                        Text((entry.end - entry.start).toString())
-                    }
-                }
-                .padding(3)
-            }
-        }
     }
 }
 
