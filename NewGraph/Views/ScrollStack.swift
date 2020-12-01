@@ -32,8 +32,10 @@ struct NewGraph: View {
                     ForEach(DayList, id: \.self) { idx in
                         Section(footer: Footer(idx: idx, size: geo.size)) {
                             switch model.mode {
-                            case .dayMode, .weekMode:
-                                CalendarBody(size: geo.size, idx: idx)
+                            case .dayMode:
+                                DayCalendarBody(size: geo.size, idx: idx)
+                            case .weekMode:
+                                WeekCalendarBody(size: geo.size, idx: idx)
                             case .listMode:
                                 ListBody(idx: idx)
                             }
@@ -59,10 +61,22 @@ struct NewGraph: View {
 
 // MARK:- Calendar Body
 extension NewGraph {
-    func CalendarBody(size: CGSize, idx: Int) -> some View {
+    func DayCalendarBody(size: CGSize, idx: Int) -> some View {
         HStack(spacing: .zero) {
             NewTimeIndicator(divisions: evenDivisions(for: size.height))
-            CalendarView(
+            DayCalendar(
+                dayHeight: size.height,
+                start: Date().midnight.advanced(by: Double(idx) * .day),
+                animationInfo: (namespace, idx)
+            )
+        }
+            .padding(.top, -footerHeight)
+    }
+    
+    func WeekCalendarBody(size: CGSize, idx: Int) -> some View {
+        HStack(spacing: .zero) {
+            NewTimeIndicator(divisions: evenDivisions(for: size.height))
+            WeekCalendar(
                 dayHeight: size.height,
                 start: Date().midnight.advanced(by: Double(idx) * .day),
                 animationInfo: (namespace, idx)

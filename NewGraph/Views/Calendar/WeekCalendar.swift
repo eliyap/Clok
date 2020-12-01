@@ -1,5 +1,5 @@
 //
-//  CalendarView.swift
+//  WeekCalendar.swift
 //  Clok
 //
 //  Created by Secret Asian Man Dev on 29/11/20.
@@ -8,10 +8,9 @@
 
 import SwiftUI
 
-struct CalendarView: View {
+struct WeekCalendar: View {
     
     @EnvironmentObject var data: TimeData
-    @EnvironmentObject var model: NewGraphModel
     @FetchRequest(
         entity: TimeEntry.entity(),
         sortDescriptors: []
@@ -21,15 +20,6 @@ struct CalendarView: View {
     let start: Date
     let animationInfo: (namespace: Namespace.ID, row: Int)
     
-    var duration: TimeInterval {
-        switch model.mode {
-        case .dayMode, .listMode:
-            return .day
-        case .weekMode:
-            return .week
-        }
-    }
-    
     var body: some View {
         /// check whether the provided time entry coincides with a particular *date* range
         /// if our entry ends before the interval even began
@@ -37,7 +27,7 @@ struct CalendarView: View {
         HStack(spacing: .zero) {
             /// use date enum so SwiftUI can identify horizontal swipes without redrawing everything
             ForEach(
-                Array(stride(from: start, to: start + duration, by: .day)),
+                Array(stride(from: start, to: start + .week, by: .day)),
                 id: \.timeIntervalSince1970
             ) { midnight in
                 Divider()

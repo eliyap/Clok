@@ -12,7 +12,6 @@ import SwiftUI
 struct DayCalendar: View {
     
     @EnvironmentObject var data: TimeData
-    @EnvironmentObject var model: NewGraphModel
     @FetchRequest(
         entity: TimeEntry.entity(),
         sortDescriptors: []
