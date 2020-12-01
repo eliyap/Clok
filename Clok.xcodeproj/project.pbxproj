@@ -102,13 +102,6 @@
 		22556BAC25751685003DEB7D /* Clamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22556BA725751684003DEB7D /* Clamp.swift */; };
 		22556BAD25751685003DEB7D /* Clamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22556BA725751684003DEB7D /* Clamp.swift */; };
 		22556BAE25751685003DEB7D /* Clamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22556BA725751684003DEB7D /* Clamp.swift */; };
-		22556BB7257518FE003DEB7D /* UIScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22556BB6257518FE003DEB7D /* UIScroll.swift */; };
-		22556BB8257518FE003DEB7D /* UIScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22556BB6257518FE003DEB7D /* UIScroll.swift */; };
-		22556BB9257518FE003DEB7D /* UIScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22556BB6257518FE003DEB7D /* UIScroll.swift */; };
-		22556BBA257518FE003DEB7D /* UIScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22556BB6257518FE003DEB7D /* UIScroll.swift */; };
-		22556BBB257518FE003DEB7D /* UIScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22556BB6257518FE003DEB7D /* UIScroll.swift */; };
-		22556BBC257518FE003DEB7D /* UIScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22556BB6257518FE003DEB7D /* UIScroll.swift */; };
-		22556BBD257518FE003DEB7D /* UIScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22556BB6257518FE003DEB7D /* UIScroll.swift */; };
 		225B044224B2A5FA00780424 /* OldLineGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225B044124B2A5FA00780424 /* OldLineGraphView.swift */; };
 		225F69B424AD8CE70012B5DB /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225F69B324AD8CE70012B5DB /* AppView.swift */; };
 		225F69B724AD8EF50012B5DB /* EntryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225F69B624AD8EF50012B5DB /* EntryList.swift */; };
@@ -550,7 +543,6 @@
 		22556B802574E8D1003DEB7D /* ColorSaturation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSaturation.swift; sourceTree = "<group>"; };
 		22556B9025750311003DEB7D /* ColorTint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTint.swift; sourceTree = "<group>"; };
 		22556BA725751684003DEB7D /* Clamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clamp.swift; sourceTree = "<group>"; };
-		22556BB6257518FE003DEB7D /* UIScroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScroll.swift; sourceTree = "<group>"; };
 		225B044124B2A5FA00780424 /* OldLineGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldLineGraphView.swift; sourceTree = "<group>"; };
 		225F69B324AD8CE70012B5DB /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		225F69B624AD8EF50012B5DB /* EntryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryList.swift; sourceTree = "<group>"; };
@@ -879,7 +871,6 @@
 			children = (
 				2217D6532573C1C10093C491 /* EntryNavigation.swift */,
 				2287255C257378BB0082A490 /* GraphView.swift */,
-				22556BB6257518FE003DEB7D /* UIScroll.swift */,
 				2287256D2573849A0082A490 /* LineGraphView.swift */,
 				2287257E257385710082A490 /* LinedBackground.swift */,
 				22872590257387A30082A490 /* DayStrip.swift */,
@@ -1705,7 +1696,6 @@
 				2292C4FA2505CC1E005802B5 /* Piece12.swift in Sources */,
 				227746D42505BC9200D17CA3 /* GridWidget.swift in Sources */,
 				C6EB47862520170100FCD0CB /* AnyTransitionSlide.swift in Sources */,
-				22556BBB257518FE003DEB7D /* UIScroll.swift in Sources */,
 				22FFF6632570FC9F00A54471 /* WidgetManager.swift in Sources */,
 				22D5F4762570ADB600806992 /* MultiRing.intentdefinition in Sources */,
 				C6EB47812520170100FCD0CB /* DoubleExtension.swift in Sources */,
@@ -1803,7 +1793,6 @@
 				221F625B251EE172000ECED9 /* RawProject.swift in Sources */,
 				22B0784A24B262FA00256EB8 /* Timeline.swift in Sources */,
 				228174D02501CAFC008E471D /* SummaryTimelineEntry.swift in Sources */,
-				22556BBA257518FE003DEB7D /* UIScroll.swift in Sources */,
 				22A2CE2F24E59F8B000820AD /* ColorHex.swift in Sources */,
 				22556B612574C97F003DEB7D /* Entry.swift in Sources */,
 				229428DD251E7E7E008C0BFF /* Mod.swift in Sources */,
@@ -1888,7 +1877,6 @@
 				22FFF6B12571022C00A54471 /* RunningEntryFetcher.swift in Sources */,
 				2205DD54254BA14300146EAB /* MR_Ring.swift in Sources */,
 				22556BAE25751685003DEB7D /* Clamp.swift in Sources */,
-				22556BBD257518FE003DEB7D /* UIScroll.swift in Sources */,
 				2205DD30254BA10600146EAB /* Summary.swift in Sources */,
 				2205DCD3254BA03000146EAB /* RunningRing.intentdefinition in Sources */,
 				22D5F50F2570D08700806992 /* MR_Colors.swift in Sources */,
@@ -1919,7 +1907,6 @@
 				221F6231251EE10B000ECED9 /* KeychainError.swift in Sources */,
 				22DE591D251EC91200379396 /* ClokWidget.intentdefinition in Sources */,
 				22D56F172526BB090011C4AC /* RingSize.swift in Sources */,
-				22556BBC257518FE003DEB7D /* UIScroll.swift in Sources */,
 				22D5F48D2570B1B900806992 /* MultiRing.intentdefinition in Sources */,
 				221F6262251EE18B000ECED9 /* RequestConstants.swift in Sources */,
 				22556BAD25751685003DEB7D /* Clamp.swift in Sources */,
@@ -1952,7 +1939,6 @@
 				22128E09254206E6004913AF /* WidgetManager.swift in Sources */,
 				2238640024BBBD030041886B /* LoadProjects.swift in Sources */,
 				22A2CE1D24E59BB1000820AD /* DateStridable.swift in Sources */,
-				22556BB7257518FE003DEB7D /* UIScroll.swift in Sources */,
 				221D963C24A912B900C84F57 /* APIKeyHandler.swift in Sources */,
 				229646C924F3212700FE14E5 /* RequestConstants.swift in Sources */,
 				2295216C2505C16900085055 /* GraphMode.swift in Sources */,
@@ -2088,7 +2074,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6C18D5C2448F96F000345D5 /* LandwarksTests.swift in Sources */,
-				22556BB8257518FE003DEB7D /* UIScroll.swift in Sources */,
 				22556BA925751684003DEB7D /* Clamp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2098,7 +2083,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6C18D672448F96F000345D5 /* LandwarksUITests.swift in Sources */,
-				22556BB9257518FE003DEB7D /* UIScroll.swift in Sources */,
 				22556BAA25751685003DEB7D /* Clamp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
