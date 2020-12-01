@@ -104,6 +104,7 @@
 		22556BAE25751685003DEB7D /* Clamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22556BA725751684003DEB7D /* Clamp.swift */; };
 		22556BCD2575EDE2003DEB7D /* NamespaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22556BCC2575EDE2003DEB7D /* NamespaceModel.swift */; };
 		22556C012575F3AE003DEB7D /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22556C002575F3AE003DEB7D /* ListView.swift */; };
+		22556C412575FA04003DEB7D /* DayCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22556C402575FA04003DEB7D /* DayCalendar.swift */; };
 		225B044224B2A5FA00780424 /* OldLineGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225B044124B2A5FA00780424 /* OldLineGraphView.swift */; };
 		225F69B424AD8CE70012B5DB /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225F69B324AD8CE70012B5DB /* AppView.swift */; };
 		225F69B724AD8EF50012B5DB /* EntryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225F69B624AD8EF50012B5DB /* EntryList.swift */; };
@@ -547,6 +548,7 @@
 		22556BA725751684003DEB7D /* Clamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clamp.swift; sourceTree = "<group>"; };
 		22556BCC2575EDE2003DEB7D /* NamespaceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamespaceModel.swift; sourceTree = "<group>"; };
 		22556C002575F3AE003DEB7D /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
+		22556C402575FA04003DEB7D /* DayCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCalendar.swift; sourceTree = "<group>"; };
 		225B044124B2A5FA00780424 /* OldLineGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldLineGraphView.swift; sourceTree = "<group>"; };
 		225F69B324AD8CE70012B5DB /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		225F69B624AD8EF50012B5DB /* EntryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryList.swift; sourceTree = "<group>"; };
@@ -930,6 +932,7 @@
 			isa = PBXGroup;
 			children = (
 				2287256D2573849A0082A490 /* CalendarView.swift */,
+				22556C402575FA04003DEB7D /* DayCalendar.swift */,
 				2287257E257385710082A490 /* LinedBackground.swift */,
 				22872590257387A30082A490 /* DayStrip.swift */,
 				22872587257386C60082A490 /* TimeIndicator.swift */,
@@ -2062,6 +2065,7 @@
 				222305AE24AE807000711031 /* CustomTabView.swift in Sources */,
 				229428DC251E7E7E008C0BFF /* Mod.swift in Sources */,
 				22928AC724A423AA00DC9EC5 /* ButtonGlyph.swift in Sources */,
+				22556C412575FA04003DEB7D /* DayCalendar.swift in Sources */,
 				2229D7B024F0459F004E1034 /* FetchRunningEntry.swift in Sources */,
 				22885DB224DA1E2E00A56FE3 /* OldTimeIndicator.swift in Sources */,
 				C6AAB3F2249F061D00DFBA36 /* TimeData.swift in Sources */,
