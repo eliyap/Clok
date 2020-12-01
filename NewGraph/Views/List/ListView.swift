@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftUI
+
 struct ListView: View {
     
     @EnvironmentObject private var data: TimeData
