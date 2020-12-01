@@ -8,16 +8,22 @@
 
 import SwiftUI
 
-/// fixed size footer, unfortunate but necessary
-fileprivate let footerHeight: CGFloat = 20
 
 struct NewGraph: View {
     
     @State private var DayList = [0]
     @Environment(\.colorScheme) private var mode
     @EnvironmentObject var model: NewGraphModel
+    @EnvironmentObject var data: TimeData
+    @FetchRequest(
+        entity: TimeEntry.entity(),
+        sortDescriptors: []
+    ) var entries: FetchedResults<TimeEntry>
     
     private var df = DateFormatter()
+    /// fixed size footer, unfortunate but necessary
+    static let footerHeight: CGFloat = 20
+
     
     init() {
         df.setLocalizedDateFormatFromTemplate("MMMdd")
@@ -60,18 +66,6 @@ struct NewGraph: View {
 
 // MARK:- Calendar Body
 extension NewGraph {
-    func DayCalendarBody(size: CGSize, idx: Int) -> some View {
-        HStack(spacing: .zero) {
-            NewTimeIndicator(divisions: evenDivisions(for: size.height))
-            DayCalendar(
-                dayHeight: size.height,
-                start: Date().midnight.advanced(by: Double(idx) * .day),
-                row: idx
-            )
-        }
-            .padding(.top, -footerHeight)
-    }
-    
     func WeekCalendarBody(size: CGSize, idx: Int) -> some View {
         HStack(spacing: .zero) {
             Rectangle()
@@ -88,7 +82,7 @@ extension NewGraph {
                 .frame(width: size.width, height: size.height)
         }
             .frame(width: 3 * size.width)
-            .padding(.top, -footerHeight)
+            .padding(.top, -NewGraph.footerHeight)
             .offset(x: size.width)
     }
 }
@@ -111,9 +105,9 @@ extension NewGraph {
             WidthHelper(size: size)
             Text(df.string(from: Date().advanced(by: Double(idx) * .day)))
                 .foregroundColor(mode == .dark ? .black : .white)
-                .font(.system(size: footerHeight - 5))
+                .font(.system(size: NewGraph.footerHeight - 5))
                 .bold()
-                .frame(height: footerHeight)
+                .frame(height: NewGraph.footerHeight)
                 .padding([.leading, .trailing], 3)
                 .background(
                     RoundedCornerRectangle(radius: 4, corners: [.bottomRight, .topRight])

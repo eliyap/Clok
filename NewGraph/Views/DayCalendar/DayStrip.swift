@@ -14,7 +14,6 @@ fileprivate let labelPadding = CGFloat(3)
 /// One vertical strip of bars representing 1 day in the larger graph
 struct NewDayStrip: View {
     
-    @EnvironmentObject var bounds: Bounds
     @EnvironmentObject var model: NewGraphModel
     @Environment(\.namespace) var namespace
     

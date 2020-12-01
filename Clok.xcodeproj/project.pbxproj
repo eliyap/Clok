@@ -104,12 +104,12 @@
 		22556BAE25751685003DEB7D /* Clamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22556BA725751684003DEB7D /* Clamp.swift */; };
 		22556BCD2575EDE2003DEB7D /* NamespaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22556BCC2575EDE2003DEB7D /* NamespaceModel.swift */; };
 		22556C012575F3AE003DEB7D /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22556C002575F3AE003DEB7D /* ListView.swift */; };
-		22556C412575FA04003DEB7D /* DayCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22556C402575FA04003DEB7D /* DayCalendar.swift */; };
 		22556C932575FEDF003DEB7D /* DayRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22556C922575FEDF003DEB7D /* DayRect.swift */; };
 		225B044224B2A5FA00780424 /* OldLineGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225B044124B2A5FA00780424 /* OldLineGraphView.swift */; };
 		225F69B424AD8CE70012B5DB /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225F69B324AD8CE70012B5DB /* AppView.swift */; };
 		225F69B724AD8EF50012B5DB /* EntryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225F69B624AD8EF50012B5DB /* EntryList.swift */; };
 		2261CDE525763CCA00C0D43C /* NamespacEnvironmentKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2261CDE425763CCA00C0D43C /* NamespacEnvironmentKey.swift */; };
+		2261CDEE2576419500C0D43C /* DayCalendarBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2261CDED2576419500C0D43C /* DayCalendarBody.swift */; };
 		2262882224E88691006B330C /* Workspace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2262882124E88691006B330C /* Workspace.swift */; };
 		2262882324E88691006B330C /* Workspace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2262882124E88691006B330C /* Workspace.swift */; };
 		2264B82A24A437F800FA4F08 /* DescriptionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264B82924A437F800FA4F08 /* DescriptionButton.swift */; };
@@ -551,12 +551,12 @@
 		22556BA725751684003DEB7D /* Clamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clamp.swift; sourceTree = "<group>"; };
 		22556BCC2575EDE2003DEB7D /* NamespaceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamespaceModel.swift; sourceTree = "<group>"; };
 		22556C002575F3AE003DEB7D /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
-		22556C402575FA04003DEB7D /* DayCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCalendar.swift; sourceTree = "<group>"; };
 		22556C922575FEDF003DEB7D /* DayRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRect.swift; sourceTree = "<group>"; };
 		225B044124B2A5FA00780424 /* OldLineGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldLineGraphView.swift; sourceTree = "<group>"; };
 		225F69B324AD8CE70012B5DB /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		225F69B624AD8EF50012B5DB /* EntryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryList.swift; sourceTree = "<group>"; };
 		2261CDE425763CCA00C0D43C /* NamespacEnvironmentKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamespacEnvironmentKey.swift; sourceTree = "<group>"; };
+		2261CDED2576419500C0D43C /* DayCalendarBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCalendarBody.swift; sourceTree = "<group>"; };
 		2262882124E88691006B330C /* Workspace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workspace.swift; sourceTree = "<group>"; };
 		2264B82924A437F800FA4F08 /* DescriptionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionButton.swift; sourceTree = "<group>"; };
 		2264CB3024AD250600ECBF2B /* WorkspaceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceManager.swift; sourceTree = "<group>"; };
@@ -969,7 +969,7 @@
 		22556C7A2575FD52003DEB7D /* DayCalendar */ = {
 			isa = PBXGroup;
 			children = (
-				22556C402575FA04003DEB7D /* DayCalendar.swift */,
+				2261CDED2576419500C0D43C /* DayCalendarBody.swift */,
 				22872590257387A30082A490 /* DayStrip.swift */,
 				22556C922575FEDF003DEB7D /* DayRect.swift */,
 			);
@@ -2084,6 +2084,7 @@
 				221C3C5724A93C57006995C5 /* User.swift in Sources */,
 				22128E2425422D59004913AF /* ColorScore.swift in Sources */,
 				2261CDE525763CCA00C0D43C /* NamespacEnvironmentKey.swift in Sources */,
+				2261CDEE2576419500C0D43C /* DayCalendarBody.swift in Sources */,
 				22A2CE3224E5A218000820AD /* CGPointOperators.swift in Sources */,
 				22283DA024DF9959005AC0F3 /* BarTabs.swift in Sources */,
 				C688BFCA24A18BF00077CECF /* RaisedShape.swift in Sources */,
@@ -2093,7 +2094,6 @@
 				222305AE24AE807000711031 /* CustomTabView.swift in Sources */,
 				229428DC251E7E7E008C0BFF /* Mod.swift in Sources */,
 				22928AC724A423AA00DC9EC5 /* ButtonGlyph.swift in Sources */,
-				22556C412575FA04003DEB7D /* DayCalendar.swift in Sources */,
 				2229D7B024F0459F004E1034 /* FetchRunningEntry.swift in Sources */,
 				22885DB224DA1E2E00A56FE3 /* OldTimeIndicator.swift in Sources */,
 				C6AAB3F2249F061D00DFBA36 /* TimeData.swift in Sources */,
