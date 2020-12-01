@@ -13,10 +13,11 @@ fileprivate let footerHeight: CGFloat = 20
 
 struct NewGraph: View {
     
-    @State var DayList = [0]
-    @Environment(\.colorScheme) var mode
+    @State private var DayList = [0]
+    @Environment(\.colorScheme) private var mode
+    @Namespace private var namespace
     
-    var df = DateFormatter()
+    private var df = DateFormatter()
     
     init() {
         df.setLocalizedDateFormatFromTemplate("MMMdd")
