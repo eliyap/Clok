@@ -13,33 +13,25 @@ struct EntryNavigation: View {
     @StateObject var model = NewGraphModel()
     @State var hasEntry: Bool = false
     @State var showSheet: Bool = false
+    @Namespace private var namespace
     
     var body: some View {
-        NavigationView {
-            VStack { /// swift is cursed. this makes the nav link work. don't know why
-                NewGraph()
-                NavigationLink(destination: Text(model.entry?.wrappedDescription ?? "Oops"), isActive: $hasEntry) {
-                    EmptyView()
-                }
+        Group {
+            if model.selected != nil {
+                Rectangle()
+                    .foregroundColor(model.selected?.entry.color)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .matchedGeometryEffect(id: model.selected!, in: namespace, anchor: .center)
+                    
+            } else {
+                NewGraph(namespace: namespace)
             }
-                .navigationBarTitle(Text("Text"), displayMode: .inline)
-                .navigationBarItems(trailing:
-                    Button {
-                        showSheet = true
-                    } label: {
-                        Text("Transform!")
-                    }
-                        .actionSheet(isPresented: $showSheet) { ModeSheet }
-                )
-                /// hide NavBar to prevent it changing size during scroll
-//                .navigationBarHidden(true)
         }
-            .navigationViewStyle(StackNavigationViewStyle())
             .environmentObject(model)
-            .onChange(of: model.entry) { entry in
-                self.hasEntry = entry != nil
-                print(hasEntry)
-            }
+//            .onChange(of: model.selected?.entry) { entry in
+//                self.hasEntry = entry != nil
+//                print(hasEntry)
+//            }
     }
 }
 

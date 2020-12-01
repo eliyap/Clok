@@ -58,7 +58,7 @@ struct ListView: View {
             .background(entry.color)
             .matchedGeometryEffect(id:
                 NamespaceModel(
-                    entryID: entry.id,
+                    entry: entry,
                     row: animationInfo.row,
                     col: start.timeIntervalSince1970
                 ),

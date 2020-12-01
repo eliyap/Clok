@@ -13,13 +13,14 @@ fileprivate let thicc = CGFloat(0.8)
 
 struct WeekRect: View {
     
-    let entry: TimeEntryLike
+    let entry: TimeEntry
     let size: CGSize
     let midnight: Date
     let height: CGFloat
     /// toggles solid fill or animated border
     var border: Bool = false
-
+    let animationInfo: (namespace: Namespace.ID, row: Int, col: TimeInterval)
+    
     @State private var opacity = 0.25
     @Environment(\.colorScheme) var mode
     
@@ -27,15 +28,17 @@ struct WeekRect: View {
     static let cornerScale: CGFloat = CGFloat(1.0/18.0)
     
     init?(
-        entry: TimeEntryLike,
+        entry: TimeEntry,
         size: CGSize,
         midnight: Date,
-        border: Bool = false
+        border: Bool = false,
+        animationInfo: (namespace: Namespace.ID, row: Int, col: TimeInterval)
     ) {
         self.entry = entry
         self.size = size
         self.midnight = midnight
         self.border = border
+        self.animationInfo = animationInfo
         
         /// Calculate the appropriate height for a time entry.
         let height = size.height * CGFloat((entry.end - entry.start) / .day)
@@ -46,15 +49,26 @@ struct WeekRect: View {
     }
     
     var body: some View {
-        Group {
-            if border {
-                BorderRect
-            } else {
-                BaseRect
-                    .foregroundColor(modeAdjusted)
-            }
-        }
-        .frame(width: size.width * thicc, height: height)
+//        Group {
+//            if border {
+//                BorderRect
+//            } else {
+//                BaseRect
+//                    .foregroundColor(modeAdjusted)
+//            }
+//        }
+        Rectangle()
+            .foregroundColor(modeAdjusted)
+            .frame(width: size.width * thicc, height: height)
+            .matchedGeometryEffect(
+                id: NamespaceModel(
+                    entry: entry,
+                    row: animationInfo.row,
+                    col: animationInfo.col
+                ),
+                in: animationInfo.namespace,
+                anchor: .center
+            )
     }
 }
 

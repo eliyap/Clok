@@ -29,21 +29,29 @@ struct WeekStrip: View {
                     WeekRect(
                         entry: entry,
                         size: geo.size,
-                        midnight: midnight
+                        midnight: midnight,
+                        animationInfo: animationInfo
                     )
                         .offset(y: padding(for: entry, size: geo.size))
                         .opacity(entry.matches(terms) ? 1 : 0.25)
                         .onTapGesture {
-                            model.entry = entry
+                            withAnimation {
+                                model.selected = NamespaceModel(
+                                    entry: entry,
+                                    row: animationInfo.row,
+                                    col: animationInfo.col
+                                )
+                            }
                         }
-                        .matchedGeometryEffect(
-                            id: NamespaceModel(
-                                entryID: entry.id,
-                                row: animationInfo.row,
-                                col: animationInfo.col
-                            ),
-                            in: animationInfo.namespace
-                        )
+//                        .matchedGeometryEffect(
+//                            id: NamespaceModel(
+//                                entry: entry,
+//                                row: animationInfo.row,
+//                                col: animationInfo.col
+//                            ),
+//                            in: animationInfo.namespace,
+//                            anchor: .bottomTrailing
+//                        )
                 }
                     .frame(
                         width: geo.size.width,

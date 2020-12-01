@@ -34,15 +34,22 @@ struct NewDayStrip: View {
                         .offset(y: padding(for: entry, size: geo.size))
                         .opacity(entry.matches(terms) ? 1 : 0.25)
                         .onTapGesture {
-                            model.entry = entry
+                            withAnimation {
+                                model.selected = NamespaceModel(
+                                    entry: entry,
+                                    row: animationInfo.row,
+                                    col: animationInfo.col
+                                )
+                            }
                         }
                         .matchedGeometryEffect(
                             id: NamespaceModel(
-                                entryID: entry.id,
+                                entry: entry,
                                 row: animationInfo.row,
                                 col: animationInfo.col
                             ),
-                            in: animationInfo.namespace
+                            in: animationInfo.namespace,
+                            anchor: .bottomTrailing
                         )
                 }
                     .frame(

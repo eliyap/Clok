@@ -31,23 +31,23 @@ struct NewRunningEntryView: View {
         GeometryReader { geo in
             VStack(alignment: .center, spacing: .zero) {
                 if let running = running {
-                    WeekRect(
-                        entry: running,
-                        size: geo.size,
-                        midnight: Date().midnight
-                    )
-                        /// placeholder styling
-                        .opacity(0.5)
-                        .overlay(
-                            WeekRect(
-                                entry: running,
-                                size: geo.size,
-                                midnight: Date().midnight,
-                                border: true
-                            )
-                        )
-                        .foregroundColor(running.project.wrappedColor)
-                        .offset(y: offset(size: geo.size, running: running))
+//                    WeekRect(
+//                        entry: running,
+//                        size: geo.size,
+//                        midnight: Date().midnight
+//                    )
+//                        /// placeholder styling
+//                        .opacity(0.5)
+//                        .overlay(
+//                            WeekRect(
+//                                entry: running,
+//                                size: geo.size,
+//                                midnight: Date().midnight,
+//                                border: true
+//                            )
+//                        )
+//                        .foregroundColor(running.project.wrappedColor)
+//                        .offset(y: offset(size: geo.size, running: running))
                 } else {
                     EmptyView()
                 }
