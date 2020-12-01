@@ -47,8 +47,6 @@ struct NewEntryRect: View {
         self.border = border
         
         /// Calculate the appropriate height for a time entry.
-//        let start = max(entry.start, midnight)
-//        let end = min(entry.end, midnight + .day)
         let height = size.height * CGFloat((entry.end - entry.start) / .day)
         
         /// avoids invalid dimension warning
