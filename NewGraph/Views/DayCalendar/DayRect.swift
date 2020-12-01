@@ -25,15 +25,7 @@ struct DayRect: View {
     @EnvironmentObject var model: NewGraphModel
     
     /// adapt scale to taste
-    var cornerScale: CGFloat {
-        switch model.mode {
-        case .weekMode:
-            return CGFloat(1.0/18.0)
-        case .dayMode, .listMode:
-            return CGFloat(1.0/80.0)
-        }
-    }
-    
+    static let cornerScale: CGFloat = CGFloat(1.0/80.0)
     
     init?(
         entry: TimeEntryLike,
@@ -69,61 +61,54 @@ struct DayRect: View {
     }
 }
 
-//// MARK:- Drawing Components
-//extension WeekRect {
-//    var BaseRect: some InsettableShape {
-//        RoundedRectangle(cornerRadius: min(size.width * cornerScale, height / 2))
-//    }
-//    
-//    /// animated border outline version
-//    var BorderRect: some View {
-//        BaseRect
-//            /// stroke the border, but do not animate it (caused strange drifting glitches)
-//            .strokeBorder(style: StrokeStyle(lineWidth: 2, dash: [10]))
-//            .animation(.none)
-//            /// add a pulsing opacity animation
-//            .opacity(opacity)
-//            .onAppear { opacity = 1.0 }
-//            .animation(Animation.linear(duration: 1.0).repeatForever(autoreverses: true))
-//            .foregroundColor(modeAdjusted)
-//    }
-//    
-//    var EntryDetails: some View {
-//        Group {
-//            switch model.mode {
-//            case .weekMode:
-//                EmptyView()
-//            case .dayMode, .listMode:
-//                VStack(alignment: .leading) {
-//                    HStack {
-//                        Text(entry.entryDescription)
-//                            .lineLimit(1)
-//                        Spacer()
-//                        Text(entry.projectName)
-//                            .lineLimit(1)
-//                    }
-//                    Spacer()
-//                    if type(of: entry) == TimeEntry.self {
-//                        Text((entry.end - entry.start).toString())
-//                    }
-//                }
-//                .padding(3)
-//            }
-//        }
-//    }
-//}
-//
-//// MARK:- Colors
-//extension WeekRect {
-//    /// how much to brighten / darken the view.
-//    /// bounded (0, 1)
-//    /// not *technically* a stored property
-//    var colorAdjustment: CGFloat { 0.3 }
-//    
-//    /// lighten or darken to improve contrast
-//    var modeAdjusted: Color {
-//        mode == .dark
-//            ? entry.color.darken(by: 0.3)
-//            : UIColor.white.tinted(with: entry.color)
-//    }
-//}
+// MARK:- Drawing Components
+extension DayRect {
+    var BaseRect: some InsettableShape {
+        RoundedRectangle(cornerRadius: min(size.width * DayRect.cornerScale, height / 2))
+    }
+
+    /// animated border outline version
+    var BorderRect: some View {
+        BaseRect
+            /// stroke the border, but do not animate it (caused strange drifting glitches)
+            .strokeBorder(style: StrokeStyle(lineWidth: 2, dash: [10]))
+            .animation(.none)
+            /// add a pulsing opacity animation
+            .opacity(opacity)
+            .onAppear { opacity = 1.0 }
+            .animation(Animation.linear(duration: 1.0).repeatForever(autoreverses: true))
+            .foregroundColor(modeAdjusted)
+    }
+
+    var EntryDetails: some View {
+        VStack(alignment: .leading) {
+            HStack {
+                Text(entry.entryDescription)
+                    .lineLimit(1)
+                Spacer()
+                Text(entry.projectName)
+                    .lineLimit(1)
+            }
+            Spacer()
+            if type(of: entry) == TimeEntry.self {
+                Text((entry.end - entry.start).toString())
+            }
+        }
+            .padding(3)
+    }
+}
+
+// MARK:- Colors
+extension DayRect {
+    /// how much to brighten / darken the view.
+    /// bounded (0, 1)
+    /// not *technically* a stored property
+    var colorAdjustment: CGFloat { 0.3 }
+
+    /// lighten or darken to improve contrast
+    var modeAdjusted: Color {
+        mode == .dark
+            ? entry.color.darken(by: 0.3)
+            : UIColor.white.tinted(with: entry.color)
+    }
+}
