@@ -22,7 +22,6 @@ struct WeekRect: View {
 
     @State private var opacity = 0.25
     @Environment(\.colorScheme) var mode
-    @EnvironmentObject var model: NewGraphModel
     
     /// adapt scale to taste
     static let cornerScale: CGFloat = CGFloat(1.0/18.0)
