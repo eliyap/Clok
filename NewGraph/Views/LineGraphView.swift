@@ -50,19 +50,8 @@ struct NewLineGraphView: View {
             }
         }
         /// NOTE: apply lined background to whole stack, NOT individual `DayStrip`!
-        .background(Background)
+        .background(NewLinedBackground(divisions: evenDivisions(for: dayHeight)))
         .drawingGroup()
-    }
-    
-    var Background: some View {
-        Group {
-            switch model.mode {
-            case .dayMode, .weekMode:
-                NewLinedBackground(divisions: evenDivisions(for: dayHeight))
-            case .listMode:
-                EmptyView()
-            }
-        }
     }
     
     /// filter & sort time entries for this day
@@ -75,13 +64,12 @@ struct NewLineGraphView: View {
             .sorted{$0.start < $1.start}
     }
     
-    #warning("placeholder")
     var heightConstraint: CGFloat? {
         switch model.mode {
         case .weekMode, .dayMode:
             return dayHeight
         case .listMode:
-            return 200
+            return .none
         }
     }
 }

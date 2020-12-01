@@ -37,14 +37,7 @@ struct NewDayStrip: View {
                 }
                     .frame(
                         width: geo.size.width,
-                        height: {
-                            switch model.mode {
-                            case .dayMode, .weekMode:
-                                return geo.size.height
-                            case .listMode:
-                                return .none
-                            }
-                        }(),
+                        height: geo.size.height,
                         alignment: .top
                     )
                 
