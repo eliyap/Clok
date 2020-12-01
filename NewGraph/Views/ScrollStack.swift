@@ -32,7 +32,7 @@ struct NewGraph: View {
                         Section(footer: Footer(idx: idx, size: geo.size)) {
                             HStack(spacing: .zero) {
                                 NewTimeIndicator(divisions: evenDivisions(for: geo.size.height))
-                                NewLineGraphView(
+                                CalendarView(
                                     dayHeight: geo.size.height,
                                     start: Date().midnight.advanced(by: Double(idx) * .day),
                                     animationInfo: (namespace, idx)

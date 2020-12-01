@@ -1,5 +1,5 @@
 //
-//  NewLineGraphView.swift
+//  CalendarView.swift
 //  Clok
 //
 //  Created by Secret Asian Man Dev on 29/11/20.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct NewLineGraphView: View {
+struct CalendarView: View {
     
     @EnvironmentObject var data: TimeData
     @EnvironmentObject var model: NewGraphModel
