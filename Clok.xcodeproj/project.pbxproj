@@ -925,7 +925,6 @@
 		223AC3A2257494ED002ABD9F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				223AC3A3257494F9002ABD9F /* NewGraphModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1257,6 +1256,7 @@
 		22D4F4FE2577340B0053ABFB /* FlexibleGraph */ = {
 			isa = PBXGroup;
 			children = (
+				223AC3A3257494F9002ABD9F /* NewGraphModel.swift */,
 				22D4F4FF2577345E0053ABFB /* FlexibleGraph.swift */,
 				22D4F54A2577364B0053ABFB /* InfiniteScroll.swift */,
 				22D4F57325773CF60053ABFB /* DayCalendar.swift */,
