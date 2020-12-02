@@ -17,18 +17,22 @@ extension FlexibleGraph {
     var InfiniteScroll: some View {
         GeometryReader { geo in
             ScrollView(showsIndicators: false) {
-                LazyVStack(alignment: .leading, spacing: .zero, pinnedViews: .sectionFooters) {
-                    ForEach(DayList, id: \.self) { idx in
-                        Page(idx: idx, size: geo.size)
-                            /// flip view back over
-                            .rotationEffect(.tau / 2)
-                            /// if user hits the "last" (visually top) date, add another one "above" (by appending)
-                            .onAppear {
-                                if idx == DayList.last {
-                                    DayList.insert(DayList.last! - 1, at: DayList.count)
+                ScrollViewReader { proxy in
+                    LazyVStack(alignment: .leading, spacing: .zero, pinnedViews: .sectionFooters) {
+                        ForEach(RowList, id: \.self) { idx in
+                            Page(idx: idx, size: geo.size)
+                                /// flip view back over
+                                .rotationEffect(.tau / 2)
+                                /// if user hits the "last" (visually top) date, add another one "above" (by appending)
+                                .onAppear {
+                                    if idx == RowList.last {
+                                        RowList.insert(RowList.last! - 1, at: RowList.count)
+                                    }
                                 }
-                            }
+                        }
                     }
+                        /// go to center of range at startup
+                        .onAppear { proxy.scrollTo(0) }
                 }
             }
                 /**

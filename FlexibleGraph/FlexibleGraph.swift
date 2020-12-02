@@ -26,9 +26,6 @@ struct FlexibleGraph: View {
         sortDescriptors: []
     ) var entries: FetchedResults<TimeEntry>
     
-    /// records the rows for `InfiniteScroll`
-    @State var DayList = [0]
-    
     /// light / dark mode
     @Environment(\.colorScheme) var mode
     
@@ -36,6 +33,21 @@ struct FlexibleGraph: View {
     
     /// fixed size footer, unfortunate but necessary
     static let footerHeight: CGFloat = 20
+    
+    //MARK:- InfiniteScroll Properties
+    /// maximum days one can go backwards / forwards, totals ±~30years
+    static var rowRange = 10
+    
+    /// records the rows for `InfiniteScroll`
+    /** Observational Notes, 20.12.02
+        Issue 1: Appending Pages when the user scrolls up causes a ~60ms animation hitch. I haven't been able to solve that.
+        Issue 2: Including a very large (but finite) number of rows causes the app to consume a LOT of memory (20000rows = 200mb)
+        Compromise: We will include *some* rows, AND allow the list to grow beyond that number.
+        Most users will not experience the animation hitching (lordwilling), but those wishing to dip years into their Toggl archive will be *able* to do so.
+            
+     Note: there is a soft limit on past days, but a HARD limit on future days
+     */
+    @State var RowList = Array((-(365*3)...30).reversed())
     
     //MARK:- Body
     var body: some View {
