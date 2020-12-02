@@ -22,22 +22,21 @@ extension FlexibleGraph {
                 .foregroundColor(.background)
                 .frame(width: size.width, height: size.height)
             WeekCalendarBody(size: size, idx: idx)
+                .frame(width: size.width, height: size.height)
             Rectangle()
                 .foregroundColor(.background)
                 .frame(width: size.width, height: size.height)
         }
-            .frame(width: 3 * size.width)
-            .drawingGroup()
-            /// consume the space taken by the `Footer`, so that the scroll is continuous
-            .padding(.top, -FlexibleGraph.footerHeight)
-            .offset(x: size.width)
+            .offset(x: -size.width)
+            .frame(width: size.width)
+            .drawingGroup()            
     }
     
     func WeekCalendarBody(size: CGSize, idx: Int) -> some View {
         let start = Date().midnight.advanced(by: Double(idx) * .day)
         /// since above `HStack`s this, just return `Group`
         return HStack(spacing: .zero) {
-            DateAndTimeIndicator(divisions: evenDivisions(for: size.height))
+            NewTimeIndicator(divisions: evenDivisions(for: size.height))
             /// use date enum so SwiftUI can identify horizontal swipes without redrawing everything
             ForEach(
                 Array(stride(from: start, to: start + .week, by: .day)),

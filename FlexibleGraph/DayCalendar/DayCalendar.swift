@@ -14,8 +14,6 @@ extension FlexibleGraph {
             NewTimeIndicator(divisions: evenDivisions(for: size.height))
             DayStack(size: size, idx: idx)
         }
-            /// consume the space taken by the `Footer`, so that the scroll is continuous
-            .padding(.top, -FlexibleGraph.footerHeight)
     }
     
     func DayStack(size: CGSize, idx: Int) -> some View {

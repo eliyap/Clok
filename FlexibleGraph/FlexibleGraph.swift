@@ -36,6 +36,7 @@ struct FlexibleGraph: View {
     @Environment(\.colorScheme) var mode
     
     @EnvironmentObject var data: TimeData
+    @EnvironmentObject var bounds: Bounds
     
     /// fixed size footer, unfortunate but necessary
     static let footerHeight: CGFloat = 20

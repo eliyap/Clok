@@ -18,7 +18,7 @@ extension FlexibleGraph {
         GeometryReader { geo in
             ScrollView(showsIndicators: false) {
                 ScrollViewReader { proxy in
-                    LazyVStack(alignment: .leading, spacing: .zero, pinnedViews: .sectionFooters) {
+                    LazyVStack(alignment: .leading, spacing: .zero) {
                         ForEach(RowList, id: \.self) { idx in
                             Page(idx: idx, size: geo.size)
                                 /// flip view back over
@@ -49,7 +49,7 @@ extension FlexibleGraph {
     ///   - size: the size of the page
     /// - Returns: `View`
     func Page(idx: Int, size: CGSize) -> some View {
-        Section(footer: Footer(idx: idx, size: size)) {
+        ZStack(alignment: .topLeading) {
             switch model.mode {
             case .dayMode:
                 DayCalendar(size: size, idx: idx)
@@ -58,7 +58,28 @@ extension FlexibleGraph {
             case .listMode:
                 DayList(idx: idx)
             }
+            GeometryReader { geo in
+                VStack {
+                    /** Technical Note
+                     Spacer is the ideal solution for engineering a "Sticky" header
+                     - unlike `.offset`, it cannot push the view out of frame!
+                     - unlike `.offset`, it cannot go into negative height
+                     */
+                    Spacer()
+                        .frame(maxHeight: bounds.insets.top - geo.frame(in: .global).minY)
+                    Text(Date()
+                        .advanced(by: Double(idx) * .day)
+                        .MMMdd
+                    )
+                        .foregroundColor(.background)
+                        .bold()
+                        .padding([.leading, .trailing], 3)
+                        .background(Color.red)
+                        .cornerRadius(4)
+                }
+            }
         }
+            
     }
 }
 
