@@ -27,9 +27,8 @@ extension FlexibleGraph {
                 .foregroundColor(.background)
                 .frame(width: size.width, height: size.height)
         }
-            .offset(x: -size.width)
             .frame(width: size.width)
-            .drawingGroup()            
+            .drawingGroup()
     }
     
     func WeekCalendarBody(size: CGSize, idx: Int) -> some View {
