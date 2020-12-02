@@ -37,7 +37,7 @@ extension FlexibleGraph {
         let start = Date().midnight.advanced(by: Double(idx) * .day)
         /// since above `HStack`s this, just return `Group`
         return HStack(spacing: .zero) {
-            NewTimeIndicator(divisions: evenDivisions(for: size.height))
+            DateAndTimeIndicator(divisions: evenDivisions(for: size.height))
             /// use date enum so SwiftUI can identify horizontal swipes without redrawing everything
             ForEach(
                 Array(stride(from: start, to: start + .week, by: .day)),
