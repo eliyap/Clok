@@ -10,7 +10,7 @@ import Foundation
 
 /// Helps `matchedGeometryEffect` to identify `TimeEntry` views as unique across multiple days
 struct NamespaceModel: Hashable {
-    let entry: TimeEntry
+    let entry: TimeEntry?
     
     /// array index of the week (row) in which the `TimeEntry` is contained
     let row: Int
@@ -19,8 +19,13 @@ struct NamespaceModel: Hashable {
     let col: Double
     
     func hash(into hasher: inout Hasher) {
-        hasher.combine(entry.id) /// only hash the ID
+        hasher.combine(entry?.id ?? .zero) /// only hash the ID
         hasher.combine(row)
         hasher.combine(col)
     }
+}
+
+extension NamespaceModel {
+    /// placeholder representing no selection
+    static let none = NamespaceModel(entry: .none, row: .zero, col: .zero)
 }
