@@ -342,6 +342,7 @@
 		22E6420925774E9C00CCF49F /* RunningEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E6420825774E9C00CCF49F /* RunningEntryView.swift */; };
 		22E6421925774EC200CCF49F /* LinedBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E6421825774EC200CCF49F /* LinedBackground.swift */; };
 		22E6422225774EE000CCF49F /* CurrentTimeIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E6422125774EE000CCF49F /* CurrentTimeIndicator.swift */; };
+		22E64271257799B100CCF49F /* MoldedRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E64270257799B100CCF49F /* MoldedRectangle.swift */; };
 		22F2CD60254BA744008DEB9C /* RunningTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F4655B2541FAD1008BF6F0 /* RunningTimer.swift */; };
 		22FA071A251D0DC800E20C27 /* TokenWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FA0719251D0DC800E20C27 /* TokenWebView.swift */; };
 		22FFF63B2570EA1D00A54471 /* WidgetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2206C5532541DD0600C78477 /* WidgetManager.swift */; };
@@ -689,6 +690,7 @@
 		22E6420825774E9C00CCF49F /* RunningEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningEntryView.swift; sourceTree = "<group>"; };
 		22E6421825774EC200CCF49F /* LinedBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinedBackground.swift; sourceTree = "<group>"; };
 		22E6422125774EE000CCF49F /* CurrentTimeIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTimeIndicator.swift; sourceTree = "<group>"; };
+		22E64270257799B100CCF49F /* MoldedRectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoldedRectangle.swift; sourceTree = "<group>"; };
 		22F2CD51254BA3EE008DEB9C /* WidgetBundleExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WidgetBundleExtension.entitlements; sourceTree = "<group>"; };
 		22F4655B2541FAD1008BF6F0 /* RunningTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningTimer.swift; sourceTree = "<group>"; };
 		22FA0719251D0DC800E20C27 /* TokenWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenWebView.swift; sourceTree = "<group>"; };
@@ -1008,6 +1010,7 @@
 				221810DD24B00FB900B63ECA /* EntryTab.swift */,
 				2253FFB825057FF200BBDCE6 /* Arc.swift */,
 				C6243D432526C421002E1B6E /* RightTriangle.swift */,
+				22E64270257799B100CCF49F /* MoldedRectangle.swift */,
 			);
 			path = Shapes;
 			sourceTree = "<group>";
@@ -1946,6 +1949,7 @@
 				2205DD1D254BA0EE00146EAB /* MR_View.swift in Sources */,
 				22B26268254B9D2200182236 /* TimeIntervalExtension.swift in Sources */,
 				2205DC45254B9F1C00146EAB /* WidgetManager.swift in Sources */,
+				22E64271257799B100CCF49F /* MoldedRectangle.swift in Sources */,
 				22B26254254B9CE000182236 /* NetworkError.swift in Sources */,
 				228724BA257223630082A490 /* RawRunningMatch.swift in Sources */,
 				22B261E0254B9AF300182236 /* WidgetBundle.swift in Sources */,
