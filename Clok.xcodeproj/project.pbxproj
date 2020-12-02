@@ -934,13 +934,6 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		223AC3A2257494ED002ABD9F /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		2253FFBA2505A41500BBDCE6 /* Tetris */ = {
 			isa = PBXGroup;
 			children = (
@@ -1092,7 +1085,6 @@
 		2287255B257378A50082A490 /* NewGraph */ = {
 			isa = PBXGroup;
 			children = (
-				223AC3A2257494ED002ABD9F /* Model */,
 				223AC3A1257494C8002ABD9F /* Views */,
 			);
 			path = NewGraph;
