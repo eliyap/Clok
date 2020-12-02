@@ -17,7 +17,10 @@ extension UIColor {
     /// https://github.com/toggl/mobileapp/blob/4426fd9eb590adf8df211750f2ddd566fe07acee/Toggl.iOS/Cells/Calendar/CalendarItemView.cs
     static let TogglTint: Double = 0.24
     
-    func tinted(with tint: Color, amount: Double = TogglTint) -> Color {
+    /// personally preferred tint
+    static let ClokTint: Double = 0.40
+    
+    func tinted(with tint: Color, amount: Double = ClokTint) -> Color {
         let (_r, _g, _b, _): (CGFloat, CGFloat, CGFloat, CGFloat) = tint.components
         var (r,g,b,a) = (CGFloat.zero, CGFloat.zero, CGFloat.zero, CGFloat.zero)
         self.getRed(&r, green: &g, blue: &b, alpha: &a)
