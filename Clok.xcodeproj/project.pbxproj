@@ -335,6 +335,13 @@
 		22DF92C8251D60B3007E4635 /* ClokWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 22AD5F7A24B1467D006EF7FB /* ClokWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		22DF92C9251D60B3007E4635 /* GridWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 227746CF2505BC9200D17CA3 /* GridWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		22DF92D8251D6834007E4635 /* AnyTransitionSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DF92D7251D6834007E4635 /* AnyTransitionSlide.swift */; };
+		22E641DD25774E0200CCF49F /* NamespaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E641DC25774E0200CCF49F /* NamespaceModel.swift */; };
+		22E641E725774E5700CCF49F /* WeekRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E641E625774E5700CCF49F /* WeekRect.swift */; };
+		22E641F725774E7300CCF49F /* DayRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E641F625774E7300CCF49F /* DayRect.swift */; };
+		22E6420025774E8300CCF49F /* TimeIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E641FF25774E8300CCF49F /* TimeIndicator.swift */; };
+		22E6420925774E9C00CCF49F /* RunningEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E6420825774E9C00CCF49F /* RunningEntryView.swift */; };
+		22E6421925774EC200CCF49F /* LinedBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E6421825774EC200CCF49F /* LinedBackground.swift */; };
+		22E6422225774EE000CCF49F /* CurrentTimeIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E6422125774EE000CCF49F /* CurrentTimeIndicator.swift */; };
 		22F2CD60254BA744008DEB9C /* RunningTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F4655B2541FAD1008BF6F0 /* RunningTimer.swift */; };
 		22FA071A251D0DC800E20C27 /* TokenWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FA0719251D0DC800E20C27 /* TokenWebView.swift */; };
 		22FFF63B2570EA1D00A54471 /* WidgetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2206C5532541DD0600C78477 /* WidgetManager.swift */; };
@@ -675,6 +682,13 @@
 		22DE58ED251EC86F00379396 /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
 		22DE58EF251EC86F00379396 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22DF92D7251D6834007E4635 /* AnyTransitionSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyTransitionSlide.swift; sourceTree = "<group>"; };
+		22E641DC25774E0200CCF49F /* NamespaceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamespaceModel.swift; sourceTree = "<group>"; };
+		22E641E625774E5700CCF49F /* WeekRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekRect.swift; sourceTree = "<group>"; };
+		22E641F625774E7300CCF49F /* DayRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRect.swift; sourceTree = "<group>"; };
+		22E641FF25774E8300CCF49F /* TimeIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIndicator.swift; sourceTree = "<group>"; };
+		22E6420825774E9C00CCF49F /* RunningEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningEntryView.swift; sourceTree = "<group>"; };
+		22E6421825774EC200CCF49F /* LinedBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinedBackground.swift; sourceTree = "<group>"; };
+		22E6422125774EE000CCF49F /* CurrentTimeIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTimeIndicator.swift; sourceTree = "<group>"; };
 		22F2CD51254BA3EE008DEB9C /* WidgetBundleExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WidgetBundleExtension.entitlements; sourceTree = "<group>"; };
 		22F4655B2541FAD1008BF6F0 /* RunningTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningTimer.swift; sourceTree = "<group>"; };
 		22FA0719251D0DC800E20C27 /* TokenWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenWebView.swift; sourceTree = "<group>"; };
@@ -1164,6 +1178,10 @@
 				22D4F593257744F70053ABFB /* DayList.swift */,
 				22D4F531257735F20053ABFB /* ModeSheet.swift */,
 				22D4F5112577354C0053ABFB /* EntryFullScreenModal.swift */,
+				22E641E625774E5700CCF49F /* WeekRect.swift */,
+				22E641F625774E7300CCF49F /* DayRect.swift */,
+				22E641E525774E3D00CCF49F /* Models */,
+				22E641DB25774DE700CCF49F /* CalendarComponents */,
 			);
 			path = FlexibleGraph;
 			sourceTree = "<group>";
@@ -1231,6 +1249,25 @@
 				22DF92D7251D6834007E4635 /* AnyTransitionSlide.swift */,
 			);
 			path = AnyTransition;
+			sourceTree = "<group>";
+		};
+		22E641DB25774DE700CCF49F /* CalendarComponents */ = {
+			isa = PBXGroup;
+			children = (
+				22E641FF25774E8300CCF49F /* TimeIndicator.swift */,
+				22E6420825774E9C00CCF49F /* RunningEntryView.swift */,
+				22E6421825774EC200CCF49F /* LinedBackground.swift */,
+				22E6422125774EE000CCF49F /* CurrentTimeIndicator.swift */,
+			);
+			path = CalendarComponents;
+			sourceTree = "<group>";
+		};
+		22E641E525774E3D00CCF49F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				22E641DC25774E0200CCF49F /* NamespaceModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		22FFF64B2570F8A000A54471 /* Putters */ = {
@@ -1934,6 +1971,7 @@
 				22283DAA24DFA27D005AC0F3 /* SearchTerms.swift in Sources */,
 				22FFF64D2570F8B200A54471 /* BeginningOfWeek.swift in Sources */,
 				C6F605AF246C6B1700D0FE82 /* DateExtension.swift in Sources */,
+				22E641DD25774E0200CCF49F /* NamespaceModel.swift in Sources */,
 				C6EB4733252013B800FCD0CB /* PersistentContainer.swift in Sources */,
 				C68F8C8D24A04CE8000D249B /* IceCreamStick.swift in Sources */,
 				2207B22024B954F40006748A /* OldGraphView.swift in Sources */,
@@ -1952,6 +1990,7 @@
 				C65B7D2C2497DE4A00EED981 /* EntryOperations.swift in Sources */,
 				22D56F042526BB030011C4AC /* RingSize.swift in Sources */,
 				22DC86A424BA838D00FF771F /* TimeEntry+CoreDataClass.swift in Sources */,
+				22E6421925774EC200CCF49F /* LinedBackground.swift in Sources */,
 				22556B3A2574C885003DEB7D /* Entry.swift in Sources */,
 				C688A8882479A8D6003260CE /* TimeFrame.swift in Sources */,
 				C69F02782496AFA200D1C650 /* TimeIntervalExtension.swift in Sources */,
@@ -1961,6 +2000,7 @@
 				22556BA825751684003DEB7D /* Clamp.swift in Sources */,
 				22DC869A24BA7A5E00FF771F /* TimeEntryModel.xcdatamodeld in Sources */,
 				22556B9125750311003DEB7D /* ColorTint.swift in Sources */,
+				22E6420925774E9C00CCF49F /* RunningEntryView.swift in Sources */,
 				22FA071A251D0DC800E20C27 /* TokenWebView.swift in Sources */,
 				22DE58FC251EC87900379396 /* IntentHandler.swift in Sources */,
 				229521562505BF0300085055 /* GetCredentials.swift in Sources */,
@@ -1996,6 +2036,7 @@
 				22D4F5002577345E0053ABFB /* FlexibleGraph.swift in Sources */,
 				22D7459C2505E9B600013A80 /* ZoomLevel.swift in Sources */,
 				22885DB024DA1C9600A56FE3 /* Divisions.swift in Sources */,
+				22E641E725774E5700CCF49F /* WeekRect.swift in Sources */,
 				C6B0FF9C246F124300DED011 /* ColorCustom.swift in Sources */,
 				22A2CE2724E59E4D000820AD /* AngleOperators.swift in Sources */,
 				C63FC2FA249BCFBD00747D49 /* DoubleExtension.swift in Sources */,
@@ -2009,10 +2050,12 @@
 				22283DA824DFA166005AC0F3 /* FilterView.swift in Sources */,
 				229646CF24F322E600FE14E5 /* TagLoader.swift in Sources */,
 				22B0784224B17BEC00256EB8 /* RunningEntry.swift in Sources */,
+				22E641F725774E7300CCF49F /* DayRect.swift in Sources */,
 				2264CB3924AD33D900ECBF2B /* EmailFields.swift in Sources */,
 				2264CB3124AD250600ECBF2B /* WorkspaceManager.swift in Sources */,
 				C6D2E5F1251FA2CF0067C0B0 /* RunningRing.intentdefinition in Sources */,
 				221810E024B0158500B63ECA /* Get24hourPref.swift in Sources */,
+				22E6420025774E8300CCF49F /* TimeIndicator.swift in Sources */,
 				22B261E6254B9AF500182236 /* WidgetBundle.intentdefinition in Sources */,
 				C67F47D3249FD44500FD2E6E /* Project.swift in Sources */,
 				C6D448EC2484710E0072E7D4 /* ActivityIndicator.swift in Sources */,
@@ -2053,6 +2096,7 @@
 				225F69B424AD8CE70012B5DB /* AppView.swift in Sources */,
 				229646D524F3334500FE14E5 /* LoadTags.swift in Sources */,
 				2293CEEB24EC5289000B68F4 /* GraphSaver.swift in Sources */,
+				22E6422225774EE000CCF49F /* CurrentTimeIndicator.swift in Sources */,
 				229646D724F335CA00FE14E5 /* ToOptional.swift in Sources */,
 				2262882224E88691006B330C /* Workspace.swift in Sources */,
 				2293CEED24EC5661000B68F4 /* ProjectLoader.swift in Sources */,
