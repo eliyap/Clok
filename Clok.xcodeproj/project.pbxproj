@@ -343,6 +343,9 @@
 		22E6421925774EC200CCF49F /* LinedBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E6421825774EC200CCF49F /* LinedBackground.swift */; };
 		22E6422225774EE000CCF49F /* CurrentTimeIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E6422125774EE000CCF49F /* CurrentTimeIndicator.swift */; };
 		22E64271257799B100CCF49F /* MoldedRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E64270257799B100CCF49F /* MoldedRectangle.swift */; };
+		22E64281257799E900CCF49F /* MoldedRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E64270257799B100CCF49F /* MoldedRectangle.swift */; };
+		22E64282257799E900CCF49F /* MoldedRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E64270257799B100CCF49F /* MoldedRectangle.swift */; };
+		22E6429A257799EB00CCF49F /* MoldedRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E64270257799B100CCF49F /* MoldedRectangle.swift */; };
 		22F2CD60254BA744008DEB9C /* RunningTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F4655B2541FAD1008BF6F0 /* RunningTimer.swift */; };
 		22FA071A251D0DC800E20C27 /* TokenWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FA0719251D0DC800E20C27 /* TokenWebView.swift */; };
 		22FFF63B2570EA1D00A54471 /* WidgetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2206C5532541DD0600C78477 /* WidgetManager.swift */; };
@@ -1765,6 +1768,7 @@
 				2295214F2505BDE900085055 /* TimeIntervalExtension.swift in Sources */,
 				2292C4FE2505CC68005802B5 /* WidgetView.swift in Sources */,
 				22D56F162526BB090011C4AC /* RingSize.swift in Sources */,
+				22E64281257799E900CCF49F /* MoldedRectangle.swift in Sources */,
 				C6EB47832520170100FCD0CB /* DateMean.swift in Sources */,
 				229521492505BD7600085055 /* Summary.swift in Sources */,
 				2292C4E82505CC1E005802B5 /* Piece7.swift in Sources */,
@@ -1843,6 +1847,7 @@
 				2229D7A424EF5C41004E1034 /* WorkspaceManager.swift in Sources */,
 				C60856C5251FCE2900E6D6C0 /* DateRange.swift in Sources */,
 				228174C62501ACBF008E471D /* WidgetView.swift in Sources */,
+				22E64282257799E900CCF49F /* MoldedRectangle.swift in Sources */,
 				22128E2525422D59004913AF /* ColorScore.swift in Sources */,
 				C6EB476C2520170100FCD0CB /* AngleFromCartesian.swift in Sources */,
 				228174CA2501B49B008E471D /* Summary.swift in Sources */,
@@ -2059,6 +2064,7 @@
 				2229D7AA24EF6BDB004E1034 /* OldCurrentTimeIndicator.swift in Sources */,
 				C6AAB3EA249EF26800DFBA36 /* TimeEntryExtension.swift in Sources */,
 				C6EB45C1251FEDB900FCD0CB /* CoreDataConstants.swift in Sources */,
+				22E6429A257799EB00CCF49F /* MoldedRectangle.swift in Sources */,
 				22FFF6A12571020B00A54471 /* DataFetcher.swift in Sources */,
 				C6C18D492448F96C000345D5 /* ContentView.swift in Sources */,
 				22D4F5002577345E0053ABFB /* FlexibleGraph.swift in Sources */,

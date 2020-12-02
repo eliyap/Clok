@@ -59,8 +59,6 @@ extension FlexibleGraph {
                 DayList(idx: idx)
             }
             StickyDateLabel(idx: idx)
-            Color.red
-                .frame(height: 1)
         }
     }
 }
@@ -79,9 +77,11 @@ extension FlexibleGraph {
          - unlike `.offset`, it cannot go into negative height
          */
         GeometryReader { geo in
-            VStack {
+            VStack(alignment: .leading, spacing: .zero) {
                 Spacer()
                     .frame(maxHeight: bounds.insets.top - geo.frame(in: .global).minY)
+                Color.red
+                    .frame(height: 1)
                 Text(Date()
                     .advanced(by: Double(idx) * .day)
                     .MMMdd
@@ -89,8 +89,10 @@ extension FlexibleGraph {
                     .foregroundColor(.background)
                     .bold()
                     .padding([.leading, .trailing], 3)
-                    .background(Color.red)
-                    .cornerRadius(4)
+                    .background(
+                        MoldedRectangle(cornerRadius: 5)
+                            .foregroundColor(.red)
+                    )
             }
         }
     }
