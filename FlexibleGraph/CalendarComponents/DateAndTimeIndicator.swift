@@ -21,7 +21,7 @@ struct DateAndTimeIndicator: View {
                 }
             }
                 .frame(width: 0, height: 0, alignment: .top)
-            TimeIndicator(divisions: divisions)
+            NewTimeIndicator(divisions: divisions)
         }
     }
 }
