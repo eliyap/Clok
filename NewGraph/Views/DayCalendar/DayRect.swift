@@ -59,7 +59,7 @@ struct DayRect: View {
 //                    .clipped() /// prevent details spilling over
 //            }
 //        }
-        modeAdjusted
+        entry.color(in: mode)
             .cornerRadius(min(size.width * DayRect.cornerScale, height / 2))
             .overlay(EntryDetails, alignment: .top)
             .clipped()
@@ -91,7 +91,7 @@ extension DayRect {
             .opacity(opacity)
             .onAppear { opacity = 1.0 }
             .animation(Animation.linear(duration: 1.0).repeatForever(autoreverses: true))
-            .foregroundColor(modeAdjusted)
+            .foregroundColor(entry.color(in: mode))
     }
 
     var EntryDetails: some View {
@@ -109,20 +109,5 @@ extension DayRect {
             }
         }
             .padding(3)
-    }
-}
-
-// MARK:- Colors
-extension DayRect {
-    /// how much to brighten / darken the view.
-    /// bounded (0, 1)
-    /// not *technically* a stored property
-    var colorAdjustment: CGFloat { 0.3 }
-
-    /// lighten or darken to improve contrast
-    var modeAdjusted: Color {
-        mode == .dark
-            ? entry.color.darken(by: 0.3)
-            : UIColor.white.tinted(with: entry.color)
     }
 }

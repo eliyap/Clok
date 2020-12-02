@@ -57,7 +57,7 @@ struct WeekRect: View {
 //                    .foregroundColor(modeAdjusted)
 //            }
 //        }
-        modeAdjusted
+        entry.color(in: mode)
             .cornerRadius(min(size.width * WeekRect.cornerScale, height / 2))
             .frame(width: size.width * thicc, height: height)
             .matchedGeometryEffect(
@@ -87,21 +87,6 @@ extension WeekRect {
             .opacity(opacity)
             .onAppear { opacity = 1.0 }
             .animation(Animation.linear(duration: 1.0).repeatForever(autoreverses: true))
-            .foregroundColor(modeAdjusted)
-    }
-}
-
-// MARK:- Colors
-extension WeekRect {
-    /// how much to brighten / darken the view.
-    /// bounded (0, 1)
-    /// not *technically* a stored property
-    var colorAdjustment: CGFloat { 0.3 }
-    
-    /// lighten or darken to improve contrast
-    var modeAdjusted: Color {
-        mode == .dark
-            ? entry.color.darken(by: colorAdjustment)
-            : UIColor.white.tinted(with: entry.color)
+            .foregroundColor(entry.color(in: mode))
     }
 }

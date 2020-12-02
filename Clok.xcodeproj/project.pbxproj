@@ -291,6 +291,18 @@
 		22BADC7C2576179E0045BBBB /* WeekStrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BADC7B2576179E0045BBBB /* WeekStrip.swift */; };
 		22BE1FEF24A92B2300A9A739 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BE1FEE24A92B2300A9A739 /* SettingsView.swift */; };
 		22BE1FF424A92DE500A9A739 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BE1FF324A92DE500A9A739 /* Settings.swift */; };
+		22D4F4BA257722F60053ABFB /* TimeEntryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4F4B9257722F60053ABFB /* TimeEntryExtensions.swift */; };
+		22D4F4BB257722F60053ABFB /* TimeEntryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4F4B9257722F60053ABFB /* TimeEntryExtensions.swift */; };
+		22D4F4BC257722F60053ABFB /* TimeEntryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4F4B9257722F60053ABFB /* TimeEntryExtensions.swift */; };
+		22D4F4C4257724400053ABFB /* ColorTint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22556B9025750311003DEB7D /* ColorTint.swift */; };
+		22D4F4CC257724400053ABFB /* ColorTint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22556B9025750311003DEB7D /* ColorTint.swift */; };
+		22D4F4CD257724410053ABFB /* ColorTint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22556B9025750311003DEB7D /* ColorTint.swift */; };
+		22D4F4CE257724410053ABFB /* ColorTint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22556B9025750311003DEB7D /* ColorTint.swift */; };
+		22D4F4CF257724420053ABFB /* ColorTint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22556B9025750311003DEB7D /* ColorTint.swift */; };
+		22D4F4D7257724430053ABFB /* ColorTint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22556B9025750311003DEB7D /* ColorTint.swift */; };
+		22D4F4DF2577247A0053ABFB /* ColorHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE2D24E59F88000820AD /* ColorHex.swift */; };
+		22D4F4E72577247B0053ABFB /* ColorHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE2D24E59F88000820AD /* ColorHex.swift */; };
+		22D4F4EF2577247C0053ABFB /* ColorHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE2D24E59F88000820AD /* ColorHex.swift */; };
 		22D56F042526BB030011C4AC /* RingSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D56F032526BB030011C4AC /* RingSize.swift */; };
 		22D56F0D2526BB080011C4AC /* RingSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D56F032526BB030011C4AC /* RingSize.swift */; };
 		22D56F162526BB090011C4AC /* RingSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D56F032526BB030011C4AC /* RingSize.swift */; };
@@ -660,6 +672,7 @@
 		22BADC7B2576179E0045BBBB /* WeekStrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekStrip.swift; sourceTree = "<group>"; };
 		22BE1FEE24A92B2300A9A739 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		22BE1FF324A92DE500A9A739 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		22D4F4B9257722F60053ABFB /* TimeEntryExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntryExtensions.swift; sourceTree = "<group>"; };
 		22D56F032526BB030011C4AC /* RingSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingSize.swift; sourceTree = "<group>"; };
 		22D5F3E1256F8A0D00806992 /* Detailed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detailed.swift; sourceTree = "<group>"; };
 		22D5F4F62570CFDB00806992 /* MR_TimeIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MR_TimeIndicator.swift; sourceTree = "<group>"; };
@@ -1257,6 +1270,7 @@
 				22DC869D24BA838D00FF771F /* Project+CoreDataProperties.swift */,
 				22DC869E24BA838D00FF771F /* TimeEntry+CoreDataClass.swift */,
 				22DC869F24BA838D00FF771F /* TimeEntry+CoreDataProperties.swift */,
+				22D4F4B9257722F60053ABFB /* TimeEntryExtensions.swift */,
 				229646D024F3294900FE14E5 /* Tag+CoreDataClass.swift */,
 				229646D124F3294900FE14E5 /* Tag+CoreDataProperties.swift */,
 				222D992524BAB2FD00F66E0F /* DecoderExtension.swift */,
@@ -1763,6 +1777,7 @@
 				2292C4FB2505CC1E005802B5 /* Board.swift in Sources */,
 				2292C4EE2505CC1E005802B5 /* PrettyPrint.swift in Sources */,
 				22D5F43625707F9600806992 /* Project+CoreDataProperties.swift in Sources */,
+				22D4F4CE257724410053ABFB /* ColorTint.swift in Sources */,
 				229521532505BEAB00085055 /* WorkspaceManager.swift in Sources */,
 				229521462505BD7600085055 /* NoSummary.swift in Sources */,
 				2292C4ED2505CC1E005802B5 /* ConfigurablePiece.swift in Sources */,
@@ -1812,6 +1827,7 @@
 				C60856BC251FCE1B00E6D6C0 /* Tag+CoreDataProperties.swift in Sources */,
 				C60856B5251FCE1B00E6D6C0 /* Project+CoreDataProperties.swift in Sources */,
 				22DE5903251EC87900379396 /* IntentHandler.swift in Sources */,
+				22D4F4BB257722F60053ABFB /* TimeEntryExtensions.swift in Sources */,
 				C6EB47692520170100FCD0CB /* AngleAsDate.swift in Sources */,
 				22556BAB25751685003DEB7D /* Clamp.swift in Sources */,
 				C60856BB251FCE1B00E6D6C0 /* TimeEntry+CoreDataClass.swift in Sources */,
@@ -1845,6 +1861,7 @@
 				228174D02501CAFC008E471D /* SummaryTimelineEntry.swift in Sources */,
 				22A2CE2F24E59F8B000820AD /* ColorHex.swift in Sources */,
 				22556B612574C97F003DEB7D /* Entry.swift in Sources */,
+				22D4F4CD257724410053ABFB /* ColorTint.swift in Sources */,
 				229428DD251E7E7E008C0BFF /* Mod.swift in Sources */,
 				C60856B8251FCE1B00E6D6C0 /* LoadTags.swift in Sources */,
 				C60856BA251FCE1B00E6D6C0 /* LoadEntries.swift in Sources */,
@@ -1879,7 +1896,9 @@
 				22B2624A254B9CD300182236 /* FormRequest.swift in Sources */,
 				2287246425721D970082A490 /* DetailedProject.swift in Sources */,
 				22B261E5254B9AF500182236 /* WidgetBundle.intentdefinition in Sources */,
+				22D4F4CF257724420053ABFB /* ColorTint.swift in Sources */,
 				22B26286254B9D5600182236 /* AngleExtension.swift in Sources */,
+				22D4F4BC257722F60053ABFB /* TimeEntryExtensions.swift in Sources */,
 				22B261F8254B9B6D00182236 /* RR_Widget.swift in Sources */,
 				2205DCAB254B9FFE00146EAB /* TimeEntry+CoreDataProperties.swift in Sources */,
 				2205DC82254B9FAD00146EAB /* Project+CoreDataClass.swift in Sources */,
@@ -1948,11 +1967,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				22D5F4852570B1A700806992 /* DecoderExtension.swift in Sources */,
+				22D4F4EF2577247C0053ABFB /* ColorHex.swift in Sources */,
 				221F622A251EE106000ECED9 /* KeychainConstants.swift in Sources */,
 				221F621C251EE0FA000ECED9 /* FormRequest.swift in Sources */,
 				221F6223251EE101000ECED9 /* GetCredentials.swift in Sources */,
 				C6EB45D4251FEDC000FCD0CB /* CoreDataConstants.swift in Sources */,
 				221F624E251EE15D000ECED9 /* RawProject.swift in Sources */,
+				22D4F4D7257724430053ABFB /* ColorTint.swift in Sources */,
 				22DE58EE251EC86F00379396 /* IntentHandler.swift in Sources */,
 				221F6231251EE10B000ECED9 /* KeychainError.swift in Sources */,
 				22DE591D251EC91200379396 /* ClokWidget.intentdefinition in Sources */,
@@ -2096,6 +2117,7 @@
 				22928AC724A423AA00DC9EC5 /* ButtonGlyph.swift in Sources */,
 				2229D7B024F0459F004E1034 /* FetchRunningEntry.swift in Sources */,
 				22885DB224DA1E2E00A56FE3 /* OldTimeIndicator.swift in Sources */,
+				22D4F4BA257722F60053ABFB /* TimeEntryExtensions.swift in Sources */,
 				C6AAB3F2249F061D00DFBA36 /* TimeData.swift in Sources */,
 				229646D324F3294900FE14E5 /* Tag+CoreDataProperties.swift in Sources */,
 				2287255D257378BB0082A490 /* ScrollStack.swift in Sources */,
@@ -2129,6 +2151,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22D4F4C4257724400053ABFB /* ColorTint.swift in Sources */,
+				22D4F4DF2577247A0053ABFB /* ColorHex.swift in Sources */,
 				C6C18D5C2448F96F000345D5 /* LandwarksTests.swift in Sources */,
 				22556BA925751684003DEB7D /* Clamp.swift in Sources */,
 			);
@@ -2138,6 +2162,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22D4F4CC257724400053ABFB /* ColorTint.swift in Sources */,
+				22D4F4E72577247B0053ABFB /* ColorHex.swift in Sources */,
 				C6C18D672448F96F000345D5 /* LandwarksUITests.swift in Sources */,
 				22556BAA25751685003DEB7D /* Clamp.swift in Sources */,
 			);

@@ -14,6 +14,7 @@ struct ListView: View {
     @EnvironmentObject private var data: TimeData
     @EnvironmentObject private var model: NewGraphModel
     @Environment(\.namespace) var namespace
+    @Environment(\.colorScheme) var mode
     @FetchRequest(
         entity: TimeEntry.entity(),
         sortDescriptors: []
@@ -56,7 +57,7 @@ struct ListView: View {
             }
         }
             .padding(3)
-            .background(entry.color)
+            .background(entry.color(in: mode))
             .matchedGeometryEffect(id:
                 NamespaceModel(
                     entry: entry,

@@ -18,7 +18,7 @@ extension UIColor {
     static let TogglTint: Double = 0.24
     
     func tinted(with tint: Color, amount: Double = TogglTint) -> Color {
-        let (_r, _g, _b, _) = tint.components
+        let (_r, _g, _b, _): (CGFloat, CGFloat, CGFloat, CGFloat) = tint.components
         var (r,g,b,a) = (CGFloat.zero, CGFloat.zero, CGFloat.zero, CGFloat.zero)
         self.getRed(&r, green: &g, blue: &b, alpha: &a)
         return Color(.sRGB,
