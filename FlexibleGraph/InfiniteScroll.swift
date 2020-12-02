@@ -59,6 +59,8 @@ extension FlexibleGraph {
                 DayList(idx: idx)
             }
             StickyDateLabel(idx: idx)
+            Color.red
+                .frame(height: 1)
         }
     }
 }
