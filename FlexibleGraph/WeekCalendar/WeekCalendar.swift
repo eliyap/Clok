@@ -27,10 +27,10 @@ extension FlexibleGraph {
                 .frame(width: size.width, height: size.height)
         }
             .frame(width: 3 * size.width)
+            .drawingGroup()
             /// consume the space taken by the `Footer`, so that the scroll is continuous
             .padding(.top, -FlexibleGraph.footerHeight)
             .offset(x: size.width)
-            .drawingGroup()
     }
     
     func WeekCalendarBody(size: CGSize, idx: Int) -> some View {
