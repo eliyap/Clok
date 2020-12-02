@@ -35,9 +35,7 @@ extension FlexibleGraph {
                         .onAppear { proxy.scrollTo(0) }
                 }
             }
-                /**
-                 Flipped over so user can infinitely scroll "up" (actually down) to previous days
-                 */
+                /** Flipped over so user can infinitely scroll "up" (actually down) to previous days */
                 .rotationEffect(.tau / 2)
         }
     }
