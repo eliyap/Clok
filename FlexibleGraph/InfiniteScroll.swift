@@ -58,58 +58,38 @@ extension FlexibleGraph {
             case .listMode:
                 DayList(idx: idx)
             }
-            GeometryReader { geo in
-                VStack {
-                    /** Technical Note
-                     Spacer is the ideal solution for engineering a "Sticky" header
-                     - unlike `.offset`, it cannot push the view out of frame!
-                     - unlike `.offset`, it cannot go into negative height
-                     */
-                    Spacer()
-                        .frame(maxHeight: bounds.insets.top - geo.frame(in: .global).minY)
-                    Text(Date()
-                        .advanced(by: Double(idx) * .day)
-                        .MMMdd
-                    )
-                        .foregroundColor(.background)
-                        .bold()
-                        .padding([.leading, .trailing], 3)
-                        .background(Color.red)
-                        .cornerRadius(4)
-                }
-            }
+            StickyDateLabel(idx: idx)
         }
-            
     }
 }
 
 // MARK:- Page Footer
 extension FlexibleGraph {
     
-    /// Renders a small date header (actually a footer) above each page
+    /// Renders a small date header
     /// - Parameters:
     ///   - idx: the number of this page, determines the date shown
-    ///   - size: the size of the page
     /// - Returns: `View`
-    func Footer(idx: Int, size: CGSize) -> some View {
-        HStack(spacing: .zero) {
-            /// prevents the `DateIndicator` from covering the `TimeIndicator`
-            WidthHelper(size: size)
-            Text(Date()
-                .advanced(by: Double(idx) * .day)
-                .MMMdd
-            )
-                .foregroundColor(.background)
-                .font(.system(size: FlexibleGraph.footerHeight - 5))
-                .bold()
-                .frame(height: FlexibleGraph.footerHeight)
-                .padding([.leading, .trailing], 3)
-                .background(
-                    RoundedCornerRectangle(radius: 4, corners: [.bottomRight, .topRight])
-                        .foregroundColor(.red)
+    func StickyDateLabel(idx: Int) -> some View {
+        /** Technical Note
+         Spacer is the ideal solution for engineering a "Sticky" header
+         - unlike `.offset`, it cannot push the view out of frame!
+         - unlike `.offset`, it cannot go into negative height
+         */
+        GeometryReader { geo in
+            VStack {
+                Spacer()
+                    .frame(maxHeight: bounds.insets.top - geo.frame(in: .global).minY)
+                Text(Date()
+                    .advanced(by: Double(idx) * .day)
+                    .MMMdd
                 )
-            /// push view against the left edge of the graph
-            Spacer()
+                    .foregroundColor(.background)
+                    .bold()
+                    .padding([.leading, .trailing], 3)
+                    .background(Color.red)
+                    .cornerRadius(4)
+            }
         }
     }
 }
