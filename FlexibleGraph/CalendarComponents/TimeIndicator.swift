@@ -57,30 +57,4 @@ struct NewTimeIndicator: View {
         return text
             .padding([.leading, .trailing], labelPadding)
     }
-    
-    /// time indicators shown in `.graph` mode
-    var GraphTime: some View {
-        VStack(alignment: .trailing) {
-            ForEach((0..<divisions).reversed(), id: \.self) {
-                Spacer()
-                GraphLabel(idx: $0)
-            }
-        }
-    }
-    
-    private func GraphLabel(idx: Int) -> some View {
-        let hours: String!
-        switch divisions {
-        case _ where divisions <= 24: /// integer division is safe
-            hours = "\(idx * 24 / divisions)"
-        case 24 * 2: /// half hours: 1 d.p.
-            hours = String(format: "%.1f", Double(idx) * 24 / Double(divisions))
-        case 24 * 4: /// quarter hours: 2 d.p.
-            hours = String(format: "%.2f", Double(idx) * 24 / Double(divisions))
-        default:
-            hours = String(format: "%.2f", Double(idx) * 24 / Double(divisions))
-        }
-        return Text("\(hours) h")
-            .padding([.leading, .trailing], labelPadding)
-    }
 }
