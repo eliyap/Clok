@@ -52,7 +52,7 @@ extension FlexibleGraph {
             case .dayMode:
                 DayCalendar(size: size, idx: idx)
             case .weekMode:
-                WeekCalendarBody(size: size, idx: idx)
+                WeekCalendar(size: size, idx: idx)
             case .listMode:
                 DayList(idx: idx)
             }
