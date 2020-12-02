@@ -28,7 +28,7 @@ extension FlexibleGraph {
         }
             .frame(width: 3 * size.width)
             /// consume the space taken by the `Footer`, so that the scroll is continuous
-            .padding(.top, -NewGraph.footerHeight)
+            .padding(.top, -FlexibleGraph.footerHeight)
             .offset(x: size.width)
     }
     

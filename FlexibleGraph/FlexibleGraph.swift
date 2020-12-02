@@ -34,6 +34,9 @@ struct FlexibleGraph: View {
     
     @EnvironmentObject var data: TimeData
     
+    /// fixed size footer, unfortunate but necessary
+    static let footerHeight: CGFloat = 20
+    
     //MARK:- Body
     var body: some View {
         /// switch out full screen modal when an entry is pushed

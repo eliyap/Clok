@@ -77,9 +77,9 @@ extension FlexibleGraph {
                 .MMMdd
             )
                 .foregroundColor(.background)
-                .font(.system(size: NewGraph.footerHeight - 5))
+                .font(.system(size: FlexibleGraph.footerHeight - 5))
                 .bold()
-                .frame(height: NewGraph.footerHeight)
+                .frame(height: FlexibleGraph.footerHeight)
                 .padding([.leading, .trailing], 3)
                 .background(
                     RoundedCornerRectangle(radius: 4, corners: [.bottomRight, .topRight])
