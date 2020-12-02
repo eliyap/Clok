@@ -47,7 +47,7 @@ struct FlexibleGraph: View {
             
      Note: there is a soft limit on past days, but a HARD limit on future days
      */
-    @State var RowList = Array((-(365*3)...30).reversed())
+    @State var RowList = Array((-(365*3)...0).reversed())
     
     //MARK:- Body
     var body: some View {
@@ -56,14 +56,14 @@ struct FlexibleGraph: View {
             EntryFullScreenModal
         } else {
             #warning("placeholder UI")
-            VStack {
+            VStack(spacing: .zero) {
+                InfiniteScroll
                 Button {
                     showSheet = true
                 } label: {
                     Text("Transform!")
                 }
                     .actionSheet(isPresented: $showSheet) { ModeSheet }
-                InfiniteScroll
             }
         }
     }

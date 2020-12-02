@@ -30,6 +30,7 @@ extension FlexibleGraph {
             /// consume the space taken by the `Footer`, so that the scroll is continuous
             .padding(.top, -FlexibleGraph.footerHeight)
             .offset(x: size.width)
+            .drawingGroup()
     }
     
     func WeekCalendarBody(size: CGSize, idx: Int) -> some View {
@@ -50,7 +51,6 @@ extension FlexibleGraph {
         }
             /// NOTE: apply lined background to whole stack, NOT individual `DayStrip`!
             .background(NewLinedBackground(divisions: evenDivisions(for: size.height)))
-            .drawingGroup()
     }
     
     // MARK:- WeekStrip
