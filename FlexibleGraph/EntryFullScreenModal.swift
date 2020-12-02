@@ -10,9 +10,28 @@ import SwiftUI
 
 extension FlexibleGraph {
     var EntryFullScreenModal: some View {
-        Rectangle()
-            .foregroundColor(model.selected?.entry.color)
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .matchedGeometryEffect(id: model.selected!, in: namespace)
+        ScrollView {
+            VStack(alignment: .leading) {
+                HStack {
+                    VStack(alignment: .leading) {
+                        Button {
+                            withAnimation { model.selected = .none }
+                        } label: {
+                            Image(systemName: "xmark")
+                        }
+                            .buttonStyle(PlainButtonStyle())
+                        Text(model.selected?.entry.wrappedDescription ?? "[No Description]")
+                            .font(.title)
+                        Label(model.selected?.entry.projectName ?? StaticProject.noProject.name, systemImage: "folder.fill")
+                        Label(model.selected?.entry.dur.toString() ?? placeholderTime, systemImage: "stopwatch")
+                    }
+                    Spacer()
+                }
+                    .padding()
+                    .background(model.selected?.entry.color)
+                    .matchedGeometryEffect(id: model.selected!, in: namespace)
+            }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+        }
     }
 }
