@@ -48,7 +48,7 @@ struct FlexibleGraph: View {
                     Text("Transform!")
                 }
                     .actionSheet(isPresented: $showSheet) { ModeSheet }
-                NewGraph()
+                InfiniteScroll
             }
         }
     }
