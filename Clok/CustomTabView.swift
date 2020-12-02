@@ -53,7 +53,7 @@ struct CustomTabView: View {
         Group {
             switch tab {
             case .spiral:
-                EntryNavigation()
+                FlexibleGraph()
             case .bar:
                 BarStack()
             case .settings:
