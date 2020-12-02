@@ -303,6 +303,8 @@
 		22D4F4DF2577247A0053ABFB /* ColorHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE2D24E59F88000820AD /* ColorHex.swift */; };
 		22D4F4E72577247B0053ABFB /* ColorHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE2D24E59F88000820AD /* ColorHex.swift */; };
 		22D4F4EF2577247C0053ABFB /* ColorHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE2D24E59F88000820AD /* ColorHex.swift */; };
+		22D4F5002577345E0053ABFB /* FlexibleGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4F4FF2577345E0053ABFB /* FlexibleGraph.swift */; };
+		22D4F5122577354C0053ABFB /* EntryFullScreenModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4F5112577354C0053ABFB /* EntryFullScreenModal.swift */; };
 		22D56F042526BB030011C4AC /* RingSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D56F032526BB030011C4AC /* RingSize.swift */; };
 		22D56F0D2526BB080011C4AC /* RingSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D56F032526BB030011C4AC /* RingSize.swift */; };
 		22D56F162526BB090011C4AC /* RingSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D56F032526BB030011C4AC /* RingSize.swift */; };
@@ -673,6 +675,8 @@
 		22BE1FEE24A92B2300A9A739 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		22BE1FF324A92DE500A9A739 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		22D4F4B9257722F60053ABFB /* TimeEntryExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntryExtensions.swift; sourceTree = "<group>"; };
+		22D4F4FF2577345E0053ABFB /* FlexibleGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlexibleGraph.swift; sourceTree = "<group>"; };
+		22D4F5112577354C0053ABFB /* EntryFullScreenModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryFullScreenModal.swift; sourceTree = "<group>"; };
 		22D56F032526BB030011C4AC /* RingSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingSize.swift; sourceTree = "<group>"; };
 		22D5F3E1256F8A0D00806992 /* Detailed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detailed.swift; sourceTree = "<group>"; };
 		22D5F4F62570CFDB00806992 /* MR_TimeIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MR_TimeIndicator.swift; sourceTree = "<group>"; };
@@ -1237,6 +1241,15 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
+		22D4F4FE2577340B0053ABFB /* FlexibleGraph */ = {
+			isa = PBXGroup;
+			children = (
+				22D4F4FF2577345E0053ABFB /* FlexibleGraph.swift */,
+				22D4F5112577354C0053ABFB /* EntryFullScreenModal.swift */,
+			);
+			path = FlexibleGraph;
+			sourceTree = "<group>";
+		};
 		22D5F3D1256F893900806992 /* Summary */ = {
 			isa = PBXGroup;
 			children = (
@@ -1384,6 +1397,7 @@
 				C6B0FFA0246F52A700DED011 /* Models */,
 				225F69B524AD8EE20012B5DB /* EntryList */,
 				227C613824A3F5D9006F8168 /* Controls */,
+				22D4F4FE2577340B0053ABFB /* FlexibleGraph */,
 				2287255B257378A50082A490 /* NewGraph */,
 				225B044024B2A5DD00780424 /* LineGraph */,
 				C65B7D282497D1C100EED981 /* Statistics */,
@@ -2051,6 +2065,7 @@
 				229646C624F06AFF00FE14E5 /* OldEntryRect.swift in Sources */,
 				2229D7A824EF6750004E1034 /* DateComponent.swift in Sources */,
 				2264CB3524AD330500ECBF2B /* IconView.swift in Sources */,
+				22D4F5122577354C0053ABFB /* EntryFullScreenModal.swift in Sources */,
 				22A2CE2B24E59ED0000820AD /* AngleFromCartesian.swift in Sources */,
 				22BADC7C2576179E0045BBBB /* WeekStrip.swift in Sources */,
 				22A2CE2424E59DFE000820AD /* DateMean.swift in Sources */,
@@ -2066,6 +2081,7 @@
 				C6EB45C1251FEDB900FCD0CB /* CoreDataConstants.swift in Sources */,
 				22FFF6A12571020B00A54471 /* DataFetcher.swift in Sources */,
 				C6C18D492448F96C000345D5 /* ContentView.swift in Sources */,
+				22D4F5002577345E0053ABFB /* FlexibleGraph.swift in Sources */,
 				22D7459C2505E9B600013A80 /* ZoomLevel.swift in Sources */,
 				22885DB024DA1C9600A56FE3 /* Divisions.swift in Sources */,
 				C6B0FF9C246F124300DED011 /* ColorCustom.swift in Sources */,
