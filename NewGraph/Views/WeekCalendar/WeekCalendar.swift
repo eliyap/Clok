@@ -33,7 +33,13 @@ struct WeekCalendar: View {
             ) { midnight in
                 Divider()
                 WeekStrip(
-                    entries: entries(midnight: midnight),
+                    /// filter & sort time entries for this day
+                    /// the day begins at provided `midnight`
+                    entries: entries
+                        .filter{$0.end > midnight}
+                        .filter{$0.start < midnight + .day}
+                        /// chronological sort
+                        .sorted{$0.start < $1.start},
                     midnight: midnight,
                     terms: data.terms,
                     animationInfo: (
@@ -45,18 +51,8 @@ struct WeekCalendar: View {
                     .frame(height: dayHeight)
             }
         }
-        /// NOTE: apply lined background to whole stack, NOT individual `DayStrip`!
-        .background(NewLinedBackground(divisions: evenDivisions(for: dayHeight)))
-        .drawingGroup()
-    }
-    
-    /// filter & sort time entries for this day
-    /// the day begins at provided `midnight`
-    func entries(midnight: Date) -> [TimeEntry] {
-        entries
-            .filter{$0.end > midnight}
-            .filter{$0.start < midnight + .day}
-            /// chronological sort
-            .sorted{$0.start < $1.start}
+            /// NOTE: apply lined background to whole stack, NOT individual `DayStrip`!
+            .background(NewLinedBackground(divisions: evenDivisions(for: dayHeight)))
+            .drawingGroup()
     }
 }

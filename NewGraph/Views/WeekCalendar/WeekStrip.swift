@@ -32,10 +32,13 @@ struct WeekStrip: View {
                         midnight: midnight,
                         animationInfo: animationInfo
                     )
-                        .offset(y: padding(for: entry, size: geo.size))
+                        /// push `View` down to `(proportion through the day x height)`
+                        .offset(y: CGFloat((entry.start - midnight) / .day) * geo.size.height)
+                        /// fade out views that do not match the filter
                         .opacity(entry.matches(terms) ? 1 : 0.25)
+                        /// push View to stack when tapped
                         .onTapGesture {
-                            withAnimation {
+                        withAnimation {
                                 model.selected = NamespaceModel(
                                     entry: entry,
                                     row: animationInfo.row,
@@ -43,21 +46,8 @@ struct WeekStrip: View {
                                 )
                             }
                         }
-//                        .matchedGeometryEffect(
-//                            id: NamespaceModel(
-//                                entry: entry,
-//                                row: animationInfo.row,
-//                                col: animationInfo.col
-//                            ),
-//                            in: animationInfo.namespace,
-//                            anchor: .bottomTrailing
-//                        )
                 }
-                    .frame(
-                        width: geo.size.width,
-                        height: geo.size.height,
-                        alignment: .top
-                    )
+                    .frame(width: geo.size.width, height: geo.size.height, alignment: .top)
                 
                 /// show current time in `calendar` mode
                 if midnight == Date().midnight {
@@ -71,11 +61,5 @@ struct WeekStrip: View {
                 }
             }
         }
-    }
-    
-    /// calculate appropriate distance to next `entry`
-    func padding(for entry: TimeEntry, size: CGSize) -> CGFloat {
-        let scale = size.height / CGFloat(.day)
-        return CGFloat(entry.start - midnight) * scale
     }
 }

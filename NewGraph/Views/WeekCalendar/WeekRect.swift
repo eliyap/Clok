@@ -57,8 +57,8 @@ struct WeekRect: View {
 //                    .foregroundColor(modeAdjusted)
 //            }
 //        }
-        Rectangle()
-            .foregroundColor(modeAdjusted)
+        modeAdjusted
+            .cornerRadius(min(size.width * WeekRect.cornerScale, height / 2))
             .frame(width: size.width * thicc, height: height)
             .matchedGeometryEffect(
                 id: NamespaceModel(
