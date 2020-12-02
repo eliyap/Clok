@@ -16,7 +16,7 @@ final class NewGraphModel: ObservableObject {
     }
     
     /// registers the selection of `TimeEntry`s
-    @Published var selected: NamespaceModel = NamespaceModel(entry: .none, row: 0, col: .zero)
+    @Published var selected: NamespaceModel? = nil
     
     /// registers what mode the view is in
     @Published var mode: GraphMode = .weekMode

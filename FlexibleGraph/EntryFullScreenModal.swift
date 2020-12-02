@@ -11,8 +11,6 @@ import SwiftUI
 extension FlexibleGraph {
     var EntryFullScreenModal: some View {
         ScrollView {
-//            Color.black
-//                .matchedGeometryEffect(id: model.selected, in: namespace)
             VStack(alignment: .leading) {
                 HStack {
                     VStack(alignment: .leading) {
@@ -22,16 +20,16 @@ extension FlexibleGraph {
                             Image(systemName: "xmark")
                         }
                             .buttonStyle(PlainButtonStyle())
-                        Text(model.selected.entry?.wrappedDescription ?? "[No Description]")
+                        Text(model.selected?.entry.wrappedDescription ?? "[No Description]")
                             .font(.title)
-                        Label(model.selected.entry?.projectName ?? StaticProject.noProject.name, systemImage: "folder.fill")
-                        Label(model.selected.entry?.dur.toString() ?? placeholderTime, systemImage: "stopwatch")
+                        Label(model.selected?.entry.projectName ?? StaticProject.noProject.name, systemImage: "folder.fill")
+                        Label(model.selected?.entry.dur.toString() ?? placeholderTime, systemImage: "stopwatch")
                     }
                     Spacer()
                 }
                     .padding()
-                    .background(model.selected.entry?.color)
-                    .matchedGeometryEffect(id: model.selected, in: namespace)
+                    .background(model.selected?.entry.color)
+                    .matchedGeometryEffect(id: model.selected!, in: namespace)
             }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
