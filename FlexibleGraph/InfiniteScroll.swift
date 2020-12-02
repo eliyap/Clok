@@ -95,24 +95,3 @@ extension FlexibleGraph {
         }
     }
 }
-
-// MARK:- Width Helper
-extension FlexibleGraph {
-    /**
-     Wrapper around  an invisible`TimeIndicator`.
-     Keeps the labels aligned correctly above their respective days
-     */
-    func WidthHelper(size: CGSize) -> some View {
-        /// `TimeIndicator` is very tall, so wrap it in a `ScrollView`
-        /// to allow it to collapse its height without messing up the width
-        ScrollView {
-            NewTimeIndicator(divisions: evenDivisions(for: size.height))
-        }
-            /// view should be invisible and non-interactable
-            .opacity(0)
-            .allowsHitTesting(false)
-            .disabled(true)
-            .frame(height: .zero)
-    }
-}
-
