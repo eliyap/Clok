@@ -9,6 +9,12 @@
 import SwiftUI
 
 struct FlexibleGraph: View {
+    /**
+     Against my better judgement, this entire view is written in ONE struct, so that they may all share a `Namespace`.
+     Alternative 1: pass `Namespace.ID` down 10 levels of hierarchy (hint: not happening)
+     Alternative 2: make `Namespace.ID` an environment var (skip the hierarchy). I tried this, and swift started complaining at me, so here we are.
+     */
+    
     
     //MARK:- Properties
     /// tracks the `View`'s state, such as its mode and which `TimeEntry` is selected
