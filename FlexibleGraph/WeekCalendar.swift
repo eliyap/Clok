@@ -35,7 +35,7 @@ extension FlexibleGraph {
     func WeekCalendarBody(size: CGSize, idx: Int) -> some View {
         let start = Date().midnight.advanced(by: Double(idx) * .day)
         /// since above `HStack`s this, just return `Group`
-        return Group {
+        return HStack(spacing: .zero) {
             NewTimeIndicator(divisions: evenDivisions(for: size.height))
             /// use date enum so SwiftUI can identify horizontal swipes without redrawing everything
             ForEach(
