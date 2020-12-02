@@ -12,6 +12,10 @@ extension FlexibleGraph {
     func DayList(idx: Int) -> some View {
         let start = Date().midnight.advanced(by: Double(idx) * .day)
         return VStack {
+            /// pushes the first entry clear of the `DateLabel`
+            Text(".")
+                .bold()
+                .foregroundColor(.clear)
             ForEach(
                 entries
                     /// **NOTE**: this filter EXCLUDES entries that started before midnight, to prevent `matchedGeometryEffect` duplicates
