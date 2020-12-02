@@ -46,6 +46,11 @@ struct FlexibleGraph: View {
         Most users will not experience the animation hitching (lordwilling), but those wishing to dip years into their Toggl archive will be *able* to do so.
             
      Note: there is a soft limit on past days, but a HARD limit on future days
+
+     Note: UIKit scrollsToTop (https://developer.apple.com/documentation/uikit/uiscrollview/1619421-scrollstotop)
+     is not (yet) available in ScrollView, so tapping the status bar sends the view ALLLL the way down.
+     Therefore I am capping future exploration at 0 days, which should not affect TimeEntries that aren't recorded in the future.
+     If this changes, do allow exploration of the future by increasing the cap
      */
     @State var RowList = Array((-(365*3)...0).reversed())
     
