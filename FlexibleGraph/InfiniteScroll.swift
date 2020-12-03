@@ -77,6 +77,11 @@ extension FlexibleGraph {
          - unlike `.offset`, it cannot go into negative height
          */
         GeometryReader { geo in
+            Run {
+                if (bounds.insets.top - geo.frame(in: .global).minY).isBetween(0, geo.size.height) {
+                    activeRow = idx
+                }
+            }
             VStack(alignment: .leading, spacing: .zero) {
                 Spacer()
                     .frame(maxHeight: bounds.insets.top - geo.frame(in: .global).minY)

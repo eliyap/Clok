@@ -26,6 +26,8 @@ struct FlexibleGraph: View {
     /// used for our `matchedGeometryEffect` animations
     @Namespace var namespace
     
+    @State var activeRow: Int = .zero
+    
     /// access CoreData `TimeEntry` storage
     @FetchRequest(
         entity: TimeEntry.entity(),
@@ -83,6 +85,11 @@ struct FlexibleGraph: View {
                         Text("Experiment")
                     }
                 }
+                #warning("temporary monitor")
+                Text(" ")
+                    .onChange(of: activeRow) { row in
+//                        print(row)
+                    }
             }
         }
     }
