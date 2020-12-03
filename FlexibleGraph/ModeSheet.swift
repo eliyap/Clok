@@ -11,16 +11,23 @@ import SwiftUI
 extension FlexibleGraph {
     var ModeSheet: ActionSheet {
         ActionSheet(title: Text("Graph Mode"), buttons: [
-            .default(Text("Day")) {
+            .default(Text("Day".tickedIf(model.mode == .dayMode))) {
                 withAnimation { model.mode = .dayMode }
             },
-            .default(Text("Week")) {
+            .default(Text("Week".tickedIf(model.mode == .weekMode))) {
                 withAnimation { model.mode = .weekMode }
             },
-            .default(Text("List")) {
+            .default(Text("List".tickedIf(model.mode == .listMode))) {
                 withAnimation { model.mode = .listMode }
             },
             .cancel()
         ])
+    }
+}
+
+fileprivate extension String {
+    /// a slightly weak visual attempt to center text with an added tick mark
+    func tickedIf(_ condition: Bool) -> String {
+        condition ? "    \(self) ✓ " : self
     }
 }
