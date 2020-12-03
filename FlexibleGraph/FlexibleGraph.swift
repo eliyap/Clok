@@ -70,12 +70,19 @@ struct FlexibleGraph: View {
             #warning("placeholder UI")
             VStack(spacing: .zero) {
                 InfiniteScroll
-                Button {
-                    showSheet = true
-                } label: {
-                    Text("Transform!")
+                HStack {
+                    Button {
+                        showSheet = true
+                    } label: {
+                        Text("Transform!")
+                    }
+                        .actionSheet(isPresented: $showSheet) { ModeSheet }
+                    Button {
+                        RowList.insert(RowList[0] + 1, at: 0)
+                    } label: {
+                        Text("Experiment")
+                    }
                 }
-                    .actionSheet(isPresented: $showSheet) { ModeSheet }
             }
         }
     }
