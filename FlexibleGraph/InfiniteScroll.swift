@@ -20,6 +20,12 @@ extension FlexibleGraph {
                 ScrollViewReader { proxy in
                     LazyVStack(alignment: .leading, spacing: .zero) {
                         ForEach(RowList, id: \.self) { idx in
+                            /// invisible anchor shape for `scrollTo` to latch onto
+                            Rectangle()
+                                .frame(height: .zero)
+                                /// draw a distinct ID that counts the same way
+                                .id(Double(idx) + 0.5)
+                            /// for a variety of uninteresting reasons, this frame cannot be used by `scrollTo`
                             Page(idx: idx, size: geo.size)
                                 /// flip view back over
                                 .rotationEffect(.tau / 2)
@@ -31,8 +37,6 @@ extension FlexibleGraph {
                                 }
                         }
                     }
-                        /// go to center of range at startup
-                        .onAppear { proxy.scrollTo(0) }
                 }
             }
                 /** Flipped over so user can infinitely scroll "up" (actually down) to previous days */
@@ -78,8 +82,12 @@ extension FlexibleGraph {
          */
         GeometryReader { geo in
             Run {
-                if (bounds.insets.top - geo.frame(in: .global).minY).isBetween(0, geo.size.height) {
-                    activeRow = idx
+                let topOffset = bounds.insets.top - geo.frame(in: .global).minY
+                if topOffset.isBetween(0, geo.size.height) {
+                    rowPosition = RowPositionModel(
+                        row: idx,
+                        position: UnitPoint(x: .zero, y: topOffset/geo.size.height)
+                    )
                 }
             }
             VStack(alignment: .leading, spacing: .zero) {

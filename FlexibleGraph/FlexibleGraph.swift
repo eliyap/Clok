@@ -26,8 +26,6 @@ struct FlexibleGraph: View {
     /// used for our `matchedGeometryEffect` animations
     @Namespace var namespace
     
-    @State var activeRow: Int = .zero
-    
     /// access CoreData `TimeEntry` storage
     @FetchRequest(
         entity: TimeEntry.entity(),
@@ -63,6 +61,9 @@ struct FlexibleGraph: View {
      */
     @State var RowList = Array((-(365*3)...0).reversed())
     
+    /// updated row and position of that row as user scrolls
+    @State var rowPosition: RowPositionModel = .zero
+    
     //MARK:- Body
     var body: some View {
         /// switch out full screen modal when an entry is pushed
@@ -79,17 +80,7 @@ struct FlexibleGraph: View {
                         Text("Transform!")
                     }
                         .actionSheet(isPresented: $showSheet) { ModeSheet }
-                    Button {
-                        RowList.insert(RowList[0] + 1, at: 0)
-                    } label: {
-                        Text("Experiment")
-                    }
                 }
-                #warning("temporary monitor")
-                Text(" ")
-                    .onChange(of: activeRow) { row in
-//                        print(row)
-                    }
             }
         }
     }

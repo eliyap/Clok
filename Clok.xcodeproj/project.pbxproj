@@ -87,6 +87,7 @@
 		223AC3A4257494F9002ABD9F /* NewGraphModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223AC3A3257494F9002ABD9F /* NewGraphModel.swift */; };
 		22417FD425788D8400FF9B40 /* ConditionalMatchedGeometryEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22417FD325788D8400FF9B40 /* ConditionalMatchedGeometryEffect.swift */; };
 		22417FDD2578911700FF9B40 /* Between.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22417FDC2578911700FF9B40 /* Between.swift */; };
+		22417FF32578F51600FF9B40 /* RowPositionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22417FF22578F51600FF9B40 /* RowPositionModel.swift */; };
 		224B3AFE24DE28C300B1C943 /* FilterModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224B3AFD24DE28C300B1C943 /* FilterModal.swift */; };
 		224D10CE24E5AC8C00668FD8 /* WeekdaySelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224D10CD24E5AC8C00668FD8 /* WeekdaySelector.swift */; };
 		224D10D324E6FA8900668FD8 /* DateIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224D10D224E6FA8800668FD8 /* DateIndicator.swift */; };
@@ -539,6 +540,7 @@
 		223AC3A3257494F9002ABD9F /* NewGraphModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGraphModel.swift; sourceTree = "<group>"; };
 		22417FD325788D8400FF9B40 /* ConditionalMatchedGeometryEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionalMatchedGeometryEffect.swift; sourceTree = "<group>"; };
 		22417FDC2578911700FF9B40 /* Between.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Between.swift; sourceTree = "<group>"; };
+		22417FF22578F51600FF9B40 /* RowPositionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowPositionModel.swift; sourceTree = "<group>"; };
 		224B3AFD24DE28C300B1C943 /* FilterModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterModal.swift; sourceTree = "<group>"; };
 		224D10CD24E5AC8C00668FD8 /* WeekdaySelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekdaySelector.swift; sourceTree = "<group>"; };
 		224D10D224E6FA8800668FD8 /* DateIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateIndicator.swift; sourceTree = "<group>"; };
@@ -1275,6 +1277,7 @@
 			children = (
 				22E641DC25774E0200CCF49F /* NamespaceModel.swift */,
 				223AC3A3257494F9002ABD9F /* NewGraphModel.swift */,
+				22417FF22578F51600FF9B40 /* RowPositionModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2138,6 +2141,7 @@
 				225F69B424AD8CE70012B5DB /* AppView.swift in Sources */,
 				229646D524F3334500FE14E5 /* LoadTags.swift in Sources */,
 				2293CEEB24EC5289000B68F4 /* GraphSaver.swift in Sources */,
+				22417FF32578F51600FF9B40 /* RowPositionModel.swift in Sources */,
 				22E6422225774EE000CCF49F /* CurrentTimeIndicator.swift in Sources */,
 				229646D724F335CA00FE14E5 /* ToOptional.swift in Sources */,
 				2262882224E88691006B330C /* Workspace.swift in Sources */,
