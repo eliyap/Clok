@@ -88,6 +88,8 @@
 		22417FD425788D8400FF9B40 /* ConditionalMatchedGeometryEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22417FD325788D8400FF9B40 /* ConditionalMatchedGeometryEffect.swift */; };
 		22417FDD2578911700FF9B40 /* Between.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22417FDC2578911700FF9B40 /* Between.swift */; };
 		22417FF32578F51600FF9B40 /* RowPositionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22417FF22578F51600FF9B40 /* RowPositionModel.swift */; };
+		2241800D2579BA6400FF9B40 /* DayRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2241800C2579BA6400FF9B40 /* DayRect.swift */; };
+		224180162579BA8A00FF9B40 /* WeekRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224180152579BA8A00FF9B40 /* WeekRect.swift */; };
 		224B3AFE24DE28C300B1C943 /* FilterModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224B3AFD24DE28C300B1C943 /* FilterModal.swift */; };
 		224D10CE24E5AC8C00668FD8 /* WeekdaySelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224D10CD24E5AC8C00668FD8 /* WeekdaySelector.swift */; };
 		224D10D324E6FA8900668FD8 /* DateIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224D10D224E6FA8800668FD8 /* DateIndicator.swift */; };
@@ -539,6 +541,8 @@
 		22417FD325788D8400FF9B40 /* ConditionalMatchedGeometryEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionalMatchedGeometryEffect.swift; sourceTree = "<group>"; };
 		22417FDC2578911700FF9B40 /* Between.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Between.swift; sourceTree = "<group>"; };
 		22417FF22578F51600FF9B40 /* RowPositionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowPositionModel.swift; sourceTree = "<group>"; };
+		2241800C2579BA6400FF9B40 /* DayRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRect.swift; sourceTree = "<group>"; };
+		224180152579BA8A00FF9B40 /* WeekRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekRect.swift; sourceTree = "<group>"; };
 		224B3AFD24DE28C300B1C943 /* FilterModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterModal.swift; sourceTree = "<group>"; };
 		224D10CD24E5AC8C00668FD8 /* WeekdaySelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekdaySelector.swift; sourceTree = "<group>"; };
 		224D10D224E6FA8800668FD8 /* DateIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateIndicator.swift; sourceTree = "<group>"; };
@@ -1282,6 +1286,7 @@
 			isa = PBXGroup;
 			children = (
 				22D4F57C257742A10053ABFB /* WeekCalendar.swift */,
+				224180152579BA8A00FF9B40 /* WeekRect.swift */,
 			);
 			path = WeekCalendar;
 			sourceTree = "<group>";
@@ -1290,6 +1295,7 @@
 			isa = PBXGroup;
 			children = (
 				22D4F57325773CF60053ABFB /* DayCalendar.swift */,
+				2241800C2579BA6400FF9B40 /* DayRect.swift */,
 			);
 			path = DayCalendar;
 			sourceTree = "<group>";
@@ -1999,6 +2005,7 @@
 				2264CB3B24AD344F00ECBF2B /* TokenFields.swift in Sources */,
 				22232B8B24A9532000F3C378 /* LoginView.swift in Sources */,
 				229646CB24F321AE00FE14E5 /* TimeConstants.swift in Sources */,
+				2241800D2579BA6400FF9B40 /* DayRect.swift in Sources */,
 				22417FDD2578911700FF9B40 /* Between.swift in Sources */,
 				C6751D8C24723182002965CC /* ZeroDate.swift in Sources */,
 				229428D2251E7C61008C0BFF /* ColorBrightness.swift in Sources */,
@@ -2026,6 +2033,7 @@
 				2295215A2505BF2A00085055 /* KeychainError.swift in Sources */,
 				C65B7D2C2497DE4A00EED981 /* EntryOperations.swift in Sources */,
 				22417FD425788D8400FF9B40 /* ConditionalMatchedGeometryEffect.swift in Sources */,
+				224180162579BA8A00FF9B40 /* WeekRect.swift in Sources */,
 				22D56F042526BB030011C4AC /* RingSize.swift in Sources */,
 				22DC86A424BA838D00FF771F /* TimeEntry+CoreDataClass.swift in Sources */,
 				22E6421925774EC200CCF49F /* LinedBackground.swift in Sources */,
