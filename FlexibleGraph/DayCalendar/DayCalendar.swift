@@ -31,7 +31,7 @@ extension FlexibleGraph {
                     entry: entry,
                     size: size,
                     midnight: start,
-                    animationInfo: (namespace, idx, start.timeIntervalSince1970)
+                    animationInfo: (idx, start.timeIntervalSince1970)
                 )
                     /// push `View` down to `(proportion through the day x height)`
                     .offset(y: CGFloat((entry.start - start) / .day) * size.height)
@@ -73,7 +73,7 @@ extension FlexibleGraph {
         size: CGSize,
         midnight: Date,
         border: Bool = false,
-        animationInfo: (namespace: Namespace.ID, row: Int, col: TimeInterval)
+        animationInfo: (row: Int, col: TimeInterval)
     ) -> some View {
         let height = size.height * CGFloat((entry.end - entry.start) / .day)
         return entry.color(in: mode)
@@ -88,7 +88,7 @@ extension FlexibleGraph {
                     row: animationInfo.row,
                     col: animationInfo.col
                 ),
-                in: animationInfo.namespace,
+                in: namespace,
                 isSource: !showEntry
             )
             .frame(width: size.width * 0.8, height: height)
