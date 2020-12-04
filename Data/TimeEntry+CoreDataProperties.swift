@@ -27,7 +27,7 @@ extension TimeEntry {
     @NSManaged public var tags: NSSet?
 
     public var wrappedDescription: String {
-        name ?? "No Description"
+        name ?? "[No Description]"
     }
     
     public var wrappedID: Int {
