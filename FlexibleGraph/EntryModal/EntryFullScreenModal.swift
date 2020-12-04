@@ -44,7 +44,8 @@ struct EntryFullScreenModal: View {
                 } else if scrollOffset > 0 {
                     withAnimation { scrollOffset = 0 }
                 } else if bottomPos < 0 {
-                    withAnimation { scrollOffset = 0 }
+                    /// prevent scrolling past bottom of stack
+                    withAnimation { scrollOffset -= bottomPos }
                 }
             }
         
@@ -67,6 +68,8 @@ struct EntryFullScreenModal: View {
                 }
                     .offset(y: scrollOffset)
             }
+                .frame(height: geo.size.height, alignment: .top)
+                .clipped()
                 .coordinateSpace(name: coordSpaceName)
                 .gesture(ScrollDrag)
         }
