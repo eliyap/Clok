@@ -99,4 +99,28 @@ extension FlexibleGraph {
             }
         }
     }
+    
+    //MARK:- WeekRect
+    func WeekRect(
+        entry: TimeEntry,
+        size: CGSize,
+        midnight: Date,
+        animationInfo: (namespace: Namespace.ID, row: Int, col: Double)
+    ) -> some View {
+        let height = size.height * CGFloat((entry.end - entry.start) / .day)
+        return entry.color(in: mode)
+            /// note: 1/18 is an arbitrary ratio, adjust to taste
+            .cornerRadius(min(size.width / 18.0, height / 2))
+            /// note: 0.8 is an arbitrary ratio, adjust to taste
+            .frame(width: size.width * 0.8, height: height)
+            .matchedGeometryEffect(
+                id: NamespaceModel(
+                    entry: entry,
+                    row: animationInfo.row,
+                    col: animationInfo.col
+                ),
+                in: animationInfo.namespace,
+                isSource: !showEntry
+            )
+    }
 }

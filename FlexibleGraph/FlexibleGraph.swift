@@ -23,6 +23,9 @@ struct FlexibleGraph: View {
     /// whether to show the `Mode` select menu
     @State var showSheet: Bool = false
     
+    /// whether to show the `TimeEntry` modal
+    @State var showEntry: Bool = false
+    
     /// used for our `matchedGeometryEffect` animations
     @Namespace var namespace
     
@@ -66,10 +69,7 @@ struct FlexibleGraph: View {
     
     //MARK:- Body
     var body: some View {
-        /// switch out full screen modal when an entry is pushed
-        if model.selected != .none {
-            EntryFullScreenModal
-        } else {
+        ZStack {
             #warning("placeholder UI")
             VStack(spacing: .zero) {
                 InfiniteScroll
@@ -82,6 +82,13 @@ struct FlexibleGraph: View {
                         .actionSheet(isPresented: $showSheet) { ModeSheet }
                 }
             }
+            /// switch out full screen modal when an entry is pushed
+            if showEntry {
+                EntryFullScreenModal
+            }
+        }
+        .onChange(of: model.selected) { _ in
+            withAnimation { showEntry = true }
         }
     }
 }

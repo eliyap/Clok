@@ -67,4 +67,47 @@ extension FlexibleGraph {
             .background(NewLinedBackground(divisions: evenDivisions(for: size.height)))
             .drawingGroup()
     }
+    
+    func DayRect(
+        entry: TimeEntry,
+        size: CGSize,
+        midnight: Date,
+        border: Bool = false,
+        animationInfo: (namespace: Namespace.ID, row: Int, col: TimeInterval)
+    ) -> some View {
+        let height = size.height * CGFloat((entry.end - entry.start) / .day)
+        return entry.color(in: mode)
+            /// note: 1/80 is an arbitrary ratio, adjust to taste
+            .cornerRadius(min(size.width / 80.0, height / 2))
+            .overlay(EntryDetails(entry: entry), alignment: .top)
+            .clipped()
+            /// note: 0.8 is an arbitrary ratio, adjust to taste
+            .frame(width: size.width * 0.8, height: height)
+            .matchedGeometryEffect(
+                id: NamespaceModel(
+                    entry: entry,
+                    row: animationInfo.row,
+                    col: animationInfo.col
+                ),
+                in: animationInfo.namespace,
+                isSource: !showEntry
+            )
+    }
+    
+    func EntryDetails(entry: TimeEntry) -> some View {
+        VStack(alignment: .leading) {
+            HStack {
+                Text(entry.entryDescription)
+                    .lineLimit(1)
+                Spacer()
+                Text(entry.projectName)
+                    .lineLimit(1)
+            }
+            Spacer()
+            if type(of: entry) == TimeEntry.self {
+                Text((entry.end - entry.start).toString())
+            }
+        }
+            .padding(3)
+    }
 }

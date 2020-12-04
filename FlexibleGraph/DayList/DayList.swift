@@ -62,7 +62,8 @@ extension FlexibleGraph {
                     row: row,
                     col: col
                 ),
-               in: namespace
+               in: namespace,
+               isSource: !showEntry
             )
     }
 }

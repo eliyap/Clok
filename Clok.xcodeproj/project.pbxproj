@@ -339,8 +339,6 @@
 		22DF92C9251D60B3007E4635 /* GridWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 227746CF2505BC9200D17CA3 /* GridWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		22DF92D8251D6834007E4635 /* AnyTransitionSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DF92D7251D6834007E4635 /* AnyTransitionSlide.swift */; };
 		22E641DD25774E0200CCF49F /* NamespaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E641DC25774E0200CCF49F /* NamespaceModel.swift */; };
-		22E641E725774E5700CCF49F /* WeekRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E641E625774E5700CCF49F /* WeekRect.swift */; };
-		22E641F725774E7300CCF49F /* DayRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E641F625774E7300CCF49F /* DayRect.swift */; };
 		22E6420025774E8300CCF49F /* TimeIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E641FF25774E8300CCF49F /* TimeIndicator.swift */; };
 		22E6420925774E9C00CCF49F /* RunningEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E6420825774E9C00CCF49F /* RunningEntryView.swift */; };
 		22E6421925774EC200CCF49F /* LinedBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E6421825774EC200CCF49F /* LinedBackground.swift */; };
@@ -693,8 +691,6 @@
 		22DE58EF251EC86F00379396 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22DF92D7251D6834007E4635 /* AnyTransitionSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyTransitionSlide.swift; sourceTree = "<group>"; };
 		22E641DC25774E0200CCF49F /* NamespaceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamespaceModel.swift; sourceTree = "<group>"; };
-		22E641E625774E5700CCF49F /* WeekRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekRect.swift; sourceTree = "<group>"; };
-		22E641F625774E7300CCF49F /* DayRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRect.swift; sourceTree = "<group>"; };
 		22E641FF25774E8300CCF49F /* TimeIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIndicator.swift; sourceTree = "<group>"; };
 		22E6420825774E9C00CCF49F /* RunningEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningEntryView.swift; sourceTree = "<group>"; };
 		22E6421825774EC200CCF49F /* LinedBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinedBackground.swift; sourceTree = "<group>"; };
@@ -1286,7 +1282,6 @@
 			isa = PBXGroup;
 			children = (
 				22D4F57C257742A10053ABFB /* WeekCalendar.swift */,
-				22E641E625774E5700CCF49F /* WeekRect.swift */,
 			);
 			path = WeekCalendar;
 			sourceTree = "<group>";
@@ -1295,7 +1290,6 @@
 			isa = PBXGroup;
 			children = (
 				22D4F57325773CF60053ABFB /* DayCalendar.swift */,
-				22E641F625774E7300CCF49F /* DayRect.swift */,
 			);
 			path = DayCalendar;
 			sourceTree = "<group>";
@@ -2081,7 +2075,6 @@
 				22D4F5002577345E0053ABFB /* FlexibleGraph.swift in Sources */,
 				22D7459C2505E9B600013A80 /* ZoomLevel.swift in Sources */,
 				22885DB024DA1C9600A56FE3 /* Divisions.swift in Sources */,
-				22E641E725774E5700CCF49F /* WeekRect.swift in Sources */,
 				C6B0FF9C246F124300DED011 /* ColorCustom.swift in Sources */,
 				22A2CE2724E59E4D000820AD /* AngleOperators.swift in Sources */,
 				C63FC2FA249BCFBD00747D49 /* DoubleExtension.swift in Sources */,
@@ -2095,7 +2088,6 @@
 				22283DA824DFA166005AC0F3 /* FilterView.swift in Sources */,
 				229646CF24F322E600FE14E5 /* TagLoader.swift in Sources */,
 				22B0784224B17BEC00256EB8 /* RunningEntry.swift in Sources */,
-				22E641F725774E7300CCF49F /* DayRect.swift in Sources */,
 				2264CB3924AD33D900ECBF2B /* EmailFields.swift in Sources */,
 				2264CB3124AD250600ECBF2B /* WorkspaceManager.swift in Sources */,
 				C6D2E5F1251FA2CF0067C0B0 /* RunningRing.intentdefinition in Sources */,

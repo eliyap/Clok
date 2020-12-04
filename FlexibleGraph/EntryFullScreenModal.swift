@@ -15,7 +15,7 @@ extension FlexibleGraph {
                 HStack {
                     VStack(alignment: .leading) {
                         Button {
-                            withAnimation { model.selected = .none }
+                            withAnimation { showEntry = false }
                         } label: {
                             Image(systemName: "xmark")
                         }
@@ -29,7 +29,7 @@ extension FlexibleGraph {
                 }
                     .padding()
                     .background(model.selected?.entry.color)
-                    .matchedGeometryEffect(id: model.selected!, in: namespace)
+                .matchedGeometryEffect(id: model.selected!, in: namespace, isSource: showEntry)
             }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
