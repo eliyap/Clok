@@ -902,6 +902,14 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		224180242579FCA000FF9B40 /* EntryModal */ = {
+			isa = PBXGroup;
+			children = (
+				22D4F5112577354C0053ABFB /* EntryFullScreenModal.swift */,
+			);
+			path = EntryModal;
+			sourceTree = "<group>";
+		};
 		2253FFBA2505A41500BBDCE6 /* Tetris */ = {
 			isa = PBXGroup;
 			children = (
@@ -1186,7 +1194,7 @@
 				22D4F54A2577364B0053ABFB /* InfiniteScroll.swift */,
 				22417FD325788D8400FF9B40 /* ConditionalMatchedGeometryEffect.swift */,
 				22D4F531257735F20053ABFB /* ModeSheet.swift */,
-				22D4F5112577354C0053ABFB /* EntryFullScreenModal.swift */,
+				224180242579FCA000FF9B40 /* EntryModal */,
 				22E642332577501900CCF49F /* DayList */,
 				22E642322577500600CCF49F /* DayCalendar */,
 				22E6423125774FF900CCF49F /* WeekCalendar */,

@@ -21,7 +21,27 @@ struct EntryFullScreenModal: View {
     static let threshhold: CGFloat = 50
     
     var body: some View {
-        Color.clear
+        /// define a drag gesture that imitates scrolling (no momentum though)
+        let ScrollDrag = DragGesture()
+            .onChanged { gesture in
+                /// capture initial offset as gesture begins
+                if initialPos == .none { initialPos = offSet }
+                let newOffset = initialPos! + gesture.translation.height
+                withAnimation(.linear(duration: 0.05)) {
+                    /// give pull down more "resistance"
+                    self.offSet = newOffset < 0 ? newOffset : newOffset / 3
+                }
+            }
+            .onEnded { _ in
+                initialPos = .none
+                if offSet > EntryFullScreenModal.threshhold {
+                    self.dismiss()
+                } else if offSet > 0 {
+                    withAnimation { offSet = 0 }
+                }
+            }
+        
+        return Color.clear
             .overlay(
                 ZStack(alignment: .topLeading) {
                     ControlBar
@@ -31,28 +51,11 @@ struct EntryFullScreenModal: View {
                         .offset(y: offSet)
                 }
             )
-            .gesture(DragGesture()
-                .onChanged { gesture in
-                    /// capture initial offset as gesture begins
-                    if initialPos == .none { initialPos = offSet }
-                    let newOffset = initialPos! + gesture.translation.height
-                    withAnimation(.linear(duration: 0.05)) {
-                        /// give pull down more "resistance"
-                        self.offSet = newOffset < 0 ? newOffset : newOffset / 3
-                    }
-                }
-                .onEnded { _ in
-                    initialPos = .none
-                    if offSet > EntryFullScreenModal.threshhold {
-                        self.dismiss()
-                    } else if offSet > 0 {
-                        withAnimation { offSet = 0 }
-                    }
-                }
-            )
+            .gesture(ScrollDrag)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
     
+    // MARK:- ControlBar
     var ControlBar: some View {
         HStack {
             DismissalButton
@@ -73,12 +76,12 @@ struct EntryFullScreenModal: View {
             )
     }
     
-    static let ButtonSize: CGFloat = 30
-    static let ButtonStrokeWeight: CGFloat = 2
+    static let ButtonSize: CGFloat = 40
+    static let ButtonStrokeWeight: CGFloat = 2.5
     static var CircleRadius: CGFloat { CGFloat(Double.tau) * (EntryFullScreenModal.ButtonSize - ButtonStrokeWeight) }
     var dismissalCompletion: CGFloat {
         /// note: clamp prevents visual from triggering while scrolling down
-        min(0, -offSet / Self.threshhold)
+        clamp(-offSet / Self.threshhold, between: (-2, 0))
     }
     var DismissalButton: some View {
         Button {
@@ -86,6 +89,7 @@ struct EntryFullScreenModal: View {
         } label: {
             ZStack {
                 Image(systemName: "xmark")
+                    .font(Font.body.weight(.semibold))
                 Circle()
                     .strokeBorder(style: StrokeStyle(
                         lineWidth: Self.ButtonStrokeWeight,
