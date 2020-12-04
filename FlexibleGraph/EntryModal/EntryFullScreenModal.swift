@@ -11,50 +11,92 @@ import SwiftUI
 struct EntryFullScreenModal: View {
     
     //MARK:- Modal Properties
-    @State var offSet: CGFloat = .zero
+    @State var scrollOffset: CGFloat = .zero
     @State var initialPos: CGFloat? = .none
-
+    @State var bottomPos: CGFloat = .zero
+    
     @Binding var showEntry: Bool
     var namespace: Namespace.ID
+    let entry: TimeEntry
     
     /// the minimum pull-down to dismiss the view
     static let threshhold: CGFloat = 50
+    
+    /// named Coordinate Space for this view
+    let coordSpaceName = "bottom"
     
     var body: some View {
         /// define a drag gesture that imitates scrolling (no momentum though)
         let ScrollDrag = DragGesture()
             .onChanged { gesture in
                 /// capture initial offset as gesture begins
-                if initialPos == .none { initialPos = offSet }
+                if initialPos == .none { initialPos = scrollOffset }
                 let newOffset = initialPos! + gesture.translation.height
                 withAnimation(.linear(duration: 0.05)) {
                     /// give pull down more "resistance"
-                    self.offSet = newOffset < 0 ? newOffset : newOffset / 3
+                    self.scrollOffset = newOffset < 0 ? newOffset : newOffset / 3
                 }
             }
             .onEnded { _ in
                 initialPos = .none
-                if offSet > EntryFullScreenModal.threshhold {
+                if scrollOffset > EntryFullScreenModal.threshhold {
                     self.dismiss()
-                } else if offSet > 0 {
-                    withAnimation { offSet = 0 }
+                } else if scrollOffset > 0 {
+                    withAnimation { scrollOffset = 0 }
+                } else if bottomPos < 0 {
+                    withAnimation { scrollOffset = 0 }
                 }
             }
         
-        return Color.clear
-            .overlay(
-                ZStack(alignment: .topLeading) {
-                    ControlBar
-                        .offset(y: max(0, offSet))
-                        .zIndex(1)
-                    Color.green
-                        .offset(y: offSet)
+        return GeometryReader { geo in
+            ZStack(alignment: .topLeading) {
+                Color(UIColor.secondarySystemBackground)
+                    .offset(y: max(0, scrollOffset))
+                ControlBar
+                    .offset(y: max(0, scrollOffset))
+                    .zIndex(1)
+                VStack(spacing: .zero) {
+                    EntryHeader
+                    EntryBody
+                    /// monitors the position of the bottom of the view
+                    GeometryReader { bottomGeo in
+                        Run {
+                            bottomPos = bottomGeo.frame(in: .named(coordSpaceName)).maxY - geo.size.height
+                        }
+                    }
                 }
-            )
-            .gesture(ScrollDrag)
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .offset(y: scrollOffset)
+            }
+                .coordinateSpace(name: coordSpaceName)
+                .gesture(ScrollDrag)
+        }
+                
     }
     
+    var EntryHeader: some View {
+        VStack {
+            Spacer()
+                .frame(height: Self.ButtonSize + Self.controlBarPadding * 2)
+            Text(entry.wrappedDescription)
+                .font(.title)
+            Label(entry.projectName, systemImage: "folder.fill")
+            Label(entry.dur.toString(), systemImage: "stopwatch")
+        }
+            .padding(Self.controlBarPadding)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(entry.color)
+    }
+    
+    var EntryBody: some View {
+        VStack {
+            Label(entry.projectName, systemImage: "folder.fill")
+            Label(entry.dur.toString(), systemImage: "stopwatch")
+        }
+            .padding(Self.controlBarPadding)
+            .background(Color(UIColor.secondarySystemBackground))
+    }
+    
+    static let controlBarPadding: CGFloat = 10
     // MARK:- ControlBar
     var ControlBar: some View {
         HStack {
@@ -67,7 +109,7 @@ struct EntryFullScreenModal: View {
             }
         }
             .buttonStyle(PlainButtonStyle())
-            .padding()
+            .padding(Self.controlBarPadding)
             .background(
                 /// a nice transluscent system color
                 Color(UIColor.secondarySystemFill)
@@ -81,7 +123,7 @@ struct EntryFullScreenModal: View {
     static var CircleRadius: CGFloat { CGFloat(Double.tau) * (EntryFullScreenModal.ButtonSize - ButtonStrokeWeight) }
     var dismissalCompletion: CGFloat {
         /// note: clamp prevents visual from triggering while scrolling down
-        clamp(-offSet / Self.threshhold, between: (-2, 0))
+        clamp(-scrollOffset / Self.threshhold, between: (-2, 0))
     }
     var DismissalButton: some View {
         Button {

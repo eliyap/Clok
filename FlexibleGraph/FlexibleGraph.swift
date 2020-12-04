@@ -84,7 +84,11 @@ struct FlexibleGraph: View {
             }
             /// switch out full screen modal when an entry is pushed
             if showEntry {
-                EntryFullScreenModal(showEntry: $showEntry, namespace: namespace)
+                EntryFullScreenModal(
+                    showEntry: $showEntry,
+                    namespace: namespace,
+                    entry: model.selected!.entry
+                )
                     /// increase zIndex so that, while animating, modal does not fall behind other entries
                     .zIndex(1)
             }
