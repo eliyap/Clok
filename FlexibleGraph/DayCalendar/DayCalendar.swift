@@ -82,7 +82,6 @@ extension FlexibleGraph {
             .overlay(EntryDetails(entry: entry), alignment: .top)
             .clipped()
             /// note: 0.8 is an arbitrary ratio, adjust to taste
-            .frame(width: size.width * 0.8, height: height)
             .matchedGeometryEffect(
                 id: NamespaceModel(
                     entry: entry,
@@ -92,6 +91,7 @@ extension FlexibleGraph {
                 in: animationInfo.namespace,
                 isSource: !showEntry
             )
+            .frame(width: size.width * 0.8, height: height)
     }
     
     func EntryDetails(entry: TimeEntry) -> some View {

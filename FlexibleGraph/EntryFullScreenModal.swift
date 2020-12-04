@@ -29,8 +29,15 @@ extension FlexibleGraph {
                 }
                     .padding()
                     .background(model.selected?.entry.color)
-                .matchedGeometryEffect(id: model.selected!, in: namespace, isSource: showEntry)
+                VStack {
+                    Label(model.selected?.entry.projectName ?? StaticProject.noProject.name, systemImage: "folder.fill")
+                    Label(model.selected?.entry.dur.toString() ?? placeholderTime, systemImage: "stopwatch")
+                }
+                    .padding()
+                    .background(Color.background)
+            
             }
+                .matchedGeometryEffect(id: model.selected!, in: namespace, isSource: showEntry)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
     }
