@@ -327,6 +327,7 @@
 		22D9B9AA257B4DBB00E923C5 /* DetailedReportFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FFF6EE2571A77500A54471 /* DetailedReportFetcher.swift */; };
 		22D9B9B9257B4DD700E923C5 /* DetailedWithRunningFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2287250725731BF20082A490 /* DetailedWithRunningFetcher.swift */; };
 		22D9B9C1257B4DEB00E923C5 /* RunningEntryFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FFF697257101DE00A54471 /* RunningEntryFetcher.swift */; };
+		22D9B9D8257B651300E923C5 /* AppTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9B9D7257B651300E923C5 /* AppTimer.swift */; };
 		22DC869A24BA7A5E00FF771F /* TimeEntryModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22DC869824BA7A5E00FF771F /* TimeEntryModel.xcdatamodeld */; };
 		22DC869B24BA7A5E00FF771F /* TimeEntryModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22DC869824BA7A5E00FF771F /* TimeEntryModel.xcdatamodeld */; };
 		22DC86A024BA838D00FF771F /* Project+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC869C24BA838D00FF771F /* Project+CoreDataClass.swift */; };
@@ -686,6 +687,7 @@
 		22D745972505E93900013A80 /* ChosenWorkspace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChosenWorkspace.swift; sourceTree = "<group>"; };
 		22D7459B2505E9B600013A80 /* ZoomLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomLevel.swift; sourceTree = "<group>"; };
 		22D9B957257B292300E923C5 /* StaticEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticEntry.swift; sourceTree = "<group>"; };
+		22D9B9D7257B651300E923C5 /* AppTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTimer.swift; sourceTree = "<group>"; };
 		22DC869924BA7A5E00FF771F /* TimeEntryModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TimeEntryModel.xcdatamodel; sourceTree = "<group>"; };
 		22DC869C24BA838D00FF771F /* Project+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Project+CoreDataClass.swift"; sourceTree = "<group>"; };
 		22DC869D24BA838D00FF771F /* Project+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Project+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -1372,6 +1374,7 @@
 			isa = PBXGroup;
 			children = (
 				22885DAF24DA1C9600A56FE3 /* Divisions.swift */,
+				22D9B9D7257B651300E923C5 /* AppTimer.swift */,
 				22556BA725751684003DEB7D /* Clamp.swift */,
 				22417FDC2578911700FF9B40 /* Between.swift */,
 				22D56F032526BB030011C4AC /* RingSize.swift */,
@@ -2118,6 +2121,7 @@
 				22D4F57D257742A10053ABFB /* WeekCalendar.swift in Sources */,
 				2229D7AA24EF6BDB004E1034 /* OldCurrentTimeIndicator.swift in Sources */,
 				C6AAB3EA249EF26800DFBA36 /* TimeEntryExtension.swift in Sources */,
+				22D9B9D8257B651300E923C5 /* AppTimer.swift in Sources */,
 				C6EB45C1251FEDB900FCD0CB /* CoreDataConstants.swift in Sources */,
 				22E6429A257799EB00CCF49F /* MoldedRectangle.swift in Sources */,
 				22FFF6A12571020B00A54471 /* DataFetcher.swift in Sources */,
