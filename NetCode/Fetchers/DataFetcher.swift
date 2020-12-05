@@ -9,6 +9,7 @@
 import Foundation
 import Combine
 
+/// Class for remote web requests, mostly employed by Widgets
 public class DataFetcher : ObservableObject{
     
     var cancellable : Set<AnyCancellable> = Set()
