@@ -11,7 +11,8 @@ import Combine
 
 /** **NOTE**
  These functions give *direct* access to `RawRunningEntry` data, and do *not* dump it into `CoreData` for storage.
- Used by my Widgets, which are supposed to be self contained units and completely bypass `CoreData`
+ Used by my Widgets, which are supposed to be self contained units and completely bypass `CoreData`.
+ However they are obviously very similar to the main app version.
  */
 
 /// Fetches a complete Detailed Report from Toggl, requesting multiple pages if necessary
