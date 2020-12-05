@@ -87,7 +87,7 @@ struct FlexibleGraph: View {
                 EntryFullScreenModal(
                     showEntry: $showEntry,
                     namespace: namespace,
-                    entry: model.selected!.entry
+                    entry: model.selected?.entry ?? StaticEntry.noEntry
                 )
                     /// increase zIndex so that, while animating, modal does not fall behind other entries
                     .zIndex(1)
