@@ -882,8 +882,7 @@
 				2293CEEC24EC5661000B68F4 /* ProjectLoader.swift */,
 				2287252625731F450082A490 /* ProjectDetailFetcher.swift */,
 				229646CE24F322E600FE14E5 /* TagLoader.swift */,
-				22FFF6A02571020B00A54471 /* DataFetcher.swift */,
-				22872436257214530082A490 /* AssignCancellable.swift */,
+				22D9B98F257B4C8200E923C5 /* DataFetcher */,
 				22FFF6EE2571A77500A54471 /* DetailedReportFetcher.swift */,
 				2287250725731BF20082A490 /* DetailedWithRunningFetcher.swift */,
 				22D9B987257B4C2800E923C5 /* RunningEntry */,
@@ -1236,6 +1235,15 @@
 				2229D7AF24F0459F004E1034 /* FetchRunningEntry.swift */,
 			);
 			path = RunningEntry;
+			sourceTree = "<group>";
+		};
+		22D9B98F257B4C8200E923C5 /* DataFetcher */ = {
+			isa = PBXGroup;
+			children = (
+				22FFF6A02571020B00A54471 /* DataFetcher.swift */,
+				22872436257214530082A490 /* AssignCancellable.swift */,
+			);
+			path = DataFetcher;
 			sourceTree = "<group>";
 		};
 		22DC86A824BA839100FF771F /* Data */ = {
