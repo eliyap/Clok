@@ -28,7 +28,7 @@ extension FlexibleGraph {
                     col: animationInfo.col
                 ),
                 in: namespace,
-                isSource: !showEntry
+                isSource: model.selected == .none
             )
             .frame(width: size.width * 0.8, height: height)
     }

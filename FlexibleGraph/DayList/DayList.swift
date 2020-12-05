@@ -63,7 +63,7 @@ extension FlexibleGraph {
                     col: col
                 ),
                in: namespace,
-               isSource: !showEntry
+               isSource: model.selected == .none
             )
     }
 }

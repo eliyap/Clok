@@ -15,15 +15,16 @@ struct EntryFullScreenModal: View {
     @State var initialPos: CGFloat? = .none
     @State var bottomPos: CGFloat = .zero
     
-    @Binding var showEntry: Bool
+    @Binding var selected: NamespaceModel?
     var namespace: Namespace.ID
-    let entry: TimeEntryLike
     
     /// the minimum pull-down to dismiss the view
     static let threshhold: CGFloat = 50
     
     /// named Coordinate Space for this view
     let coordSpaceName = "bottom"
+    
+    var entry: TimeEntryLike { selected?.entry ?? StaticEntry.noEntry }
     
     var body: some View {
         /// define a drag gesture that imitates scrolling (no momentum though)
@@ -152,6 +153,6 @@ struct EntryFullScreenModal: View {
     }
     
     func dismiss() -> Void {
-        withAnimation { showEntry = false }
+        withAnimation { selected = .none }
     }
 }
