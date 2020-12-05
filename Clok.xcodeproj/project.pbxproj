@@ -85,7 +85,6 @@
 		2238640024BBBD030041886B /* LoadProjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223863FF24BBBD030041886B /* LoadProjects.swift */; };
 		2238640324BBC6980041886B /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63FC2F9249BCFBD00747D49 /* DoubleExtension.swift */; };
 		223AC3A4257494F9002ABD9F /* NewGraphModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223AC3A3257494F9002ABD9F /* NewGraphModel.swift */; };
-		22417FD425788D8400FF9B40 /* ConditionalMatchedGeometryEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22417FD325788D8400FF9B40 /* ConditionalMatchedGeometryEffect.swift */; };
 		22417FDD2578911700FF9B40 /* Between.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22417FDC2578911700FF9B40 /* Between.swift */; };
 		22417FF32578F51600FF9B40 /* RowPositionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22417FF22578F51600FF9B40 /* RowPositionModel.swift */; };
 		2241800D2579BA6400FF9B40 /* DayRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2241800C2579BA6400FF9B40 /* DayRect.swift */; };
@@ -540,7 +539,6 @@
 		223A8ADB251ECCF80010143C /* ProjectIntent.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ProjectIntent.entitlements; sourceTree = "<group>"; };
 		223AB139251E34AC00CA8B3C /* ShadowRingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowRingView.swift; sourceTree = "<group>"; };
 		223AC3A3257494F9002ABD9F /* NewGraphModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGraphModel.swift; sourceTree = "<group>"; };
-		22417FD325788D8400FF9B40 /* ConditionalMatchedGeometryEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionalMatchedGeometryEffect.swift; sourceTree = "<group>"; };
 		22417FDC2578911700FF9B40 /* Between.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Between.swift; sourceTree = "<group>"; };
 		22417FF22578F51600FF9B40 /* RowPositionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowPositionModel.swift; sourceTree = "<group>"; };
 		2241800C2579BA6400FF9B40 /* DayRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRect.swift; sourceTree = "<group>"; };
@@ -1191,7 +1189,6 @@
 			children = (
 				22D4F4FF2577345E0053ABFB /* FlexibleGraph.swift */,
 				22D4F54A2577364B0053ABFB /* InfiniteScroll.swift */,
-				22417FD325788D8400FF9B40 /* ConditionalMatchedGeometryEffect.swift */,
 				22D4F531257735F20053ABFB /* ModeSheet.swift */,
 				224180242579FCA000FF9B40 /* EntryModal */,
 				22E642332577501900CCF49F /* DayList */,
@@ -2080,7 +2077,6 @@
 				228B100224AEA6E50026AD4B /* RoundBottomRect.swift in Sources */,
 				2295215A2505BF2A00085055 /* KeychainError.swift in Sources */,
 				C65B7D2C2497DE4A00EED981 /* EntryOperations.swift in Sources */,
-				22417FD425788D8400FF9B40 /* ConditionalMatchedGeometryEffect.swift in Sources */,
 				224180162579BA8A00FF9B40 /* WeekRect.swift in Sources */,
 				22D56F042526BB030011C4AC /* RingSize.swift in Sources */,
 				22DC86A424BA838D00FF771F /* TimeEntry+CoreDataClass.swift in Sources */,
