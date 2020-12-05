@@ -56,7 +56,7 @@ extension FlexibleGraph {
                         minHeight: size.height,
                         alignment: .top
                     )
-                NewRunningEntryView(terms: data.terms)
+//                NewRunningEntryView(terms: data.terms)
             }
         }
     

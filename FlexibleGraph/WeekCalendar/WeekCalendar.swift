@@ -91,7 +91,7 @@ extension FlexibleGraph {
                             height: geo.size.height,
                             alignment: .top
                         )
-                    NewRunningEntryView(terms: data.terms)
+//                    NewRunningEntryView(terms: data.terms)
                 }
             }
         }
