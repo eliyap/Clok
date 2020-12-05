@@ -56,7 +56,8 @@ struct RunningEntryView: View {
             .frame(width: geo.size.width)
             
         }
-            .onReceive(timer) { _ in loadRunning() }
+        /// deliberately hobbled in lieu of removing this whole View
+//            .onReceive(timer) { _ in loadRunning() }
             .onAppear(perform: loadRunning)
     }
     
