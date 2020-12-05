@@ -361,7 +361,6 @@
 		22FFF698257101DE00A54471 /* RunningEntryFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FFF697257101DE00A54471 /* RunningEntryFetcher.swift */; };
 		22FFF6A12571020B00A54471 /* DataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FFF6A02571020B00A54471 /* DataFetcher.swift */; };
 		22FFF6A92571022700A54471 /* DataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FFF6A02571020B00A54471 /* DataFetcher.swift */; };
-		22FFF6B12571022C00A54471 /* RunningEntryFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FFF697257101DE00A54471 /* RunningEntryFetcher.swift */; };
 		22FFF6C8257103AF00A54471 /* DataTaskMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B1D64824EBAD27001E87C1 /* DataTaskMonitor.swift */; };
 		22FFF6D0257109C400A54471 /* RunningEntryInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229D7B224F055FC004E1034 /* RunningEntryInit.swift */; };
 		22FFF6D825710CA800A54471 /* PrintError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229646D824F3367800FE14E5 /* PrintError.swift */; };
@@ -687,6 +686,7 @@
 		22D745972505E93900013A80 /* ChosenWorkspace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChosenWorkspace.swift; sourceTree = "<group>"; };
 		22D7459B2505E9B600013A80 /* ZoomLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomLevel.swift; sourceTree = "<group>"; };
 		22D9B957257B292300E923C5 /* StaticEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticEntry.swift; sourceTree = "<group>"; };
+		22D9B97F257B4A5D00E923C5 /* LoadRunning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadRunning.swift; sourceTree = "<group>"; };
 		22DC869924BA7A5E00FF771F /* TimeEntryModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TimeEntryModel.xcdatamodel; sourceTree = "<group>"; };
 		22DC869C24BA838D00FF771F /* Project+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Project+CoreDataClass.swift"; sourceTree = "<group>"; };
 		22DC869D24BA838D00FF771F /* Project+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Project+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -881,13 +881,12 @@
 				2277E8C824EB47B400702086 /* PaginatedLoad.swift */,
 				2293CEEC24EC5661000B68F4 /* ProjectLoader.swift */,
 				2287252625731F450082A490 /* ProjectDetailFetcher.swift */,
-				2229D7AF24F0459F004E1034 /* FetchRunningEntry.swift */,
 				229646CE24F322E600FE14E5 /* TagLoader.swift */,
 				22FFF6A02571020B00A54471 /* DataFetcher.swift */,
 				22872436257214530082A490 /* AssignCancellable.swift */,
-				22FFF697257101DE00A54471 /* RunningEntryFetcher.swift */,
 				22FFF6EE2571A77500A54471 /* DetailedReportFetcher.swift */,
 				2287250725731BF20082A490 /* DetailedWithRunningFetcher.swift */,
+				22D9B987257B4C2800E923C5 /* RunningEntry */,
 			);
 			path = Fetchers;
 			sourceTree = "<group>";
@@ -1230,6 +1229,15 @@
 			path = Detailed;
 			sourceTree = "<group>";
 		};
+		22D9B987257B4C2800E923C5 /* RunningEntry */ = {
+			isa = PBXGroup;
+			children = (
+				22FFF697257101DE00A54471 /* RunningEntryFetcher.swift */,
+				2229D7AF24F0459F004E1034 /* FetchRunningEntry.swift */,
+			);
+			path = RunningEntry;
+			sourceTree = "<group>";
+		};
 		22DC86A824BA839100FF771F /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -1396,6 +1404,7 @@
 		C6C18D382448F96C000345D5 = {
 			isa = PBXGroup;
 			children = (
+				22D9B97F257B4A5D00E923C5 /* LoadRunning.swift */,
 				22F2CD51254BA3EE008DEB9C /* WidgetBundleExtension.entitlements */,
 				22B0784624B247D500256EB8 /* ClokWidgetExtension.entitlements */,
 				C6C18D432448F96C000345D5 /* Clok */,
@@ -1963,7 +1972,6 @@
 				2287246525721D970082A490 /* DetailedEntry.swift in Sources */,
 				2205DC6E254B9F8600146EAB /* GetCredentials.swift in Sources */,
 				2205DCA0254B9FF100146EAB /* Project+CoreDataProperties.swift in Sources */,
-				22FFF6B12571022C00A54471 /* RunningEntryFetcher.swift in Sources */,
 				2205DD54254BA14300146EAB /* MR_Ring.swift in Sources */,
 				22556BAE25751685003DEB7D /* Clamp.swift in Sources */,
 				2205DD30254BA10600146EAB /* Summary.swift in Sources */,
