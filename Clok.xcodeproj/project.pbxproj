@@ -324,6 +324,7 @@
 		22D5F5352570E4A300806992 /* FirstDayOfWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D5F52C2570E49C00806992 /* FirstDayOfWeek.swift */; };
 		22D745982505E93900013A80 /* ChosenWorkspace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D745972505E93900013A80 /* ChosenWorkspace.swift */; };
 		22D7459C2505E9B600013A80 /* ZoomLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D7459B2505E9B600013A80 /* ZoomLevel.swift */; };
+		22D9B958257B292300E923C5 /* StaticEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9B957257B292300E923C5 /* StaticEntry.swift */; };
 		22DC869A24BA7A5E00FF771F /* TimeEntryModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22DC869824BA7A5E00FF771F /* TimeEntryModel.xcdatamodeld */; };
 		22DC869B24BA7A5E00FF771F /* TimeEntryModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22DC869824BA7A5E00FF771F /* TimeEntryModel.xcdatamodeld */; };
 		22DC86A024BA838D00FF771F /* Project+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC869C24BA838D00FF771F /* Project+CoreDataClass.swift */; };
@@ -685,6 +686,7 @@
 		22D5F52C2570E49C00806992 /* FirstDayOfWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstDayOfWeek.swift; sourceTree = "<group>"; };
 		22D745972505E93900013A80 /* ChosenWorkspace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChosenWorkspace.swift; sourceTree = "<group>"; };
 		22D7459B2505E9B600013A80 /* ZoomLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomLevel.swift; sourceTree = "<group>"; };
+		22D9B957257B292300E923C5 /* StaticEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticEntry.swift; sourceTree = "<group>"; };
 		22DC869924BA7A5E00FF771F /* TimeEntryModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TimeEntryModel.xcdatamodel; sourceTree = "<group>"; };
 		22DC869C24BA838D00FF771F /* Project+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Project+CoreDataClass.swift"; sourceTree = "<group>"; };
 		22DC869D24BA838D00FF771F /* Project+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Project+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -1365,6 +1367,7 @@
 				2229D7B224F055FC004E1034 /* RunningEntryInit.swift */,
 				C67F47D2249FD44500FD2E6E /* Project.swift */,
 				22556B392574C885003DEB7D /* Entry.swift */,
+				22D9B957257B292300E923C5 /* StaticEntry.swift */,
 				C65B7D2B2497DE4A00EED981 /* EntryOperations.swift */,
 				221C3C5624A93C57006995C5 /* User.swift */,
 				2262882124E88691006B330C /* Workspace.swift */,
@@ -2027,6 +2030,7 @@
 				C6EB4733252013B800FCD0CB /* PersistentContainer.swift in Sources */,
 				C68F8C8D24A04CE8000D249B /* IceCreamStick.swift in Sources */,
 				2207B22024B954F40006748A /* OldGraphView.swift in Sources */,
+				22D9B958257B292300E923C5 /* StaticEntry.swift in Sources */,
 				22D4F54B2577364B0053ABFB /* InfiniteScroll.swift in Sources */,
 				C60856AB251FCB1E00E6D6C0 /* URLStoreExtension.swift in Sources */,
 				22128E09254206E6004913AF /* WidgetManager.swift in Sources */,
