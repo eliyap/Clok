@@ -20,8 +20,8 @@ struct EntryLabel: View {
     
     var body: some View {
         HStack {
-            Text(text)
             Image(systemName: systemImage)
+            Text(text)
         }
     }
 }

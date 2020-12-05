@@ -15,8 +15,8 @@ extension EntryFullScreenModal {
                 .frame(height: DismissalButton.ButtonSize + Self.sharedPadding * 2)
             Text(entry.entryDescription)
                 .font(.title)
-            Label(entry.projectName, systemImage: "folder.fill")
-            Label(entry.duration.toString(), systemImage: "stopwatch")
+            EntryLabel(entry.projectName, systemImage: "folder.fill")
+            EntryLabel(entry.duration.toString(), systemImage: "stopwatch")
         }
             .padding(Self.sharedPadding)
             .frame(maxWidth: .infinity, alignment: .leading)
