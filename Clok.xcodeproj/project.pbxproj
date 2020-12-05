@@ -882,9 +882,10 @@
 				2293CEEC24EC5661000B68F4 /* ProjectLoader.swift */,
 				2287252625731F450082A490 /* ProjectDetailFetcher.swift */,
 				229646CE24F322E600FE14E5 /* TagLoader.swift */,
-				22D9B98F257B4C8200E923C5 /* DataFetcher */,
 				22FFF6EE2571A77500A54471 /* DetailedReportFetcher.swift */,
 				2287250725731BF20082A490 /* DetailedWithRunningFetcher.swift */,
+				22D9B990257B4CAF00E923C5 /* Project */,
+				22D9B98F257B4C8200E923C5 /* DataFetcher */,
 				22D9B987257B4C2800E923C5 /* RunningEntry */,
 			);
 			path = Fetchers;
@@ -1244,6 +1245,13 @@
 				22872436257214530082A490 /* AssignCancellable.swift */,
 			);
 			path = DataFetcher;
+			sourceTree = "<group>";
+		};
+		22D9B990257B4CAF00E923C5 /* Project */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Project;
 			sourceTree = "<group>";
 		};
 		22DC86A824BA839100FF771F /* Data */ = {
