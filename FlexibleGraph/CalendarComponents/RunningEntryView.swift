@@ -21,9 +21,7 @@ struct NewRunningEntryView: View {
     @FetchRequest(entity: Project.entity(), sortDescriptors: []) var projects: FetchedResults<Project>
     
     /// manage the auto updating
-    let timer = Timer.publish(every: interval, on: .main, in: .common).autoconnect()
     @State var running: RunningEntry? = nil
-    @State var cancellable: AnyCancellable? = nil
     
     let terms: SearchTerms
     
@@ -55,40 +53,11 @@ struct NewRunningEntryView: View {
             .frame(width: geo.size.width)
             
         }
-            .onReceive(timer) { _ in loadRunning() }
-            .onAppear(perform: loadRunning)
     }
     
     /// calculate appropriate distance to next `entry`
     func offset(size: CGSize, running: RunningEntry) -> CGFloat {
         let scale = size.height / CGFloat(.day)
         return CGFloat(max(running.start - Date().midnight, .zero)) * scale
-    }
-    
-    func loadRunning() -> Void {
-        guard let user = cred.user else { return }
-        #if DEBUG
-        print("Fetching running timer")
-        #endif
-        cancellable = RunningEntryLoader.fetchRunningEntry(
-            user: user,
-            projects: Array(projects),
-            context: moc
-        )
-        /// if fetch is successful, save to `UserDefaults`
-        .map { runningEntry in
-            if !RunningEntry.widgetMatch(
-                WidgetManager.running,
-                runningEntry
-            ) {
-                #if DEBUG
-                print("Difference Detected, Reloading Widget Timeline")
-                #endif
-                WidgetManager.running = runningEntry
-                WidgetCenter.shared.reloadAllTimelines()
-            }
-            return runningEntry
-        }
-        .assign(to: \.running, on: self)
     }
 }
