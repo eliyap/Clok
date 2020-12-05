@@ -10,6 +10,7 @@ import Foundation
 import Combine
 import CoreData
 
+/// Publishers employed by widgets
 
 func RunningEntryRequest(context: NSManagedObjectContext) -> AnyPublisher<RunningEntry, Error> {
     guard let token = try? getKey().2 else {
