@@ -79,22 +79,8 @@ struct EntryFullScreenModal: View {
                 .coordinateSpace(name: coordSpaceName)
                 .gesture(ScrollDrag)
         }
-                
     }
     
-    var EntryHeader: some View {
-        VStack(alignment: .leading) {
-            Spacer()
-                .frame(height: Self.ButtonSize + Self.sharedPadding * 2)
-            Text(entry.entryDescription)
-                .font(.title)
-            Label(entry.projectName, systemImage: "folder.fill")
-            Label(entry.duration.toString(), systemImage: "stopwatch")
-        }
-            .padding(Self.sharedPadding)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .background(entry.color(in: colorScheme))
-    }
     
     var EntryBody: some View {
         VStack {
@@ -108,7 +94,7 @@ struct EntryFullScreenModal: View {
     // MARK:- ControlBar
     var ControlBar: some View {
         HStack {
-            DismissalButton
+            DismissalButton(dismiss: dismiss, completion: dismissalCompletion)
             Spacer()
             Button {
                 print("dummy button!")
@@ -126,37 +112,11 @@ struct EntryFullScreenModal: View {
             )
     }
     
-    static let ButtonSize: CGFloat = 40
-    static let ButtonStrokeWeight: CGFloat = 2.5
-    static var ButtonCircumference: CGFloat { CGFloat(Double.pi) * (EntryFullScreenModal.ButtonSize - ButtonStrokeWeight) }
-    
     /// measures the progress of the "swipe down to dismiss" gesture. bounded from [0, 1]
     var dismissalCompletion: CGFloat {
         /// note: clamp prevents visual from triggering while scrolling down
         /// `-` inversion causes circle to fill clockwise instead of counterclockwise
         -clamp(scrollOffset / Self.threshhold, between: (0, 1))
-    }
-    
-    var DismissalButton: some View {
-        Button {
-            self.dismiss()
-        } label: {
-            ZStack {
-                Image(systemName: "xmark")
-                    .font(Font.body.weight(.semibold))
-                Circle()
-                    .strokeBorder(style: StrokeStyle(
-                        lineWidth: Self.ButtonStrokeWeight,
-                        lineCap: .round,
-                        dash: [Self.ButtonCircumference],
-                        /// the 1 + increment starts the circle empty
-                        dashPhase: Self.ButtonCircumference * (1 + dismissalCompletion)
-                    ))
-                    .frame(width: Self.ButtonSize, height: Self.ButtonSize)
-                    /// make circle start drawing from 12 'o' clock, not 3 'o' clock
-                    .rotationEffect(-.tau / 4)
-            }
-        }
     }
     
     func dismiss() -> Void {

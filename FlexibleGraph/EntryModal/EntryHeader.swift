@@ -10,6 +10,16 @@ import SwiftUI
 
 extension EntryFullScreenModal {
     var EntryHeader: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(alignment: .leading) {
+            Spacer()
+                .frame(height: DismissalButton.ButtonSize + Self.sharedPadding * 2)
+            Text(entry.entryDescription)
+                .font(.title)
+            Label(entry.projectName, systemImage: "folder.fill")
+            Label(entry.duration.toString(), systemImage: "stopwatch")
+        }
+            .padding(Self.sharedPadding)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(entry.color(in: colorScheme))
     }
 }
