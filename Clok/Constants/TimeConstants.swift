@@ -13,8 +13,5 @@ import CoreGraphics
 enum TimeConstants {
     /// indicates that no valid time interval is available
     static let placeholderTime = "--:--"
-    
-    /// how long to wait in seconds before fetching the `RunningTimer` again
-    static let runningTimerFetchInterval: TimeInterval = 10
 }
 
