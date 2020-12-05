@@ -24,7 +24,8 @@ struct EntryFullScreenModal: View {
     /// the minimum pull-down to dismiss the view
     static let threshhold: CGFloat = 50
     
-    /// named Coordinate Space for this view
+    static let sharedPadding: CGFloat = 10
+        /// named Coordinate Space for this view
     let coordSpaceName = "bottom"
     
     var entry: TimeEntryLike { selected ?? StaticEntry.noEntry }
@@ -82,15 +83,15 @@ struct EntryFullScreenModal: View {
     }
     
     var EntryHeader: some View {
-        VStack {
+        VStack(alignment: .leading) {
             Spacer()
-                .frame(height: Self.ButtonSize + Self.controlBarPadding * 2)
+                .frame(height: Self.ButtonSize + Self.sharedPadding * 2)
             Text(entry.entryDescription)
                 .font(.title)
             Label(entry.projectName, systemImage: "folder.fill")
             Label(entry.duration.toString(), systemImage: "stopwatch")
         }
-            .padding(Self.controlBarPadding)
+            .padding(Self.sharedPadding)
             .frame(maxWidth: .infinity, alignment: .leading)
             .background(entry.color(in: colorScheme))
     }
@@ -100,11 +101,10 @@ struct EntryFullScreenModal: View {
             Label(entry.projectName, systemImage: "folder.fill")
             Label(entry.duration.toString(), systemImage: "stopwatch")
         }
-            .padding(Self.controlBarPadding)
+            .padding(Self.sharedPadding)
             .background(Color(UIColor.secondarySystemBackground))
     }
     
-    static let controlBarPadding: CGFloat = 10
     // MARK:- ControlBar
     var ControlBar: some View {
         HStack {
@@ -117,7 +117,7 @@ struct EntryFullScreenModal: View {
             }
         }
             .buttonStyle(PlainButtonStyle())
-            .padding(Self.controlBarPadding)
+            .padding(Self.sharedPadding)
             .background(
                 /// a nice transluscent system color
                 Color(UIColor.secondarySystemFill)
