@@ -95,32 +95,6 @@ struct ClokApp: App {
                 })
         }
             /// attach `RunningEntry` fetcher to App, not Window
-            .onChange(of: timer.tick) { _ in
-                guard let user = cred.user else { return }
-                #if DEBUG
-                print("Fetching running timer")
-                #endif
-                RunningEntryLoader.fetchRunningEntry(
-                    user: user,
-                    projects: loadProjects(context: nspc.viewContext) ?? [],
-                    context: nspc.viewContext
-                )
-                    .sink(receiveValue: { (running: RunningEntry?) in
-                        if !RunningEntry.widgetMatch(
-                            WidgetManager.running,
-                            running
-                        ) {
-                            #if DEBUG
-                            print("Difference Detected, Reloading Widget Timeline")
-                            #endif
-                            
-                            WidgetCenter.shared.reloadAllTimelines()
-                        }
-                        
-                        /// save to `UserDefaults`
-                        WidgetManager.running = running
-                    })
-                    .store(in: &DataFetcher.shared.cancellable)
-            }
+            .onChange(of: timer.tick, perform: fetchRunningEntry)
     }
 }
