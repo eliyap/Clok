@@ -11,6 +11,7 @@ import SwiftUI
 
 /// a data type with the general shape of a `TimeEntry`
 protocol TimeEntryLike {
+    var id: Int64 { get }
     var start: Date { get }
     var end: Date { get }
     var color: Color { get }

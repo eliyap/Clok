@@ -11,7 +11,7 @@ import SwiftUI
 
 final class RunningEntry: NSObject, NSSecureCoding, TimeEntryLike {
     
-    var id: Int
+    var id: Int64
     var pid: Int = NSNotFound
     var start: Date
     var project: ProjectLike
@@ -25,9 +25,9 @@ final class RunningEntry: NSObject, NSSecureCoding, TimeEntryLike {
     var color: Color { project.wrappedColor }
     var tagStrings: [String] { tags }
     var projectName: String { project.name }
-    
+    var identifier: Int64 { id }
     init(
-        id: Int,
+        id: Int64,
         start: Date,
         project: ProjectLike,
         entryDescription: String,
@@ -48,7 +48,7 @@ final class RunningEntry: NSObject, NSSecureCoding, TimeEntryLike {
         
         // check that these properties are not nil
         guard
-            let id = data["id"] as? Int,
+            let id = data["id"] as? Int64,
             data["description"] != nil,
             let entryDescription = data["description"] as? String,
             // get Dates from ISO8601 string
@@ -106,7 +106,7 @@ final class RunningEntry: NSObject, NSSecureCoding, TimeEntryLike {
     }
     
     init?(coder: NSCoder) {
-        id = coder.decodeInteger(forKey: "id")
+        id = Int64(coder.decodeInteger(forKey: "id"))
         pid = coder.decodeInteger(forKey: "pid")
         /// note: we will assign project later, for now leave `unknown`
         project = StaticProject.unknown
@@ -126,7 +126,7 @@ final class RunningEntry: NSObject, NSSecureCoding, TimeEntryLike {
 extension RunningEntry {
     /// signals that no entry is currently running
     static let noEntry = RunningEntry(
-        id: NSNotFound,
+        id: Int64(NSNotFound),
         start: Date.distantFuture,
         project: StaticProject.noProject,
         entryDescription: "Not Running",
@@ -134,7 +134,7 @@ extension RunningEntry {
     )
     
     static let placeholder = RunningEntry(
-        id: NSNotFound,
+        id: Int64(NSNotFound),
         start: Date(),
         project: StaticProject.noProject,
         entryDescription: "Placeholder",

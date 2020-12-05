@@ -17,7 +17,7 @@ struct RawRunningEntry: Decodable {
     let data: WrappedEntry?
     
     struct WrappedEntry: Decodable {
-        let id: Int
+        let id: Int64
         /// absence of a `pid` indicates no `Project`
         let pid: Int?
         let wid: Int

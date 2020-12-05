@@ -9,23 +9,19 @@
 import Foundation
 import SwiftUI
 struct StaticEntry: TimeEntryLike {
+    var id: Int64
     var start: Date
-    
     var end: Date
-    
     var color: Color
-    
     var entryDescription: String
-    
     var projectName: String
-    
     var tagStrings: [String]
-    
     var duration: TimeInterval
     
     //MARK:- NoEntry
     /// represents the absence of an entry, without resorting to a forced unwrap
     static let noEntry = StaticEntry(
+        id: Int64(NSNotFound),
         start: .distantPast,
         end: .distantFuture,
         color: .clear,
