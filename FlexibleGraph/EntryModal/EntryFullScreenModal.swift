@@ -17,7 +17,7 @@ struct EntryFullScreenModal: View {
     
     @Binding var showEntry: Bool
     var namespace: Namespace.ID
-    let entry: TimeEntry
+    let entry: TimeEntryLike
     
     /// the minimum pull-down to dismiss the view
     static let threshhold: CGFloat = 50
@@ -80,10 +80,10 @@ struct EntryFullScreenModal: View {
         VStack {
             Spacer()
                 .frame(height: Self.ButtonSize + Self.controlBarPadding * 2)
-            Text(entry.wrappedDescription)
+            Text(entry.entryDescription)
                 .font(.title)
             Label(entry.projectName, systemImage: "folder.fill")
-            Label(entry.dur.toString(), systemImage: "stopwatch")
+            Label(entry.duration.toString(), systemImage: "stopwatch")
         }
             .padding(Self.controlBarPadding)
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -93,7 +93,7 @@ struct EntryFullScreenModal: View {
     var EntryBody: some View {
         VStack {
             Label(entry.projectName, systemImage: "folder.fill")
-            Label(entry.dur.toString(), systemImage: "stopwatch")
+            Label(entry.duration.toString(), systemImage: "stopwatch")
         }
             .padding(Self.controlBarPadding)
             .background(Color(UIColor.secondarySystemBackground))
