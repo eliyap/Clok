@@ -16,7 +16,6 @@ struct ClokApp: App {
     
     /// Running Timer
     @StateObject var timer = AppTimer()
-    @FetchRequest(entity: Project.entity(), sortDescriptors: []) var projects: FetchedResults<Project>
     
     /// EnvironmentObjects
     let listRow = ListRow()
@@ -103,7 +102,7 @@ struct ClokApp: App {
                 #endif
                 RunningEntryLoader.fetchRunningEntry(
                     user: user,
-                    projects: Array(projects),
+                    projects: loadProjects(context: nspc.viewContext) ?? [],
                     context: nspc.viewContext
                 )
                     .sink(receiveValue: { (running: RunningEntry?) in
