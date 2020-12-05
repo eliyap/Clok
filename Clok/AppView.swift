@@ -14,7 +14,7 @@ import Combine
 struct ClokApp: App {
     
     /// Running Timer
-    let timer = Timer.publish(every: TimeConstants.runningTimerFetchInterval, on: .main, in: .common).autoconnect()
+    @StateObject var timer = AppTimer()
     
     /// EnvironmentObjects
     let listRow = ListRow()
@@ -92,6 +92,10 @@ struct ClokApp: App {
                         context: nspc.viewContext
                     )
                 })
+        }
+        /// attach `RunningEntry` fetcher to App, not Window
+        .onChange(of: timer.tick) { _ in
+            
         }
     }
 }

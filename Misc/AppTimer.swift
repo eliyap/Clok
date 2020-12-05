@@ -17,13 +17,13 @@ import Combine
  */
 class AppTimer: ObservableObject {
     var cancellable: AnyCancellable? = nil
-    @Published var _t: Bool = false
+    @Published var tick: Bool = false
     init() {
         cancellable = Timer
             .publish(every: 1, on: .main, in: .common)
             .autoconnect()
             .sink(receiveValue: { _ in
-                self._t.toggle()
+                self.tick.toggle()
             })
     }
 }
