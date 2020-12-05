@@ -330,6 +330,7 @@
 		22D9B9E8257B6E9100E923C5 /* AppLevelFetchRunningEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9B9E7257B6E9100E923C5 /* AppLevelFetchRunningEntry.swift */; };
 		22D9B9F8257B844600E923C5 /* EntryHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9B9F7257B844600E923C5 /* EntryHeader.swift */; };
 		22D9BA08257B851200E923C5 /* DismissalButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9BA07257B851200E923C5 /* DismissalButton.swift */; };
+		22D9BA11257B87C900E923C5 /* EntryLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9BA10257B87C900E923C5 /* EntryLabel.swift */; };
 		22DC869A24BA7A5E00FF771F /* TimeEntryModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22DC869824BA7A5E00FF771F /* TimeEntryModel.xcdatamodeld */; };
 		22DC869B24BA7A5E00FF771F /* TimeEntryModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22DC869824BA7A5E00FF771F /* TimeEntryModel.xcdatamodeld */; };
 		22DC86A024BA838D00FF771F /* Project+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC869C24BA838D00FF771F /* Project+CoreDataClass.swift */; };
@@ -692,6 +693,7 @@
 		22D9B9E7257B6E9100E923C5 /* AppLevelFetchRunningEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLevelFetchRunningEntry.swift; sourceTree = "<group>"; };
 		22D9B9F7257B844600E923C5 /* EntryHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryHeader.swift; sourceTree = "<group>"; };
 		22D9BA07257B851200E923C5 /* DismissalButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissalButton.swift; sourceTree = "<group>"; };
+		22D9BA10257B87C900E923C5 /* EntryLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryLabel.swift; sourceTree = "<group>"; };
 		22DC869924BA7A5E00FF771F /* TimeEntryModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TimeEntryModel.xcdatamodel; sourceTree = "<group>"; };
 		22DC869C24BA838D00FF771F /* Project+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Project+CoreDataClass.swift"; sourceTree = "<group>"; };
 		22DC869D24BA838D00FF771F /* Project+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Project+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -907,6 +909,7 @@
 			isa = PBXGroup;
 			children = (
 				22D4F5112577354C0053ABFB /* EntryFullScreenModal.swift */,
+				22D9BA10257B87C900E923C5 /* EntryLabel.swift */,
 				22D9BA07257B851200E923C5 /* DismissalButton.swift */,
 				22D9B9F7257B844600E923C5 /* EntryHeader.swift */,
 			);
@@ -2054,6 +2057,7 @@
 				22905B8824DB449400D5AC09 /* OldLinedBackground.swift in Sources */,
 				224D10CE24E5AC8C00668FD8 /* WeekdaySelector.swift in Sources */,
 				2264CB3B24AD344F00ECBF2B /* TokenFields.swift in Sources */,
+				22D9BA11257B87C900E923C5 /* EntryLabel.swift in Sources */,
 				22232B8B24A9532000F3C378 /* LoginView.swift in Sources */,
 				229646CB24F321AE00FE14E5 /* TimeConstants.swift in Sources */,
 				2241800D2579BA6400FF9B40 /* DayRect.swift in Sources */,

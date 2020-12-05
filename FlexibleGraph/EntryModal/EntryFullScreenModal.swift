@@ -84,8 +84,8 @@ struct EntryFullScreenModal: View {
     
     var EntryBody: some View {
         VStack {
-            Label(entry.projectName, systemImage: "folder.fill")
-            Label(entry.duration.toString(), systemImage: "stopwatch")
+            EntryLabel(entry.projectName, systemImage: "folder.fill")
+            EntryLabel(entry.duration.toString(), systemImage: "stopwatch")
         }
             .padding(Self.sharedPadding)
             .background(Color(UIColor.secondarySystemBackground))
