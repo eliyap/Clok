@@ -15,15 +15,8 @@ fileprivate let interval = TimeInterval(10)
 
 struct NewRunningEntryView: View {
     
-    @EnvironmentObject var cred: Credentials
-    @Environment(\.managedObjectContext) var moc
-    
-    @FetchRequest(entity: Project.entity(), sortDescriptors: []) var projects: FetchedResults<Project>
-    
     /// manage the auto updating
     @State var running: RunningEntry? = nil
-    
-    let terms: SearchTerms
     
     var body: some View {
         GeometryReader { geo in
