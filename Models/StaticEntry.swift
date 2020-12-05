@@ -25,5 +25,13 @@ struct StaticEntry: TimeEntryLike {
     
     //MARK:- NoEntry
     /// represents the absence of an entry, without resorting to a forced unwrap
-//    static let noEntry:
+    static let noEntry = StaticEntry(
+        start: .distantPast,
+        end: .distantFuture,
+        color: .clear,
+        entryDescription: "[No Entry]",
+        projectName: StaticProject.unknown.name,
+        tagStrings: [],
+        duration: .zero
+    )
 }
