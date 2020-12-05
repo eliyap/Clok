@@ -141,7 +141,6 @@
 		2287246425721D970082A490 /* DetailedProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2287244725721D860082A490 /* DetailedProject.swift */; };
 		2287246525721D970082A490 /* DetailedEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2287245025721D930082A490 /* DetailedEntry.swift */; };
 		228724BA257223630082A490 /* RawRunningMatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228724B7257223630082A490 /* RawRunningMatch.swift */; };
-		2287251025731C520082A490 /* DetailedWithRunningFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2287250725731BF20082A490 /* DetailedWithRunningFetcher.swift */; };
 		2287252725731F450082A490 /* ProjectDetailFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2287252625731F450082A490 /* ProjectDetailFetcher.swift */; };
 		2287252825731F450082A490 /* ProjectDetailFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2287252625731F450082A490 /* ProjectDetailFetcher.swift */; };
 		2287253025733A080082A490 /* RightTriangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6243D432526C421002E1B6E /* RightTriangle.swift */; };
@@ -325,6 +324,9 @@
 		22D745982505E93900013A80 /* ChosenWorkspace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D745972505E93900013A80 /* ChosenWorkspace.swift */; };
 		22D7459C2505E9B600013A80 /* ZoomLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D7459B2505E9B600013A80 /* ZoomLevel.swift */; };
 		22D9B958257B292300E923C5 /* StaticEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9B957257B292300E923C5 /* StaticEntry.swift */; };
+		22D9B9AA257B4DBB00E923C5 /* DetailedReportFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FFF6EE2571A77500A54471 /* DetailedReportFetcher.swift */; };
+		22D9B9B9257B4DD700E923C5 /* DetailedWithRunningFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2287250725731BF20082A490 /* DetailedWithRunningFetcher.swift */; };
+		22D9B9C1257B4DEB00E923C5 /* RunningEntryFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FFF697257101DE00A54471 /* RunningEntryFetcher.swift */; };
 		22DC869A24BA7A5E00FF771F /* TimeEntryModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22DC869824BA7A5E00FF771F /* TimeEntryModel.xcdatamodeld */; };
 		22DC869B24BA7A5E00FF771F /* TimeEntryModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22DC869824BA7A5E00FF771F /* TimeEntryModel.xcdatamodeld */; };
 		22DC86A024BA838D00FF771F /* Project+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC869C24BA838D00FF771F /* Project+CoreDataClass.swift */; };
@@ -358,13 +360,11 @@
 		22FFF6632570FC9F00A54471 /* WidgetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2206C5532541DD0600C78477 /* WidgetManager.swift */; };
 		22FFF66B2570FCA900A54471 /* FirstDayOfWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D5F52C2570E49C00806992 /* FirstDayOfWeek.swift */; };
 		22FFF6732570FCB400A54471 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F605AE246C6B1700D0FE82 /* DateExtension.swift */; };
-		22FFF698257101DE00A54471 /* RunningEntryFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FFF697257101DE00A54471 /* RunningEntryFetcher.swift */; };
 		22FFF6A12571020B00A54471 /* DataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FFF6A02571020B00A54471 /* DataFetcher.swift */; };
 		22FFF6A92571022700A54471 /* DataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FFF6A02571020B00A54471 /* DataFetcher.swift */; };
 		22FFF6C8257103AF00A54471 /* DataTaskMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B1D64824EBAD27001E87C1 /* DataTaskMonitor.swift */; };
 		22FFF6D0257109C400A54471 /* RunningEntryInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229D7B224F055FC004E1034 /* RunningEntryInit.swift */; };
 		22FFF6D825710CA800A54471 /* PrintError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229646D824F3367800FE14E5 /* PrintError.swift */; };
-		22FFF6EF2571A77500A54471 /* DetailedReportFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FFF6EE2571A77500A54471 /* DetailedReportFetcher.swift */; };
 		22FFF6F72571A84F00A54471 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D996224BB803800F66E0F /* Report.swift */; };
 		C60856AB251FCB1E00E6D6C0 /* URLStoreExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60856AA251FCB1E00E6D6C0 /* URLStoreExtension.swift */; };
 		C60856B4251FCE1B00E6D6C0 /* Tag+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229646D024F3294900FE14E5 /* Tag+CoreDataClass.swift */; };
@@ -877,10 +877,8 @@
 		2229D7AD24F04574004E1034 /* Fetchers */ = {
 			isa = PBXGroup;
 			children = (
-				22D9B991257B4D3400E923C5 /* TimeEntry */,
 				229646CE24F322E600FE14E5 /* TagLoader.swift */,
-				22FFF6EE2571A77500A54471 /* DetailedReportFetcher.swift */,
-				2287250725731BF20082A490 /* DetailedWithRunningFetcher.swift */,
+				22D9B991257B4D3400E923C5 /* TimeEntry */,
 				22D9B990257B4CAF00E923C5 /* Project */,
 				22D9B98F257B4C8200E923C5 /* DataFetcher */,
 				22D9B987257B4C2800E923C5 /* RunningEntry */,
@@ -1258,6 +1256,8 @@
 			children = (
 				2277E8C624EB44AC00702086 /* EntryLoader.swift */,
 				2277E8C824EB47B400702086 /* PaginatedLoad.swift */,
+				22FFF6EE2571A77500A54471 /* DetailedReportFetcher.swift */,
+				2287250725731BF20082A490 /* DetailedWithRunningFetcher.swift */,
 			);
 			path = TimeEntry;
 			sourceTree = "<group>";
@@ -1945,6 +1945,7 @@
 				2205DC8C254B9FC700146EAB /* RawProject.swift in Sources */,
 				2287243F257214570082A490 /* AssignCancellable.swift in Sources */,
 				22D5F5062570CFE000806992 /* MR_TimeIndicator.swift in Sources */,
+				22D9B9C1257B4DEB00E923C5 /* RunningEntryFetcher.swift in Sources */,
 				228724272571D89E0082A490 /* MR_Intent_Default.swift in Sources */,
 				22B2624A254B9CD300182236 /* FormRequest.swift in Sources */,
 				2287246425721D970082A490 /* DetailedProject.swift in Sources */,
@@ -1958,12 +1959,11 @@
 				22B78A08256C80AA00780213 /* TimeEntryModel.xcdatamodeld in Sources */,
 				22B26290254B9D6B00182236 /* ColorBrightness.swift in Sources */,
 				22FFF6C8257103AF00A54471 /* DataTaskMonitor.swift in Sources */,
-				22FFF6EF2571A77500A54471 /* DetailedReportFetcher.swift in Sources */,
-				2287251025731C520082A490 /* DetailedWithRunningFetcher.swift in Sources */,
 				22FFF6732570FCB400A54471 /* DateExtension.swift in Sources */,
 				2205DC78254B9FA300146EAB /* LoadProjects.swift in Sources */,
 				22FFF6A92571022700A54471 /* DataFetcher.swift in Sources */,
 				22556B6A2574C980003DEB7D /* Entry.swift in Sources */,
+				22D9B9B9257B4DD700E923C5 /* DetailedWithRunningFetcher.swift in Sources */,
 				2205DCB5254BA00B00146EAB /* Tag+CoreDataProperties.swift in Sources */,
 				22B2625E254B9CF200182236 /* RunningEntry.swift in Sources */,
 				2205DCC0254BA01400146EAB /* KeychainConstants.swift in Sources */,
@@ -1976,6 +1976,7 @@
 				22B2627C254B9D3E00182236 /* Project.swift in Sources */,
 				22B2622C254B9C3800182236 /* PersistentContainer.swift in Sources */,
 				22FFF6F72571A84F00A54471 /* Report.swift in Sources */,
+				22D9B9AA257B4DBB00E923C5 /* DetailedReportFetcher.swift in Sources */,
 				22B26203254B9B9600182236 /* RR_Entry.swift in Sources */,
 				2205DCB6254BA00B00146EAB /* Tag+CoreDataClass.swift in Sources */,
 				22B262A4254B9D7B00182236 /* ColorScore.swift in Sources */,
@@ -2071,7 +2072,6 @@
 				221D963C24A912B900C84F57 /* APIKeyHandler.swift in Sources */,
 				229646C924F3212700FE14E5 /* RequestConstants.swift in Sources */,
 				2295216C2505C16900085055 /* GraphMode.swift in Sources */,
-				22FFF698257101DE00A54471 /* RunningEntryFetcher.swift in Sources */,
 				22027DD024AFF63F00C0BA90 /* OrientationView.swift in Sources */,
 				228B100224AEA6E50026AD4B /* RoundBottomRect.swift in Sources */,
 				2295215A2505BF2A00085055 /* KeychainError.swift in Sources */,
