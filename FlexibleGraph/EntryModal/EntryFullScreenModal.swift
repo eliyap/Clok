@@ -126,11 +126,15 @@ struct EntryFullScreenModal: View {
     
     static let ButtonSize: CGFloat = 40
     static let ButtonStrokeWeight: CGFloat = 2.5
-    static var CircleRadius: CGFloat { CGFloat(Double.tau) * (EntryFullScreenModal.ButtonSize - ButtonStrokeWeight) }
+    static var ButtonCircumference: CGFloat { CGFloat(Double.pi) * (EntryFullScreenModal.ButtonSize - ButtonStrokeWeight) }
+    
+    /// measures the progress of the "swipe down to dismiss" gesture. bounded from [0, 1]
     var dismissalCompletion: CGFloat {
         /// note: clamp prevents visual from triggering while scrolling down
-        clamp(-scrollOffset / Self.threshhold, between: (-2, 0))
+        /// `-` inversion causes circle to fill clockwise instead of counterclockwise
+        -clamp(scrollOffset / Self.threshhold, between: (0, 1))
     }
+    
     var DismissalButton: some View {
         Button {
             self.dismiss()
@@ -142,10 +146,9 @@ struct EntryFullScreenModal: View {
                     .strokeBorder(style: StrokeStyle(
                         lineWidth: Self.ButtonStrokeWeight,
                         lineCap: .round,
-                        dash: [Self.CircleRadius],
-                        /// the 1/2 factor is because the whole dash - empty length is 2 * circumference
+                        dash: [Self.ButtonCircumference],
                         /// the 1 + increment starts the circle empty
-                        dashPhase: Self.CircleRadius * (1 + dismissalCompletion / 2)
+                        dashPhase: Self.ButtonCircumference * (1 + dismissalCompletion)
                     ))
                     .frame(width: Self.ButtonSize, height: Self.ButtonSize)
                     /// make circle start drawing from 12 'o' clock, not 3 'o' clock
