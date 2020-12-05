@@ -91,5 +91,3 @@ struct FlexibleGraph: View {
         }
     }
 }
-
-
