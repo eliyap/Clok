@@ -879,8 +879,6 @@
 			children = (
 				2277E8C624EB44AC00702086 /* EntryLoader.swift */,
 				2277E8C824EB47B400702086 /* PaginatedLoad.swift */,
-				2293CEEC24EC5661000B68F4 /* ProjectLoader.swift */,
-				2287252625731F450082A490 /* ProjectDetailFetcher.swift */,
 				229646CE24F322E600FE14E5 /* TagLoader.swift */,
 				22FFF6EE2571A77500A54471 /* DetailedReportFetcher.swift */,
 				2287250725731BF20082A490 /* DetailedWithRunningFetcher.swift */,
@@ -1250,6 +1248,8 @@
 		22D9B990257B4CAF00E923C5 /* Project */ = {
 			isa = PBXGroup;
 			children = (
+				2293CEEC24EC5661000B68F4 /* ProjectLoader.swift */,
+				2287252625731F450082A490 /* ProjectDetailFetcher.swift */,
 			);
 			path = Project;
 			sourceTree = "<group>";
