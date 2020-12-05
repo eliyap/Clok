@@ -44,7 +44,6 @@ struct NewRunningEntryView: View {
                 }
             }
             .frame(width: geo.size.width)
-            
         }
     }
     

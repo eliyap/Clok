@@ -93,6 +93,8 @@ struct ClokApp: App {
                         context: nspc.viewContext
                     )
                 })
+                /// perform a fetch whenever a new window is opened
+                .onAppear{ fetchRunningEntry(false) }
         }
             /// attach `RunningEntry` fetcher to App, not Window
             .onChange(of: timer.tick, perform: fetchRunningEntry)
