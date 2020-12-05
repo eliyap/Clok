@@ -686,7 +686,6 @@
 		22D745972505E93900013A80 /* ChosenWorkspace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChosenWorkspace.swift; sourceTree = "<group>"; };
 		22D7459B2505E9B600013A80 /* ZoomLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomLevel.swift; sourceTree = "<group>"; };
 		22D9B957257B292300E923C5 /* StaticEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticEntry.swift; sourceTree = "<group>"; };
-		22D9B97F257B4A5D00E923C5 /* LoadRunning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadRunning.swift; sourceTree = "<group>"; };
 		22DC869924BA7A5E00FF771F /* TimeEntryModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TimeEntryModel.xcdatamodel; sourceTree = "<group>"; };
 		22DC869C24BA838D00FF771F /* Project+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Project+CoreDataClass.swift"; sourceTree = "<group>"; };
 		22DC869D24BA838D00FF771F /* Project+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Project+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -1428,7 +1427,6 @@
 		C6C18D382448F96C000345D5 = {
 			isa = PBXGroup;
 			children = (
-				22D9B97F257B4A5D00E923C5 /* LoadRunning.swift */,
 				22F2CD51254BA3EE008DEB9C /* WidgetBundleExtension.entitlements */,
 				22B0784624B247D500256EB8 /* ClokWidgetExtension.entitlements */,
 				C6C18D432448F96C000345D5 /* Clok */,
