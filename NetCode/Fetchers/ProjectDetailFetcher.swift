@@ -15,6 +15,12 @@ struct RawProjectResponse: Decodable {
     let data: RawProject?
 }
 
+
+/// Request the details of a specific `Project` based on its `pid` from Toggl
+/// - Parameters:
+///   - pid: id of the `Project` in question
+///   - token: authentication token
+/// - Returns: `AnyPublisher` that will report back when done
 func FetchProjectDetails(
     pid: Int,
     token: String
