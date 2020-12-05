@@ -24,11 +24,7 @@ extension FlexibleGraph {
             .clipped()
             /// note: 0.8 is an arbitrary ratio, adjust to taste
             .matchedGeometryEffect(
-                id: NamespaceModel(
-                    entry: entry,
-                    row: animationInfo.row,
-                    col: animationInfo.col
-                ),
+                id: NamespaceModel(entryID: entry.id, row: animationInfo.row, col: animationInfo.col),
                 in: namespace,
                 isSource: model.selected == .none
             )

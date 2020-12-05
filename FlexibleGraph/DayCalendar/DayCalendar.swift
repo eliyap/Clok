@@ -39,12 +39,9 @@ extension FlexibleGraph {
                     .opacity(entry.matches(data.terms) ? 1 : 0.25)
                     /// push View to stack when tapped
                     .onTapGesture {
+                        model.geometry = NamespaceModel(entryID: entry.id, row: idx, col: start.timeIntervalSince1970)
                         withAnimation {
-                            model.selected = NamespaceModel(
-                                entry: entry,
-                                row: idx,
-                                col: start.timeIntervalSince1970
-                            )
+                            model.selected = entry
                         }
                     }
             }

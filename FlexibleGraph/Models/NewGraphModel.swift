@@ -15,8 +15,11 @@ final class NewGraphModel: ObservableObject {
         case listMode
     }
     
-    /// registers the selection of `TimeEntry`s
-    @Published var selected: NamespaceModel? = nil
+    /// registers the selected `TimeEntry`
+    @Published var selected: TimeEntry? = nil
+
+    /// tracks which `TimeEntry` shape is being tracked
+    @Published var geometry: NamespaceModel? = nil
     
     /// registers what mode the view is in
     @Published var mode: GraphMode = .weekMode

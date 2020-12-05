@@ -15,7 +15,8 @@ struct EntryFullScreenModal: View {
     @State var initialPos: CGFloat? = .none
     @State var bottomPos: CGFloat = .zero
     
-    @Binding var selected: NamespaceModel?
+    @Binding var selected: TimeEntry?
+    var geometry: NamespaceModel
     var namespace: Namespace.ID
     
     /// the minimum pull-down to dismiss the view
@@ -24,7 +25,7 @@ struct EntryFullScreenModal: View {
     /// named Coordinate Space for this view
     let coordSpaceName = "bottom"
     
-    var entry: TimeEntryLike { selected?.entry ?? StaticEntry.noEntry }
+    var entry: TimeEntryLike { selected ?? StaticEntry.noEntry }
     
     var body: some View {
         /// define a drag gesture that imitates scrolling (no momentum though)
@@ -59,6 +60,7 @@ struct EntryFullScreenModal: View {
                     .zIndex(1)
                 VStack(spacing: .zero) {
                     EntryHeader
+                        .matchedGeometryEffect(id: geometry, in: namespace)
                     EntryBody
                     /// monitors the position of the bottom of the view
                     GeometryReader { bottomGeo in

@@ -48,22 +48,15 @@ extension FlexibleGraph {
             .background(entry.color(in: mode))
             /// push View to stack when tapped
             .onTapGesture {
+                model.geometry = NamespaceModel(entryID: entry.id, row: row, col: col)
                 withAnimation {
-                    model.selected = NamespaceModel(
-                        entry: entry,
-                        row: row,
-                        col: col
-                    )
+                    model.selected = entry
                 }
             }
-            .matchedGeometryEffect(id:
-                NamespaceModel(
-                    entry: entry,
-                    row: row,
-                    col: col
-                ),
-               in: namespace,
-               isSource: model.selected == .none
+            .matchedGeometryEffect(
+                id: NamespaceModel(entryID: entry.id, row: row, col: col),
+                in: namespace,
+                isSource: model.selected == .none
             )
     }
 }
