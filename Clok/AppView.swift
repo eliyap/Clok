@@ -13,6 +13,10 @@ import Combine
 @main
 struct ClokApp: App {
     
+    /// Running Timer
+    let timer = Timer.publish(every: TimeConstants.runningTimerFetchInterval, on: .main, in: .common).autoconnect()
+    
+    /// EnvironmentObjects
     let listRow = ListRow()
     let zero = ZeroDate()
     let data: TimeData
