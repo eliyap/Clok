@@ -57,4 +57,5 @@ extension TimeEntry {
     public var projectName: String { wrappedProject.name }
     public var tagStrings: [String] { tagArray.map{$0.name} } /// just the names of the tags please
     public var entryDescription: String { wrappedDescription }
+    public var duration: TimeInterval { dur }
 }
