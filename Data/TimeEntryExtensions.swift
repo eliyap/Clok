@@ -9,7 +9,7 @@
 import Foundation
 import SwiftUI
 
-extension TimeEntry {
+extension TimeEntryLike {
     
     /// Returns a color adapted to light / dark mode
     /// - Parameter mode: whether view is in light or dark mode

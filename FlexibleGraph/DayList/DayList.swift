@@ -45,7 +45,7 @@ extension FlexibleGraph {
             }
         }
             .padding(3)
-            .background(entry.color(in: mode))
+            .background(entry.color(in: colorScheme))
             /// push View to stack when tapped
             .onTapGesture {
                 model.geometry = NamespaceModel(entryID: entry.id, row: row, col: col)

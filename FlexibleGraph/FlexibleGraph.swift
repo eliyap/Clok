@@ -33,7 +33,7 @@ struct FlexibleGraph: View {
     ) var entries: FetchedResults<TimeEntry>
     
     /// light / dark mode
-    @Environment(\.colorScheme) var mode
+    @Environment(\.colorScheme) var colorScheme
     
     @EnvironmentObject var data: TimeData
     @EnvironmentObject var bounds: Bounds

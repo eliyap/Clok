@@ -17,7 +17,7 @@ extension FlexibleGraph {
         animationInfo: (row: Int, col: Double)
     ) -> some View {
         let height = size.height * CGFloat((entry.end - entry.start) / .day)
-        return entry.color(in: mode)
+        return entry.color(in: colorScheme)
             /// note: 1/18 is an arbitrary ratio, adjust to taste
             .cornerRadius(min(size.width / 18.0, height / 2))
             /// note: 0.8 is an arbitrary ratio, adjust to taste

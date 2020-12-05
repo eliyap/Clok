@@ -10,6 +10,8 @@ import SwiftUI
 
 struct EntryFullScreenModal: View {
     
+    @Environment(\.colorScheme) var colorScheme
+    
     //MARK:- Modal Properties
     @State var scrollOffset: CGFloat = .zero
     @State var initialPos: CGFloat? = .none
@@ -90,7 +92,7 @@ struct EntryFullScreenModal: View {
         }
             .padding(Self.controlBarPadding)
             .frame(maxWidth: .infinity, alignment: .leading)
-            .background(entry.color)
+            .background(entry.color(in: colorScheme))
     }
     
     var EntryBody: some View {
