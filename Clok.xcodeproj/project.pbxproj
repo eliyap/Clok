@@ -909,9 +909,9 @@
 			isa = PBXGroup;
 			children = (
 				22D4F5112577354C0053ABFB /* EntryFullScreenModal.swift */,
-				22D9BA19257B8BAB00E923C5 /* AlignedLabelStyle.swift */,
 				22D9BA07257B851200E923C5 /* DismissalButton.swift */,
 				22D9B9F7257B844600E923C5 /* EntryHeader.swift */,
+				22D9BA19257B8BAB00E923C5 /* AlignedLabelStyle.swift */,
 			);
 			path = EntryModal;
 			sourceTree = "<group>";
