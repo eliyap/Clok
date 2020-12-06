@@ -96,7 +96,6 @@ struct EntryFullScreenModal: View {
                 .labelStyle(AlignedLabelStyle())
         }
             .padding(Self.sharedPadding)
-            .background(Color(UIColor.secondarySystemBackground))
     }
     
     // MARK:- ControlBar
