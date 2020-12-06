@@ -80,6 +80,12 @@ extension FlexibleGraph {
                                 model.selected = entry
                             }
                         }
+                        /// during `matchedGeometryEffect` animations, renders this in front of other views in the same day
+                        .zIndex(
+                            entry.id == model.geometry?.entryID
+                                ? 1
+                                : 0
+                        )
                 }
                     .frame(width: geo.size.width, height: geo.size.height, alignment: .top)
                 

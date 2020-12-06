@@ -26,6 +26,12 @@ extension FlexibleGraph {
                 id: \.id
             ) { entry in
                 DetailView(entry: entry, row: idx, col: start.timeIntervalSince1970)
+                    /// during `matchedGeometryEffect` animations, renders this in front of other views in the same day
+                    .zIndex(
+                        entry.id == model.geometry?.entryID
+                            ? 1
+                            : 0
+                    )
             }
         }
     }
