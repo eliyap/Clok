@@ -20,11 +20,6 @@ extension FlexibleGraph {
                 ScrollViewReader { proxy in
                     LazyVStack(alignment: .leading, spacing: .zero) {
                         ForEach(RowList, id: \.self) { idx in
-                            /// invisible anchor shape for `scrollTo` to latch onto
-                            Rectangle()
-                                .frame(height: .zero)
-                                /// draw a distinct ID that counts the same way
-                                .id(Double(idx) + 0.5)
                             /// for a variety of uninteresting reasons, this frame cannot be used by `scrollTo`
                             Page(idx: idx, size: geo.size)
                                 /// flip view back over
