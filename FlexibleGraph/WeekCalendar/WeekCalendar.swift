@@ -45,6 +45,12 @@ extension FlexibleGraph {
                 Divider()
                 WeekStrip(midnight: midnight, row: idx, col: midnight.timeIntervalSince1970)
                     .frame(height: size.height)
+                    /// during `matchedGeometryEffect` animations, renders this in front of other days in the same week
+                    .zIndex(
+                        midnight.timeIntervalSince1970 == model.geometry?.col
+                            ? 1
+                            : 0
+                    )
             }
         }
             /// NOTE: apply lined background to whole stack, NOT individual `DayStrip`!
