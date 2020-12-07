@@ -20,6 +20,10 @@ extension FlexibleGraph {
                 ScrollViewReader { proxy in
                     LazyVStack(alignment: .leading, spacing: .zero) {
                         ForEach(RowList, id: \.self) { idx in
+                            /// invisible anchor shape for `scrollTo` to latch onto
+                            Color.clear
+                                .frame(height: 0.05)
+                                .id(Double(idx) + 0.5)
                             /// for a variety of uninteresting reasons, this frame cannot be used by `scrollTo`
                             Page(idx: idx, size: geo.size)
                                 /// flip view back over
@@ -30,15 +34,11 @@ extension FlexibleGraph {
                                         RowList.insert(RowList.last! - 1, at: RowList.count)
                                     }
                                 }
-                            /// invisible anchor shape for `scrollTo` to latch onto
-                            Color.clear
-                                .frame(height: 0.05)
-                                .id(Double(idx) + 0.5)
                         }
                     }
                     .onChange(of: requestedPosition) { req in
                         print(requestedPosition)
-                        proxy.scrollTo(Double(req.row + 1) + 0.5, anchor: req.position)
+                        proxy.scrollTo(Double(req.row) + 0.5, anchor: req.position)
                     }
                 }
             }
