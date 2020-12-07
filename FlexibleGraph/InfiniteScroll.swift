@@ -30,7 +30,15 @@ extension FlexibleGraph {
                                         RowList.insert(RowList.last! - 1, at: RowList.count)
                                     }
                                 }
+                            Color.clear
+                                .border(Color.green)
+                                .frame(height: 1)
+                                .id(Double(idx) + 0.5)
                         }
+                    }
+                    .onChange(of: requestedPosition) { req in
+                        print(requestedPosition)
+                        proxy.scrollTo(Double(req.row + 1) + 0.5, anchor: req.position)
                     }
                 }
             }
@@ -76,15 +84,6 @@ extension FlexibleGraph {
          - unlike `.offset`, it cannot go into negative height
          */
         GeometryReader { geo in
-            Run {
-                let topOffset = bounds.insets.top - geo.frame(in: .global).minY
-                if topOffset.isBetween(0, geo.size.height) {
-                    rowPosition = RowPositionModel(
-                        row: idx,
-                        position: UnitPoint(x: .zero, y: topOffset/geo.size.height)
-                    )
-                }
-            }
             VStack(alignment: .leading, spacing: .zero) {
                 Spacer()
                     .frame(maxHeight: bounds.insets.top - geo.frame(in: .global).minY)
@@ -102,6 +101,20 @@ extension FlexibleGraph {
                             .foregroundColor(.red)
                     )
             }
+            .onReceive(positionRequester) { _ in
+                getPosition(geo: geo, idx: idx)
+            }
+        }
+    }
+    
+    func getPosition(geo: GeometryProxy, idx: Int) -> Void {
+        let topOffset = bounds.insets.top - geo.frame(in: .global).minY
+        if topOffset.isBetween(0, geo.size.height) {
+            rowPosition = RowPositionModel(
+                row: idx,
+                position: UnitPoint(x: .zero, y: topOffset/geo.size.height)
+            )
+            requestedPosition = RowPositionModel(row: rowPosition.row, position: rowPosition.position)
         }
     }
 }

@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct FlexibleGraph: View {
     /**
@@ -67,6 +68,10 @@ struct FlexibleGraph: View {
     /// updated row and position of that row as user scrolls
     @State var rowPosition: RowPositionModel = .zero
     
+    @State var requestedPosition: RowPositionModel = .zero
+    
+    let positionRequester = PassthroughSubject<Bool, Never>()
+    
     //MARK:- Body
     var body: some View {
         ZStack {
@@ -80,6 +85,9 @@ struct FlexibleGraph: View {
                         Text("Transform!")
                     }
                         .actionSheet(isPresented: $showSheet) { ModeSheet }
+                    Button("Experiment") {
+                        positionRequester.send(true)
+                    }
                 }
             }
             /// show full screen modal when an entry is pushed
