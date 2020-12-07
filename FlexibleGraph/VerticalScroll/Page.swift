@@ -23,7 +23,7 @@ extension FlexibleGraph {
             case .listMode:
                 DayList(idx: idx)
             case .extendedMode:
-                fatalError("VerticalStack should never be constructed in case extendedMode")
+                EmptyView()
             }
             StickyDateLabel(idx: idx)
         }
