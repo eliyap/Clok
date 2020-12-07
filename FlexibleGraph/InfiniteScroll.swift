@@ -14,7 +14,7 @@ extension FlexibleGraph {
      Built on a monstrous hack that exploits the behaviour of `LazyVStack`,
      wherein it doesn't scroll when views are added below (here rotated to be "above")
      */
-    var InfiniteScroll: some View {
+    var VerticalScroll: some View {
         GeometryReader { geo in
             ScrollView(showsIndicators: false) {
                 ScrollViewReader { proxy in
