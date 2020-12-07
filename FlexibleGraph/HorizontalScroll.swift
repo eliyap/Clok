@@ -42,14 +42,15 @@ extension FlexibleGraph {
                                     .advanced(by: Double(idx) * .day + Double(rowPosition.position.y) * .day),
                                 idx: idx
                             )
-                                .frame(
-                                    /// NOTE: this is effectively an arbitrary value
-                                    width: geo.size.width / 7,
-                                    /// this restriction should no longer be necessary
-                                    height: geo.size.height
-                                )
+                                /// NOTE: this is effectively an arbitrary value
+                                .frame(width: geo.size.width / 7)
                                 .rotationEffect(.tau / 2)
                                 /// if user hits the "last" (visually leftmost) date, add another one to the left (by appending)
+                                .onAppear {
+                                    if idx == RowList.last {
+                                        RowList.insert(RowList.last! - 1, at: RowList.count)
+                                    }
+                                }
                         }
                     }
                     .onChange(of: requestedPosition) { req in
