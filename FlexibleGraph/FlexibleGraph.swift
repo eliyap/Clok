@@ -68,17 +68,15 @@ struct FlexibleGraph: View {
     /// arbitrary value to shift `id` for `PageAnchor`. Do not set to `1`!
     static let idOffset = 0.5
     
-    #warning("experimental properties")
-    @State var scrollDxn: Axis = .vertical
     //MARK:- Body
     var body: some View {
         ZStack {
             #warning("placeholder UI")
             VStack(spacing: .zero) {
-                switch scrollDxn {
-                case .vertical:
+                switch model.mode {
+                case .dayMode, .listMode:
                     VerticalScroll
-                case .horizontal:
+                case .extendedMode:
                     HorizontalScroll
                 }
                 HStack {
@@ -88,12 +86,6 @@ struct FlexibleGraph: View {
                         Text("Transform!")
                     }
                         .actionSheet(isPresented: $showSheet) { ModeSheet }
-                    Button("Experiment") {
-                        positionRequester.send(true)
-                        withAnimation {
-                            scrollDxn.toggle()
-                        }
-                    }
                 }
             }
             /// show full screen modal when an entry is pushed
