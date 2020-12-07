@@ -60,6 +60,8 @@ struct FlexibleGraph: View {
      */
     @State var RowList = Array((-(365*3)...0).reversed())
     
+    @State var dragInitial: CGFloat? = .none
+    
     /// updated row and position of that row as user scrolls
     @State var rowPosition: RowPositionModel = .zero
     

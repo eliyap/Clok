@@ -17,7 +17,15 @@ extension FlexibleGraph {
                     .offset(y: -geo.size.height * rowPosition.position.y)
                     .gesture(DragGesture()
                         .onChanged { state in
-                            rowPosition.position.y += state.translation.height / geo.size.height
+                            /// if Gesture just started, store old value
+                            if dragInitial == .none {
+                                dragInitial = rowPosition.position.y
+                            }
+                            rowPosition.position.y = dragInitial! + state.translation.height / geo.size.height
+                        }
+                        .onEnded { state in
+                            /// forget state in preparation for next Gesture
+                            dragInitial = .none
                         }
                     )
                 HorizontalScrollView
