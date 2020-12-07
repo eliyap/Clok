@@ -94,6 +94,7 @@ struct FlexibleGraph: View {
                     /// increase zIndex so that, while animating, modal does not fall behind other entries
                     .zIndex(1)
             }
+            /// handles the Hero Animation when a `TimeEntry` is selected / dismissed
             MGEAnimator
         }
     }
