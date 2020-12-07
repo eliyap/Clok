@@ -54,10 +54,8 @@ extension FlexibleGraph {
     func getPosition(geo: GeometryProxy, idx: Int) -> Void {
         let topOffset = bounds.insets.top - geo.frame(in: .global).minY
         if topOffset.isBetween(0, geo.size.height) {
-            rowPosition = RowPositionModel(
-                row: idx,
-                position: UnitPoint(x: .zero, y: topOffset/geo.size.height)
-            )
+            rowPosition.row = idx
+            rowPosition.position.y = topOffset / geo.size.height
         }
     }
 }
