@@ -38,7 +38,7 @@ extension FlexibleGraph {
             NewTimeIndicator(divisions: evenDivisions(for: size.height))
             /// use date enum so SwiftUI can identify horizontal swipes without redrawing everything
             ForEach(
-                Array(stride(from: start, to: start + .week, by: .day)),
+                Array(stride(from: start - .week, to: start, by: .day)),
                 id: \.timeIntervalSince1970
             ) { midnight in
                 /// vertical dividing line between each day

@@ -58,7 +58,7 @@ struct FlexibleGraph: View {
      Therefore I am capping future exploration at 0 days, which should not affect TimeEntries that aren't recorded in the future.
      If this changes, do allow exploration of the future by increasing the cap
      */
-    @State var RowList = Array((-(365*3)...0).reversed())
+    @State var RowList = Array((-(365*3)...1).reversed())
     
     /// updated row and position of that row as user scrolls
     @State var rowPosition: RowPositionModel = .zero
