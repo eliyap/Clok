@@ -231,6 +231,9 @@
 		2296F15924A96FB800AF38B5 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2296F15824A96FB800AF38B5 /* Icon.png */; };
 		2296F15B24A994A400AF38B5 /* FormRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2296F15A24A994A400AF38B5 /* FormRequest.swift */; };
 		229D4110257E0B9600ABD26F /* HorizontalScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229D410F257E0B9600ABD26F /* HorizontalScroll.swift */; };
+		229D4119257E117E00ABD26F /* StickyDateLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229D4118257E117E00ABD26F /* StickyDateLabel.swift */; };
+		229D4122257E119900ABD26F /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229D4121257E119900ABD26F /* Page.swift */; };
+		229D412B257E11A900ABD26F /* PageAnchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229D412A257E11A900ABD26F /* PageAnchor.swift */; };
 		22A2CE1D24E59BB1000820AD /* DateStridable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE1C24E59BB1000820AD /* DateStridable.swift */; };
 		22A2CE1F24E59BCE000820AD /* DateAngle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE1E24E59BCE000820AD /* DateAngle.swift */; };
 		22A2CE2424E59DFE000820AD /* DateMean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE2324E59DFE000820AD /* DateMean.swift */; };
@@ -644,6 +647,9 @@
 		2296F15824A96FB800AF38B5 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = Icon/Icon.png; sourceTree = SOURCE_ROOT; };
 		2296F15A24A994A400AF38B5 /* FormRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormRequest.swift; sourceTree = "<group>"; };
 		229D410F257E0B9600ABD26F /* HorizontalScroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalScroll.swift; sourceTree = "<group>"; };
+		229D4118257E117E00ABD26F /* StickyDateLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickyDateLabel.swift; sourceTree = "<group>"; };
+		229D4121257E119900ABD26F /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
+		229D412A257E11A900ABD26F /* PageAnchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageAnchor.swift; sourceTree = "<group>"; };
 		22A2CE1C24E59BB1000820AD /* DateStridable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateStridable.swift; sourceTree = "<group>"; };
 		22A2CE1E24E59BCE000820AD /* DateAngle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateAngle.swift; sourceTree = "<group>"; };
 		22A2CE2324E59DFE000820AD /* DateMean.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateMean.swift; sourceTree = "<group>"; };
@@ -1202,6 +1208,9 @@
 			children = (
 				22D4F4FF2577345E0053ABFB /* FlexibleGraph.swift */,
 				22D4F54A2577364B0053ABFB /* VerticalScroll.swift */,
+				229D412A257E11A900ABD26F /* PageAnchor.swift */,
+				229D4121257E119900ABD26F /* Page.swift */,
+				229D4118257E117E00ABD26F /* StickyDateLabel.swift */,
 				229D410F257E0B9600ABD26F /* HorizontalScroll.swift */,
 				22D4F531257735F20053ABFB /* ModeSheet.swift */,
 				227BD4D9257DEBA9008BFC49 /* MGEAnimator.swift */,
@@ -2080,6 +2089,7 @@
 				C68F8C8D24A04CE8000D249B /* IceCreamStick.swift in Sources */,
 				2207B22024B954F40006748A /* OldGraphView.swift in Sources */,
 				22D9B958257B292300E923C5 /* StaticEntry.swift in Sources */,
+				229D412B257E11A900ABD26F /* PageAnchor.swift in Sources */,
 				22D4F54B2577364B0053ABFB /* VerticalScroll.swift in Sources */,
 				C60856AB251FCB1E00E6D6C0 /* URLStoreExtension.swift in Sources */,
 				22128E09254206E6004913AF /* WidgetManager.swift in Sources */,
@@ -2091,6 +2101,7 @@
 				22027DD024AFF63F00C0BA90 /* OrientationView.swift in Sources */,
 				228B100224AEA6E50026AD4B /* RoundBottomRect.swift in Sources */,
 				2295215A2505BF2A00085055 /* KeychainError.swift in Sources */,
+				229D4119257E117E00ABD26F /* StickyDateLabel.swift in Sources */,
 				C65B7D2C2497DE4A00EED981 /* EntryOperations.swift in Sources */,
 				224180162579BA8A00FF9B40 /* WeekRect.swift in Sources */,
 				22D56F042526BB030011C4AC /* RingSize.swift in Sources */,
@@ -2131,6 +2142,7 @@
 				22A2CE2424E59DFE000820AD /* DateMean.swift in Sources */,
 				2277E8C724EB44AC00702086 /* EntryLoader.swift in Sources */,
 				229646D924F3367800FE14E5 /* PrintError.swift in Sources */,
+				229D4122257E119900ABD26F /* Page.swift in Sources */,
 				229646D224F3294900FE14E5 /* Tag+CoreDataClass.swift in Sources */,
 				C63FC2F8249BCEB900747D49 /* AngleExtension.swift in Sources */,
 				22D4F57D257742A10053ABFB /* WeekCalendar.swift in Sources */,
