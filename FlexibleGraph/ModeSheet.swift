@@ -17,6 +17,9 @@ extension FlexibleGraph {
             .default(Text("List".tickedIf(model.mode == .listMode))) {
                 withAnimation { model.mode = .listMode }
             },
+            .default(Text("Extended".tickedIf(model.mode == .extendedMode))) {
+                withAnimation { model.mode = .extendedMode }
+            },
             .cancel()
         ])
     }
