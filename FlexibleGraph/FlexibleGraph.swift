@@ -19,12 +19,15 @@ struct FlexibleGraph: View {
     //MARK:- Properties
     /// tracks the `View`'s state, such as its mode and which `TimeEntry` is selected
     @StateObject var model = NewGraphModel()
+    @State var passthroughGeometry: NamespaceModel? = nil
+    @State var passthroughSelected: TimeEntry? = nil
     
     /// whether to show the `Mode` select menu
     @State var showSheet: Bool = false
     
     /// used for our `matchedGeometryEffect` animations
-    @Namespace var namespace
+    @Namespace var graphNamespace
+    @Namespace var modalNamespace
     
     /// access CoreData `TimeEntry` storage
     @FetchRequest(
@@ -82,14 +85,39 @@ struct FlexibleGraph: View {
             /// switch out full screen modal when an entry is pushed
             if model.selected != .none {
                 EntryFullScreenModal(
-                    selected: $model.selected,
-                    geometry: model.geometry
-                        ?? NamespaceModel(entryID: StaticEntry.noEntry.id, row: .zero, col: .zero),
-                    namespace: namespace
+                    /// pass binding, as `dismiss` needs to set this parameter
+                    selected: $passthroughSelected,
+                    /// pass resultant property, as this only needs to be read
+                    geometry: model.geometry ?? NamespaceModel.none,
+                    namespace: modalNamespace
                 )
                     /// increase zIndex so that, while animating, modal does not fall behind other entries
                     .zIndex(1)
             }
+            (passthroughSelected?.color ?? .clear)
+                .matchedGeometryEffect(
+                    id: passthroughGeometry ?? NamespaceModel.none,
+                    /// switch namespaces when entry is selected  / de-selected
+                    in: model.selected == nil ? graphNamespace : modalNamespace,
+                    isSource: false
+                )
+                /** Passes Changes on, but `withAnimation`
+                 The key to this approach is that after a `TimeEntry` is selected,
+                 the view instantly (without animation) snaps to the `TimeEntry`,
+                 then it switches `Namespace`s and targets `EntryFullScreenModal` to create the animation.
+                 It has the advantage of being `ZStack`ed above the graph, and does not clip behind any other entries
+                 */
+                .onChange(of: passthroughSelected) { newSelection in
+                    withAnimation {
+                        model.selected = newSelection
+                    }
+                    
+                }
+                .onChange(of: passthroughGeometry) { newGeometry in
+                    withAnimation {
+                        model.geometry = newGeometry
+                    }
+                }
         }
     }
 }
