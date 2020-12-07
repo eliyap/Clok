@@ -16,7 +16,7 @@ extension FlexibleGraph {
      */
     var VerticalScroll: some View {
         GeometryReader { geo in
-            ScrollView(showsIndicators: false) {
+            ScrollView(.vertical, showsIndicators: false) {
                 ScrollViewReader { proxy in
                     LazyVStack(alignment: .leading, spacing: .zero) {
                         ForEach(RowList, id: \.self) { idx in

@@ -16,7 +16,7 @@ extension FlexibleGraph {
          wherein it doesn't scroll when views are added to the front
          */
         GeometryReader { geo in
-            ScrollView(showsIndicators: false) {
+            ScrollView(.horizontal, showsIndicators: false) {
                 ScrollViewReader { proxy in
                     LazyHStack(spacing: .zero) {
                         ForEach(RowList, id: \.self) { idx in
