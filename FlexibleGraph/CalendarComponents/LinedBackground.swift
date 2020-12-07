@@ -29,9 +29,9 @@ struct NewLinedBackground: View {
         Group {
             Divider()
             if interval < 0 || interval >= .day { /// outside the highlighted 1 day range
-                Rectangle().foregroundColor(.clokBG)
+                Color.clokBG
             } else {
-                Rectangle().foregroundColor(.background)
+                Color.background
             }
         }
     }
