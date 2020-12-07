@@ -20,18 +20,9 @@ extension FlexibleGraph {
                 ScrollViewReader { proxy in
                     LazyHStack(spacing: .zero) {
                         ForEach(RowList, id: \.self) { idx in
-                            /// invisible anchor shape for `scrollTo` to latch onto
-                            PageAnchor(for: idx, axis: .horizontal)
-                            /// for a variety of uninteresting reasons, this frame cannot be used by `scrollTo`
-                            Page(idx: idx, size: geo.size)
-                                /// flip view back over
                                 .rotationEffect(.tau / 2)
                                 /// if user hits the "last" (visually leftmost) date, add another one to the left (by appending)
-                                .onAppear {
-                                    if idx == RowList.last {
-                                        RowList.insert(RowList.last! - 1, at: RowList.count)
-                                    }
-                                }
+                            DayStack(size: geo.size, idx: idx)
                         }
                     }
                     .onChange(of: requestedPosition) { req in
