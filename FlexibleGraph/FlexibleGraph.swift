@@ -82,7 +82,7 @@ struct FlexibleGraph: View {
                         .actionSheet(isPresented: $showSheet) { ModeSheet }
                 }
             }
-            /// switch out full screen modal when an entry is pushed
+            /// show full screen modal when an entry is pushed
             if model.selected != .none {
                 EntryFullScreenModal(
                     /// pass binding, as `dismiss` needs to set this parameter
