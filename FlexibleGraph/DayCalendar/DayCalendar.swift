@@ -42,12 +42,6 @@ extension FlexibleGraph {
                         passthroughGeometry = NamespaceModel(entryID: entry.id, row: idx, col: start.timeIntervalSince1970)
                         passthroughSelected = entry
                     }
-                    /// during `matchedGeometryEffect` animations, renders this in front of other views in the same day
-                    .zIndex(
-                        entry.id == model.geometry?.entryID
-                            ? 1
-                            : 0
-                    )
             }
                 .layoutPriority(1)
                 .frame(maxWidth: size.width, minHeight: size.height, alignment: .top)

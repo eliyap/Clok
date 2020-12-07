@@ -45,12 +45,6 @@ extension FlexibleGraph {
                 Divider()
                 WeekStrip(midnight: midnight, row: idx, col: midnight.timeIntervalSince1970)
                     .frame(height: size.height)
-                    /// during `matchedGeometryEffect` animations, renders this in front of other days in the same week
-                    .zIndex(
-                        midnight.timeIntervalSince1970 == model.geometry?.col
-                            ? 1
-                            : 0
-                    )
             }
         }
             /// NOTE: apply lined background to whole stack, NOT individual `DayStrip`!
@@ -84,12 +78,6 @@ extension FlexibleGraph {
                             passthroughGeometry = NamespaceModel(entryID: entry.id, row: row, col: col)
                             passthroughSelected = entry
                         }
-                        /// during `matchedGeometryEffect` animations, renders this in front of other views in the same day
-                        .zIndex(
-                            entry.id == model.geometry?.entryID
-                                ? 1
-                                : 0
-                        )
                 }
                     .frame(width: geo.size.width, height: geo.size.height, alignment: .top)
                 

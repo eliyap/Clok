@@ -30,12 +30,6 @@ extension FlexibleGraph {
                                         RowList.insert(RowList.last! - 1, at: RowList.count)
                                     }
                                 }
-                                /// this ensures that during the `matchedGeometryEffect` animations, this view renders in front of all others
-                                .zIndex(
-                                    idx == model.geometry?.row
-                                        ? 1
-                                        : 0
-                                )
                         }
                     }
                 }
