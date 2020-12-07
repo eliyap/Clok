@@ -13,7 +13,8 @@ extension FlexibleGraph {
     var HorizontalScroll: some View {
         GeometryReader { geo in
             HStack(spacing: .zero) {
-                NewTimeIndicator(divisions: evenDivisions(for: geo.size.height))
+                AlignedTimeIndicator(height: geo.size.height)
+                    .offset(y: -geo.size.height * rowPosition.position.y)
                     .gesture(DragGesture()
                         .onChanged { state in
                             rowPosition.position.y += state.translation.height / geo.size.height
@@ -35,16 +36,16 @@ extension FlexibleGraph {
                 ScrollViewReader { proxy in
                     LazyHStack(spacing: .zero) {
                         ForEach(RowList, id: \.self) { idx in
-                            
-                            WeekStrip(
+                            DayStrip(
                                 midnight: Date()
                                     .midnight
-                                    /// NOTE: -1 is a magic number to correct for offset
                                     .advanced(by: Double(idx) * .day + Double(rowPosition.position.y) * .day),
                                 idx: idx
                             )
                                 .frame(
+                                    /// NOTE: this is effectively an arbitrary value
                                     width: geo.size.width / 7,
+                                    /// this restriction should no longer be necessary
                                     height: geo.size.height
                                 )
                                 .rotationEffect(.tau / 2)
@@ -62,8 +63,21 @@ extension FlexibleGraph {
         }
     }
     
-    // MARK:- WeekStrip
-    func WeekStrip(midnight: Date, idx: Int) -> some View {
+    
+    /// Glues together 2 `TimeIndicators` in the right way to place it in beside the `HorizontalScrollView`
+    func AlignedTimeIndicator(height: CGFloat) -> some View {
+        VStack(spacing: .zero) {
+            NewTimeIndicator(divisions: evenDivisions(for: height))
+                .frame(height: height)
+            NewTimeIndicator(divisions: evenDivisions(for: height))
+                .frame(height: height)
+        }
+            .frame(height: height, alignment: .top)
+            .offset(y: -height * rowPosition.position.y)
+    }
+    
+    // MARK:- DayStrip
+    func DayStrip(midnight: Date, idx: Int) -> some View {
         GeometryReader { geo in
             ZStack {
                 ForEach(
