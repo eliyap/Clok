@@ -1213,12 +1213,9 @@
 			isa = PBXGroup;
 			children = (
 				22D4F4FF2577345E0053ABFB /* FlexibleGraph.swift */,
-				22D4F54A2577364B0053ABFB /* VerticalScroll.swift */,
-				229D412A257E11A900ABD26F /* PageAnchor.swift */,
-				229D4121257E119900ABD26F /* Page.swift */,
-				229D4118257E117E00ABD26F /* StickyDateLabel.swift */,
 				22D4F531257735F20053ABFB /* ModeSheet.swift */,
 				227BD4D9257DEBA9008BFC49 /* MGEAnimator.swift */,
+				22F5245A257E53BB005222C2 /* VerticalScroll */,
 				22F5242E257E51D6005222C2 /* HorizontalScroll */,
 				224180242579FCA000FF9B40 /* EntryModal */,
 				22E642332577501900CCF49F /* DayList */,
@@ -1381,6 +1378,17 @@
 				22F5244A257E5280005222C2 /* WeekRect.swift */,
 			);
 			path = HorizontalScroll;
+			sourceTree = "<group>";
+		};
+		22F5245A257E53BB005222C2 /* VerticalScroll */ = {
+			isa = PBXGroup;
+			children = (
+				22D4F54A2577364B0053ABFB /* VerticalScroll.swift */,
+				229D412A257E11A900ABD26F /* PageAnchor.swift */,
+				229D4121257E119900ABD26F /* Page.swift */,
+				229D4118257E117E00ABD26F /* StickyDateLabel.swift */,
+			);
+			path = VerticalScroll;
 			sourceTree = "<group>";
 		};
 		22FFF64B2570F8A000A54471 /* Putters */ = {
