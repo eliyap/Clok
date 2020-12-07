@@ -361,6 +361,10 @@
 		22E6429A257799EB00CCF49F /* MoldedRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E64270257799B100CCF49F /* MoldedRectangle.swift */; };
 		22F2CD60254BA744008DEB9C /* RunningTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F4655B2541FAD1008BF6F0 /* RunningTimer.swift */; };
 		22F52411257E25FC005222C2 /* AxisToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F52410257E25FC005222C2 /* AxisToggle.swift */; };
+		22F52430257E51F7005222C2 /* HorizontalScrollStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F5242F257E51F7005222C2 /* HorizontalScrollStack.swift */; };
+		22F52439257E5225005222C2 /* AlignedTimeIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F52438257E5225005222C2 /* AlignedTimeIndicator.swift */; };
+		22F52442257E5247005222C2 /* DayStrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F52441257E5247005222C2 /* DayStrip.swift */; };
+		22F5244B257E5280005222C2 /* WeekRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F5244A257E5280005222C2 /* WeekRect.swift */; };
 		22FA071A251D0DC800E20C27 /* TokenWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FA0719251D0DC800E20C27 /* TokenWebView.swift */; };
 		22FFF63B2570EA1D00A54471 /* WidgetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2206C5532541DD0600C78477 /* WidgetManager.swift */; };
 		22FFF6432570EA2500A54471 /* FirstDayOfWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D5F52C2570E49C00806992 /* FirstDayOfWeek.swift */; };
@@ -719,6 +723,10 @@
 		22F2CD51254BA3EE008DEB9C /* WidgetBundleExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WidgetBundleExtension.entitlements; sourceTree = "<group>"; };
 		22F4655B2541FAD1008BF6F0 /* RunningTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningTimer.swift; sourceTree = "<group>"; };
 		22F52410257E25FC005222C2 /* AxisToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AxisToggle.swift; sourceTree = "<group>"; };
+		22F5242F257E51F7005222C2 /* HorizontalScrollStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalScrollStack.swift; sourceTree = "<group>"; };
+		22F52438257E5225005222C2 /* AlignedTimeIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlignedTimeIndicator.swift; sourceTree = "<group>"; };
+		22F52441257E5247005222C2 /* DayStrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayStrip.swift; sourceTree = "<group>"; };
+		22F5244A257E5280005222C2 /* WeekRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekRect.swift; sourceTree = "<group>"; };
 		22FA0719251D0DC800E20C27 /* TokenWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenWebView.swift; sourceTree = "<group>"; };
 		22FFF64C2570F8B200A54471 /* BeginningOfWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeginningOfWeek.swift; sourceTree = "<group>"; };
 		22FFF697257101DE00A54471 /* RunningEntryFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningEntryFetcher.swift; sourceTree = "<group>"; };
@@ -1209,9 +1217,9 @@
 				229D412A257E11A900ABD26F /* PageAnchor.swift */,
 				229D4121257E119900ABD26F /* Page.swift */,
 				229D4118257E117E00ABD26F /* StickyDateLabel.swift */,
-				229D410F257E0B9600ABD26F /* HorizontalScroll.swift */,
 				22D4F531257735F20053ABFB /* ModeSheet.swift */,
 				227BD4D9257DEBA9008BFC49 /* MGEAnimator.swift */,
+				22F5242E257E51D6005222C2 /* HorizontalScroll */,
 				224180242579FCA000FF9B40 /* EntryModal */,
 				22E642332577501900CCF49F /* DayList */,
 				22E642322577500600CCF49F /* DayCalendar */,
@@ -1361,6 +1369,18 @@
 				22D4F593257744F70053ABFB /* DayList.swift */,
 			);
 			path = DayList;
+			sourceTree = "<group>";
+		};
+		22F5242E257E51D6005222C2 /* HorizontalScroll */ = {
+			isa = PBXGroup;
+			children = (
+				229D410F257E0B9600ABD26F /* HorizontalScroll.swift */,
+				22F5242F257E51F7005222C2 /* HorizontalScrollStack.swift */,
+				22F52438257E5225005222C2 /* AlignedTimeIndicator.swift */,
+				22F52441257E5247005222C2 /* DayStrip.swift */,
+				22F5244A257E5280005222C2 /* WeekRect.swift */,
+			);
+			path = HorizontalScroll;
 			sourceTree = "<group>";
 		};
 		22FFF64B2570F8A000A54471 /* Putters */ = {
@@ -2060,6 +2080,7 @@
 				22A2CE2924E59E8C000820AD /* AngleAsDate.swift in Sources */,
 				22905B8824DB449400D5AC09 /* OldLinedBackground.swift in Sources */,
 				224D10CE24E5AC8C00668FD8 /* WeekdaySelector.swift in Sources */,
+				22F52430257E51F7005222C2 /* HorizontalScrollStack.swift in Sources */,
 				2264CB3B24AD344F00ECBF2B /* TokenFields.swift in Sources */,
 				22232B8B24A9532000F3C378 /* LoginView.swift in Sources */,
 				229646CB24F321AE00FE14E5 /* TimeConstants.swift in Sources */,
@@ -2073,6 +2094,7 @@
 				22283DAA24DFA27D005AC0F3 /* SearchTerms.swift in Sources */,
 				22FFF64D2570F8B200A54471 /* BeginningOfWeek.swift in Sources */,
 				C6F605AF246C6B1700D0FE82 /* DateExtension.swift in Sources */,
+				22F52442257E5247005222C2 /* DayStrip.swift in Sources */,
 				22E641DD25774E0200CCF49F /* NamespaceModel.swift in Sources */,
 				C6EB4733252013B800FCD0CB /* PersistentContainer.swift in Sources */,
 				C68F8C8D24A04CE8000D249B /* IceCreamStick.swift in Sources */,
@@ -2106,6 +2128,7 @@
 				22DC869A24BA7A5E00FF771F /* TimeEntryModel.xcdatamodeld in Sources */,
 				22556B9125750311003DEB7D /* ColorTint.swift in Sources */,
 				22E6420925774E9C00CCF49F /* RunningEntryView.swift in Sources */,
+				22F52439257E5225005222C2 /* AlignedTimeIndicator.swift in Sources */,
 				22FA071A251D0DC800E20C27 /* TokenWebView.swift in Sources */,
 				22DE58FC251EC87900379396 /* IntentHandler.swift in Sources */,
 				229521562505BF0300085055 /* GetCredentials.swift in Sources */,
@@ -2128,6 +2151,7 @@
 				2264CB3524AD330500ECBF2B /* IconView.swift in Sources */,
 				22D4F5122577354C0053ABFB /* EntryFullScreenModal.swift in Sources */,
 				22A2CE2B24E59ED0000820AD /* AngleFromCartesian.swift in Sources */,
+				22F5244B257E5280005222C2 /* WeekRect.swift in Sources */,
 				22A2CE2424E59DFE000820AD /* DateMean.swift in Sources */,
 				2277E8C724EB44AC00702086 /* EntryLoader.swift in Sources */,
 				229646D924F3367800FE14E5 /* PrintError.swift in Sources */,
