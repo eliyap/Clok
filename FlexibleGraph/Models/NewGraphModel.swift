@@ -10,7 +10,6 @@ import Foundation
 final class NewGraphModel: ObservableObject {
     
     enum GraphMode: Int {
-        case weekMode
         case dayMode
         case listMode
     }
@@ -22,5 +21,5 @@ final class NewGraphModel: ObservableObject {
     @Published var geometry: NamespaceModel? = nil
     
     /// registers what mode the view is in
-    @Published var mode: GraphMode = .weekMode
+    @Published var mode: GraphMode = .dayMode
 }

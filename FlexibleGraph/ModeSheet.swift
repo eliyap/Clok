@@ -14,9 +14,6 @@ extension FlexibleGraph {
             .default(Text("Day".tickedIf(model.mode == .dayMode))) {
                 withAnimation { model.mode = .dayMode }
             },
-            .default(Text("Week".tickedIf(model.mode == .weekMode))) {
-                withAnimation { model.mode = .weekMode }
-            },
             .default(Text("List".tickedIf(model.mode == .listMode))) {
                 withAnimation { model.mode = .listMode }
             },

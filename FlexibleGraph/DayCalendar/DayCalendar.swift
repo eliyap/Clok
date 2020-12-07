@@ -31,7 +31,7 @@ extension FlexibleGraph {
                     entry: entry,
                     size: size,
                     midnight: start,
-                    animationInfo: (idx, start.timeIntervalSince1970)
+                    idx: idx
                 )
                     /// push `View` down to `(proportion through the day x height)`
                     .offset(y: CGFloat((entry.start - start) / .day) * size.height)
@@ -39,7 +39,7 @@ extension FlexibleGraph {
                     .opacity(entry.matches(data.terms) ? 1 : 0.25)
                     /// push View to stack when tapped
                     .onTapGesture {
-                        passthroughGeometry = NamespaceModel(entryID: entry.id, row: idx, col: start.timeIntervalSince1970)
+                        passthroughGeometry = NamespaceModel(entryID: entry.id, dayIndex: idx)
                         passthroughSelected = entry
                     }
             }

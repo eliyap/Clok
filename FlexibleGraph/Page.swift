@@ -20,8 +20,6 @@ extension FlexibleGraph {
             switch model.mode {
             case .dayMode:
                 DayCalendar(size: size, idx: idx)
-            case .weekMode:
-                WeekCalendar(size: size, idx: idx)
             case .listMode:
                 DayList(idx: idx)
             }

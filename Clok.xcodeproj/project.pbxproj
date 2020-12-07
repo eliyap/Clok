@@ -88,7 +88,6 @@
 		22417FDD2578911700FF9B40 /* Between.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22417FDC2578911700FF9B40 /* Between.swift */; };
 		22417FF32578F51600FF9B40 /* RowPositionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22417FF22578F51600FF9B40 /* RowPositionModel.swift */; };
 		2241800D2579BA6400FF9B40 /* DayRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2241800C2579BA6400FF9B40 /* DayRect.swift */; };
-		224180162579BA8A00FF9B40 /* WeekRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224180152579BA8A00FF9B40 /* WeekRect.swift */; };
 		224B3AFE24DE28C300B1C943 /* FilterModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224B3AFD24DE28C300B1C943 /* FilterModal.swift */; };
 		224D10CE24E5AC8C00668FD8 /* WeekdaySelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224D10CD24E5AC8C00668FD8 /* WeekdaySelector.swift */; };
 		224D10D324E6FA8900668FD8 /* DateIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224D10D224E6FA8800668FD8 /* DateIndicator.swift */; };
@@ -302,7 +301,6 @@
 		22D4F54B2577364B0053ABFB /* VerticalScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4F54A2577364B0053ABFB /* VerticalScroll.swift */; };
 		22D4F56B25773B9D0053ABFB /* DateFormatterShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4F56A25773B9D0053ABFB /* DateFormatterShared.swift */; };
 		22D4F57425773CF70053ABFB /* DayCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4F57325773CF60053ABFB /* DayCalendar.swift */; };
-		22D4F57D257742A10053ABFB /* WeekCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4F57C257742A10053ABFB /* WeekCalendar.swift */; };
 		22D4F594257744F70053ABFB /* DayList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4F593257744F70053ABFB /* DayList.swift */; };
 		22D56F042526BB030011C4AC /* RingSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D56F032526BB030011C4AC /* RingSize.swift */; };
 		22D56F0D2526BB080011C4AC /* RingSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D56F032526BB030011C4AC /* RingSize.swift */; };
@@ -551,7 +549,6 @@
 		22417FDC2578911700FF9B40 /* Between.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Between.swift; sourceTree = "<group>"; };
 		22417FF22578F51600FF9B40 /* RowPositionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowPositionModel.swift; sourceTree = "<group>"; };
 		2241800C2579BA6400FF9B40 /* DayRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRect.swift; sourceTree = "<group>"; };
-		224180152579BA8A00FF9B40 /* WeekRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekRect.swift; sourceTree = "<group>"; };
 		224B3AFD24DE28C300B1C943 /* FilterModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterModal.swift; sourceTree = "<group>"; };
 		224D10CD24E5AC8C00668FD8 /* WeekdaySelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekdaySelector.swift; sourceTree = "<group>"; };
 		224D10D224E6FA8800668FD8 /* DateIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateIndicator.swift; sourceTree = "<group>"; };
@@ -690,7 +687,6 @@
 		22D4F54A2577364B0053ABFB /* VerticalScroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalScroll.swift; sourceTree = "<group>"; };
 		22D4F56A25773B9D0053ABFB /* DateFormatterShared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterShared.swift; sourceTree = "<group>"; };
 		22D4F57325773CF60053ABFB /* DayCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCalendar.swift; sourceTree = "<group>"; };
-		22D4F57C257742A10053ABFB /* WeekCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekCalendar.swift; sourceTree = "<group>"; };
 		22D4F593257744F70053ABFB /* DayList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayList.swift; sourceTree = "<group>"; };
 		22D56F032526BB030011C4AC /* RingSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingSize.swift; sourceTree = "<group>"; };
 		22D5F3E1256F8A0D00806992 /* Detailed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detailed.swift; sourceTree = "<group>"; };
@@ -1219,7 +1215,6 @@
 				224180242579FCA000FF9B40 /* EntryModal */,
 				22E642332577501900CCF49F /* DayList */,
 				22E642322577500600CCF49F /* DayCalendar */,
-				22E6423125774FF900CCF49F /* WeekCalendar */,
 				22E641E525774E3D00CCF49F /* Models */,
 				22E641DB25774DE700CCF49F /* CalendarComponents */,
 			);
@@ -1349,15 +1344,6 @@
 				22417FF22578F51600FF9B40 /* RowPositionModel.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		22E6423125774FF900CCF49F /* WeekCalendar */ = {
-			isa = PBXGroup;
-			children = (
-				22D4F57C257742A10053ABFB /* WeekCalendar.swift */,
-				224180152579BA8A00FF9B40 /* WeekRect.swift */,
-			);
-			path = WeekCalendar;
 			sourceTree = "<group>";
 		};
 		22E642322577500600CCF49F /* DayCalendar */ = {
@@ -2107,7 +2093,6 @@
 				229D4119257E117E00ABD26F /* StickyDateLabel.swift in Sources */,
 				C65B7D2C2497DE4A00EED981 /* EntryOperations.swift in Sources */,
 				22F52411257E25FC005222C2 /* AxisToggle.swift in Sources */,
-				224180162579BA8A00FF9B40 /* WeekRect.swift in Sources */,
 				22D56F042526BB030011C4AC /* RingSize.swift in Sources */,
 				22DC86A424BA838D00FF771F /* TimeEntry+CoreDataClass.swift in Sources */,
 				22E6421925774EC200CCF49F /* LinedBackground.swift in Sources */,
@@ -2149,7 +2134,6 @@
 				229D4122257E119900ABD26F /* Page.swift in Sources */,
 				229646D224F3294900FE14E5 /* Tag+CoreDataClass.swift in Sources */,
 				C63FC2F8249BCEB900747D49 /* AngleExtension.swift in Sources */,
-				22D4F57D257742A10053ABFB /* WeekCalendar.swift in Sources */,
 				2229D7AA24EF6BDB004E1034 /* OldCurrentTimeIndicator.swift in Sources */,
 				C6AAB3EA249EF26800DFBA36 /* TimeEntryExtension.swift in Sources */,
 				22D9B9D8257B651300E923C5 /* AppTimer.swift in Sources */,

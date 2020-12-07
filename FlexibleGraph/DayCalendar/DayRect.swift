@@ -14,7 +14,7 @@ extension FlexibleGraph {
         size: CGSize,
         midnight: Date,
         border: Bool = false,
-        animationInfo: (row: Int, col: TimeInterval)
+        idx: Int
     ) -> some View {
         let height = size.height * CGFloat((entry.end - entry.start) / .day)
         return entry.color(in: colorScheme)
@@ -24,7 +24,7 @@ extension FlexibleGraph {
             .clipped()
             /// note: 0.8 is an arbitrary ratio, adjust to taste
             .matchedGeometryEffect(
-                id: NamespaceModel(entryID: entry.id, row: animationInfo.row, col: animationInfo.col),
+                id: NamespaceModel(entryID: entry.id, dayIndex: idx),
                 in: graphNamespace,
                 isSource: model.selected == .none
             )

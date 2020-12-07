@@ -13,19 +13,15 @@ struct NamespaceModel: Hashable {
     /// `TimeEntryLike` ID
     let entryID: Int64
     
-    /// array index of the week (row) in which the `TimeEntry` is contained
-    let row: Int
-    
-    /// array index of the day (column) in that week (row) in which the `TimeEntry` is contained
-    let col: Double
+    /// array index of the day in which the `TimeEntry` is contained
+    let dayIndex: Int
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(entryID)
-        hasher.combine(row)
-        hasher.combine(col)
+        hasher.combine(dayIndex)
     }
 }
 
 extension NamespaceModel {
-    static let none = NamespaceModel(entryID: StaticEntry.noEntry.id, row: .zero, col: .zero)
+    static let none = NamespaceModel(entryID: StaticEntry.noEntry.id, dayIndex: .zero)
 }

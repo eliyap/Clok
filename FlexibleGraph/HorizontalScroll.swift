@@ -41,9 +41,7 @@ extension FlexibleGraph {
                                     .midnight
                                     /// NOTE: -1 is a magic number to correct for offset
                                     .advanced(by: Double(idx) * .day + Double(rowPosition.position.y) * .day),
-                                row: idx,
-                                /// NOTE: col is somewhat meaningless and does NOT match midnight
-                                col: Date().midnight.advanced(by: Double(idx) * .day).timeIntervalSince1970
+                                idx: idx
                             )
                                 .frame(
                                     width: geo.size.width / 7,
@@ -62,5 +60,69 @@ extension FlexibleGraph {
                 /** Flipped over so user can infinitely scroll "left" (actually right) to previous days */
                 .rotationEffect(.tau / 2)
         }
+    }
+    
+    // MARK:- WeekStrip
+    func WeekStrip(midnight: Date, idx: Int) -> some View {
+        GeometryReader { geo in
+            ZStack {
+                ForEach(
+                    entries
+                        .filter{$0.end > midnight}
+                        .filter{$0.start < midnight + .day}
+                        /// chronological sort
+                        .sorted{$0.start < $1.start}
+                    , id: \.id
+                ) { entry in
+                    WeekRect(
+                        entry: entry,
+                        size: geo.size,
+                        midnight: midnight,
+                        idx: idx
+                    )
+                        /// push `View` down to `(proportion through the day x height)`
+                        .offset(y: CGFloat((entry.start - midnight) / .day) * geo.size.height)
+                        /// fade out views that do not match the filter
+                        .opacity(entry.matches(data.terms) ? 1 : 0.25)
+                        /// push View to stack when tapped
+                        .onTapGesture {
+                            passthroughGeometry = NamespaceModel(entryID: entry.id, dayIndex: idx)
+                            passthroughSelected = entry
+                        }
+                }
+                    .frame(width: geo.size.width, height: geo.size.height, alignment: .top)
+                
+                /// show current time in `calendar` mode
+                if midnight == Date().midnight {
+                    NewCurrentTimeIndicator(height: geo.size.height)
+                        .frame(
+                            width: geo.size.width,
+                            height: geo.size.height,
+                            alignment: .top
+                        )
+//                    NewRunningEntryView(terms: data.terms)
+                }
+            }
+        }
+    }
+    
+    //MARK:- WeekRect
+    func WeekRect(
+        entry: TimeEntry,
+        size: CGSize,
+        midnight: Date,
+        idx: Int
+    ) -> some View {
+        let height = size.height * CGFloat((entry.end - entry.start) / .day)
+        return entry.color(in: colorScheme)
+            /// note: 1/18 is an arbitrary ratio, adjust to taste
+            .cornerRadius(min(size.width / 18.0, height / 2))
+            /// note: 0.8 is an arbitrary ratio, adjust to taste
+            .matchedGeometryEffect(
+                id: NamespaceModel(entryID: entry.id, dayIndex: idx),
+                in: graphNamespace,
+                isSource: model.selected == .none
+            )
+            .frame(width: size.width * 0.8, height: height)
     }
 }

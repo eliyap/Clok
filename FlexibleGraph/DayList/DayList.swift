@@ -25,12 +25,12 @@ extension FlexibleGraph {
                     .sorted{$0.start < $1.start},
                 id: \.id
             ) { entry in
-                DetailView(entry: entry, row: idx, col: start.timeIntervalSince1970)
+                DetailView(entry: entry, idx: idx)
             }
         }
     }
     
-    func DetailView(entry: TimeEntry, row: Int, col: Double) -> some View {
+    func DetailView(entry: TimeEntry, idx: Int) -> some View {
         VStack(alignment: .leading) {
             HStack {
                 Text(entry.entryDescription)
@@ -48,11 +48,11 @@ extension FlexibleGraph {
             .background(entry.color(in: colorScheme))
             /// push View to stack when tapped
             .onTapGesture {
-                passthroughGeometry = NamespaceModel(entryID: entry.id, row: row, col: col)
+                passthroughGeometry = NamespaceModel(entryID: entry.id, dayIndex: idx)
                 passthroughSelected = entry
             }
             .matchedGeometryEffect(
-                id: NamespaceModel(entryID: entry.id, row: row, col: col),
+                id: NamespaceModel(entryID: entry.id, dayIndex: idx),
                 in: graphNamespace,
                 isSource: model.selected == .none
             )
