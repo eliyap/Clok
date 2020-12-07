@@ -43,8 +43,6 @@ struct FlexibleGraph: View {
     @EnvironmentObject var bounds: Bounds
     
     //MARK:- InfiniteScroll Properties
-    /// maximum days one can go backwards / forwards, totals ±~30years
-    static var rowRange = 10
     
     /// records the rows for `InfiniteScroll`
     /** Observational Notes, 20.12.02
