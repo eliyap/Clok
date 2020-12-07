@@ -20,9 +20,18 @@ extension FlexibleGraph {
                 ScrollViewReader { proxy in
                     LazyHStack(spacing: .zero) {
                         ForEach(RowList, id: \.self) { idx in
+                            
+                            WeekStrip(
+                                midnight: Date().midnight.advanced(by: Double(idx) * .day),
+                                row: idx,
+                                col: Date().midnight.advanced(by: Double(idx) * .day).timeIntervalSince1970
+                            )
+                                .frame(
+                                    width: geo.size.width / 7,
+                                    height: geo.size.height
+                                )
                                 .rotationEffect(.tau / 2)
                                 /// if user hits the "last" (visually leftmost) date, add another one to the left (by appending)
-                            DayStack(size: geo.size, idx: idx)
                         }
                     }
                     .onChange(of: requestedPosition) { req in

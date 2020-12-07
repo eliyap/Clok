@@ -75,7 +75,7 @@ struct FlexibleGraph: View {
         ZStack {
             #warning("placeholder UI")
             VStack(spacing: .zero) {
-                VerticalScroll
+                HorizontalScroll
                 HStack {
                     Button {
                         showSheet = true
