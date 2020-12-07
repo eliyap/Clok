@@ -12,6 +12,8 @@ extension FlexibleGraph {
     var ModeSheet: ActionSheet {
         ActionSheet(title: Text("Graph Mode"), buttons: [
             .default(Text("Day".tickedIf(model.mode == .dayMode))) {
+                /// determine the current position in the `VerticalScroll`
+                positionRequester.send(true)
                 withAnimation { model.mode = .dayMode }
             },
             .default(Text("List".tickedIf(model.mode == .listMode))) {
