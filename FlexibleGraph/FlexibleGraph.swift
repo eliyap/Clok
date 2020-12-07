@@ -63,8 +63,6 @@ struct FlexibleGraph: View {
     /// updated row and position of that row as user scrolls
     @State var rowPosition: RowPositionModel = .zero
     
-    @State var requestedPosition: RowPositionModel = .zero
-    
     let positionRequester = PassthroughSubject<Bool, Never>()
     
     /// arbitrary value to shift `id` for `PageAnchor`. Do not set to `1`!

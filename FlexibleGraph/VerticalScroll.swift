@@ -40,10 +40,6 @@ extension FlexibleGraph {
                             proxy.scrollTo(Double(rowPosition.row) + Self.idOffset, anchor: rowPosition.position)
                         }
                     }
-                    .onChange(of: requestedPosition) { req in
-                        print(requestedPosition)
-                        proxy.scrollTo(Double(req.row) + Self.idOffset, anchor: req.position)
-                    }
                 }
             }
                 /** Flipped over so user can infinitely scroll "up" (actually down) to previous days */

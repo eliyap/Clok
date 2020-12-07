@@ -58,7 +58,6 @@ extension FlexibleGraph {
                 row: idx,
                 position: UnitPoint(x: .zero, y: topOffset/geo.size.height)
             )
-            requestedPosition = RowPositionModel(row: rowPosition.row, position: rowPosition.position)
         }
     }
 }

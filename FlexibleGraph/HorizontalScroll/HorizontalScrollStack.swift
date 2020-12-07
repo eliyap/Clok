@@ -38,10 +38,6 @@ extension FlexibleGraph {
                                 }
                         }
                     }
-                    .onChange(of: requestedPosition) { req in
-                        print(requestedPosition)
-                        proxy.scrollTo(Double(req.row + 1) + 0.5, anchor: req.position)
-                    }
                 }
             }
                 /** Flipped over so user can infinitely scroll "left" (actually right) to previous days */
