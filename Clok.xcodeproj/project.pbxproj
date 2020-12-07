@@ -295,7 +295,7 @@
 		22D4F5002577345E0053ABFB /* FlexibleGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4F4FF2577345E0053ABFB /* FlexibleGraph.swift */; };
 		22D4F5122577354C0053ABFB /* EntryFullScreenModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4F5112577354C0053ABFB /* EntryFullScreenModal.swift */; };
 		22D4F532257735F20053ABFB /* ModeSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4F531257735F20053ABFB /* ModeSheet.swift */; };
-		22D4F54B2577364B0053ABFB /* InfiniteScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4F54A2577364B0053ABFB /* InfiniteScroll.swift */; };
+		22D4F54B2577364B0053ABFB /* VerticalScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4F54A2577364B0053ABFB /* VerticalScroll.swift */; };
 		22D4F56B25773B9D0053ABFB /* DateFormatterShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4F56A25773B9D0053ABFB /* DateFormatterShared.swift */; };
 		22D4F57425773CF70053ABFB /* DayCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4F57325773CF60053ABFB /* DayCalendar.swift */; };
 		22D4F57D257742A10053ABFB /* WeekCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4F57C257742A10053ABFB /* WeekCalendar.swift */; };
@@ -678,7 +678,7 @@
 		22D4F4FF2577345E0053ABFB /* FlexibleGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlexibleGraph.swift; sourceTree = "<group>"; };
 		22D4F5112577354C0053ABFB /* EntryFullScreenModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryFullScreenModal.swift; sourceTree = "<group>"; };
 		22D4F531257735F20053ABFB /* ModeSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeSheet.swift; sourceTree = "<group>"; };
-		22D4F54A2577364B0053ABFB /* InfiniteScroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfiniteScroll.swift; sourceTree = "<group>"; };
+		22D4F54A2577364B0053ABFB /* VerticalScroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalScroll.swift; sourceTree = "<group>"; };
 		22D4F56A25773B9D0053ABFB /* DateFormatterShared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterShared.swift; sourceTree = "<group>"; };
 		22D4F57325773CF60053ABFB /* DayCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCalendar.swift; sourceTree = "<group>"; };
 		22D4F57C257742A10053ABFB /* WeekCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekCalendar.swift; sourceTree = "<group>"; };
@@ -1199,7 +1199,7 @@
 			isa = PBXGroup;
 			children = (
 				22D4F4FF2577345E0053ABFB /* FlexibleGraph.swift */,
-				22D4F54A2577364B0053ABFB /* InfiniteScroll.swift */,
+				22D4F54A2577364B0053ABFB /* VerticalScroll.swift */,
 				22D4F531257735F20053ABFB /* ModeSheet.swift */,
 				227BD4D9257DEBA9008BFC49 /* MGEAnimator.swift */,
 				224180242579FCA000FF9B40 /* EntryModal */,
@@ -2077,7 +2077,7 @@
 				C68F8C8D24A04CE8000D249B /* IceCreamStick.swift in Sources */,
 				2207B22024B954F40006748A /* OldGraphView.swift in Sources */,
 				22D9B958257B292300E923C5 /* StaticEntry.swift in Sources */,
-				22D4F54B2577364B0053ABFB /* InfiniteScroll.swift in Sources */,
+				22D4F54B2577364B0053ABFB /* VerticalScroll.swift in Sources */,
 				C60856AB251FCB1E00E6D6C0 /* URLStoreExtension.swift in Sources */,
 				22128E09254206E6004913AF /* WidgetManager.swift in Sources */,
 				2238640024BBBD030041886B /* LoadProjects.swift in Sources */,

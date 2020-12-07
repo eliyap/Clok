@@ -1,5 +1,5 @@
 //
-//  InfiniteScroll.swift
+//  VerticalScroll.swift
 //  Clok
 //
 //  Created by Secret Asian Man Dev on 2/12/20.
