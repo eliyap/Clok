@@ -81,10 +81,8 @@ extension FlexibleGraph {
                         .opacity(entry.matches(data.terms) ? 1 : 0.25)
                         /// push View to stack when tapped
                         .onTapGesture {
-                            model.geometry = NamespaceModel(entryID: entry.id, row: row, col: col)
-                            withAnimation {
-                                model.selected = entry
-                            }
+                            passthroughGeometry = NamespaceModel(entryID: entry.id, row: row, col: col)
+                            passthroughSelected = entry
                         }
                         /// during `matchedGeometryEffect` animations, renders this in front of other views in the same day
                         .zIndex(

@@ -54,10 +54,8 @@ extension FlexibleGraph {
             .background(entry.color(in: colorScheme))
             /// push View to stack when tapped
             .onTapGesture {
-                model.geometry = NamespaceModel(entryID: entry.id, row: row, col: col)
-                withAnimation {
-                    model.selected = entry
-                }
+                passthroughGeometry = NamespaceModel(entryID: entry.id, row: row, col: col)
+                passthroughSelected = entry
             }
             .matchedGeometryEffect(
                 id: NamespaceModel(entryID: entry.id, row: row, col: col),
