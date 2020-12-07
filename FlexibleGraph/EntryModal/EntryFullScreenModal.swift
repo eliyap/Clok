@@ -81,7 +81,6 @@ struct EntryFullScreenModal: View {
                     .offset(y: scrollOffset)
             }
                 .frame(height: geo.size.height, alignment: .top)
-                .clipped()
                 .coordinateSpace(name: coordSpaceName)
                 .gesture(ScrollDrag)
         }
