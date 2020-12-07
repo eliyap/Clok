@@ -28,7 +28,7 @@ extension FlexibleGraph {
                 .frame(width: size.width, height: size.height)
         }
             .frame(width: size.width)
-            /// note: `drawingGroup` here causes `matchedGeometry` effect to clip, so it has been removed
+            .drawingGroup()
     }
     
     func WeekCalendarBody(size: CGSize, idx: Int) -> some View {
