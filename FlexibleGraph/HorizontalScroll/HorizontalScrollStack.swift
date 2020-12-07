@@ -21,7 +21,7 @@ extension FlexibleGraph {
                 ScrollViewReader { proxy in
                     LazyHStack(spacing: .zero) {
                         ForEach(RowList, id: \.self) { idx in
-                            DayStrip(
+                            MonitoredStrip(
                                 midnight: Date()
                                     .midnight
                                     .advanced(by: Double(idx) * .day + Double(rowPosition.position.y) * .day),

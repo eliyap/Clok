@@ -91,6 +91,7 @@
 		224B3AFE24DE28C300B1C943 /* FilterModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224B3AFD24DE28C300B1C943 /* FilterModal.swift */; };
 		224D10CE24E5AC8C00668FD8 /* WeekdaySelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224D10CD24E5AC8C00668FD8 /* WeekdaySelector.swift */; };
 		224D10D324E6FA8900668FD8 /* DateIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224D10D224E6FA8800668FD8 /* DateIndicator.swift */; };
+		224F5467257E5A2800E2BB18 /* MonitoredStrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224F5466257E5A2800E2BB18 /* MonitoredStrip.swift */; };
 		22556B3A2574C885003DEB7D /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22556B392574C885003DEB7D /* Entry.swift */; };
 		22556B612574C97F003DEB7D /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22556B392574C885003DEB7D /* Entry.swift */; };
 		22556B692574C97F003DEB7D /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22556B392574C885003DEB7D /* Entry.swift */; };
@@ -556,6 +557,7 @@
 		224B3AFD24DE28C300B1C943 /* FilterModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterModal.swift; sourceTree = "<group>"; };
 		224D10CD24E5AC8C00668FD8 /* WeekdaySelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekdaySelector.swift; sourceTree = "<group>"; };
 		224D10D224E6FA8800668FD8 /* DateIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateIndicator.swift; sourceTree = "<group>"; };
+		224F5466257E5A2800E2BB18 /* MonitoredStrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitoredStrip.swift; sourceTree = "<group>"; };
 		2253FFB825057FF200BBDCE6 /* Arc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arc.swift; sourceTree = "<group>"; };
 		2253FFBB2505A42800BBDCE6 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		2253FFBD2505A44400BBDCE6 /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
@@ -1373,6 +1375,7 @@
 			children = (
 				229D410F257E0B9600ABD26F /* HorizontalScroll.swift */,
 				22F5242F257E51F7005222C2 /* HorizontalScrollStack.swift */,
+				224F5466257E5A2800E2BB18 /* MonitoredStrip.swift */,
 				22F52438257E5225005222C2 /* AlignedTimeIndicator.swift */,
 				22F52441257E5247005222C2 /* DayStrip.swift */,
 				22F5244A257E5280005222C2 /* WeekRect.swift */,
@@ -2252,6 +2255,7 @@
 				22027DD624AFFA6500C0BA90 /* Bounds.swift in Sources */,
 				228B100624AECDFF0026AD4B /* EntryView.swift in Sources */,
 				222D992624BAB2FD00F66E0F /* DecoderExtension.swift in Sources */,
+				224F5467257E5A2800E2BB18 /* MonitoredStrip.swift in Sources */,
 				22DF92D8251D6834007E4635 /* AnyTransitionSlide.swift in Sources */,
 				22F2CD60254BA744008DEB9C /* RunningTimer.swift in Sources */,
 				C6B1D64924EBAD27001E87C1 /* DataTaskMonitor.swift in Sources */,

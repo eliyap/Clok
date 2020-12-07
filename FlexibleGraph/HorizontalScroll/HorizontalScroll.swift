@@ -21,7 +21,7 @@ extension FlexibleGraph {
                             if dragInitial == .none {
                                 dragInitial = rowPosition.position.y
                             }
-                            rowPosition.position.y = dragInitial! + state.translation.height / geo.size.height
+                            rowPosition.position.y = dragInitial! - state.translation.height / geo.size.height
                         }
                         .onEnded { state in
                             /// forget state in preparation for next Gesture
