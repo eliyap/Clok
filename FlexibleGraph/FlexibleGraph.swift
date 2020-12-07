@@ -92,7 +92,9 @@ struct FlexibleGraph: View {
                         .actionSheet(isPresented: $showSheet) { ModeSheet }
                     Button("Experiment") {
                         positionRequester.send(true)
-                        scrollDxn.toggle()
+                        withAnimation {
+                            scrollDxn.toggle()
+                        }
                     }
                 }
             }
