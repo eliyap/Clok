@@ -70,11 +70,20 @@ struct FlexibleGraph: View {
     /// arbitrary value to shift `id` for `PageAnchor`. Do not set to `1`!
     static let idOffset = 0.5
     
+    #warning("experimental properties")
+    @State var scrollDxn: Axis = .vertical
+    
     //MARK:- Body
     var body: some View {
         ZStack {
             #warning("placeholder UI")
             VStack(spacing: .zero) {
+                switch scrollDxn {
+                case .vertical:
+                    VerticalScroll
+                case .horizontal:
+                    HorizontalScroll
+                }
                 HorizontalScroll
                 HStack {
                     Button {
@@ -85,6 +94,7 @@ struct FlexibleGraph: View {
                         .actionSheet(isPresented: $showSheet) { ModeSheet }
                     Button("Experiment") {
                         positionRequester.send(true)
+                        scrollDxn.toggle()
                     }
                 }
             }
