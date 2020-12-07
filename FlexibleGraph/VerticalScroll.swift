@@ -31,8 +31,7 @@ extension FlexibleGraph {
                                     }
                                 }
                             Color.clear
-                                .border(Color.green)
-                                .frame(height: 1)
+                                .frame(height: 0.05)
                                 .id(Double(idx) + 0.5)
                         }
                     }
