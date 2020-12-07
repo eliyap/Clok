@@ -25,3 +25,7 @@ struct NamespaceModel: Hashable {
         hasher.combine(col)
     }
 }
+
+extension NamespaceModel {
+    static let none = NamespaceModel(entryID: StaticEntry.noEntry.id, row: .zero, col: .zero)
+}
