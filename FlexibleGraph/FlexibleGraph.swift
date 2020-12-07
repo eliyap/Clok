@@ -84,7 +84,6 @@ struct FlexibleGraph: View {
                 case .horizontal:
                     HorizontalScroll
                 }
-                HorizontalScroll
                 HStack {
                     Button {
                         showSheet = true
