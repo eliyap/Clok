@@ -10,6 +10,7 @@ import Foundation
 final class NewGraphModel: ObservableObject {
     
     enum GraphMode: Int {
+        case extendedMode
         case dayMode
         case listMode
     }
