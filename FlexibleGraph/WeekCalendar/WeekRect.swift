@@ -27,7 +27,7 @@ extension FlexibleGraph {
                     row: animationInfo.row,
                     col: animationInfo.col
                 ),
-                in: namespace,
+                in: graphNamespace,
                 isSource: model.selected == .none
             )
             .frame(width: size.width * 0.8, height: height)

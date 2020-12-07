@@ -61,7 +61,7 @@ extension FlexibleGraph {
             }
             .matchedGeometryEffect(
                 id: NamespaceModel(entryID: entry.id, row: row, col: col),
-                in: namespace,
+                in: graphNamespace,
                 isSource: model.selected == .none
             )
     }
