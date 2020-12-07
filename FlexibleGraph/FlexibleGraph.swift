@@ -72,7 +72,6 @@ struct FlexibleGraph: View {
     
     #warning("experimental properties")
     @State var scrollDxn: Axis = .vertical
-    
     //MARK:- Body
     var body: some View {
         ZStack {
