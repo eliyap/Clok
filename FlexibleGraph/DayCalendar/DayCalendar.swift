@@ -65,9 +65,8 @@ extension FlexibleGraph {
 //                NewRunningEntryView(terms: data.terms)
             }
         }
-    
             .frame(height: size.height)
             .background(NewLinedBackground(divisions: evenDivisions(for: size.height)))
-            .drawingGroup()
+            /// note: `drawingGroup` here causes `matchedGeometry` effect to clip, so it has been removed
     }
 }
