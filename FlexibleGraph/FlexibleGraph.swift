@@ -67,6 +67,9 @@ struct FlexibleGraph: View {
     
     let positionRequester = PassthroughSubject<Bool, Never>()
     
+    /// arbitrary value to shift `id` for `PageAnchor`. Do not set to `1`!
+    static let idOffset = 0.5
+    
     //MARK:- Body
     var body: some View {
         ZStack {

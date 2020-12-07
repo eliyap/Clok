@@ -21,9 +21,7 @@ extension FlexibleGraph {
                     LazyVStack(alignment: .leading, spacing: .zero) {
                         ForEach(RowList, id: \.self) { idx in
                             /// invisible anchor shape for `scrollTo` to latch onto
-                            Color.clear
-                                .frame(height: 0.05)
-                                .id(Double(idx) + 0.5)
+                            PageAnchor(for: idx, axis: .vertical)
                             /// for a variety of uninteresting reasons, this frame cannot be used by `scrollTo`
                             Page(idx: idx, size: geo.size)
                                 /// flip view back over
@@ -38,7 +36,7 @@ extension FlexibleGraph {
                     }
                     .onChange(of: requestedPosition) { req in
                         print(requestedPosition)
-                        proxy.scrollTo(Double(req.row) + 0.5, anchor: req.position)
+                        proxy.scrollTo(Double(req.row) + Self.idOffset, anchor: req.position)
                     }
                 }
             }
@@ -107,6 +105,12 @@ extension FlexibleGraph {
         }
     }
     
+    
+    /// Gets a normalized position within the `GeometryReader` of the current page
+    /// - Parameters:
+    ///   - geo: GeometryProxy of the page
+    ///   - idx: page number
+    /// relies on `geo` being somewhere in a `ZStack` with unconstrained `frame`
     func getPosition(geo: GeometryProxy, idx: Int) -> Void {
         let topOffset = bounds.insets.top - geo.frame(in: .global).minY
         if topOffset.isBetween(0, geo.size.height) {
@@ -116,5 +120,21 @@ extension FlexibleGraph {
             )
             requestedPosition = RowPositionModel(row: rowPosition.row, position: rowPosition.position)
         }
+    }
+}
+
+// MARK:- Page Anchor
+extension FlexibleGraph {
+    
+    /// An invisible anchor in the VerticalScroll for my `ScrollViewProxy` to latch onto
+    /// - Parameter idx: the page number this is an anchor for
+    func PageAnchor(for idx: Int, axis: Axis) -> some View {
+        Color.clear
+            /// NOTE: this view must be as small is possible without actually having 0 size
+            .frame(
+                width: axis == .horizontal ? 0.05 : .none,
+                height: axis == .vertical ? 0.05 : .none
+            )
+            .id(Double(idx) + Self.idOffset)
     }
 }
