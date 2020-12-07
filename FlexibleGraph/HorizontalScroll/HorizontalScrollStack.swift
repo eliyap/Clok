@@ -38,6 +38,12 @@ extension FlexibleGraph {
                                 }
                         }
                     }
+                        .onAppear {
+                            /// without the async, the `scrollTo` call is *extremely* inaccurate
+                            DispatchQueue.main.asyncAfter(deadline: .now()) {
+                                proxy.scrollTo(rowPosition.row, anchor: rowPosition.position)
+                            }
+                        }
                 }
             }
                 /** Flipped over so user can infinitely scroll "left" (actually right) to previous days */

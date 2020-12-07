@@ -88,6 +88,9 @@ struct FlexibleGraph: View {
                         Text("Transform!")
                     }
                         .actionSheet(isPresented: $showSheet) { ModeSheet }
+                    Button("Experiment!") {
+                        positionRequester.send(true)
+                    }
                 }
             }
             /// show full screen modal when an entry is pushed

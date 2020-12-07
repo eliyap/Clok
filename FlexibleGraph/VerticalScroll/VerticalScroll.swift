@@ -34,12 +34,12 @@ extension FlexibleGraph {
                                 }
                         }
                     }
-                    .onAppear {
-                        /// without the async, the `scrollTo` call is *extremely* inaccurate
-                        DispatchQueue.main.asyncAfter(deadline: .now()) {
-                            proxy.scrollTo(Double(rowPosition.row) + Self.idOffset, anchor: rowPosition.position)
+                        .onAppear {
+                            /// without the async, the `scrollTo` call is *extremely* inaccurate
+                            DispatchQueue.main.asyncAfter(deadline: .now()) {
+                                proxy.scrollTo(Double(rowPosition.row) + Self.idOffset, anchor: rowPosition.position)
+                            }
                         }
-                    }
                 }
             }
                 /** Flipped over so user can infinitely scroll "up" (actually down) to previous days */
