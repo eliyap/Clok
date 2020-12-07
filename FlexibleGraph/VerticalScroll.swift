@@ -30,6 +30,7 @@ extension FlexibleGraph {
                                         RowList.insert(RowList.last! - 1, at: RowList.count)
                                     }
                                 }
+                            /// invisible anchor shape for `scrollTo` to latch onto
                             Color.clear
                                 .frame(height: 0.05)
                                 .id(Double(idx) + 0.5)
