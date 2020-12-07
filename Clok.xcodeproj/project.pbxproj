@@ -230,6 +230,7 @@
 		229646D924F3367800FE14E5 /* PrintError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229646D824F3367800FE14E5 /* PrintError.swift */; };
 		2296F15924A96FB800AF38B5 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2296F15824A96FB800AF38B5 /* Icon.png */; };
 		2296F15B24A994A400AF38B5 /* FormRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2296F15A24A994A400AF38B5 /* FormRequest.swift */; };
+		229D4110257E0B9600ABD26F /* HorizontalScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229D410F257E0B9600ABD26F /* HorizontalScroll.swift */; };
 		22A2CE1D24E59BB1000820AD /* DateStridable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE1C24E59BB1000820AD /* DateStridable.swift */; };
 		22A2CE1F24E59BCE000820AD /* DateAngle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE1E24E59BCE000820AD /* DateAngle.swift */; };
 		22A2CE2424E59DFE000820AD /* DateMean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE2324E59DFE000820AD /* DateMean.swift */; };
@@ -642,6 +643,7 @@
 		229646D824F3367800FE14E5 /* PrintError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrintError.swift; sourceTree = "<group>"; };
 		2296F15824A96FB800AF38B5 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = Icon/Icon.png; sourceTree = SOURCE_ROOT; };
 		2296F15A24A994A400AF38B5 /* FormRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormRequest.swift; sourceTree = "<group>"; };
+		229D410F257E0B9600ABD26F /* HorizontalScroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalScroll.swift; sourceTree = "<group>"; };
 		22A2CE1C24E59BB1000820AD /* DateStridable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateStridable.swift; sourceTree = "<group>"; };
 		22A2CE1E24E59BCE000820AD /* DateAngle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateAngle.swift; sourceTree = "<group>"; };
 		22A2CE2324E59DFE000820AD /* DateMean.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateMean.swift; sourceTree = "<group>"; };
@@ -1200,6 +1202,7 @@
 			children = (
 				22D4F4FF2577345E0053ABFB /* FlexibleGraph.swift */,
 				22D4F54A2577364B0053ABFB /* VerticalScroll.swift */,
+				229D410F257E0B9600ABD26F /* HorizontalScroll.swift */,
 				22D4F531257735F20053ABFB /* ModeSheet.swift */,
 				227BD4D9257DEBA9008BFC49 /* MGEAnimator.swift */,
 				224180242579FCA000FF9B40 /* EntryModal */,
@@ -2181,6 +2184,7 @@
 				22D4F57425773CF70053ABFB /* DayCalendar.swift in Sources */,
 				221C3C5724A93C57006995C5 /* User.swift in Sources */,
 				22128E2425422D59004913AF /* ColorScore.swift in Sources */,
+				229D4110257E0B9600ABD26F /* HorizontalScroll.swift in Sources */,
 				22A2CE3224E5A218000820AD /* CGPointOperators.swift in Sources */,
 				22283DA024DF9959005AC0F3 /* BarTabs.swift in Sources */,
 				22D4F56B25773B9D0053ABFB /* DateFormatterShared.swift in Sources */,
