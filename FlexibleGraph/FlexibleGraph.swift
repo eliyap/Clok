@@ -103,7 +103,7 @@ struct FlexibleGraph: View {
                     /// pass binding, as `dismiss` needs to set this parameter
                     selected: $passthroughSelected,
                     /// pass resultant property, as this only needs to be read
-                    geometry: model.geometry ?? NamespaceModel.none,
+                    state: model,
                     namespace: modalNamespace
                 )
                     /// increase zIndex so that, while animating, modal does not fall behind other entries

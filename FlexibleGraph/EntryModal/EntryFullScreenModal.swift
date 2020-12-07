@@ -12,23 +12,34 @@ struct EntryFullScreenModal: View {
     
     @Environment(\.colorScheme) var colorScheme
     
-    //MARK:- Modal Properties
+    //MARK:- State Properties
     @State var scrollOffset: CGFloat = .zero
     @State var initialPos: CGFloat? = .none
     @State var bottomPos: CGFloat = .zero
     
-    @Binding var selected: TimeEntry?
-    var geometry: NamespaceModel
-    var namespace: Namespace.ID
-    
+    //MARK:- Static Properties
     /// the minimum pull-down to dismiss the view
     static let threshhold: CGFloat = 50
-    
     static let sharedPadding: CGFloat = 10
-        /// named Coordinate Space for this view
+    /// named Coordinate Space for this view
     let coordSpaceName = "bottom"
     
-    var entry: TimeEntryLike { selected ?? StaticEntry.noEntry }
+    
+    @Binding var selected: TimeEntry?
+    var namespace: Namespace.ID
+    let entry: TimeEntryLike
+    let geometry: NamespaceModel
+    
+    init(
+        selected: Binding<TimeEntry?>,
+        state: NewGraphModel,
+        namespace: Namespace.ID
+    ) {
+        self._selected = selected
+        self.namespace = namespace
+        self.entry = state.selected ?? StaticEntry.noEntry
+        self.geometry = state.geometry ?? NamespaceModel.none
+    }
     
     var body: some View {
         /// define a drag gesture that imitates scrolling (no momentum though)
