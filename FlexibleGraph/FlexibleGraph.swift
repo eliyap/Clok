@@ -42,9 +42,6 @@ struct FlexibleGraph: View {
     @EnvironmentObject var data: TimeData
     @EnvironmentObject var bounds: Bounds
     
-    /// fixed size footer, unfortunate but necessary
-    static let footerHeight: CGFloat = 20
-    
     //MARK:- InfiniteScroll Properties
     /// maximum days one can go backwards / forwards, totals ±~30years
     static var rowRange = 10
