@@ -12,18 +12,24 @@ extension FlexibleGraph {
     var ModeSheet: ActionSheet {
         ActionSheet(title: Text("Graph Mode"), buttons: [
             .default(Text("Day".tickedIf(model.mode == .dayMode))) {
-                /// determine the current position in the `VerticalScroll`
-                positionRequester.send(true)
-                withAnimation { model.mode = .dayMode }
+                setMode(to: .dayMode)
             },
             .default(Text("List".tickedIf(model.mode == .listMode))) {
-                withAnimation { model.mode = .listMode }
+                setMode(to: .listMode)
             },
             .default(Text("Extended".tickedIf(model.mode == .extendedMode))) {
-                withAnimation { model.mode = .extendedMode }
+                setMode(to: .extendedMode)
             },
             .cancel()
         ])
+    }
+    
+    func setMode(to newMode: NewGraphModel.GraphMode) -> Void {
+        /// on switching away from `.dayMode`, determine its position first
+        if model.mode == .dayMode && newMode != .dayMode {
+            positionRequester.send(true)
+        }
+        withAnimation { model.mode = newMode }
     }
 }
 
