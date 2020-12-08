@@ -14,7 +14,6 @@ extension FlexibleGraph {
         GeometryReader { geo in
             HStack(spacing: .zero) {
                 AlignedTimeIndicator(height: geo.size.height)
-                    .offset(y: -geo.size.height * rowPosition.position.y)
                     .gesture(DragGesture()
                         .onChanged { state in
                             /// if Gesture just started, store old value

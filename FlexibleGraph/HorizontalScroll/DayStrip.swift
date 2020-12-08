@@ -40,13 +40,15 @@ extension FlexibleGraph {
                     .frame(width: geo.size.width, height: geo.size.height, alignment: .top)
                 
                 /// show current time in `calendar` mode
-                if midnight == Date().midnight {
+                if Date().between(midnight, midnight + .day) {
+                    #warning("still buggy!")
                     NewCurrentTimeIndicator(height: geo.size.height)
                         .frame(
                             width: geo.size.width,
                             height: geo.size.height,
                             alignment: .top
                         )
+                        .offset(y: geo.size.height * (1 - rowPosition.position.y))
 //                    NewRunningEntryView(terms: data.terms)
                 }
             }
