@@ -13,7 +13,7 @@ extension FlexibleGraph {
     var HorizontalScroll: some View {
         GeometryReader { geo in
             HStack(spacing: .zero) {
-                AlignedTimeIndicator(height: geo.size.height)
+                AlignedTimeIndicator(height: geo.size.height, rowY: rowPosition.position.y)
                     .gesture(DragGesture()
                         .onChanged { state in
                             /// if Gesture just started, store old value

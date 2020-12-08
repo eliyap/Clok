@@ -8,16 +8,26 @@
 
 import SwiftUI
 
-extension FlexibleGraph {
+struct AlignedTimeIndicator: View {
+    
+    let height: CGFloat
+    
+    /** The `y` position of the scroll, which determines what time interval is shown.
+        Bounded between [0, 1]
+     */
+    let rowY: CGFloat
+    
     /// Glues together 2 `TimeIndicators` in the right way to place it in beside the `HorizontalScrollView`
-    func AlignedTimeIndicator(height: CGFloat) -> some View {
+    var body: some View {
         VStack(spacing: .zero) {
             NewTimeIndicator(divisions: evenDivisions(for: height))
                 .frame(height: height)
             NewTimeIndicator(divisions: evenDivisions(for: height))
                 .frame(height: height)
+            NewTimeIndicator(divisions: evenDivisions(for: height))
+                .frame(height: height)
         }
-            .frame(height: height, alignment: .top)
-            .offset(y: -height * rowPosition.position.y)
+            .frame(height: height)
+            .offset(y: -height * rowY)
     }
 }
