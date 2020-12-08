@@ -23,13 +23,11 @@ extension FlexibleGraph {
                 .frame(width: geo.size.width)
                 .onReceive(positionRequester) { rowAdjustment in
                     let trailingOffset = trailing - geo.frame(in: .global).maxX
-//                    print(trailingOffset)
+
                     /// conditional ensures that only the strip actually intersecting the trailing edge of the screen will report its position
                     if trailingOffset.isBetween(0, geo.size.width) {
                         rowPosition.row = idx
                         rowPosition.position.x = trailingOffset / geo.size.width
-                        #warning("DEBUG")
-                        print(rowPosition)
                     }
                     
                     /// adjust row, if requested
