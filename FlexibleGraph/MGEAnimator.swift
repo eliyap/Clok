@@ -31,7 +31,6 @@ extension FlexibleGraph {
                     isSource: false
                 )
         }
-            .transition(.identity)
             /** Passes Changes on, but `withAnimation`
              The key to this approach is that after a `TimeEntry` is selected,
              the view instantly (without animation) snaps to the `TimeEntry`,
@@ -39,13 +38,13 @@ extension FlexibleGraph {
              It has the advantage of being `ZStack`ed above the graph, and does not clip behind any other entries
              */
             .onChange(of: passthroughSelected) { newSelection in
-                withAnimation {
+                withAnimation(.easeInOut(duration: Self.heroAnimationDuration)) {
                     model.selected = newSelection
                 }
                 
             }
             .onChange(of: passthroughGeometry) { newGeometry in
-                withAnimation {
+                withAnimation(.easeInOut(duration: Self.heroAnimationDuration)) {
                     model.geometry = newGeometry
                 }
             }

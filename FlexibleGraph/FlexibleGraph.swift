@@ -92,10 +92,20 @@ struct FlexibleGraph: View {
                     /// pass resultant property, as this only needs to be read
                     state: model,
                     namespace: modalNamespace,
-                    dismiss: { withAnimation{ passthroughSelected = .none } }
+                    dismiss: {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + Self.heroAnimationDuration / 2) {
+                            withAnimation(.easeInOut(duration: Self.heroAnimationDuration / 2)) {
+                                passthroughSelected = .none
+                            }
+                        }
+                        withAnimation(.easeInOut(duration: Self.heroAnimationDuration)) {
+                            model.selected = .none
+                        }
+                    }
                 )
                     /// increase zIndex so that, while animating, modal does not fall behind other entries
                     .zIndex(2)
+                    .transition(Self.ModalTransition)
             }
             
             #warning("placeholder UI")
