@@ -73,8 +73,8 @@ struct EntryFullScreenModal: View {
                      1. animation expands to / contracts from the full size of the screen
                      2. does not cause other elements to "crush" together as view contracts
                     */
-                    .offset(y: max(0, scrollOffset))
                     .matchedGeometryEffect(id: geometry.mirror, in: namespace)
+                    .offset(y: max(0, scrollOffset))
                 ControlBar
                     .offset(y: max(0, scrollOffset))
                     .zIndex(1)
