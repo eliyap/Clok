@@ -48,10 +48,19 @@ extension FlexibleGraph {
                             height: geo.size.height,
                             alignment: .top
                         )
-                        .offset(y: geo.size.height * (1 - rowPosition.position.y))
+                        .offset(y: geo.size.height * normalizedOffset)
 //                    NewRunningEntryView(terms: data.terms)
                 }
             }
         }
+    }
+    
+    /// conditional variable helping to keep the `CurrentTimeIndicator` in the right column
+    private var normalizedOffset: CGFloat {
+        /// suppose the current time is `x` of the way through a 24 hour day, e.g. 8a.m. is 1/3 of the way,
+        /// then the offset should be between `(-1/3, 2/3)`.
+        TimeInterval(rowPosition.position.y) * .day < Date() - Date().midnight
+            ? 0 - rowPosition.position.y
+            : 1 - rowPosition.position.y
     }
 }
