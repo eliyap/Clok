@@ -40,7 +40,6 @@ extension FlexibleGraph {
                         }
                     }
                         .onAppear {
-                            print(rowPosition)
                             /// without the async, the `scrollTo` call is *extremely* inaccurate
                             DispatchQueue.main.asyncAfter(deadline: .now()) {
                                 proxy.scrollTo(rowPosition.row + 1, anchor: .center)
