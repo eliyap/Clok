@@ -75,25 +75,11 @@ struct FlexibleGraph: View {
     //MARK:- Body
     var body: some View {
         ZStack {
-            #warning("placeholder UI")
-            VStack(spacing: .zero) {
-                switch model.mode {
-                case .dayMode, .listMode:
-                    VerticalScroll
-                case .extendedMode:
-                    HorizontalScroll
-                }
-                HStack {
-                    Button {
-                        showSheet = true
-                    } label: {
-                        Text("Transform!")
-                    }
-                        .actionSheet(isPresented: $showSheet) { ModeSheet }
-                    Button("Experiment!") {
-                        positionRequester.send(.none)
-                    }
-                }
+            switch model.mode {
+            case .dayMode, .listMode:
+                VerticalScroll
+            case .extendedMode:
+                HorizontalScroll
             }
             /// show full screen modal when an entry is pushed
             if model.selected != .none {
@@ -109,6 +95,13 @@ struct FlexibleGraph: View {
             }
             /// handles the Hero Animation when a `TimeEntry` is selected / dismissed
             MGEAnimator
+            #warning("placeholder UI")
+            Button {
+                showSheet = true
+            } label: {
+                Text("Transform!")
+            }
+                .actionSheet(isPresented: $showSheet) { ModeSheet }
         }
     }
 }
