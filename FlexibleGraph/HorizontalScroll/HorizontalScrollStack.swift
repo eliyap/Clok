@@ -29,7 +29,7 @@ extension FlexibleGraph {
                                 trailing: geo.frame(in: .global).maxX
                             )
                                 /// NOTE: this is effectively an arbitrary value
-                                .frame(width: geo.size.width / 7)
+                            .frame(width: geo.size.width / GraphConstants.dayCount)
                                 .rotationEffect(.tau / 2)
                                 /// if user hits the "last" (visually leftmost) date, add another one to the left (by appending)
                                 .onAppear {
@@ -46,8 +46,7 @@ extension FlexibleGraph {
                                 proxy.scrollTo(
                                     rowPosition.row + 1,
                                     anchor: UnitPoint(
-                                        /// (1/7) / (1 - 1/7) = -1/6. for more see notes
-                                        x: (-1/6) * (1-rowPosition.position.x),
+                                        x: GraphConstants.hProp * (1-rowPosition.position.x),
                                         y: 0
                                     )
                                 )
