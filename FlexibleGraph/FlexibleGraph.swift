@@ -65,7 +65,9 @@ struct FlexibleGraph: View {
     /// updated row and position of that row as user scrolls
     @State var rowPosition: RowPositionModel = .zero
     
-    let positionRequester = PassthroughSubject<Bool, Never>()
+    /// Publisher allows us to manually request updates and changes to the `rowPosition`.
+    /// Value passed indicates the requested change in row, or `nil` if no change is required
+    let positionRequester = PassthroughSubject<Int?, Never>()
     
     /// arbitrary value to shift `id` for `PageAnchor`. Do not set to `1`!
     static let idOffset = 0.5
@@ -89,7 +91,7 @@ struct FlexibleGraph: View {
                     }
                         .actionSheet(isPresented: $showSheet) { ModeSheet }
                     Button("Experiment!") {
-                        positionRequester.send(true)
+                        positionRequester.send(.none)
                     }
                 }
             }

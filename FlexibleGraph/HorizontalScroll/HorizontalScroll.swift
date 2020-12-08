@@ -20,7 +20,18 @@ extension FlexibleGraph {
                             if dragInitial == .none {
                                 dragInitial = rowPosition.position.y
                             }
+                            
+                            /// update time offset
                             rowPosition.position.y = dragInitial! - state.translation.height / geo.size.height
+                            
+                            /// bound time-offset within [0, 1]
+                            if rowPosition.position.y > 1 {
+                                rowPosition.position.y -= 1
+                                positionRequester.send(+1)
+                            } else if rowPosition.position.y < 0 {
+                                rowPosition.position.y += 1
+                                positionRequester.send(-1)
+                            }
                         }
                         .onEnded { state in
                             /// forget state in preparation for next Gesture
