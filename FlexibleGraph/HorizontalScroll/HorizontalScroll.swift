@@ -26,9 +26,11 @@ extension FlexibleGraph {
                             
                             /// bound time-offset within [0, 1]
                             if rowPosition.position.y > 1 {
+                                dragInitial! -= 1
                                 rowPosition.position.y -= 1
                                 positionRequester.send(+1)
                             } else if rowPosition.position.y < 0 {
+                                dragInitial! += 1
                                 rowPosition.position.y += 1
                                 positionRequester.send(-1)
                             }

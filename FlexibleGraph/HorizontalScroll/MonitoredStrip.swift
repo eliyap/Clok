@@ -23,7 +23,7 @@ extension FlexibleGraph {
                 .frame(width: geo.size.width)
                 .onReceive(positionRequester) { rowAdjustment in
                     let trailingOffset = trailing - geo.frame(in: .global).maxX
-                    print(trailingOffset)
+//                    print(trailingOffset)
                     /// conditional ensures that only the strip actually intersecting the trailing edge of the screen will report its position
                     if trailingOffset.isBetween(0, geo.size.width) {
                         rowPosition.row = idx
@@ -37,7 +37,13 @@ extension FlexibleGraph {
                         return
                     }
                     
-                    proxy.scrollTo(rowPosition.row + rowAdjustment, anchor: rowPosition.position)
+                    proxy.scrollTo(
+                        rowPosition.row + 1 + rowAdjustment,
+                        anchor: UnitPoint(
+                            x: GraphConstants.hProp * (1-rowPosition.position.x),
+                            y: 0
+                        )
+                    )
                 }
         }
     }
