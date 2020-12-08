@@ -38,12 +38,7 @@ extension FlexibleGraph {
                     /// fade out views that do not match the filter
                     .opacity(entry.matches(data.terms) ? 1 : 0.25)
                     /// push View to stack when tapped
-                    .onTapGesture {
-                        withAnimation {
-                            passthroughGeometry = NamespaceModel(entryID: entry.id, dayIndex: idx)
-                            passthroughSelected = entry
-                        }
-                    }
+                    .onTapGesture { showModal(for: entry, at: idx) }
             }
                 .layoutPriority(1)
                 .frame(maxWidth: size.width, minHeight: size.height, alignment: .top)

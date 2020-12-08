@@ -47,10 +47,7 @@ extension FlexibleGraph {
             .padding(3)
             .background(entry.color(in: colorScheme))
             /// push View to stack when tapped
-            .onTapGesture {
-                passthroughGeometry = NamespaceModel(entryID: entry.id, dayIndex: idx)
-                passthroughSelected = entry
-            }
+            .onTapGesture { showModal(for: entry, at: idx) }
             .matchedGeometryEffect(
                 id: NamespaceModel(entryID: entry.id, dayIndex: idx),
                 in: graphNamespace,

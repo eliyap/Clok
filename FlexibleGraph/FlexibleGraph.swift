@@ -115,13 +115,13 @@ struct FlexibleGraph: View {
          It has the advantage of being `ZStack`ed above the graph, and does not clip behind any other entries
          */
         .onChange(of: passthroughSelected) { newSelection in
-            withAnimation(.easeInOut(duration: Self.heroAnimationDuration)) {
+            withAnimation(.easeInOut(duration: GraphConstants.heroAnimationDuration)) {
                 model.selected = newSelection
             }
             
         }
         .onChange(of: passthroughGeometry) { newGeometry in
-            withAnimation(.easeInOut(duration: Self.heroAnimationDuration)) {
+            withAnimation(.easeInOut(duration: GraphConstants.heroAnimationDuration)) {
                 model.geometry = newGeometry
             }
         }
