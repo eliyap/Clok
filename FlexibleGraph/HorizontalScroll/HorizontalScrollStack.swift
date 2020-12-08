@@ -28,8 +28,7 @@ extension FlexibleGraph {
                                 idx: idx,
                                 trailing: geo.frame(in: .global).maxX
                             )
-                                /// NOTE: this is effectively an arbitrary value
-                            .frame(width: geo.size.width / GraphConstants.dayCount)
+                                .frame(width: geo.size.width / GraphConstants.dayCount)
                                 .rotationEffect(.tau / 2)
                                 /// if user hits the "last" (visually leftmost) date, add another one to the left (by appending)
                                 .onAppear {
