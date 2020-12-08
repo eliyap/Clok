@@ -19,8 +19,8 @@ extension FlexibleGraph {
     func dismissModal() -> Void {
         /// delay animation such that opacity happens at the end
         withAnimation(Animation
-                        .easeInOut(duration: GraphConstants.modalOpacityDuration)
-                        .delay(GraphConstants.heroAnimationDuration - GraphConstants.modalOpacityDuration)
+            .easeInOut(duration: GraphConstants.modalOpacityDuration)
+            .delay(GraphConstants.heroAnimationDuration - GraphConstants.modalOpacityDuration)
         ) {
             passthroughGeometry = nil
             passthroughSelected = nil
