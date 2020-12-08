@@ -16,12 +16,55 @@ extension FlexibleGraph {
         proxy: ScrollViewProxy
     ) -> some View {
         GeometryReader { geo in
-            HStack(spacing: .zero) {
-                Divider()
-                DayStrip(midnight: midnight, idx: idx)
+            ZStack {
+                HStack(spacing: .zero) {
+                    Divider()
+                    DayStrip(midnight: midnight, idx: idx)
+                }
+                    .frame(width: geo.size.width)
+                    .onReceive(positionRequester) { adjustRow(trailing: trailing, geo: geo, proxy: proxy, idx: idx, rowAdjustment: $0) }
+                VStack {
+                    VStack(spacing: .zero) {
+                        Text(midnight.shortWeekday)
+                            .font(Font.footnote.boldIfToday(date: midnight))
+                            .lineLimit(1)
+                            .foregroundColor(color(for: midnight))
+                        DateLabel(for: midnight)
+                            .font(Font.caption.boldIfToday(date: midnight))
+                            .lineLimit(1)
+                            .foregroundColor(color(for: midnight))
+                    }
+                    Spacer()
+                        .frame(maxHeight: .infinity)
+                    Text("bot")
+                }
             }
-                .frame(width: geo.size.width)
-                .onReceive(positionRequester) { adjustRow(trailing: trailing, geo: geo, proxy: proxy, idx: idx, rowAdjustment: $0) }
+        }
+    }
+    
+    func DateLabel(for date: Date) -> Text {
+        let df = DateFormatter()
+        if Calendar.current.component(.day, from: date) == 1 {
+            df.setLocalizedDateFormatFromTemplate("MMM")
+            return Text(df.string(from: date)).bold()
+        } else {
+            df.setLocalizedDateFormatFromTemplate("dd")
+            return Text(df.string(from: date))
+        }
+    }
+    
+    
+    /**
+     determine the correct color to use for this date
+     */
+    private func color(for date: Date) -> Color {
+        switch Date() - date {
+        case let diff where diff < 0: /// date is in the future
+            return .secondary
+        case let diff where diff < .day: /// date is today
+            return .red
+        default: /// date is in the past
+            return .primary
         }
     }
     
@@ -60,5 +103,17 @@ extension FlexibleGraph {
                 y: 0
             )
         )
+    }
+}
+
+/**
+ bold the font if the provided date is today
+ */
+fileprivate extension Font {
+    func boldIfToday(date: Date) -> Font {
+        let diff = Date() - date
+        guard diff > 0 else { return self }
+        guard diff < .day else { return self }
+        return self.bold()
     }
 }
