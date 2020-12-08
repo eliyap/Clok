@@ -10,13 +10,28 @@ import SwiftUI
 
 extension FlexibleGraph {
     var MGEAnimator: some View {
-        (passthroughSelected?.color ?? .clear)
-            .matchedGeometryEffect(
-                id: passthroughGeometry ?? NamespaceModel.none,
-                /// switch namespaces when entry is selected  / de-selected
-                in: model.selected == nil ? graphNamespace : modalNamespace,
-                isSource: false
+        Group {
+            (
+                passthroughSelected != nil
+                    ? Color(UIColor.secondarySystemBackground)
+                    : .clear
             )
+                .matchedGeometryEffect(
+                    id: passthroughGeometry?.mirror ?? NamespaceModel.none,
+                    /// switch namespaces when entry is selected  / de-selected
+                    in: model.selected == nil ? graphNamespace : modalNamespace,
+                    isSource: false
+                )
+            
+            (passthroughSelected?.color ?? .clear)
+                .matchedGeometryEffect(
+                    id: passthroughGeometry ?? NamespaceModel.none,
+                    /// switch namespaces when entry is selected  / de-selected
+                    in: model.selected == nil ? graphNamespace : modalNamespace,
+                    isSource: false
+                )
+        }
+            .transition(.identity)
             /** Passes Changes on, but `withAnimation`
              The key to this approach is that after a `TimeEntry` is selected,
              the view instantly (without animation) snaps to the `TimeEntry`,
