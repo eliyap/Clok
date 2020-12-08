@@ -99,8 +99,8 @@ struct FlexibleGraph: View {
                                 passthroughSelected = .none
                             }
                         }
-                        /// but start modal disappearance immediately
-                        withAnimation(.easeInOut(duration: Self.modalTransitionDuration)) {
+                        /// note: use `heroAnimationDuration`, as the transition time is unaffected, but the easing time is
+                        withAnimation(.easeInOut(duration: Self.heroAnimationDuration)) {
                             model.selected = .none
                         }
                     }
