@@ -43,13 +43,7 @@ extension FlexibleGraph {
                             print(rowPosition)
                             /// without the async, the `scrollTo` call is *extremely* inaccurate
                             DispatchQueue.main.asyncAfter(deadline: .now()) {
-                                proxy.scrollTo(
-                                    rowPosition.row + 1,
-                                    anchor: UnitPoint(
-                                        x: GraphConstants.hProp * (1-rowPosition.position.x),
-                                        y: 0
-                                    )
-                                )
+                                proxy.scrollTo(rowPosition.row + 1, anchor: .center)
                             }
                         }
                 }
