@@ -10,7 +10,7 @@ import SwiftUI
 
 extension FlexibleGraph {
     
-    var HorizontalScrollView: some View {
+    var HorizontalScrollStack: some View {
         /** Enables user to scroll left (but not right) as far as they want.
          Important to my vision of allowing cross-day visualization.
          Built on a monstrous hack that exploits the behaviour of `LazyHStack`,

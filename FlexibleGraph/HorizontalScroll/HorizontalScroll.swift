@@ -28,7 +28,7 @@ extension FlexibleGraph {
                             dragInitial = .none
                         }
                     )
-                HorizontalScrollView
+                HorizontalScrollStack
             }
         }
     }
