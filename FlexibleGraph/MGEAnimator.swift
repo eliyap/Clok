@@ -23,7 +23,7 @@ extension FlexibleGraph {
                     isSource: false
                 )
             
-            (passthroughSelected?.color ?? .clear)
+            (passthroughSelected?.color(in: colorScheme) ?? .clear)
                 .matchedGeometryEffect(
                     id: passthroughGeometry ?? NamespaceModel.none,
                     /// switch namespaces when entry is selected  / de-selected
