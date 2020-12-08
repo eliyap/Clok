@@ -24,4 +24,7 @@ enum GraphConstants {
     static var hProp: CGFloat {
         1 / (1 - dayCount)
     }
+    
+    /// corresponds to being within ±2 hours of midnight
+    static let midnightSnapThreshhold: CGFloat = 1/12
 }

@@ -38,6 +38,16 @@ extension FlexibleGraph {
                         .onEnded { state in
                             /// forget state in preparation for next Gesture
                             dragInitial = .none
+                            
+                            if rowPosition.position.y < GraphConstants.midnightSnapThreshhold {
+                                withAnimation {
+                                    rowPosition.position.y = 0
+                                }
+                            } else if rowPosition.position.y > (1 - GraphConstants.midnightSnapThreshhold) {
+                                withAnimation {
+                                    rowPosition.position.y = 1
+                                }
+                            }
                         }
                     )
                 HorizontalScrollStack
