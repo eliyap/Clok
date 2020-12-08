@@ -29,6 +29,12 @@ extension FlexibleGraph {
         if model.mode == .dayMode && newMode != .dayMode {
             positionRequester.send(true)
         }
+        
+        /// on switching away from `.extendedMode`, determine its position first
+        if model.mode == .extendedMode && newMode != .extendedMode {
+            positionRequester.send(true)
+        }
+        
         withAnimation { model.mode = newMode }
     }
 }
