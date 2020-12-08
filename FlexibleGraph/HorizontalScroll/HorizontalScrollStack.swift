@@ -26,7 +26,8 @@ extension FlexibleGraph {
                                     .midnight
                                     .advanced(by: Double(idx) * .day + Double(rowPosition.position.y) * .day),
                                 idx: idx,
-                                trailing: geo.frame(in: .global).maxX
+                                trailing: geo.frame(in: .global).maxX,
+                                proxy: proxy
                             )
                                 .frame(width: geo.size.width / GraphConstants.dayCount)
                                 .rotationEffect(.tau / 2)
