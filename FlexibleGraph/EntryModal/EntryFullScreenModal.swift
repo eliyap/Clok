@@ -31,14 +31,15 @@ struct EntryFullScreenModal: View {
     let geometry: NamespaceModel
     
     init(
-        state: NewGraphModel,
+        entry: TimeEntry?,
+        geometry: NamespaceModel,
         namespace: Namespace.ID,
         dismiss: @escaping () -> Void
     ) {
         self.dismiss = dismiss
         self.namespace = namespace
-        self.entry = state.selected ?? StaticEntry.noEntry
-        self.geometry = state.geometry ?? NamespaceModel.none
+        self.entry = entry ?? StaticEntry.noEntry
+        self.geometry = geometry
     }
     
     var body: some View {
@@ -73,14 +74,22 @@ struct EntryFullScreenModal: View {
                      1. animation expands to / contracts from the full size of the screen
                      2. does not cause other elements to "crush" together as view contracts
                     */
-                    .matchedGeometryEffect(id: geometry.mirror, in: namespace)
+//                    .matchedGeometryEffect(
+//                        id: geometry.mirror,
+//                        in: namespace,
+//                        isSource: false
+//                    )
                     .offset(y: max(0, scrollOffset))
                 ControlBar
                     .offset(y: max(0, scrollOffset))
                     .zIndex(1)
                 VStack(spacing: .zero) {
                     EntryHeader
-                        .matchedGeometryEffect(id: geometry, in: namespace)
+                        .matchedGeometryEffect(
+                            id: geometry,
+                            in: namespace,
+                            isSource: false
+                        )
                     EntryBody
                     /// monitors the position of the bottom of the view
                     GeometryReader { bottomGeo in
@@ -95,6 +104,14 @@ struct EntryFullScreenModal: View {
                 .coordinateSpace(name: coordSpaceName)
                 .gesture(ScrollDrag)
         }
+        .mask(
+            Rectangle()
+                .matchedGeometryEffect(
+                    id: geometry,
+                    in: namespace,
+                    isSource: false
+                )
+        )
     }
     
     

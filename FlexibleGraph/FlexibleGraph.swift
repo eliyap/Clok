@@ -82,32 +82,22 @@ struct FlexibleGraph: View {
                 HorizontalScroll
             }
             
-            /// handles the Hero Animation when a `TimeEntry` is selected / dismissed
-            MGEAnimator
-                .zIndex(1)
-            
             /// show full screen modal when an entry is pushed
-            if model.selected != .none {
+            if passthroughSelected != .none {
                 EntryFullScreenModal(
                     /// pass resultant property, as this only needs to be read
-                    state: model,
-                    namespace: modalNamespace,
+                    entry: passthroughSelected,
+                    geometry: model.geometry ?? (passthroughGeometry ?? NamespaceModel.none),
+                    namespace: graphNamespace,
                     dismiss: {
-                        /// only have disappearance start part way through, so animation is visible for longer
-                        DispatchQueue.main.asyncAfter(deadline: .now() + Self.heroAnimationDuration * 0.75) {
-                            withAnimation(.easeInOut(duration: Self.heroAnimationDuration * 0.25)) {
-                                passthroughSelected = .none
-                            }
-                        }
-                        /// note: use `heroAnimationDuration`, as the transition time is unaffected, but the easing time is
-                        withAnimation(.easeInOut(duration: Self.heroAnimationDuration)) {
-                            model.selected = .none
+                        withAnimation {
+                            passthroughGeometry = nil
+                            passthroughSelected = nil
                         }
                     }
                 )
                     /// increase zIndex so that, while animating, modal does not fall behind other entries
-                    .zIndex(2)
-                    .transition(Self.ModalTransition)
+                    .zIndex(1)
             }
             
             #warning("placeholder UI")
@@ -117,6 +107,23 @@ struct FlexibleGraph: View {
                 Text("Transform!")
             }
                 .actionSheet(isPresented: $showSheet) { ModeSheet }
+        }
+        /** Passes Changes on, but `withAnimation`
+         The key to this approach is that after a `TimeEntry` is selected,
+         the view instantly (without animation) snaps to the `TimeEntry`,
+         then it switches `Namespace`s and targets `EntryFullScreenModal` to create the animation.
+         It has the advantage of being `ZStack`ed above the graph, and does not clip behind any other entries
+         */
+        .onChange(of: passthroughSelected) { newSelection in
+            withAnimation(.easeInOut(duration: Self.heroAnimationDuration)) {
+                model.selected = newSelection
+            }
+            
+        }
+        .onChange(of: passthroughGeometry) { newGeometry in
+            withAnimation(.easeInOut(duration: Self.heroAnimationDuration)) {
+                model.geometry = newGeometry
+            }
         }
     }
 }

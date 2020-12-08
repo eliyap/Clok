@@ -39,8 +39,10 @@ extension FlexibleGraph {
                     .opacity(entry.matches(data.terms) ? 1 : 0.25)
                     /// push View to stack when tapped
                     .onTapGesture {
-                        passthroughGeometry = NamespaceModel(entryID: entry.id, dayIndex: idx)
-                        passthroughSelected = entry
+                        withAnimation {
+                            passthroughGeometry = NamespaceModel(entryID: entry.id, dayIndex: idx)
+                            passthroughSelected = entry
+                        }
                     }
             }
                 .layoutPriority(1)
