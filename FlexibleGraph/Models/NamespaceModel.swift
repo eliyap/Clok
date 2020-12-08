@@ -25,3 +25,12 @@ struct NamespaceModel: Hashable {
 extension NamespaceModel {
     static let none = NamespaceModel(entryID: StaticEntry.noEntry.id, dayIndex: .zero)
 }
+
+extension NamespaceModel {
+    
+    /// Creates a parallel ID guaranteed not to conflict with other entries or itself.
+    /// Since `entryID` is always positive, we can invert it to create a unique new ID
+    var mirror: NamespaceModel {
+        NamespaceModel(entryID: -self.entryID, dayIndex: self.dayIndex)
+    }
+}
