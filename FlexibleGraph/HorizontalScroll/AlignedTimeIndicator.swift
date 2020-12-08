@@ -8,6 +8,10 @@
 
 import SwiftUI
 
+/**
+ In lieu of properly designing a `TimeIndicator` to handle arbitrary offsets,
+ I just glued together some existing `TimeIndicator`s and let the unused parts clip out of bounds
+ */
 struct AlignedTimeIndicator: View {
     
     let height: CGFloat
@@ -17,7 +21,6 @@ struct AlignedTimeIndicator: View {
      */
     let rowY: CGFloat
     
-    /// Glues together 2 `TimeIndicators` in the right way to place it in beside the `HorizontalScrollView`
     var body: some View {
         VStack(spacing: .zero) {
             NewTimeIndicator(divisions: evenDivisions(for: height))
