@@ -18,10 +18,10 @@ enum GraphConstants {
      Let there be `x` days (here `x = 7`).
      Each day consumes `1 / x` of the available width (could also be height).
      To scroll a day such that `y` amount of it is on screen (`0 ≤ y ≤ 1`), we need to invoke `.scrollTo` with
-     `(1 - y) * (1/x) / (1 - 1/x)`. (reasoning not included here)
-     This is the calculation of `(1/x) / (1 - 1/x)`.
+     `(1 - y) * (1/x) / (1/x - 1)`. (reasoning not included here)
+     This is the calculation of `(1/x) / (1/x - 1) = (1) / (1 - x)`.
      */
     static var hProp: CGFloat {
-        (1/dayCount) / (1 - (1/dayCount))
+        1 / (1 - dayCount)
     }
 }
