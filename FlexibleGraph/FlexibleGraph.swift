@@ -93,12 +93,14 @@ struct FlexibleGraph: View {
                     state: model,
                     namespace: modalNamespace,
                     dismiss: {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + Self.heroAnimationDuration / 2) {
-                            withAnimation(.easeInOut(duration: Self.heroAnimationDuration / 2)) {
+                        /// only have disappearance start part way through, so animation is visible for longer
+                        DispatchQueue.main.asyncAfter(deadline: .now() + Self.heroAnimationDuration * 0.75) {
+                            withAnimation(.easeInOut(duration: Self.heroAnimationDuration * 0.25)) {
                                 passthroughSelected = .none
                             }
                         }
-                        withAnimation(.easeInOut(duration: Self.heroAnimationDuration)) {
+                        /// but start modal disappearance immediately
+                        withAnimation(.easeInOut(duration: Self.modalTransitionDuration)) {
                             model.selected = .none
                         }
                     }

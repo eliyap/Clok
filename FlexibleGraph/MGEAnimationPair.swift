@@ -10,7 +10,10 @@ import SwiftUI
 
 extension FlexibleGraph {
     
+    /// duration of swooshy screen filling animation
     static let heroAnimationDuration = 0.4
+    
+    /// duration of opacity animation for `EntryFullScreenModal`
     static let modalTransitionDuration = 0.2
     
     static let ModalTransition = AnyTransition.asymmetric(
@@ -18,6 +21,7 @@ extension FlexibleGraph {
             .opacity
             .animation(Animation
                 .easeInOut(duration: Self.modalTransitionDuration)
+                /// wait for swoosh to finish first
                 .delay(Self.heroAnimationDuration)
             ),
         removal: AnyTransition
