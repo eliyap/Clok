@@ -85,11 +85,6 @@ struct EntryFullScreenModal: View {
                     .zIndex(1)
                 VStack(spacing: .zero) {
                     EntryHeader
-                        .matchedGeometryEffect(
-                            id: geometry,
-                            in: namespace,
-                            isSource: false
-                        )
                     EntryBody
                     /// monitors the position of the bottom of the view
                     GeometryReader { bottomGeo in

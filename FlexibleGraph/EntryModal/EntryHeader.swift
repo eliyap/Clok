@@ -22,6 +22,13 @@ extension EntryFullScreenModal {
         }
             .padding(Self.sharedPadding)
             .frame(maxWidth: .infinity, alignment: .leading)
-            .background(entry.color(in: colorScheme))
+            .background(
+                entry.color(in: colorScheme)
+                    .matchedGeometryEffect(
+                        id: geometry,
+                        in: namespace,
+                        isSource: false
+                    )
+            )
     }
 }
