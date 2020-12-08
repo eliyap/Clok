@@ -73,13 +73,14 @@ struct EntryFullScreenModal: View {
                      1. animation expands to / contracts from the full size of the screen
                      2. does not cause other elements to "crush" together as view contracts
                     */
-                    .matchedGeometryEffect(id: geometry, in: namespace)
                     .offset(y: max(0, scrollOffset))
+                    .matchedGeometryEffect(id: geometry.mirror, in: namespace)
                 ControlBar
                     .offset(y: max(0, scrollOffset))
                     .zIndex(1)
                 VStack(spacing: .zero) {
                     EntryHeader
+                        .matchedGeometryEffect(id: geometry, in: namespace)
                     EntryBody
                     /// monitors the position of the bottom of the view
                     GeometryReader { bottomGeo in
