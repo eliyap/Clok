@@ -27,4 +27,11 @@ enum GraphConstants {
     
     /// corresponds to being within ±2 hours of midnight
     static let midnightSnapThreshhold: CGFloat = 1/12
+    
+    /// duration of swooshy screen filling animation
+    static let heroAnimationDuration = 0.4
+    
+    /// duration of opacity animation for `EntryFullScreenModal`
+    static let modalOpacityDuration = 0.2
+    
 }
