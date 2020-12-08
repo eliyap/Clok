@@ -81,6 +81,11 @@ struct FlexibleGraph: View {
             case .extendedMode:
                 HorizontalScroll
             }
+            
+            /// handles the Hero Animation when a `TimeEntry` is selected / dismissed
+            MGEAnimator
+                .zIndex(1)
+            
             /// show full screen modal when an entry is pushed
             if model.selected != .none {
                 EntryFullScreenModal(
@@ -90,10 +95,9 @@ struct FlexibleGraph: View {
                     dismiss: { withAnimation{ passthroughSelected = .none } }
                 )
                     /// increase zIndex so that, while animating, modal does not fall behind other entries
-                    .zIndex(1)
+                    .zIndex(2)
             }
-            /// handles the Hero Animation when a `TimeEntry` is selected / dismissed
-            MGEAnimator
+            
             #warning("placeholder UI")
             Button {
                 showSheet = true
