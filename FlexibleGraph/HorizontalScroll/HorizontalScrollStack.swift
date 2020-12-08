@@ -25,7 +25,8 @@ extension FlexibleGraph {
                                 midnight: Date()
                                     .midnight
                                     .advanced(by: Double(idx) * .day + Double(rowPosition.position.y) * .day),
-                                idx: idx
+                                idx: idx,
+                                trailing: geo.frame(in: .global).maxX
                             )
                                 /// NOTE: this is effectively an arbitrary value
                                 .frame(width: geo.size.width / 7)
@@ -39,9 +40,17 @@ extension FlexibleGraph {
                         }
                     }
                         .onAppear {
+                            print(rowPosition)
                             /// without the async, the `scrollTo` call is *extremely* inaccurate
                             DispatchQueue.main.asyncAfter(deadline: .now()) {
-                                proxy.scrollTo(rowPosition.row, anchor: rowPosition.position)
+                                proxy.scrollTo(
+                                    rowPosition.row + 1,
+                                    anchor: UnitPoint(
+                                        /// (1/7) / (1 - 1/7) = -1/6. for more see notes
+                                        x: (-1/6) * (1-rowPosition.position.x),
+                                        y: 0
+                                    )
+                                )
                             }
                         }
                 }
