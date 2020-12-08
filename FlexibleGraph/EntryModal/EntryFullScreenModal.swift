@@ -25,17 +25,17 @@ struct EntryFullScreenModal: View {
     let coordSpaceName = "bottom"
     
     
-    @Binding var selected: TimeEntry?
+    let dismiss: () -> Void
     var namespace: Namespace.ID
     let entry: TimeEntryLike
     let geometry: NamespaceModel
     
     init(
-        selected: Binding<TimeEntry?>,
         state: NewGraphModel,
-        namespace: Namespace.ID
+        namespace: Namespace.ID,
+        dismiss: @escaping () -> Void
     ) {
-        self._selected = selected
+        self.dismiss = dismiss
         self.namespace = namespace
         self.entry = state.selected ?? StaticEntry.noEntry
         self.geometry = state.geometry ?? NamespaceModel.none
@@ -134,9 +134,5 @@ struct EntryFullScreenModal: View {
         /// note: clamp prevents visual from triggering while scrolling down
         /// `-` inversion causes circle to fill clockwise instead of counterclockwise
         -clamp(scrollOffset / Self.threshhold, between: (0, 1))
-    }
-    
-    func dismiss() -> Void {
-        withAnimation { selected = .none }
     }
 }
