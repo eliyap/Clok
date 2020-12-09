@@ -70,15 +70,6 @@ struct EntryFullScreenModal: View {
             ZStack(alignment: .topLeading) {
                 /// a solid color background for the view
                 Color(UIColor.secondarySystemBackground)
-                    /** MGE placement here has 2 benefits
-                     1. animation expands to / contracts from the full size of the screen
-                     2. does not cause other elements to "crush" together as view contracts
-                    */
-//                    .matchedGeometryEffect(
-//                        id: geometry.mirror,
-//                        in: namespace,
-//                        isSource: false
-//                    )
                     .offset(y: max(0, scrollOffset))
                 ControlBar
                     .offset(y: max(0, scrollOffset))
@@ -100,6 +91,10 @@ struct EntryFullScreenModal: View {
                 .gesture(ScrollDrag)
         }
         .mask(
+            /** MGE placement here has 2 benefits
+             1. animation expands to / contracts from the full size of the screen
+             2. does not cause other elements to "crush" together as view contracts
+            */
             Rectangle()
                 .matchedGeometryEffect(
                     id: geometry,

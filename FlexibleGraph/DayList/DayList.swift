@@ -53,10 +53,5 @@ extension FlexibleGraph {
                 in: graphNamespace,
                 isSource: model.selected == .none
             )
-            .matchedGeometryEffect(
-                id: NamespaceModel(entryID: entry.id, dayIndex: idx).mirror,
-                in: graphNamespace,
-                isSource: model.selected == .none
-            )
     }
 }
