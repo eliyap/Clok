@@ -28,7 +28,6 @@ struct FlexibleGraph: View {
     
     /// used for our `matchedGeometryEffect` animations
     @Namespace var graphNamespace
-    @Namespace var modalNamespace
     
     /// access CoreData `TimeEntry` storage
     @FetchRequest(
