@@ -929,6 +929,7 @@
 			isa = PBXGroup;
 			children = (
 				22D4F5112577354C0053ABFB /* EntryFullScreenModal.swift */,
+				224F5496257F994000E2BB18 /* ModalAnimation.swift */,
 				22D9BA07257B851200E923C5 /* DismissalButton.swift */,
 				22D9B9F7257B844600E923C5 /* EntryHeader.swift */,
 				22D9BA19257B8BAB00E923C5 /* AlignedLabelStyle.swift */,
@@ -1219,7 +1220,6 @@
 				22D4F4FF2577345E0053ABFB /* FlexibleGraph.swift */,
 				22D4F531257735F20053ABFB /* ModeSheet.swift */,
 				224F546F257F220600E2BB18 /* GraphConstants.swift */,
-				224F5496257F994000E2BB18 /* ModalAnimation.swift */,
 				22F5245A257E53BB005222C2 /* VerticalScroll */,
 				22F5242E257E51D6005222C2 /* HorizontalScroll */,
 				224180242579FCA000FF9B40 /* EntryModal */,
