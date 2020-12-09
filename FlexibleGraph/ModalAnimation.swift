@@ -10,9 +10,16 @@ import SwiftUI
 
 extension FlexibleGraph {
     func showModal(for entry: TimeEntry, at idx: Int) -> Void {
+        
+        let geometry = NamespaceModel(entryID: entry.id, dayIndex: idx)
+        
         withAnimation(.easeInOut(duration: GraphConstants.modalOpacityDuration)) {
-            passthroughGeometry = NamespaceModel(entryID: entry.id, dayIndex: idx)
+            passthroughGeometry = geometry
             passthroughSelected = entry
+        }
+        withAnimation(.easeInOut(duration: GraphConstants.heroAnimationDuration)) {
+            model.selected = entry
+            model.geometry = geometry
         }
     }
     
@@ -24,6 +31,10 @@ extension FlexibleGraph {
         ) {
             passthroughGeometry = nil
             passthroughSelected = nil
+        }
+        withAnimation(.easeInOut(duration: GraphConstants.heroAnimationDuration)) {
+            model.selected = nil
+            model.geometry = nil
         }
     }
 }
