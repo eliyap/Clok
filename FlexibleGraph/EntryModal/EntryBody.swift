@@ -43,7 +43,12 @@ struct EntryBody: View {
                 .labelStyle(AlignedLabelStyle())
             
             Label {
-                Text("test")
+                if entry.billable {
+                    Text("Billable")
+                } else {
+                    Text("Not Billable")
+                        .foregroundColor(.secondary)
+                }
             } icon: {
                 Text("$")
                     .font(Font.system(.title3, design: .rounded))
