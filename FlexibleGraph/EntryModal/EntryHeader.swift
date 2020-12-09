@@ -10,7 +10,7 @@ import SwiftUI
 
 extension EntryFullScreenModal {
     var EntryHeader: some View {
-        VStack(alignment: .labelText) {
+        VStack(alignment: .leading) {
             Spacer()
                 .frame(height: DismissalButton.ButtonSize + Self.sharedPadding * 2)
             Text(entry.entryDescription)

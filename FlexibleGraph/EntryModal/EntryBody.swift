@@ -13,12 +13,12 @@ struct EntryBody: View {
     let entry: TimeEntryLike
     
     var body: some View {
-        VStack(alignment: .labelText) {
+        VStack(alignment: .leading) {
             Label {
                 HStack {
-                    start
+                    StartTime
                     Text("–")
-                    end
+                    EndTime
                 }
             } icon: {
                 Image(systemName: "stopwatch")
@@ -26,14 +26,26 @@ struct EntryBody: View {
                 .labelStyle(AlignedLabelStyle())
             Label(
                 "\(entry.duration.toString())",
+                /// When looking at the modal for a running timer, we should switch out for a running hourglass, and turn it over every few seconds
                 systemImage: "hourglass.tophalf.fill"
             )
                 .labelStyle(AlignedLabelStyle())
+            Label {
+                TagList(tags: entry.tagStrings)
+                    .border(Color.pink)
+            } icon: {
+                Image(systemName: "tag")
+            }
+                .layoutPriority(0)
+                .labelStyle(AlignedLabelStyle())
+            Text("Test Thing")
+            Spacer()
+                .layoutPriority(1)
         }
             .padding(EntryFullScreenModal.sharedPadding)
     }
     
-    var start: some View {
+    var StartTime: some View {
         Group {
             /// if either bound is not within this year, return full date (note: this covers the case where start / end year differ)
             if entry.start.year != Date().year || entry.end.year != Date().year {
@@ -49,7 +61,7 @@ struct EntryBody: View {
         }
     }
     
-    var end: some View {
+    var EndTime: some View {
         Group {
             /// if either bound is not within this year, return full date (note: this covers the case where start / end year differ)
             if entry.start.year != Date().year || entry.end.year != Date().year {

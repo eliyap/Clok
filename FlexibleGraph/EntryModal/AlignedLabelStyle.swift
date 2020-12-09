@@ -7,15 +7,6 @@
 //
 
 import SwiftUI
-extension HorizontalAlignment {
-    enum LabelText: AlignmentID {
-        static func defaultValue(in context: ViewDimensions) -> CGFloat {
-            context[HorizontalAlignment.leading]
-        }
-    }
-    
-    static let labelText = HorizontalAlignment(LabelText.self)
-}
 
 struct AlignedLabelStyle: LabelStyle {
     func makeBody(configuration: Configuration) -> some View {
@@ -30,9 +21,6 @@ struct AlignedLabelStyle: LabelStyle {
                 .overlay(configuration.icon)
             
             configuration.title
-                .alignmentGuide(.labelText) { d in
-                    d[.leading]
-                }
         }
     }
 }

@@ -83,6 +83,7 @@ struct EntryFullScreenModal: View {
                             bottomPos = bottomGeo.frame(in: .named(coordSpaceName)).maxY - geo.size.height
                         }
                     }
+                    .border(Color.black)
                 }
                     .offset(y: scrollOffset)
             }
