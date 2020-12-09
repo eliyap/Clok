@@ -29,9 +29,9 @@ enum GraphConstants {
     static let midnightSnapThreshhold: CGFloat = 1/12
     
     /// duration of swooshy screen filling animation
-    static let heroAnimationDuration = 0.4
+    static let heroAnimationDuration = 0.3
     
     /// duration of opacity animation for `EntryFullScreenModal`
-    static let modalOpacityDuration = 0.2
+    static let modalOpacityDuration = 0.15
     
 }
