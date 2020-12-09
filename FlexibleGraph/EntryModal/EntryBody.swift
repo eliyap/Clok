@@ -11,6 +11,7 @@ import SwiftUI
 struct EntryBody: View {
     
     let entry: TimeEntryLike
+    let width: CGFloat
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -31,16 +32,12 @@ struct EntryBody: View {
             )
                 .labelStyle(AlignedLabelStyle())
             Label {
-                TagList(tags: entry.tagStrings)
-                    .border(Color.pink)
+                TagList(tags: entry.tagStrings, boundingWidth: width)
             } icon: {
                 Image(systemName: "tag")
             }
-                .layoutPriority(0)
                 .labelStyle(AlignedLabelStyle())
             Text("Test Thing")
-            Spacer()
-                .layoutPriority(1)
         }
             .padding(EntryFullScreenModal.sharedPadding)
     }

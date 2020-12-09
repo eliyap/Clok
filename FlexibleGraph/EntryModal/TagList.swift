@@ -14,24 +14,20 @@ import SwiftUI
 struct TagList: View {
     
     var tags: [String]
+    let boundingWidth: CGFloat
     
     var body: some View {
-        GeometryReader { geo in
-            generateTags(in: geo)
-        }
-    }
-
-    /// Adds a tag view for each tag in the array. Populates from left to right and then on to new rows when too wide for the screen
-    private func generateTags(in geo: GeometryProxy) -> some View {
+        
         var width: CGFloat = 0
         var height: CGFloat = 0
 
+        /// Adds a tag view for each tag in the array. Populates from left to right and then on to new rows when too wide for the screen
         return ZStack(alignment: .topLeading) {
             ForEach(tags, id: \.self) { tag in
                 TagView(tag: tag)
                     .alignmentGuide(.leading, computeValue: { tagSize in
                         /// checks if add this `View`'s width would cause row to exceed allowed width
-                        if (abs(width - tagSize.width) > geo.size.width) {
+                        if (abs(width - tagSize.width) > boundingWidth) {
                             /// if so, reset width tracker and ...
                             width = 0
                             /// ... wrap height to next row
@@ -55,7 +51,6 @@ struct TagList: View {
                         return offset
                     })
             }
-//                .frame(height: height)
         }
     }
 }

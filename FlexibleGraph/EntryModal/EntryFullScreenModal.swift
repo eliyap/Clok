@@ -76,7 +76,7 @@ struct EntryFullScreenModal: View {
                     .zIndex(1)
                 VStack(spacing: .zero) {
                     EntryHeader
-                    EntryBody(entry: entry)
+                    EntryBody(entry: entry, width: geo.size.width)
                     /// monitors the position of the bottom of the view
                     GeometryReader { bottomGeo in
                         Run {
