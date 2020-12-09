@@ -48,6 +48,7 @@ extension FlexibleGraph {
                         .offset(y: geo.size.height * normalizedOffset)
 //                    NewRunningEntryView(terms: data.terms)
                 }
+                testCubic(midnight: midnight)
             }
         }
     }
@@ -59,5 +60,37 @@ extension FlexibleGraph {
         TimeInterval(rowPosition.position.y) * .day < Date() - Date().midnight
             ? 0 - rowPosition.position.y
             : 1 - rowPosition.position.y
+    }
+    
+    func testCubic(midnight: Date) -> some View {
+        let esYst = entries
+            .filter{$0.start.between(midnight - .day, midnight)}
+            .matching(terms: data.terms)
+            .map{$0.start}
+            .min()
+        let esTdy = entries
+            .filter{$0.start.between(midnight, midnight + .day)}
+            .matching(terms: data.terms)
+            .map{$0.start}
+            .min()
+        let esTmr = entries
+            .filter{$0.start.between(midnight + .day, midnight + .day * 2)}
+            .matching(terms: data.terms)
+            .map{$0.start}
+            .min()
+        guard esYst != nil || esTdy != nil || esTmr != nil else {
+            return AnyView(EmptyView())
+        }
+        
+        func normDiff(d1: Date?, d2: Date) -> Double? {
+            guard let d1 = d1 else { return nil }
+            return (d1 - d2) / .day
+        }
+        
+        return AnyView(QuadraticSegment(
+            normDiff(d1: esYst, d2: midnight - .day),
+            normDiff(d1: esTdy, d2: midnight),
+            normDiff(d1: esTmr, d2: midnight + .day)
+        ).stroke(Color.black))
     }
 }
