@@ -32,7 +32,7 @@ struct EntryBody: View {
             )
                 .labelStyle(AlignedLabelStyle())
             Label {
-                TagList(tags: entry.tagStrings, boundingWidth: width)
+                TagList(tags: entry.tagStrings.sorted(), boundingWidth: width)
             } icon: {
                 Image(systemName: "tag")
             }
