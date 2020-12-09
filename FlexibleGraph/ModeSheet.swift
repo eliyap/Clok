@@ -35,6 +35,9 @@ extension FlexibleGraph {
             positionRequester.send(.none)
         }
         
+        /// set time to closest midnight, which is prettier and probably less confusing to users
+        rowPosition.position.y.round(.toNearestOrEven)
+        
         withAnimation { model.mode = newMode }
     }
 }
