@@ -25,6 +25,7 @@ extension TimeEntry {
     @NSManaged public var lastUpdated: Date?
     @NSManaged public var project: Project?
     @NSManaged public var tags: NSSet?
+    @NSManaged public var billable: Bool
 
     public var wrappedDescription: String {
         name ?? "[No Description]"

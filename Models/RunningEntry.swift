@@ -17,6 +17,8 @@ final class RunningEntry: NSObject, NSSecureCoding, TimeEntryLike {
     var project: ProjectLike
     var entryDescription: String
     var tags: [String] = []
+    var billable: Bool
+    
     let df = DateFormatter()
     
     /// `TimeEntryLike` compliance
@@ -31,7 +33,8 @@ final class RunningEntry: NSObject, NSSecureCoding, TimeEntryLike {
         start: Date,
         project: ProjectLike,
         entryDescription: String,
-        tags: [String]?
+        tags: [String]?,
+        billable: Bool
     ){
         self.id = id
         self.start = start
@@ -39,31 +42,33 @@ final class RunningEntry: NSObject, NSSecureCoding, TimeEntryLike {
         self.pid = project.wrappedID
         self.entryDescription = entryDescription
         self.tags = tags ?? []
+        self.billable = billable
     }
     
-    // parse from JSON for Widget
-    init?(from data: [String : AnyObject], project: ProjectLike){
-        // initialize DateFormatter to handle ISO8601 strings
-        df.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-        
-        // check that these properties are not nil
-        guard
-            let id = data["id"] as? Int64,
-            data["description"] != nil,
-            let entryDescription = data["description"] as? String,
-            // get Dates from ISO8601 string
-            data["start"] != nil,
-            let startString = data["start"] as? String,
-            let start = df.date(from: startString)
-        else { return nil }
-        
-        self.id = id
-        self.entryDescription = entryDescription
-        self.start = start
-        self.project = project
-        self.tags = data["tags"] as? [String]
-            ?? []
-    }
+//    // parse from JSON for Widget
+//    init?(from data: [String : AnyObject], project: ProjectLike){
+//        // initialize DateFormatter to handle ISO8601 strings
+//        df.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+//
+//        // check that these properties are not nil
+//        guard
+//            let id = data["id"] as? Int64,
+//            data["description"] != nil,
+//            let entryDescription = data["description"] as? String,
+//            // get Dates from ISO8601 string
+//            data["start"] != nil,
+//            let startString = data["start"] as? String,
+//            let start = df.date(from: startString)
+//        else { return nil }
+//
+//        self.id = id
+//        self.entryDescription = entryDescription
+//        self.start = start
+//        self.project = project
+//        self.tags = data["tags"] as? [String]
+//            ?? []
+//        self.billable = ERROR
+//    }
     
     /// Headlining description,
     /// or project if there's no description,
@@ -112,6 +117,7 @@ final class RunningEntry: NSObject, NSSecureCoding, TimeEntryLike {
         project = StaticProject.unknown
         tags = coder.decodeObject(forKey: "tags") as? [String]
             ?? []
+        billable = coder.decodeBool(forKey: "billable")
         
         guard
             let start = coder.decodeObject(forKey: "start") as? Date,
@@ -130,7 +136,8 @@ extension RunningEntry {
         start: Date.distantFuture,
         project: StaticProject.noProject,
         entryDescription: "Not Running",
-        tags: []
+        tags: [],
+        billable: false
     )
     
     static let placeholder = RunningEntry(
@@ -138,7 +145,8 @@ extension RunningEntry {
         start: Date(),
         project: StaticProject.noProject,
         entryDescription: "Placeholder",
-        tags: ["Tag"]
+        tags: ["Tag"],
+        billable: false
     )
 }
 

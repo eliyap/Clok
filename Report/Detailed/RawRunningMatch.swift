@@ -30,7 +30,8 @@ extension Detailed {
                 start: raw.start,
                 project: project,
                 entryDescription: raw.description,
-                tags: raw.tags
+                tags: raw.tags,
+                billable: raw.billable
             )
         )
     }

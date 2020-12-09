@@ -55,7 +55,8 @@ public class TimeEntry: NSManagedObject, TimeEntryLike {
             "end": raw.end,
             "dur": raw.dur / 1000.0,
             "lastUpdated": raw.updated,
-            "id": Int64(raw.id)
+            "id": Int64(raw.id),
+            "billable": raw.is_billable
         ])
         project = projects.first(where: {$0.id == raw.pid ?? NSNotFound})
         self.tags = Set(tags.filter {

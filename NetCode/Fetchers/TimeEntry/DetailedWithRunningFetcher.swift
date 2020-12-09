@@ -30,11 +30,12 @@ func DetailedWithRunningRequest(
             /// Time Entry is running, but has no project
             guard let pid = raw.pid else {
                 return Just((detailed, RunningEntry(
-                                id: raw.id,
-                                start: raw.start,
-                                project: StaticProject.noProject,
-                                entryDescription: raw.description,
-                                tags: raw.tags
+                    id: raw.id,
+                    start: raw.start,
+                    project: StaticProject.noProject,
+                    entryDescription: raw.description,
+                    tags: raw.tags,
+                    billable: raw.billable
                 )))
                     .tryMap{$0} /// converts `Never` to  `Error`
                     .eraseToAnyPublisher()
@@ -42,11 +43,12 @@ func DetailedWithRunningRequest(
             /// Time Entry is running with a project in the detailed report
             if let match = detailed.projects.first(where: {$0.id == pid}) {
                 return Just((detailed, RunningEntry(
-                                id: raw.id,
-                                start: raw.start,
-                                project: StaticProject(name: match.name, color: match.color, id: match.id),
-                                entryDescription: raw.description,
-                                tags: raw.tags
+                    id: raw.id,
+                    start: raw.start,
+                    project: StaticProject(name: match.name, color: match.color, id: match.id),
+                    entryDescription: raw.description,
+                    tags: raw.tags,
+                    billable: raw.billable
                 )))
                     .tryMap{$0} /// converts `Never` to  `Error`
                     .eraseToAnyPublisher()
@@ -69,7 +71,8 @@ func DetailedWithRunningRequest(
                             start: raw.start,
                             project: staticProject,
                             entryDescription: raw.description,
-                            tags: raw.tags
+                            tags: raw.tags,
+                            billable: raw.billable
                         ))
                     }
                     .eraseToAnyPublisher()

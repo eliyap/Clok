@@ -47,7 +47,8 @@ extension RunningEntry {
             start: runningData.start,
             project: StaticProject.unknown,
             entryDescription: runningData.description,
-            tags: runningData.tags
+            tags: runningData.tags,
+            billable: runningData.billable
         )
         
         /**
