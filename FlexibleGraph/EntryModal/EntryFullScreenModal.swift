@@ -76,7 +76,7 @@ struct EntryFullScreenModal: View {
                     .zIndex(1)
                 VStack(spacing: .zero) {
                     EntryHeader
-                    EntryBody
+                    EntryBody(entry: entry)
                     /// monitors the position of the bottom of the view
                     GeometryReader { bottomGeo in
                         Run {
@@ -104,16 +104,6 @@ struct EntryFullScreenModal: View {
         )
     }
     
-    
-    var EntryBody: some View {
-        VStack(alignment: .labelText) {
-            Label(entry.projectName, systemImage: "folder.fill")
-                .labelStyle(AlignedLabelStyle())
-            Label(entry.duration.toString(), systemImage: "stopwatch")
-                .labelStyle(AlignedLabelStyle())
-        }
-            .padding(Self.sharedPadding)
-    }
     
     // MARK:- ControlBar
     var ControlBar: some View {

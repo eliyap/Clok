@@ -15,10 +15,21 @@ extension DateFormatter {
         self.setLocalizedDateFormatFromTemplate(template)
     }
     
+    /// init with template
+    convenience init(timeStyle: Style = .none, dateStyle: Style = .none) {
+        self.init()
+        self.timeStyle = timeStyle
+        self.dateStyle = dateStyle
+    }
+    
     /// a shared DF with this common template
     static let MMMdd = DateFormatter(template: "MMMdd")
+    static let tfShort = DateFormatter(timeStyle: .short)
+    static let dftfShort = DateFormatter(timeStyle: .short, dateStyle: .short)
 }
 
 extension Date {
     var MMMdd: String { DateFormatter.MMMdd.string(from: self) }
+    var tfShort: String { DateFormatter.tfShort.string(from: self) }
+    var dftfShort: String { DateFormatter.dftfShort.string(from: self) }
 }
