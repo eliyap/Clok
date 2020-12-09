@@ -19,6 +19,7 @@ protocol TimeEntryLike {
     var projectName: String { get }
     var tagStrings: [String] { get }
     var duration: TimeInterval { get }
+    var billable: Bool { get }
     /**
      Note: after numerous searches and some pain, I found
      https://stackoverflow.com/questions/55996678/associated-protocol-in-swift

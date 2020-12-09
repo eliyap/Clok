@@ -17,6 +17,7 @@ struct StaticEntry: TimeEntryLike {
     var projectName: String
     var tagStrings: [String]
     var duration: TimeInterval
+    var billable: Bool
     
     //MARK:- NoEntry
     /// represents the absence of an entry, without resorting to a forced unwrap
@@ -28,6 +29,7 @@ struct StaticEntry: TimeEntryLike {
         entryDescription: "[No Entry]",
         projectName: StaticProject.unknown.name,
         tagStrings: [],
-        duration: .zero
+        duration: .zero,
+        billable: false
     )
 }
