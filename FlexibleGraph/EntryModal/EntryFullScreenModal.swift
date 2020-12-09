@@ -16,6 +16,7 @@ struct EntryFullScreenModal: View {
     @State var scrollOffset: CGFloat = .zero
     @State var initialPos: CGFloat? = .none
     @State var bottomPos: CGFloat = .zero
+    @State var iconOffset: CGFloat = .zero
     
     //MARK:- Static Properties
     /// the minimum pull-down to dismiss the view
@@ -76,14 +77,22 @@ struct EntryFullScreenModal: View {
                     .zIndex(1)
                 VStack(spacing: .zero) {
                     EntryHeader
-                    EntryBody(entry: entry, width: geo.size.width)
-                    /// monitors the position of the bottom of the view
-                    GeometryReader { bottomGeo in
-                        Run {
-                            bottomPos = bottomGeo.frame(in: .named(coordSpaceName)).maxY - geo.size.height
+                    EntryBody(entry: entry, width: geo.size.width - iconOffset)
+                    /// monitors the position of the bottom of the view, and the offset of `Label` icon
+                    Label {
+                        GeometryReader { bottomGeo in
+                            Run {
+                                bottomPos = bottomGeo.frame(in: .named(coordSpaceName)).maxY - geo.size.height
+                                iconOffset = bottomGeo.frame(in: .named(coordSpaceName)).minX
+                            }
                         }
+                    } icon: {
+                        /// invisible glyph
+                        Image(systemName: "circle")
+                            .foregroundColor(.clear)
                     }
-                    .border(Color.black)
+                        /// pad horizontally to mimic `EntryBody`, but not vertically, to preserve integrity of `bottomPos` reading
+                        .padding(.horizontal, EntryFullScreenModal.sharedPadding)
                 }
                     .offset(y: scrollOffset)
             }

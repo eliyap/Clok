@@ -13,6 +13,8 @@ struct EntryBody: View {
     let entry: TimeEntryLike
     let width: CGFloat
     
+    @State private var labelOffset: CGFloat = .zero
+    
     var body: some View {
         VStack(alignment: .leading) {
             Label {
@@ -37,7 +39,16 @@ struct EntryBody: View {
                 Image(systemName: "tag")
             }
                 .labelStyle(AlignedLabelStyle())
-            Text("Test Thing")
+            Label {
+                GeometryReader { geo in
+                    Color.clear.onAppear { print (geo.frame(in: .local).minX) }
+                }
+            } icon: {
+                Image(systemName: "tag")
+                    .foregroundColor(.clear)
+            }
+                .labelStyle(AlignedLabelStyle())
+            
         }
             .padding(EntryFullScreenModal.sharedPadding)
     }
