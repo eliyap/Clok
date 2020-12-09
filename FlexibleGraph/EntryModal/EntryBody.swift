@@ -42,6 +42,13 @@ struct EntryBody: View {
             }
                 .labelStyle(AlignedLabelStyle())
             
+            Label {
+                Text("test")
+            } icon: {
+                Text("$")
+                    .font(Font.system(.title3, design: .rounded))
+            }
+                .labelStyle(AlignedLabelStyle())
             
         }
             .padding(EntryFullScreenModal.sharedPadding)
