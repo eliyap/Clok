@@ -75,7 +75,7 @@ struct EntryFullScreenModal: View {
                 ControlBar
                     .offset(y: max(0, scrollOffset))
                     .zIndex(1)
-                VStack(spacing: .zero) {
+                VStack(alignment: .leading, spacing: .zero) {
                     EntryHeader
                     EntryBody(entry: entry, width: geo.size.width - iconOffset)
                     /// monitors the position of the bottom of the view, and the offset of `Label` icon
