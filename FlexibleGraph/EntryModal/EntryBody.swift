@@ -11,9 +11,9 @@ import SwiftUI
 struct EntryBody: View {
     
     let entry: TimeEntryLike
-    let width: CGFloat
     
-    @State private var labelOffset: CGFloat = .zero
+    /// bounding width - label icon offset. supports my horrible horrible hackjob version of the `TagList` view
+    let width: CGFloat
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -27,27 +27,21 @@ struct EntryBody: View {
                 Image(systemName: "stopwatch")
             }
                 .labelStyle(AlignedLabelStyle())
+            
             Label(
                 "\(entry.duration.toString())",
                 /// When looking at the modal for a running timer, we should switch out for a running hourglass, and turn it over every few seconds
                 systemImage: "hourglass.tophalf.fill"
             )
                 .labelStyle(AlignedLabelStyle())
+            
             Label {
                 TagList(tags: entry.tagStrings.sorted(), boundingWidth: width)
             } icon: {
                 Image(systemName: "tag")
             }
                 .labelStyle(AlignedLabelStyle())
-            Label {
-                GeometryReader { geo in
-                    Color.clear.onAppear { print (geo.frame(in: .local).minX) }
-                }
-            } icon: {
-                Image(systemName: "tag")
-                    .foregroundColor(.clear)
-            }
-                .labelStyle(AlignedLabelStyle())
+            
             
         }
             .padding(EntryFullScreenModal.sharedPadding)
