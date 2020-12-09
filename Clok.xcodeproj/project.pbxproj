@@ -85,8 +85,6 @@
 		2238640024BBBD030041886B /* LoadProjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223863FF24BBBD030041886B /* LoadProjects.swift */; };
 		2238640324BBC6980041886B /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63FC2F9249BCFBD00747D49 /* DoubleExtension.swift */; };
 		223AC3A4257494F9002ABD9F /* NewGraphModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223AC3A3257494F9002ABD9F /* NewGraphModel.swift */; };
-		223C30222580786900751C51 /* LineDiff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223C30212580786900751C51 /* LineDiff.swift */; };
-		223C302E2580A26200751C51 /* QuadSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223C302D2580A26200751C51 /* QuadSegment.swift */; };
 		22417FDD2578911700FF9B40 /* Between.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22417FDC2578911700FF9B40 /* Between.swift */; };
 		22417FF32578F51600FF9B40 /* RowPositionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22417FF22578F51600FF9B40 /* RowPositionModel.swift */; };
 		2241800D2579BA6400FF9B40 /* DayRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2241800C2579BA6400FF9B40 /* DayRect.swift */; };
@@ -554,8 +552,6 @@
 		223A8ADB251ECCF80010143C /* ProjectIntent.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ProjectIntent.entitlements; sourceTree = "<group>"; };
 		223AB139251E34AC00CA8B3C /* ShadowRingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowRingView.swift; sourceTree = "<group>"; };
 		223AC3A3257494F9002ABD9F /* NewGraphModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGraphModel.swift; sourceTree = "<group>"; };
-		223C30212580786900751C51 /* LineDiff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineDiff.swift; sourceTree = "<group>"; };
-		223C302D2580A26200751C51 /* QuadSegment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuadSegment.swift; sourceTree = "<group>"; };
 		22417FDC2578911700FF9B40 /* Between.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Between.swift; sourceTree = "<group>"; };
 		22417FF22578F51600FF9B40 /* RowPositionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowPositionModel.swift; sourceTree = "<group>"; };
 		2241800C2579BA6400FF9B40 /* DayRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRect.swift; sourceTree = "<group>"; };
@@ -927,15 +923,6 @@
 				229646D824F3367800FE14E5 /* PrintError.swift */,
 			);
 			path = Helpers;
-			sourceTree = "<group>";
-		};
-		223C30202580785900751C51 /* DataCrunching */ = {
-			isa = PBXGroup;
-			children = (
-				223C30212580786900751C51 /* LineDiff.swift */,
-				223C302D2580A26200751C51 /* QuadSegment.swift */,
-			);
-			path = DataCrunching;
 			sourceTree = "<group>";
 		};
 		224180242579FCA000FF9B40 /* EntryModal */ = {
@@ -1395,7 +1382,6 @@
 				22F52438257E5225005222C2 /* AlignedTimeIndicator.swift */,
 				22F52441257E5247005222C2 /* DayStrip.swift */,
 				22F5244A257E5280005222C2 /* WeekRect.swift */,
-				223C30202580785900751C51 /* DataCrunching */,
 			);
 			path = HorizontalScroll;
 			sourceTree = "<group>";
@@ -2178,7 +2164,6 @@
 				2295216E2505C18200085055 /* ZeroStart.swift in Sources */,
 				229646C624F06AFF00FE14E5 /* OldEntryRect.swift in Sources */,
 				2229D7A824EF6750004E1034 /* DateComponent.swift in Sources */,
-				223C302E2580A26200751C51 /* QuadSegment.swift in Sources */,
 				2264CB3524AD330500ECBF2B /* IconView.swift in Sources */,
 				22D4F5122577354C0053ABFB /* EntryFullScreenModal.swift in Sources */,
 				22A2CE2B24E59ED0000820AD /* AngleFromCartesian.swift in Sources */,
@@ -2196,7 +2181,6 @@
 				22E6429A257799EB00CCF49F /* MoldedRectangle.swift in Sources */,
 				22FFF6A12571020B00A54471 /* DataFetcher.swift in Sources */,
 				C6C18D492448F96C000345D5 /* ContentView.swift in Sources */,
-				223C30222580786900751C51 /* LineDiff.swift in Sources */,
 				22D4F5002577345E0053ABFB /* FlexibleGraph.swift in Sources */,
 				22D7459C2505E9B600013A80 /* ZoomLevel.swift in Sources */,
 				22885DB024DA1C9600A56FE3 /* Divisions.swift in Sources */,
