@@ -52,6 +52,10 @@ struct EntryBody: View {
             } icon: {
                 Text("$")
                     .font(Font.system(.title3, design: .rounded))
+                    .overlay(
+                        Slash(length: entry.billable ? 0 : 1)
+                            .aspectRatio(1, contentMode: .fit)
+                    )
             }
                 .labelStyle(AlignedLabelStyle())
             
