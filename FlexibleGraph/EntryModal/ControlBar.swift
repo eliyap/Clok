@@ -19,12 +19,13 @@ struct ControlBar: View {
             DismissalButton(dismiss: dismiss, completion: dismissalCompletion)
             Spacer()
             Button {
-                isEditing.toggle()
+                withAnimation {
+                    isEditing.toggle()
+                }
             } label: {
-                Image(systemName: isEditing
-                    ? "pencil.slash"
-                    : "pencil"
-                )
+                isEditing
+                ? AnyView(Text("Done"))
+                : AnyView(Image(systemName: "pencil"))
             }
         }
             .buttonStyle(PlainButtonStyle())

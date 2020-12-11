@@ -82,7 +82,7 @@ struct EntryFullScreenModal: View {
                     .zIndex(1)
                 VStack(alignment: .leading, spacing: .zero) {
                     EntryHeader
-                    EntryBody(entry: entry, width: geo.size.width - iconOffset)
+                    EntryBody(isEditing: isEditing, model: entryModel, width: geo.size.width - iconOffset)
                     /// monitors the position of the bottom of the view, and the offset of `Label` icon
                     Label {
                         GeometryReader { bottomGeo in

@@ -9,6 +9,7 @@
 import SwiftUI
 
 extension EntryFullScreenModal {
+    
     var EntryHeader: some View {
         VStack(alignment: .leading) {
             Spacer()

@@ -10,7 +10,8 @@ import SwiftUI
 
 struct EntryBody: View {
     
-    let entry: TimeEntryLike
+    let isEditing: Bool
+    @ObservedObject var model: EntryModel
     
     /// bounding width - label icon offset. supports my horrible horrible hackjob version of the `TagList` view
     let width: CGFloat
@@ -29,30 +30,20 @@ struct EntryBody: View {
                 .labelStyle(AlignedLabelStyle())
             
             Label(
-                "\(entry.duration.toString())",
+                "\(model.duration.toString())",
                 /// When looking at the modal for a running timer, we should switch out for a running hourglass, and turn it over every few seconds
                 systemImage: "hourglass.tophalf.fill"
             )
                 .labelStyle(AlignedLabelStyle())
             
             Label {
-                TagList(tags: entry.tagStrings.sorted(), boundingWidth: width)
+//                TagList(tags: entry.tagStrings.sorted(), boundingWidth: width)
             } icon: {
                 Image(systemName: "tag")
             }
                 .labelStyle(AlignedLabelStyle())
             
-            Label {
-                if entry.billable {
-                    Text("Billable")
-                } else {
-                    Text("Not Billable")
-                }
-            } icon: {
-                SlashDollar(billable: entry.billable)
-            }
-                .labelStyle(AlignedLabelStyle())
-            
+            BillableToggle(isEditing: isEditing, billable: $model.billable)
         }
             .padding(EntryFullScreenModal.sharedPadding)
     }
@@ -60,15 +51,15 @@ struct EntryBody: View {
     var StartTime: some View {
         Group {
             /// if either bound is not within this year, return full date (note: this covers the case where start / end year differ)
-            if entry.start.year != Date().year || entry.end.year != Date().year {
-                Text(entry.start.dftfShort)
-            } else if entry.start.midnight != entry.end.midnight {
+            if model.start.year != Date().year || model.end.year != Date().year {
+                Text(model.start.dftfShort)
+            } else if model.start.midnight != model.end.midnight {
                 /// if the end date differs from the start date, show both dates
-                Text("\(entry.start.tfShort)")
-                Text("\(entry.start.MMMdd)")
+                Text("\(model.start.tfShort)")
+                Text("\(model.start.MMMdd)")
                     .foregroundColor(.secondary)
             } else {
-                Text(entry.start.tfShort)
+                Text(model.start.tfShort)
             }
         }
     }
@@ -76,11 +67,11 @@ struct EntryBody: View {
     var EndTime: some View {
         Group {
             /// if either bound is not within this year, return full date (note: this covers the case where start / end year differ)
-            if entry.start.year != Date().year || entry.end.year != Date().year {
-                Text(entry.start.dftfShort)
+            if model.start.year != Date().year || model.end.year != Date().year {
+                Text(model.start.dftfShort)
             } else {
-                Text("\(entry.end.tfShort)")
-                Text("\(entry.end.MMMdd)")
+                Text("\(model.end.tfShort)")
+                Text("\(model.end.MMMdd)")
                     .foregroundColor(.secondary)
             }
         }
