@@ -89,6 +89,7 @@
 		223C305C2580BD0900751C51 /* TagList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223C305B2580BD0900751C51 /* TagList.swift */; };
 		223C307625833D0D00751C51 /* Slash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223C307525833D0D00751C51 /* Slash.swift */; };
 		223C307F2583454600751C51 /* ControlBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223C307E2583454600751C51 /* ControlBar.swift */; };
+		223C30882583465000751C51 /* EntryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223C30872583465000751C51 /* EntryModel.swift */; };
 		22417FDD2578911700FF9B40 /* Between.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22417FDC2578911700FF9B40 /* Between.swift */; };
 		22417FF32578F51600FF9B40 /* RowPositionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22417FF22578F51600FF9B40 /* RowPositionModel.swift */; };
 		2241800D2579BA6400FF9B40 /* DayRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2241800C2579BA6400FF9B40 /* DayRect.swift */; };
@@ -560,6 +561,7 @@
 		223C305B2580BD0900751C51 /* TagList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagList.swift; sourceTree = "<group>"; };
 		223C307525833D0D00751C51 /* Slash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slash.swift; sourceTree = "<group>"; };
 		223C307E2583454600751C51 /* ControlBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlBar.swift; sourceTree = "<group>"; };
+		223C30872583465000751C51 /* EntryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryModel.swift; sourceTree = "<group>"; };
 		22417FDC2578911700FF9B40 /* Between.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Between.swift; sourceTree = "<group>"; };
 		22417FF22578F51600FF9B40 /* RowPositionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowPositionModel.swift; sourceTree = "<group>"; };
 		2241800C2579BA6400FF9B40 /* DayRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRect.swift; sourceTree = "<group>"; };
@@ -1361,6 +1363,7 @@
 		22E641E525774E3D00CCF49F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				223C30872583465000751C51 /* EntryModel.swift */,
 				22E641DC25774E0200CCF49F /* NamespaceModel.swift */,
 				223AC3A3257494F9002ABD9F /* NewGraphModel.swift */,
 				22417FF22578F51600FF9B40 /* RowPositionModel.swift */,
@@ -2103,6 +2106,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				224F5470257F220600E2BB18 /* GraphConstants.swift in Sources */,
+				223C30882583465000751C51 /* EntryModel.swift in Sources */,
 				221810DE24B00FB900B63ECA /* EntryTab.swift in Sources */,
 				22A2CE2924E59E8C000820AD /* AngleAsDate.swift in Sources */,
 				22905B8824DB449400D5AC09 /* OldLinedBackground.swift in Sources */,
