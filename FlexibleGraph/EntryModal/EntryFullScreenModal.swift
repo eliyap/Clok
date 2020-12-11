@@ -72,7 +72,7 @@ struct EntryFullScreenModal: View {
                 /// a solid color background for the view
                 Color(UIColor.secondarySystemBackground)
                     .offset(y: max(0, scrollOffset))
-                ControlBar
+                ControlBar(dismiss: dismiss, dismissalCompletion: dismissalCompletion)
                     .offset(y: max(0, scrollOffset))
                     .zIndex(1)
                 VStack(alignment: .leading, spacing: .zero) {
@@ -112,28 +112,6 @@ struct EntryFullScreenModal: View {
                     isSource: false
                 )
         )
-    }
-    
-    
-    // MARK:- ControlBar
-    var ControlBar: some View {
-        HStack {
-            DismissalButton(dismiss: dismiss, completion: dismissalCompletion)
-            Spacer()
-            Button {
-                print("dummy button!")
-            } label: {
-                Image(systemName: "xmark")
-            }
-        }
-            .buttonStyle(PlainButtonStyle())
-            .padding(Self.sharedPadding)
-            .background(
-                /// a nice transluscent system color
-                Color(UIColor.secondarySystemFill)
-                    /// allows it to cover color when user scrolls down
-                    .edgesIgnoringSafeArea(.top)
-            )
     }
     
     /// measures the progress of the "swipe down to dismiss" gesture. bounded from [0, 1]
