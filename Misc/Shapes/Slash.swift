@@ -15,6 +15,9 @@ struct Slash: View {
     
     var strokeWidth: CGFloat = 1.2
     var length: CGFloat = 1
+    var foregroundColor: Color
+    var backgroundColor: Color
+    
     var body: some View {
         ZStack {
             Strike(strokeWidth: strokeWidth * (1 + Self.strokeRatio), length: length)
@@ -23,9 +26,9 @@ struct Slash: View {
                     lineCap: .round,
                     lineJoin: .round
                 ))
-                .foregroundColor(.white)
+                .foregroundColor(backgroundColor)
             Strike(strokeWidth: strokeWidth, length: length)
-                .foregroundColor(.black)
+                .foregroundColor(foregroundColor)
         }
     }
 }

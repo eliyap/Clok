@@ -47,13 +47,17 @@ struct EntryBody: View {
                     Text("Billable")
                 } else {
                     Text("Not Billable")
-                        .foregroundColor(.secondary)
                 }
             } icon: {
                 Text("$")
                     .font(Font.system(.title3, design: .rounded))
+                    .foregroundColor(entry.billable ? .primary : .gray)
                     .overlay(
-                        Slash(length: entry.billable ? 0 : 1)
+                        Slash(
+                            length: entry.billable ? 0 : 1,
+                            foregroundColor: entry.billable ? .primary : .gray,
+                            backgroundColor: Color(UIColor.secondarySystemBackground)
+                        )
                             .aspectRatio(1, contentMode: .fit)
                     )
             }
