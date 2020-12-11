@@ -8,34 +8,32 @@
 
 import SwiftUI
 
-struct SlashDollar: View {
+struct SlashedView<Content: View>: View {
     
-    var billable: Bool
+    var condition: Bool
+    var color: Color = .primary
+    
+    var strokeRatio: CGFloat = 0.7
     var strokeWidth: CGFloat = 1.2
     
     /// note: Apple's SF `location.slash` uses this ratio
-    static let strokeRatio: CGFloat = 0.75
+    let widthRatio: CGFloat = 0.75
     
-    var color: Color {
-        billable ? .primary : .secondary
-    }
+    var content: () -> Content
     
     var body: some View {
-        /// ensures image is icon size with aspect ratio 1
         Image(systemName: "circle")
             .foregroundColor(.clear)
-            .overlay(Text("$")
-                        .font(Font.system(.title3, design: .rounded))
-                        .foregroundColor(color)
+            .overlay(
+                content()
+                    .foregroundColor(color)
             )
             .mask(
-                /// remove a streak from the image down the middle
                 ZStack {
-                    /// leaves everything outside the slash untouched
                     Color.white
-                    Strike(ratio: 0.7, length: billable ? 0 : 1)
+                    Strike(ratio: 0.7, length: condition ? 0 : 1)
                         .stroke(style: StrokeStyle(
-                            lineWidth: strokeWidth * (1 + 2 * Self.strokeRatio),
+                            lineWidth: strokeWidth * (1 + 2 * widthRatio),
                             lineCap: .round,
                             lineJoin: .round
                         ))
@@ -44,7 +42,7 @@ struct SlashDollar: View {
                     .luminanceToAlpha()
             )
             .overlay(
-                Strike(ratio: 0.7, length: billable ? 0 : 1)
+                Strike(ratio: 0.7, length: condition ? 0 : 1)
                     .stroke(style: StrokeStyle(
                         lineWidth: strokeWidth,
                         lineCap: .round,
