@@ -12,15 +12,19 @@ struct ControlBar: View {
     
     let dismiss: () -> Void
     var dismissalCompletion: CGFloat
+    @Binding var isEditing: Bool
     
     var body: some View {
         HStack {
             DismissalButton(dismiss: dismiss, completion: dismissalCompletion)
             Spacer()
             Button {
-                print("dummy button!")
+                isEditing.toggle()
             } label: {
-                Image(systemName: "xmark")
+                Image(systemName: isEditing
+                    ? "pencil.slash"
+                    : "pencil"
+                )
             }
         }
             .buttonStyle(PlainButtonStyle())

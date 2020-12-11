@@ -18,6 +18,10 @@ struct EntryFullScreenModal: View {
     @State var bottomPos: CGFloat = .zero
     @State var iconOffset: CGFloat = .zero
     
+    //MARK:- Form Properties
+    @State var isEditing: Bool = false
+    @StateObject var entryModel = EntryModel(from: StaticEntry.noEntry)
+    
     //MARK:- Static Properties
     /// the minimum pull-down to dismiss the view
     static let threshhold: CGFloat = 50
@@ -41,6 +45,7 @@ struct EntryFullScreenModal: View {
         self.namespace = namespace
         self.entry = entry ?? StaticEntry.noEntry
         self.geometry = geometry
+        self._entryModel = StateObject(wrappedValue: EntryModel(from: entry ?? StaticEntry.noEntry))
     }
     
     var body: some View {
@@ -72,7 +77,7 @@ struct EntryFullScreenModal: View {
                 /// a solid color background for the view
                 Color(UIColor.secondarySystemBackground)
                     .offset(y: max(0, scrollOffset))
-                ControlBar(dismiss: dismiss, dismissalCompletion: dismissalCompletion)
+                ControlBar(dismiss: dismiss, dismissalCompletion: dismissalCompletion, isEditing: $isEditing)
                     .offset(y: max(0, scrollOffset))
                     .zIndex(1)
                 VStack(alignment: .leading, spacing: .zero) {
