@@ -17,7 +17,9 @@ func makeNSPC() -> NSPersistentContainer {
     
     nspc.loadPersistentStores { description, error in
         if let error = error {
+            #if DEBUG
             print((error as NSError).code)
+            #endif
             fatalError("\(error as NSError)")
         }
     }
