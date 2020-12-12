@@ -19,7 +19,6 @@ func makeNSPC() -> NSPersistentContainer {
         if let error = error {
             print((error as NSError).code)
             fatalError("\(error as NSError)")
-            
         }
     }
     
