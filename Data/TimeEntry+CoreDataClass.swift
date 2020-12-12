@@ -58,7 +58,14 @@ public class TimeEntry: NSManagedObject, TimeEntryLike {
             "id": Int64(raw.id),
             "billable": raw.is_billable
         ])
-        project = projects.first(where: {$0.id == raw.pid ?? NSNotFound})
+        
+        /// if no `pid` is provided, assume `NoProject`, aka `nil`
+        /// NOTE: do NOT set to `NoProject`, which exists in a floating MOC
+        if let pid = raw.pid {
+            project = projects.first(where: {$0.id == pid})
+        } else {
+            project = nil
+        }
         self.tags = Set(tags.filter {
             raw.tags.contains($0.name)
         }) as NSSet
