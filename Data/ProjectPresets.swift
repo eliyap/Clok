@@ -55,6 +55,7 @@ extension Project {
     }
 }
 
+/// a collection of preset temporary `Project`s that can be created at will in any `NSManagedObjectContext`
 struct ProjectPresets {
     
     let NoProject: Project
