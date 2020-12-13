@@ -16,7 +16,7 @@ final class EntryModel: ObservableObject {
     var duration: TimeInterval {
         end - start
     }
-    //TODO: include project here
+    @Published var project: Project
     //TODO: include tags here
     @Published var entryDescription: String
     @Published var billable: Bool
@@ -24,6 +24,7 @@ final class EntryModel: ObservableObject {
     init(from entry: TimeEntryLike) {
         start = entry.start
         end = entry.end
+        project = entry.wrappedProject
         entryDescription = entry.entryDescription
         billable = entry.billable
     }
