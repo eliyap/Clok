@@ -51,11 +51,7 @@ public class Project: NSManagedObject, Decodable {
         ])
     }
     
-    static func == (lhs: Project, rhs: ProjectLike) -> Bool {
-        lhs.name == rhs.name && lhs.wrappedID == rhs.wrappedID
-    }
-    
-    static func < (lhs: Project, rhs: ProjectLike) -> Bool {
+    static func < (lhs: Project, rhs: Project) -> Bool {
         /// No Project should always be first
         if ProjectPresets.shared.NoProject == lhs  { return true }
         if ProjectPresets.shared.NoProject == rhs  { return false }

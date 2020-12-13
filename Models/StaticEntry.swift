@@ -27,7 +27,7 @@ struct StaticEntry: TimeEntryLike {
         end: .distantFuture,
         color: .clear,
         entryDescription: "[No Entry]",
-        projectName: StaticProject.unknown.name,
+        projectName: ProjectPresets.shared.NoProject.name,
         tagStrings: [],
         duration: .zero,
         billable: false

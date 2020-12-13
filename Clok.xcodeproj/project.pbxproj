@@ -275,7 +275,6 @@
 		22B0783824B1519600256EB8 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B0783724B1519600256EB8 /* NetworkError.swift */; };
 		22B0783924B1519D00256EB8 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B0783724B1519600256EB8 /* NetworkError.swift */; };
 		22B0784224B17BEC00256EB8 /* RunningEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B0784124B17BEC00256EB8 /* RunningEntry.swift */; };
-		22B0784424B17CC000256EB8 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67F47D2249FD44500FD2E6E /* Project.swift */; };
 		22B0784524B17CD900256EB8 /* ColorCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B0FF9B246F124300DED011 /* ColorCustom.swift */; };
 		22B0784A24B262FA00256EB8 /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B0784824B2629A00256EB8 /* Timeline.swift */; };
 		22B261DC254B9AF300182236 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22AD5F7C24B1467D006EF7FB /* WidgetKit.framework */; };
@@ -296,7 +295,6 @@
 		22B2625E254B9CF200182236 /* RunningEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B0784124B17BEC00256EB8 /* RunningEntry.swift */; };
 		22B26268254B9D2200182236 /* TimeIntervalExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69F02772496AFA200D1C650 /* TimeIntervalExtension.swift */; };
 		22B26272254B9D3800182236 /* TimeConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229646CA24F321AE00FE14E5 /* TimeConstants.swift */; };
-		22B2627C254B9D3E00182236 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67F47D2249FD44500FD2E6E /* Project.swift */; };
 		22B26286254B9D5600182236 /* AngleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63FC2F7249BCEB900747D49 /* AngleExtension.swift */; };
 		22B26290254B9D6B00182236 /* ColorBrightness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229428D1251E7C61008C0BFF /* ColorBrightness.swift */; };
 		22B2629A254B9D7700182236 /* ColorCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B0FF9B246F124300DED011 /* ColorCustom.swift */; };
@@ -336,7 +334,6 @@
 		22D5F43825707F9600806992 /* Tag+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229646D024F3294900FE14E5 /* Tag+CoreDataClass.swift */; };
 		22D5F43925707F9600806992 /* Tag+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229646D124F3294900FE14E5 /* Tag+CoreDataProperties.swift */; };
 		22D5F43A25707F9600806992 /* Project+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC869C24BA838D00FF771F /* Project+CoreDataClass.swift */; };
-		22D5F44225707FA000806992 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67F47D2249FD44500FD2E6E /* Project.swift */; };
 		22D5F44A25707FA800806992 /* RawProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221F6240251EE157000ECED9 /* RawProject.swift */; };
 		22D5F46E2570ADB500806992 /* MultiRing.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = C6262B9F251F03950003D435 /* MultiRing.intentdefinition */; };
 		22D5F4762570ADB600806992 /* MultiRing.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = C6262B9F251F03950003D435 /* MultiRing.intentdefinition */; };
@@ -421,7 +418,6 @@
 		C65B7D2C2497DE4A00EED981 /* EntryOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65B7D2B2497DE4A00EED981 /* EntryOperations.swift */; };
 		C6751D8A2471E39F002965CC /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6751D892471E39F002965CC /* Position.swift */; };
 		C6751D8C24723182002965CC /* ZeroDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6751D8B24723182002965CC /* ZeroDate.swift */; };
-		C67F47D3249FD44500FD2E6E /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67F47D2249FD44500FD2E6E /* Project.swift */; };
 		C688A8882479A8D6003260CE /* TimeFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = C688A8872479A8D6003260CE /* TimeFrame.swift */; };
 		C688BFCA24A18BF00077CECF /* RaisedShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = C688BFC924A18BF00077CECF /* RaisedShape.swift */; };
 		C68F8C8D24A04CE8000D249B /* IceCreamStick.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68F8C8C24A04CE8000D249B /* IceCreamStick.swift */; };
@@ -778,7 +774,6 @@
 		C670E42B251FA27B0026610D /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
 		C6751D892471E39F002965CC /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
 		C6751D8B24723182002965CC /* ZeroDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZeroDate.swift; sourceTree = "<group>"; };
-		C67F47D2249FD44500FD2E6E /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		C688A8872479A8D6003260CE /* TimeFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFrame.swift; sourceTree = "<group>"; };
 		C688BFC924A18BF00077CECF /* RaisedShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaisedShape.swift; sourceTree = "<group>"; };
 		C68F8C8C24A04CE8000D249B /* IceCreamStick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IceCreamStick.swift; sourceTree = "<group>"; };
@@ -1494,7 +1489,6 @@
 			children = (
 				22B0784124B17BEC00256EB8 /* RunningEntry.swift */,
 				2229D7B224F055FC004E1034 /* RunningEntryInit.swift */,
-				C67F47D2249FD44500FD2E6E /* Project.swift */,
 				22556B392574C885003DEB7D /* Entry.swift */,
 				22D9B957257B292300E923C5 /* StaticEntry.swift */,
 				C65B7D2B2497DE4A00EED981 /* EntryOperations.swift */,
@@ -1874,7 +1868,6 @@
 				229521642505C06100085055 /* DecoderExtension.swift in Sources */,
 				229521482505BD7600085055 /* SummaryLoader.swift in Sources */,
 				229521502505BDF800085055 /* FormRequest.swift in Sources */,
-				22D5F44225707FA000806992 /* Project.swift in Sources */,
 				22D5F43925707F9600806992 /* Tag+CoreDataProperties.swift in Sources */,
 				229521652505C07100085055 /* ColorCustom.swift in Sources */,
 				C6EB477E2520170100FCD0CB /* AsNSDate.swift in Sources */,
@@ -2023,7 +2016,6 @@
 				2262882324E88691006B330C /* Workspace.swift in Sources */,
 				229428D3251E7C61008C0BFF /* ColorBrightness.swift in Sources */,
 				C60856B9251FCE1B00E6D6C0 /* LoadProjects.swift in Sources */,
-				22B0784424B17CC000256EB8 /* Project.swift in Sources */,
 				C6EB47722520170100FCD0CB /* DateStridable.swift in Sources */,
 				C6EB45CA251FEDBF00FCD0CB /* CoreDataConstants.swift in Sources */,
 				22B0784524B17CD900256EB8 /* ColorCustom.swift in Sources */,
@@ -2079,7 +2071,6 @@
 				2205DD77254BA17700146EAB /* MultiRing.intentdefinition in Sources */,
 				2205DC50254B9F4A00146EAB /* Mod.swift in Sources */,
 				2205DC3B254B9F0200146EAB /* DoubleExtension.swift in Sources */,
-				22B2627C254B9D3E00182236 /* Project.swift in Sources */,
 				22B2622C254B9C3800182236 /* PersistentContainer.swift in Sources */,
 				22FFF6F72571A84F00A54471 /* Report.swift in Sources */,
 				22D9B9AA257B4DBB00E923C5 /* DetailedReportFetcher.swift in Sources */,
@@ -2267,7 +2258,6 @@
 				221810E024B0158500B63ECA /* Get24hourPref.swift in Sources */,
 				22E6420025774E8300CCF49F /* TimeIndicator.swift in Sources */,
 				22B261E6254B9AF500182236 /* WidgetBundle.intentdefinition in Sources */,
-				C67F47D3249FD44500FD2E6E /* Project.swift in Sources */,
 				C6D448EC2484710E0072E7D4 /* ActivityIndicator.swift in Sources */,
 				C6AAB3EC249F003100DFBA36 /* StatDisplayView.swift in Sources */,
 				C6751D8A2471E39F002965CC /* Position.swift in Sources */,
