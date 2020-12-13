@@ -14,7 +14,7 @@ final class EntryModel: ObservableObject {
     @Published var start: Date
     @Published var end: Date
     var duration: TimeInterval {
-        start - end
+        end - start
     }
     //TODO: include project here
     //TODO: include tags here
