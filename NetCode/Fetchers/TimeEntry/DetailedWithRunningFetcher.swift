@@ -9,6 +9,14 @@
 import Foundation
 import Combine
 
+
+/// Publisher for both a `Detailed` and `RunningEntry`.
+/// Additionally performs a follow up request for `Project` details if match was not found in `Detailed`.
+/// - Parameters:
+///   - token: authentication token
+///   - wid: workspace ID
+///   - config: Widget Configuration
+/// - Returns: Publisher
 func DetailedWithRunningRequest(
     token: String,
     wid: Int,
@@ -45,7 +53,8 @@ func DetailedWithRunningRequest(
                 return Just((detailed, RunningEntry(
                     id: raw.id,
                     start: raw.start,
-                    project: StaticProject(name: match.name, color: match.color, id: match.id),
+                    /// floating NSMOC
+                    project: FloatingProject(id: match.id, name: match.name, hex_color: match.color.toHex, context: .init(concurrencyType: .mainQueueConcurrencyType)),
                     entryDescription: raw.description,
                     tags: raw.tags,
                     billable: raw.billable
@@ -56,20 +65,21 @@ func DetailedWithRunningRequest(
             /// Time Entry is running with some unknown project
             /// make a further request to get some details
                 return FetchProjectDetails(pid: pid, token: token)
-                    .map { staticProject in
+                    .map { floating in
                         var detailed = detailed
                         /// append this project so it will show up in the widget
                         detailed.projects.append(Detailed.Project(
-                            color: staticProject.wrappedColor,
-                            name: staticProject.name,
-                            id: staticProject.wrappedID,
+                            color: floating.wrappedColor,
+                            name: floating.name,
+                            id: floating.wrappedID,
                             entries: [],
                             duration: .zero
                         ))
                         return (detailed, RunningEntry(
                             id: raw.id,
                             start: raw.start,
-                            project: staticProject,
+                            /// floating NSMOC
+                            project: floating,
                             entryDescription: raw.description,
                             tags: raw.tags,
                             billable: raw.billable

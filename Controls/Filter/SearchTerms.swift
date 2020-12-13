@@ -18,19 +18,19 @@ struct SearchTerms {
     var mode: Mode = .projects
     
     /// included projects (including `noProject`)
-    var projects: [ProjectLike] = [StaticProject.any]
+    var projects: [Project] = [ProjectPresets.shared.AnyProject]
     
     /// code stub for tag sorting
     var tags: [Any] {
         fatalError("Tag system not yet implemented")
     }
     
-    func contains(project: ProjectLike) -> Bool {
+    func contains(project: Project) -> Bool {
         projects.contains(where: {project.wrappedID == $0.wrappedID})
     }
     
     /// sorting function for projects in BarGraph
-    func projectSort(p0: ProjectLike, p1: ProjectLike) -> Bool {
+    func projectSort(p0: Project, p1: Project) -> Bool {
         switch (contains(project: p0), contains(project: p1)) {
         /// case 1: prioritize the entry that is included
         case (false, true):

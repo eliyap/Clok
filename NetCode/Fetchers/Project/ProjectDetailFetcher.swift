@@ -24,7 +24,7 @@ struct RawProjectResponse: Decodable {
 func FetchProjectDetails(
     pid: Int,
     token: String
-) -> AnyPublisher<StaticProject, Error> {
+) -> AnyPublisher<FloatingProject, Error> {
     /// https://github.com/toggl/toggl_api_docs/blob/master/chapters/projects.md#get-project-data
     let request = formRequest(
         url: URL(string: "\(API_URL)/projects/\(pid)")!,
@@ -33,11 +33,16 @@ func FetchProjectDetails(
     
     return URLSession.shared.dataTaskPublisher(for: request)
         .map(dataTaskMonitor)
-        .tryMap { data -> StaticProject in
+        .tryMap { data -> FloatingProject in
             guard let rawProject = try JSONDecoder(dateStrategy: .iso8601).decode(RawProjectResponse.self, from: data).data else {
                 throw NetworkError.emptyReply
             }
-            return StaticProject(name: rawProject.name, color: Color(hex: rawProject.hex_color), id: rawProject.id)
+            return FloatingProject(
+                id: rawProject.id,
+                name: rawProject.name,
+                hex_color: rawProject.hex_color,
+                context: .init(concurrencyType: .mainQueueConcurrencyType)
+            )
         }
         .eraseToAnyPublisher()
 }

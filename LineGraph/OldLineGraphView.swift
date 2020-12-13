@@ -58,7 +58,8 @@ struct LineGraph: View {
             .filter{$0.end > midnight - model.castBack}
             .filter{$0.start < midnight + model.castFwrd}
             /// use Search sort, which prioritizes selected Projects
-            .sorted{data.terms.projectSort(p0: $0.wrappedProject, p1: $1.wrappedProject)}
+        /// disabled before being thrown out
+//            .sorted{data.terms.projectSort(p0: $0.project, p1: $1.project)}
         }
     }
 }

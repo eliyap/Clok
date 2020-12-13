@@ -24,7 +24,7 @@ extension TimeEntry {
         switch terms.mode {
         case.projects:
             /// check whether project matches any in included projects list
-            return terms.projects.first{wrappedProject.matches($0)} != nil
+            return terms.projects.first{wrappedProject == $0} != nil
         case.tags:
             fatalError("tag filtering not implemented")
         }

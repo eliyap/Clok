@@ -15,6 +15,7 @@ struct ProjectPresets {
     /// define a shared struct with a "floating" `NSManagedObjectContext`
     static let shared = ProjectPresets(moc: NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType))
     
+    let all: [Project]
     let NoProject: Project
     let AnyProject: Project
     let UnknownProject: Project
@@ -23,6 +24,7 @@ struct ProjectPresets {
         NoProject = Project(raw: .NoProject, context: moc)
         AnyProject = Project(raw: .AnyProject, context: moc)
         UnknownProject = Project(raw: .UnknownProject, context: moc)
+        all = [NoProject, AnyProject, UnknownProject]
     }
 }
 

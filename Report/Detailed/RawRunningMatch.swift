@@ -10,16 +10,18 @@ import Foundation
 
 extension Detailed {
     func match(_ raw: RawRunningEntry) -> RunningEntry {
+        typealias DetailedProject = Detailed.Project
         guard let raw = raw.data else {
             return .noEntry
         }
         
         /// perform project matching
-        let project: Project!
+        var project = ProjectPresets.shared.UnknownProject
         if raw.pid == nil {
             project = ProjectPresets.shared.NoProject
         } else if let match = self.projects.first(where: {$0.id == raw.pid}) {
-            project = StaticProject(name: match.name, color: match.color, id: match.id)
+            /// create object in a floating `NSManagedObjectContext`
+            project = FloatingProject(id: match.id, name: match.name, hex_color: match.color.toHex, context: .init(concurrencyType: .mainQueueConcurrencyType))
         } else {
             project = ProjectPresets.shared.UnknownProject
         }
