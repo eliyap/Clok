@@ -125,6 +125,9 @@
 		2261B2E4258471E10020604B /* ProjectPresets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2261B2E3258471E10020604B /* ProjectPresets.swift */; };
 		2261B2E5258471E10020604B /* ProjectPresets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2261B2E3258471E10020604B /* ProjectPresets.swift */; };
 		2261B2E6258471E10020604B /* ProjectPresets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2261B2E3258471E10020604B /* ProjectPresets.swift */; };
+		2261B2F5258594080020604B /* MiscellaneousConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2261B2D82584710A0020604B /* MiscellaneousConstants.swift */; };
+		2261B2FD258594090020604B /* MiscellaneousConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2261B2D82584710A0020604B /* MiscellaneousConstants.swift */; };
+		2261B305258594150020604B /* ProjectPresets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2261B2E3258471E10020604B /* ProjectPresets.swift */; };
 		2262882224E88691006B330C /* Workspace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2262882124E88691006B330C /* Workspace.swift */; };
 		2262882324E88691006B330C /* Workspace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2262882124E88691006B330C /* Workspace.swift */; };
 		2264B82A24A437F800FA4F08 /* DescriptionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264B82924A437F800FA4F08 /* DescriptionButton.swift */; };
@@ -1890,6 +1893,7 @@
 				C6EB45D3251FEDBF00FCD0CB /* CoreDataConstants.swift in Sources */,
 				2292C4E92505CC1E005802B5 /* Piece5.swift in Sources */,
 				22556BAC25751685003DEB7D /* Clamp.swift in Sources */,
+				2261B305258594150020604B /* ProjectPresets.swift in Sources */,
 				2292C5012505D1E0005802B5 /* BoardEntry.swift in Sources */,
 				22D5F43725707F9600806992 /* TimeEntry+CoreDataProperties.swift in Sources */,
 				227746D92505BC9300D17CA3 /* GridWidget.intentdefinition in Sources */,
@@ -1901,6 +1905,7 @@
 				227746D42505BC9200D17CA3 /* GridWidget.swift in Sources */,
 				C6EB47862520170100FCD0CB /* AnyTransitionSlide.swift in Sources */,
 				22FFF6632570FC9F00A54471 /* WidgetManager.swift in Sources */,
+				2261B2F5258594080020604B /* MiscellaneousConstants.swift in Sources */,
 				22D5F4762570ADB600806992 /* MultiRing.intentdefinition in Sources */,
 				C6EB47812520170100FCD0CB /* DoubleExtension.swift in Sources */,
 				C6EB477F2520170100FCD0CB /* URLStoreExtension.swift in Sources */,
@@ -2123,6 +2128,7 @@
 				C6EB45D4251FEDC000FCD0CB /* CoreDataConstants.swift in Sources */,
 				221F624E251EE15D000ECED9 /* RawProject.swift in Sources */,
 				22D4F4D7257724430053ABFB /* ColorTint.swift in Sources */,
+				2261B2FD258594090020604B /* MiscellaneousConstants.swift in Sources */,
 				22DE58EE251EC86F00379396 /* IntentHandler.swift in Sources */,
 				221F6231251EE10B000ECED9 /* KeychainError.swift in Sources */,
 				22DE591D251EC91200379396 /* ClokWidget.intentdefinition in Sources */,
