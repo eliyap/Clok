@@ -45,7 +45,7 @@ extension RunningEntry {
         self.init(
             id: runningData.id,
             start: runningData.start,
-            project: StaticProject.unknown,
+            project: ProjectPresets.shared.UnknownProject,
             entryDescription: runningData.description,
             tags: runningData.tags,
             billable: runningData.billable
@@ -58,9 +58,9 @@ extension RunningEntry {
          */
         if let pid = runningData.pid {
             project = projects.first(where: {$0.id == pid})
-                ?? StaticProject.unknown
+                ?? ProjectPresets.shared.UnknownProject
         } else {
-            project = StaticProject.noProject
+            project = ProjectPresets.shared.NoProject
         }
         /// update `pid` from previously set `unknown` pid
         self.pid = project.wrappedID

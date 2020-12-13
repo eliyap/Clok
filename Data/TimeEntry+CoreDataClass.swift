@@ -75,7 +75,7 @@ public class TimeEntry: NSManagedObject, TimeEntryLike {
     /// or project if there's no description,
     /// or placeholder if no info whatsoever
     func descriptionString() -> String {
-        if wrappedDescription == "" && StaticProject.noProject == wrappedProject {
+        if wrappedDescription == "" && ProjectPresets.shared.NoProject == wrappedProject {
             return "No Description"
         } else if wrappedDescription == "" {
             return wrappedProject.name

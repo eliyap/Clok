@@ -14,7 +14,7 @@ final class RunningEntry: NSObject, NSSecureCoding, TimeEntryLike {
     var id: Int64
     var pid: Int = NSNotFound
     var start: Date
-    var project: ProjectLike
+    var project: Project
     var entryDescription: String
     var tags: [String] = []
     var billable: Bool
@@ -31,7 +31,7 @@ final class RunningEntry: NSObject, NSSecureCoding, TimeEntryLike {
     init(
         id: Int64,
         start: Date,
-        project: ProjectLike,
+        project: Project,
         entryDescription: String,
         tags: [String]?,
         billable: Bool
@@ -74,7 +74,7 @@ final class RunningEntry: NSObject, NSSecureCoding, TimeEntryLike {
     /// or project if there's no description,
     /// or placeholder if no info whatsoever
     func descriptionString() -> String {
-        if entryDescription == "" && StaticProject.noProject == project {
+        if entryDescription == "" && ProjectPresets.shared.NoProject == project {
             return "No Description"
         } else if entryDescription == "" {
             return project.name
@@ -114,7 +114,7 @@ final class RunningEntry: NSObject, NSSecureCoding, TimeEntryLike {
         id = Int64(coder.decodeInteger(forKey: "id"))
         pid = coder.decodeInteger(forKey: "pid")
         /// note: we will assign project later, for now leave `unknown`
-        project = StaticProject.unknown
+        project = ProjectPresets.shared.UnknownProject
         tags = coder.decodeObject(forKey: "tags") as? [String]
             ?? []
         billable = coder.decodeBool(forKey: "billable")
@@ -134,7 +134,7 @@ extension RunningEntry {
     static let noEntry = RunningEntry(
         id: Int64(NSNotFound),
         start: Date.distantFuture,
-        project: StaticProject.noProject,
+        project: ProjectPresets.shared.NoProject,
         entryDescription: "Not Running",
         tags: [],
         billable: false
@@ -143,7 +143,7 @@ extension RunningEntry {
     static let placeholder = RunningEntry(
         id: Int64(NSNotFound),
         start: Date(),
-        project: StaticProject.noProject,
+        project: ProjectPresets.shared.NoProject,
         entryDescription: "Placeholder",
         tags: ["Tag"],
         billable: false

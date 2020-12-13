@@ -32,7 +32,7 @@ func DetailedWithRunningRequest(
                 return Just((detailed, RunningEntry(
                     id: raw.id,
                     start: raw.start,
-                    project: StaticProject.noProject,
+                    project: ProjectPresets.shared.NoProject,
                     entryDescription: raw.description,
                     tags: raw.tags,
                     billable: raw.billable

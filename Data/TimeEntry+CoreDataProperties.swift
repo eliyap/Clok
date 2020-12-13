@@ -39,8 +39,8 @@ extension TimeEntry {
         wrappedProject.wrappedColor
     }
     
-    var wrappedProject: ProjectLike {
-        project ?? StaticProject.noProject
+    var wrappedProject: Project {
+        project ?? ProjectPresets.shared.NoProject
     }
     
     public var tagArray: [Tag] {

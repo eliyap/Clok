@@ -15,13 +15,13 @@ extension Detailed {
         }
         
         /// perform project matching
-        let project: StaticProject!
+        let project: Project!
         if raw.pid == nil {
-            project = StaticProject.noProject
+            project = ProjectPresets.shared.NoProject
         } else if let match = self.projects.first(where: {$0.id == raw.pid}) {
             project = StaticProject(name: match.name, color: match.color, id: match.id)
         } else {
-            project = StaticProject.unknown
+            project = ProjectPresets.shared.UnknownProject
         }
         
         return (
