@@ -26,7 +26,7 @@ final class RunningEntry: NSObject, NSSecureCoding, TimeEntryLike {
     var duration: TimeInterval { Date() - start } /// always return latest duration
     var color: Color { project.wrappedColor }
     var tagStrings: [String] { tags }
-    var projectName: String { project.name }
+    var wrappedProject: Project { project }
     var identifier: Int64 { id }
     init(
         id: Int64,

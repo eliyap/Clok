@@ -16,7 +16,8 @@ protocol TimeEntryLike {
     var end: Date { get }
     var color: Color { get }
     var entryDescription: String { get } /// note: `description` is a reserved word in iOS
-    var projectName: String { get }
+    /// since `TimeEntry` can have `nil` as a valid `project` member, refer to the `wrappedProject` instead
+    var wrappedProject: Project { get }
     var tagStrings: [String] { get }
     var duration: TimeInterval { get }
     var billable: Bool { get }

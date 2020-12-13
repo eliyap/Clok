@@ -14,10 +14,13 @@ struct StaticEntry: TimeEntryLike {
     var end: Date
     var color: Color
     var entryDescription: String
-    var projectName: String
+    var project: Project
     var tagStrings: [String]
     var duration: TimeInterval
     var billable: Bool
+    
+    /// `TimeEntryLike` compliance
+    var wrappedProject: Project { project }
     
     //MARK:- NoEntry
     /// represents the absence of an entry, without resorting to a forced unwrap
@@ -27,7 +30,7 @@ struct StaticEntry: TimeEntryLike {
         end: .distantFuture,
         color: .clear,
         entryDescription: "[No Entry]",
-        projectName: ProjectPresets.shared.NoProject.name,
+        project: ProjectPresets.shared.NoProject,
         tagStrings: [],
         duration: .zero,
         billable: false

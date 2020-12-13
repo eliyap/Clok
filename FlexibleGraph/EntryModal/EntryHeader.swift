@@ -16,7 +16,7 @@ extension EntryFullScreenModal {
                 .frame(height: DismissalButton.ButtonSize + Self.sharedPadding * 2)
             Text(entry.entryDescription)
                 .font(.title)
-            Text(entry.projectName)
+            Text(entry.wrappedProject.name)
                 .foregroundColor(entry.color)
         }
             .padding(Self.sharedPadding)
