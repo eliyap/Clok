@@ -38,7 +38,6 @@ extension FlexibleGraph {
                 
                 /// show current time in `calendar` mode
                 if Date().between(midnight, midnight + .day) {
-                    #warning("still buggy!")
                     NewCurrentTimeIndicator(height: geo.size.height)
                         .frame(
                             width: geo.size.width,
