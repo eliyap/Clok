@@ -265,6 +265,7 @@
 		22A2CE2E24E59F88000820AD /* ColorHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE2D24E59F88000820AD /* ColorHex.swift */; };
 		22A2CE2F24E59F8B000820AD /* ColorHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE2D24E59F88000820AD /* ColorHex.swift */; };
 		22A2CE3224E5A218000820AD /* CGPointOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CE3124E5A218000820AD /* CGPointOperators.swift */; };
+		22AD1E0525876B3D000FFC91 /* PropertyEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AD1E0425876B3D000FFC91 /* PropertyEditView.swift */; };
 		22AD5F7D24B1467D006EF7FB /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22AD5F7C24B1467D006EF7FB /* WidgetKit.framework */; };
 		22AD5F7F24B1467D006EF7FB /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22AD5F7E24B1467D006EF7FB /* SwiftUI.framework */; };
 		22AD5F8524B1467E006EF7FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22AD5F8424B1467E006EF7FB /* Assets.xcassets */; };
@@ -691,6 +692,7 @@
 		22A2CE2A24E59ED0000820AD /* AngleFromCartesian.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AngleFromCartesian.swift; sourceTree = "<group>"; };
 		22A2CE2D24E59F88000820AD /* ColorHex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHex.swift; sourceTree = "<group>"; };
 		22A2CE3124E5A218000820AD /* CGPointOperators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPointOperators.swift; sourceTree = "<group>"; };
+		22AD1E0425876B3D000FFC91 /* PropertyEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyEditView.swift; sourceTree = "<group>"; };
 		22AD5F7A24B1467D006EF7FB /* ClokWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ClokWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		22AD5F7C24B1467D006EF7FB /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		22AD5F7E24B1467D006EF7FB /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -971,6 +973,7 @@
 				223C309B2583596F00751C51 /* FormElements */,
 				223C305B2580BD0900751C51 /* TagList.swift */,
 				22D9BA19257B8BAB00E923C5 /* AlignedLabelStyle.swift */,
+				22AD1E0425876B3D000FFC91 /* PropertyEditView.swift */,
 			);
 			path = EntryModal;
 			sourceTree = "<group>";
@@ -2148,6 +2151,7 @@
 				22905B8824DB449400D5AC09 /* OldLinedBackground.swift in Sources */,
 				224D10CE24E5AC8C00668FD8 /* WeekdaySelector.swift in Sources */,
 				22F52430257E51F7005222C2 /* HorizontalScrollStack.swift in Sources */,
+				22AD1E0525876B3D000FFC91 /* PropertyEditView.swift in Sources */,
 				2264CB3B24AD344F00ECBF2B /* TokenFields.swift in Sources */,
 				22232B8B24A9532000F3C378 /* LoginView.swift in Sources */,
 				229646CB24F321AE00FE14E5 /* TimeConstants.swift in Sources */,
