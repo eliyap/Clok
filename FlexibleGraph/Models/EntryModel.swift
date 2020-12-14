@@ -21,6 +21,15 @@ final class EntryModel: ObservableObject {
     @Published var entryDescription: String
     @Published var billable: Bool
     
+    /// what field is seleted that requires a second layer modal to pop up
+    enum Field {
+        case start
+        case end
+        case project
+        case entryDescription
+        /// no `billable`, that can be a simple toggle
+    }
+    
     init(from entry: TimeEntryLike) {
         start = entry.start
         end = entry.end
