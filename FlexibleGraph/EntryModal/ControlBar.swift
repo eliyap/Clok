@@ -12,21 +12,12 @@ struct ControlBar: View {
     
     let dismiss: () -> Void
     var dismissalCompletion: CGFloat
-    @Binding var isEditing: Bool
     
     var body: some View {
         HStack {
             DismissalButton(dismiss: dismiss, completion: dismissalCompletion)
             Spacer()
-            Button {
-                withAnimation {
-                    isEditing.toggle()
-                }
-            } label: {
-                isEditing
-                ? AnyView(Text("Done"))
-                : AnyView(Image(systemName: "pencil"))
-            }
+            /// other stuff here
         }
             .buttonStyle(PlainButtonStyle())
             .padding(EntryFullScreenModal.sharedPadding)

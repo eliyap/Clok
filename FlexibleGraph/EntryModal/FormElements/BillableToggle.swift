@@ -10,7 +10,6 @@ import SwiftUI
 
 struct BillableToggle: View {
     
-    let isEditing: Bool
     @Binding var billable: Bool
     
     var body: some View {
@@ -27,9 +26,8 @@ struct BillableToggle: View {
                 }
             }
                 .labelStyle(AlignedLabelStyle())
-            if isEditing {
-                Toggle("", isOn: $billable)
-            }
+            Toggle("", isOn: $billable)
+                /// prevent toggle (only) from being tapped
         }
     }
 }

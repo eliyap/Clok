@@ -10,7 +10,6 @@ import SwiftUI
 
 struct EntryBody: View {
     
-    let isEditing: Bool
     @ObservedObject var model: EntryModel
     
     /// bounding width - label icon offset. supports my horrible horrible hackjob version of the `TagList` view
@@ -43,7 +42,7 @@ struct EntryBody: View {
             }
                 .labelStyle(AlignedLabelStyle())
             
-            BillableToggle(isEditing: isEditing, billable: $model.billable)
+            BillableToggle(billable: $model.billable)
         }
             .padding(EntryFullScreenModal.sharedPadding)
     }
