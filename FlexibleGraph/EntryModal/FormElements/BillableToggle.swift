@@ -28,6 +28,14 @@ struct BillableToggle: View {
                 .labelStyle(AlignedLabelStyle())
             Toggle("", isOn: $billable)
                 /// prevent toggle (only) from being tapped
+                .allowsHitTesting(false)
         }
+            /// make whole area tappable to toggle
+            .contentShape(Rectangle())
+            .onTapGesture {
+                withAnimation {
+                    billable.toggle()
+                }
+            }
     }
 }
