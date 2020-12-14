@@ -36,6 +36,7 @@ struct EntryBody: View {
                 .labelStyle(AlignedLabelStyle())
             
             Label {
+                #warning("tags still missing from timeentry model!")
 //                TagList(tags: entry.tagStrings.sorted(), boundingWidth: width)
             } icon: {
                 Image(systemName: "tag")
