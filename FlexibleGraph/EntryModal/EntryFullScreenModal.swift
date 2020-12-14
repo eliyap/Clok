@@ -76,9 +76,11 @@ struct EntryFullScreenModal: View {
                 /// a solid color background for the view
                 Color(UIColor.secondarySystemBackground)
                     .offset(y: max(0, scrollOffset))
-                ControlBar(dismiss: dismiss, dismissalCompletion: dismissalCompletion, isEditing: $isEditing)
+                /// translucent bar with some main control buttons
+                ControlBar(dismiss: dismiss, dismissalCompletion: dismissalCompletion)
                     .offset(y: max(0, scrollOffset))
                     .zIndex(1)
+                /// the rest of the view
                 VStack(alignment: .leading, spacing: .zero) {
                     EntryHeader
                     EntryBody(model: entryModel, width: geo.size.width - iconOffset)
