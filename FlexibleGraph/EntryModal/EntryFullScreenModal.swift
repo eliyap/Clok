@@ -102,7 +102,7 @@ struct EntryFullScreenModal: View {
                 }
                     .offset(y: scrollOffset)
                 if let field = entryModel.field {
-                    PropertyEditView(field: field)
+                    PropertyEditView(field: field, model: entryModel)
                 }
             }
                 .frame(height: geo.size.height, alignment: .top)
