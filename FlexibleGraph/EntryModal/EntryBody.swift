@@ -19,9 +19,17 @@ struct EntryBody: View {
         VStack(alignment: .leading) {
             Label {
                 HStack {
-                    StartTime
+                    Button {
+                        model.field = .start
+                    } label: {
+                        StartTime
+                    }
                     Text("–")
-                    EndTime
+                    Button {
+                        model.field = .end
+                    } label: {
+                        EndTime
+                    }
                 }
             } icon: {
                 Image(systemName: "stopwatch")
