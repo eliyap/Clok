@@ -21,6 +21,8 @@ final class EntryModel: ObservableObject {
     @Published var entryDescription: String
     @Published var billable: Bool
     
+    @Published var field: Field? = .none
+    
     /// what field is seleted that requires a second layer modal to pop up
     enum Field {
         case start
