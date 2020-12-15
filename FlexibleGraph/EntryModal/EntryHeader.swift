@@ -14,7 +14,7 @@ extension EntryFullScreenModal {
         VStack(alignment: .leading) {
             Spacer()
                 .frame(height: DismissalButton.ButtonSize + Self.sharedPadding * 2)
-            Text(entry.entryDescription)
+            TextField("Description", text: $entryModel.entryDescription)
                 .font(.title)
             Text(entry.wrappedProject.name)
                 .foregroundColor(entry.color)
