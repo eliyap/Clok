@@ -17,7 +17,7 @@ extension Detailed {
         let end: Date
         let dur: Double
         
-        let id: Int
+        let id: Int64
         let billable: Bool
                 
         let tags: [String]

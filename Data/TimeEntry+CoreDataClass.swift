@@ -17,7 +17,7 @@ struct RawTimeEntry: Decodable {
     let dur: Double
     let updated: Date
     
-    let id: Int
+    let id: Int64
     let is_billable: Bool
     
     let pid: Int?
