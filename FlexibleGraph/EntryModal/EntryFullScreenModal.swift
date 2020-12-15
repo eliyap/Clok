@@ -131,16 +131,27 @@ struct EntryFullScreenModal: View {
     }
     
     func trackUndo() -> Void {
+        /// register initial state automatically
+        registerUndo(entry: entryModel)
+        
+        /// attach event monitor
         self.entryModel.objectWillChange.sink{ _ in
             #if DEBUG
             print("undo registered")
-            print(entryModel.start.MMMdd)
             #endif
-            undoManager?.registerUndo(withTarget: entryModel) {
-                print("undoing to \(entryModel.start.MMMdd)")
-                $0.start = entryModel.start
-            }
+            registerUndo(entry: entryModel)
         }.store(in: &undoTracker)
+    }
+    
+    func registerUndo(entry: EntryModel) -> Void {
+        undoManager?.registerUndo(withTarget: entryModel) {
+            /// ignored: `id`, `field`
+            $0.start = entry.start
+            $0.end = entry.end
+            $0.entryDescription = entry.entryDescription
+            $0.project = entry.project
+            $0.billable = entry.billable
+        }
     }
     
     /// measures the progress of the "swipe down to dismiss" gesture. bounded from [0, 1]
