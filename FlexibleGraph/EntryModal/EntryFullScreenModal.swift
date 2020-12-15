@@ -7,8 +7,13 @@
 //
 
 import SwiftUI
+import Combine
 
 struct EntryFullScreenModal: View {
+    
+    //MARK:- Undo
+    @Environment(\.undoManager) var undoManager
+    @State var undoTracker = Set<AnyCancellable>()
     
     @Environment(\.colorScheme) var colorScheme
     
@@ -122,6 +127,20 @@ struct EntryFullScreenModal: View {
                     isSource: false
                 )
         )
+        .onAppear(perform: trackUndo)
+    }
+    
+    func trackUndo() -> Void {
+        self.entryModel.objectWillChange.sink{ _ in
+            #if DEBUG
+            print("undo registered")
+            print(entryModel.start.MMMdd)
+            #endif
+            undoManager?.registerUndo(withTarget: entryModel) {
+                print("undoing to \(entryModel.start.MMMdd)")
+                $0.start = entryModel.start
+            }
+        }.store(in: &undoTracker)
     }
     
     /// measures the progress of the "swipe down to dismiss" gesture. bounded from [0, 1]
