@@ -29,6 +29,7 @@ struct EntryFullScreenModal: View {
     /// model history, allowing us to implement an undo / redo system
     @State var pastModels = [EntryModel]()
     @State var futureModels = [EntryModel]()
+    @State var undoTracker = Set<AnyCancellable>()
     
     //MARK:- Form Properties
     @StateObject var entryModel = EntryModel(from: StaticEntry.noEntry)
@@ -134,6 +135,7 @@ struct EntryFullScreenModal: View {
                     isSource: false
                 )
         )
+        .onAppear(perform: monitor)
     }
     
     /// measures the progress of the "swipe down to dismiss" gesture. bounded from [0, 1]
@@ -173,9 +175,10 @@ struct EntryFullScreenModal: View {
     
     func monitor() {
         entryModel.objectWillChange.sink { _ in
+            /// store any changes, as well as the initial value
             if pastModels.last == nil || pastModels.last != entryModel {
                 pastModels.append(entryModel)
             }
-        }
+        }.store(in: &undoTracker)
     }
 }
