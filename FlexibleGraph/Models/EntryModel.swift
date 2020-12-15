@@ -43,3 +43,15 @@ final class EntryModel: ObservableObject {
         billable = entry.billable
     }
 }
+
+extension EntryModel: Equatable {
+    static func == (lhs: EntryModel, rhs: EntryModel) -> Bool {
+        /// ignored: `field`
+        lhs.id == rhs.id
+            && lhs.billable == rhs.billable
+            && lhs.start == rhs.start
+            && lhs.end == rhs.end
+            && lhs.entryDescription == rhs.entryDescription
+            && lhs.project == rhs.project
+    }
+}
