@@ -10,19 +10,48 @@ import SwiftUI
 
 struct PropertyEditView: View {
     
-    let field: EntryModel.Field
     @ObservedObject var model: EntryModel
     
+    /// define a slightly faster animation
+    static let animation = Animation.easeInOut(duration: 0.2)
+    
     var body: some View {
-        switch field {
-        case .start:
-            DatePicker("Start Time", selection: $model.start, in: ...model.end)
+        ZStack(alignment: .bottom) {
+            if model.field != .none {
+                Color.primary
+                    .opacity(0.5)
+                    .onTapGesture(perform: dismiss)
+            }
+            Editor
+                /// allow background to consume max width
+                .frame(maxWidth: .infinity)
+                .background(Color.background)
+                .transition(.inAndOut(edge: .bottom))
+        }
+        
+    }
+    
+    var Editor: some View {
+        Group {
+            switch model.field {
+            case .start:
+                DatePicker("Start Time", selection: $model.start, in: ...model.end)
                     .labelsHidden()
-        case .end:
-            DatePicker("End Time", selection: $model.end, in: model.start...)
+                    .datePickerStyle(WheelDatePickerStyle())
+            case .end:
+                DatePicker("End Time", selection: $model.end, in: model.start...)
                     .labelsHidden()
-        default:
-            EmptyView()
+                    .datePickerStyle(WheelDatePickerStyle())
+            default:
+                EmptyView()
+            }
+        }
+    }
+    
+    func dismiss() -> Void {
+        withAnimation(Self.animation) {
+            /// dismiss when background is tapped
+            model.field = .none
         }
     }
 }

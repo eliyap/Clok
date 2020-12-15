@@ -101,9 +101,7 @@ struct EntryFullScreenModal: View {
                         .padding(.horizontal, EntryFullScreenModal.sharedPadding)
                 }
                     .offset(y: scrollOffset)
-                if let field = entryModel.field {
-                    PropertyEditView(field: field, model: entryModel)
-                }
+                PropertyEditView(model: entryModel)    
             }
                 .frame(height: geo.size.height, alignment: .top)
                 .coordinateSpace(name: coordSpaceName)

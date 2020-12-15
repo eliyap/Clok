@@ -20,13 +20,17 @@ struct EntryBody: View {
             Label {
                 HStack {
                     Button {
-                        model.field = .start
+                        withAnimation(PropertyEditView.animation) {
+                            model.field = .start
+                        }
                     } label: {
                         StartTime
                     }
                     Text("–")
                     Button {
-                        model.field = .end
+                        withAnimation(PropertyEditView.animation) {
+                            model.field = .end
+                        }
                     } label: {
                         EndTime
                     }
