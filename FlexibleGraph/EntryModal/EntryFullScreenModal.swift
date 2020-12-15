@@ -170,4 +170,12 @@ struct EntryFullScreenModal: View {
         entryModel.billable = imminent.billable
         entryModel.project = imminent.project
     }
+    
+    func monitor() {
+        entryModel.objectWillChange.sink { _ in
+            if pastModels.last == nil || pastModels.last != entryModel {
+                pastModels.append(entryModel)
+            }
+        }
+    }
 }
