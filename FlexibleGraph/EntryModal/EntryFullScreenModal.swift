@@ -14,9 +14,16 @@ struct EntryFullScreenModal: View {
     @Environment(\.colorScheme) var colorScheme
     
     //MARK:- State Properties
+    /// measures the amount to offset the view to simulate "scrolling"
     @State var scrollOffset: CGFloat = .zero
+    
+    /// temporary storage for the view's initial position before "scrolling" began
     @State var initialPos: CGFloat? = .none
+    
+    /// updated position of the bottom of the view
     @State var bottomPos: CGFloat = .zero
+    
+    /// updated amount to offset some view with an icon
     @State var iconOffset: CGFloat = .zero
     
     //MARK:- Form Properties
