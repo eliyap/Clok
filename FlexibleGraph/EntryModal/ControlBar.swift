@@ -23,6 +23,9 @@ struct ControlBar: View {
             Button(action: undo) {
                 Image(systemName: "arrow.uturn.left")
             }
+            Button(action: redo) {
+                Image(systemName: "arrow.uturn.right")
+            }
         }
             .buttonStyle(PlainButtonStyle())
             .padding(EntryFullScreenModal.sharedPadding)
