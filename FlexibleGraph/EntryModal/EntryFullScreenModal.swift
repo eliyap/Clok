@@ -11,10 +11,6 @@ import Combine
 
 struct EntryFullScreenModal: View {
     
-    //MARK:- Undo
-    @Environment(\.undoManager) var undoManager
-    @State var undoTracker = Set<AnyCancellable>()
-    
     @Environment(\.colorScheme) var colorScheme
     
     //MARK:- State Properties
@@ -128,30 +124,6 @@ struct EntryFullScreenModal: View {
                 )
         )
         .onAppear(perform: trackUndo)
-    }
-    
-    func trackUndo() -> Void {
-        /// register initial state automatically
-        registerUndo(entry: entryModel)
-        
-        /// attach event monitor
-        self.entryModel.objectWillChange.sink{ _ in
-            #if DEBUG
-            print("undo registered")
-            #endif
-            registerUndo(entry: entryModel)
-        }.store(in: &undoTracker)
-    }
-    
-    func registerUndo(entry: EntryModel) -> Void {
-        undoManager?.registerUndo(withTarget: entryModel) {
-            /// ignored: `id`, `field`
-            $0.start = entry.start
-            $0.end = entry.end
-            $0.entryDescription = entry.entryDescription
-            $0.project = entry.project
-            $0.billable = entry.billable
-        }
     }
     
     /// measures the progress of the "swipe down to dismiss" gesture. bounded from [0, 1]

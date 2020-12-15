@@ -13,15 +13,14 @@ struct ControlBar: View {
     let dismiss: () -> Void
     var dismissalCompletion: CGFloat
     
-    @Environment(\.undoManager) private var undoManager
-    
     var body: some View {
         HStack {
             DismissalButton(dismiss: dismiss, completion: dismissalCompletion)
             Spacer()
             /// other stuff here
             Button{
-                undoManager?.undo()
+                
+                
             } label: {
                 Image(systemName: "arrow.uturn.left")
             }
