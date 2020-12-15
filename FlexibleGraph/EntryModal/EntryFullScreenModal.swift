@@ -92,7 +92,7 @@ struct EntryFullScreenModal: View {
                 Color(UIColor.secondarySystemBackground)
                     .offset(y: max(0, scrollOffset))
                 /// translucent bar with some main control buttons
-                ControlBar(dismiss: dismiss, undo: undo, dismissalCompletion: dismissalCompletion)
+                ControlBar(dismiss: dismiss, undo: undo, redo: redo, dismissalCompletion: dismissalCompletion)
                     .offset(y: max(0, scrollOffset))
                     .zIndex(1)
                 /// the rest of the view

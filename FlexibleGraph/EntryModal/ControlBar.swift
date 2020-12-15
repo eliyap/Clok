@@ -12,6 +12,7 @@ struct ControlBar: View {
     
     let dismiss: () -> Void
     let undo: () -> Void
+    let redo: () -> Void
     var dismissalCompletion: CGFloat
     
     var body: some View {
