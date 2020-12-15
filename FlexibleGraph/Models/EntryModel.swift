@@ -10,7 +10,9 @@ import Foundation
 
 /// models a `TimeEntryLike` object as it is being edited
 final class EntryModel: ObservableObject {
-    // id is not editable and is not included
+    
+    let id: Int64
+    
     @Published var start: Date
     @Published var end: Date
     var duration: TimeInterval {
@@ -33,10 +35,33 @@ final class EntryModel: ObservableObject {
     }
     
     init(from entry: TimeEntryLike) {
+        id = entry.id
         start = entry.start
         end = entry.end
         project = entry.wrappedProject
         entryDescription = entry.entryDescription
         billable = entry.billable
+    }
+}
+
+extension EntryModel {
+    #warning("contains placeholder values!")
+    var result: RawTimeEntry {
+        RawTimeEntry(
+            description: entryDescription,
+            start: start,
+            end: end,
+            dur: end - start,
+            updated: Date(), /// update date (though this may not work since toggl has the canonical date)
+            id: id,
+            is_billable: billable,
+            pid: project.wrappedID,
+            project: project.name,
+            project_hex_color: project.color,
+            uid: NSNotFound, /// NOT VALID!
+            use_stop: false, /// NOT VALID!
+            user: "",  /// NOT VALID!
+            tags: [] /// NOT VALID!
+        )
     }
 }
