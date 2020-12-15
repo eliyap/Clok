@@ -51,6 +51,9 @@ struct EntryFullScreenModal: View {
         /// define a drag gesture that imitates scrolling (no momentum though)
         let ScrollDrag = DragGesture()
             .onChanged { gesture in
+                /// if second modal is being shown, ignore drag gesture
+                guard entryModel.field == .none else { return }
+                
                 /// capture initial offset as gesture begins
                 if initialPos == .none { initialPos = scrollOffset }
                 let newOffset = initialPos! + gesture.translation.height
