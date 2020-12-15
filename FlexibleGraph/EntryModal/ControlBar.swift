@@ -11,6 +11,7 @@ import SwiftUI
 struct ControlBar: View {
     
     let dismiss: () -> Void
+    let undo: () -> Void
     var dismissalCompletion: CGFloat
     
     var body: some View {
@@ -18,10 +19,7 @@ struct ControlBar: View {
             DismissalButton(dismiss: dismiss, completion: dismissalCompletion)
             Spacer()
             /// other stuff here
-            Button{
-                
-                
-            } label: {
+            Button(action: undo) {
                 Image(systemName: "arrow.uturn.left")
             }
         }
