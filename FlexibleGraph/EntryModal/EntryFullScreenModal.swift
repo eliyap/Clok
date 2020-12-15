@@ -144,6 +144,30 @@ struct EntryFullScreenModal: View {
     }
     
     func undo() -> Void {
+        /// ensure there is at least one recent model
+        guard let recent = pastModels.popLast() else { return }
         
+        /// allow user to `redo` to current state
+        futureModels.append(entryModel)
+        
+        /// ignored: `id`, `field`
+        entryModel.start = recent.start
+        entryModel.end = recent.end
+        entryModel.billable = recent.billable
+        entryModel.project = recent.project
+    }
+    
+    func redo() -> Void {
+        /// ensure there is at least one recent model
+        guard let imminent = futureModels.popLast() else { return }
+        
+        /// allow user to `undo` to current state
+        pastModels.append(entryModel)
+        
+        /// ignored: `id`, `field`
+        entryModel.start = imminent.start
+        entryModel.end = imminent.end
+        entryModel.billable = imminent.billable
+        entryModel.project = imminent.project
     }
 }
