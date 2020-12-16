@@ -31,6 +31,9 @@ struct EntryFullScreenModal: View {
     @State var futureModels = [EntryModel]()
     @State var undoTracker = Set<AnyCancellable>()
     
+    /// represents whether the undo / redo system is in the process of changing anything (during which `undoTracker`) should be dormant
+    @State var isAmending = false
+    
     //MARK:- Form Properties
     @StateObject var entryModel = EntryModel(from: StaticEntry.noEntry)
     
@@ -146,6 +149,13 @@ struct EntryFullScreenModal: View {
     }
     
     func undo() -> Void {
+        /// lock `undoTracker` out during function scope
+        isAmending = true
+        defer { isAmending = false }
+        
+        #if DEBUG
+        print(pastModels.count, pastModels.last?.start.MMMdd)
+        #endif
         /// ensure there is at least one recent model
         guard let recent = pastModels.popLast() else { return }
         
@@ -160,6 +170,10 @@ struct EntryFullScreenModal: View {
     }
     
     func redo() -> Void {
+        /// lock `undoTracker` out during function scope
+        isAmending = true
+        defer { isAmending = false }
+        
         /// ensure there is at least one recent model
         guard let imminent = futureModels.popLast() else { return }
         
@@ -175,9 +189,23 @@ struct EntryFullScreenModal: View {
     
     func monitor() {
         entryModel.objectWillChange.sink { _ in
+            /// if we're in the process of changing something, just ignore what's going on.
+            guard !isAmending else { return }
+            
+            #if DEBUG
+            print("CHANGE DETECTED \(entryModel.start.MMMdd)")
+            #endif
             /// store any changes, as well as the initial value
-            if pastModels.last == nil || pastModels.last != entryModel {
-                pastModels.append(entryModel)
+            print((pastModels.last ?? EntryModel(from: StaticEntry.noEntry)).start, entryModel.start)
+            
+            /// abuse short-circuit evaluation to perform a force unwrap
+            /// https://docs.swift.org/swift-book/LanguageGuide/BasicOperators.html
+            if pastModels.last == nil || pastModels.last! != entryModel {
+                /// NOTE: recall that classes are reference types, hence a copy must be made!
+                pastModels.append(entryModel.copy() as! EntryModel)
+                #if DEBUG
+                print("\(pastModels.count) undos left")
+                #endif
             }
         }.store(in: &undoTracker)
     }
