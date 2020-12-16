@@ -19,8 +19,16 @@ struct PropertyEditView: View {
         self._internalModel = StateObject<EntryModel>(wrappedValue: model.copy() as! EntryModel)
     }
     
-    /// define a slightly faster animation
-    static let animation = Animation.easeInOut(duration: 0.2)
+    
+    /// Dismiss itself as a modal view,
+    /// and alert the external `ObservedObject` of the changes
+    func dismiss() -> Void {
+        withAnimation(Self.animation) {
+            model.field = .none
+        }
+        /// reflect changes outwards
+        model.update(with: internalModel)
+    }
     
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -29,37 +37,41 @@ struct PropertyEditView: View {
                     .opacity(0.5)
                     .onTapGesture(perform: dismiss)
             }
-            Editor
+            PropertyEditor(model: internalModel)
                 /// allow background to consume max width
                 .frame(maxWidth: .infinity)
                 .background(Color.background)
                 .transition(.inAndOut(edge: .bottom))
-        }
-        
+        }   
     }
+}
+
+// MARK:- Animation Settings
+extension PropertyEditView {
+    /// define a slightly faster animation
+    static let animation = Animation.easeInOut(duration: 0.2)
+}
+
+struct PropertyEditor: View {
     
-    var Editor: some View {
-        Group {
-            switch model.field {
-            case .start:
-                DatePicker("Start Time", selection: $internalModel.start, in: ...model.end)
-                    .labelsHidden()
-                    .datePickerStyle(WheelDatePickerStyle())
-            case .end:
-                DatePicker("End Time", selection: $internalModel.end, in: model.start...)
-                    .labelsHidden()
-                    .datePickerStyle(WheelDatePickerStyle())
-            default:
-                EmptyView()
+    @ObservedObject var model: EntryModel
+    
+    var body: some View {
+        switch model.field {
+        case .start:
+            DatePicker("Start Time", selection: $model.start, in: ...model.end)
+                .labelsHidden()
+                .datePickerStyle(WheelDatePickerStyle())
+        case .end:
+            DatePicker("End Time", selection: $model.end, in: model.start...)
+                .labelsHidden()
+                .datePickerStyle(WheelDatePickerStyle())
+        case .project:
+            List {
+            
             }
+        default:
+            EmptyView()
         }
-    }
-    
-    func dismiss() -> Void {
-        withAnimation(Self.animation) {
-            model.field = .none
-        }
-        /// reflect changes outwards
-        model.update(with: internalModel)
     }
 }
