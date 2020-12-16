@@ -10,7 +10,8 @@ import SwiftUI
 
 struct ProjectPicker: View {
     
-    var tags: [String]
+    var projects: [Project]
+    @Binding var selected: Project
     let boundingWidth: CGFloat
     
     var body: some View {
@@ -20,8 +21,8 @@ struct ProjectPicker: View {
 
         /// Adds a tag view for each tag in the array. Populates from left to right and then on to new rows when too wide for the screen
         return ZStack(alignment: .topLeading) {
-            ForEach(tags, id: \.self) { tag in
-                TagView(tag: tag)
+            ForEach(projects, id: \.self) { project in
+                TagView(name: project.name)
                     .alignmentGuide(.leading, computeValue: { tagSize in
                         /// checks if add this `View`'s width would cause row to exceed allowed width
                         if (abs(width - tagSize.width) > boundingWidth) {
@@ -32,7 +33,7 @@ struct ProjectPicker: View {
                         }
                         
                         let offset = width
-                        if tag == tags.last ?? "" {
+                        if project == projects.last {
                             width = 0
                         } else {
                             /// increment width tracker
@@ -42,7 +43,7 @@ struct ProjectPicker: View {
                     })
                     .alignmentGuide(.top, computeValue: { tagSize in
                         let offset = height
-                        if tag == tags.last ?? "" {
+                        if project == projects.last {
                             height = 0
                         }
                         return offset
@@ -50,20 +51,22 @@ struct ProjectPicker: View {
             }
         }
     }
+    
+    /// A subview of a tag shown in a list. When tapped the tag will be removed from the array
+    struct TagView: View {
+        
+        var name: String
+        
+        var body: some View {
+            Text(name.lowercased())
+                .padding(.leading, 2)
+                .foregroundColor(.white)
+                .font(.caption2)
+                .padding(4)
+                .background(Color.blue.cornerRadius(5))
+                .padding(4)
+        }
+    }
+
 }
 
-/// A subview of a tag shown in a list. When tapped the tag will be removed from the array
-struct TagView: View {
-    
-    var tag: String
-    
-    var body: some View {
-        Text(tag.lowercased())
-            .padding(.leading, 2)
-            .foregroundColor(.white)
-            .font(.caption2)
-            .padding(4)
-            .background(Color.blue.cornerRadius(5))
-            .padding(4)
-    }
-}
