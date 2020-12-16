@@ -120,6 +120,9 @@ struct UndoTracker: View {
                 print("\(pastModels.count) undos left")
                 #endif
             }
+            
+            /// empty out future queue
+            futureModels = []
         }.store(in: &undoTracker)
     }
 }
