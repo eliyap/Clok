@@ -16,7 +16,7 @@ struct EntryBody: View {
     let width: CGFloat
     
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 10) {
             Label {
                 HStack {
                     Button {
