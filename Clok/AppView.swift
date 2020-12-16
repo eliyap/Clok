@@ -94,7 +94,7 @@ struct ClokApp: App {
                     )
                 })
                 /// perform a fetch whenever a new window is opened
-                .onAppear{ fetchRunningEntry(false) }
+                .onAppear{ fetchRunningEntry() }
         }
             /// attach `RunningEntry` fetcher to App, not Window
             .onChange(of: timer.tick, perform: fetchRunningEntry)
