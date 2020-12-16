@@ -380,6 +380,7 @@
 		22E64281257799E900CCF49F /* MoldedRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E64270257799B100CCF49F /* MoldedRectangle.swift */; };
 		22E64282257799E900CCF49F /* MoldedRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E64270257799B100CCF49F /* MoldedRectangle.swift */; };
 		22E6429A257799EB00CCF49F /* MoldedRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E64270257799B100CCF49F /* MoldedRectangle.swift */; };
+		22EE4F132589AE11008EB632 /* UndoTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EE4F122589AE11008EB632 /* UndoTracker.swift */; };
 		22F2CD60254BA744008DEB9C /* RunningTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F4655B2541FAD1008BF6F0 /* RunningTimer.swift */; };
 		22F52411257E25FC005222C2 /* AxisToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F52410257E25FC005222C2 /* AxisToggle.swift */; };
 		22F52430257E51F7005222C2 /* HorizontalScrollStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F5242F257E51F7005222C2 /* HorizontalScrollStack.swift */; };
@@ -753,6 +754,7 @@
 		22E6421825774EC200CCF49F /* LinedBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinedBackground.swift; sourceTree = "<group>"; };
 		22E6422125774EE000CCF49F /* CurrentTimeIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTimeIndicator.swift; sourceTree = "<group>"; };
 		22E64270257799B100CCF49F /* MoldedRectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoldedRectangle.swift; sourceTree = "<group>"; };
+		22EE4F122589AE11008EB632 /* UndoTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UndoTracker.swift; sourceTree = "<group>"; };
 		22F2CD51254BA3EE008DEB9C /* WidgetBundleExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WidgetBundleExtension.entitlements; sourceTree = "<group>"; };
 		22F4655B2541FAD1008BF6F0 /* RunningTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningTimer.swift; sourceTree = "<group>"; };
 		22F52410257E25FC005222C2 /* AxisToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AxisToggle.swift; sourceTree = "<group>"; };
@@ -966,6 +968,7 @@
 			children = (
 				22D4F5112577354C0053ABFB /* EntryFullScreenModal.swift */,
 				223C307E2583454600751C51 /* ControlBar.swift */,
+				22EE4F122589AE11008EB632 /* UndoTracker.swift */,
 				224F5496257F994000E2BB18 /* ModalAnimation.swift */,
 				22D9BA07257B851200E923C5 /* DismissalButton.swift */,
 				22D9B9F7257B844600E923C5 /* EntryHeader.swift */,
@@ -2258,6 +2261,7 @@
 				22B0784224B17BEC00256EB8 /* RunningEntry.swift in Sources */,
 				2264CB3924AD33D900ECBF2B /* EmailFields.swift in Sources */,
 				2264CB3124AD250600ECBF2B /* WorkspaceManager.swift in Sources */,
+				22EE4F132589AE11008EB632 /* UndoTracker.swift in Sources */,
 				C6D2E5F1251FA2CF0067C0B0 /* RunningRing.intentdefinition in Sources */,
 				221810E024B0158500B63ECA /* Get24hourPref.swift in Sources */,
 				22E6420025774E8300CCF49F /* TimeIndicator.swift in Sources */,
