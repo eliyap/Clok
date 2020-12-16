@@ -42,7 +42,7 @@ struct PropertyEditView: View {
                 .frame(maxWidth: .infinity)
                 .background(Color.background)
                 .transition(.inAndOut(edge: .bottom))
-        }   
+        }
     }
 }
 
@@ -50,28 +50,4 @@ struct PropertyEditView: View {
 extension PropertyEditView {
     /// define a slightly faster animation
     static let animation = Animation.easeInOut(duration: 0.2)
-}
-
-struct PropertyEditor: View {
-    
-    @ObservedObject var model: EntryModel
-    
-    var body: some View {
-        switch model.field {
-        case .start:
-            DatePicker("Start Time", selection: $model.start, in: ...model.end)
-                .labelsHidden()
-                .datePickerStyle(WheelDatePickerStyle())
-        case .end:
-            DatePicker("End Time", selection: $model.end, in: model.start...)
-                .labelsHidden()
-                .datePickerStyle(WheelDatePickerStyle())
-        case .project:
-            List {
-            
-            }
-        default:
-            EmptyView()
-        }
-    }
 }
