@@ -15,6 +15,11 @@ struct PropertyEditor: View {
     /// since the `internalModel` does not receive updates to `Field`, pass this in explicitly
     let field: EntryModel.Field?
     
+    @FetchRequest(
+        entity: Project.entity(),
+        sortDescriptors: [NSSortDescriptor(key: "name", ascending: true)]
+    ) var projects: FetchedResults<Project>
+    
     var body: some View {
         switch field {
         case .start:
@@ -27,7 +32,10 @@ struct PropertyEditor: View {
                 .datePickerStyle(WheelDatePickerStyle())
         case .project:
             List {
-            
+                Text("Projects")
+                ForEach(projects, id: \.id) { project in
+                    Text(project.name)
+                }
             }
         default:
             EmptyView()

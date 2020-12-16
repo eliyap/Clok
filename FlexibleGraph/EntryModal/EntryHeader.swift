@@ -20,8 +20,14 @@ extension EntryFullScreenModal {
                 TextField("Description", text: text, onCommit: onCommit)
                     .font(.title)
             }
-            Text(entry.wrappedProject.name)
-                .foregroundColor(entry.color)
+            Button {
+                withAnimation(PropertyEditView.animation) {
+                    entryModel.field = .project
+                }
+            } label: {
+                Text(entry.wrappedProject.name)
+                    .foregroundColor(entry.color)
+            }
         }
             .padding(Self.sharedPadding)
             .frame(maxWidth: .infinity, alignment: .leading)
