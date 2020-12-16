@@ -12,7 +12,7 @@ import SwiftUI
 import CoreData
 
 @objc(Project)
-public class Project: NSManagedObject, Decodable, ProjectLike {
+public class Project: NSManagedObject, Decodable {
     
     static let entityName = "Project" /// for making entity calls
     
@@ -51,19 +51,10 @@ public class Project: NSManagedObject, Decodable, ProjectLike {
         ])
     }
     
-    static func == (lhs: Project, rhs: ProjectLike) -> Bool {
-        lhs.name == rhs.name && lhs.wrappedID == rhs.wrappedID
-    }
-    
-    func matches(_ other: ProjectLike) -> Bool {
-        /// Any Project matches all other projects
-        self == other || .any == other  || self == StaticProject.any
-    }
-    
-    static func < (lhs: Project, rhs: ProjectLike) -> Bool {
+    static func < (lhs: Project, rhs: Project) -> Bool {
         /// No Project should always be first
-        if StaticProject.noProject == lhs  { return true }
-        if StaticProject.noProject == rhs  { return false }
+        if ProjectPresets.shared.NoProject == lhs  { return true }
+        if ProjectPresets.shared.NoProject == rhs  { return false }
         return lhs.name < rhs.name
     }
 }

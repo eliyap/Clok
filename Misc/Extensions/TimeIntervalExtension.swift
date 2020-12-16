@@ -11,7 +11,7 @@ import Foundation
 extension TimeInterval {
     func toString() -> String {
         guard !self.isNaN else {
-            return placeholderTime
+            return TimeConstants.placeholderTime
         }
         let seconds = Int(self)
         let hh:Int = seconds / 3600

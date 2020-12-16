@@ -47,7 +47,7 @@ struct FilterView: View {
     }
     
     /// wrapper around withAnimation, due to some scoping issue
-    func exclude(_ project: ProjectLike) -> Void {
+    func exclude(_ project: Project) -> Void {
         withAnimation {
             _ = data.terms.projects.remove(at: data.terms.projects.firstIndex(where: {$0.wrappedID == project.wrappedID})!)
         }
@@ -100,11 +100,11 @@ struct FilterView: View {
         }
     }
     
-    var allProjects: [ProjectLike] {
-        projects.sorted(by: {$0.name < $1.name}) + [StaticProject.noProject]
+    var allProjects: [Project] {
+        projects.sorted(by: {$0.name < $1.name}) + [ProjectPresets.shared.NoProject]
     }
     
-    var excluded: [ProjectLike] {
+    var excluded: [Project] {
         allProjects
             .filter{!data.terms.contains(project: $0)}
             .sorted(by: {$0.name < $1.name})

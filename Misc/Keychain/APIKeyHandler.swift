@@ -25,7 +25,8 @@ func loadCredentials() -> User? {
             email: email,
             name: fullname,
             spaces: spaces,
-            chosen: chosen
+            chosen: chosen,
+            firstDayOfWeek: WidgetManager.firstDayOfWeek
         )
     } catch KeychainError.unhandledError(code: errSecItemNotFound) {
         print("No Key Found")

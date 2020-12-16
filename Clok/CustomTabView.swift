@@ -30,6 +30,7 @@ struct CustomTabView: View {
                 VStack(spacing: 0) { TabContents }
                 Divider()
                 HStack(spacing: 0) { TabButtons }
+                    .background(Color.background.edgesIgnoringSafeArea(.bottom))
             }
         }
         else if bounds.device == .iPad && bounds.mode == .landscape {
@@ -37,6 +38,7 @@ struct CustomTabView: View {
                 HStack(spacing: 0) { TabContents }
                 Divider()
                 HStack(spacing: 0) { TabButtons }
+                    .background(Color.background)
             }
         }
         else if bounds.device == .iPhone && bounds.mode == .landscape {
@@ -44,6 +46,7 @@ struct CustomTabView: View {
                 HStack(spacing: 0) { TabContents }
                 Divider()
                 VStack(spacing: 0) { TabButtons }
+                    .background(Color.background)
             }
         }
     }
@@ -53,7 +56,7 @@ struct CustomTabView: View {
         Group {
             switch tab {
             case .spiral:
-                EmptyView()
+                FlexibleGraph()
             case .bar:
                 BarStack()
             case .settings:

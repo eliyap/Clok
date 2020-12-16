@@ -25,9 +25,10 @@ extension TimeEntry {
     @NSManaged public var lastUpdated: Date?
     @NSManaged public var project: Project?
     @NSManaged public var tags: NSSet?
+    @NSManaged public var billable: Bool
 
     public var wrappedDescription: String {
-        name ?? "No Description"
+        name ?? "[No Description]"
     }
     
     public var wrappedID: Int {
@@ -38,8 +39,8 @@ extension TimeEntry {
         wrappedProject.wrappedColor
     }
     
-    var wrappedProject: ProjectLike {
-        project ?? StaticProject.noProject
+    var wrappedProject: Project {
+        project ?? ProjectPresets.shared.NoProject
     }
     
     public var tagArray: [Tag] {
@@ -51,4 +52,12 @@ extension TimeEntry {
             .sorted(by: {$0.name < $1.name})
             ?? []
     }
+    
+    /// compliance to `TimeEntryLike` protocol
+    public var color: Color { wrappedColor }
+    public var projectName: String { wrappedProject.name }
+    public var tagStrings: [String] { tagArray.map{$0.name} } /// just the names of the tags please
+    public var entryDescription: String { wrappedDescription }
+    public var duration: TimeInterval { dur }
+    public var identifier: Int { Int(id) }
 }

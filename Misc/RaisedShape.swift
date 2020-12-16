@@ -22,7 +22,7 @@ struct RaisedShape<Content: Shape>: View {
 
     var body: some View {
         content
-            .fill(Color(UIColor.systemBackground))
+            .fill(Color.background)
             .shadow(
                 color: Color(UIColor.black).opacity(0.2),
                 radius: radius,

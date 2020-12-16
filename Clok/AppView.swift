@@ -9,10 +9,15 @@
 import SwiftUI
 import CoreData
 import Combine
+import WidgetKit
 
 @main
 struct ClokApp: App {
     
+    /// Running Timer
+    @StateObject var timer = AppTimer()
+    
+    /// EnvironmentObjects
     let listRow = ListRow()
     let zero = ZeroDate()
     let data: TimeData
@@ -88,6 +93,10 @@ struct ClokApp: App {
                         context: nspc.viewContext
                     )
                 })
+                /// perform a fetch whenever a new window is opened
+                .onAppear{ fetchRunningEntry(false) }
         }
+            /// attach `RunningEntry` fetcher to App, not Window
+            .onChange(of: timer.tick, perform: fetchRunningEntry)
     }
 }

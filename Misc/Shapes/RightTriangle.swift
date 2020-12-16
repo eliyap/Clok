@@ -12,6 +12,7 @@ import SwiftUI
 struct RightTriangle: InsettableShape {
     
     var insetAmount: CGFloat = .zero
+    var closed: Bool = true
     
     func inset(by amount: CGFloat) -> some InsettableShape {
         return RightTriangle(insetAmount: insetAmount + amount)
@@ -22,7 +23,9 @@ struct RightTriangle: InsettableShape {
             path.move(to: .zero)
             path.addLine(to: CGPoint(x: .zero, y: rect.height))
             path.addLine(to: CGPoint(x: rect.width, y: rect.height))
-            path.closeSubpath()
+            if closed {
+                path.closeSubpath()
+            }
         }
     }
 }

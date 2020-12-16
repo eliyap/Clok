@@ -9,22 +9,32 @@
 import Foundation
 import SwiftUI
 
-final class RunningEntry: NSObject, NSSecureCoding {
+final class RunningEntry: NSObject, NSSecureCoding, TimeEntryLike {
     
-    var id: Int
+    var id: Int64
     var pid: Int = NSNotFound
     var start: Date
-    var project: ProjectLike
+    var project: Project
     var entryDescription: String
     var tags: [String] = []
+    var billable: Bool
+    
     let df = DateFormatter()
     
+    /// `TimeEntryLike` compliance
+    var end: Date { Date() } /// always return current time
+    var duration: TimeInterval { Date() - start } /// always return latest duration
+    var color: Color { project.wrappedColor }
+    var tagStrings: [String] { tags }
+    var wrappedProject: Project { project }
+    var identifier: Int64 { id }
     init(
-        id: Int,
+        id: Int64,
         start: Date,
-        project: ProjectLike,
+        project: Project,
         entryDescription: String,
-        tags: [String]?
+        tags: [String]?,
+        billable: Bool
     ){
         self.id = id
         self.start = start
@@ -32,37 +42,39 @@ final class RunningEntry: NSObject, NSSecureCoding {
         self.pid = project.wrappedID
         self.entryDescription = entryDescription
         self.tags = tags ?? []
+        self.billable = billable
     }
     
-    // parse from JSON for Widget
-    init?(from data: [String : AnyObject], project: ProjectLike){
-        // initialize DateFormatter to handle ISO8601 strings
-        df.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-        
-        // check that these properties are not nil
-        guard
-            let id = data["id"] as? Int,
-            data["description"] != nil,
-            let entryDescription = data["description"] as? String,
-            // get Dates from ISO8601 string
-            data["start"] != nil,
-            let startString = data["start"] as? String,
-            let start = df.date(from: startString)
-        else { return nil }
-        
-        self.id = id
-        self.entryDescription = entryDescription
-        self.start = start
-        self.project = project
-        self.tags = data["tags"] as? [String]
-            ?? []
-    }
+//    // parse from JSON for Widget
+//    init?(from data: [String : AnyObject], project: ProjectLike){
+//        // initialize DateFormatter to handle ISO8601 strings
+//        df.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+//
+//        // check that these properties are not nil
+//        guard
+//            let id = data["id"] as? Int64,
+//            data["description"] != nil,
+//            let entryDescription = data["description"] as? String,
+//            // get Dates from ISO8601 string
+//            data["start"] != nil,
+//            let startString = data["start"] as? String,
+//            let start = df.date(from: startString)
+//        else { return nil }
+//
+//        self.id = id
+//        self.entryDescription = entryDescription
+//        self.start = start
+//        self.project = project
+//        self.tags = data["tags"] as? [String]
+//            ?? []
+//        self.billable = ERROR
+//    }
     
     /// Headlining description,
     /// or project if there's no description,
     /// or placeholder if no info whatsoever
     func descriptionString() -> String {
-        if entryDescription == "" && StaticProject.noProject == project {
+        if entryDescription == "" && ProjectPresets.shared.NoProject == project {
             return "No Description"
         } else if entryDescription == "" {
             return project.name
@@ -99,12 +111,13 @@ final class RunningEntry: NSObject, NSSecureCoding {
     }
     
     init?(coder: NSCoder) {
-        id = coder.decodeInteger(forKey: "id")
+        id = Int64(coder.decodeInteger(forKey: "id"))
         pid = coder.decodeInteger(forKey: "pid")
         /// note: we will assign project later, for now leave `unknown`
-        project = StaticProject.unknown
+        project = ProjectPresets.shared.UnknownProject
         tags = coder.decodeObject(forKey: "tags") as? [String]
             ?? []
+        billable = coder.decodeBool(forKey: "billable")
         
         guard
             let start = coder.decodeObject(forKey: "start") as? Date,
@@ -119,19 +132,21 @@ final class RunningEntry: NSObject, NSSecureCoding {
 extension RunningEntry {
     /// signals that no entry is currently running
     static let noEntry = RunningEntry(
-        id: NSNotFound,
+        id: Int64(NSNotFound),
         start: Date.distantFuture,
-        project: StaticProject.noProject,
+        project: ProjectPresets.shared.NoProject,
         entryDescription: "Not Running",
-        tags: []
+        tags: [],
+        billable: false
     )
     
     static let placeholder = RunningEntry(
-        id: NSNotFound,
+        id: Int64(NSNotFound),
         start: Date(),
-        project: StaticProject.noProject,
+        project: ProjectPresets.shared.NoProject,
         entryDescription: "Placeholder",
-        tags: ["Tag"]
+        tags: ["Tag"],
+        billable: false
     )
 }
 

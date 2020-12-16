@@ -7,6 +7,7 @@
 //
 import CoreData
 import SwiftUI
+import Combine
 
 struct SettingsView: View {
     
@@ -15,7 +16,8 @@ struct SettingsView: View {
     @EnvironmentObject var zero: ZeroDate
     @Environment(\.managedObjectContext) var moc
     
-    @State var weekday: Int = WorkspaceManager.firstDayOfWeek
+    @State var weekday: Int = WidgetManager.firstDayOfWeek
+    @State var weekdaySetter: AnyCancellable? = nil
     
     var body: some View {
         NavigationView {
@@ -92,6 +94,8 @@ extension SettingsView {
         /// destroy workspace records
         WorkspaceManager.workspaces = []
         WorkspaceManager.chosenWorkspace = Workspace(wid: 0, name: "")
+        WidgetManager.firstDayOfWeek = 0
+        WidgetManager.running = nil
         
         /// animate appearance of `LoginView`
         withAnimation {
@@ -101,7 +105,12 @@ extension SettingsView {
     
     func updateWeekday(weekday: Int) -> Void {
         /// update `UserDefaults`
-        WorkspaceManager.firstDayOfWeek = weekday
+        WidgetManager.firstDayOfWeek = weekday
+        
+        if let token = settings.user?.token {
+            putWeekday(weekday, token: token)
+        }
+        
         /// update `ZeroDate.start` to keep app in sync
         zero.start = zero.start.startOfWeek(day: weekday)
     }

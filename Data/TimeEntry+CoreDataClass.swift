@@ -17,7 +17,7 @@ struct RawTimeEntry: Decodable {
     let dur: Double
     let updated: Date
     
-    let id: Int
+    let id: Int64
     let is_billable: Bool
     
     let pid: Int?
@@ -33,7 +33,8 @@ struct RawTimeEntry: Decodable {
 }
 
 @objc(TimeEntry)
-public class TimeEntry: NSManagedObject {
+public class TimeEntry: NSManagedObject, TimeEntryLike {
+    
     static let entityName = "TimeEntry"
     
     @objc
@@ -54,9 +55,17 @@ public class TimeEntry: NSManagedObject {
             "end": raw.end,
             "dur": raw.dur / 1000.0,
             "lastUpdated": raw.updated,
-            "id": Int64(raw.id)
+            "id": Int64(raw.id),
+            "billable": raw.is_billable
         ])
-        project = projects.first(where: {$0.id == raw.pid ?? NSNotFound})
+        
+        /// if no `pid` is provided, assume `NoProject`, aka `nil`
+        /// NOTE: do NOT set to `NoProject`, which exists in a floating MOC
+        if let pid = raw.pid {
+            project = projects.first(where: {$0.id == pid})
+        } else {
+            project = nil
+        }
         self.tags = Set(tags.filter {
             raw.tags.contains($0.name)
         }) as NSSet
@@ -66,12 +75,26 @@ public class TimeEntry: NSManagedObject {
     /// or project if there's no description,
     /// or placeholder if no info whatsoever
     func descriptionString() -> String {
-        if wrappedDescription == "" && StaticProject.noProject == wrappedProject {
+        if wrappedDescription == "" && ProjectPresets.shared.NoProject == wrappedProject {
             return "No Description"
         } else if wrappedDescription == "" {
             return wrappedProject.name
         } else {
             return wrappedDescription
+        }
+    }
+    
+    public override func willSave() {
+        if self.project?.id == ProjectPresets.shared.AnyProject.id {
+            fatalError("tried to save with project `NoProject`!")
+        }
+        
+        if self.project?.id == ProjectPresets.shared.NoProject.id {
+            fatalError("tried to save with project `NoProject`!")
+        }
+        
+        if self.project?.id == ProjectPresets.shared.UnknownProject.id {
+            fatalError("tried to save with project `NoProject`!")
         }
     }
 }

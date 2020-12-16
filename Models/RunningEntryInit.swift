@@ -12,12 +12,12 @@ import Foundation
  in order to avoid lots of import issues.
  */
 
-fileprivate struct RawRunningEntry: Decodable {
+struct RawRunningEntry: Decodable {
     /// wrapped in a `data` tag, for some reason
     let data: WrappedEntry?
     
     struct WrappedEntry: Decodable {
-        let id: Int
+        let id: Int64
         /// absence of a `pid` indicates no `Project`
         let pid: Int?
         let wid: Int
@@ -35,18 +35,20 @@ fileprivate struct RawRunningEntry: Decodable {
 }
 
 extension RunningEntry {
-    convenience init(data: Data, projects: [Project]) throws {
-        let decoder = JSONDecoder(dateStrategy: .iso8601)
-        guard let rawRunningEntry = try decoder.decode(RawRunningEntry.self, from: data).data else {
-            /// no `data` simply means no timer is running, trust Combine to deal with the error nicely
-            throw NetworkError.serialization
+    convenience init?(data: Data, projects: [Project]) throws {
+        let rawRunning = try JSONDecoder(dateStrategy: .iso8601)
+            .decode(RawRunningEntry.self, from: data)
+        guard let runningData = rawRunning.data else {
+            /// no `data` simply means no timer is running, signal this by returning `nil`
+            return nil
         }
         self.init(
-            id: rawRunningEntry.id,
-            start: rawRunningEntry.start,
-            project: StaticProject.unknown,
-            entryDescription: rawRunningEntry.description,
-            tags: rawRunningEntry.tags
+            id: runningData.id,
+            start: runningData.start,
+            project: ProjectPresets.shared.UnknownProject,
+            entryDescription: runningData.description,
+            tags: runningData.tags,
+            billable: runningData.billable
         )
         
         /**
@@ -54,11 +56,11 @@ extension RunningEntry {
          Or it can be `noProject`, represented as `nil` (i.e. the `pid` is missing in the JSON)
          If we cannot find the project in our system, mark it as unknown and try to pull it later.
          */
-        if let pid = rawRunningEntry.pid {
+        if let pid = runningData.pid {
             project = projects.first(where: {$0.id == pid})
-                ?? StaticProject.unknown
+                ?? ProjectPresets.shared.UnknownProject
         } else {
-            project = StaticProject.noProject
+            project = ProjectPresets.shared.NoProject
         }
         /// update `pid` from previously set `unknown` pid
         self.pid = project.wrappedID

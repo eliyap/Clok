@@ -15,8 +15,8 @@ struct StatDisplayView: View {
     @EnvironmentObject var zero: ZeroDate
     private let df = DateFormatter()
     
-    private var avgStart = placeholderTime
-    private var avgEnd = placeholderTime
+    private var avgStart = TimeConstants.placeholderTime
+    private var avgEnd = TimeConstants.placeholderTime
     private var avgDur = TimeInterval.zero
     
     private var deltaStart = TimeInterval.zero

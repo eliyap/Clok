@@ -13,7 +13,7 @@ struct FullscreenModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Color(UIColor.systemBackground))
+            .background(Color.background)
             .edgesIgnoringSafeArea(.all)
             .transition(.inAndOut(edge: .bottom))
     }

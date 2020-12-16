@@ -9,5 +9,9 @@
 import Foundation
 import CoreGraphics
 
-// MARK: - Misc
-let placeholderTime = "--:--"
+/// No Case Enum to store constants
+enum TimeConstants {
+    /// indicates that no valid time interval is available
+    static let placeholderTime = "--:--"
+}
+
