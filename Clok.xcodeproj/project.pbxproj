@@ -199,6 +199,7 @@
 		2292C5012505D1E0005802B5 /* BoardEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2292C4FF2505D1D2005802B5 /* BoardEntry.swift */; };
 		22939EA42589BDA0004CDD26 /* ShieldedBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22939EA32589BDA0004CDD26 /* ShieldedBinding.swift */; };
 		22939EBB2589D110004CDD26 /* PropertyEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22939EBA2589D110004CDD26 /* PropertyEditor.swift */; };
+		22939EC42589D636004CDD26 /* ProjectPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22939EC32589D636004CDD26 /* ProjectPicker.swift */; };
 		2293CEE924EC50F0000B68F4 /* AsNSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2293CEE824EC50F0000B68F4 /* AsNSDate.swift */; };
 		2293CEEB24EC5289000B68F4 /* GraphSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2293CEEA24EC5289000B68F4 /* GraphSaver.swift */; };
 		2293CEED24EC5661000B68F4 /* ProjectLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2293CEEC24EC5661000B68F4 /* ProjectLoader.swift */; };
@@ -661,6 +662,7 @@
 		2292C4FF2505D1D2005802B5 /* BoardEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardEntry.swift; sourceTree = "<group>"; };
 		22939EA32589BDA0004CDD26 /* ShieldedBinding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShieldedBinding.swift; sourceTree = "<group>"; };
 		22939EBA2589D110004CDD26 /* PropertyEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyEditor.swift; sourceTree = "<group>"; };
+		22939EC32589D636004CDD26 /* ProjectPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectPicker.swift; sourceTree = "<group>"; };
 		2293CEE824EC50F0000B68F4 /* AsNSDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsNSDate.swift; sourceTree = "<group>"; };
 		2293CEEA24EC5289000B68F4 /* GraphSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphSaver.swift; sourceTree = "<group>"; };
 		2293CEEC24EC5661000B68F4 /* ProjectLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectLoader.swift; sourceTree = "<group>"; };
@@ -964,6 +966,7 @@
 			children = (
 				223C30AC2583599A00751C51 /* BillableToggle.swift */,
 				22939EA32589BDA0004CDD26 /* ShieldedBinding.swift */,
+				22939EC32589D636004CDD26 /* ProjectPicker.swift */,
 			);
 			path = FormElements;
 			sourceTree = "<group>";
@@ -2328,6 +2331,7 @@
 				2207E46524E0BEAD00311F10 /* DPad.swift in Sources */,
 				224D10D324E6FA8900668FD8 /* DateIndicator.swift in Sources */,
 				223AC3A4257494F9002ABD9F /* NewGraphModel.swift in Sources */,
+				22939EC42589D636004CDD26 /* ProjectPicker.swift in Sources */,
 				22DC86A024BA838D00FF771F /* Project+CoreDataClass.swift in Sources */,
 				223C305C2580BD0900751C51 /* TagList.swift in Sources */,
 				2296F15B24A994A400AF38B5 /* FormRequest.swift in Sources */,
