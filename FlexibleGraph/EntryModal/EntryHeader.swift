@@ -25,14 +25,14 @@ extension EntryFullScreenModal {
                     entryModel.field = .project
                 }
             } label: {
-                Text(entry.wrappedProject.name)
-                    .foregroundColor(entry.color)
+                Text(entryModel.project.name)
+                    .foregroundColor(entryModel.project.wrappedColor)
             }
         }
             .padding(Self.sharedPadding)
             .frame(maxWidth: .infinity, alignment: .leading)
             .background(
-                entry.color(in: colorScheme)
+                entryModel.project.color(in: colorScheme)
                     .matchedGeometryEffect(
                         id: geometry,
                         in: namespace,
