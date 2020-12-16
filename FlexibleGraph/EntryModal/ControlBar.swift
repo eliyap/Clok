@@ -52,9 +52,11 @@ struct UndoTracker: View {
             Button(action: undo) {
                 Image(systemName: "arrow.uturn.left")
             }
+                .disabled(pastModels.isEmpty)
             Button(action: redo) {
                 Image(systemName: "arrow.uturn.right")
             }
+                .disabled(futureModels.isEmpty)
         }
         .onAppear(perform: monitor)
     }
