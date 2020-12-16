@@ -14,6 +14,7 @@ extension EntryFullScreenModal {
         VStack(alignment: .leading) {
             Spacer()
                 .frame(height: DismissalButton.ButtonSize + Self.sharedPadding * 2)
+            DescriptionField(description: $entryModel.entryDescription)
             TextField("Description", text: $entryModel.entryDescription)
                 .font(.title)
             Text(entry.wrappedProject.name)
@@ -31,3 +32,4 @@ extension EntryFullScreenModal {
             )
     }
 }
+
