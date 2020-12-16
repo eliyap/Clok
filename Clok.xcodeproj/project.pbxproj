@@ -961,6 +961,7 @@
 			isa = PBXGroup;
 			children = (
 				223C30AC2583599A00751C51 /* BillableToggle.swift */,
+				22939E8A2589BC64004CDD26 /* DescriptionField.swift */,
 			);
 			path = FormElements;
 			sourceTree = "<group>";
@@ -977,7 +978,6 @@
 				223C304B2580B3E300751C51 /* EntryBody.swift */,
 				223C309B2583596F00751C51 /* FormElements */,
 				223C305B2580BD0900751C51 /* TagList.swift */,
-				22939E8A2589BC64004CDD26 /* DescriptionField.swift */,
 				22D9BA19257B8BAB00E923C5 /* AlignedLabelStyle.swift */,
 				22AD1E0425876B3D000FFC91 /* PropertyEditView.swift */,
 			);
