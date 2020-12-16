@@ -9,6 +9,7 @@
 import WidgetKit
 
 extension ClokApp {
+    /// accepts a meaningless boolean to satisfy it's need to be plugged into `onChanged`
     func fetchRunningEntry(_: Bool) -> Void {
         guard let user = cred.user else { return }
         #if DEBUG
