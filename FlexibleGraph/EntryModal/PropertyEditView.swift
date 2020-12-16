@@ -50,7 +50,6 @@ struct PropertyEditView: View {
     
     func dismiss() -> Void {
         withAnimation(Self.animation) {
-            /// dismiss when background is tapped
             model.field = .none
         }
     }
