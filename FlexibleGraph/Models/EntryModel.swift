@@ -84,3 +84,14 @@ extension EntryModel: NSCopying {
         EntryModel(from: self)
     }
 }
+
+extension EntryModel: Hashable {
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+        hasher.combine(start)
+        hasher.combine(end)
+        hasher.combine(billable)
+        hasher.combine(entryDescription)
+        hasher.combine(project)
+    }
+}

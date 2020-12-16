@@ -33,8 +33,10 @@ struct UndoTracker: View {
             }
                 /// cannot redo if current entry is the latest entry
                 .disabled(changelog.isEmpty || current == changelog.indices.last)
+                /// begin by populating with current value (avoids a `Range` error)
+                .onAppear{ changelog.append(model.copy() as! EntryModel) }
                 /// - Warning: attaching this to `Group` causes it to fire once for each contained `View`!
-                .onAppear(perform: monitor)
+                .onChange(of: model.hashValue, perform: monitor)
         }
     }
     
@@ -66,27 +68,21 @@ struct UndoTracker: View {
         current += 1
     }
     
-    func monitor() {
-        /// begin by populating with current value (avoids a `Range` error)
-        changelog.append(model.copy() as! EntryModel)
+    func monitor(_: Int) {
+        // if we're in the process of changing something, just ignore what's going on.
+        guard !isAmending else { return }
         
-        /// attach observer
-        model.objectWillChange.sink { _ in
-            /// if we're in the process of changing something, just ignore what's going on.
-            guard !isAmending else { return }
+        /// store any changes, (will also store initial value when `.last` returns `nil`)
+        if changelog[current] != model {
             
-            /// store any changes, (will also store initial value when `.last` returns `nil`)
-            if changelog[current] != model {
-                
-                /// empty out all entries after the current one
-                changelog.removeSubrange(current + 1..<changelog.count)
-                
-                /// update current position
-                current = changelog.count
-                
-                /// NOTE: recall that classes are reference types, hence a copy must be made!
-                changelog.append(model.copy() as! EntryModel)
-            }
-        }.store(in: &undoTracker)
+            /// empty out all entries after the current one
+            changelog.removeSubrange(current + 1..<changelog.count)
+            
+            /// update current position
+            current = changelog.count
+            
+            /// NOTE: recall that classes are reference types, hence a copy must be made!
+            changelog.append(model.copy() as! EntryModel)
+        }
     }
 }
