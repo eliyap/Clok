@@ -37,7 +37,7 @@ struct PropertyEditView: View {
                     .opacity(0.5)
                     .onTapGesture(perform: dismiss)
             }
-            PropertyEditor(model: internalModel)
+            PropertyEditor(model: internalModel, field: model.field)
                 /// allow background to consume max width
                 .frame(maxWidth: .infinity)
                 .background(Color.background)

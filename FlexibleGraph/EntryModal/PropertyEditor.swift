@@ -12,8 +12,11 @@ struct PropertyEditor: View {
     
     @ObservedObject var model: EntryModel
     
+    /// since the `internalModel` does not receive updates to `Field`, pass this in explicitly
+    let field: EntryModel.Field?
+    
     var body: some View {
-        switch model.field {
+        switch field {
         case .start:
             DatePicker("Start Time", selection: $model.start, in: ...model.end)
                 .labelsHidden()
