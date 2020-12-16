@@ -45,16 +45,10 @@ struct UndoTracker: View {
         
         /// ensure there is at least one recent model
         guard changelog.count > 1, current > 0 else { return }
-        let recent = changelog[current - 1]
+        model.update(with: changelog[current - 1])
         
         /// allow user to `redo` to current state
         current -= 1
-        
-        /// ignored: `id`, `field`
-        model.start = recent.start
-        model.end = recent.end
-        model.billable = recent.billable
-        model.project = recent.project
     }
     
     func redo() -> Void {
@@ -64,16 +58,12 @@ struct UndoTracker: View {
         
         /// ensure there is at least one recent model
         guard changelog.count > current + 1 else { return }
-        let imminent = changelog[current + 1]
+
+        /// copy in recent model data
+        model.update(with: changelog[current + 1])
         
         /// allow user to `undo` to current state
         current += 1
-        
-        /// ignored: `id`, `field`
-        model.start = imminent.start
-        model.end = imminent.end
-        model.billable = imminent.billable
-        model.project = imminent.project
     }
     
     func monitor() {

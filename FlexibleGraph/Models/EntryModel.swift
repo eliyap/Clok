@@ -11,19 +11,21 @@ import Foundation
 /// models a `TimeEntryLike` object as it is being edited
 final class EntryModel: ObservableObject {
     
+    // MARK:- TimeEntry Properties
     let id: Int64
-    
     @Published var start: Date
     @Published var end: Date
-    var duration: TimeInterval {
-        end - start
-    }
     @Published var project: Project
     //TODO: include tags here
     @Published var entryDescription: String
     @Published var billable: Bool
     
+    /// tracks what is being edited in a second modal
     @Published var field: Field? = .none
+    
+    var duration: TimeInterval {
+        end - start
+    }
     
     /// what field is seleted that requires a second layer modal to pop up
     enum Field {
@@ -50,6 +52,18 @@ final class EntryModel: ObservableObject {
         project = model.project
         entryDescription = model.entryDescription
         billable = model.billable
+    }
+}
+
+
+extension EntryModel {
+    func update(with new: EntryModel) -> Void {
+        /// ignored: `id`, `field`
+        start = new.start
+        end = new.end
+        project = new.project
+        entryDescription = new.entryDescription
+        billable = new.billable
     }
 }
 
