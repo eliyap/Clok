@@ -14,7 +14,9 @@ extension EntryFullScreenModal {
         VStack(alignment: .leading) {
             Spacer()
                 .frame(height: DismissalButton.ButtonSize + Self.sharedPadding * 2)
-            DescriptionField(description: $entryModel.entryDescription)
+            ShieldedBinding($entryModel.entryDescription) { text, onCommit in
+                TextField("Description", text: text, onCommit: onCommit)
+            }
             Text(entry.wrappedProject.name)
                 .foregroundColor(entry.color)
         }
