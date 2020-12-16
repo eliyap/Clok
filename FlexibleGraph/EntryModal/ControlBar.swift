@@ -11,8 +11,6 @@ import SwiftUI
 struct ControlBar: View {
     
     let dismiss: () -> Void
-    let undo: () -> Void
-    let redo: () -> Void
     var dismissalCompletion: CGFloat
     @ObservedObject var model: EntryModel
     
@@ -21,12 +19,7 @@ struct ControlBar: View {
             DismissalButton(dismiss: dismiss, completion: dismissalCompletion)
             Spacer()
             /// other stuff here
-            Button(action: undo) {
-                Image(systemName: "arrow.uturn.left")
-            }
-            Button(action: redo) {
-                Image(systemName: "arrow.uturn.right")
-            }
+            UndoTracker(model: model)
         }
             .buttonStyle(PlainButtonStyle())
             .padding(EntryFullScreenModal.sharedPadding)
@@ -63,6 +56,7 @@ struct UndoTracker: View {
                 Image(systemName: "arrow.uturn.right")
             }
         }
+        .onAppear(perform: monitor)
     }
     
     func undo() -> Void {

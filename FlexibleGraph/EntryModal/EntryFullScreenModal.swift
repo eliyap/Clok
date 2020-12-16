@@ -96,7 +96,7 @@ struct EntryFullScreenModal: View {
                 Color(UIColor.secondarySystemBackground)
                     .offset(y: max(0, scrollOffset))
                 /// translucent bar with some main control buttons
-                ControlBar(dismiss: dismiss, undo: undo, redo: redo, dismissalCompletion: dismissalCompletion, model: entryModel)
+                ControlBar(dismiss: dismiss, dismissalCompletion: dismissalCompletion, model: entryModel)
                     .offset(y: max(0, scrollOffset))
                     .zIndex(1)
                 /// the rest of the view
@@ -138,7 +138,6 @@ struct EntryFullScreenModal: View {
                     isSource: false
                 )
         )
-        .onAppear(perform: monitor)
     }
     
     /// measures the progress of the "swipe down to dismiss" gesture. bounded from [0, 1]
@@ -146,67 +145,5 @@ struct EntryFullScreenModal: View {
         /// note: clamp prevents visual from triggering while scrolling down
         /// `-` inversion causes circle to fill clockwise instead of counterclockwise
         -clamp(scrollOffset / Self.threshhold, between: (0, 1))
-    }
-    
-    func undo() -> Void {
-        /// lock `undoTracker` out during function scope
-        isAmending = true
-        defer { isAmending = false }
-        
-        #if DEBUG
-        print(pastModels.count, pastModels.last?.start.MMMdd)
-        #endif
-        /// ensure there is at least one recent model
-        guard let recent = pastModels.popLast() else { return }
-        
-        /// allow user to `redo` to current state
-        futureModels.append(entryModel)
-        
-        /// ignored: `id`, `field`
-        entryModel.start = recent.start
-        entryModel.end = recent.end
-        entryModel.billable = recent.billable
-        entryModel.project = recent.project
-    }
-    
-    func redo() -> Void {
-        /// lock `undoTracker` out during function scope
-        isAmending = true
-        defer { isAmending = false }
-        
-        /// ensure there is at least one recent model
-        guard let imminent = futureModels.popLast() else { return }
-        
-        /// allow user to `undo` to current state
-        pastModels.append(entryModel)
-        
-        /// ignored: `id`, `field`
-        entryModel.start = imminent.start
-        entryModel.end = imminent.end
-        entryModel.billable = imminent.billable
-        entryModel.project = imminent.project
-    }
-    
-    func monitor() {
-        entryModel.objectWillChange.sink { _ in
-            /// if we're in the process of changing something, just ignore what's going on.
-            guard !isAmending else { return }
-            
-            #if DEBUG
-            print("CHANGE DETECTED \(entryModel.start.MMMdd)")
-            #endif
-            /// store any changes, as well as the initial value
-            print((pastModels.last ?? EntryModel(from: StaticEntry.noEntry)).start, entryModel.start)
-            
-            /// abuse short-circuit evaluation to perform a force unwrap
-            /// https://docs.swift.org/swift-book/LanguageGuide/BasicOperators.html
-            if pastModels.last == nil || pastModels.last! != entryModel {
-                /// NOTE: recall that classes are reference types, hence a copy must be made!
-                pastModels.append(entryModel.copy() as! EntryModel)
-                #if DEBUG
-                print("\(pastModels.count) undos left")
-                #endif
-            }
-        }.store(in: &undoTracker)
     }
 }
