@@ -20,12 +20,18 @@ struct ShieldedBinding<T, V>: View where T: Equatable, V: View {
     /// internal state that tracks the exterior binding
     @State var interior: T
     
-    /// content that requires a binding, and promises to alert us when changes are made
-    var content: (Binding<T>, _ onCommit: @escaping () -> ()) -> V
+    /// content that requires a binding, and promises to alert us when changes are committed via `onCommit`
+    var content: (
+        Binding<T>,
+        _ onCommit: @escaping () -> ()
+    ) -> V
     
     init(
         _ exterior: Binding<T>,
-        @ViewBuilder content: @escaping (Binding<T>, _ onCommit: @escaping () -> ()) -> V
+        @ViewBuilder content: @escaping (
+            Binding<T>,
+            _ onCommit: @escaping () -> ()
+        ) -> V
     ) {
         self._exterior = exterior
         /// copy initial value
