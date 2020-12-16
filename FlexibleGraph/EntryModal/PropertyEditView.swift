@@ -31,17 +31,24 @@ struct PropertyEditView: View {
     }
     
     var body: some View {
-        ZStack(alignment: .bottom) {
-            if model.field != .none {
-                Color.black
-                    .opacity(0.5)
-                    .onTapGesture(perform: dismiss)
+        GeometryReader { geo in
+            ZStack(alignment: .bottom) {
+                if model.field != .none {
+                    Color.black
+                        .opacity(0.5)
+                        .onTapGesture(perform: dismiss)
+                }
+                PropertyEditor(
+                    model: internalModel,
+                    field: model.field,
+                    dismiss: dismiss,
+                    boundingWidth: geo.size.width
+                )
+                    /// allow background to consume max width
+                    .frame(maxWidth: .infinity)
+                    .background(Color.background)
+                    .transition(.inAndOut(edge: .bottom))
             }
-            PropertyEditor(model: internalModel, field: model.field)
-                /// allow background to consume max width
-                .frame(maxWidth: .infinity)
-                .background(Color.background)
-                .transition(.inAndOut(edge: .bottom))
         }
     }
 }
