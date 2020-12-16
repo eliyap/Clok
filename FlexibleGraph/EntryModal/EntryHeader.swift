@@ -16,6 +16,7 @@ extension EntryFullScreenModal {
                 .frame(height: DismissalButton.ButtonSize + Self.sharedPadding * 2)
             ShieldedBinding($entryModel.entryDescription) { text, onCommit in
                 TextField("Description", text: text, onCommit: onCommit)
+                    .font(.title)
             }
             Text(entry.wrappedProject.name)
                 .foregroundColor(entry.color)
