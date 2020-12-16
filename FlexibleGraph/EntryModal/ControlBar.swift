@@ -73,7 +73,7 @@ struct UndoTracker: View {
         guard let recent = pastModels.popLast() else { return }
         
         /// allow user to `redo` to current state
-        futureModels.append(model)
+        futureModels.append(model.copy() as! EntryModel)
         
         /// ignored: `id`, `field`
         model.start = recent.start
@@ -91,7 +91,7 @@ struct UndoTracker: View {
         guard let imminent = futureModels.popLast() else { return }
         
         /// allow user to `undo` to current state
-        pastModels.append(model)
+        pastModels.append(model.copy() as! EntryModel)
         
         /// ignored: `id`, `field`
         model.start = imminent.start
@@ -108,12 +108,8 @@ struct UndoTracker: View {
             #if DEBUG
             print("CHANGE DETECTED \(model.start.MMMdd)")
             #endif
-            /// store any changes, as well as the initial value
-            print((pastModels.last ?? EntryModel(from: StaticEntry.noEntry)).start, model.start)
-            
-            /// abuse short-circuit evaluation to perform a force unwrap
-            /// https://docs.swift.org/swift-book/LanguageGuide/BasicOperators.html
-            if pastModels.last == nil || pastModels.last! != model {
+            /// store any changes, (will also store initial value when `.last` returns `nil`)
+            if pastModels.last != model {
                 /// NOTE: recall that classes are reference types, hence a copy must be made!
                 pastModels.append(model.copy() as! EntryModel)
                 #if DEBUG
