@@ -38,10 +38,9 @@ struct UndoTracker: View {
     @ObservedObject var model: EntryModel
     
     /// past states, in chronological order (oldest at index 0)
-    @State var pastModels = [EntryModel]()
+    @State var changelog = [EntryModel]()
+    @State var current: Int = .zero
     
-    /// states that were previously undone from, in reverse chronological order (newest at index 0)
-    @State var futureModels = [EntryModel]()
     @State var undoTracker = Set<AnyCancellable>()
     
     /// represents whether the undo / redo system is in the process of changing anything (during which `undoTracker`) should be dormant
@@ -52,11 +51,13 @@ struct UndoTracker: View {
             Button(action: undo) {
                 Image(systemName: "arrow.uturn.left")
             }
-                .disabled(pastModels.isEmpty)
+                /// cannot redo if current entry is the earliest entry
+                .disabled(changelog.isEmpty || current == changelog.indices.first)
             Button(action: redo) {
                 Image(systemName: "arrow.uturn.right")
             }
-                .disabled(futureModels.isEmpty)
+                /// cannot redo if current entry is the latest entry
+                .disabled(changelog.isEmpty || current == changelog.indices.last)
         }
         .onAppear(perform: monitor)
     }
@@ -66,14 +67,12 @@ struct UndoTracker: View {
         isAmending = true
         defer { isAmending = false }
         
-        #if DEBUG
-        print(pastModels.count, pastModels.last?.start.MMMdd)
-        #endif
         /// ensure there is at least one recent model
-        guard let recent = pastModels.popLast() else { return }
+        guard changelog.count > 0, current > 0 else { return }
+        let recent = changelog[changelog.count - 2]
         
         /// allow user to `redo` to current state
-        futureModels.append(model.copy() as! EntryModel)
+        current -= 1
         
         /// ignored: `id`, `field`
         model.start = recent.start
@@ -88,10 +87,11 @@ struct UndoTracker: View {
         defer { isAmending = false }
         
         /// ensure there is at least one recent model
-        guard let imminent = futureModels.popLast() else { return }
+        guard changelog.count >= current else { return }
+        let imminent = changelog[current]
         
         /// allow user to `undo` to current state
-        pastModels.append(model.copy() as! EntryModel)
+        current += 1
         
         /// ignored: `id`, `field`
         model.start = imminent.start
@@ -105,20 +105,20 @@ struct UndoTracker: View {
             /// if we're in the process of changing something, just ignore what's going on.
             guard !isAmending else { return }
             
+            /// empty out all entries after the current one
+            changelog.removeSubrange(current..<changelog.count)
+            
+            /// update current position
+            current = changelog.count
+            
             #if DEBUG
             print("CHANGE DETECTED \(model.start.MMMdd)")
             #endif
             /// store any changes, (will also store initial value when `.last` returns `nil`)
-            if pastModels.last != model {
+            if changelog.last != model {
                 /// NOTE: recall that classes are reference types, hence a copy must be made!
-                pastModels.append(model.copy() as! EntryModel)
-                #if DEBUG
-                print("\(pastModels.count) undos left")
-                #endif
+                changelog.append(model.copy() as! EntryModel)
             }
-            
-            /// empty out future queue
-            futureModels = []
         }.store(in: &undoTracker)
     }
 }
