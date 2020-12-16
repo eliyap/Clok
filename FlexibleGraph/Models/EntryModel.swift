@@ -42,6 +42,15 @@ final class EntryModel: ObservableObject {
         entryDescription = entry.entryDescription
         billable = entry.billable
     }
+    
+    private init(from model: EntryModel) {
+        id = model.id
+        start = model.start
+        end = model.end
+        project = model.project
+        entryDescription = model.entryDescription
+        billable = model.billable
+    }
 }
 
 extension EntryModel: Equatable {
@@ -53,5 +62,11 @@ extension EntryModel: Equatable {
             && lhs.end == rhs.end
             && lhs.entryDescription == rhs.entryDescription
             && lhs.project == rhs.project
+    }
+}
+
+extension EntryModel: NSCopying {
+    func copy(with zone: NSZone? = nil) -> Any {
+        EntryModel(from: self)
     }
 }
