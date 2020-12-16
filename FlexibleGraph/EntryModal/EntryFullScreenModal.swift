@@ -120,7 +120,7 @@ struct EntryFullScreenModal: View {
                         .padding(.horizontal, EntryFullScreenModal.sharedPadding)
                 }
                     .offset(y: scrollOffset)
-                PropertyEditView(model: entryModel)    
+                PropertyEditView(model: entryModel)
             }
                 .frame(height: geo.size.height, alignment: .top)
                 .coordinateSpace(name: coordSpaceName)

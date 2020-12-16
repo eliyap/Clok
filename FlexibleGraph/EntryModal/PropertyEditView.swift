@@ -10,7 +10,14 @@ import SwiftUI
 
 struct PropertyEditView: View {
     
-    @ObservedObject var model: EntryModel
+    @ObservedObject private var model: EntryModel
+    @StateObject private var internalModel: EntryModel
+    
+    init(model: EntryModel) {
+        self._model = ObservedObject<EntryModel>(initialValue: model)
+        /// assign itself a copy of the object
+        self._internalModel = StateObject<EntryModel>(wrappedValue: model.copy() as! EntryModel)
+    }
     
     /// define a slightly faster animation
     static let animation = Animation.easeInOut(duration: 0.2)
@@ -18,7 +25,7 @@ struct PropertyEditView: View {
     var body: some View {
         ZStack(alignment: .bottom) {
             if model.field != .none {
-                Color.primary
+                Color.black
                     .opacity(0.5)
                     .onTapGesture(perform: dismiss)
             }
@@ -35,11 +42,11 @@ struct PropertyEditView: View {
         Group {
             switch model.field {
             case .start:
-                DatePicker("Start Time", selection: $model.start, in: ...model.end)
+                DatePicker("Start Time", selection: $internalModel.start, in: ...model.end)
                     .labelsHidden()
                     .datePickerStyle(WheelDatePickerStyle())
             case .end:
-                DatePicker("End Time", selection: $model.end, in: model.start...)
+                DatePicker("End Time", selection: $internalModel.end, in: model.start...)
                     .labelsHidden()
                     .datePickerStyle(WheelDatePickerStyle())
             default:
@@ -52,5 +59,7 @@ struct PropertyEditView: View {
         withAnimation(Self.animation) {
             model.field = .none
         }
+        /// reflect changes outwards
+        model.update(with: internalModel)
     }
 }
