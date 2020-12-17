@@ -14,7 +14,7 @@ final class RunningEntry: NSObject, NSSecureCoding {
     var id: Int64
     var pid: Int = NSNotFound
     var start: Date
-    var project: Project
+    var project: Project?
     var entryDescription: String
     var tags: [String] = []
     var billable: Bool

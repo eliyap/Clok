@@ -40,7 +40,7 @@ final class EntryModel: ObservableObject {
         id = entry.id
         start = entry.start
         end = entry.end
-        project = entry.wrappedProject
+        project = entry.project
         entryDescription = entry.entryDescription
         billable = entry.billable
     }

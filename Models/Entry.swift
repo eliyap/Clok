@@ -17,7 +17,7 @@ protocol TimeEntryLike {
     var color: Color { get }
     var entryDescription: String { get } /// note: `description` is a reserved word in iOS
     /// since `TimeEntry` can have `nil` as a valid `project` member, refer to the `wrappedProject` instead
-    var wrappedProject: Project { get }
+    var project: Project? { get }
     var tagStrings: [String] { get }
     var duration: TimeInterval { get }
     var billable: Bool { get }
@@ -27,4 +27,10 @@ protocol TimeEntryLike {
      What I want is an `associatedprotocol`, which does not exist
      */
     //var project: ProjectLike { get }
+}
+
+extension TimeEntryLike {
+    var wrappedProject: Project {
+        project ?? ProjectPresets.shared.NoProject
+    }
 }
