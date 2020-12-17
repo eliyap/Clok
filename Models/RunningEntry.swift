@@ -9,7 +9,7 @@
 import Foundation
 import SwiftUI
 
-final class RunningEntry: NSObject, NSSecureCoding, TimeEntryLike {
+final class RunningEntry: NSObject, NSSecureCoding {
     
     var id: Int64
     var pid: Int = NSNotFound
@@ -21,13 +21,6 @@ final class RunningEntry: NSObject, NSSecureCoding, TimeEntryLike {
     
     let df = DateFormatter()
     
-    /// `TimeEntryLike` compliance
-    var end: Date { Date() } /// always return current time
-    var duration: TimeInterval { Date() - start } /// always return latest duration
-    var color: Color { project.wrappedColor }
-    var tagStrings: [String] { tags }
-    var wrappedProject: Project { project }
-    var identifier: Int64 { id }
     init(
         id: Int64,
         start: Date,
@@ -88,8 +81,10 @@ final class RunningEntry: NSObject, NSSecureCoding, TimeEntryLike {
     init?(coder: NSCoder) {
         id = Int64(coder.decodeInteger(forKey: "id"))
         pid = coder.decodeInteger(forKey: "pid")
+        
         /// note: we will assign project later, for now leave `unknown`
         project = ProjectPresets.shared.UnknownProject
+        
         tags = coder.decodeObject(forKey: "tags") as? [String]
             ?? []
         billable = coder.decodeBool(forKey: "billable")
@@ -140,4 +135,14 @@ extension RunningEntry {
             && lhs.pid == rhs.pid
             && lhs.tags == rhs.tags
     }
+}
+
+extension RunningEntry: TimeEntryLike {
+    /// `TimeEntryLike` compliance
+    var end: Date { Date() } /// always return current time
+    var duration: TimeInterval { Date() - start } /// always return latest duration
+    var color: Color { project.wrappedColor }
+    var tagStrings: [String] { tags }
+    var wrappedProject: Project { project }
+    var identifier: Int64 { id }
 }
