@@ -30,8 +30,9 @@ struct EntryView: View {
                 .frame(width: 7)
             VStack {
                 HStack {
-                    Text(entry.descriptionString())
-                        .font(.title3)
+                    #warning("commented pending deletion")
+//                    Text(entry.descriptionString())
+//                        .font(.title3)
                     Spacer()
                     Text(entry.dur.toString())
                         .font(.title3)

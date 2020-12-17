@@ -38,19 +38,6 @@ final class RunningEntry: NSObject, NSSecureCoding {
         self.billable = billable
     }
         
-    /// Headlining description,
-    /// or project if there's no description,
-    /// or placeholder if no info whatsoever
-    func descriptionString() -> String {
-        if entryDescription == "" && ProjectPresets.shared.NoProject == project {
-            return "No Description"
-        } else if entryDescription == "" {
-            return project.name
-        } else {
-            return entryDescription
-        }
-    }
-
     static func == (lhs: RunningEntry, rhs: RunningEntry) -> Bool {
         /// we could check everything, but unless the data is corrupted we really only need to check task ID
         /// NOTE: if in future we support editing of time entries, this check will need to be more rigorous

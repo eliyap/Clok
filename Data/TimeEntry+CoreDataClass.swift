@@ -71,19 +71,6 @@ public class TimeEntry: NSManagedObject, TimeEntryLike {
         }) as NSSet
     }
     
-    /// Headlining description,
-    /// or project if there's no description,
-    /// or placeholder if no info whatsoever
-    func descriptionString() -> String {
-        if wrappedDescription == "" && ProjectPresets.shared.NoProject == wrappedProject {
-            return "No Description"
-        } else if wrappedDescription == "" {
-            return wrappedProject.name
-        } else {
-            return wrappedDescription
-        }
-    }
-    
     public override func willSave() {
         if self.project?.id == ProjectPresets.shared.AnyProject.id {
             fatalError("tried to save with project `NoProject`!")
