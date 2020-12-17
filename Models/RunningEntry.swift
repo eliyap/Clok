@@ -44,32 +44,7 @@ final class RunningEntry: NSObject, NSSecureCoding, TimeEntryLike {
         self.tags = tags ?? []
         self.billable = billable
     }
-    
-//    // parse from JSON for Widget
-//    init?(from data: [String : AnyObject], project: ProjectLike){
-//        // initialize DateFormatter to handle ISO8601 strings
-//        df.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-//
-//        // check that these properties are not nil
-//        guard
-//            let id = data["id"] as? Int64,
-//            data["description"] != nil,
-//            let entryDescription = data["description"] as? String,
-//            // get Dates from ISO8601 string
-//            data["start"] != nil,
-//            let startString = data["start"] as? String,
-//            let start = df.date(from: startString)
-//        else { return nil }
-//
-//        self.id = id
-//        self.entryDescription = entryDescription
-//        self.start = start
-//        self.project = project
-//        self.tags = data["tags"] as? [String]
-//            ?? []
-//        self.billable = ERROR
-//    }
-    
+        
     /// Headlining description,
     /// or project if there's no description,
     /// or placeholder if no info whatsoever
