@@ -116,9 +116,6 @@
 		225B044224B2A5FA00780424 /* OldLineGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225B044124B2A5FA00780424 /* OldLineGraphView.swift */; };
 		225F69B424AD8CE70012B5DB /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225F69B324AD8CE70012B5DB /* AppView.swift */; };
 		225F69B724AD8EF50012B5DB /* EntryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225F69B624AD8EF50012B5DB /* EntryList.swift */; };
-		2261B2CE25846E8D0020604B /* NSMOC_StaticProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2261B2CD25846E8D0020604B /* NSMOC_StaticProject.swift */; };
-		2261B2CF25846E8D0020604B /* NSMOC_StaticProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2261B2CD25846E8D0020604B /* NSMOC_StaticProject.swift */; };
-		2261B2D025846E8D0020604B /* NSMOC_StaticProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2261B2CD25846E8D0020604B /* NSMOC_StaticProject.swift */; };
 		2261B2D92584710A0020604B /* MiscellaneousConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2261B2D82584710A0020604B /* MiscellaneousConstants.swift */; };
 		2261B2DA2584710A0020604B /* MiscellaneousConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2261B2D82584710A0020604B /* MiscellaneousConstants.swift */; };
 		2261B2DB2584710A0020604B /* MiscellaneousConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2261B2D82584710A0020604B /* MiscellaneousConstants.swift */; };
@@ -618,7 +615,6 @@
 		225B044124B2A5FA00780424 /* OldLineGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldLineGraphView.swift; sourceTree = "<group>"; };
 		225F69B324AD8CE70012B5DB /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		225F69B624AD8EF50012B5DB /* EntryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryList.swift; sourceTree = "<group>"; };
-		2261B2CD25846E8D0020604B /* NSMOC_StaticProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSMOC_StaticProject.swift; sourceTree = "<group>"; };
 		2261B2D82584710A0020604B /* MiscellaneousConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiscellaneousConstants.swift; sourceTree = "<group>"; };
 		2261B2E3258471E10020604B /* ProjectPresets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectPresets.swift; sourceTree = "<group>"; };
 		2261B3392585A6900020604B /* FloatingProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingProject.swift; sourceTree = "<group>"; };
@@ -1370,7 +1366,6 @@
 				222D996224BB803800F66E0F /* Report.swift */,
 				22DC869824BA7A5E00FF771F /* TimeEntryModel.xcdatamodeld */,
 				C6EB47292520138100FCD0CB /* PersistentContainer.swift */,
-				2261B2CD25846E8D0020604B /* NSMOC_StaticProject.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -1999,7 +1994,6 @@
 				C6EB47702520170100FCD0CB /* CGPointOperators.swift in Sources */,
 				22B0783324B150C300256EB8 /* FormRequest.swift in Sources */,
 				2261B2E5258471E10020604B /* ProjectPresets.swift in Sources */,
-				2261B2CF25846E8D0020604B /* NSMOC_StaticProject.swift in Sources */,
 				228174CB2501B7B7008E471D /* DateComponent.swift in Sources */,
 				228174D52501CBCB008E471D /* NoSummary.swift in Sources */,
 				228174D32501CB76008E471D /* RawSummary.swift in Sources */,
@@ -2096,7 +2090,6 @@
 				2205DC46254B9F1C00146EAB /* RunningTimer.swift in Sources */,
 				2205DCAA254B9FFE00146EAB /* TimeEntry+CoreDataClass.swift in Sources */,
 				2205DD5E254BA16000146EAB /* MR_Timeline.swift in Sources */,
-				2261B2D025846E8D0020604B /* NSMOC_StaticProject.swift in Sources */,
 				2205DC5A254B9F6600146EAB /* RequestConstants.swift in Sources */,
 				2205DDA3254BA20500146EAB /* DateComponent.swift in Sources */,
 				2205DD0A254BA0C600146EAB /* MR_Widget.swift in Sources */,
@@ -2325,7 +2318,6 @@
 				22417FF32578F51600FF9B40 /* RowPositionModel.swift in Sources */,
 				22E6422225774EE000CCF49F /* CurrentTimeIndicator.swift in Sources */,
 				229646D724F335CA00FE14E5 /* ToOptional.swift in Sources */,
-				2261B2CE25846E8D0020604B /* NSMOC_StaticProject.swift in Sources */,
 				2262882224E88691006B330C /* Workspace.swift in Sources */,
 				2293CEED24EC5661000B68F4 /* ProjectLoader.swift in Sources */,
 				2207E46524E0BEAD00311F10 /* DPad.swift in Sources */,
