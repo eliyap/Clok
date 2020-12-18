@@ -53,7 +53,7 @@ final class PrefSaver: ObservableObject {
             )
             .map { terms in
                 terms.projects.map { project in
-                    project.wrappedID
+                    Int(project.id)
                 }
             }
             .sink { ids in

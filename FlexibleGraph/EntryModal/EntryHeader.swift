@@ -24,9 +24,11 @@ extension EntryFullScreenModal {
                 withAnimation(PropertyEditView.animation) {
                     entryModel.field = .project
                 }
+        
             } label: {
                 Text(entryModel.project.name)
-                    .foregroundColor(entryModel.project.wrappedColor)
+//                    .foregroundColor(entryModel.project.wrappedColor)
+                    .background(entryModel.project.color(in: colorScheme))
             }
         }
             .padding(Self.sharedPadding)

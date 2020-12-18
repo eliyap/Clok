@@ -47,9 +47,9 @@ struct FilterView: View {
     }
     
     /// wrapper around withAnimation, due to some scoping issue
-    func exclude(_ project: Project) -> Void {
+    func exclude(_ project: ProjectLike) -> Void {
         withAnimation {
-            _ = data.terms.projects.remove(at: data.terms.projects.firstIndex(where: {$0.wrappedID == project.wrappedID})!)
+            _ = data.terms.projects.remove(at: data.terms.projects.firstIndex(where: {$0.id == project.id})!)
         }
     }
     
@@ -63,10 +63,10 @@ struct FilterView: View {
     }
     
     var Included: some View {
-        ForEach(data.terms.projects, id: \.wrappedID) { project in
+        ForEach(data.terms.projects, id: \.id) { project in
             HStack {
                 Image(systemName: "largecircle.fill.circle")
-                    .foregroundColor(project.wrappedColor)
+                    .foregroundColor(project.color)
                 Text("\(project.name)")
                 /// for some reason (possible dragon drop), `onMove` does not register on the iPhone
                 if bounds.device != .iPhone {
@@ -86,10 +86,10 @@ struct FilterView: View {
     }
     
     var Excluded: some View {
-        ForEach(excluded, id: \.wrappedID) { project in
+        ForEach(excluded, id: \.id) { project in
             HStack {
                 Image(systemName: "circle")
-                    .foregroundColor(project.wrappedColor)
+                    .foregroundColor(project.color)
                 Text("\(project.name)")
             }
             .onTapGesture {
@@ -100,11 +100,14 @@ struct FilterView: View {
         }
     }
     
-    var allProjects: [Project] {
-        projects.sorted(by: {$0.name < $1.name}) + [ProjectPresets.shared.NoProject]
+    var allProjects: [ProjectLike] {
+        projects
+            .sorted(by: {$0.name < $1.name})
+            .map{ProjectLike.project($0)}
+            + [ProjectLike.special(.NoProject)]
     }
     
-    var excluded: [Project] {
+    var excluded: [ProjectLike] {
         allProjects
             .filter{!data.terms.contains(project: $0)}
             .sorted(by: {$0.name < $1.name})

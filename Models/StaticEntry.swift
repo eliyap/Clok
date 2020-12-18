@@ -8,7 +8,7 @@
 
 import Foundation
 import SwiftUI
-struct StaticEntry: TimeEntryLike {
+struct StaticEntry {
     var id: Int64
     var start: Date
     var end: Date
@@ -32,4 +32,8 @@ struct StaticEntry: TimeEntryLike {
         duration: .zero,
         billable: false
     )
+}
+
+extension StaticEntry: TimeEntryLike {
+    var wrappedProject: ProjectLike { project }
 }

@@ -27,6 +27,9 @@ struct StaticProject {
 }
 
 extension StaticProject {
+    
+    static let all = [NoProject, AnyProject, UnknownProject]
+    
     /** Represents the valid state in a `TimeEntry`: having no `Project` selected.
      Though this might be represented by a `nil` value, the state has associated strings and colors,
      so I chose to design it as a specific state.

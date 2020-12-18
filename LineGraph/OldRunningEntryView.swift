@@ -47,7 +47,7 @@ struct RunningEntryView: View {
                                 border: true
                             )
                         )
-                        .foregroundColor(running.wrappedProject.wrappedColor)
+                        .foregroundColor(running.wrappedProject.color)
                         .offset(y: offset(size: geo.size, running: running))
                 } else {
                     EmptyView()

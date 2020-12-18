@@ -14,9 +14,9 @@ final class TimeData: ObservableObject {
     
     init(projects: [Project]){
         /// get the matching `Project` or `StaticProject`
-        self.terms.projects = WorkspaceManager.termsProjects.compactMap { (id: Int) -> Project? in
-            projects.first(where: {$0.id == id})
-                ?? ProjectPresets.shared.all.first(where: {$0.wrappedID == id})
+        self.terms.projects = WorkspaceManager.termsProjects.compactMap { (id: Int) -> ProjectLike? in
+            (projects.map{ProjectLike.project($0)} + StaticProject.all.map{ProjectLike.special($0)})
+                .first(where: {$0.id == id})
         }
     }
     

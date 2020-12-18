@@ -18,19 +18,19 @@ struct SearchTerms {
     var mode: Mode = .projects
     
     /// included projects (including `noProject`)
-    var projects: [Project] = [ProjectPresets.shared.AnyProject]
+    var projects: [ProjectLike] = [.special(.AnyProject)]
     
     /// code stub for tag sorting
     var tags: [Any] {
         fatalError("Tag system not yet implemented")
     }
     
-    func contains(project: Project) -> Bool {
-        projects.contains(where: {project.wrappedID == $0.wrappedID})
+    func contains(project: ProjectLike) -> Bool {
+        projects.contains(where: {project.id == $0.id})
     }
     
     /// sorting function for projects in BarGraph
-    func projectSort(p0: Project, p1: Project) -> Bool {
+    func projectSort(p0: ProjectLike, p1: ProjectLike) -> Bool {
         switch (contains(project: p0), contains(project: p1)) {
         /// case 1: prioritize the entry that is included
         case (false, true):
@@ -41,8 +41,8 @@ struct SearchTerms {
         case (false, false):
             return p0.name < p1.name
         case (true, true):
-            let index0 = projects.firstIndex(where: {$0.wrappedID == p0.wrappedID})!
-            let index1 = projects.firstIndex(where: {$0.wrappedID == p1.wrappedID})!
+            let index0 = projects.firstIndex(where: {$0.id == p0.id})!
+            let index1 = projects.firstIndex(where: {$0.id == p1.id})!
             return index0 < index1
         }
     }
