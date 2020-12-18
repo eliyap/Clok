@@ -24,7 +24,7 @@ enum ProjectLike {
     case special(StaticProject)
     case lite(ProjectLite)
     
-    /// define a unified way to access `Color`
+    /// define a unified way to access `color`
     var color: Color {
         switch self {
         case .project(let project):
@@ -33,6 +33,18 @@ enum ProjectLike {
             return special.color
         case .lite(let lite):
             return lite.color
+        }
+    }
+    
+    /// define a unified way to access `name`
+    var name: String {
+        switch self {
+        case .project(let project):
+            return project.name
+        case .special(let special):
+            return special.name
+        case .lite(let lite):
+            return lite.name
         }
     }
     
