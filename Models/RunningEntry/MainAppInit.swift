@@ -19,7 +19,7 @@ struct RawRunningEntry: Decodable {
     struct WrappedEntry: Decodable {
         let id: Int64
         /// absence of a `pid` indicates no `Project`
-        let pid: Int?
+        let pid: Int64?
         let wid: Int
         let billable: Bool
         let start: Date
@@ -51,18 +51,22 @@ extension RunningEntry {
             billable: runningData.billable
         )
         
+        /// update `pid` from previously set `unknown` pid
+        self.pid = runningData.pid
+        
         /**
          Since data comes from Toggl, `Project` should always be a valid project.
          Or it can be `noProject`, represented as `nil` (i.e. the `pid` is missing in the JSON)
          If we cannot find the project in our system, mark it as unknown and try to pull it later.
          */
         if let pid = runningData.pid {
-            project = projects.first(where: {$0.id == pid})
-                ?? ProjectLike.special(.UnknownProject)
+            if let match = projects.first(where: {$0.id == pid}) {
+                project = .project(match)
+            } else {
+                project = .special(.UnknownProject)
+            }
         } else {
-            project = ProjectLike.special(.NoProject)
+            project = .special(.NoProject)
         }
-        /// update `pid` from previously set `unknown` pid
-        self.pid = project?.id
     }
 }
