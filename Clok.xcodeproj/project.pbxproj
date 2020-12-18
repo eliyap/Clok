@@ -88,6 +88,9 @@
 		22275418258CBD3F00EB99C8 /* StaticProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22275417258CBD3F00EB99C8 /* StaticProject.swift */; };
 		22275419258CBD3F00EB99C8 /* StaticProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22275417258CBD3F00EB99C8 /* StaticProject.swift */; };
 		2227541A258CBD3F00EB99C8 /* StaticProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22275417258CBD3F00EB99C8 /* StaticProject.swift */; };
+		22275429258CBD6A00EB99C8 /* ProjectLite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22275401258CBBE400EB99C8 /* ProjectLite.swift */; };
+		22275431258CBD6E00EB99C8 /* ProjectLite_Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2227540C258CBC0B00EB99C8 /* ProjectLite_Equatable.swift */; };
+		22275439258CBD7400EB99C8 /* StaticProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22275417258CBD3F00EB99C8 /* StaticProject.swift */; };
 		22283DA024DF9959005AC0F3 /* BarTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22283D9F24DF9959005AC0F3 /* BarTabs.swift */; };
 		22283DA224DF9CE0005AC0F3 /* GraphModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22283DA124DF9CE0005AC0F3 /* GraphModel.swift */; };
 		22283DA424DF9D8B005AC0F3 /* BarStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22283DA324DF9D8B005AC0F3 /* BarStack.swift */; };
@@ -2100,12 +2103,14 @@
 				2205DC8C254B9FC700146EAB /* RawProject.swift in Sources */,
 				2287243F257214570082A490 /* AssignCancellable.swift in Sources */,
 				22275389258CB44100EB99C8 /* RunningEntry_Equatable.swift in Sources */,
+				22275429258CBD6A00EB99C8 /* ProjectLite.swift in Sources */,
 				22D5F5062570CFE000806992 /* MR_TimeIndicator.swift in Sources */,
 				22D9B9C1257B4DEB00E923C5 /* RunningEntryFetcher.swift in Sources */,
 				228724272571D89E0082A490 /* MR_Intent_Default.swift in Sources */,
 				22B2624A254B9CD300182236 /* FormRequest.swift in Sources */,
 				2261B33C2585A6900020604B /* FloatingProject.swift in Sources */,
 				2287246425721D970082A490 /* DetailedProject.swift in Sources */,
+				22275439258CBD7400EB99C8 /* StaticProject.swift in Sources */,
 				22B261E5254B9AF500182236 /* WidgetBundle.intentdefinition in Sources */,
 				22D4F4CF257724420053ABFB /* ColorTint.swift in Sources */,
 				222753DE258CB97900EB99C8 /* ProjectLike.swift in Sources */,
@@ -2121,6 +2126,7 @@
 				2205DC78254B9FA300146EAB /* LoadProjects.swift in Sources */,
 				22FFF6A92571022700A54471 /* DataFetcher.swift in Sources */,
 				2261B2DB2584710A0020604B /* MiscellaneousConstants.swift in Sources */,
+				22275431258CBD6E00EB99C8 /* ProjectLite_Equatable.swift in Sources */,
 				22D9B9B9257B4DD700E923C5 /* DetailedWithRunningFetcher.swift in Sources */,
 				2205DCB5254BA00B00146EAB /* Tag+CoreDataProperties.swift in Sources */,
 				22B2625E254B9CF200182236 /* RunningEntry.swift in Sources */,
