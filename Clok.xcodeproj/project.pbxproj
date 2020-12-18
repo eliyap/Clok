@@ -69,6 +69,9 @@
 		22275345258CAD5C00EB99C8 /* ProjectLike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22275343258CAD5C00EB99C8 /* ProjectLike.swift */; };
 		22275346258CAD5C00EB99C8 /* ProjectLike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22275343258CAD5C00EB99C8 /* ProjectLike.swift */; };
 		2227535D258CB35600EB99C8 /* MainAppInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229D7B224F055FC004E1034 /* MainAppInit.swift */; };
+		2227536D258CB3A400EB99C8 /* RunningEntry_NSSecureEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2227536C258CB3A400EB99C8 /* RunningEntry_NSSecureEncoding.swift */; };
+		2227536E258CB3A400EB99C8 /* RunningEntry_NSSecureEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2227536C258CB3A400EB99C8 /* RunningEntry_NSSecureEncoding.swift */; };
+		2227536F258CB3A400EB99C8 /* RunningEntry_NSSecureEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2227536C258CB3A400EB99C8 /* RunningEntry_NSSecureEncoding.swift */; };
 		22283DA024DF9959005AC0F3 /* BarTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22283D9F24DF9959005AC0F3 /* BarTabs.swift */; };
 		22283DA224DF9CE0005AC0F3 /* GraphModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22283DA124DF9CE0005AC0F3 /* GraphModel.swift */; };
 		22283DA424DF9D8B005AC0F3 /* BarStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22283DA324DF9D8B005AC0F3 /* BarStack.swift */; };
@@ -554,6 +557,7 @@
 		222305AD24AE807000711031 /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
 		22232B8A24A9532000F3C378 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		22275343258CAD5C00EB99C8 /* ProjectLike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectLike.swift; sourceTree = "<group>"; };
+		2227536C258CB3A400EB99C8 /* RunningEntry_NSSecureEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningEntry_NSSecureEncoding.swift; sourceTree = "<group>"; };
 		22283D9F24DF9959005AC0F3 /* BarTabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarTabs.swift; sourceTree = "<group>"; };
 		22283DA124DF9CE0005AC0F3 /* GraphModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphModel.swift; sourceTree = "<group>"; };
 		22283DA324DF9D8B005AC0F3 /* BarStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarStack.swift; sourceTree = "<group>"; };
@@ -937,6 +941,7 @@
 			isa = PBXGroup;
 			children = (
 				22B0784124B17BEC00256EB8 /* RunningEntry.swift */,
+				2227536C258CB3A400EB99C8 /* RunningEntry_NSSecureEncoding.swift */,
 				2229D7B224F055FC004E1034 /* MainAppInit.swift */,
 			);
 			path = RunningEntry;
@@ -1905,6 +1910,7 @@
 				C6EB47842520170100FCD0CB /* DateExtension.swift in Sources */,
 				229521582505BF0F00085055 /* GetCredentials.swift in Sources */,
 				22D5F43825707F9600806992 /* Tag+CoreDataClass.swift in Sources */,
+				2227536F258CB3A400EB99C8 /* RunningEntry_NSSecureEncoding.swift in Sources */,
 				2292C4F32505CC1E005802B5 /* PieceLarge.swift in Sources */,
 				C6EB45D3251FEDBF00FCD0CB /* CoreDataConstants.swift in Sources */,
 				2292C4E92505CC1E005802B5 /* Piece5.swift in Sources */,
@@ -2003,6 +2009,7 @@
 				22B0783324B150C300256EB8 /* FormRequest.swift in Sources */,
 				2261B2E5258471E10020604B /* ProjectPresets.swift in Sources */,
 				228174CB2501B7B7008E471D /* DateComponent.swift in Sources */,
+				2227536E258CB3A400EB99C8 /* RunningEntry_NSSecureEncoding.swift in Sources */,
 				228174D52501CBCB008E471D /* NoSummary.swift in Sources */,
 				228174D32501CB76008E471D /* RawSummary.swift in Sources */,
 				229521572505BF0F00085055 /* GetCredentials.swift in Sources */,
@@ -2328,6 +2335,7 @@
 				229646D724F335CA00FE14E5 /* ToOptional.swift in Sources */,
 				2262882224E88691006B330C /* Workspace.swift in Sources */,
 				2293CEED24EC5661000B68F4 /* ProjectLoader.swift in Sources */,
+				2227536D258CB3A400EB99C8 /* RunningEntry_NSSecureEncoding.swift in Sources */,
 				2207E46524E0BEAD00311F10 /* DPad.swift in Sources */,
 				224D10D324E6FA8900668FD8 /* DateIndicator.swift in Sources */,
 				223AC3A4257494F9002ABD9F /* NewGraphModel.swift in Sources */,
