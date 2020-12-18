@@ -86,7 +86,7 @@ extension RunningEntry {
     static let noEntry = RunningEntry(
         id: Int64(NSNotFound),
         start: Date.distantFuture,
-        project: ProjectPresets.shared.NoProject,
+        project: .special(.NoProject),
         entryDescription: "Not Running",
         tags: [],
         billable: false
@@ -95,7 +95,7 @@ extension RunningEntry {
     static let placeholder = RunningEntry(
         id: Int64(NSNotFound),
         start: Date(),
-        project: ProjectPresets.shared.NoProject,
+        project: .special(.NoProject),
         entryDescription: "Placeholder",
         tags: ["Tag"],
         billable: false
