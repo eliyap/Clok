@@ -20,17 +20,15 @@ import SwiftUI
 ///     - a `Project`
 ///     - some special case item which is defined in code
 enum ProjectLike {
-    case project(Project?)
+    case project(Project)
     case special(StaticProject)
     case lite(ProjectLite)
     
     /// define a unified way to access `Color`
     var color: Color {
         switch self {
-        case .project(.some(let project)):
+        case .project(let project):
             return project.wrappedColor
-        case .project(.none):
-            return StaticProject.NoProject.color
         case .special(let special):
             return special.color
         case .lite(let lite):
