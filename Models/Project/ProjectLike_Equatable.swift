@@ -28,6 +28,8 @@ extension ProjectLike: Equatable {
         case (.lite(let l), .lite(let r)):
             return l == r
         
+        /// NOTE: you may wish to match `ProjectLite` against `Project` at some point...
+            
         /// fail any case with non-matched associated types
         default:
             return false
