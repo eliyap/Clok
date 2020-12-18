@@ -51,14 +51,6 @@ enum ProjectLike {
     // - TODO: define 'no description' special case for `name`
 }
 
-/// Defines a lightweight structure useful for conveying some `Project` attributes without
-/// spawning a full fledged `CoreData` object.
-/// Distinct from `StaticProject` so as to avoid confusion.
-struct ProjectLite {
-    let color: Color
-    let name: String
-    let id: Int64
-}
 
 /// Defines an edge case / special type of `Project` which I need to be able to refer to in code.
 /// - Warning: do NOT instantiate!
@@ -105,27 +97,4 @@ extension StaticProject {
         hex_color: Constants.NoProjectHex,
         name: "[Unknown]"
     )
-}
-
-extension ProjectLike: Equatable {
-    static func < (lhs: ProjectLike, rhs: ProjectLike) -> Bool {
-        /// No Project should always be first
-        if ProjectLike.special(.NoProject) == lhs  { return true }
-        if ProjectLike.special(.NoProject) == rhs  { return false }
-        return lhs.name < rhs.name
-    }
-    
-    static func == (lhs: ProjectLike, rhs: ProjectLike) -> Bool {
-        switch (lhs, rhs) {
-        case (.project(let l), .project(let r)):
-            return l == r
-        /// since these  are known values, we can shortcut by comparing IDs
-        case (.special(let l), .special(let r)):
-            return l.id == r.id
-        case (.lite(let l), .lite(let r)):
-            return l == r
-        default:
-            return false
-        }
-    }
 }
