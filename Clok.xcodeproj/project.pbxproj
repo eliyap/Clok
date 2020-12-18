@@ -82,6 +82,9 @@
 		22275402258CBBE400EB99C8 /* ProjectLite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22275401258CBBE400EB99C8 /* ProjectLite.swift */; };
 		22275403258CBBE400EB99C8 /* ProjectLite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22275401258CBBE400EB99C8 /* ProjectLite.swift */; };
 		22275404258CBBE400EB99C8 /* ProjectLite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22275401258CBBE400EB99C8 /* ProjectLite.swift */; };
+		2227540D258CBC0B00EB99C8 /* ProjectLite_Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2227540C258CBC0B00EB99C8 /* ProjectLite_Equatable.swift */; };
+		2227540E258CBC0B00EB99C8 /* ProjectLite_Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2227540C258CBC0B00EB99C8 /* ProjectLite_Equatable.swift */; };
+		2227540F258CBC0B00EB99C8 /* ProjectLite_Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2227540C258CBC0B00EB99C8 /* ProjectLite_Equatable.swift */; };
 		22283DA024DF9959005AC0F3 /* BarTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22283D9F24DF9959005AC0F3 /* BarTabs.swift */; };
 		22283DA224DF9CE0005AC0F3 /* GraphModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22283DA124DF9CE0005AC0F3 /* GraphModel.swift */; };
 		22283DA424DF9D8B005AC0F3 /* BarStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22283DA324DF9D8B005AC0F3 /* BarStack.swift */; };
@@ -567,6 +570,7 @@
 		222753B5258CB89400EB99C8 /* TimeEntryLike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntryLike.swift; sourceTree = "<group>"; };
 		222753F6258CBBB300EB99C8 /* ProjectLike_Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectLike_Equatable.swift; sourceTree = "<group>"; };
 		22275401258CBBE400EB99C8 /* ProjectLite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectLite.swift; sourceTree = "<group>"; };
+		2227540C258CBC0B00EB99C8 /* ProjectLite_Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectLite_Equatable.swift; sourceTree = "<group>"; };
 		22283D9F24DF9959005AC0F3 /* BarTabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarTabs.swift; sourceTree = "<group>"; };
 		22283DA124DF9CE0005AC0F3 /* GraphModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphModel.swift; sourceTree = "<group>"; };
 		22283DA324DF9D8B005AC0F3 /* BarStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarStack.swift; sourceTree = "<group>"; };
@@ -961,6 +965,7 @@
 				22275343258CAD5C00EB99C8 /* ProjectLike.swift */,
 				222753F6258CBBB300EB99C8 /* ProjectLike_Equatable.swift */,
 				22275401258CBBE400EB99C8 /* ProjectLite.swift */,
+				2227540C258CBC0B00EB99C8 /* ProjectLite_Equatable.swift */,
 			);
 			path = Project;
 			sourceTree = "<group>";
@@ -1967,6 +1972,7 @@
 				229521462505BD7600085055 /* NoSummary.swift in Sources */,
 				2292C4ED2505CC1E005802B5 /* ConfigurablePiece.swift in Sources */,
 				2295214C2505BDB200085055 /* TimeConstants.swift in Sources */,
+				2227540F258CBC0B00EB99C8 /* ProjectLite_Equatable.swift in Sources */,
 				2292C4EC2505CC1E005802B5 /* EnumeratePiece.swift in Sources */,
 				229428DE251E7E7E008C0BFF /* Mod.swift in Sources */,
 				22D5F43A25707F9600806992 /* Project+CoreDataClass.swift in Sources */,
@@ -1995,6 +2001,7 @@
 			files = (
 				221F6285251EE5DD000ECED9 /* EmptyRingView.swift in Sources */,
 				C6EB47732520170100FCD0CB /* DateAngle.swift in Sources */,
+				2227540E258CBC0B00EB99C8 /* ProjectLite_Equatable.swift in Sources */,
 				228174CC2501B90C008E471D /* DataTaskMonitor.swift in Sources */,
 				C6EB476E2520170100FCD0CB /* DateMean.swift in Sources */,
 				2229D7B424F05683004E1034 /* RunningEntry.swift in Sources */,
@@ -2221,6 +2228,7 @@
 				229D412B257E11A900ABD26F /* PageAnchor.swift in Sources */,
 				22D4F54B2577364B0053ABFB /* VerticalScroll.swift in Sources */,
 				C60856AB251FCB1E00E6D6C0 /* URLStoreExtension.swift in Sources */,
+				2227540D258CBC0B00EB99C8 /* ProjectLite_Equatable.swift in Sources */,
 				22128E09254206E6004913AF /* WidgetManager.swift in Sources */,
 				2238640024BBBD030041886B /* LoadProjects.swift in Sources */,
 				22A2CE1D24E59BB1000820AD /* DateStridable.swift in Sources */,
