@@ -16,7 +16,7 @@ protocol TimeEntryLike {
     var end: Date { get }
     var color: Color { get }
     var entryDescription: String { get } /// note: `description` is a reserved word in iOS
-    var project: ProjectLike { get }
+    var wrappedProject: ProjectLike { get }
     var tagStrings: [String] { get }
     var duration: TimeInterval { get }
     var billable: Bool { get }
