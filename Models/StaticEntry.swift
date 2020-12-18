@@ -14,7 +14,7 @@ struct StaticEntry: TimeEntryLike {
     var end: Date
     var color: Color
     var entryDescription: String
-    var project: Project?
+    var project: ProjectLike
     var tagStrings: [String]
     var duration: TimeInterval
     var billable: Bool
@@ -27,7 +27,7 @@ struct StaticEntry: TimeEntryLike {
         end: .distantFuture,
         color: .clear,
         entryDescription: "[No Entry]",
-        project: ProjectPresets.shared.NoProject,
+        project: .special(.NoProject),
         tagStrings: [],
         duration: .zero,
         billable: false
