@@ -52,9 +52,7 @@ public class Project: NSManagedObject, Decodable {
     }
     
     static func < (lhs: Project, rhs: Project) -> Bool {
-        /// No Project should always be first
-        if ProjectPresets.shared.NoProject == lhs  { return true }
-        if ProjectPresets.shared.NoProject == rhs  { return false }
-        return lhs.name < rhs.name
+        /// sort alphabetically by default
+        lhs.name < rhs.name
     }
 }
