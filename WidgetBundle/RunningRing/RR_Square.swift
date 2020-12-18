@@ -58,7 +58,7 @@ struct RunningSquare: View {
 // MARK: - Computed Vars
 extension RunningSquare {
     
-    var color: Color { entry.entry.project.wrappedColor }
+    var color: Color { entry.entry.wrappedProject.wrappedColor }
     var duration: TimeInterval { entry.date - entry.entry.start }
     /// the angle to rotate the ring
     var angle: Angle {
@@ -129,7 +129,7 @@ extension RunningSquare {
     private var ProjectLabel: some View {
         Text(entry.entry == .noEntry
              ? ""
-             : entry.entry.project.name
+             : entry.entry.wrappedProject.name
         )
             .font(.subheadline)
             .bold()

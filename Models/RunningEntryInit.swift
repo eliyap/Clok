@@ -63,6 +63,6 @@ extension RunningEntry {
             project = ProjectPresets.shared.NoProject
         }
         /// update `pid` from previously set `unknown` pid
-        self.pid = project.wrappedID
+        self.pid = project?.id
     }
 }

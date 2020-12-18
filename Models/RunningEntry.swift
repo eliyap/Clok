@@ -12,7 +12,7 @@ import SwiftUI
 final class RunningEntry: NSObject, NSSecureCoding {
     
     var id: Int64
-    var pid: Int = NSNotFound
+    var pid: Int64?
     var start: Date
     var project: Project?
     var entryDescription: String
@@ -24,7 +24,7 @@ final class RunningEntry: NSObject, NSSecureCoding {
     init(
         id: Int64,
         start: Date,
-        project: Project,
+        project: Project?,
         entryDescription: String,
         tags: [String]?,
         billable: Bool
@@ -32,7 +32,7 @@ final class RunningEntry: NSObject, NSSecureCoding {
         self.id = id
         self.start = start
         self.project = project
-        self.pid = project.wrappedID
+        self.pid = project?.id
         self.entryDescription = entryDescription
         self.tags = tags ?? []
         self.billable = billable
@@ -67,7 +67,7 @@ final class RunningEntry: NSObject, NSSecureCoding {
     
     init?(coder: NSCoder) {
         id = Int64(coder.decodeInteger(forKey: "id"))
-        pid = coder.decodeInteger(forKey: "pid")
+        pid = Int64(coder.decodeInteger(forKey: "pid"))
         
         /// note: we will assign project later, for now leave `unknown`
         project = ProjectPresets.shared.UnknownProject
@@ -128,8 +128,8 @@ extension RunningEntry: TimeEntryLike {
     /// `TimeEntryLike` compliance
     var end: Date { Date() } /// always return current time
     var duration: TimeInterval { Date() - start } /// always return latest duration
-    var color: Color { project.wrappedColor }
+    var color: Color { wrappedProject.wrappedColor }
     var tagStrings: [String] { tags }
-    var wrappedProject: Project { project }
+    var wrappedProject: Project { project ?? ProjectPresets.shared.NoProject }
     var identifier: Int64 { id }
 }

@@ -104,7 +104,7 @@ extension MultiRingEntryView {
         if
             family == .systemMedium,
             entry.running != .noEntry,
-            let idx = projs.firstIndex(where: {$0.id == entry.running.project.wrappedID})
+            let idx = projs.firstIndex(where: {$0.id == entry.running.wrappedProject.id})
         {
             let popped = projs.remove(at: idx)
             projs = [popped] + projs

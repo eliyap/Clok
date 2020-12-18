@@ -85,7 +85,7 @@ extension ProjectRing {
     var duration: TimeInterval {
         /// if there IS a running entry, and it matches IDs, add its time
         /// NOTE: must check entry is running, otherwise `.noEntry` and `.noProject` conditions get confused
-        project.duration + ((entry.running != .noEntry && entry.running.project.wrappedID == project.id)
+        project.duration + ((entry.running != .noEntry && entry.running.wrappedProject.id == project.id)
             ? Date() - entry.running.start
             : .zero
         )
@@ -199,7 +199,7 @@ extension ProjectRing {
     /// makes it easier to see where the boundary is
     private func Spacer(size: CGSize) -> some View {
         Group {
-            if entry.running.project.wrappedID == project.id {
+            if entry.running.wrappedProject.id == project.id {
                 SquareSpacer(size: size)
             } else {
                 CircleSpacer(size: size)
