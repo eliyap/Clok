@@ -67,7 +67,6 @@
 		22232B8B24A9532000F3C378 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22232B8A24A9532000F3C378 /* LoginView.swift */; };
 		22275344258CAD5C00EB99C8 /* ProjectLike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22275343258CAD5C00EB99C8 /* ProjectLike.swift */; };
 		22275345258CAD5C00EB99C8 /* ProjectLike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22275343258CAD5C00EB99C8 /* ProjectLike.swift */; };
-		22275346258CAD5C00EB99C8 /* ProjectLike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22275343258CAD5C00EB99C8 /* ProjectLike.swift */; };
 		2227535D258CB35600EB99C8 /* MainAppInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229D7B224F055FC004E1034 /* MainAppInit.swift */; };
 		22275378258CB40500EB99C8 /* RunningEntry_Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22275377258CB40500EB99C8 /* RunningEntry_Equatable.swift */; };
 		22275379258CB40500EB99C8 /* RunningEntry_Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22275377258CB40500EB99C8 /* RunningEntry_Equatable.swift */; };
@@ -75,6 +74,7 @@
 		222753B6258CB89400EB99C8 /* TimeEntryLike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222753B5258CB89400EB99C8 /* TimeEntryLike.swift */; };
 		222753B7258CB89400EB99C8 /* TimeEntryLike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222753B5258CB89400EB99C8 /* TimeEntryLike.swift */; };
 		222753B8258CB89400EB99C8 /* TimeEntryLike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222753B5258CB89400EB99C8 /* TimeEntryLike.swift */; };
+		222753DE258CB97900EB99C8 /* ProjectLike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22275343258CAD5C00EB99C8 /* ProjectLike.swift */; };
 		22283DA024DF9959005AC0F3 /* BarTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22283D9F24DF9959005AC0F3 /* BarTabs.swift */; };
 		22283DA224DF9CE0005AC0F3 /* GraphModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22283DA124DF9CE0005AC0F3 /* GraphModel.swift */; };
 		22283DA424DF9D8B005AC0F3 /* BarStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22283DA324DF9D8B005AC0F3 /* BarStack.swift */; };
@@ -1893,7 +1893,6 @@
 				229521652505C07100085055 /* ColorCustom.swift in Sources */,
 				C6EB477E2520170100FCD0CB /* AsNSDate.swift in Sources */,
 				2292C4F62505CC1E005802B5 /* Piece3.swift in Sources */,
-				22275346258CAD5C00EB99C8 /* ProjectLike.swift in Sources */,
 				2292C4F92505CC1E005802B5 /* Piece11.swift in Sources */,
 				2292C4F72505CC1E005802B5 /* Piece9.swift in Sources */,
 				2292C4EA2505CC1E005802B5 /* Piece4.swift in Sources */,
@@ -2071,6 +2070,7 @@
 				2287246425721D970082A490 /* DetailedProject.swift in Sources */,
 				22B261E5254B9AF500182236 /* WidgetBundle.intentdefinition in Sources */,
 				22D4F4CF257724420053ABFB /* ColorTint.swift in Sources */,
+				222753DE258CB97900EB99C8 /* ProjectLike.swift in Sources */,
 				22B26286254B9D5600182236 /* AngleExtension.swift in Sources */,
 				22D4F4BC257722F60053ABFB /* TimeEntryExtensions.swift in Sources */,
 				22B261F8254B9B6D00182236 /* RR_Widget.swift in Sources */,
