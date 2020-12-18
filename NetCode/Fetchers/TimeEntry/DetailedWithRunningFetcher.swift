@@ -40,7 +40,7 @@ func DetailedWithRunningRequest(
                 return Just((detailed, RunningEntry(
                     id: raw.id,
                     start: raw.start,
-                    project: ProjectPresets.shared.NoProject,
+                    project: .special(.NoProject),
                     entryDescription: raw.description,
                     tags: raw.tags,
                     billable: raw.billable
@@ -64,7 +64,7 @@ func DetailedWithRunningRequest(
             } else {
             /// Time Entry is running with some unknown project
             /// make a further request to get some details
-                return FetchProjectDetails(pid: pid, token: token)
+                return FetchProjectDetails(pid: Int(pid), token: token)
                     .map { floating in
                         var detailed = detailed
                         /// append this project so it will show up in the widget
