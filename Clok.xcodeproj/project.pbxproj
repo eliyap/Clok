@@ -69,12 +69,9 @@
 		22275345258CAD5C00EB99C8 /* ProjectLike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22275343258CAD5C00EB99C8 /* ProjectLike.swift */; };
 		22275346258CAD5C00EB99C8 /* ProjectLike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22275343258CAD5C00EB99C8 /* ProjectLike.swift */; };
 		2227535D258CB35600EB99C8 /* MainAppInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229D7B224F055FC004E1034 /* MainAppInit.swift */; };
-		2227536D258CB3A400EB99C8 /* RunningEntry_NSSecureEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2227536C258CB3A400EB99C8 /* RunningEntry_NSSecureEncoding.swift */; };
-		2227536E258CB3A400EB99C8 /* RunningEntry_NSSecureEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2227536C258CB3A400EB99C8 /* RunningEntry_NSSecureEncoding.swift */; };
 		22275378258CB40500EB99C8 /* RunningEntry_Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22275377258CB40500EB99C8 /* RunningEntry_Equatable.swift */; };
 		22275379258CB40500EB99C8 /* RunningEntry_Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22275377258CB40500EB99C8 /* RunningEntry_Equatable.swift */; };
 		22275389258CB44100EB99C8 /* RunningEntry_Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22275377258CB40500EB99C8 /* RunningEntry_Equatable.swift */; };
-		2227539F258CB6EE00EB99C8 /* RunningEntry_NSSecureEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2227536C258CB3A400EB99C8 /* RunningEntry_NSSecureEncoding.swift */; };
 		22283DA024DF9959005AC0F3 /* BarTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22283D9F24DF9959005AC0F3 /* BarTabs.swift */; };
 		22283DA224DF9CE0005AC0F3 /* GraphModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22283DA124DF9CE0005AC0F3 /* GraphModel.swift */; };
 		22283DA424DF9D8B005AC0F3 /* BarStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22283DA324DF9D8B005AC0F3 /* BarStack.swift */; };
@@ -556,7 +553,6 @@
 		222305AD24AE807000711031 /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
 		22232B8A24A9532000F3C378 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		22275343258CAD5C00EB99C8 /* ProjectLike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectLike.swift; sourceTree = "<group>"; };
-		2227536C258CB3A400EB99C8 /* RunningEntry_NSSecureEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningEntry_NSSecureEncoding.swift; sourceTree = "<group>"; };
 		22275377258CB40500EB99C8 /* RunningEntry_Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningEntry_Equatable.swift; sourceTree = "<group>"; };
 		22283D9F24DF9959005AC0F3 /* BarTabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarTabs.swift; sourceTree = "<group>"; };
 		22283DA124DF9CE0005AC0F3 /* GraphModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphModel.swift; sourceTree = "<group>"; };
@@ -940,7 +936,6 @@
 			isa = PBXGroup;
 			children = (
 				22B0784124B17BEC00256EB8 /* RunningEntry.swift */,
-				2227536C258CB3A400EB99C8 /* RunningEntry_NSSecureEncoding.swift */,
 				22275377258CB40500EB99C8 /* RunningEntry_Equatable.swift */,
 				2229D7B224F055FC004E1034 /* MainAppInit.swift */,
 			);
@@ -2005,7 +2000,6 @@
 				C6EB47702520170100FCD0CB /* CGPointOperators.swift in Sources */,
 				22B0783324B150C300256EB8 /* FormRequest.swift in Sources */,
 				228174CB2501B7B7008E471D /* DateComponent.swift in Sources */,
-				2227536E258CB3A400EB99C8 /* RunningEntry_NSSecureEncoding.swift in Sources */,
 				228174D52501CBCB008E471D /* NoSummary.swift in Sources */,
 				228174D32501CB76008E471D /* RawSummary.swift in Sources */,
 				229521572505BF0F00085055 /* GetCredentials.swift in Sources */,
@@ -2121,7 +2115,6 @@
 				2205DCD3254BA03000146EAB /* RunningRing.intentdefinition in Sources */,
 				22D5F50F2570D08700806992 /* MR_Colors.swift in Sources */,
 				22D5F3FE256F8A7B00806992 /* Detailed.swift in Sources */,
-				2227539F258CB6EE00EB99C8 /* RunningEntry_NSSecureEncoding.swift in Sources */,
 				22B26240254B9CC600182236 /* KeychainError.swift in Sources */,
 				2205DD1D254BA0EE00146EAB /* MR_View.swift in Sources */,
 				22B26268254B9D2200182236 /* TimeIntervalExtension.swift in Sources */,
@@ -2334,7 +2327,6 @@
 				229646D724F335CA00FE14E5 /* ToOptional.swift in Sources */,
 				2262882224E88691006B330C /* Workspace.swift in Sources */,
 				2293CEED24EC5661000B68F4 /* ProjectLoader.swift in Sources */,
-				2227536D258CB3A400EB99C8 /* RunningEntry_NSSecureEncoding.swift in Sources */,
 				2207E46524E0BEAD00311F10 /* DPad.swift in Sources */,
 				224D10D324E6FA8900668FD8 /* DateIndicator.swift in Sources */,
 				223AC3A4257494F9002ABD9F /* NewGraphModel.swift in Sources */,

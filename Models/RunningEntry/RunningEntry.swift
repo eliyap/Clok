@@ -9,7 +9,7 @@
 import Foundation
 import SwiftUI
 
-final class RunningEntry: NSObject {
+final class RunningEntry: NSObject, NSSecureCoding {
     
     var id: Int64
     var pid: Int64?
@@ -24,7 +24,7 @@ final class RunningEntry: NSObject {
     init(
         id: Int64,
         start: Date,
-        project: Project?,
+        project: ProjectLike,
         entryDescription: String,
         tags: [String]?,
         billable: Bool
@@ -36,6 +36,48 @@ final class RunningEntry: NSObject {
         self.entryDescription = entryDescription
         self.tags = tags ?? []
         self.billable = billable
+    }
+
+    //MARK:- NSSecureCoding Compliance
+
+    static var supportsSecureCoding = true
+    
+    /**
+     NOTE: this init only finds `pid`, it does not use that to get the associated `project`
+     This is so that we do not need to make `projectLike` `NSSecureCoding` compliant.
+     Whatever decodes this will need to do its own work to find the `project`.
+     */
+    func encode(with coder: NSCoder) {
+        coder.encode(id, forKey: "id")
+        coder.encode(pid, forKey: "pid")
+        coder.encode(start, forKey: "start")
+        coder.encode(entryDescription, forKey: "entryDescription")
+        coder.encode(tags, forKey: "tags")
+    }
+    
+    /** Note to future self
+     - I would like to break this whole thing into an extension in a separate file, however
+     - Swift will not allow a designated (i.e. non-`convenience`) `init` to exist within an extension
+     
+     */
+    init?(coder: NSCoder) {
+        id = Int64(coder.decodeInteger(forKey: "id"))
+        pid = Int64(coder.decodeInteger(forKey: "pid"))
+        
+        /// note: we will assign project later, for now leave `unknown`
+        project = ProjectLike.special(.UnknownProject)
+        
+        tags = coder.decodeObject(forKey: "tags") as? [String]
+            ?? []
+        billable = coder.decodeBool(forKey: "billable")
+        
+        guard
+            let start = coder.decodeObject(forKey: "start") as? Date,
+            let entryDescription = coder.decodeObject(forKey: "entryDescription") as? String
+        else { return nil }
+        self.start = start
+        self.entryDescription = entryDescription
+        
     }
 }
 
