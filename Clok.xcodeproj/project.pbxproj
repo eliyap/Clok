@@ -72,6 +72,9 @@
 		2227536D258CB3A400EB99C8 /* RunningEntry_NSSecureEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2227536C258CB3A400EB99C8 /* RunningEntry_NSSecureEncoding.swift */; };
 		2227536E258CB3A400EB99C8 /* RunningEntry_NSSecureEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2227536C258CB3A400EB99C8 /* RunningEntry_NSSecureEncoding.swift */; };
 		2227536F258CB3A400EB99C8 /* RunningEntry_NSSecureEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2227536C258CB3A400EB99C8 /* RunningEntry_NSSecureEncoding.swift */; };
+		22275378258CB40500EB99C8 /* RunningEntry_Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22275377258CB40500EB99C8 /* RunningEntry_Equatable.swift */; };
+		22275379258CB40500EB99C8 /* RunningEntry_Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22275377258CB40500EB99C8 /* RunningEntry_Equatable.swift */; };
+		22275389258CB44100EB99C8 /* RunningEntry_Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22275377258CB40500EB99C8 /* RunningEntry_Equatable.swift */; };
 		22283DA024DF9959005AC0F3 /* BarTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22283D9F24DF9959005AC0F3 /* BarTabs.swift */; };
 		22283DA224DF9CE0005AC0F3 /* GraphModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22283DA124DF9CE0005AC0F3 /* GraphModel.swift */; };
 		22283DA424DF9D8B005AC0F3 /* BarStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22283DA324DF9D8B005AC0F3 /* BarStack.swift */; };
@@ -558,6 +561,7 @@
 		22232B8A24A9532000F3C378 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		22275343258CAD5C00EB99C8 /* ProjectLike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectLike.swift; sourceTree = "<group>"; };
 		2227536C258CB3A400EB99C8 /* RunningEntry_NSSecureEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningEntry_NSSecureEncoding.swift; sourceTree = "<group>"; };
+		22275377258CB40500EB99C8 /* RunningEntry_Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningEntry_Equatable.swift; sourceTree = "<group>"; };
 		22283D9F24DF9959005AC0F3 /* BarTabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarTabs.swift; sourceTree = "<group>"; };
 		22283DA124DF9CE0005AC0F3 /* GraphModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphModel.swift; sourceTree = "<group>"; };
 		22283DA324DF9D8B005AC0F3 /* BarStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarStack.swift; sourceTree = "<group>"; };
@@ -942,6 +946,7 @@
 			children = (
 				22B0784124B17BEC00256EB8 /* RunningEntry.swift */,
 				2227536C258CB3A400EB99C8 /* RunningEntry_NSSecureEncoding.swift */,
+				22275377258CB40500EB99C8 /* RunningEntry_Equatable.swift */,
 				2229D7B224F055FC004E1034 /* MainAppInit.swift */,
 			);
 			path = RunningEntry;
@@ -2041,6 +2046,7 @@
 				2262882324E88691006B330C /* Workspace.swift in Sources */,
 				229428D3251E7C61008C0BFF /* ColorBrightness.swift in Sources */,
 				C60856B9251FCE1B00E6D6C0 /* LoadProjects.swift in Sources */,
+				22275379258CB40500EB99C8 /* RunningEntry_Equatable.swift in Sources */,
 				C6EB47722520170100FCD0CB /* DateStridable.swift in Sources */,
 				C6EB45CA251FEDBF00FCD0CB /* CoreDataConstants.swift in Sources */,
 				22B0784524B17CD900256EB8 /* ColorCustom.swift in Sources */,
@@ -2064,6 +2070,7 @@
 				2287252825731F450082A490 /* ProjectDetailFetcher.swift in Sources */,
 				2205DC8C254B9FC700146EAB /* RawProject.swift in Sources */,
 				2287243F257214570082A490 /* AssignCancellable.swift in Sources */,
+				22275389258CB44100EB99C8 /* RunningEntry_Equatable.swift in Sources */,
 				22D5F5062570CFE000806992 /* MR_TimeIndicator.swift in Sources */,
 				22D9B9C1257B4DEB00E923C5 /* RunningEntryFetcher.swift in Sources */,
 				228724272571D89E0082A490 /* MR_Intent_Default.swift in Sources */,
@@ -2168,6 +2175,7 @@
 				22939EA42589BDA0004CDD26 /* ShieldedBinding.swift in Sources */,
 				223C30882583465000751C51 /* EntryModel.swift in Sources */,
 				221810DE24B00FB900B63ECA /* EntryTab.swift in Sources */,
+				22275378258CB40500EB99C8 /* RunningEntry_Equatable.swift in Sources */,
 				22275344258CAD5C00EB99C8 /* ProjectLike.swift in Sources */,
 				22A2CE2924E59E8C000820AD /* AngleAsDate.swift in Sources */,
 				22905B8824DB449400D5AC09 /* OldLinedBackground.swift in Sources */,
