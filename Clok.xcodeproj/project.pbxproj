@@ -71,10 +71,10 @@
 		2227535D258CB35600EB99C8 /* MainAppInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229D7B224F055FC004E1034 /* MainAppInit.swift */; };
 		2227536D258CB3A400EB99C8 /* RunningEntry_NSSecureEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2227536C258CB3A400EB99C8 /* RunningEntry_NSSecureEncoding.swift */; };
 		2227536E258CB3A400EB99C8 /* RunningEntry_NSSecureEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2227536C258CB3A400EB99C8 /* RunningEntry_NSSecureEncoding.swift */; };
-		2227536F258CB3A400EB99C8 /* RunningEntry_NSSecureEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2227536C258CB3A400EB99C8 /* RunningEntry_NSSecureEncoding.swift */; };
 		22275378258CB40500EB99C8 /* RunningEntry_Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22275377258CB40500EB99C8 /* RunningEntry_Equatable.swift */; };
 		22275379258CB40500EB99C8 /* RunningEntry_Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22275377258CB40500EB99C8 /* RunningEntry_Equatable.swift */; };
 		22275389258CB44100EB99C8 /* RunningEntry_Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22275377258CB40500EB99C8 /* RunningEntry_Equatable.swift */; };
+		2227539F258CB6EE00EB99C8 /* RunningEntry_NSSecureEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2227536C258CB3A400EB99C8 /* RunningEntry_NSSecureEncoding.swift */; };
 		22283DA024DF9959005AC0F3 /* BarTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22283D9F24DF9959005AC0F3 /* BarTabs.swift */; };
 		22283DA224DF9CE0005AC0F3 /* GraphModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22283DA124DF9CE0005AC0F3 /* GraphModel.swift */; };
 		22283DA424DF9D8B005AC0F3 /* BarStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22283DA324DF9D8B005AC0F3 /* BarStack.swift */; };
@@ -1909,7 +1909,6 @@
 				C6EB47842520170100FCD0CB /* DateExtension.swift in Sources */,
 				229521582505BF0F00085055 /* GetCredentials.swift in Sources */,
 				22D5F43825707F9600806992 /* Tag+CoreDataClass.swift in Sources */,
-				2227536F258CB3A400EB99C8 /* RunningEntry_NSSecureEncoding.swift in Sources */,
 				2292C4F32505CC1E005802B5 /* PieceLarge.swift in Sources */,
 				C6EB45D3251FEDBF00FCD0CB /* CoreDataConstants.swift in Sources */,
 				2292C4E92505CC1E005802B5 /* Piece5.swift in Sources */,
@@ -2122,6 +2121,7 @@
 				2205DCD3254BA03000146EAB /* RunningRing.intentdefinition in Sources */,
 				22D5F50F2570D08700806992 /* MR_Colors.swift in Sources */,
 				22D5F3FE256F8A7B00806992 /* Detailed.swift in Sources */,
+				2227539F258CB6EE00EB99C8 /* RunningEntry_NSSecureEncoding.swift in Sources */,
 				22B26240254B9CC600182236 /* KeychainError.swift in Sources */,
 				2205DD1D254BA0EE00146EAB /* MR_View.swift in Sources */,
 				22B26268254B9D2200182236 /* TimeIntervalExtension.swift in Sources */,
