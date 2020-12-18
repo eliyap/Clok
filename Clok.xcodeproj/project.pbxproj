@@ -947,6 +947,14 @@
 			path = RunningEntry;
 			sourceTree = "<group>";
 		};
+		222753F5258CBB7600EB99C8 /* Project */ = {
+			isa = PBXGroup;
+			children = (
+				22275343258CAD5C00EB99C8 /* ProjectLike.swift */,
+			);
+			path = Project;
+			sourceTree = "<group>";
+		};
 		2229D7AD24F04574004E1034 /* Fetchers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1513,7 +1521,7 @@
 				22275355258CB32500EB99C8 /* RunningEntry */,
 				22D9B957257B292300E923C5 /* StaticEntry.swift */,
 				222753B5258CB89400EB99C8 /* TimeEntryLike.swift */,
-				22275343258CAD5C00EB99C8 /* ProjectLike.swift */,
+				222753F5258CBB7600EB99C8 /* Project */,
 				C65B7D2B2497DE4A00EED981 /* EntryOperations.swift */,
 				221C3C5624A93C57006995C5 /* User.swift */,
 				2262882124E88691006B330C /* Workspace.swift */,
