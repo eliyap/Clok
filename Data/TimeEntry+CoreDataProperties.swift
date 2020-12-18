@@ -36,7 +36,7 @@ extension TimeEntry {
     }
     
     public var wrappedColor: Color {
-        wrappedProject.wrappedColor
+        wrappedProject.color
     }
     
     var wrappedProject: ProjectLike {
