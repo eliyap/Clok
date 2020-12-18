@@ -85,6 +85,9 @@
 		2227540D258CBC0B00EB99C8 /* ProjectLite_Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2227540C258CBC0B00EB99C8 /* ProjectLite_Equatable.swift */; };
 		2227540E258CBC0B00EB99C8 /* ProjectLite_Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2227540C258CBC0B00EB99C8 /* ProjectLite_Equatable.swift */; };
 		2227540F258CBC0B00EB99C8 /* ProjectLite_Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2227540C258CBC0B00EB99C8 /* ProjectLite_Equatable.swift */; };
+		22275418258CBD3F00EB99C8 /* StaticProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22275417258CBD3F00EB99C8 /* StaticProject.swift */; };
+		22275419258CBD3F00EB99C8 /* StaticProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22275417258CBD3F00EB99C8 /* StaticProject.swift */; };
+		2227541A258CBD3F00EB99C8 /* StaticProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22275417258CBD3F00EB99C8 /* StaticProject.swift */; };
 		22283DA024DF9959005AC0F3 /* BarTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22283D9F24DF9959005AC0F3 /* BarTabs.swift */; };
 		22283DA224DF9CE0005AC0F3 /* GraphModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22283DA124DF9CE0005AC0F3 /* GraphModel.swift */; };
 		22283DA424DF9D8B005AC0F3 /* BarStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22283DA324DF9D8B005AC0F3 /* BarStack.swift */; };
@@ -571,6 +574,7 @@
 		222753F6258CBBB300EB99C8 /* ProjectLike_Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectLike_Equatable.swift; sourceTree = "<group>"; };
 		22275401258CBBE400EB99C8 /* ProjectLite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectLite.swift; sourceTree = "<group>"; };
 		2227540C258CBC0B00EB99C8 /* ProjectLite_Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectLite_Equatable.swift; sourceTree = "<group>"; };
+		22275417258CBD3F00EB99C8 /* StaticProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticProject.swift; sourceTree = "<group>"; };
 		22283D9F24DF9959005AC0F3 /* BarTabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarTabs.swift; sourceTree = "<group>"; };
 		22283DA124DF9CE0005AC0F3 /* GraphModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphModel.swift; sourceTree = "<group>"; };
 		22283DA324DF9D8B005AC0F3 /* BarStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarStack.swift; sourceTree = "<group>"; };
@@ -966,6 +970,7 @@
 				222753F6258CBBB300EB99C8 /* ProjectLike_Equatable.swift */,
 				22275401258CBBE400EB99C8 /* ProjectLite.swift */,
 				2227540C258CBC0B00EB99C8 /* ProjectLite_Equatable.swift */,
+				22275417258CBD3F00EB99C8 /* StaticProject.swift */,
 			);
 			path = Project;
 			sourceTree = "<group>";
@@ -1946,6 +1951,7 @@
 				22275404258CBBE400EB99C8 /* ProjectLite.swift in Sources */,
 				2292C4FA2505CC1E005802B5 /* Piece12.swift in Sources */,
 				227746D42505BC9200D17CA3 /* GridWidget.swift in Sources */,
+				2227541A258CBD3F00EB99C8 /* StaticProject.swift in Sources */,
 				C6EB47862520170100FCD0CB /* AnyTransitionSlide.swift in Sources */,
 				22FFF6632570FC9F00A54471 /* WidgetManager.swift in Sources */,
 				2261B2F5258594080020604B /* MiscellaneousConstants.swift in Sources */,
@@ -2028,6 +2034,7 @@
 				C60856B7251FCE1B00E6D6C0 /* TimeEntry+CoreDataProperties.swift in Sources */,
 				22B0783924B1519D00256EB8 /* NetworkError.swift in Sources */,
 				22DC869B24BA7A5E00FF771F /* TimeEntryModel.xcdatamodeld in Sources */,
+				22275419258CBD3F00EB99C8 /* StaticProject.swift in Sources */,
 				2295215B2505BF3200085055 /* KeychainError.swift in Sources */,
 				2229D7A624EF5C55004E1034 /* TimeIntervalExtension.swift in Sources */,
 				22D56F0D2526BB080011C4AC /* RingSize.swift in Sources */,
@@ -2238,6 +2245,7 @@
 				22027DD024AFF63F00C0BA90 /* OrientationView.swift in Sources */,
 				228B100224AEA6E50026AD4B /* RoundBottomRect.swift in Sources */,
 				2295215A2505BF2A00085055 /* KeychainError.swift in Sources */,
+				22275418258CBD3F00EB99C8 /* StaticProject.swift in Sources */,
 				229D4119257E117E00ABD26F /* StickyDateLabel.swift in Sources */,
 				C65B7D2C2497DE4A00EED981 /* EntryOperations.swift in Sources */,
 				22F52411257E25FC005222C2 /* AxisToggle.swift in Sources */,
