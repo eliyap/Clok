@@ -65,6 +65,9 @@
 		221F6285251EE5DD000ECED9 /* EmptyRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221F6276251EE5B3000ECED9 /* EmptyRingView.swift */; };
 		222305AE24AE807000711031 /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222305AD24AE807000711031 /* CustomTabView.swift */; };
 		22232B8B24A9532000F3C378 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22232B8A24A9532000F3C378 /* LoginView.swift */; };
+		22275344258CAD5C00EB99C8 /* ProjectLike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22275343258CAD5C00EB99C8 /* ProjectLike.swift */; };
+		22275345258CAD5C00EB99C8 /* ProjectLike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22275343258CAD5C00EB99C8 /* ProjectLike.swift */; };
+		22275346258CAD5C00EB99C8 /* ProjectLike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22275343258CAD5C00EB99C8 /* ProjectLike.swift */; };
 		22283DA024DF9959005AC0F3 /* BarTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22283D9F24DF9959005AC0F3 /* BarTabs.swift */; };
 		22283DA224DF9CE0005AC0F3 /* GraphModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22283DA124DF9CE0005AC0F3 /* GraphModel.swift */; };
 		22283DA424DF9D8B005AC0F3 /* BarStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22283DA324DF9D8B005AC0F3 /* BarStack.swift */; };
@@ -553,6 +556,7 @@
 		221F6276251EE5B3000ECED9 /* EmptyRingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyRingView.swift; sourceTree = "<group>"; };
 		222305AD24AE807000711031 /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
 		22232B8A24A9532000F3C378 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		22275343258CAD5C00EB99C8 /* ProjectLike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectLike.swift; sourceTree = "<group>"; };
 		22283D9F24DF9959005AC0F3 /* BarTabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarTabs.swift; sourceTree = "<group>"; };
 		22283DA124DF9CE0005AC0F3 /* GraphModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphModel.swift; sourceTree = "<group>"; };
 		22283DA324DF9D8B005AC0F3 /* BarStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarStack.swift; sourceTree = "<group>"; };
@@ -1501,6 +1505,7 @@
 				2229D7B224F055FC004E1034 /* RunningEntryInit.swift */,
 				22556B392574C885003DEB7D /* TimeEntryLike.swift */,
 				22D9B957257B292300E923C5 /* StaticEntry.swift */,
+				22275343258CAD5C00EB99C8 /* ProjectLike.swift */,
 				C65B7D2B2497DE4A00EED981 /* EntryOperations.swift */,
 				221C3C5624A93C57006995C5 /* User.swift */,
 				2262882124E88691006B330C /* Workspace.swift */,
@@ -1882,6 +1887,7 @@
 				229521652505C07100085055 /* ColorCustom.swift in Sources */,
 				C6EB477E2520170100FCD0CB /* AsNSDate.swift in Sources */,
 				2292C4F62505CC1E005802B5 /* Piece3.swift in Sources */,
+				22275346258CAD5C00EB99C8 /* ProjectLike.swift in Sources */,
 				2292C4F92505CC1E005802B5 /* Piece11.swift in Sources */,
 				2292C4F72505CC1E005802B5 /* Piece9.swift in Sources */,
 				2292C4EA2505CC1E005802B5 /* Piece4.swift in Sources */,
@@ -2018,6 +2024,7 @@
 				228174D02501CAFC008E471D /* SummaryTimelineEntry.swift in Sources */,
 				22A2CE2F24E59F8B000820AD /* ColorHex.swift in Sources */,
 				22556B612574C97F003DEB7D /* TimeEntryLike.swift in Sources */,
+				22275345258CAD5C00EB99C8 /* ProjectLike.swift in Sources */,
 				22D4F4CD257724410053ABFB /* ColorTint.swift in Sources */,
 				229428DD251E7E7E008C0BFF /* Mod.swift in Sources */,
 				C60856B8251FCE1B00E6D6C0 /* LoadTags.swift in Sources */,
@@ -2153,6 +2160,7 @@
 				22939EA42589BDA0004CDD26 /* ShieldedBinding.swift in Sources */,
 				223C30882583465000751C51 /* EntryModel.swift in Sources */,
 				221810DE24B00FB900B63ECA /* EntryTab.swift in Sources */,
+				22275344258CAD5C00EB99C8 /* ProjectLike.swift in Sources */,
 				22A2CE2924E59E8C000820AD /* AngleAsDate.swift in Sources */,
 				22905B8824DB449400D5AC09 /* OldLinedBackground.swift in Sources */,
 				224D10CE24E5AC8C00668FD8 /* WeekdaySelector.swift in Sources */,
