@@ -20,9 +20,9 @@ extension Detailed {
         
         /// copy from main app to keep consistency
         static let noProject = Detailed.Project(
-            color: ProjectPresets.shared.NoProject.wrappedColor,
-            name: ProjectPresets.shared.NoProject.name,
-            id: ProjectPresets.shared.NoProject.wrappedID,
+            color: Color(hex: RawProject.NoProject.hex_color),
+            name: RawProject.NoProject.name,
+            id: RawProject.NoProject.id,
             entries: [],
             duration: .zero
         )
