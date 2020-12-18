@@ -1,5 +1,5 @@
 //
-//  Entry.swift
+//  TimeEntryLike.swift
 //  Clok
 //
 //  Created by Secret Asian Man Dev on 30/11/20.
