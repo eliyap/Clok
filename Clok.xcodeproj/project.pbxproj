@@ -72,6 +72,9 @@
 		22275378258CB40500EB99C8 /* RunningEntry_Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22275377258CB40500EB99C8 /* RunningEntry_Equatable.swift */; };
 		22275379258CB40500EB99C8 /* RunningEntry_Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22275377258CB40500EB99C8 /* RunningEntry_Equatable.swift */; };
 		22275389258CB44100EB99C8 /* RunningEntry_Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22275377258CB40500EB99C8 /* RunningEntry_Equatable.swift */; };
+		222753B6258CB89400EB99C8 /* TimeEntryLike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222753B5258CB89400EB99C8 /* TimeEntryLike.swift */; };
+		222753B7258CB89400EB99C8 /* TimeEntryLike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222753B5258CB89400EB99C8 /* TimeEntryLike.swift */; };
+		222753B8258CB89400EB99C8 /* TimeEntryLike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222753B5258CB89400EB99C8 /* TimeEntryLike.swift */; };
 		22283DA024DF9959005AC0F3 /* BarTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22283D9F24DF9959005AC0F3 /* BarTabs.swift */; };
 		22283DA224DF9CE0005AC0F3 /* GraphModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22283DA124DF9CE0005AC0F3 /* GraphModel.swift */; };
 		22283DA424DF9D8B005AC0F3 /* BarStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22283DA324DF9D8B005AC0F3 /* BarStack.swift */; };
@@ -554,6 +557,7 @@
 		22232B8A24A9532000F3C378 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		22275343258CAD5C00EB99C8 /* ProjectLike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectLike.swift; sourceTree = "<group>"; };
 		22275377258CB40500EB99C8 /* RunningEntry_Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningEntry_Equatable.swift; sourceTree = "<group>"; };
+		222753B5258CB89400EB99C8 /* TimeEntryLike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntryLike.swift; sourceTree = "<group>"; };
 		22283D9F24DF9959005AC0F3 /* BarTabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarTabs.swift; sourceTree = "<group>"; };
 		22283DA124DF9CE0005AC0F3 /* GraphModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphModel.swift; sourceTree = "<group>"; };
 		22283DA324DF9D8B005AC0F3 /* BarStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarStack.swift; sourceTree = "<group>"; };
@@ -1507,6 +1511,7 @@
 			children = (
 				22275355258CB32500EB99C8 /* RunningEntry */,
 				22D9B957257B292300E923C5 /* StaticEntry.swift */,
+				222753B5258CB89400EB99C8 /* TimeEntryLike.swift */,
 				22275343258CAD5C00EB99C8 /* ProjectLike.swift */,
 				C65B7D2B2497DE4A00EED981 /* EntryOperations.swift */,
 				221C3C5624A93C57006995C5 /* User.swift */,
@@ -1931,6 +1936,7 @@
 				22D56F162526BB090011C4AC /* RingSize.swift in Sources */,
 				22E64281257799E900CCF49F /* MoldedRectangle.swift in Sources */,
 				C6EB47832520170100FCD0CB /* DateMean.swift in Sources */,
+				222753B8258CB89400EB99C8 /* TimeEntryLike.swift in Sources */,
 				229521492505BD7600085055 /* Summary.swift in Sources */,
 				2292C4E82505CC1E005802B5 /* Piece7.swift in Sources */,
 				C6EB47802520170100FCD0CB /* AngleFromCartesian.swift in Sources */,
@@ -2010,6 +2016,7 @@
 				2261B33B2585A6900020604B /* FloatingProject.swift in Sources */,
 				228174C62501ACBF008E471D /* WidgetView.swift in Sources */,
 				22E64282257799E900CCF49F /* MoldedRectangle.swift in Sources */,
+				222753B7258CB89400EB99C8 /* TimeEntryLike.swift in Sources */,
 				22128E2525422D59004913AF /* ColorScore.swift in Sources */,
 				C6EB476C2520170100FCD0CB /* AngleFromCartesian.swift in Sources */,
 				228174CA2501B49B008E471D /* Summary.swift in Sources */,
@@ -2275,6 +2282,7 @@
 				22EE4F132589AE11008EB632 /* UndoTracker.swift in Sources */,
 				C6D2E5F1251FA2CF0067C0B0 /* RunningRing.intentdefinition in Sources */,
 				221810E024B0158500B63ECA /* Get24hourPref.swift in Sources */,
+				222753B6258CB89400EB99C8 /* TimeEntryLike.swift in Sources */,
 				22E6420025774E8300CCF49F /* TimeIndicator.swift in Sources */,
 				22B261E6254B9AF500182236 /* WidgetBundle.intentdefinition in Sources */,
 				C6D448EC2484710E0072E7D4 /* ActivityIndicator.swift in Sources */,

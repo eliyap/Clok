@@ -118,3 +118,13 @@ extension RunningEntry {
             && lhs.tags == rhs.tags
     }
 }
+
+extension RunningEntry: TimeEntryLike {
+    /// `TimeEntryLike` compliance
+    var end: Date { Date() } /// always return current time
+    var duration: TimeInterval { Date() - start } /// always return latest duration
+    var color: Color { wrappedProject.wrappedColor }
+    var tagStrings: [String] { tags }
+    var wrappedProject: Project { project ?? ProjectPresets.shared.NoProject }
+    var identifier: Int64 { id }
+}
