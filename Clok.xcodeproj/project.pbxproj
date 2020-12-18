@@ -95,6 +95,7 @@
 		22275443258CBDC600EB99C8 /* ProjectLike_ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22275441258CBDC600EB99C8 /* ProjectLike_ColorScheme.swift */; };
 		22275444258CBDC600EB99C8 /* ProjectLike_ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22275441258CBDC600EB99C8 /* ProjectLike_ColorScheme.swift */; };
 		2227544C258CBDD000EB99C8 /* ProjectLike_ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22275441258CBDC600EB99C8 /* ProjectLike_ColorScheme.swift */; };
+		22275454258CC1D600EB99C8 /* TimeEntryLike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222753B5258CB89400EB99C8 /* TimeEntryLike.swift */; };
 		22283DA024DF9959005AC0F3 /* BarTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22283D9F24DF9959005AC0F3 /* BarTabs.swift */; };
 		22283DA224DF9CE0005AC0F3 /* GraphModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22283DA124DF9CE0005AC0F3 /* GraphModel.swift */; };
 		22283DA424DF9D8B005AC0F3 /* BarStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22283DA324DF9D8B005AC0F3 /* BarStack.swift */; };
@@ -2104,6 +2105,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22D5F5352570E4A300806992 /* FirstDayOfWeek.swift in Sources */,
+				22275454258CC1D600EB99C8 /* TimeEntryLike.swift in Sources */,
 				22B26222254B9BE300182236 /* RR_Square.swift in Sources */,
 				22FFF6D825710CA800A54471 /* PrintError.swift in Sources */,
 				2205DC31254B9EEB00146EAB /* ColorHex.swift in Sources */,
