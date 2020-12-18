@@ -10,7 +10,7 @@ import SwiftUI
 
 /// Defines an edge case / special type of `Project` which I need to be able to refer to in code.
 /// - Warning: do NOT instantiate!
-struct StaticProject {
+struct StaticProject: Hashable {
     let color: Color
     let name: String
     let id: Int64

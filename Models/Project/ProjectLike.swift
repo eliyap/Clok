@@ -64,3 +64,7 @@ enum ProjectLike {
     
     // - TODO: define 'no description' special case for `name`
 }
+
+extension ProjectLike: Hashable {
+    
+}
