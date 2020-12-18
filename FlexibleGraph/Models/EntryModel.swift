@@ -15,7 +15,7 @@ final class EntryModel: ObservableObject {
     let id: Int64
     @Published var start: Date
     @Published var end: Date
-    @Published var project: Project
+    @Published var project: ProjectLike
     //TODO: include tags here
     @Published var entryDescription: String
     @Published var billable: Bool

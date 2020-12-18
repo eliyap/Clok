@@ -11,7 +11,7 @@ import SwiftUI
 struct ProjectPicker: View {
     
     var projects: FetchedResults<Project>
-    @Binding var selected: Project
+    @Binding var selected: ProjectLike
     let dismiss: () -> Void
     let boundingWidth: CGFloat
     
