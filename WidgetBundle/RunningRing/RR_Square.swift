@@ -58,7 +58,7 @@ struct RunningSquare: View {
 // MARK: - Computed Vars
 extension RunningSquare {
     
-    var color: Color { entry.entry.wrappedProject.wrappedColor }
+    var color: Color { entry.entry.project.color }
     var duration: TimeInterval { entry.date - entry.entry.start }
     /// the angle to rotate the ring
     var angle: Angle {

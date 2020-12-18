@@ -14,7 +14,7 @@ extension Detailed {
     struct Project: Hashable {
         let color: Color
         let name: String
-        let id: Int
+        let id: Int64
         var entries: [Detailed.Entry]
         var duration: TimeInterval
         
@@ -22,7 +22,7 @@ extension Detailed {
         static let noProject = Detailed.Project(
             color: StaticProject.NoProject.color,
             name: StaticProject.NoProject.name,
-            id: Int(StaticProject.NoProject.id),
+            id: StaticProject.NoProject.id,
             entries: [],
             duration: .zero
         )
@@ -31,7 +31,7 @@ extension Detailed {
         static let empty = Detailed.Project(
             color: .clear,
             name: "",
-            id: NSNotFound,
+            id: Int64(NSNotFound),
             entries: [],
             duration: .zero
         )

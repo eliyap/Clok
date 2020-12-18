@@ -54,7 +54,7 @@ func DetailedWithRunningRequest(
                     id: raw.id,
                     start: raw.start,
                     /// floating NSMOC
-                    project: FloatingProject(id: match.id, name: match.name, hex_color: match.color.toHex, context: .init(concurrencyType: .mainQueueConcurrencyType)),
+                    project: .lite(ProjectLite(color: match.color, name: match.name, id: match.id)),
                     entryDescription: raw.description,
                     tags: raw.tags,
                     billable: raw.billable
@@ -65,13 +65,13 @@ func DetailedWithRunningRequest(
             /// Time Entry is running with some unknown project
             /// make a further request to get some details
                 return FetchProjectDetails(pid: Int(pid), token: token)
-                    .map { floating in
+                    .map { lite in
                         var detailed = detailed
                         /// append this project so it will show up in the widget
                         detailed.projects.append(Detailed.Project(
-                            color: floating.wrappedColor,
-                            name: floating.name,
-                            id: floating.wrappedID,
+                            color: lite.color,
+                            name: lite.name,
+                            id: lite.id,
                             entries: [],
                             duration: .zero
                         ))
@@ -79,7 +79,7 @@ func DetailedWithRunningRequest(
                             id: raw.id,
                             start: raw.start,
                             /// floating NSMOC
-                            project: floating,
+                            project: .lite(lite),
                             entryDescription: raw.description,
                             tags: raw.tags,
                             billable: raw.billable

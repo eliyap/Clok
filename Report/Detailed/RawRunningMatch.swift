@@ -16,14 +16,14 @@ extension Detailed {
         }
         
         /// perform project matching
-        var project = ProjectPresets.shared.UnknownProject
+        var project = ProjectLike.special(.UnknownProject)
         if raw.pid == nil {
-            project = ProjectPresets.shared.NoProject
-        } else if let match = self.projects.first(where: {$0.id == raw.pid}) {
+            project = .special(.NoProject)
+        } else if let match = self.projects.first(where: {$0.id == raw.pid ?? .zero}) {
             /// create object in a floating `NSManagedObjectContext`
-            project = FloatingProject(id: match.id, name: match.name, hex_color: match.color.toHex, context: .init(concurrencyType: .mainQueueConcurrencyType))
+            project = .lite(ProjectLite(color: match.color, name: match.name, id: match.id))
         } else {
-            project = ProjectPresets.shared.UnknownProject
+            project = .special(.UnknownProject)
         }
         
         return (

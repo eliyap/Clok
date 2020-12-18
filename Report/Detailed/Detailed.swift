@@ -45,13 +45,13 @@ struct Detailed {
         entries.forEach { rawEntry in
             if rawEntry.pid == nil {
                 noProject.append(Detailed.Entry(raw: rawEntry), config: config)
-            } else if let index = projects.firstIndex(where: {$0.id == rawEntry.pid}) {
+            } else if let index = projects.firstIndex(where: {$0.id == rawEntry.pid!}) {
                 projects[index].append(Detailed.Entry(raw: rawEntry), config: config)
             } else {
                 var newProject = Detailed.Project(
                     color: Color(hex: rawEntry.project_hex_color!),
                     name: rawEntry.project!,
-                    id: rawEntry.pid!,
+                    id: Int64(rawEntry.pid!),
                     entries: [],
                     duration: .zero
                 )
