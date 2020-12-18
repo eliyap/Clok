@@ -237,7 +237,7 @@ extension ProjectRing {
         Group {
             /**
              when the time approaches 1 full hour, the Gradient cannot be fixed.
-             So we cover the misaligned section with a solid color circle.
+             So we cover the misaligned section with a stroked right triangle.
             **/
             RightTriangle()
                 .frame(width: ringWeight * 0.97 / CGFloat(2).squareRoot(), height: ringWeight * 0.97 / CGFloat(2).squareRoot())
