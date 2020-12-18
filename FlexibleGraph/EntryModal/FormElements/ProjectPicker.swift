@@ -24,7 +24,7 @@ struct ProjectPicker: View {
         return ZStack(alignment: .topLeading) {
             ForEach(projects, id: \.self) { project in
                 Button {
-                    selected = project
+                    selected = .project(project)
                     dismiss()
                 } label: {
                     TagView(project: project)

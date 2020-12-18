@@ -52,9 +52,7 @@ final class RunningEntryLoader: ObservableObject {
                                     Since `RunningEntry` is a `final class`, it is a reference type.
                                     Therefore we may still manipulate stored properties here.
                                  */
-                                let fixed = running
-                                fixed.project = newProject
-                                return fixed
+                                running.project = .project(newProject)
                             }
                             return running
                         }
