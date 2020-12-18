@@ -19,18 +19,3 @@ extension TimeEntryLike {
     }
 }
 
-extension Project {
-    /// Returns a color adapted to light / dark mode
-    /// - Parameter mode: whether view is in light or dark mode
-    /// - Returns: adjusted `Color`
-    func color(in mode: ColorScheme) -> Color {
-        switch mode {
-        case .dark:
-            return wrappedColor.darken(by: 0.1)
-        case .light:
-            return UIColor.white.tinted(with: wrappedColor)
-        default:
-            fatalError("Unsupported color scheme!")
-        }
-    }
-}

@@ -91,6 +91,10 @@
 		22275429258CBD6A00EB99C8 /* ProjectLite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22275401258CBBE400EB99C8 /* ProjectLite.swift */; };
 		22275431258CBD6E00EB99C8 /* ProjectLite_Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2227540C258CBC0B00EB99C8 /* ProjectLite_Equatable.swift */; };
 		22275439258CBD7400EB99C8 /* StaticProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22275417258CBD3F00EB99C8 /* StaticProject.swift */; };
+		22275442258CBDC600EB99C8 /* ProjectLike_ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22275441258CBDC600EB99C8 /* ProjectLike_ColorScheme.swift */; };
+		22275443258CBDC600EB99C8 /* ProjectLike_ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22275441258CBDC600EB99C8 /* ProjectLike_ColorScheme.swift */; };
+		22275444258CBDC600EB99C8 /* ProjectLike_ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22275441258CBDC600EB99C8 /* ProjectLike_ColorScheme.swift */; };
+		2227544C258CBDD000EB99C8 /* ProjectLike_ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22275441258CBDC600EB99C8 /* ProjectLike_ColorScheme.swift */; };
 		22283DA024DF9959005AC0F3 /* BarTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22283D9F24DF9959005AC0F3 /* BarTabs.swift */; };
 		22283DA224DF9CE0005AC0F3 /* GraphModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22283DA124DF9CE0005AC0F3 /* GraphModel.swift */; };
 		22283DA424DF9D8B005AC0F3 /* BarStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22283DA324DF9D8B005AC0F3 /* BarStack.swift */; };
@@ -578,6 +582,7 @@
 		22275401258CBBE400EB99C8 /* ProjectLite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectLite.swift; sourceTree = "<group>"; };
 		2227540C258CBC0B00EB99C8 /* ProjectLite_Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectLite_Equatable.swift; sourceTree = "<group>"; };
 		22275417258CBD3F00EB99C8 /* StaticProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticProject.swift; sourceTree = "<group>"; };
+		22275441258CBDC600EB99C8 /* ProjectLike_ColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectLike_ColorScheme.swift; sourceTree = "<group>"; };
 		22283D9F24DF9959005AC0F3 /* BarTabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarTabs.swift; sourceTree = "<group>"; };
 		22283DA124DF9CE0005AC0F3 /* GraphModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphModel.swift; sourceTree = "<group>"; };
 		22283DA324DF9D8B005AC0F3 /* BarStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarStack.swift; sourceTree = "<group>"; };
@@ -971,6 +976,7 @@
 			children = (
 				22275343258CAD5C00EB99C8 /* ProjectLike.swift */,
 				222753F6258CBBB300EB99C8 /* ProjectLike_Equatable.swift */,
+				22275441258CBDC600EB99C8 /* ProjectLike_ColorScheme.swift */,
 				22275401258CBBE400EB99C8 /* ProjectLite.swift */,
 				2227540C258CBC0B00EB99C8 /* ProjectLite_Equatable.swift */,
 				22275417258CBD3F00EB99C8 /* StaticProject.swift */,
@@ -1981,6 +1987,7 @@
 				229521462505BD7600085055 /* NoSummary.swift in Sources */,
 				2292C4ED2505CC1E005802B5 /* ConfigurablePiece.swift in Sources */,
 				2295214C2505BDB200085055 /* TimeConstants.swift in Sources */,
+				22275444258CBDC600EB99C8 /* ProjectLike_ColorScheme.swift in Sources */,
 				2227540F258CBC0B00EB99C8 /* ProjectLite_Equatable.swift in Sources */,
 				2292C4EC2505CC1E005802B5 /* EnumeratePiece.swift in Sources */,
 				229428DE251E7E7E008C0BFF /* Mod.swift in Sources */,
@@ -2062,6 +2069,7 @@
 				228174CA2501B49B008E471D /* Summary.swift in Sources */,
 				22B0783624B1513A00256EB8 /* User.swift in Sources */,
 				C6EB473C252013B900FCD0CB /* PersistentContainer.swift in Sources */,
+				22275443258CBDC600EB99C8 /* ProjectLike_ColorScheme.swift in Sources */,
 				C60856CE251FCE4C00E6D6C0 /* AsNSDate.swift in Sources */,
 				22FFF6432570EA2500A54471 /* FirstDayOfWeek.swift in Sources */,
 				22AD5F8724B1467E006EF7FB /* ClokWidget.intentdefinition in Sources */,
@@ -2146,6 +2154,7 @@
 				2205DD88254BA1B000146EAB /* Arc.swift in Sources */,
 				2205DC46254B9F1C00146EAB /* RunningTimer.swift in Sources */,
 				2205DCAA254B9FFE00146EAB /* TimeEntry+CoreDataClass.swift in Sources */,
+				2227544C258CBDD000EB99C8 /* ProjectLike_ColorScheme.swift in Sources */,
 				2205DD5E254BA16000146EAB /* MR_Timeline.swift in Sources */,
 				2205DC5A254B9F6600146EAB /* RequestConstants.swift in Sources */,
 				2205DDA3254BA20500146EAB /* DateComponent.swift in Sources */,
@@ -2388,6 +2397,7 @@
 				223AC3A4257494F9002ABD9F /* NewGraphModel.swift in Sources */,
 				22939EC42589D636004CDD26 /* ProjectPicker.swift in Sources */,
 				22DC86A024BA838D00FF771F /* Project+CoreDataClass.swift in Sources */,
+				22275442258CBDC600EB99C8 /* ProjectLike_ColorScheme.swift in Sources */,
 				223C305C2580BD0900751C51 /* TagList.swift in Sources */,
 				2296F15B24A994A400AF38B5 /* FormRequest.swift in Sources */,
 				22027DD624AFFA6500C0BA90 /* Bounds.swift in Sources */,
