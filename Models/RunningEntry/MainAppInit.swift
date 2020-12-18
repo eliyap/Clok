@@ -1,5 +1,5 @@
 //
-//  RunningEntryInit.swift
+//  MainAppInit.swift
 //  Clok
 //
 //  Created by Secret Asian Man Dev on 21/8/20.

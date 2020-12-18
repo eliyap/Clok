@@ -68,6 +68,7 @@
 		22275344258CAD5C00EB99C8 /* ProjectLike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22275343258CAD5C00EB99C8 /* ProjectLike.swift */; };
 		22275345258CAD5C00EB99C8 /* ProjectLike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22275343258CAD5C00EB99C8 /* ProjectLike.swift */; };
 		22275346258CAD5C00EB99C8 /* ProjectLike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22275343258CAD5C00EB99C8 /* ProjectLike.swift */; };
+		2227535D258CB35600EB99C8 /* MainAppInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229D7B224F055FC004E1034 /* MainAppInit.swift */; };
 		22283DA024DF9959005AC0F3 /* BarTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22283D9F24DF9959005AC0F3 /* BarTabs.swift */; };
 		22283DA224DF9CE0005AC0F3 /* GraphModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22283DA124DF9CE0005AC0F3 /* GraphModel.swift */; };
 		22283DA424DF9D8B005AC0F3 /* BarStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22283DA324DF9D8B005AC0F3 /* BarStack.swift */; };
@@ -80,7 +81,7 @@
 		2229D7AA24EF6BDB004E1034 /* OldCurrentTimeIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229D7A924EF6BDB004E1034 /* OldCurrentTimeIndicator.swift */; };
 		2229D7AC24F0435B004E1034 /* OldRunningEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229D7AB24F0435B004E1034 /* OldRunningEntryView.swift */; };
 		2229D7B024F0459F004E1034 /* FetchRunningEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229D7AF24F0459F004E1034 /* FetchRunningEntry.swift */; };
-		2229D7B324F0560C004E1034 /* RunningEntryInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229D7B224F055FC004E1034 /* RunningEntryInit.swift */; };
+		2229D7B324F0560C004E1034 /* MainAppInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229D7B224F055FC004E1034 /* MainAppInit.swift */; };
 		2229D7B424F05683004E1034 /* RunningEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B0784124B17BEC00256EB8 /* RunningEntry.swift */; };
 		222D992624BAB2FD00F66E0F /* DecoderExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D992524BAB2FD00F66E0F /* DecoderExtension.swift */; };
 		222D996324BB803800F66E0F /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D996224BB803800F66E0F /* Report.swift */; };
@@ -396,7 +397,7 @@
 		22FFF6A12571020B00A54471 /* DataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FFF6A02571020B00A54471 /* DataFetcher.swift */; };
 		22FFF6A92571022700A54471 /* DataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FFF6A02571020B00A54471 /* DataFetcher.swift */; };
 		22FFF6C8257103AF00A54471 /* DataTaskMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B1D64824EBAD27001E87C1 /* DataTaskMonitor.swift */; };
-		22FFF6D0257109C400A54471 /* RunningEntryInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229D7B224F055FC004E1034 /* RunningEntryInit.swift */; };
+		22FFF6D0257109C400A54471 /* MainAppInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229D7B224F055FC004E1034 /* MainAppInit.swift */; };
 		22FFF6D825710CA800A54471 /* PrintError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229646D824F3367800FE14E5 /* PrintError.swift */; };
 		22FFF6F72571A84F00A54471 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D996224BB803800F66E0F /* Report.swift */; };
 		C60856AB251FCB1E00E6D6C0 /* URLStoreExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60856AA251FCB1E00E6D6C0 /* URLStoreExtension.swift */; };
@@ -563,7 +564,7 @@
 		2229D7A924EF6BDB004E1034 /* OldCurrentTimeIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldCurrentTimeIndicator.swift; sourceTree = "<group>"; };
 		2229D7AB24F0435B004E1034 /* OldRunningEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldRunningEntryView.swift; sourceTree = "<group>"; };
 		2229D7AF24F0459F004E1034 /* FetchRunningEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchRunningEntry.swift; sourceTree = "<group>"; };
-		2229D7B224F055FC004E1034 /* RunningEntryInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningEntryInit.swift; sourceTree = "<group>"; };
+		2229D7B224F055FC004E1034 /* MainAppInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAppInit.swift; sourceTree = "<group>"; };
 		222D992524BAB2FD00F66E0F /* DecoderExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderExtension.swift; sourceTree = "<group>"; };
 		222D996224BB803800F66E0F /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
 		22351AFF24D37F3C00E14DBC /* Run.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Run.swift; sourceTree = "<group>"; };
@@ -930,6 +931,15 @@
 				221F6240251EE157000ECED9 /* RawProject.swift */,
 			);
 			path = RawStructs;
+			sourceTree = "<group>";
+		};
+		22275355258CB32500EB99C8 /* RunningEntry */ = {
+			isa = PBXGroup;
+			children = (
+				22B0784124B17BEC00256EB8 /* RunningEntry.swift */,
+				2229D7B224F055FC004E1034 /* MainAppInit.swift */,
+			);
+			path = RunningEntry;
 			sourceTree = "<group>";
 		};
 		2229D7AD24F04574004E1034 /* Fetchers */ = {
@@ -1496,8 +1506,7 @@
 		C6B0FFA0246F52A700DED011 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				22B0784124B17BEC00256EB8 /* RunningEntry.swift */,
-				2229D7B224F055FC004E1034 /* RunningEntryInit.swift */,
+				22275355258CB32500EB99C8 /* RunningEntry */,
 				22D9B957257B292300E923C5 /* StaticEntry.swift */,
 				22275343258CAD5C00EB99C8 /* ProjectLike.swift */,
 				C65B7D2B2497DE4A00EED981 /* EntryOperations.swift */,
@@ -2014,6 +2023,7 @@
 				22AD5F8724B1467E006EF7FB /* ClokWidget.intentdefinition in Sources */,
 				221F625B251EE172000ECED9 /* RawProject.swift in Sources */,
 				22B0784A24B262FA00256EB8 /* Timeline.swift in Sources */,
+				2227535D258CB35600EB99C8 /* MainAppInit.swift in Sources */,
 				228174D02501CAFC008E471D /* SummaryTimelineEntry.swift in Sources */,
 				22A2CE2F24E59F8B000820AD /* ColorHex.swift in Sources */,
 				22275345258CAD5C00EB99C8 /* ProjectLike.swift in Sources */,
@@ -2091,7 +2101,7 @@
 				2205DC5A254B9F6600146EAB /* RequestConstants.swift in Sources */,
 				2205DDA3254BA20500146EAB /* DateComponent.swift in Sources */,
 				2205DD0A254BA0C600146EAB /* MR_Widget.swift in Sources */,
-				22FFF6D0257109C400A54471 /* RunningEntryInit.swift in Sources */,
+				22FFF6D0257109C400A54471 /* MainAppInit.swift in Sources */,
 				2205DC96254B9FDE00146EAB /* DateStridable.swift in Sources */,
 				2205DC64254B9F7A00146EAB /* CoreDataConstants.swift in Sources */,
 				2205DD41254BA11500146EAB /* MR_Entry.swift in Sources */,
@@ -2333,7 +2343,7 @@
 				22DF92D8251D6834007E4635 /* AnyTransitionSlide.swift in Sources */,
 				22F2CD60254BA744008DEB9C /* RunningTimer.swift in Sources */,
 				C6B1D64924EBAD27001E87C1 /* DataTaskMonitor.swift in Sources */,
-				2229D7B324F0560C004E1034 /* RunningEntryInit.swift in Sources */,
+				2229D7B324F0560C004E1034 /* MainAppInit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
