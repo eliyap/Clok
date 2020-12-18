@@ -70,18 +70,4 @@ public class TimeEntry: NSManagedObject, TimeEntryLike {
             raw.tags.contains($0.name)
         }) as NSSet
     }
-    
-    public override func willSave() {
-        if self.project?.id == ProjectPresets.shared.AnyProject.id {
-            fatalError("tried to save with project `NoProject`!")
-        }
-        
-        if self.project?.id == ProjectPresets.shared.NoProject.id {
-            fatalError("tried to save with project `NoProject`!")
-        }
-        
-        if self.project?.id == ProjectPresets.shared.UnknownProject.id {
-            fatalError("tried to save with project `NoProject`!")
-        }
-    }
 }
