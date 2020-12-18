@@ -32,7 +32,7 @@ final class RunningEntry: NSObject, NSSecureCoding {
         self.id = id
         self.start = start
         self.project = project
-        self.pid = project?.id
+        self.pid = project.id
         self.entryDescription = entryDescription
         self.tags = tags ?? []
         self.billable = billable
@@ -123,8 +123,8 @@ extension RunningEntry: TimeEntryLike {
     /// `TimeEntryLike` compliance
     var end: Date { Date() } /// always return current time
     var duration: TimeInterval { Date() - start } /// always return latest duration
-    var color: Color { wrappedProject.wrappedColor }
+    var color: Color { project.color }
     var tagStrings: [String] { tags }
-    var wrappedProject: Project { project ?? ProjectPresets.shared.NoProject }
+    var wrappedProject: ProjectLike { project }
     var identifier: Int64 { id }
 }

@@ -48,5 +48,19 @@ enum ProjectLike {
         }
     }
     
+    /// define a unified way to access `name`
+    var id: Int64 {
+        switch self {
+        case .project(let project):
+            return project.id
+        case .special(let special):
+            return special.id
+        case .lite(let lite):
+            return lite.id
+        }
+    }
+    
+    
+    
     // - TODO: define 'no description' special case for `name`
 }
