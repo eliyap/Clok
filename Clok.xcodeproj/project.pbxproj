@@ -75,6 +75,7 @@
 		222753B7258CB89400EB99C8 /* TimeEntryLike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222753B5258CB89400EB99C8 /* TimeEntryLike.swift */; };
 		222753B8258CB89400EB99C8 /* TimeEntryLike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222753B5258CB89400EB99C8 /* TimeEntryLike.swift */; };
 		222753DE258CB97900EB99C8 /* ProjectLike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22275343258CAD5C00EB99C8 /* ProjectLike.swift */; };
+		222753ED258CB9B400EB99C8 /* ProjectLike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22275343258CAD5C00EB99C8 /* ProjectLike.swift */; };
 		22283DA024DF9959005AC0F3 /* BarTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22283D9F24DF9959005AC0F3 /* BarTabs.swift */; };
 		22283DA224DF9CE0005AC0F3 /* GraphModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22283DA124DF9CE0005AC0F3 /* GraphModel.swift */; };
 		22283DA424DF9D8B005AC0F3 /* BarStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22283DA324DF9D8B005AC0F3 /* BarStack.swift */; };
@@ -1961,6 +1962,7 @@
 				2292C4EF2505CC1E005802B5 /* Piece1.swift in Sources */,
 				22D5F43525707F9600806992 /* TimeEntry+CoreDataClass.swift in Sources */,
 				2295214D2505BDB200085055 /* RequestConstants.swift in Sources */,
+				222753ED258CB9B400EB99C8 /* ProjectLike.swift in Sources */,
 				2292C4F52505CC1E005802B5 /* Fill.swift in Sources */,
 				C6EB477D2520170100FCD0CB /* AngleOperators.swift in Sources */,
 				2292C4F12505CC1E005802B5 /* Piece6.swift in Sources */,
