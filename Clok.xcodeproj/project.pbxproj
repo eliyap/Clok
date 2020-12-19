@@ -1422,6 +1422,7 @@
 			isa = PBXGroup;
 			children = (
 				22D9EA5D258DD24B00B3EBA0 /* TimeEntryLike */,
+				22275355258CB32500EB99C8 /* RunningEntry */,
 				22DC869E24BA838D00FF771F /* TimeEntry+CoreDataClass.swift */,
 				22DC869F24BA838D00FF771F /* TimeEntry+CoreDataProperties.swift */,
 				22D9EA21258DBF0300B3EBA0 /* TimeEntryUpdate.swift */,
@@ -1587,7 +1588,6 @@
 		C6B0FFA0246F52A700DED011 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				22275355258CB32500EB99C8 /* RunningEntry */,
 				C65B7D2B2497DE4A00EED981 /* EntryOperations.swift */,
 				221C3C5624A93C57006995C5 /* User.swift */,
 				2262882124E88691006B330C /* Workspace.swift */,
