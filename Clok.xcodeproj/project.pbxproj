@@ -966,6 +966,7 @@
 		221F623F251EE14D000ECED9 /* Project */ = {
 			isa = PBXGroup;
 			children = (
+				222753F5258CBB7600EB99C8 /* ProjectLike */,
 				22DC869C24BA838D00FF771F /* Project+CoreDataClass.swift */,
 				22DC869D24BA838D00FF771F /* Project+CoreDataProperties.swift */,
 				221F6240251EE157000ECED9 /* RawProject.swift */,
@@ -983,7 +984,7 @@
 			path = RunningEntry;
 			sourceTree = "<group>";
 		};
-		222753F5258CBB7600EB99C8 /* Project */ = {
+		222753F5258CBB7600EB99C8 /* ProjectLike */ = {
 			isa = PBXGroup;
 			children = (
 				22275343258CAD5C00EB99C8 /* ProjectLike.swift */,
@@ -993,7 +994,7 @@
 				2227540C258CBC0B00EB99C8 /* ProjectLite_Equatable.swift */,
 				22275417258CBD3F00EB99C8 /* StaticProject.swift */,
 			);
-			path = Project;
+			path = ProjectLike;
 			sourceTree = "<group>";
 		};
 		2229D7AD24F04574004E1034 /* Fetchers */ = {
@@ -1587,7 +1588,6 @@
 			isa = PBXGroup;
 			children = (
 				22275355258CB32500EB99C8 /* RunningEntry */,
-				222753F5258CBB7600EB99C8 /* Project */,
 				C65B7D2B2497DE4A00EED981 /* EntryOperations.swift */,
 				221C3C5624A93C57006995C5 /* User.swift */,
 				2262882124E88691006B330C /* Workspace.swift */,
