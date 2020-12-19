@@ -12,6 +12,7 @@ struct PropertyEditView: View {
     
     @ObservedObject private var model: EntryModel
     @StateObject private var internalModel: EntryModel
+    @Environment(\.accessibilityReduceMotion) var reduceMotion
     
     init(model: EntryModel) {
         self._model = ObservedObject<EntryModel>(initialValue: model)
@@ -47,7 +48,12 @@ struct PropertyEditView: View {
                     /// allow background to consume max width
                     .frame(maxWidth: .infinity)
                     .background(Color.background)
-                    .transition(.inAndOut(edge: .bottom))
+                    /// for users with Reduce Motion turned on, use `opacity` instead
+                    .transition(
+                        reduceMotion
+                            ? .opacity
+                            : .inAndOut(edge: .bottom)
+                    )
             }
         }
     }
