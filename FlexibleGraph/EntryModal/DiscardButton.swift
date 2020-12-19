@@ -1,5 +1,5 @@
 //
-//  DismissalButton.swift
+//  DiscardButton.swift
 //  Clok
 //
 //  Created by Secret Asian Man Dev on 5/12/20.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct DismissalButton: View {
+struct DiscardButton: View {
     
     let dismiss: () -> Void
     /// measures the progress of the "swipe down to dismiss" gesture. bounded from [0, 1]
