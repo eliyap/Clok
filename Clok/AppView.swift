@@ -95,6 +95,15 @@ struct ClokApp: App {
                 })
                 /// perform a fetch whenever a new window is opened
                 .onAppear{ fetchRunningEntry() }
+                .onBackgrounded { _ in
+                    do {
+                        try nspc.viewContext.save()
+                    } catch {
+                        #if DEBUG
+                        fatalError("Top Level NSPersistentContainer failed to save!")
+                        #endif
+                    }
+                }
         }
             /// attach `RunningEntry` fetcher to App, not Window
             .onChange(of: timer.tick, perform: fetchRunningEntry)
