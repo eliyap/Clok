@@ -15,7 +15,7 @@
 		2205DC45254B9F1C00146EAB /* WidgetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2206C5532541DD0600C78477 /* WidgetManager.swift */; };
 		2205DC46254B9F1C00146EAB /* RunningTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F4655B2541FAD1008BF6F0 /* RunningTimer.swift */; };
 		2205DC50254B9F4A00146EAB /* Mod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229428DB251E7E7E008C0BFF /* Mod.swift */; };
-		2205DC5A254B9F6600146EAB /* RequestConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229646C824F3212700FE14E5 /* RequestConstants.swift */; };
+		2205DC5A254B9F6600146EAB /* NetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229646C824F3212700FE14E5 /* NetworkConstants.swift */; };
 		2205DC64254B9F7A00146EAB /* CoreDataConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EB45C0251FEDB900FCD0CB /* CoreDataConstants.swift */; };
 		2205DC6E254B9F8600146EAB /* GetCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229521552505BF0300085055 /* GetCredentials.swift */; };
 		2205DC78254B9FA300146EAB /* LoadProjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223863FF24BBBD030041886B /* LoadProjects.swift */; };
@@ -61,7 +61,7 @@
 		221F6241251EE157000ECED9 /* RawProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221F6240251EE157000ECED9 /* RawProject.swift */; };
 		221F624E251EE15D000ECED9 /* RawProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221F6240251EE157000ECED9 /* RawProject.swift */; };
 		221F625B251EE172000ECED9 /* RawProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221F6240251EE157000ECED9 /* RawProject.swift */; };
-		221F6262251EE18B000ECED9 /* RequestConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229646C824F3212700FE14E5 /* RequestConstants.swift */; };
+		221F6262251EE18B000ECED9 /* NetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229646C824F3212700FE14E5 /* NetworkConstants.swift */; };
 		221F6285251EE5DD000ECED9 /* EmptyRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221F6276251EE5B3000ECED9 /* EmptyRingView.swift */; };
 		222305AE24AE807000711031 /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222305AD24AE807000711031 /* CustomTabView.swift */; };
 		22232B8B24A9532000F3C378 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22232B8A24A9532000F3C378 /* LoginView.swift */; };
@@ -236,7 +236,7 @@
 		2295214A2505BD7600085055 /* SummaryEquatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228174D62501CD12008E471D /* SummaryEquatable.swift */; };
 		2295214B2505BD7600085055 /* RawSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228174D22501CB76008E471D /* RawSummary.swift */; };
 		2295214C2505BDB200085055 /* TimeConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229646CA24F321AE00FE14E5 /* TimeConstants.swift */; };
-		2295214D2505BDB200085055 /* RequestConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229646C824F3212700FE14E5 /* RequestConstants.swift */; };
+		2295214D2505BDB200085055 /* NetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229646C824F3212700FE14E5 /* NetworkConstants.swift */; };
 		2295214E2505BDD700085055 /* DateComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229D7A724EF6750004E1034 /* DateComponent.swift */; };
 		2295214F2505BDE900085055 /* TimeIntervalExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69F02772496AFA200D1C650 /* TimeIntervalExtension.swift */; };
 		229521502505BDF800085055 /* FormRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2296F15A24A994A400AF38B5 /* FormRequest.swift */; };
@@ -260,9 +260,9 @@
 		2295216C2505C16900085055 /* GraphMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2295216B2505C16900085055 /* GraphMode.swift */; };
 		2295216E2505C18200085055 /* ZeroStart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2295216D2505C18200085055 /* ZeroStart.swift */; };
 		229646C624F06AFF00FE14E5 /* OldEntryRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229646C524F06AFF00FE14E5 /* OldEntryRect.swift */; };
-		229646C924F3212700FE14E5 /* RequestConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229646C824F3212700FE14E5 /* RequestConstants.swift */; };
+		229646C924F3212700FE14E5 /* NetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229646C824F3212700FE14E5 /* NetworkConstants.swift */; };
 		229646CB24F321AE00FE14E5 /* TimeConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229646CA24F321AE00FE14E5 /* TimeConstants.swift */; };
-		229646CC24F3220300FE14E5 /* RequestConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229646C824F3212700FE14E5 /* RequestConstants.swift */; };
+		229646CC24F3220300FE14E5 /* NetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229646C824F3212700FE14E5 /* NetworkConstants.swift */; };
 		229646CD24F3220600FE14E5 /* TimeConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229646CA24F321AE00FE14E5 /* TimeConstants.swift */; };
 		229646CF24F322E600FE14E5 /* TagLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229646CE24F322E600FE14E5 /* TagLoader.swift */; };
 		229646D224F3294900FE14E5 /* Tag+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229646D024F3294900FE14E5 /* Tag+CoreDataClass.swift */; };
@@ -383,6 +383,8 @@
 		22D9EA4B258DD1B000B3EBA0 /* RawTimeEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9EA3B258DD19700B3EBA0 /* RawTimeEntry.swift */; };
 		22D9EA54258DD1B300B3EBA0 /* RawTimeEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9EA3B258DD19700B3EBA0 /* RawTimeEntry.swift */; };
 		22D9EA55258DD1B300B3EBA0 /* RawTimeEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9EA3B258DD19700B3EBA0 /* RawTimeEntry.swift */; };
+		22D9EA76258DD42100B3EBA0 /* TimeEntry_Update.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9EA75258DD42100B3EBA0 /* TimeEntry_Update.swift */; };
+		22D9EA7F258DD5B200B3EBA0 /* PutBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9EA7E258DD5B200B3EBA0 /* PutBlock.swift */; };
 		22DC869A24BA7A5E00FF771F /* TimeEntryModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22DC869824BA7A5E00FF771F /* TimeEntryModel.xcdatamodeld */; };
 		22DC869B24BA7A5E00FF771F /* TimeEntryModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22DC869824BA7A5E00FF771F /* TimeEntryModel.xcdatamodeld */; };
 		22DC86A024BA838D00FF771F /* Project+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC869C24BA838D00FF771F /* Project+CoreDataClass.swift */; };
@@ -706,7 +708,7 @@
 		2295216B2505C16900085055 /* GraphMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphMode.swift; sourceTree = "<group>"; };
 		2295216D2505C18200085055 /* ZeroStart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZeroStart.swift; sourceTree = "<group>"; };
 		229646C524F06AFF00FE14E5 /* OldEntryRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldEntryRect.swift; sourceTree = "<group>"; };
-		229646C824F3212700FE14E5 /* RequestConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestConstants.swift; sourceTree = "<group>"; };
+		229646C824F3212700FE14E5 /* NetworkConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConstants.swift; sourceTree = "<group>"; };
 		229646CA24F321AE00FE14E5 /* TimeConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeConstants.swift; sourceTree = "<group>"; };
 		229646CE24F322E600FE14E5 /* TagLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagLoader.swift; sourceTree = "<group>"; };
 		229646D024F3294900FE14E5 /* Tag+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tag+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -779,6 +781,8 @@
 		22D9EA21258DBF0300B3EBA0 /* TimeEntryUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntryUpdate.swift; sourceTree = "<group>"; };
 		22D9EA2A258DCBA100B3EBA0 /* TimeEntryAsRaw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntryAsRaw.swift; sourceTree = "<group>"; };
 		22D9EA3B258DD19700B3EBA0 /* RawTimeEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawTimeEntry.swift; sourceTree = "<group>"; };
+		22D9EA75258DD42100B3EBA0 /* TimeEntry_Update.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntry_Update.swift; sourceTree = "<group>"; };
+		22D9EA7E258DD5B200B3EBA0 /* PutBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PutBlock.swift; sourceTree = "<group>"; };
 		22DC869924BA7A5E00FF771F /* TimeEntryModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TimeEntryModel.xcdatamodel; sourceTree = "<group>"; };
 		22DC869C24BA838D00FF771F /* Project+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Project+CoreDataClass.swift"; sourceTree = "<group>"; };
 		22DC869D24BA838D00FF771F /* Project+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Project+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -1201,7 +1205,7 @@
 		229646C724F3210E00FE14E5 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
-				229646C824F3212700FE14E5 /* RequestConstants.swift */,
+				229646C824F3212700FE14E5 /* NetworkConstants.swift */,
 				2295215E2505BFF500085055 /* KeychainConstants.swift */,
 				229646CA24F321AE00FE14E5 /* TimeConstants.swift */,
 				C6EB45C0251FEDB900FCD0CB /* CoreDataConstants.swift */,
@@ -1545,7 +1549,9 @@
 		22FFF64B2570F8A000A54471 /* Putters */ = {
 			isa = PBXGroup;
 			children = (
+				22D9EA7E258DD5B200B3EBA0 /* PutBlock.swift */,
 				22FFF64C2570F8B200A54471 /* BeginningOfWeek.swift */,
+				22D9EA75258DD42100B3EBA0 /* TimeEntry_Update.swift */,
 			);
 			path = Putters;
 			sourceTree = "<group>";
@@ -2042,7 +2048,7 @@
 				C6EB477C2520170100FCD0CB /* AngleAsDate.swift in Sources */,
 				2292C4EF2505CC1E005802B5 /* Piece1.swift in Sources */,
 				22D5F43525707F9600806992 /* TimeEntry+CoreDataClass.swift in Sources */,
-				2295214D2505BDB200085055 /* RequestConstants.swift in Sources */,
+				2295214D2505BDB200085055 /* NetworkConstants.swift in Sources */,
 				222753ED258CB9B400EB99C8 /* ProjectLike.swift in Sources */,
 				2292C4F52505CC1E005802B5 /* Fill.swift in Sources */,
 				C6EB477D2520170100FCD0CB /* AngleOperators.swift in Sources */,
@@ -2131,7 +2137,7 @@
 				22B0784524B17CD900256EB8 /* ColorCustom.swift in Sources */,
 				2261B2DA2584710A0020604B /* MiscellaneousConstants.swift in Sources */,
 				22B6E473251EA38F00530539 /* Arc.swift in Sources */,
-				229646CC24F3220300FE14E5 /* RequestConstants.swift in Sources */,
+				229646CC24F3220300FE14E5 /* NetworkConstants.swift in Sources */,
 				229646CD24F3220600FE14E5 /* TimeConstants.swift in Sources */,
 				229428BD251E5E18008C0BFF /* AngleExtension.swift in Sources */,
 				C6EB476B2520170100FCD0CB /* URLStoreExtension.swift in Sources */,
@@ -2196,7 +2202,7 @@
 				2205DCAA254B9FFE00146EAB /* TimeEntry+CoreDataClass.swift in Sources */,
 				2227544C258CBDD000EB99C8 /* ProjectLike_ColorScheme.swift in Sources */,
 				2205DD5E254BA16000146EAB /* MR_Timeline.swift in Sources */,
-				2205DC5A254B9F6600146EAB /* RequestConstants.swift in Sources */,
+				2205DC5A254B9F6600146EAB /* NetworkConstants.swift in Sources */,
 				2205DDA3254BA20500146EAB /* DateComponent.swift in Sources */,
 				2205DD0A254BA0C600146EAB /* MR_Widget.swift in Sources */,
 				22FFF6D0257109C400A54471 /* MainAppInit.swift in Sources */,
@@ -2246,7 +2252,7 @@
 				22DE591D251EC91200379396 /* ClokWidget.intentdefinition in Sources */,
 				22D56F172526BB090011C4AC /* RingSize.swift in Sources */,
 				22D5F48D2570B1B900806992 /* MultiRing.intentdefinition in Sources */,
-				221F6262251EE18B000ECED9 /* RequestConstants.swift in Sources */,
+				221F6262251EE18B000ECED9 /* NetworkConstants.swift in Sources */,
 				22556BAD25751685003DEB7D /* Clamp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2295,7 +2301,7 @@
 				2238640024BBBD030041886B /* LoadProjects.swift in Sources */,
 				22A2CE1D24E59BB1000820AD /* DateStridable.swift in Sources */,
 				221D963C24A912B900C84F57 /* APIKeyHandler.swift in Sources */,
-				229646C924F3212700FE14E5 /* RequestConstants.swift in Sources */,
+				229646C924F3212700FE14E5 /* NetworkConstants.swift in Sources */,
 				2295216C2505C16900085055 /* GraphMode.swift in Sources */,
 				22027DD024AFF63F00C0BA90 /* OrientationView.swift in Sources */,
 				228B100224AEA6E50026AD4B /* RoundBottomRect.swift in Sources */,
@@ -2331,6 +2337,7 @@
 				22283DA224DF9CE0005AC0F3 /* GraphModel.swift in Sources */,
 				22D5F52D2570E49C00806992 /* FirstDayOfWeek.swift in Sources */,
 				22D9B9F8257B844600E923C5 /* EntryHeader.swift in Sources */,
+				22D9EA7F258DD5B200B3EBA0 /* PutBlock.swift in Sources */,
 				22DC86A624BA838D00FF771F /* TimeEntry+CoreDataProperties.swift in Sources */,
 				C6262BA4251F03970003D435 /* MultiRing.intentdefinition in Sources */,
 				223C30532580B42E00751C51 /* EntryBody.swift in Sources */,
@@ -2383,6 +2390,7 @@
 				22E6420025774E8300CCF49F /* TimeIndicator.swift in Sources */,
 				22B261E6254B9AF500182236 /* WidgetBundle.intentdefinition in Sources */,
 				C6D448EC2484710E0072E7D4 /* ActivityIndicator.swift in Sources */,
+				22D9EA76258DD42100B3EBA0 /* TimeEntry_Update.swift in Sources */,
 				C6AAB3EC249F003100DFBA36 /* StatDisplayView.swift in Sources */,
 				C6751D8A2471E39F002965CC /* Position.swift in Sources */,
 				22A2CE2E24E59F88000820AD /* ColorHex.swift in Sources */,

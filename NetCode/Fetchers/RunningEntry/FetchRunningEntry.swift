@@ -24,7 +24,7 @@ final class RunningEntryLoader: ObservableObject {
         /// API URL documentation:
         /// https://github.com/toggl/toggl_api_docs/blob/master/chapters/time_entries.md#get-running-time-entry
         URLSession.shared.dataTaskPublisher(for: formRequest(
-            url: runningURL,
+            url: NetworkConstants.runningURL,
             auth: auth(token: user.token)
         ))
             .map(dataTaskMonitor)

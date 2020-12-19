@@ -49,7 +49,7 @@ final class TagLoader: ObservableObject {
         /// API URL documentation:
         /// https://github.com/toggl/toggl_api_docs/blob/master/chapters/workspaces.md#get-workspace-projects
         let request = formRequest(
-            url: URL(string: "\(API_URL)/workspaces/\(user.chosen.wid)/tags\(agentSuffix)")!,
+            url: URL(string: "\(NetworkConstants.API_URL)/workspaces/\(user.chosen.wid)/tags\(NetworkConstants.agentSuffix)")!,
             auth: auth(token: user.token)
         )
         

@@ -80,7 +80,7 @@ func DetailedReportRequest(
                 return loadPage(pageNo: pageNo, api_string: api_string, auth: auth)
             })
             .handleEvents(receiveOutput: { (report, pageNo) in
-                let loaded = (pageNo - 1) * togglPageSize + report.entries.count
+                let loaded = (pageNo - 1) * NetworkConstants.togglPageSize + report.entries.count
                 guard
                     /// if request yielded no entries, terminate
                     report.entries.count != 0,
@@ -117,8 +117,8 @@ func DetailedReportRequest(
     
     // assemble request URL (page is added later)
     // documented at https://github.com/toggl/toggl_api_docs/blob/master/reports.md
-    let api_string = "\(REPORT_URL)/details?" + [
-        "user_agent=\(user_agent)",
+    let api_string = "\(NetworkConstants.REPORT_URL)/details?" + [
+        "user_agent=\(NetworkConstants.user_agent)",
         "workspace_id=\(wid)",
         /// cast 1 day into the past for roll-over entries
         "since=\(start.iso8601)",

@@ -21,7 +21,7 @@ func RunningEntryRequest(context: NSManagedObjectContext) -> AnyPublisher<Runnin
     let projects = loadProjects(context: context)
     
     return URLSession.shared.dataTaskPublisher(for: formRequest(
-        url: runningURL,
+        url: NetworkConstants.runningURL,
         auth: auth(token: token)
     ))
         .map(dataTaskMonitor)
@@ -38,7 +38,7 @@ func RawRunningEntryRequest() -> AnyPublisher<RawRunningEntry, Error> {
             .eraseToAnyPublisher()
     }
     return URLSession.shared.dataTaskPublisher(for: formRequest(
-        url: runningURL,
+        url: NetworkConstants.runningURL,
         auth: auth(token: token)
     ))
         .map(dataTaskMonitor)

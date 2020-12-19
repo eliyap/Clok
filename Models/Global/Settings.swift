@@ -26,7 +26,7 @@ extension Credentials {
         print("Now logging in...")
         #endif
         cancellable = URLSession.shared.dataTaskPublisher(for: formRequest(
-            url: userDataURL,
+            url: NetworkConstants.userDataURL,
             auth: auth
         ))
             .map { $0.data }

@@ -45,8 +45,8 @@ final class EntryLoader: ObservableObject {
         
         // assemble request URL (page is added later)
         // documented at https://github.com/toggl/toggl_api_docs/blob/master/reports.md
-        let api_string = "\(REPORT_URL)details?" + [
-            "user_agent=\(user_agent)",    // identifies my app
+        let api_string = "\(NetworkConstants.REPORT_URL)details?" + [
+            "user_agent=\(NetworkConstants.user_agent)",    // identifies my app
             "workspace_id=\(user.chosen.wid)", // provided by the User
             "since=\(range.start.iso8601)",
             "until=\(range.end.iso8601)"

@@ -69,13 +69,13 @@ extension EntryLoader {
                 self.totalCount = report.totalCount
                 
                 /// calculate total number of loaded entries so far
-                let loaded = (pageNo - 1) * togglPageSize + report.entries.count
+                let loaded = (pageNo - 1) * NetworkConstants.togglPageSize + report.entries.count
                 self.loaded = loaded
             })
             /// send back to background thread
             .receive(on: DispatchQueue.global(qos: .background))
             .handleEvents(receiveOutput: { (report, pageNo) in
-                let loaded = (pageNo - 1) * togglPageSize + report.entries.count
+                let loaded = (pageNo - 1) * NetworkConstants.togglPageSize + report.entries.count
                 guard
                     /// if request yielded no entries, terminate
                     report.entries.count != 0,

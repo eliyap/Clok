@@ -11,7 +11,7 @@ import Foundation
 func putWeekday(_ weekday: Int, token: String) -> Void {
     /// formulate PUT request
     var request = formRequest(
-        url: userDataURL,
+        url: NetworkConstants.userDataURL,
         auth: auth(token: token)
     )
     request.httpMethod = "PUT"
@@ -35,7 +35,7 @@ func putWeekday(_ weekday: Int, token: String) -> Void {
         if let responseCode = (response as? HTTPURLResponse)?.statusCode, let responseData = responseData {
             guard responseCode == 200 else {
                 #if DEBUG
-                print("Invalid response code: \(responseCode)")
+                print("Invalid response code: \(responseCode) with data \(responseData)")
                 #endif
                 return
             }
