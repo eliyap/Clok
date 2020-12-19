@@ -46,6 +46,8 @@ extension FlexibleGraph {
     /// - Parameter changed: EntryModel containing updated modified information
     /// - Returns: `Void`
     func saveChanges(_ changed: EntryModel) -> Void {
+        model.selected?.update(from: changed)
+        #warning("core data save and upload to server here")
         dismissModal()
     }
 }
