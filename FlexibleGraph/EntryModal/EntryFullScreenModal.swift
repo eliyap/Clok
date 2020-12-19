@@ -120,6 +120,7 @@ struct EntryFullScreenModal: View {
                 .coordinateSpace(name: coordSpaceName)
                 .gesture(ScrollDrag)
                 /// minor thing, if the app is closed, I don't want it to re-appear in a suspended state
+                /// (from which it will not spring back, since `DragGesture.onEnded` is never called)
                 .onBackgrounded { _ in
                     self.scrollOffset = .zero
                 }
