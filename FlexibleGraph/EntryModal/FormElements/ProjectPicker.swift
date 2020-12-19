@@ -31,7 +31,7 @@ struct ProjectPicker: View {
                     selected = project
                     dismiss()
                 } label: {
-                    TagView(project: project)
+                    TagView(project: project, selected: selected)
                 }
                     .alignmentGuide(.leading, computeValue: { tagSize in
                         /// checks if add this `View`'s width would cause row to exceed allowed width
@@ -68,14 +68,37 @@ struct ProjectPicker: View {
         @Environment(\.colorScheme) var colorScheme
         
         var project: ProjectLike
+        let selected: ProjectLike
+        
+        static let radius: CGFloat = 3.0
         
         var body: some View {
             Text(project.name)
                 .padding(.leading, 2)
-                .foregroundColor(.white)
+                .foregroundColor(
+                    project == selected
+                        ? .white
+                        : .gray
+                )
                 .padding(4)
-                .background(project.color(in: colorScheme))
+                .background(color)
+                .cornerRadius(Self.radius)
                 .padding(4)
+        }
+        
+        var color: Color {
+            if project == selected {
+                return project.color
+            } else {
+                switch colorScheme {
+                case .light:
+                    return UIColor.white.tinted(with: project.color)
+                case .dark:
+                    return UIColor.black.tinted(with: project.color)
+                default:
+                    fatalError("Unsupported ColorScheme!")
+                }
+            }
         }
     }
 
