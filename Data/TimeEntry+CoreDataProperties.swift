@@ -57,6 +57,10 @@ extension TimeEntry {
             ?? []
     }
     
+    
+}
+
+extension TimeEntry: TimeEntryLike {
     /// compliance to `TimeEntryLike` protocol
     public var color: Color { wrappedColor }
     public var projectName: String { wrappedProject.name }

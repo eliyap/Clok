@@ -33,7 +33,7 @@ struct RawTimeEntry: Decodable {
 }
 
 @objc(TimeEntry)
-public class TimeEntry: NSManagedObject, TimeEntryLike {
+public class TimeEntry: NSManagedObject {
     
     static let entityName = "TimeEntry"
     
