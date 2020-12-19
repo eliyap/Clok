@@ -20,7 +20,14 @@ extension NetworkConstants {
         if let responseCode = (response as? HTTPURLResponse)?.statusCode, let data = data {
             guard responseCode == 200 else {
                 #if DEBUG
-                print("Invalid response code: \(responseCode) with data \(data)")
+                print("Invalid response code: \(responseCode) with data:")
+                do {
+                    print(try JSONSerialization.jsonObject(with: data, options: []))
+                } catch {
+                    print(JSONSerialization.isValidJSONObject(data))
+                    print("Could not decode response.")
+                }
+                
                 #endif
                 return
             }

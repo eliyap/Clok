@@ -40,6 +40,7 @@ struct FlexibleGraph: View {
     
     @EnvironmentObject var data: TimeData
     @EnvironmentObject var bounds: Bounds
+    @EnvironmentObject var cred: Credentials
     
     //MARK:- InfiniteScroll Properties
     

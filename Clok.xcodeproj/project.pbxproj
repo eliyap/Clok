@@ -378,13 +378,16 @@
 		22D9EA02258D96DD00B3EBA0 /* onBackgrounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9EA01258D96DD00B3EBA0 /* onBackgrounded.swift */; };
 		22D9EA0B258D9FA900B3EBA0 /* SaveChangesButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9EA0A258D9FA900B3EBA0 /* SaveChangesButton.swift */; };
 		22D9EA22258DBF0300B3EBA0 /* TimeEntryUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9EA21258DBF0300B3EBA0 /* TimeEntryUpdate.swift */; };
-		22D9EA2B258DCBA100B3EBA0 /* TimeEntryAsRaw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9EA2A258DCBA100B3EBA0 /* TimeEntryAsRaw.swift */; };
+		22D9EA2B258DCBA100B3EBA0 /* TimeEntryCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9EA2A258DCBA100B3EBA0 /* TimeEntryCodable.swift */; };
 		22D9EA3C258DD19700B3EBA0 /* RawTimeEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9EA3B258DD19700B3EBA0 /* RawTimeEntry.swift */; };
 		22D9EA4B258DD1B000B3EBA0 /* RawTimeEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9EA3B258DD19700B3EBA0 /* RawTimeEntry.swift */; };
 		22D9EA54258DD1B300B3EBA0 /* RawTimeEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9EA3B258DD19700B3EBA0 /* RawTimeEntry.swift */; };
 		22D9EA55258DD1B300B3EBA0 /* RawTimeEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9EA3B258DD19700B3EBA0 /* RawTimeEntry.swift */; };
 		22D9EA76258DD42100B3EBA0 /* TimeEntry_Update.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9EA75258DD42100B3EBA0 /* TimeEntry_Update.swift */; };
 		22D9EA7F258DD5B200B3EBA0 /* PutBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9EA7E258DD5B200B3EBA0 /* PutBlock.swift */; };
+		22D9EA9C258DEA8B00B3EBA0 /* DateFormatterShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4F56A25773B9D0053ABFB /* DateFormatterShared.swift */; };
+		22D9EAA4258DEA8B00B3EBA0 /* DateFormatterShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4F56A25773B9D0053ABFB /* DateFormatterShared.swift */; };
+		22D9EAA5258DEA8C00B3EBA0 /* DateFormatterShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4F56A25773B9D0053ABFB /* DateFormatterShared.swift */; };
 		22DC869A24BA7A5E00FF771F /* TimeEntryModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22DC869824BA7A5E00FF771F /* TimeEntryModel.xcdatamodeld */; };
 		22DC869B24BA7A5E00FF771F /* TimeEntryModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22DC869824BA7A5E00FF771F /* TimeEntryModel.xcdatamodeld */; };
 		22DC86A024BA838D00FF771F /* Project+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC869C24BA838D00FF771F /* Project+CoreDataClass.swift */; };
@@ -779,7 +782,7 @@
 		22D9EA01258D96DD00B3EBA0 /* onBackgrounded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = onBackgrounded.swift; sourceTree = "<group>"; };
 		22D9EA0A258D9FA900B3EBA0 /* SaveChangesButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveChangesButton.swift; sourceTree = "<group>"; };
 		22D9EA21258DBF0300B3EBA0 /* TimeEntryUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntryUpdate.swift; sourceTree = "<group>"; };
-		22D9EA2A258DCBA100B3EBA0 /* TimeEntryAsRaw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntryAsRaw.swift; sourceTree = "<group>"; };
+		22D9EA2A258DCBA100B3EBA0 /* TimeEntryCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntryCodable.swift; sourceTree = "<group>"; };
 		22D9EA3B258DD19700B3EBA0 /* RawTimeEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawTimeEntry.swift; sourceTree = "<group>"; };
 		22D9EA75258DD42100B3EBA0 /* TimeEntry_Update.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntry_Update.swift; sourceTree = "<group>"; };
 		22D9EA7E258DD5B200B3EBA0 /* PutBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PutBlock.swift; sourceTree = "<group>"; };
@@ -1430,7 +1433,7 @@
 				22DC869E24BA838D00FF771F /* TimeEntry+CoreDataClass.swift */,
 				22DC869F24BA838D00FF771F /* TimeEntry+CoreDataProperties.swift */,
 				22D9EA21258DBF0300B3EBA0 /* TimeEntryUpdate.swift */,
-				22D9EA2A258DCBA100B3EBA0 /* TimeEntryAsRaw.swift */,
+				22D9EA2A258DCBA100B3EBA0 /* TimeEntryCodable.swift */,
 				22D9EA3B258DD19700B3EBA0 /* RawTimeEntry.swift */,
 			);
 			path = TimeEntry;
@@ -2051,6 +2054,7 @@
 				2295214D2505BDB200085055 /* NetworkConstants.swift in Sources */,
 				222753ED258CB9B400EB99C8 /* ProjectLike.swift in Sources */,
 				2292C4F52505CC1E005802B5 /* Fill.swift in Sources */,
+				22D9EAA4258DEA8B00B3EBA0 /* DateFormatterShared.swift in Sources */,
 				C6EB477D2520170100FCD0CB /* AngleOperators.swift in Sources */,
 				2292C4F12505CC1E005802B5 /* Piece6.swift in Sources */,
 			);
@@ -2125,6 +2129,7 @@
 				22275345258CAD5C00EB99C8 /* ProjectLike.swift in Sources */,
 				22D4F4CD257724410053ABFB /* ColorTint.swift in Sources */,
 				229428DD251E7E7E008C0BFF /* Mod.swift in Sources */,
+				22D9EA9C258DEA8B00B3EBA0 /* DateFormatterShared.swift in Sources */,
 				C60856B8251FCE1B00E6D6C0 /* LoadTags.swift in Sources */,
 				C60856BA251FCE1B00E6D6C0 /* LoadEntries.swift in Sources */,
 				22D9EA4B258DD1B000B3EBA0 /* RawTimeEntry.swift in Sources */,
@@ -2153,6 +2158,7 @@
 				22B26222254B9BE300182236 /* RR_Square.swift in Sources */,
 				22FFF6D825710CA800A54471 /* PrintError.swift in Sources */,
 				2205DC31254B9EEB00146EAB /* ColorHex.swift in Sources */,
+				22D9EAA5258DEA8C00B3EBA0 /* DateFormatterShared.swift in Sources */,
 				2287252825731F450082A490 /* ProjectDetailFetcher.swift in Sources */,
 				2205DC8C254B9FC700146EAB /* RawProject.swift in Sources */,
 				2287243F257214570082A490 /* AssignCancellable.swift in Sources */,
@@ -2442,7 +2448,7 @@
 				229646D724F335CA00FE14E5 /* ToOptional.swift in Sources */,
 				2262882224E88691006B330C /* Workspace.swift in Sources */,
 				2293CEED24EC5661000B68F4 /* ProjectLoader.swift in Sources */,
-				22D9EA2B258DCBA100B3EBA0 /* TimeEntryAsRaw.swift in Sources */,
+				22D9EA2B258DCBA100B3EBA0 /* TimeEntryCodable.swift in Sources */,
 				2207E46524E0BEAD00311F10 /* DPad.swift in Sources */,
 				22275402258CBBE400EB99C8 /* ProjectLite.swift in Sources */,
 				224D10D324E6FA8900668FD8 /* DateIndicator.swift in Sources */,

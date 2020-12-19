@@ -12,7 +12,8 @@ enum NetworkConstants {
     /// lets Toggle know who I am
     static let user_agent = "emlyap99@gmail.com"
     static let agentSuffix = "?user_agent=\(user_agent)"
-
+    static let appName = "Clok"
+    
     // MARK:- Request URLs
     /// Base URLs
     static let API_URL = "https://api.track.toggl.com/api/v8"
