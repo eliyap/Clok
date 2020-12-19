@@ -39,22 +39,41 @@ struct PropertyEditView: View {
                         .opacity(0.5)
                         .onTapGesture(perform: dismiss)
                 }
-                PropertyEditor(
-                    model: internalModel,
-                    field: model.field,
-                    dismiss: dismiss,
-                    boundingWidth: geo.size.width
-                )
-                    /// allow background to consume max width
-                    .frame(maxWidth: .infinity)
-                    .background(Color.background)
-                    /// for users with Reduce Motion turned on, use `opacity` instead
-                    .transition(
-                        reduceMotion
-                            ? .opacity
-                            : .inAndOut(edge: .bottom)
+                VStack {
+                    Text(title)
+                        .padding(.top, EntryFullScreenModal.sharedPadding)
+                        .font(.title)
+                    Spacer()
+                    PropertyEditor(
+                        model: internalModel,
+                        field: model.field,
+                        dismiss: dismiss,
+                        boundingWidth: geo.size.width
                     )
+                        /// allow background to consume max width
+                        .frame(maxWidth: .infinity)
+                        .background(Color.background)
+                        /// for users with Reduce Motion turned on, use `opacity` instead
+                        .transition(
+                            reduceMotion
+                                ? .opacity
+                                : .inAndOut(edge: .bottom)
+                        )
+                }
             }
+        }
+    }
+    
+    var title: String {
+        switch model.field {
+        case .start:
+            return "Start Time"
+        case .end:
+            return "End Time"
+        case .project:
+            return "Project"
+        default:
+            return ""
         }
     }
 }
