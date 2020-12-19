@@ -9,22 +9,12 @@
 import Foundation
 import SwiftUI
 
-struct OnBackgrounded: ViewModifier {
-    
-    var action: (Notification) -> Void
-    
-    init(_ action: @escaping (Notification) -> Void) {
-        self.action = action
-    }
-    
-    func body(content: Content) -> some View {
-        content
-            .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification), perform: action)
-    }
-}
-
 extension View {
+    
+    /// Do something when the app is sent to the background
+    /// - Parameter action: action to perform
+    /// - Returns: `Void`
     func onBackgrounded(_ action: @escaping (Notification) -> Void) -> some View {
-        self.modifier(OnBackgrounded(action))
+        self.onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification), perform: action)
     }
 }
