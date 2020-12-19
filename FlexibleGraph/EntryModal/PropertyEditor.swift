@@ -35,12 +35,6 @@ struct PropertyEditor: View {
                 .labelsHidden()
                 .datePickerStyle(WheelDatePickerStyle())
         case .project:
-//            List {
-//                Text("Projects")
-//                ForEach(projects, id: \.id) { project in
-//                    Text(project.name)
-//                }
-//            }
             ProjectPicker(
                 projects: projects,
                 selected: $model.project,
