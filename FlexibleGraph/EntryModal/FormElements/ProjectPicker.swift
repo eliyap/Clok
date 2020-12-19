@@ -15,6 +15,10 @@ struct ProjectPicker: View {
     let dismiss: () -> Void
     let boundingWidth: CGFloat
     
+    var projectChoices: [ProjectLike] {
+        projects.map{ProjectLike.project($0)} + [.special(.NoProject)]
+    }
+    
     var body: some View {
         
         var width: CGFloat = 0
@@ -22,9 +26,9 @@ struct ProjectPicker: View {
 
         /// Adds a tag view for each tag in the array. Populates from left to right and then on to new rows when too wide for the screen
         return ZStack(alignment: .topLeading) {
-            ForEach(projects, id: \.self) { project in
+            ForEach(projectChoices, id: \.self) { project in
                 Button {
-                    selected = .project(project)
+                    selected = project
                     dismiss()
                 } label: {
                     TagView(project: project)
@@ -39,7 +43,7 @@ struct ProjectPicker: View {
                         }
                         
                         let offset = width
-                        if project == projects.last {
+                        if project == projectChoices.last {
                             width = 0
                         } else {
                             /// increment width tracker
@@ -49,7 +53,7 @@ struct ProjectPicker: View {
                     })
                     .alignmentGuide(.top, computeValue: { tagSize in
                         let offset = height
-                        if project == projects.last {
+                        if project == projectChoices.last {
                             height = 0
                         }
                         return offset
@@ -61,14 +65,16 @@ struct ProjectPicker: View {
     /// A subview of a tag shown in a list. When tapped the tag will be removed from the array
     struct TagView: View {
         
-        var project: Project
+        @Environment(\.colorScheme) var colorScheme
+        
+        var project: ProjectLike
         
         var body: some View {
             Text(project.name)
                 .padding(.leading, 2)
                 .foregroundColor(.white)
                 .padding(4)
-                .background(project.wrappedColor)
+                .background(project.color(in: colorScheme))
                 .padding(4)
         }
     }
