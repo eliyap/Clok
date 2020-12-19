@@ -16,7 +16,7 @@ final class EntryModel: ObservableObject {
     @Published var start: Date
     @Published var end: Date
     @Published var project: ProjectLike
-    //TODO: include tags here
+    @Published var tagStrings: [String]
     @Published var entryDescription: String
     @Published var billable: Bool
     
@@ -32,6 +32,7 @@ final class EntryModel: ObservableObject {
         case start
         case end
         case project
+        case tags
         case entryDescription
         /// no `billable`, that can be a simple toggle
     }
@@ -41,6 +42,7 @@ final class EntryModel: ObservableObject {
         start = entry.start
         end = entry.end
         project = entry.wrappedProject
+        tagStrings = entry.tagStrings
         entryDescription = entry.entryDescription
         billable = entry.billable
     }
@@ -50,6 +52,7 @@ final class EntryModel: ObservableObject {
         start = model.start
         end = model.end
         project = model.project
+        tagStrings = model.tagStrings
         entryDescription = model.entryDescription
         billable = model.billable
     }
