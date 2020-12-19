@@ -26,11 +26,7 @@ struct ControlBar: View {
         }
             .buttonStyle(PlainButtonStyle())
             .padding(EntryFullScreenModal.sharedPadding)
-            .background(
-                /// a nice transluscent system color
-                Color(UIColor.secondarySystemFill)
-                    /// allows it to cover color when user scrolls down
-                    .edgesIgnoringSafeArea(.top)
-            )
+            /// a nice transluscent system color
+            .background(Color(UIColor.secondarySystemFill))
     }
 }
