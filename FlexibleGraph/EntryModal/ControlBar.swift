@@ -11,12 +11,14 @@ import SwiftUI
 struct ControlBar: View {
     
     let dismiss: () -> Void
+    let save: () -> Void
     var dismissalCompletion: CGFloat
     @ObservedObject var model: EntryModel
     
     var body: some View {
         HStack {
             DismissalButton(dismiss: dismiss, completion: dismissalCompletion)
+            SaveChangesButton(save: save)
             Spacer()
             /// other stuff here
             UndoTracker(model: model)

@@ -93,7 +93,7 @@ struct EntryFullScreenModal: View {
                 Color(UIColor.secondarySystemBackground)
                     .offset(y: max(0, scrollOffset))
                 /// translucent bar with some main control buttons
-                ControlBar(dismiss: dismiss, dismissalCompletion: dismissalCompletion, model: entryModel)
+                ControlBar(dismiss: dismiss, save: saveChanges, dismissalCompletion: dismissalCompletion, model: entryModel)
                     .offset(y: max(0, scrollOffset))
                     .zIndex(1)
                 /// the rest of the view
@@ -147,5 +147,9 @@ struct EntryFullScreenModal: View {
         /// note: clamp prevents visual from triggering while scrolling down
         /// `-` inversion causes circle to fill clockwise instead of counterclockwise
         -clamp(scrollOffset / Self.threshhold, between: (0, 1))
+    }
+    
+    func saveChanges() -> Void {
+        save(entryModel)
     }
 }
