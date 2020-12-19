@@ -29,6 +29,10 @@ struct EntryFullScreenModal: View {
     /// whether the user is considering discarding the changes
     @State var isDiscarding: Bool = false
     
+    /// whether any undo operation is available
+    /// also serves as a proxy for checking if the view has been modified at all
+    @State var canUndo = false
+    
     //MARK:- Form Properties
     @StateObject var entryModel = EntryModel(from: StaticEntry.noEntry)
     
@@ -96,7 +100,7 @@ struct EntryFullScreenModal: View {
                 Color(UIColor.secondarySystemBackground)
                     .offset(y: max(0, scrollOffset))
                 /// translucent bar with some main control buttons
-                ControlBar(discard: discard, save: saveChanges, dismissalCompletion: dismissalCompletion, model: entryModel)
+                ControlBar(discard: discard, save: saveChanges, dismissalCompletion: dismissalCompletion, model: entryModel, canUndo: $canUndo)
                     .offset(y: max(0, scrollOffset))
                     .zIndex(1)
                 /// the rest of the view
@@ -161,13 +165,24 @@ extension EntryFullScreenModal {
     }
     
     func discard() -> Void {
+        /// if no changes were made, skip the confirmation process
+        guard canUndo else {
+            dismiss()
+            return
+        }
+        /// if unsaved changes exist,
         isDiscarding = true
     }
     
     var DiscardSheet: ActionSheet {
         ActionSheet(title: Text("Discard Changes?"), buttons: [
             .destructive(Text("Discard"), action: dismiss),
-            .cancel()
+            .cancel {
+                /// when cancelling, snapback is interrupted, so force view back into position
+                withAnimation {
+                    self.scrollOffset = .zero
+                }
+            }
         ])
     }
 }

@@ -14,7 +14,7 @@ struct ControlBar: View {
     let save: () -> Void
     var dismissalCompletion: CGFloat
     @ObservedObject var model: EntryModel
-    @State var canUndo = false
+    @Binding var canUndo: Bool
     
     var body: some View {
         HStack {
