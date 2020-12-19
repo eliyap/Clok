@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct RawTimeEntry: Decodable {
+struct RawTimeEntry: Codable {
     let description: String
     
     let start: Date
