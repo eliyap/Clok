@@ -95,6 +95,7 @@ struct ClokApp: App {
                 })
                 /// perform a fetch whenever a new window is opened
                 .onAppear{ fetchRunningEntry() }
+                /// save to persistent storage when sent to background
                 .onBackgrounded { _ in
                     do {
                         try nspc.viewContext.save()
