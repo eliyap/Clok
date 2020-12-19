@@ -12,22 +12,27 @@ import Combine
 struct UndoTracker: View {
     
     @ObservedObject var model: EntryModel
+    @Binding var canUndo: Bool
     
     /// past states, in chronological order (oldest at index 0)
-    @State var changelog = [EntryModel]()
-    @State var current: Int = .zero
-    @State var undoTracker = Set<AnyCancellable>()
+    @State private var changelog = [EntryModel]()
+    @State private var current: Int = .zero
+    @State private var undoTracker = Set<AnyCancellable>()
     
     /// represents whether the undo / redo system is in the process of changing anything (during which `undoTracker`) should be dormant
-    @State var isAmending = false
+    @State private var isAmending = false
     
     var body: some View {
         Group {
             Button(action: undo) {
                 Image(systemName: "arrow.uturn.left")
             }
-                /// cannot redo if current entry is the earliest entry
-                .disabled(changelog.isEmpty || current == changelog.indices.first)
+                .onChange(of: model.hashValue, perform: { _ in
+                    /// can only undo if there are indices to fall back to
+                    canUndo = current != changelog.indices.first
+                })
+                /// cannot undo if current entry is the earliest entry
+                .disabled(!canUndo)
             Button(action: redo) {
                 Image(systemName: "arrow.uturn.right")
             }

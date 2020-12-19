@@ -14,6 +14,7 @@ struct ControlBar: View {
     let save: () -> Void
     var dismissalCompletion: CGFloat
     @ObservedObject var model: EntryModel
+    @State var canUndo = false
     
     var body: some View {
         HStack {
@@ -21,7 +22,7 @@ struct ControlBar: View {
             SaveChangesButton(save: save)
             Spacer()
             /// other stuff here
-            UndoTracker(model: model)
+            UndoTracker(model: model, canUndo: $canUndo)
         }
             .buttonStyle(PlainButtonStyle())
             .padding(EntryFullScreenModal.sharedPadding)
