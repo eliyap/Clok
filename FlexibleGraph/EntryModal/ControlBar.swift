@@ -19,7 +19,7 @@ struct ControlBar: View {
     var body: some View {
         HStack {
             DismissalButton(dismiss: dismiss, completion: dismissalCompletion)
-            SaveChangesButton(save: save)
+            SaveChangesButton(save: save, canUndo: canUndo)
             Spacer()
             /// other stuff here
             UndoTracker(model: model, canUndo: $canUndo)
