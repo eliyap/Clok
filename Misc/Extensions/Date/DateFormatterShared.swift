@@ -26,17 +26,10 @@ extension DateFormatter {
     static let MMMdd = DateFormatter(template: "MMMdd")
     static let tfShort = DateFormatter(timeStyle: .short)
     static let dftfShort = DateFormatter(timeStyle: .short, dateStyle: .short)
-    
-    static var iso8601seconds: DateFormatter {
-        let df = DateFormatter()
-        df.setLocalizedDateFormatFromTemplate("yyyy-MM-dd'T'HH:mm:ss.SSS")
-        return df
-    }
 }
 
 extension Date {
     var MMMdd: String { DateFormatter.MMMdd.string(from: self) }
     var tfShort: String { DateFormatter.tfShort.string(from: self) }
     var dftfShort: String { DateFormatter.dftfShort.string(from: self) }
-    var iso8601seconds: String { DateFormatter.iso8601seconds.string(from: self) }
 }

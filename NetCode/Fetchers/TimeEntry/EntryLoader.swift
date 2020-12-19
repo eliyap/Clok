@@ -48,8 +48,8 @@ final class EntryLoader: ObservableObject {
         let api_string = "\(NetworkConstants.REPORT_URL)details?" + [
             "user_agent=\(NetworkConstants.user_agent)",    // identifies my app
             "workspace_id=\(user.chosen.wid)", // provided by the User
-            "since=\(range.start.iso8601)",
-            "until=\(range.end.iso8601)"
+            "since=\(range.start.iso8601day)",
+            "until=\(range.end.iso8601day)"
         ].joined(separator: "&")
     
         loader = recursiveLoadPages(

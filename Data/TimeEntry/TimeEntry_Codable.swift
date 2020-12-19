@@ -29,7 +29,7 @@ extension TimeEntry: Encodable {
         
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(name ?? "",               forKey: .description)
-        try container.encode(start.iso8601seconds,     forKey: .start)
+        try container.encode(start.ISO8601,            forKey: .start)
         try container.encode(duration,                 forKey: .duration)
         try container.encode(billable,                 forKey: .is_billable)
         try container.encode(project?.wrappedID,       forKey: .pid)

@@ -121,8 +121,8 @@ func DetailedReportRequest(
         "user_agent=\(NetworkConstants.user_agent)",
         "workspace_id=\(wid)",
         /// cast 1 day into the past for roll-over entries
-        "since=\(start.iso8601)",
-        "until=\(Date().midnight.advanced(by: .day).iso8601)",
+        "since=\(start.iso8601day)",
+        "until=\(Date().midnight.advanced(by: .day).iso8601day)",
         /// **warning** ("only loads 1 page!")
         "page=0",
     ].joined(separator: "&")

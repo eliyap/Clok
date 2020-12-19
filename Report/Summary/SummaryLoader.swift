@@ -19,8 +19,8 @@ func fetchSummary(
     let url = [
         "\(NetworkConstants.REPORT_URL)/summary?user_agent=\(NetworkConstants.user_agent)",
         "workspace_id=\(wid)",
-        "since=\(Date().midnight.iso8601)",
-        "end=\(Date().midnight.advanced(by: .day).iso8601)",
+        "since=\(Date().midnight.iso8601day)",
+        "end=\(Date().midnight.advanced(by: .day).iso8601day)",
     ].joined(separator: "&")
     
     let request = formRequest(

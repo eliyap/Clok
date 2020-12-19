@@ -22,16 +22,36 @@ extension TimeEntry {
         request.httpMethod = "PUT"
         
         #if DEBUG
-        #warning("debug")
-        print("\(NetworkConstants.API_URL)/time_entries/\(id)\(NetworkConstants.agentSuffix)")
-        print(String(data: try! JSONEncoder().encode(self), encoding: .utf8))
+        print(String(
+            data: try! JSONEncoder().encode(["time_entry":self]),
+            encoding: .utf8
+        ))
         #endif
         
         URLSession.shared.uploadTask(
             with: request,
-            from: try! JSONEncoder().encode(["time_entry":self]),
-            completionHandler: NetworkConstants.putHandler
-        )
+            from: try! JSONEncoder().encode(["time_entry":self])
+        ){ (data: Data?, response: URLResponse?, error: Error?) -> Void in
+            if let error = error {
+                #if DEBUG
+                print("Error making PUT request: \(error.localizedDescription)")
+                #endif
+                return
+            }
+            
+            if let responseCode = (response as? HTTPURLResponse)?.statusCode, let data = data {
+                guard responseCode == 200 else {
+                    #if DEBUG
+                    print("Invalid response code: \(responseCode) with data: \(try? JSONSerialization.jsonObject(with: data, options: []))")
+                    #endif
+                    return
+                }
+                
+                #warning("debug")
+                print("Successfully updated")
+                print(try? JSONDecoder.init(dateStrategy: .iso8601).decode(RawTimeEntry.self, from: data))
+            }
+        }
             .resume()
     }
 }

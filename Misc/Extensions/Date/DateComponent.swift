@@ -27,9 +27,12 @@ extension Date {
     var midnight: Date {
         Calendar.current.startOfDay(for: self)
     }
-    var iso8601: String {
+    var iso8601day: String {
         let df = DateFormatter()
         df.dateFormat = "yyyy-MM-dd" // ISO 8601 format, day precision
         return df.string(from: self)
+    }
+    var ISO8601: String {
+        ISO8601DateFormatter().string(from: self)
     }
 }
