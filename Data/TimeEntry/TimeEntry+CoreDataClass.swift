@@ -9,29 +9,6 @@ import Foundation
 import SwiftUI
 import CoreData
 
-struct RawTimeEntry: Decodable {
-    let description: String
-    
-    let start: Date
-    let end: Date
-    let dur: Double
-    let updated: Date
-    
-    let id: Int64
-    let is_billable: Bool
-    
-    let pid: Int?
-    let project: String?
-    let project_hex_color: String?
-    
-    let uid: Int; // user ID
-    let use_stop: Bool
-    let user: String
-    let tags: [String]
-    //    task = "<null>";
-    //    tid = "<null>";
-}
-
 @objc(TimeEntry)
 public class TimeEntry: NSManagedObject {
     
