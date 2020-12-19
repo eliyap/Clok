@@ -958,11 +958,14 @@
 			path = Keychain;
 			sourceTree = "<group>";
 		};
-		221F623F251EE14D000ECED9 /* RawStructs */ = {
+		221F623F251EE14D000ECED9 /* Project */ = {
 			isa = PBXGroup;
 			children = (
+				22DC869C24BA838D00FF771F /* Project+CoreDataClass.swift */,
+				22DC869D24BA838D00FF771F /* Project+CoreDataProperties.swift */,
+				221F6240251EE157000ECED9 /* RawProject.swift */,
 			);
-			path = RawStructs;
+			path = Project;
 			sourceTree = "<group>";
 		};
 		22275355258CB32500EB99C8 /* RunningEntry */ = {
@@ -1413,10 +1416,7 @@
 			isa = PBXGroup;
 			children = (
 				2206C5522541DCEE00C78477 /* WidgetManager */,
-				221F623F251EE14D000ECED9 /* RawStructs */,
-				22DC869C24BA838D00FF771F /* Project+CoreDataClass.swift */,
-				22DC869D24BA838D00FF771F /* Project+CoreDataProperties.swift */,
-				221F6240251EE157000ECED9 /* RawProject.swift */,
+				221F623F251EE14D000ECED9 /* Project */,
 				22DC869E24BA838D00FF771F /* TimeEntry+CoreDataClass.swift */,
 				22DC869F24BA838D00FF771F /* TimeEntry+CoreDataProperties.swift */,
 				22D9EA21258DBF0300B3EBA0 /* TimeEntryUpdate.swift */,
