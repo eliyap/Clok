@@ -177,6 +177,9 @@ extension EntryFullScreenModal {
     var DiscardSheet: ActionSheet {
         ActionSheet(title: Text("Discard Changes?"), buttons: [
             .destructive(Text("Discard"), action: dismiss),
+            .default(Text("Save")) {
+                saveChanges()
+            },
             .cancel {
                 /// when cancelling, snapback is interrupted, so force view back into position
                 withAnimation {
