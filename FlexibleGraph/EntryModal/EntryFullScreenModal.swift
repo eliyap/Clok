@@ -38,6 +38,7 @@ struct EntryFullScreenModal: View {
     
     /// dismisses `EntryFullScreenModal`
     let dismiss: () -> Void
+    let save: (EntryModel) -> Void
     
     /// the `Namespace` to match our `matchedGeometryEffects` against
     var namespace: Namespace.ID
@@ -49,9 +50,11 @@ struct EntryFullScreenModal: View {
         entry: TimeEntry?,
         geometry: NamespaceModel,
         namespace: Namespace.ID,
-        dismiss: @escaping () -> Void
+        dismiss: @escaping () -> Void,
+        save: @escaping (EntryModel) -> Void
     ) {
         self.dismiss = dismiss
+        self.save = save
         self.namespace = namespace
         self.geometry = geometry
         self._entryModel = StateObject(wrappedValue: EntryModel(from: entry ?? StaticEntry.noEntry))

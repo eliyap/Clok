@@ -23,6 +23,9 @@ extension FlexibleGraph {
         }
     }
     
+    
+    /// Close modal view, discarding any changes made
+    /// - Returns: `Void`
     func dismissModal() -> Void {
         /// delay animation such that opacity happens at the end
         withAnimation(Animation
@@ -36,5 +39,13 @@ extension FlexibleGraph {
             model.selected = nil
             model.geometry = nil
         }
+    }
+    
+    
+    /// Close modal view, saving changes made to the `TimeEntry`
+    /// - Parameter changed: EntryModel containing updated modified information
+    /// - Returns: `Void`
+    func saveChanges(_ changed: EntryModel) -> Void {
+        dismissModal()
     }
 }
