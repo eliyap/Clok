@@ -36,9 +36,13 @@ struct EntryFullScreenModal: View {
     /// named Coordinate Space for this view
     let coordSpaceName = "bottom"
     
-    
+    /// dismisses `EntryFullScreenModal`
     let dismiss: () -> Void
+    
+    /// the `Namespace` to match our `matchedGeometryEffects` against
     var namespace: Namespace.ID
+    
+    /// the `TimeEntry` to match our `matchedGeometryEffects` against
     let geometry: NamespaceModel
     
     init(
