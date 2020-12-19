@@ -378,6 +378,7 @@
 		22D9EA02258D96DD00B3EBA0 /* onBackgrounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9EA01258D96DD00B3EBA0 /* onBackgrounded.swift */; };
 		22D9EA0B258D9FA900B3EBA0 /* SaveChangesButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9EA0A258D9FA900B3EBA0 /* SaveChangesButton.swift */; };
 		22D9EA22258DBF0300B3EBA0 /* TimeEntryUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9EA21258DBF0300B3EBA0 /* TimeEntryUpdate.swift */; };
+		22D9EA2B258DCBA100B3EBA0 /* TimeEntryAsRaw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9EA2A258DCBA100B3EBA0 /* TimeEntryAsRaw.swift */; };
 		22DC869A24BA7A5E00FF771F /* TimeEntryModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22DC869824BA7A5E00FF771F /* TimeEntryModel.xcdatamodeld */; };
 		22DC869B24BA7A5E00FF771F /* TimeEntryModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22DC869824BA7A5E00FF771F /* TimeEntryModel.xcdatamodeld */; };
 		22DC86A024BA838D00FF771F /* Project+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC869C24BA838D00FF771F /* Project+CoreDataClass.swift */; };
@@ -772,6 +773,7 @@
 		22D9EA01258D96DD00B3EBA0 /* onBackgrounded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = onBackgrounded.swift; sourceTree = "<group>"; };
 		22D9EA0A258D9FA900B3EBA0 /* SaveChangesButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveChangesButton.swift; sourceTree = "<group>"; };
 		22D9EA21258DBF0300B3EBA0 /* TimeEntryUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntryUpdate.swift; sourceTree = "<group>"; };
+		22D9EA2A258DCBA100B3EBA0 /* TimeEntryAsRaw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntryAsRaw.swift; sourceTree = "<group>"; };
 		22DC869924BA7A5E00FF771F /* TimeEntryModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TimeEntryModel.xcdatamodel; sourceTree = "<group>"; };
 		22DC869C24BA838D00FF771F /* Project+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Project+CoreDataClass.swift"; sourceTree = "<group>"; };
 		22DC869D24BA838D00FF771F /* Project+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Project+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -1418,6 +1420,7 @@
 				22DC869E24BA838D00FF771F /* TimeEntry+CoreDataClass.swift */,
 				22DC869F24BA838D00FF771F /* TimeEntry+CoreDataProperties.swift */,
 				22D9EA21258DBF0300B3EBA0 /* TimeEntryUpdate.swift */,
+				22D9EA2A258DCBA100B3EBA0 /* TimeEntryAsRaw.swift */,
 				22D4F4B9257722F60053ABFB /* TimeEntryExtensions.swift */,
 				229646D024F3294900FE14E5 /* Tag+CoreDataClass.swift */,
 				229646D124F3294900FE14E5 /* Tag+CoreDataProperties.swift */,
@@ -2405,6 +2408,7 @@
 				229646D724F335CA00FE14E5 /* ToOptional.swift in Sources */,
 				2262882224E88691006B330C /* Workspace.swift in Sources */,
 				2293CEED24EC5661000B68F4 /* ProjectLoader.swift in Sources */,
+				22D9EA2B258DCBA100B3EBA0 /* TimeEntryAsRaw.swift in Sources */,
 				2207E46524E0BEAD00311F10 /* DPad.swift in Sources */,
 				22275402258CBBE400EB99C8 /* ProjectLite.swift in Sources */,
 				224D10D324E6FA8900668FD8 /* DateIndicator.swift in Sources */,

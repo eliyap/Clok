@@ -16,6 +16,9 @@ extension TimeEntry {
         self.billable = model.billable
         self.name = model.entryDescription
         
+        /// remember to update duration calculation
+        self.dur = end - start
+        
         switch model.project {
         case .project(let project):
             self.project = project
