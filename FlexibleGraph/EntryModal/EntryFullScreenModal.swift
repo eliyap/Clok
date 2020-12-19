@@ -81,7 +81,7 @@ struct EntryFullScreenModal: View {
             .onEnded { _ in
                 initialPos = .none
                 if scrollOffset > EntryFullScreenModal.threshhold {
-                    self.dismiss()
+                    self.discard()
                 } else if scrollOffset > 0 {
                     withAnimation { scrollOffset = 0 }
                 } else if bottomPos < 0 {
@@ -96,7 +96,7 @@ struct EntryFullScreenModal: View {
                 Color(UIColor.secondarySystemBackground)
                     .offset(y: max(0, scrollOffset))
                 /// translucent bar with some main control buttons
-                ControlBar(discard: dismiss, save: saveChanges, dismissalCompletion: dismissalCompletion, model: entryModel)
+                ControlBar(discard: discard, save: saveChanges, dismissalCompletion: dismissalCompletion, model: entryModel)
                     .offset(y: max(0, scrollOffset))
                     .zIndex(1)
                 /// the rest of the view
