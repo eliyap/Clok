@@ -56,8 +56,6 @@ extension TimeEntry {
             .sorted(by: {$0.name < $1.name})
             ?? []
     }
-    
-    
 }
 
 extension TimeEntry: TimeEntryLike {

@@ -325,9 +325,9 @@
 		22B9E05C24B4FF550040C5AC /* WorkspaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B9E05B24B4FF550040C5AC /* WorkspaceView.swift */; };
 		22BE1FEF24A92B2300A9A739 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BE1FEE24A92B2300A9A739 /* SettingsView.swift */; };
 		22BE1FF424A92DE500A9A739 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BE1FF324A92DE500A9A739 /* Settings.swift */; };
-		22D4F4BA257722F60053ABFB /* TimeEntryColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4F4B9257722F60053ABFB /* TimeEntryColor.swift */; };
-		22D4F4BB257722F60053ABFB /* TimeEntryColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4F4B9257722F60053ABFB /* TimeEntryColor.swift */; };
-		22D4F4BC257722F60053ABFB /* TimeEntryColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4F4B9257722F60053ABFB /* TimeEntryColor.swift */; };
+		22D4F4BA257722F60053ABFB /* TimeEntryLike_Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4F4B9257722F60053ABFB /* TimeEntryLike_Color.swift */; };
+		22D4F4BB257722F60053ABFB /* TimeEntryLike_Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4F4B9257722F60053ABFB /* TimeEntryLike_Color.swift */; };
+		22D4F4BC257722F60053ABFB /* TimeEntryLike_Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4F4B9257722F60053ABFB /* TimeEntryLike_Color.swift */; };
 		22D4F4C4257724400053ABFB /* ColorTint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22556B9025750311003DEB7D /* ColorTint.swift */; };
 		22D4F4CC257724400053ABFB /* ColorTint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22556B9025750311003DEB7D /* ColorTint.swift */; };
 		22D4F4CD257724410053ABFB /* ColorTint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22556B9025750311003DEB7D /* ColorTint.swift */; };
@@ -753,7 +753,7 @@
 		22B9E05B24B4FF550040C5AC /* WorkspaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceView.swift; sourceTree = "<group>"; };
 		22BE1FEE24A92B2300A9A739 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		22BE1FF324A92DE500A9A739 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
-		22D4F4B9257722F60053ABFB /* TimeEntryColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntryColor.swift; sourceTree = "<group>"; };
+		22D4F4B9257722F60053ABFB /* TimeEntryLike_Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntryLike_Color.swift; sourceTree = "<group>"; };
 		22D4F4FF2577345E0053ABFB /* FlexibleGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlexibleGraph.swift; sourceTree = "<group>"; };
 		22D4F5112577354C0053ABFB /* EntryFullScreenModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryFullScreenModal.swift; sourceTree = "<group>"; };
 		22D4F531257735F20053ABFB /* ModeSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeSheet.swift; sourceTree = "<group>"; };
@@ -1420,14 +1420,24 @@
 		22D9EA3A258DD16D00B3EBA0 /* TimeEntry */ = {
 			isa = PBXGroup;
 			children = (
+				22D9EA5D258DD24B00B3EBA0 /* TimeEntryLike */,
 				22DC869E24BA838D00FF771F /* TimeEntry+CoreDataClass.swift */,
 				22DC869F24BA838D00FF771F /* TimeEntry+CoreDataProperties.swift */,
 				22D9EA21258DBF0300B3EBA0 /* TimeEntryUpdate.swift */,
 				22D9EA2A258DCBA100B3EBA0 /* TimeEntryAsRaw.swift */,
-				22D4F4B9257722F60053ABFB /* TimeEntryColor.swift */,
 				22D9EA3B258DD19700B3EBA0 /* RawTimeEntry.swift */,
 			);
 			path = TimeEntry;
+			sourceTree = "<group>";
+		};
+		22D9EA5D258DD24B00B3EBA0 /* TimeEntryLike */ = {
+			isa = PBXGroup;
+			children = (
+				22D9B957257B292300E923C5 /* StaticEntry.swift */,
+				222753B5258CB89400EB99C8 /* TimeEntryLike.swift */,
+				22D4F4B9257722F60053ABFB /* TimeEntryLike_Color.swift */,
+			);
+			path = TimeEntryLike;
 			sourceTree = "<group>";
 		};
 		22DC86A824BA839100FF771F /* Data */ = {
@@ -1577,8 +1587,6 @@
 			isa = PBXGroup;
 			children = (
 				22275355258CB32500EB99C8 /* RunningEntry */,
-				22D9B957257B292300E923C5 /* StaticEntry.swift */,
-				222753B5258CB89400EB99C8 /* TimeEntryLike.swift */,
 				222753F5258CBB7600EB99C8 /* Project */,
 				C65B7D2B2497DE4A00EED981 /* EntryOperations.swift */,
 				221C3C5624A93C57006995C5 /* User.swift */,
@@ -2068,7 +2076,7 @@
 				C60856BC251FCE1B00E6D6C0 /* Tag+CoreDataProperties.swift in Sources */,
 				C60856B5251FCE1B00E6D6C0 /* Project+CoreDataProperties.swift in Sources */,
 				22DE5903251EC87900379396 /* IntentHandler.swift in Sources */,
-				22D4F4BB257722F60053ABFB /* TimeEntryColor.swift in Sources */,
+				22D4F4BB257722F60053ABFB /* TimeEntryLike_Color.swift in Sources */,
 				C6EB47692520170100FCD0CB /* AngleAsDate.swift in Sources */,
 				22556BAB25751685003DEB7D /* Clamp.swift in Sources */,
 				C60856BB251FCE1B00E6D6C0 /* TimeEntry+CoreDataClass.swift in Sources */,
@@ -2154,7 +2162,7 @@
 				22D4F4CF257724420053ABFB /* ColorTint.swift in Sources */,
 				222753DE258CB97900EB99C8 /* ProjectLike.swift in Sources */,
 				22B26286254B9D5600182236 /* AngleExtension.swift in Sources */,
-				22D4F4BC257722F60053ABFB /* TimeEntryColor.swift in Sources */,
+				22D4F4BC257722F60053ABFB /* TimeEntryLike_Color.swift in Sources */,
 				22B261F8254B9B6D00182236 /* RR_Widget.swift in Sources */,
 				2205DCAB254B9FFE00146EAB /* TimeEntry+CoreDataProperties.swift in Sources */,
 				2205DC82254B9FAD00146EAB /* Project+CoreDataClass.swift in Sources */,
@@ -2410,7 +2418,7 @@
 				22928AC724A423AA00DC9EC5 /* ButtonGlyph.swift in Sources */,
 				2229D7B024F0459F004E1034 /* FetchRunningEntry.swift in Sources */,
 				22885DB224DA1E2E00A56FE3 /* OldTimeIndicator.swift in Sources */,
-				22D4F4BA257722F60053ABFB /* TimeEntryColor.swift in Sources */,
+				22D4F4BA257722F60053ABFB /* TimeEntryLike_Color.swift in Sources */,
 				C6AAB3F2249F061D00DFBA36 /* TimeData.swift in Sources */,
 				229646D324F3294900FE14E5 /* Tag+CoreDataProperties.swift in Sources */,
 				2293CEEF24EC5A84000B68F4 /* LoadEntries.swift in Sources */,
