@@ -102,6 +102,7 @@ struct EntryFullScreenModal: View {
                 /// translucent bar with some main control buttons
                 ControlBar(discard: discard, save: saveChanges, dismissalCompletion: dismissalCompletion, model: entryModel, canUndo: $canUndo)
                     .offset(y: max(0, scrollOffset))
+                    /// place above `EntryHeader`
                     .zIndex(1)
                 /// the rest of the view
                 VStack(alignment: .leading, spacing: .zero) {
@@ -125,6 +126,8 @@ struct EntryFullScreenModal: View {
                 }
                     .offset(y: scrollOffset)
                 PropertyEditView(model: entryModel)
+                    /// place above `ControlBar` and everything else
+                    .zIndex(2)
             }
                 .actionSheet(isPresented: $isDiscarding) { DiscardSheet }
                 .frame(height: geo.size.height, alignment: .top)
