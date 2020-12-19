@@ -23,23 +23,8 @@ func putWeekday(_ weekday: Int, token: String) -> Void {
          whereas Apple runs 1-7 (Sunday = 1).
          Hence we adjust by 1 when converting
          */
-        from: try! JSONSerialization.data(withJSONObject: ["user":["beginning_of_week":weekday - 1]])
-    ){ (responseData, response, error) in
-        if let error = error {
-            #if DEBUG
-            print("Error making PUT request: \(error.localizedDescription)")
-            #endif
-            return
-        }
-        
-        if let responseCode = (response as? HTTPURLResponse)?.statusCode, let responseData = responseData {
-            guard responseCode == 200 else {
-                #if DEBUG
-                print("Invalid response code: \(responseCode) with data \(responseData)")
-                #endif
-                return
-            }
-        }
-    }
-    .resume()
+        from: try! JSONSerialization.data(withJSONObject: ["user":["beginning_of_week":weekday - 1]]),
+        completionHandler: NetworkConstants.putHandler
+    )
+        .resume()
 }

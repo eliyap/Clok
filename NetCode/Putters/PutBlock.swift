@@ -8,4 +8,22 @@
 
 import Foundation
 
-
+extension NetworkConstants {
+    static let putHandler = { (data: Data?, response: URLResponse?, error: Error?) -> Void in
+        if let error = error {
+            #if DEBUG
+            print("Error making PUT request: \(error.localizedDescription)")
+            #endif
+            return
+        }
+        
+        if let responseCode = (response as? HTTPURLResponse)?.statusCode, let data = data {
+            guard responseCode == 200 else {
+                #if DEBUG
+                print("Invalid response code: \(responseCode) with data \(data)")
+                #endif
+                return
+            }
+        }
+    }
+}
