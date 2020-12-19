@@ -39,7 +39,6 @@ struct EntryFullScreenModal: View {
     
     let dismiss: () -> Void
     var namespace: Namespace.ID
-    let entry: TimeEntryLike
     let geometry: NamespaceModel
     
     init(
@@ -50,7 +49,6 @@ struct EntryFullScreenModal: View {
     ) {
         self.dismiss = dismiss
         self.namespace = namespace
-        self.entry = entry ?? StaticEntry.noEntry
         self.geometry = geometry
         self._entryModel = StateObject(wrappedValue: EntryModel(from: entry ?? StaticEntry.noEntry))
     }
