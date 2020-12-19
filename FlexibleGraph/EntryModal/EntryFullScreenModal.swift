@@ -26,14 +26,6 @@ struct EntryFullScreenModal: View {
     /// updated amount to offset some view with an icon
     @State var iconOffset: CGFloat = .zero
     
-    /// model history, allowing us to implement an undo / redo system
-    @State var pastModels = [EntryModel]()
-    @State var futureModels = [EntryModel]()
-    @State var undoTracker = Set<AnyCancellable>()
-    
-    /// represents whether the undo / redo system is in the process of changing anything (during which `undoTracker`) should be dormant
-    @State var isAmending = false
-    
     //MARK:- Form Properties
     @StateObject var entryModel = EntryModel(from: StaticEntry.noEntry)
     
