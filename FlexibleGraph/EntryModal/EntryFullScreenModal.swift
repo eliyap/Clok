@@ -119,6 +119,10 @@ struct EntryFullScreenModal: View {
                 .frame(height: geo.size.height, alignment: .top)
                 .coordinateSpace(name: coordSpaceName)
                 .gesture(ScrollDrag)
+                /// minor thing, if the app is closed, I don't want it to re-appear in a suspended state
+                .onBackgrounded { _ in
+                    self.scrollOffset = .zero
+                }
         }
         .mask(
             /** MGE placement here has 2 benefits
