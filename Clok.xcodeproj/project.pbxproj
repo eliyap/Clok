@@ -1412,16 +1412,24 @@
 			path = ViewModifiers;
 			sourceTree = "<group>";
 		};
-		22DC86A824BA839100FF771F /* Data */ = {
+		22D9EA3A258DD16D00B3EBA0 /* TimeEntry */ = {
 			isa = PBXGroup;
 			children = (
-				2206C5522541DCEE00C78477 /* WidgetManager */,
-				221F623F251EE14D000ECED9 /* Project */,
 				22DC869E24BA838D00FF771F /* TimeEntry+CoreDataClass.swift */,
 				22DC869F24BA838D00FF771F /* TimeEntry+CoreDataProperties.swift */,
 				22D9EA21258DBF0300B3EBA0 /* TimeEntryUpdate.swift */,
 				22D9EA2A258DCBA100B3EBA0 /* TimeEntryAsRaw.swift */,
 				22D4F4B9257722F60053ABFB /* TimeEntryColor.swift */,
+			);
+			path = TimeEntry;
+			sourceTree = "<group>";
+		};
+		22DC86A824BA839100FF771F /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				2206C5522541DCEE00C78477 /* WidgetManager */,
+				221F623F251EE14D000ECED9 /* Project */,
+				22D9EA3A258DD16D00B3EBA0 /* TimeEntry */,
 				229646D024F3294900FE14E5 /* Tag+CoreDataClass.swift */,
 				229646D124F3294900FE14E5 /* Tag+CoreDataProperties.swift */,
 				222D992524BAB2FD00F66E0F /* DecoderExtension.swift */,
