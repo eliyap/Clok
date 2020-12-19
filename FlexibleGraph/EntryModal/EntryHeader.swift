@@ -27,8 +27,7 @@ extension EntryFullScreenModal {
         
             } label: {
                 Text(entryModel.project.name)
-//                    .foregroundColor(entryModel.project.wrappedColor)
-                    .background(entryModel.project.color(in: colorScheme))
+                    .foregroundColor(entryModel.project.color)
             }
         }
             .padding(Self.sharedPadding)
