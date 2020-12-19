@@ -22,4 +22,18 @@ extension ProjectLike {
             fatalError("Unsupported color scheme!")
         }
     }
+    
+    /// Returns a contrasting color adapted to light / dark mode
+    /// - Parameter mode: whether view is in light or dark mode
+    /// - Returns: adjusted `Color`
+    func contrasting(in mode: ColorScheme) -> Color {
+        switch mode {
+        case .dark:
+            return UIColor.white.tinted(with: color)
+        case .light:
+            return color
+        default:
+            fatalError("Unsupported color scheme!")
+        }
+    }
 }
