@@ -26,6 +26,9 @@ struct EntryFullScreenModal: View {
     /// updated amount to offset some view with an icon
     @State var iconOffset: CGFloat = .zero
     
+    /// whether the user is considering discarding the changes
+    @State var isDiscarding: Bool = false
+    
     //MARK:- Form Properties
     @StateObject var entryModel = EntryModel(from: StaticEntry.noEntry)
     
@@ -93,7 +96,7 @@ struct EntryFullScreenModal: View {
                 Color(UIColor.secondarySystemBackground)
                     .offset(y: max(0, scrollOffset))
                 /// translucent bar with some main control buttons
-                ControlBar(dismiss: dismiss, save: saveChanges, dismissalCompletion: dismissalCompletion, model: entryModel)
+                ControlBar(discard: dismiss, save: saveChanges, dismissalCompletion: dismissalCompletion, model: entryModel)
                     .offset(y: max(0, scrollOffset))
                     .zIndex(1)
                 /// the rest of the view
@@ -119,6 +122,7 @@ struct EntryFullScreenModal: View {
                     .offset(y: scrollOffset)
                 PropertyEditView(model: entryModel)
             }
+                .actionSheet(isPresented: $isDiscarding) { DiscardSheet }
                 .frame(height: geo.size.height, alignment: .top)
                 .coordinateSpace(name: coordSpaceName)
                 .gesture(ScrollDrag)
@@ -148,8 +152,23 @@ struct EntryFullScreenModal: View {
         /// `-` inversion causes circle to fill clockwise instead of counterclockwise
         -clamp(scrollOffset / Self.threshhold, between: (0, 1))
     }
-    
+}
+
+//MARK:- Dismissal
+extension EntryFullScreenModal {
     func saveChanges() -> Void {
         save(entryModel)
     }
+    
+    func discard() -> Void {
+        isDiscarding = true
+    }
+    
+    var DiscardSheet: ActionSheet {
+        ActionSheet(title: Text("Discard Changes?"), buttons: [
+            .destructive(Text("Discard"), action: dismiss),
+            .cancel()
+        ])
+    }
 }
+

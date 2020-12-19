@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ControlBar: View {
     
-    let dismiss: () -> Void
+    let discard: () -> Void
     let save: () -> Void
     var dismissalCompletion: CGFloat
     @ObservedObject var model: EntryModel
@@ -18,7 +18,7 @@ struct ControlBar: View {
     
     var body: some View {
         HStack {
-            DismissalButton(dismiss: dismiss, completion: dismissalCompletion)
+            DiscardButton(discard: discard, completion: dismissalCompletion)
             SaveChangesButton(save: save, canUndo: canUndo)
             Spacer()
             /// other stuff here

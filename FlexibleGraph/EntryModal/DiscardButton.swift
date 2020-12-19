@@ -10,7 +10,7 @@ import SwiftUI
 
 struct DiscardButton: View {
     
-    let dismiss: () -> Void
+    let discard: () -> Void
     /// measures the progress of the "swipe down to dismiss" gesture. bounded from [0, 1]
     var completion: CGFloat
     
@@ -20,9 +20,7 @@ struct DiscardButton: View {
     static var ButtonCircumference: CGFloat { CGFloat(Double.pi) * (Self.ButtonSize - ButtonStrokeWeight) }
     
     var body: some View {
-        Button {
-            self.dismiss()
-        } label: {
+        Button(action: discard) {
             ZStack {
                 Image(systemName: "xmark")
                     .font(Font.body.weight(.semibold))
