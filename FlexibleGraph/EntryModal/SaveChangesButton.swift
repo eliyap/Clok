@@ -10,14 +10,10 @@ import SwiftUI
 
 struct SaveChangesButton: View {
     let save: () -> Void
-    let canUndo: Bool
-    
     var body: some View {
         Button(action: save) {
             Image(systemName: "checkmark")
                 .font(Font.body.weight(.semibold))
         }
-            /// only allow saving if there are changes (i.e. something to undo)
-            .disabled(!canUndo)
     }
 }
