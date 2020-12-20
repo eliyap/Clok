@@ -19,11 +19,6 @@ struct PropertyEditor: View {
     
     let boundingWidth: CGFloat
     
-    @FetchRequest(
-        entity: Project.entity(),
-        sortDescriptors: [NSSortDescriptor(key: "name", ascending: true)]
-    ) var projects: FetchedResults<Project>
-    
     var body: some View {
         switch field {
         case .start:
@@ -36,12 +31,15 @@ struct PropertyEditor: View {
                 .datePickerStyle(WheelDatePickerStyle())
         case .project:
             ProjectPicker(
-                projects: projects,
                 selected: $model.project,
                 dismiss: dismiss,
                 boundingWidth: boundingWidth
             )
-                
+        case .tags:
+            TagPicker(
+                selected: $model.tagStrings,
+                boundingWidth: boundingWidth
+            )
         default:
             EmptyView()
         }

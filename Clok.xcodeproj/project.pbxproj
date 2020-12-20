@@ -388,6 +388,11 @@
 		22D9EA9C258DEA8B00B3EBA0 /* DateFormatterShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4F56A25773B9D0053ABFB /* DateFormatterShared.swift */; };
 		22D9EAA4258DEA8B00B3EBA0 /* DateFormatterShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4F56A25773B9D0053ABFB /* DateFormatterShared.swift */; };
 		22D9EAA5258DEA8C00B3EBA0 /* DateFormatterShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4F56A25773B9D0053ABFB /* DateFormatterShared.swift */; };
+		22D9EABC258DF61400B3EBA0 /* TagPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9EABB258DF61400B3EBA0 /* TagPicker.swift */; };
+		22D9EAC5258F39CE00B3EBA0 /* SortedArrayInsert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9EAC4258F39CE00B3EBA0 /* SortedArrayInsert.swift */; };
+		22D9EACD258F3A4C00B3EBA0 /* SortedArrayInsert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9EAC4258F39CE00B3EBA0 /* SortedArrayInsert.swift */; };
+		22D9EAD5258F3A4D00B3EBA0 /* SortedArrayInsert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9EAC4258F39CE00B3EBA0 /* SortedArrayInsert.swift */; };
+		22D9EAD6258F3A4D00B3EBA0 /* SortedArrayInsert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9EAC4258F39CE00B3EBA0 /* SortedArrayInsert.swift */; };
 		22DC869A24BA7A5E00FF771F /* TimeEntryModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22DC869824BA7A5E00FF771F /* TimeEntryModel.xcdatamodeld */; };
 		22DC869B24BA7A5E00FF771F /* TimeEntryModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22DC869824BA7A5E00FF771F /* TimeEntryModel.xcdatamodeld */; };
 		22DC86A024BA838D00FF771F /* Project+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC869C24BA838D00FF771F /* Project+CoreDataClass.swift */; };
@@ -786,6 +791,8 @@
 		22D9EA3B258DD19700B3EBA0 /* RawTimeEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawTimeEntry.swift; sourceTree = "<group>"; };
 		22D9EA75258DD42100B3EBA0 /* TimeEntry_Update.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntry_Update.swift; sourceTree = "<group>"; };
 		22D9EA7E258DD5B200B3EBA0 /* PutBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PutBlock.swift; sourceTree = "<group>"; };
+		22D9EABB258DF61400B3EBA0 /* TagPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagPicker.swift; sourceTree = "<group>"; };
+		22D9EAC4258F39CE00B3EBA0 /* SortedArrayInsert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortedArrayInsert.swift; sourceTree = "<group>"; };
 		22DC869924BA7A5E00FF771F /* TimeEntryModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TimeEntryModel.xcdatamodel; sourceTree = "<group>"; };
 		22DC869C24BA838D00FF771F /* Project+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Project+CoreDataClass.swift"; sourceTree = "<group>"; };
 		22DC869D24BA838D00FF771F /* Project+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Project+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -1034,6 +1041,7 @@
 				223C30AC2583599A00751C51 /* BillableToggle.swift */,
 				22939EA32589BDA0004CDD26 /* ShieldedBinding.swift */,
 				22939EC32589D636004CDD26 /* ProjectPicker.swift */,
+				22D9EABB258DF61400B3EBA0 /* TagPicker.swift */,
 			);
 			path = FormElements;
 			sourceTree = "<group>";
@@ -1620,6 +1628,7 @@
 				229428DB251E7E7E008C0BFF /* Mod.swift */,
 				22F52410257E25FC005222C2 /* AxisToggle.swift */,
 				C60856AA251FCB1E00E6D6C0 /* URLStoreExtension.swift */,
+				22D9EAC4258F39CE00B3EBA0 /* SortedArrayInsert.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -2029,6 +2038,7 @@
 				C6EB47802520170100FCD0CB /* AngleFromCartesian.swift in Sources */,
 				2292C4FB2505CC1E005802B5 /* Board.swift in Sources */,
 				2292C4EE2505CC1E005802B5 /* PrettyPrint.swift in Sources */,
+				22D9EAD5258F3A4D00B3EBA0 /* SortedArrayInsert.swift in Sources */,
 				22D5F43625707F9600806992 /* Project+CoreDataProperties.swift in Sources */,
 				22D4F4CE257724410053ABFB /* ColorTint.swift in Sources */,
 				229521532505BEAB00085055 /* WorkspaceManager.swift in Sources */,
@@ -2086,6 +2096,7 @@
 				C60856BC251FCE1B00E6D6C0 /* Tag+CoreDataProperties.swift in Sources */,
 				C60856B5251FCE1B00E6D6C0 /* Project+CoreDataProperties.swift in Sources */,
 				22DE5903251EC87900379396 /* IntentHandler.swift in Sources */,
+				22D9EACD258F3A4C00B3EBA0 /* SortedArrayInsert.swift in Sources */,
 				22D4F4BB257722F60053ABFB /* TimeEntryLike_Color.swift in Sources */,
 				C6EB47692520170100FCD0CB /* AngleAsDate.swift in Sources */,
 				22556BAB25751685003DEB7D /* Clamp.swift in Sources */,
@@ -2208,6 +2219,7 @@
 				2205DCAA254B9FFE00146EAB /* TimeEntry+CoreDataClass.swift in Sources */,
 				2227544C258CBDD000EB99C8 /* ProjectLike_ColorScheme.swift in Sources */,
 				2205DD5E254BA16000146EAB /* MR_Timeline.swift in Sources */,
+				22D9EAD6258F3A4D00B3EBA0 /* SortedArrayInsert.swift in Sources */,
 				2205DC5A254B9F6600146EAB /* NetworkConstants.swift in Sources */,
 				2205DDA3254BA20500146EAB /* DateComponent.swift in Sources */,
 				2205DD0A254BA0C600146EAB /* MR_Widget.swift in Sources */,
@@ -2311,6 +2323,7 @@
 				2295216C2505C16900085055 /* GraphMode.swift in Sources */,
 				22027DD024AFF63F00C0BA90 /* OrientationView.swift in Sources */,
 				228B100224AEA6E50026AD4B /* RoundBottomRect.swift in Sources */,
+				22D9EABC258DF61400B3EBA0 /* TagPicker.swift in Sources */,
 				2295215A2505BF2A00085055 /* KeychainError.swift in Sources */,
 				22275418258CBD3F00EB99C8 /* StaticProject.swift in Sources */,
 				229D4119257E117E00ABD26F /* StickyDateLabel.swift in Sources */,
@@ -2351,6 +2364,7 @@
 				22A2CE1F24E59BCE000820AD /* DateAngle.swift in Sources */,
 				224F5497257F994000E2BB18 /* ModalAnimation.swift in Sources */,
 				2295216E2505C18200085055 /* ZeroStart.swift in Sources */,
+				22D9EAC5258F39CE00B3EBA0 /* SortedArrayInsert.swift in Sources */,
 				229646C624F06AFF00FE14E5 /* OldEntryRect.swift in Sources */,
 				2229D7A824EF6750004E1034 /* DateComponent.swift in Sources */,
 				2264CB3524AD330500ECBF2B /* IconView.swift in Sources */,

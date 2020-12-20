@@ -1,29 +1,29 @@
 //
-//  ProjectPicker.swift
+//  TagPicker.swift
 //  Clok
 //
-//  Created by Secret Asian Man Dev on 16/12/20.
+//  Created by Secret Asian Man Dev on 19/12/20.
 //  Copyright © 2020 Secret Asian Man 3. All rights reserved.
 //
 
 import SwiftUI
 
-struct ProjectPicker: View {
+struct TagPicker: View {
     
     @FetchRequest(
-        entity: Project.entity(),
+        entity: Tag.entity(),
         sortDescriptors: [NSSortDescriptor(key: "name", ascending: true)]
-    ) private var projects: FetchedResults<Project>
+    ) private var tags: FetchedResults<Tag>
     
-    @Binding var selected: ProjectLike
-    let dismiss: () -> Void
+    private var tagStrings: [String] {
+        tags.map{$0.name}
+    }
+    
+    /// tags selected by the user
+    @Binding var selected: [String]
     
     /// the maximum width available for the `View` to consume
     let boundingWidth: CGFloat
-    
-    private var projectChoices: [ProjectLike] {
-        projects.map{ProjectLike.project($0)} + [.special(.NoProject)]
-    }
     
     var body: some View {
         
@@ -32,12 +32,11 @@ struct ProjectPicker: View {
 
         /// Adds a tag view for each tag in the array. Populates from left to right and then on to new rows when too wide for the screen
         return ZStack(alignment: .topLeading) {
-            ForEach(projectChoices, id: \.self) { project in
+            ForEach(tagStrings, id: \.self) { tag in
                 Button {
-                    selected = project
-                    dismiss()
+                    select(tag: tag)
                 } label: {
-                    ProjectTag(project: project, selected: selected)
+                    TagView(tag: tag, selected: selected)
                 }
                     .alignmentGuide(.leading, computeValue: { tagSize in
                         /// checks if add this `View`'s width would cause row to exceed allowed width
@@ -49,7 +48,7 @@ struct ProjectPicker: View {
                         }
                         
                         let offset = width
-                        if project == projectChoices.last {
+                        if tag == tagStrings.last {
                             width = 0
                         } else {
                             /// increment width tracker
@@ -59,7 +58,7 @@ struct ProjectPicker: View {
                     })
                     .alignmentGuide(.top, computeValue: { tagSize in
                         let offset = height
-                        if project == projectChoices.last {
+                        if tag == tagStrings.last {
                             height = 0
                         }
                         return offset
@@ -68,44 +67,36 @@ struct ProjectPicker: View {
         }
     }
     
-    private struct ProjectTag: View {
+    /// if tag is present, remove it. otherwise, insert it at the correct index to keep the array sorted
+    func select(tag: String) -> Void {
+        if let idx = selected.firstIndex(of: tag) {
+            selected.remove(at: idx)
+        } else {
+            selected.insert(tag, at: selected.insertionIndex{$0<tag})
+        }
+    }
+    
+    struct TagView: View {
         
-        @Environment(\.colorScheme) private var colorScheme
+        @Environment(\.colorScheme) var colorScheme
         
-        var project: ProjectLike
-        let selected: ProjectLike
+        var tag: String
+        let selected: [String]
         
-        private static let radius: CGFloat = 3.0
+        static let radius: CGFloat = 3.0
         
         var body: some View {
-            Text(project.name)
+            Text(tag)
                 .padding(.leading, 2)
-                .foregroundColor(
-                    project == selected
-                        ? .white
-                        : .gray
-                )
+//                .foregroundColor(
+//                    project == selected
+//                        ? .white
+//                        : .gray
+//                )
                 .padding(4)
-                .background(color)
+//                .background(color)
                 .cornerRadius(Self.radius)
                 .padding(4)
         }
-        
-        private var color: Color {
-            if project == selected {
-                return project.color
-            } else {
-                switch colorScheme {
-                case .light:
-                    return UIColor.white.tinted(with: project.color)
-                case .dark:
-                    return UIColor.black.tinted(with: project.color)
-                default:
-                    fatalError("Unsupported ColorScheme!")
-                }
-            }
-        }
     }
-
 }
-

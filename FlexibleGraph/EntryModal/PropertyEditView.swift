@@ -72,6 +72,8 @@ struct PropertyEditView: View {
             return "End Time"
         case .project:
             return "Project"
+        case .tags:
+            return "Tags"
         default:
             return ""
         }
