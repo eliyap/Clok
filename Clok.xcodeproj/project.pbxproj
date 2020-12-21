@@ -50,6 +50,7 @@
 		22128E2525422D59004913AF /* ColorScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22128E2325422D59004913AF /* ColorScore.swift */; };
 		22128E2625422D59004913AF /* ColorScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22128E2325422D59004913AF /* ColorScore.swift */; };
 		2213DBE12590908000ADEA2F /* URLGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2213DBE02590908000ADEA2F /* URLGenerator.swift */; };
+		2213DBEA259090DE00ADEA2F /* TimeEntry_Delete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2213DBE9259090DE00ADEA2F /* TimeEntry_Delete.swift */; };
 		221810DE24B00FB900B63ECA /* EntryTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221810DD24B00FB900B63ECA /* EntryTab.swift */; };
 		221810E024B0158500B63ECA /* Get24hourPref.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221810DF24B0158500B63ECA /* Get24hourPref.swift */; };
 		221810E424B01AAC00B63ECA /* InAndOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221810E324B01AAC00B63ECA /* InAndOut.swift */; };
@@ -586,6 +587,7 @@
 		2207E46424E0BEAD00311F10 /* DPad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPad.swift; sourceTree = "<group>"; };
 		22128E2325422D59004913AF /* ColorScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorScore.swift; sourceTree = "<group>"; };
 		2213DBE02590908000ADEA2F /* URLGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLGenerator.swift; sourceTree = "<group>"; };
+		2213DBE9259090DE00ADEA2F /* TimeEntry_Delete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntry_Delete.swift; sourceTree = "<group>"; };
 		221810DD24B00FB900B63ECA /* EntryTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryTab.swift; sourceTree = "<group>"; };
 		221810DF24B0158500B63ECA /* Get24hourPref.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Get24hourPref.swift; sourceTree = "<group>"; };
 		221810E324B01AAC00B63ECA /* InAndOut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAndOut.swift; sourceTree = "<group>"; };
@@ -1571,6 +1573,7 @@
 				22D9EA7E258DD5B200B3EBA0 /* PutBlock.swift */,
 				22FFF64C2570F8B200A54471 /* BeginningOfWeek.swift */,
 				22D9EA75258DD42100B3EBA0 /* TimeEntry_Update.swift */,
+				2213DBE9259090DE00ADEA2F /* TimeEntry_Delete.swift */,
 			);
 			path = Putters;
 			sourceTree = "<group>";
@@ -2291,6 +2294,7 @@
 				224F5470257F220600E2BB18 /* GraphConstants.swift in Sources */,
 				22939EA42589BDA0004CDD26 /* ShieldedBinding.swift in Sources */,
 				223C30882583465000751C51 /* EntryModel.swift in Sources */,
+				2213DBEA259090DE00ADEA2F /* TimeEntry_Delete.swift in Sources */,
 				221810DE24B00FB900B63ECA /* EntryTab.swift in Sources */,
 				22275378258CB40500EB99C8 /* RunningEntry_Equatable.swift in Sources */,
 				22275344258CAD5C00EB99C8 /* ProjectLike.swift in Sources */,
