@@ -64,7 +64,7 @@ struct TagView: View {
     var tag: String
     
     var body: some View {
-        Text(tag.lowercased())
+        Text(tag)
             .padding(.leading, 2)
             .foregroundColor(.primary)
             .font(.caption2)
