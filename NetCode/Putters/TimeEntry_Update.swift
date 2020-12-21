@@ -45,7 +45,7 @@ extension TimeEntry {
                 }
                 guard let updated = try? JSONDecoder(dateStrategy: .iso8601).decode(UpdatedEntry.self, from: data) else {
                     #if DEBUG
-                    print(String(describing: try? JSONSerialization.jsonObject(with: data, options: [])))
+                    print("Decode failed on object: " + String(describing: try? JSONSerialization.jsonObject(with: data, options: [])))
                     #endif
                     return
                 }

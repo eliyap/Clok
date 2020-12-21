@@ -23,7 +23,7 @@ struct UpdatedEntry: Decodable {
         let start: Date
         let stop: Date
         let duration: Double
-        let tags: [String]
+        let tags: [String]?
         let id: Int64
         let pid: Int?
         let uid: Int; // user ID

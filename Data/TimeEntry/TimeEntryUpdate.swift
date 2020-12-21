@@ -58,7 +58,7 @@ extension TimeEntry {
         assert(self.end == updated.data.stop)
         assert(self.billable == updated.data.billable)
         assert(self.dur == updated.data.duration)
-        assert(self.tagStrings.sorted() == updated.data.tags.sorted())
+        assert(self.tagStrings.sorted() == updated.data.tags?.sorted())
         assert(self.project?.id == updated.data.pid)
     }
 }
