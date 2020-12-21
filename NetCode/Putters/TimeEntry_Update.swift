@@ -13,7 +13,11 @@ extension TimeEntry {
     
     /// Creates an `uploadTask` to send changes to Toggl
     /// - Parameter token: authentication token
-    func upload(with token: String) {
+    /// - Parameter completion: what to do with the Toggl response
+    func upload(
+        with token: String,
+        completion: @escaping (UpdatedEntry) -> Void
+    ) {
         /// Docs @ https://github.com/toggl/toggl_api_docs/blob/master/chapters/time_entries.md#update-a-time-entry
         var request = formRequest(
             url: URL(string: "\(NetworkConstants.API_URL)/time_entries/\(id)\(NetworkConstants.agentSuffix)")!,
@@ -39,10 +43,13 @@ extension TimeEntry {
                     #endif
                     return
                 }
-                #if DEBUG
-                print(String(describing: try? JSONSerialization.jsonObject(with: data, options: [])))
-                print(try? JSONDecoder(dateStrategy: .iso8601).decode(UpdatedEntry.self, from: data))
-                #endif
+                guard let updated = try? JSONDecoder(dateStrategy: .iso8601).decode(UpdatedEntry.self, from: data) else {
+                    #if DEBUG
+                    print(String(describing: try? JSONSerialization.jsonObject(with: data, options: [])))
+                    #endif
+                    return
+                }
+                completion(updated)
             }
             
         }
