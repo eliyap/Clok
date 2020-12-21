@@ -26,6 +26,7 @@ struct UndoTracker: View {
         Group {
             Button(action: undo) {
                 Image(systemName: "arrow.uturn.left")
+                    .font(.caption)
             }
                 .onChange(of: model.hashValue, perform: { _ in
                     /// can only undo if there are indices to fall back to
@@ -35,6 +36,7 @@ struct UndoTracker: View {
                 .disabled(!canUndo)
             Button(action: redo) {
                 Image(systemName: "arrow.uturn.right")
+                    .font(.caption)
             }
                 /// cannot redo if current entry is the latest entry
                 .disabled(changelog.isEmpty || current == changelog.indices.last)

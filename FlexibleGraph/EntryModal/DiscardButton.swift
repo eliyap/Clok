@@ -15,15 +15,15 @@ struct DiscardButton: View {
     var completion: CGFloat
     
     /// visual parameters
-    static let ButtonSize: CGFloat = 40
-    static let ButtonStrokeWeight: CGFloat = 2.5
+    static let ButtonSize: CGFloat = 30
+    static let ButtonStrokeWeight: CGFloat = 1.5
     static var ButtonCircumference: CGFloat { CGFloat(Double.pi) * (Self.ButtonSize - ButtonStrokeWeight) }
     
     var body: some View {
         Button(action: discard) {
             ZStack {
                 Image(systemName: "xmark")
-                    .font(Font.body.weight(.semibold))
+                    .font(.caption)
                 Circle()
                     .strokeBorder(style: StrokeStyle(
                         lineWidth: Self.ButtonStrokeWeight,

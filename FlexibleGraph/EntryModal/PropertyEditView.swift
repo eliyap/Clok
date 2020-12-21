@@ -42,7 +42,7 @@ struct PropertyEditView: View {
                 VStack {
                     Text(title)
                         .padding(.top, EntryFullScreenModal.sharedPadding)
-                        .font(.title)
+                        .font(.body)
                     Spacer()
                     PropertyEditor(
                         model: internalModel,
