@@ -9,6 +9,33 @@
 import Foundation
 import Combine
 
+fileprivate struct UpdatedEntry: Decodable {
+    let data: Details
+    
+    struct Details: Decodable {
+        /// timestamp of successful update
+        let at: Date
+        
+        /// note, name differs from `RawTimeEntry`
+        let billable: Bool
+        
+        /// NOTE: if `description` == "", the field will be absent.
+        let description: String?
+        let start: Date
+        let stop: Date
+        let duration: Double
+        let tags: [String]
+        let id: Int64
+        let pid: Int?
+        let uid: Int; // user ID
+        
+        /// present in the blob, but unused by `Clok`
+        //    duronly = 0;
+        //    guid = <some long hex thing>;
+        //    wid
+    }
+}
+
 extension TimeEntry {
     
     /// Creates an `uploadTask` to send changes to Toggl
@@ -39,7 +66,12 @@ extension TimeEntry {
                     #endif
                     return
                 }
+                #if DEBUG
+                print(String(describing: try? JSONSerialization.jsonObject(with: data, options: [])))
+                print(try? JSONDecoder(dateStrategy: .iso8601).decode(UpdatedEntry.self, from: data))
+                #endif
             }
+            
         }
             .resume()
     }
