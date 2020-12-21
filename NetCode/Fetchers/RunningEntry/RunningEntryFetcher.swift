@@ -42,9 +42,6 @@ func RawRunningEntryRequest() -> AnyPublisher<RawRunningEntry, Error> {
         auth: auth(token: token)
     ))
         .map(dataTaskMonitor)
-        .tryMap {
-            return try JSONDecoder(dateStrategy: .iso8601)
-                .decode(RawRunningEntry.self, from: $0)
-        }
+        .tryMap { try JSONDecoder(dateStrategy: .iso8601).decode(RawRunningEntry.self, from: $0) }
         .eraseToAnyPublisher()
 }
