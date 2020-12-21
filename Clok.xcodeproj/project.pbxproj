@@ -378,7 +378,7 @@
 		22D9EA02258D96DD00B3EBA0 /* onBackgrounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9EA01258D96DD00B3EBA0 /* onBackgrounded.swift */; };
 		22D9EA0B258D9FA900B3EBA0 /* SaveChangesButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9EA0A258D9FA900B3EBA0 /* SaveChangesButton.swift */; };
 		22D9EA22258DBF0300B3EBA0 /* TimeEntryUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9EA21258DBF0300B3EBA0 /* TimeEntryUpdate.swift */; };
-		22D9EA2B258DCBA100B3EBA0 /* TimeEntry_Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9EA2A258DCBA100B3EBA0 /* TimeEntry_Codable.swift */; };
+		22D9EA2B258DCBA100B3EBA0 /* TimeEntry_Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9EA2A258DCBA100B3EBA0 /* TimeEntry_Encodable.swift */; };
 		22D9EA3C258DD19700B3EBA0 /* RawTimeEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9EA3B258DD19700B3EBA0 /* RawTimeEntry.swift */; };
 		22D9EA4B258DD1B000B3EBA0 /* RawTimeEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9EA3B258DD19700B3EBA0 /* RawTimeEntry.swift */; };
 		22D9EA54258DD1B300B3EBA0 /* RawTimeEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9EA3B258DD19700B3EBA0 /* RawTimeEntry.swift */; };
@@ -787,7 +787,7 @@
 		22D9EA01258D96DD00B3EBA0 /* onBackgrounded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = onBackgrounded.swift; sourceTree = "<group>"; };
 		22D9EA0A258D9FA900B3EBA0 /* SaveChangesButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveChangesButton.swift; sourceTree = "<group>"; };
 		22D9EA21258DBF0300B3EBA0 /* TimeEntryUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntryUpdate.swift; sourceTree = "<group>"; };
-		22D9EA2A258DCBA100B3EBA0 /* TimeEntry_Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntry_Codable.swift; sourceTree = "<group>"; };
+		22D9EA2A258DCBA100B3EBA0 /* TimeEntry_Encodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntry_Encodable.swift; sourceTree = "<group>"; };
 		22D9EA3B258DD19700B3EBA0 /* RawTimeEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawTimeEntry.swift; sourceTree = "<group>"; };
 		22D9EA75258DD42100B3EBA0 /* TimeEntry_Update.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntry_Update.swift; sourceTree = "<group>"; };
 		22D9EA7E258DD5B200B3EBA0 /* PutBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PutBlock.swift; sourceTree = "<group>"; };
@@ -1441,7 +1441,7 @@
 				22DC869E24BA838D00FF771F /* TimeEntry+CoreDataClass.swift */,
 				22DC869F24BA838D00FF771F /* TimeEntry+CoreDataProperties.swift */,
 				22D9EA21258DBF0300B3EBA0 /* TimeEntryUpdate.swift */,
-				22D9EA2A258DCBA100B3EBA0 /* TimeEntry_Codable.swift */,
+				22D9EA2A258DCBA100B3EBA0 /* TimeEntry_Encodable.swift */,
 				22D9EA3B258DD19700B3EBA0 /* RawTimeEntry.swift */,
 			);
 			path = TimeEntry;
@@ -2462,7 +2462,7 @@
 				229646D724F335CA00FE14E5 /* ToOptional.swift in Sources */,
 				2262882224E88691006B330C /* Workspace.swift in Sources */,
 				2293CEED24EC5661000B68F4 /* ProjectLoader.swift in Sources */,
-				22D9EA2B258DCBA100B3EBA0 /* TimeEntry_Codable.swift in Sources */,
+				22D9EA2B258DCBA100B3EBA0 /* TimeEntry_Encodable.swift in Sources */,
 				2207E46524E0BEAD00311F10 /* DPad.swift in Sources */,
 				22275402258CBBE400EB99C8 /* ProjectLite.swift in Sources */,
 				224D10D324E6FA8900668FD8 /* DateIndicator.swift in Sources */,

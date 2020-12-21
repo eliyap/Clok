@@ -35,6 +35,12 @@ struct FlexibleGraph: View {
         sortDescriptors: []
     ) var entries: FetchedResults<TimeEntry>
     
+    /// access CoreData `Tag` storage
+    @FetchRequest(
+        entity: Tag.entity(),
+        sortDescriptors: []
+    ) var tags: FetchedResults<Tag>
+    
     /// light / dark mode
     @Environment(\.colorScheme) var colorScheme
     

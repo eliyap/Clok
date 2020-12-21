@@ -7,14 +7,18 @@
 //
 
 import Foundation
+import SwiftUI
 
 extension TimeEntry {
-    func update(from model: EntryModel) -> Void {
+    func update(from model: EntryModel, tags: FetchedResults<Tag>) -> Void {
         
         self.start = model.start
         self.end = model.end
         self.billable = model.billable
         self.name = model.entryDescription
+        self.tags = Set(tags.filter {
+            model.tagStrings.contains($0.name)
+        }) as NSSet
         
         /// remember to update duration calculation
         self.dur = end - start

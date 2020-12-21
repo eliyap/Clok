@@ -46,7 +46,7 @@ extension FlexibleGraph {
     /// - Parameter changed: EntryModel containing updated modified information
     /// - Returns: `Void`
     func saveChanges(_ changed: EntryModel) -> Void {
-        model.selected?.update(from: changed)
+        model.selected?.update(from: changed, tags: tags)
         model.selected?.upload(with: cred.user!.token)
         dismissModal()
     }
