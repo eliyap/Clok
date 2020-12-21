@@ -23,6 +23,9 @@ struct TagList: View {
 
         /// Adds a tag view for each tag in the array. Populates from left to right and then on to new rows when too wide for the screen
         return ZStack(alignment: .topLeading) {
+            if tags.isEmpty {
+                TagView(tag: "+")
+            }
             ForEach(tags, id: \.self) { tag in
                 TagView(tag: tag)
                     .alignmentGuide(.leading, computeValue: { tagSize in
@@ -63,10 +66,11 @@ struct TagView: View {
     var body: some View {
         Text(tag.lowercased())
             .padding(.leading, 2)
-            .foregroundColor(.white)
+            .foregroundColor(.primary)
             .font(.caption2)
             .padding(4)
-            .background(Color.blue.cornerRadius(5))
+            .background(Color(UIColor.systemGray5))
+            .cornerRadius(5)
             .padding(4)
     }
 }

@@ -17,29 +17,19 @@ struct EntryBody: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
+            //MARK:- Date Segment
             Label {
                 HStack {
-                    Button {
-                        withAnimation(PropertyEditView.animation) {
-                            model.field = .start
-                        }
-                    } label: {
-                        StartTime
-                    }
+                    Button(action: setField(to: .start)) { StartTime }
                     Text("–")
-                    Button {
-                        withAnimation(PropertyEditView.animation) {
-                            model.field = .end
-                        }
-                    } label: {
-                        EndTime
-                    }
+                    Button(action: setField(to: .end)) { EndTime }
                 }
             } icon: {
                 Image(systemName: "stopwatch")
             }
                 .labelStyle(AlignedLabelStyle())
             
+            //MARK:- Duration Segment
             Label(
                 "\(model.duration.toString())",
                 /// When looking at the modal for a running timer, we should switch out for a running hourglass, and turn it over every few seconds
@@ -47,17 +37,35 @@ struct EntryBody: View {
             )
                 .labelStyle(AlignedLabelStyle())
             
+            //MARK:- Tags Segment
             Label {
                 TagList(tags: model.tagStrings.sorted(), boundingWidth: width)
             } icon: {
                 Image(systemName: "tag")
             }
                 .labelStyle(AlignedLabelStyle())
+                .onTapGesture(perform: setField(to: .tags))
             
             BillableToggle(billable: $model.billable)
         }
             .padding(EntryFullScreenModal.sharedPadding)
     }
+    
+    /// construct a simple shorthand to set `field` with our preferred animation
+    func setField(to field: EntryModel.Field) -> () -> Void {
+        {
+            withAnimation(PropertyEditView.animation) {
+                model.field = field
+            }
+        }
+    }
+}
+
+// MARK:- Start & End Times
+/// try to conceal non-useful / redundant information where possible and natural, e.g.
+/// - second copy of the same date (8-10am on the 16th of Nov)
+/// - the year if entry was this year
+extension EntryBody {
     
     var StartTime: some View {
         Group {
