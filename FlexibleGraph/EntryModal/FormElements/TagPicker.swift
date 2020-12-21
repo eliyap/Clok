@@ -85,16 +85,18 @@ struct TagPicker: View {
         
         static let radius: CGFloat = 3.0
         
+        var isSelected: Bool { selected.contains(tag) }
+        
         var body: some View {
-            Text(tag)
-                .padding(.leading, 2)
-//                .foregroundColor(
-//                    project == selected
-//                        ? .white
-//                        : .gray
-//                )
+            HStack {
+                Text(tag)
+                    .font(.caption2)
+                    .padding(.leading, 2)
+                Image(systemName: isSelected ? "xmark.circle.fill" : "checkmark.circle.fill")
+                    .font(.caption2)
+            }
                 .padding(4)
-//                .background(color)
+                .background(isSelected ? Color.green : Color.red )
                 .cornerRadius(Self.radius)
                 .padding(4)
         }
