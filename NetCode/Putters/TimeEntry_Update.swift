@@ -20,7 +20,7 @@ extension TimeEntry {
     ) {
         /// Docs @ https://github.com/toggl/toggl_api_docs/blob/master/chapters/time_entries.md#update-a-time-entry
         var request = formRequest(
-            url: URL(string: "\(NetworkConstants.API_URL)/time_entries/\(id)\(NetworkConstants.agentSuffix)")!,
+            url: NetworkConstants.url(for: self),
             auth: auth(token: token)
         )
         request.httpMethod = "PUT"
