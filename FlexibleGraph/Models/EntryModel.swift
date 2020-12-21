@@ -65,12 +65,14 @@ extension EntryModel {
         start = new.start
         end = new.end
         project = new.project
+        tagStrings = new.tagStrings
         entryDescription = new.entryDescription
         billable = new.billable
     }
 }
 
 extension EntryModel: Equatable {
+    /// side note: we could have used the hashValue here, however this method might be faster due to short-circuit evaluation
     static func == (lhs: EntryModel, rhs: EntryModel) -> Bool {
         /// ignored: `field`
         lhs.id == rhs.id
@@ -79,6 +81,7 @@ extension EntryModel: Equatable {
             && lhs.end == rhs.end
             && lhs.entryDescription == rhs.entryDescription
             && lhs.project == rhs.project
+            && lhs.tagStrings.sorted() == rhs.tagStrings.sorted()
     }
 }
 
@@ -90,11 +93,13 @@ extension EntryModel: NSCopying {
 
 extension EntryModel: Hashable {
     func hash(into hasher: inout Hasher) {
+        /// ignored: `field`
         hasher.combine(id)
         hasher.combine(start)
         hasher.combine(end)
         hasher.combine(billable)
         hasher.combine(entryDescription)
         hasher.combine(project)
+        hasher.combine(tagStrings.sorted())
     }
 }
