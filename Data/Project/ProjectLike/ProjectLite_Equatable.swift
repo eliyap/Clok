@@ -8,8 +8,8 @@
 
 import Foundation
 
-extension ProjectLite: Equatable {
-    static func ==(lhs: ProjectLite, rhs: ProjectLite) -> Bool {
-        lhs.color == rhs.color && lhs.id == rhs.id && lhs.name == rhs.name
-    }
-}
+//extension ProjectLite: Equatable {
+//    static func ==(lhs: ProjectLite, rhs: ProjectLite) -> Bool {
+//        lhs.color == rhs.color && lhs.id == rhs.id && lhs.name == rhs.name
+//    }
+//}

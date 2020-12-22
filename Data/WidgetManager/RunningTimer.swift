@@ -15,14 +15,12 @@ extension WidgetManager {
     static var running: RunningEntry {
         get {
             guard let decoded = suite?.object(forKey: runningKey) as? Data else {
-                #if DEBUG
-                assert(false, "Unable to open storage to fetch RunningEntry!")
-                #endif
+                /// NOTE: on first start up, the storage has not yet been created, so this will fail.
                 return .noEntry
             }
             do {
                 let unarchived = try NSKeyedUnarchiver.unarchivedObject(
-                    ofClasses: [RunningEntry.self, NSDate.self, NSString.self, NSArray.self],
+                    ofClasses: [RunningEntry.self, ProjectLite.self, NSDate.self, NSString.self, NSArray.self],
                     from: decoded
                 )
                 /// my replacement for `try a as b`
