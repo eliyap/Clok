@@ -12,7 +12,7 @@ import SwiftUI
 final class RunningEntry: NSObject, NSSecureCoding {
     
     var id: Int64
-    var pid: Int64?
+    var pid: Int
     var start: Date
     var project: ProjectLike
     var entryDescription: String
@@ -32,7 +32,7 @@ final class RunningEntry: NSObject, NSSecureCoding {
         self.id = id
         self.start = start
         self.project = project
-        self.pid = project.id
+        self.pid = Int(project.id)
         self.entryDescription = entryDescription
         self.tags = tags ?? []
         self.billable = billable
@@ -62,7 +62,7 @@ final class RunningEntry: NSObject, NSSecureCoding {
      */
     init?(coder: NSCoder) {
         id = Int64(coder.decodeInteger(forKey: "id"))
-        pid = Int64(coder.decodeInteger(forKey: "pid"))
+        pid = coder.decodeInteger(forKey: "pid")
         
         /// note: we will assign project later, for now leave `unknown`
         project = ProjectLike.special(.UnknownProject)

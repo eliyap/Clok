@@ -52,7 +52,11 @@ extension RunningEntry {
         )
         
         /// update `pid` from previously set `unknown` pid
-        self.pid = runningData.pid
+        if let pid = runningData.pid {
+            self.pid = Int(pid)
+        } else {
+            self.pid = Int(StaticProject.NoProject.id)
+        }
         
         /**
          Since data comes from Toggl, `Project` should always be a valid project.

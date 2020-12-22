@@ -68,29 +68,30 @@ struct RunningEntryView: View {
     }
     
     func loadRunning() -> Void {
-        guard let user = cred.user else { return }
-        cancellable = RunningEntryLoader.fetchRunningEntry(
-            user: user,
-            projects: Array(projects),
-            context: moc
-        )
-        /// if fetch is successful, save to `UserDefaults`
-        .map { runningEntry in
-            #if DEBUG
-            print(runningEntry == RunningEntry.noEntry ? "No Entry Running." : "Running: \(runningEntry?.project.name), \(runningEntry?.entryDescription)")
-            #endif
-            if !RunningEntry.widgetMatch(
-                WidgetManager.running,
-                runningEntry
-            ) {
-                #if DEBUG
-                print("Difference Detected, Reloading Widget Timeline")
-                #endif
-                WidgetManager.running = runningEntry
-                WidgetCenter.shared.reloadAllTimelines()
-            }
-            return runningEntry
-        }
-        .assign(to: \.running, on: self)
+        #warning("commented out pending deletion")
+//        guard let user = cred.user else { return }
+//        cancellable = RunningEntryLoader.fetchRunningEntry(
+//            user: user,
+//            projects: Array(projects),
+//            context: moc
+//        )
+//        /// if fetch is successful, save to `UserDefaults`
+//        .map { runningEntry in
+//            #if DEBUG
+//            print(runningEntry == RunningEntry.noEntry ? "No Entry Running." : "Running: \(runningEntry?.project.name), \(runningEntry?.entryDescription)")
+//            #endif
+//            if !RunningEntry.widgetMatch(
+//                WidgetManager.running,
+//                runningEntry
+//            ) {
+//                #if DEBUG
+//                print("Difference Detected, Reloading Widget Timeline")
+//                #endif
+//                WidgetManager.running = runningEntry
+//                WidgetCenter.shared.reloadAllTimelines()
+//            }
+//            return runningEntry
+//        }
+//        .assign(to: \.running, on: self)
     }
 }

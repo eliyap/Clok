@@ -7,6 +7,7 @@
 //
 
 import WidgetKit
+import Combine
 
 extension ClokApp {
     /// accepts a meaningless boolean to satisfy it's need to be plugged into `onChanged`
@@ -17,16 +18,23 @@ extension ClokApp {
             projects: loadProjects(context: nspc.viewContext) ?? [],
             context: nspc.viewContext
         )
-            .sink(receiveValue: { (running: RunningEntry?) in
+            /// in production, quietly
+            .catch { (error: Error) -> AnyPublisher<RunningEntry, Never> in
                 #if DEBUG
-                print(running == .noEntry ? "No Entry Running." : "Running: \(running?.project.name), \(running?.entryDescription)")
+                assert(false, error.localizedDescription)
+                #endif
+                return Just(.noEntry).eraseToAnyPublisher()
+            }
+            .sink(receiveValue: { (running: RunningEntry) in
+                #if DEBUG
+                print(running == .noEntry ? "No Entry Running." : "Running: \(running.project.name), \(running.entryDescription)")
                 #endif
                 if !RunningEntry.widgetMatch(
                     WidgetManager.running,
                     running
                 ) {
                     #if DEBUG
-                    print("Difference Detected, Reloading Widget Timeline")
+                    print("Difference Detected, Reloading Widget Timeline (Old: \(WidgetManager.running?.project.name ?? StaticProject.NoProject.name), \(WidgetManager.running?.entryDescription ?? StaticEntry.noEntry.entryDescription))")
                     #endif
                     
                     WidgetCenter.shared.reloadAllTimelines()
