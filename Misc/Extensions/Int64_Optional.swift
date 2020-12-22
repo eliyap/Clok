@@ -25,4 +25,10 @@ extension Optional where Wrapped == Int64 {
     static func == (lhs: Int64?, rhs: Int?) -> Bool {
         rhs == lhs
     }
+    static func != (lhs: Int64?, rhs: Int?) -> Bool {
+        !(rhs == lhs)
+    }
+    static func != (lhs: Int?, rhs: Int64?) -> Bool {
+        !(rhs == lhs)
+    }
 }
