@@ -41,7 +41,8 @@ struct ProjectLite: Codable {
         let colorData = try container.decode(Data.self, forKey: .color)
         let uiColor = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(colorData) as? UIColor
             ?? UIColor.clear /// use `clear` as it will make mistakes very obvious
-        color = Color(uiColor)
+        /// NOTE: use my own casting, because SwiftUI's is friggin broken
+        color = uiColor.color
     }
     
     func encode(to encoder: Encoder) throws {
