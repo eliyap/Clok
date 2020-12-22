@@ -30,6 +30,9 @@ struct EntryFullScreenModal: View {
     /// whether the user is considering discarding the changes
     @State var isDiscarding: Bool = false
     
+    /// whether the user is considering deleting the entry
+    @State var isDeleting: Bool = false
+    
     /// whether any undo operation is available
     /// also serves as a proxy for checking if the view has been modified at all
     @State var canUndo = false
@@ -115,7 +118,7 @@ struct EntryFullScreenModal: View {
                     Spacer()
                         /// forces buttons to sit at the bottom before `GeometryReader` can munch all the space
                         .layoutPriority(1)
-                    ExitButtons(delete: delete, save: saveChanges)
+                    ExitButtons(delete: promptDelete, save: saveChanges)
                     
                     /// monitors the position of the bottom of the view, and the offset of `Label` icon
                     Label {
@@ -139,6 +142,7 @@ struct EntryFullScreenModal: View {
                     .zIndex(2)
             }
                 .actionSheet(isPresented: $isDiscarding) { DiscardSheet }
+                .actionSheet(isPresented: $isDeleting) { DeleteSheet }
                 .frame(height: geo.size.height, alignment: .top)
                 .coordinateSpace(name: coordSpaceName)
                 .gesture(ScrollDrag)
@@ -172,6 +176,10 @@ struct EntryFullScreenModal: View {
 
 //MARK:- Dismissal
 extension EntryFullScreenModal {
+    func promptDelete() -> Void {
+        isDeleting = true
+    }
+    
     func saveChanges() -> Void {
         save(entryModel)
     }
@@ -198,6 +206,13 @@ extension EntryFullScreenModal {
                     self.scrollOffset = .zero
                 }
             }
+        ])
+    }
+    
+    var DeleteSheet: ActionSheet {
+        ActionSheet(title: Text("Delete Entry?"), buttons: [
+            .destructive(Text("Delete"), action: delete),
+            .cancel()
         ])
     }
 }

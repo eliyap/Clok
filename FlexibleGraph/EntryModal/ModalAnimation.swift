@@ -58,6 +58,20 @@ extension FlexibleGraph {
     
     func deleteEntry() -> Void {
         #warning("delete not complete!")
+        guard let entry = model.selected else {
+            fatalError("No Entry to delete!")
+        }
+        entry.delete(with: cred.user!.token) { entry in
+            moc.delete(entry)
+            do {
+                try moc.save()
+                #if DEBUG
+                print("Successfully deleted TimeEntry")
+                #endif
+            } catch {
+                fatalError("Could not save!")
+            }
+        }
         dismissModal()
     }
 }

@@ -44,6 +44,9 @@ struct FlexibleGraph: View {
     /// light / dark mode
     @Environment(\.colorScheme) var colorScheme
     
+    /// `CoreData` context
+    @Environment(\.managedObjectContext) var moc
+    
     @EnvironmentObject var data: TimeData
     @EnvironmentObject var bounds: Bounds
     @EnvironmentObject var cred: Credentials

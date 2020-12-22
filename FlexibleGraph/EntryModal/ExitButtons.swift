@@ -17,7 +17,7 @@ struct ExitButtons: View {
     
     var body: some View {
         HStack {
-            Button(action: {}) {
+            Button(action: delete) {
                 ExitButtonLabel("Delete", "trash")
             }
                 .foregroundColor(.red)

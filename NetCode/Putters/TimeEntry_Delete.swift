@@ -9,7 +9,10 @@
 import Foundation
 
 extension TimeEntry {
-    func delete(with token: String) {
+    func delete(
+        with token: String,
+        completion: @escaping (TimeEntry) -> Void
+    ) {
         /// Docs @ https://github.com/toggl/toggl_api_docs/blob/master/chapters/time_entries.md#update-a-time-entry
         var request = formRequest(
             url: NetworkConstants.url(for: self),
@@ -35,6 +38,7 @@ extension TimeEntry {
                 #if DEBUG
                 print("Successfully deleted TimeEntry")
                 #endif
+                completion(self)
             }
             
         }
