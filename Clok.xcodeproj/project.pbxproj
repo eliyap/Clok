@@ -86,14 +86,10 @@
 		22275402258CBBE400EB99C8 /* ProjectLite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22275401258CBBE400EB99C8 /* ProjectLite.swift */; };
 		22275403258CBBE400EB99C8 /* ProjectLite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22275401258CBBE400EB99C8 /* ProjectLite.swift */; };
 		22275404258CBBE400EB99C8 /* ProjectLite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22275401258CBBE400EB99C8 /* ProjectLite.swift */; };
-		2227540D258CBC0B00EB99C8 /* ProjectLite_Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2227540C258CBC0B00EB99C8 /* ProjectLite_Equatable.swift */; };
-		2227540E258CBC0B00EB99C8 /* ProjectLite_Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2227540C258CBC0B00EB99C8 /* ProjectLite_Equatable.swift */; };
-		2227540F258CBC0B00EB99C8 /* ProjectLite_Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2227540C258CBC0B00EB99C8 /* ProjectLite_Equatable.swift */; };
 		22275418258CBD3F00EB99C8 /* StaticProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22275417258CBD3F00EB99C8 /* StaticProject.swift */; };
 		22275419258CBD3F00EB99C8 /* StaticProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22275417258CBD3F00EB99C8 /* StaticProject.swift */; };
 		2227541A258CBD3F00EB99C8 /* StaticProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22275417258CBD3F00EB99C8 /* StaticProject.swift */; };
 		22275429258CBD6A00EB99C8 /* ProjectLite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22275401258CBBE400EB99C8 /* ProjectLite.swift */; };
-		22275431258CBD6E00EB99C8 /* ProjectLite_Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2227540C258CBC0B00EB99C8 /* ProjectLite_Equatable.swift */; };
 		22275439258CBD7400EB99C8 /* StaticProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22275417258CBD3F00EB99C8 /* StaticProject.swift */; };
 		22275442258CBDC600EB99C8 /* ProjectLike_ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22275441258CBDC600EB99C8 /* ProjectLike_ColorScheme.swift */; };
 		22275443258CBDC600EB99C8 /* ProjectLike_ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22275441258CBDC600EB99C8 /* ProjectLike_ColorScheme.swift */; };
@@ -606,7 +602,6 @@
 		222753B5258CB89400EB99C8 /* TimeEntryLike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntryLike.swift; sourceTree = "<group>"; };
 		222753F6258CBBB300EB99C8 /* ProjectLike_Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectLike_Equatable.swift; sourceTree = "<group>"; };
 		22275401258CBBE400EB99C8 /* ProjectLite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectLite.swift; sourceTree = "<group>"; };
-		2227540C258CBC0B00EB99C8 /* ProjectLite_Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectLite_Equatable.swift; sourceTree = "<group>"; };
 		22275417258CBD3F00EB99C8 /* StaticProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticProject.swift; sourceTree = "<group>"; };
 		22275441258CBDC600EB99C8 /* ProjectLike_ColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectLike_ColorScheme.swift; sourceTree = "<group>"; };
 		22283D9F24DF9959005AC0F3 /* BarTabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarTabs.swift; sourceTree = "<group>"; };
@@ -1017,7 +1012,6 @@
 				222753F6258CBBB300EB99C8 /* ProjectLike_Equatable.swift */,
 				22275441258CBDC600EB99C8 /* ProjectLike_ColorScheme.swift */,
 				22275401258CBBE400EB99C8 /* ProjectLite.swift */,
-				2227540C258CBC0B00EB99C8 /* ProjectLite_Equatable.swift */,
 				22275417258CBD3F00EB99C8 /* StaticProject.swift */,
 			);
 			path = ProjectLike;
@@ -2064,7 +2058,6 @@
 				2292C4ED2505CC1E005802B5 /* ConfigurablePiece.swift in Sources */,
 				2295214C2505BDB200085055 /* TimeConstants.swift in Sources */,
 				22275444258CBDC600EB99C8 /* ProjectLike_ColorScheme.swift in Sources */,
-				2227540F258CBC0B00EB99C8 /* ProjectLite_Equatable.swift in Sources */,
 				2292C4EC2505CC1E005802B5 /* EnumeratePiece.swift in Sources */,
 				229428DE251E7E7E008C0BFF /* Mod.swift in Sources */,
 				22D5F43A25707F9600806992 /* Project+CoreDataClass.swift in Sources */,
@@ -2094,7 +2087,6 @@
 			files = (
 				221F6285251EE5DD000ECED9 /* EmptyRingView.swift in Sources */,
 				C6EB47732520170100FCD0CB /* DateAngle.swift in Sources */,
-				2227540E258CBC0B00EB99C8 /* ProjectLite_Equatable.swift in Sources */,
 				228174CC2501B90C008E471D /* DataTaskMonitor.swift in Sources */,
 				C6EB476E2520170100FCD0CB /* DateMean.swift in Sources */,
 				2229D7B424F05683004E1034 /* RunningEntry.swift in Sources */,
@@ -2214,7 +2206,6 @@
 				2205DC78254B9FA300146EAB /* LoadProjects.swift in Sources */,
 				22FFF6A92571022700A54471 /* DataFetcher.swift in Sources */,
 				2261B2DB2584710A0020604B /* MiscellaneousConstants.swift in Sources */,
-				22275431258CBD6E00EB99C8 /* ProjectLite_Equatable.swift in Sources */,
 				22D9B9B9257B4DD700E923C5 /* DetailedWithRunningFetcher.swift in Sources */,
 				2205DCB5254BA00B00146EAB /* Tag+CoreDataProperties.swift in Sources */,
 				22B2625E254B9CF200182236 /* RunningEntry.swift in Sources */,
@@ -2334,7 +2325,6 @@
 				229D412B257E11A900ABD26F /* PageAnchor.swift in Sources */,
 				22D4F54B2577364B0053ABFB /* VerticalScroll.swift in Sources */,
 				C60856AB251FCB1E00E6D6C0 /* URLStoreExtension.swift in Sources */,
-				2227540D258CBC0B00EB99C8 /* ProjectLite_Equatable.swift in Sources */,
 				22128E09254206E6004913AF /* WidgetManager.swift in Sources */,
 				2238640024BBBD030041886B /* LoadProjects.swift in Sources */,
 				22A2CE1D24E59BB1000820AD /* DateStridable.swift in Sources */,
