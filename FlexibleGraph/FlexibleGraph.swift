@@ -80,7 +80,7 @@ struct FlexibleGraph: View {
     
     //MARK:- Body
     var body: some View {
-        ZStack {
+        ZStack(alignment: .bottomTrailing) {
             switch model.mode {
             case .dayMode, .listMode:
                 VerticalScroll
@@ -109,6 +109,20 @@ struct FlexibleGraph: View {
                 Text("Transform!")
             }
                 .actionSheet(isPresented: $showSheet) { ModeSheet }
+            
+            Button(action: {}) {
+                Image(systemName: "checkmark")
+                    .font(Font.body.weight(.semibold))
+                    .padding()
+                    .background(Circle().foregroundColor(
+                        model.selected == .none
+                            ? Color(UIColor.secondarySystemBackground)
+                            : Color.background
+                    ))
+                    .padding()
+            }
+                .buttonStyle(PlainButtonStyle())
+                .zIndex(2)
         }
     }
 }
