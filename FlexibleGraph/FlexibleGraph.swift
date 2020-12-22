@@ -96,7 +96,8 @@ struct FlexibleGraph: View {
                     geometry: model.geometry ?? (passthroughGeometry ?? NamespaceModel.none),
                     namespace: graphNamespace,
                     dismiss: dismissModal,
-                    save: saveChanges
+                    save: saveChanges,
+                    delete: deleteEntry
                 )
                     /// increase zIndex so that, while animating, modal does not fall behind other entries
                     .zIndex(1)

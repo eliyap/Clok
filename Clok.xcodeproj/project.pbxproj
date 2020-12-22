@@ -65,6 +65,7 @@
 		221F625B251EE172000ECED9 /* RawProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221F6240251EE157000ECED9 /* RawProject.swift */; };
 		221F6262251EE18B000ECED9 /* NetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229646C824F3212700FE14E5 /* NetworkConstants.swift */; };
 		221F6285251EE5DD000ECED9 /* EmptyRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221F6276251EE5B3000ECED9 /* EmptyRingView.swift */; };
+		2221F0C12591AC340060CF01 /* ExitButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2221F0C02591AC340060CF01 /* ExitButtons.swift */; };
 		222305AE24AE807000711031 /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222305AD24AE807000711031 /* CustomTabView.swift */; };
 		22232B8B24A9532000F3C378 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22232B8A24A9532000F3C378 /* LoginView.swift */; };
 		22275344258CAD5C00EB99C8 /* ProjectLike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22275343258CAD5C00EB99C8 /* ProjectLike.swift */; };
@@ -595,6 +596,7 @@
 		221D963B24A912B900C84F57 /* APIKeyHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeyHandler.swift; sourceTree = "<group>"; };
 		221F6240251EE157000ECED9 /* RawProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawProject.swift; sourceTree = "<group>"; };
 		221F6276251EE5B3000ECED9 /* EmptyRingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyRingView.swift; sourceTree = "<group>"; };
+		2221F0C02591AC340060CF01 /* ExitButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitButtons.swift; sourceTree = "<group>"; };
 		222305AD24AE807000711031 /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
 		22232B8A24A9532000F3C378 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		22275343258CAD5C00EB99C8 /* ProjectLike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectLike.swift; sourceTree = "<group>"; };
@@ -1065,6 +1067,7 @@
 				22D9EA0A258D9FA900B3EBA0 /* SaveChangesButton.swift */,
 				22D9B9F7257B844600E923C5 /* EntryHeader.swift */,
 				223C304B2580B3E300751C51 /* EntryBody.swift */,
+				2221F0C02591AC340060CF01 /* ExitButtons.swift */,
 				223C309B2583596F00751C51 /* FormElements */,
 				223C305B2580BD0900751C51 /* TagList.swift */,
 				22D9BA19257B8BAB00E923C5 /* AlignedLabelStyle.swift */,
@@ -2324,6 +2327,7 @@
 				C68F8C8D24A04CE8000D249B /* IceCreamStick.swift in Sources */,
 				2207B22024B954F40006748A /* OldGraphView.swift in Sources */,
 				22D9B958257B292300E923C5 /* StaticEntry.swift in Sources */,
+				2221F0C12591AC340060CF01 /* ExitButtons.swift in Sources */,
 				229D412B257E11A900ABD26F /* PageAnchor.swift in Sources */,
 				22D4F54B2577364B0053ABFB /* VerticalScroll.swift in Sources */,
 				C60856AB251FCB1E00E6D6C0 /* URLStoreExtension.swift in Sources */,

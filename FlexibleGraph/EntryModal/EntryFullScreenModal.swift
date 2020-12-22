@@ -47,6 +47,7 @@ struct EntryFullScreenModal: View {
     /// dismisses `EntryFullScreenModal`
     let dismiss: () -> Void
     let save: (EntryModel) -> Void
+    let delete: () -> Void
     
     /// the `Namespace` to match our `matchedGeometryEffects` against
     var namespace: Namespace.ID
@@ -59,10 +60,12 @@ struct EntryFullScreenModal: View {
         geometry: NamespaceModel,
         namespace: Namespace.ID,
         dismiss: @escaping () -> Void,
-        save: @escaping (EntryModel) -> Void
+        save: @escaping (EntryModel) -> Void,
+        delete:  @escaping () -> Void
     ) {
         self.dismiss = dismiss
         self.save = save
+        self.delete = delete
         self.namespace = namespace
         self.geometry = geometry
         self._entryModel = StateObject(wrappedValue: EntryModel(from: entry ?? StaticEntry.noEntry))
@@ -109,6 +112,11 @@ struct EntryFullScreenModal: View {
                 VStack(alignment: .leading, spacing: .zero) {
                     EntryHeader
                     EntryBody(model: entryModel, width: geo.size.width - iconOffset)
+                    Spacer()
+                        /// forces buttons to sit at the bottom before `GeometryReader` can munch all the space
+                        .layoutPriority(1)
+                    ExitButtons(delete: delete, save: saveChanges)
+                    
                     /// monitors the position of the bottom of the view, and the offset of `Label` icon
                     Label {
                         GeometryReader { bottomGeo in

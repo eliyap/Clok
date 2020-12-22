@@ -19,7 +19,6 @@ struct ControlBar: View {
     var body: some View {
         HStack {
             DiscardButton(discard: discard, completion: dismissalCompletion)
-            SaveChangesButton(save: save, canUndo: canUndo)
             Spacer()
             /// other stuff here
             UndoTracker(model: model, canUndo: $canUndo)
