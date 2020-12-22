@@ -28,10 +28,7 @@ final class RunningEntryLoader: ObservableObject {
             auth: auth(token: user.token)
         ))
             .map(dataTaskMonitor)
-            .tryMap { (data: Data) -> RunningEntry in
-                return try RunningEntry(data: data, projects: projects)
-                    ?? .noEntry
-            }
+            .tryMap { try RunningEntry(data: $0, projects: projects) ?? .noEntry }
             /**
              If project could not be found, request details and construct a `ProjectLite` with the aesthetic information
              */
