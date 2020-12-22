@@ -50,11 +50,6 @@ extension TimeEntry {
         /// Toggl tells us the new updated timestamp, accept ths unconditionally
         self.lastUpdated = updated.data.at
         
-        #if DEBUG
-        #warning("debug")
-        print("Reply says billable is \(updated.data.billable)")
-        #endif
-        
         //MARK:- Checks
         /// `assert` that everything else was as we left it, there should be no surprises here
         /// check on duration calculation
