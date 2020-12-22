@@ -16,7 +16,7 @@ extension TimeEntry {
     /// - Parameter completion: what to do with the Toggl response
     func upload(
         with token: String,
-        completion: @escaping (UpdatedEntry) -> Void
+        completion: @escaping (TimeEntry, UpdatedEntry) -> Void
     ) {
         /// Docs @ https://github.com/toggl/toggl_api_docs/blob/master/chapters/time_entries.md#update-a-time-entry
         var request = formRequest(
@@ -49,7 +49,7 @@ extension TimeEntry {
                     #endif
                     return
                 }
-                completion(updated)
+                completion(self, updated)
             }
             
         }

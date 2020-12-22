@@ -47,8 +47,8 @@ extension FlexibleGraph {
     /// - Returns: `Void`
     func saveChanges(_ changed: EntryModel) -> Void {
         model.selected?.update(from: changed, tags: tags)
-        model.selected?.upload(with: cred.user!.token) { updated in
-            model.selected?.update(from: updated)
+        model.selected?.upload(with: cred.user!.token) { old, updated in
+            old.update(from: updated)
             #if DEBUG
             print("Successfully updated TimeEntry")
             #endif
