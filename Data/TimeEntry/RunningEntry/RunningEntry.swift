@@ -58,7 +58,6 @@ final class RunningEntry: NSObject, NSSecureCoding {
     /** Note to future self
      - I would like to break this whole thing into an extension in a separate file, however
      - Swift will not allow a designated (i.e. non-`convenience`) `init` to exist within an extension
-     
      */
     init?(coder: NSCoder) {
         id = Int64(coder.decodeInteger(forKey: "id"))
@@ -77,7 +76,6 @@ final class RunningEntry: NSObject, NSSecureCoding {
         else { return nil }
         self.start = start
         self.entryDescription = entryDescription
-        
     }
 }
 
