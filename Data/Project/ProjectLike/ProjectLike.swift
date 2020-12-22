@@ -65,6 +65,7 @@ enum ProjectLike {
     // - TODO: define 'no description' special case for `name`
 }
 
+/// automatically synthesize `Hashable` conformance
 extension ProjectLike: Hashable {
     
 }
