@@ -39,7 +39,8 @@ struct ProjectLite: Codable {
         id = try container.decode(Int64.self, forKey: .id)
         
         let colorData = try container.decode(Data.self, forKey: .color)
-        let uiColor = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(colorData) as? UIColor ?? UIColor.black
+        let uiColor = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(colorData) as? UIColor
+            ?? UIColor.clear /// use `clear` as it will make mistakes very obvious
         color = Color(uiColor)
     }
     

@@ -120,6 +120,7 @@ extension RunningEntry: TimeEntryLike {
     var identifier: Int64 { id }
 }
 
+/// synthesized conformance
 extension RunningEntry: Equatable {
     
 }
