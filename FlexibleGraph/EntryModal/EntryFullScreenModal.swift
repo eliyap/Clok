@@ -12,6 +12,7 @@ import Combine
 struct EntryFullScreenModal: View {
     
     @Environment(\.colorScheme) var colorScheme
+    @ScaledMetric(relativeTo: .body) var ButtonSize: CGFloat = DiscardButton.BaseSize
     
     //MARK:- State Properties
     /// measures the amount to offset the view to simulate "scrolling"

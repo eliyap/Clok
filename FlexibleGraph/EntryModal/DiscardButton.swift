@@ -15,9 +15,11 @@ struct DiscardButton: View {
     var completion: CGFloat
     
     /// visual parameters
-    static let ButtonSize: CGFloat = 30
-    static let ButtonStrokeWeight: CGFloat = 1.5
-    static var ButtonCircumference: CGFloat { CGFloat(Double.pi) * (Self.ButtonSize - ButtonStrokeWeight) }
+    static let BaseSize: CGFloat = 30
+    static let BaseStroke: CGFloat = 1.5
+    @ScaledMetric(relativeTo: .body) private var ButtonSize: CGFloat = BaseSize
+    @ScaledMetric(relativeTo: .body) private var StrokeWeight: CGFloat = BaseStroke
+    private var ButtonCircumference: CGFloat { CGFloat(Double.pi) * (ButtonSize - StrokeWeight) }
     
     var body: some View {
         Button(action: discard) {
@@ -25,13 +27,13 @@ struct DiscardButton: View {
                 Image(systemName: "xmark")
                 Circle()
                     .strokeBorder(style: StrokeStyle(
-                        lineWidth: Self.ButtonStrokeWeight,
+                        lineWidth: StrokeWeight,
                         lineCap: .round,
-                        dash: [Self.ButtonCircumference],
+                        dash: [ButtonCircumference],
                         /// the 1 + increment starts the circle empty
-                        dashPhase: Self.ButtonCircumference * (1 + completion)
+                        dashPhase: ButtonCircumference * (1 + completion)
                     ))
-                    .frame(width: Self.ButtonSize, height: Self.ButtonSize)
+                    .frame(width: ButtonSize, height: ButtonSize)
                     /// make circle start drawing from 12 'o' clock, not 3 'o' clock
                     .rotationEffect(-.tau / 4)
             }

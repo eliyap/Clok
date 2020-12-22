@@ -14,7 +14,7 @@ extension EntryFullScreenModal {
         VStack(alignment: .leading) {
             /// clearance height for `ControlBar`
             Spacer()
-                .frame(height: DiscardButton.ButtonSize + Self.sharedPadding * 2)
+                .frame(height: self.ButtonSize + Self.sharedPadding * 2)
             
             ShieldedBinding($entryModel.entryDescription) { text, onCommit in
                 TextField("Description", text: text, onCommit: onCommit)
