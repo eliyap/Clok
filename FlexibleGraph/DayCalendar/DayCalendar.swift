@@ -48,10 +48,9 @@ extension FlexibleGraph {
             Color.clear
                 .frame(maxWidth: size.width, minHeight: size.height, alignment: .top)
                 .overlay(
+                    // WARNING: inefficient, does not check if runnning entry is in the correct place!
                     DayRect(entry: WidgetManager.running, size: size, midnight: start, idx: idx)
                         .offset(y: CGFloat((WidgetManager.running.start - start) / .day) * size.height)
-                        .border(Color.pink)
-                        .onAppear { print(WidgetManager.running.color(in: colorScheme)) },
                     alignment: .top
                 )
             
