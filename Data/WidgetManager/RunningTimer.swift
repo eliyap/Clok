@@ -26,7 +26,6 @@ extension WidgetManager {
                 #endif
                 return .noEntry
             }
-            
         }
         set {
             suite?.setValue(
