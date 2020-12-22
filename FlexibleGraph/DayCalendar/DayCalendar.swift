@@ -50,7 +50,7 @@ extension FlexibleGraph {
                 .overlay(
                     // WARNING: inefficient, does not check if runnning entry is in the correct place!
                     DayRect(entry: WidgetManager.running, size: size, midnight: start, idx: idx)
-                        .offset(y: CGFloat((WidgetManager.running.start - start) / .day) * size.height)
+                        .offset(y: CGFloat((WidgetManager.running.start - start) / .day) * size.height),
                     alignment: .top
                 )
             
