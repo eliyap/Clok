@@ -55,4 +55,9 @@ extension FlexibleGraph {
         }
         dismissModal()
     }
+    
+    func deleteEntry() -> Void {
+        #warning("delete not complete!")
+        dismissModal()
+    }
 }
