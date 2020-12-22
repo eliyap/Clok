@@ -50,15 +50,31 @@ extension TimeEntry {
         /// Toggl tells us the new updated timestamp, accept ths unconditionally
         self.lastUpdated = updated.data.at
         
+        #if DEBUG
+        #warning("debug")
+        print("Reply says billable is \(updated.data.billable)")
+        #endif
+        
         //MARK:- Checks
         /// `assert` that everything else was as we left it, there should be no surprises here
         /// check on duration calculation
-        assert(updated.data.duration == updated.data.stop - updated.data.start)
-        assert(self.start == updated.data.start)
-        assert(self.end == updated.data.stop)
-        assert(self.billable == updated.data.billable)
-        assert(self.dur == updated.data.duration)
-        assert(self.tagStrings.sorted() == updated.data.tags?.sorted())
-        assert(self.project?.id == updated.data.pid)
+        do {
+            try check_equal(updated.data.duration, updated.data.stop - updated.data.start)
+            try check_equal(self.start, updated.data.start)
+            try check_equal(self.end, updated.data.stop)
+            try check_equal(self.billable, updated.data.billable)
+            try check_equal(self.dur, updated.data.duration)
+            try check_equal(self.tagStrings.sorted(), updated.data.tags?.sorted() ?? [])
+            if self.project?.id != updated.data.pid {
+                throw EqualityError.unequal
+            }
+        } catch {
+            #if DEBUG
+            print(self)
+            print(updated.data)
+            #endif
+            assert(false)
+        }
+        
     }
 }
