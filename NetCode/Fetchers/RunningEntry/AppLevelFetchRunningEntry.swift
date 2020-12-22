@@ -34,7 +34,7 @@ extension ClokApp {
                     running
                 ) {
                     #if DEBUG
-                    print("Difference Detected, Reloading Widget Timeline (Old: \(WidgetManager.running?.project.name ?? StaticProject.NoProject.name), \(WidgetManager.running?.entryDescription ?? StaticEntry.noEntry.entryDescription))")
+                    print("Difference Detected, Reloading Widget Timeline (Old: \(WidgetManager.running.project.name), \(WidgetManager.running.entryDescription))")
                     #endif
                     
                     WidgetCenter.shared.reloadAllTimelines()

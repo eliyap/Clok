@@ -95,7 +95,7 @@ extension SettingsView {
         WorkspaceManager.workspaces = []
         WorkspaceManager.chosenWorkspace = Workspace(wid: 0, name: "")
         WidgetManager.firstDayOfWeek = 0
-        WidgetManager.running = nil
+        WidgetManager.running = .noEntry
         
         /// animate appearance of `LoginView`
         withAnimation {
