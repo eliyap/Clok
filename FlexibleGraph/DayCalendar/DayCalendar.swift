@@ -42,6 +42,19 @@ extension FlexibleGraph {
             }
                 .layoutPriority(1)
                 .frame(maxWidth: size.width, minHeight: size.height, alignment: .top)
+
+            #warning("in development")
+            /// temporary placement fix while we integrate `TimeEntryLike` into everything
+            Color.clear
+                .frame(maxWidth: size.width, minHeight: size.height, alignment: .top)
+                .overlay(
+                    DayRect(entry: WidgetManager.running, size: size, midnight: start, idx: idx)
+                        .offset(y: CGFloat((WidgetManager.running.start - start) / .day) * size.height)
+                        .border(Color.pink)
+                        .onAppear { print(WidgetManager.running.color(in: colorScheme)) },
+                    alignment: .top
+                )
+            
             
             /// show current time in `calendar` mode
             if start == Date().midnight {

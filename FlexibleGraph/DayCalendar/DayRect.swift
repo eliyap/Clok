@@ -10,7 +10,7 @@ import SwiftUI
 
 extension FlexibleGraph {
     func DayRect(
-        entry: TimeEntry,
+        entry: TimeEntryLike,
         size: CGSize,
         midnight: Date,
         border: Bool = false,
@@ -31,13 +31,13 @@ extension FlexibleGraph {
             .frame(width: size.width * 0.8, height: height)
     }
     
-    func EntryDetails(entry: TimeEntry) -> some View {
+    func EntryDetails(entry: TimeEntryLike) -> some View {
         VStack(alignment: .leading) {
             HStack {
                 Text(entry.entryDescription)
                     .lineLimit(1)
                 Spacer()
-                Text(entry.projectName)
+                Text(entry.wrappedProject.name)
                     .lineLimit(1)
             }
             Spacer()
