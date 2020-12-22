@@ -12,15 +12,15 @@ extension ClokApp {
     /// accepts a meaningless boolean to satisfy it's need to be plugged into `onChanged`
     func fetchRunningEntry(_: Bool = false) -> Void {
         guard let user = cred.user else { return }
-        #if DEBUG
-        print("Fetching running timer")
-        #endif
         RunningEntryLoader.fetchRunningEntry(
             user: user,
             projects: loadProjects(context: nspc.viewContext) ?? [],
             context: nspc.viewContext
         )
             .sink(receiveValue: { (running: RunningEntry?) in
+                #if DEBUG
+                print(running == .noEntry ? "No Entry Running." : "Running: \(running?.project.name), \(running?.entryDescription)")
+                #endif
                 if !RunningEntry.widgetMatch(
                     WidgetManager.running,
                     running

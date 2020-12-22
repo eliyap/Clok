@@ -69,9 +69,6 @@ struct RunningEntryView: View {
     
     func loadRunning() -> Void {
         guard let user = cred.user else { return }
-        #if DEBUG
-        print("Fetching running timer")
-        #endif
         cancellable = RunningEntryLoader.fetchRunningEntry(
             user: user,
             projects: Array(projects),
@@ -79,6 +76,9 @@ struct RunningEntryView: View {
         )
         /// if fetch is successful, save to `UserDefaults`
         .map { runningEntry in
+            #if DEBUG
+            print(runningEntry == RunningEntry.noEntry ? "No Entry Running." : "Running: \(runningEntry?.project.name), \(runningEntry?.entryDescription)")
+            #endif
             if !RunningEntry.widgetMatch(
                 WidgetManager.running,
                 runningEntry
