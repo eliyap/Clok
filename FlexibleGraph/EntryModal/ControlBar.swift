@@ -19,10 +19,7 @@ struct ControlBar: View {
     var body: some View {
         HStack {
             DiscardButton(discard: discard, completion: dismissalCompletion)
-            /// only allow saving if there are changes (i.e. something to undo)
-            if canUndo {
-                SaveChangesButton(save: save)
-            }
+            SaveChangesButton(save: save, canUndo: canUndo)
             Spacer()
             /// other stuff here
             UndoTracker(model: model, canUndo: $canUndo)
