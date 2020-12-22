@@ -45,7 +45,7 @@ extension RunningEntry {
         self.init(
             id: runningData.id,
             start: runningData.start,
-            project: ProjectLike.special(.UnknownProject),
+            project: .UnknownProjectLite,
             entryDescription: runningData.description,
             tags: runningData.tags,
             billable: runningData.billable
@@ -65,12 +65,12 @@ extension RunningEntry {
          */
         if let pid = runningData.pid {
             if let match = projects.first(where: {$0.id == pid}) {
-                project = .project(match)
+                project = ProjectLite(color: match.wrappedColor, name: match.name, id: match.id)
             } else {
-                project = .special(.UnknownProject)
+                project = .UnknownProjectLite
             }
         } else {
-            project = .special(.NoProject)
+            project = .NoProjectLite
         }
     }
 }

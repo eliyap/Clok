@@ -40,7 +40,7 @@ func DetailedWithRunningRequest(
                 return Just((detailed, RunningEntry(
                     id: raw.id,
                     start: raw.start,
-                    project: .special(.NoProject),
+                    project: .NoProjectLite,
                     entryDescription: raw.description,
                     tags: raw.tags,
                     billable: raw.billable
@@ -54,7 +54,7 @@ func DetailedWithRunningRequest(
                     id: raw.id,
                     start: raw.start,
                     /// floating NSMOC
-                    project: .lite(ProjectLite(color: match.color, name: match.name, id: match.id)),
+                    project: ProjectLite(color: match.color, name: match.name, id: match.id),
                     entryDescription: raw.description,
                     tags: raw.tags,
                     billable: raw.billable
@@ -79,7 +79,7 @@ func DetailedWithRunningRequest(
                             id: raw.id,
                             start: raw.start,
                             /// floating NSMOC
-                            project: .lite(lite),
+                            project: lite,
                             entryDescription: raw.description,
                             tags: raw.tags,
                             billable: raw.billable

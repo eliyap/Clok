@@ -14,7 +14,7 @@ final class RunningEntry: NSObject, NSSecureCoding {
     var id: Int64
     var pid: Int
     var start: Date
-    var project: ProjectLike
+    var project: ProjectLite
     var entryDescription: String
     var tags: [String] = []
     var billable: Bool
@@ -24,7 +24,7 @@ final class RunningEntry: NSObject, NSSecureCoding {
     init(
         id: Int64,
         start: Date,
-        project: ProjectLike,
+        project: ProjectLite,
         entryDescription: String,
         tags: [String]?,
         billable: Bool
@@ -50,6 +50,7 @@ final class RunningEntry: NSObject, NSSecureCoding {
     func encode(with coder: NSCoder) {
         coder.encode(id, forKey: "id")
         coder.encode(pid, forKey: "pid")
+        coder.encode(project, forKey: "project")
         coder.encode(start, forKey: "start")
         coder.encode(entryDescription, forKey: "entryDescription")
         coder.encode(tags, forKey: "tags")
@@ -64,7 +65,8 @@ final class RunningEntry: NSObject, NSSecureCoding {
         pid = coder.decodeInteger(forKey: "pid")
         
         /// note: we will assign project later, for now leave `unknown`
-        project = ProjectLike.special(.UnknownProject)
+        project = coder.decodeObject(forKey: "project") as? ProjectLite
+            ?? .UnknownProjectLite
         
         tags = coder.decodeObject(forKey: "tags") as? [String]
             ?? []
@@ -84,7 +86,7 @@ extension RunningEntry {
     static let noEntry = RunningEntry(
         id: Int64(NSNotFound),
         start: Date.distantFuture,
-        project: .special(.NoProject),
+        project: .NoProjectLite,
         entryDescription: "Not Running",
         tags: [],
         billable: false
@@ -93,7 +95,7 @@ extension RunningEntry {
     static let placeholder = RunningEntry(
         id: Int64(NSNotFound),
         start: Date(),
-        project: .special(.NoProject),
+        project: .NoProjectLite,
         entryDescription: "Placeholder",
         tags: ["Tag"],
         billable: false
@@ -123,6 +125,6 @@ extension RunningEntry: TimeEntryLike {
     var duration: TimeInterval { Date() - start } /// always return latest duration
     var color: Color { project.color }
     var tagStrings: [String] { tags }
-    var wrappedProject: ProjectLike { project }
+    var wrappedProject: ProjectLike { .lite(project) }
     var identifier: Int64 { id }
 }

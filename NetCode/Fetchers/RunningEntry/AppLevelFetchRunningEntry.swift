@@ -15,10 +15,9 @@ extension ClokApp {
         guard let user = cred.user else { return }
         RunningEntryLoader.fetchRunningEntry(
             user: user,
-            projects: loadProjects(context: nspc.viewContext) ?? [],
-            context: nspc.viewContext
+            projects: loadProjects(context: nspc.viewContext) ?? []
         )
-            /// in production, quietly
+            /// in production, allow this to fail the fetch silently
             .catch { (error: Error) -> AnyPublisher<RunningEntry, Never> in
                 #if DEBUG
                 assert(false, error.localizedDescription)
