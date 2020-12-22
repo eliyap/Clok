@@ -23,7 +23,6 @@ struct DiscardButton: View {
         Button(action: discard) {
             ZStack {
                 Image(systemName: "xmark")
-                    .font(.caption)
                 Circle()
                     .strokeBorder(style: StrokeStyle(
                         lineWidth: Self.ButtonStrokeWeight,

@@ -13,7 +13,6 @@ struct SaveChangesButton: View {
     var body: some View {
         Button(action: save) {
             Image(systemName: "checkmark")
-                .font(.caption)
         }
     }
 }
