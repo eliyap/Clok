@@ -22,18 +22,15 @@ extension WidgetManager {
                 return try JSONDecoder().decode(RunningEntry.self, from: decoded)
             } catch {
                 #if DEBUG
-//                assert(false, "Unable to decode RunningEntry!")
+                assert(false, "Unable to decode RunningEntry!")
                 #endif
                 return .noEntry
             }
             
         }
         set {
-            try! suite?.setValue(
-                NSKeyedArchiver.archivedData(
-                    withRootObject: newValue,
-                    requiringSecureCoding: false
-                ),
+            suite?.setValue(
+                try! JSONEncoder().encode(newValue),
                 forKey: runningKey
             )
         }
