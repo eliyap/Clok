@@ -19,19 +19,10 @@ extension WidgetManager {
                 return .noEntry
             }
             do {
-                let unarchived = try NSKeyedUnarchiver.unarchivedObject(
-                    ofClasses: [RunningEntry.self, ProjectLite.self, NSDate.self, NSString.self, NSArray.self],
-                    from: decoded
-                )
-                /// my replacement for `try a as b`
-                if let running = unarchived as? RunningEntry {
-                    return running
-                } else {
-                    throw CastError.failedCast
-                }
+                return try JSONDecoder().decode(RunningEntry.self, from: decoded)
             } catch {
                 #if DEBUG
-                assert(false, "Unable to decode RunningEntry!")
+//                assert(false, "Unable to decode RunningEntry!")
                 #endif
                 return .noEntry
             }

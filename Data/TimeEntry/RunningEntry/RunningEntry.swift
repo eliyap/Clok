@@ -9,7 +9,7 @@
 import Foundation
 import SwiftUI
 
-final class RunningEntry: NSObject, NSSecureCoding {
+struct RunningEntry: Codable {
     
     var id: Int64
     var pid: Int
@@ -38,46 +38,37 @@ final class RunningEntry: NSObject, NSSecureCoding {
         self.billable = billable
     }
 
-    //MARK:- NSSecureCoding Compliance
-
-    static var supportsSecureCoding = true
-    
-    /**
-     NOTE: this init only finds `pid`, it does not use that to get the associated `project`
-     This is so that we do not need to make `projectLike` `NSSecureCoding` compliant.
-     Whatever decodes this will need to do its own work to find the `project`.
-     */
-    func encode(with coder: NSCoder) {
-        coder.encode(id, forKey: "id")
-        coder.encode(pid, forKey: "pid")
-        coder.encode(project, forKey: "project")
-        coder.encode(start, forKey: "start")
-        coder.encode(entryDescription, forKey: "entryDescription")
-        coder.encode(tags, forKey: "tags")
+    enum CodingKeys: String, CodingKey {
+        case id = "id"
+        case pid = "pid"
+        case start = "start"
+        case project = "project"
+        case entryDescription = "entryDescription"
+        case tags = "tags"
+        case billable = "billable"
     }
     
-    /** Note to future self
-     - I would like to break this whole thing into an extension in a separate file, however
-     - Swift will not allow a designated (i.e. non-`convenience`) `init` to exist within an extension
-     */
-    init?(coder: NSCoder) {
-        id = Int64(coder.decodeInteger(forKey: "id"))
-        pid = coder.decodeInteger(forKey: "pid")
-        
-        /// note: we will assign project later, for now leave `unknown`
-        project = coder.decodeObject(forKey: "project") as? ProjectLite
-            ?? .UnknownProjectLite
-        
-        tags = coder.decodeObject(forKey: "tags") as? [String]
-            ?? []
-        billable = coder.decodeBool(forKey: "billable")
-        
-        guard
-            let start = coder.decodeObject(forKey: "start") as? Date,
-            let entryDescription = coder.decodeObject(forKey: "entryDescription") as? String
-        else { return nil }
-        self.start = start
-        self.entryDescription = entryDescription
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
+        try container.encode(pid, forKey: .pid)
+        try container.encode(start, forKey: .start)
+        try container.encode(project, forKey: .project)
+        try container.encode(entryDescription, forKey: .entryDescription)
+        try container.encode(tags, forKey: .tags)
+        try container.encode(billable, forKey: .billable)
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+
+        id = try container.decode(Int64.self, forKey: .id)
+        pid = try container.decode(Int.self, forKey: .pid)
+        start = try container.decode(Date.self, forKey: .start)
+        project = try container.decode(ProjectLite.self, forKey: .project)
+        entryDescription = try container.decode(String.self, forKey: .entryDescription)
+        tags = try container.decode([String].self, forKey: .tags)
+        billable = try container.decode(Bool.self, forKey: .billable)
     }
 }
 
@@ -127,4 +118,8 @@ extension RunningEntry: TimeEntryLike {
     var tagStrings: [String] { tags }
     var wrappedProject: ProjectLike { .lite(project) }
     var identifier: Int64 { id }
+}
+
+extension RunningEntry: Equatable {
+    
 }

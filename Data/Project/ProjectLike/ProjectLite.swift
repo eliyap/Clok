@@ -11,7 +11,7 @@ import SwiftUI
 /// Defines a lightweight structure useful for conveying some `Project` attributes without
 /// spawning a full fledged `CoreData` object.
 /// Distinct from `StaticProject` so as to avoid confusion.
-final class ProjectLite: NSObject, NSCoding {
+struct ProjectLite: Codable {
     let color: Color
     let name: String
     let id: Int64
@@ -32,17 +32,24 @@ final class ProjectLite: NSObject, NSCoding {
         case color = "color"
     }
     
-    // MARK: - NSCoding
-    required init(coder: NSCoder) {
-        id = coder.decodeInt64(forKey: Keys.id.rawValue)
-        name = coder.decodeObject(forKey: Keys.name.rawValue) as! String
-        color = Color(hex: coder.decodeObject(forKey: Keys.color.rawValue) as! String)
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: Keys.self)
+
+        name = try container.decode(String.self, forKey: .name)
+        id = try container.decode(Int64.self, forKey: .id)
+        
+        let colorData = try container.decode(Data.self, forKey: .color)
+        let uiColor = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(colorData) as? UIColor ?? UIColor.black
+        color = Color(uiColor)
     }
     
-    func encode(with coder: NSCoder) {
-        coder.encode(name, forKey: Keys.name.rawValue)
-        coder.encode(id, forKey: Keys.id.rawValue)
-        coder.encode(color.toHex, forKey: Keys.color.rawValue)
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: Keys.self)
+        try container.encode(name, forKey: .name)
+        try container.encode(id, forKey: .id)
+        
+        let colorData = try NSKeyedArchiver.archivedData(withRootObject: UIColor(color), requiringSecureCoding: false)
+        try container.encode(colorData, forKey: .color)
     }
 }
 
@@ -67,6 +74,10 @@ extension ProjectLite {
     )
 }
 
-extension ProjectLite: NSSecureCoding {
-    static var supportsSecureCoding: Bool = true
+extension ProjectLite: Hashable {
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+        hasher.combine(name)
+        hasher.combine(color)
+    }
 }

@@ -39,6 +39,7 @@ final class RunningEntryLoader: ObservableObject {
                             /// try to find a matching project in the web call, otherwise give up and leave it as `unknown`
                             /// NOTE: we may force unwrap `pid` here, as `project` being `UnknownProject` implies `pid` was not `nil`
                             if let match = rawProjects.first(where: {$0.id == running.pid}) {
+                                var running = running
                                 running.project = ProjectLite(
                                     color: Color(hex: match.hex_color),
                                     name: match.name,

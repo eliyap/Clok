@@ -35,7 +35,7 @@ struct RawRunningEntry: Decodable {
 }
 
 extension RunningEntry {
-    convenience init?(data: Data, projects: [Project]) throws {
+    init?(data: Data, projects: [Project]) throws {
         let rawRunning = try JSONDecoder(dateStrategy: .iso8601)
             .decode(RawRunningEntry.self, from: data)
         guard let runningData = rawRunning.data else {
