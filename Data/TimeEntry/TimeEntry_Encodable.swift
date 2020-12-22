@@ -14,7 +14,7 @@ extension TimeEntry: Encodable {
         case description = "description"
         case start = "start"
         case duration = "duration"
-        case is_billable = "is_billable"
+        case billable = "billable"
         case pid = "pid"
         case tags = "tags"
         case created_with = "created_with"
@@ -31,7 +31,7 @@ extension TimeEntry: Encodable {
         try container.encode(name ?? "",               forKey: .description)
         try container.encode(start.ISO8601,            forKey: .start)
         try container.encode(duration,                 forKey: .duration)
-        try container.encode(billable,                 forKey: .is_billable)
+        try container.encode(billable,                 forKey: .billable)
         try container.encode(project?.wrappedID,       forKey: .pid)
         try container.encode(tagStrings,               forKey: .tags)
         try container.encode(NetworkConstants.appName, forKey: .created_with)
