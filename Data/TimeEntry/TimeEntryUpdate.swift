@@ -69,12 +69,12 @@ extension TimeEntry {
                 throw EqualityError.unequal
             }
         } catch {
+            /// if there is any disagreement, dump the contrasting information, then crash
             #if DEBUG
             print(self)
             print(updated.data)
             #endif
             assert(false)
         }
-        
     }
 }
