@@ -9,6 +9,15 @@
 import Foundation
 
 extension TimeEntry {
+    
+    /// Unsafe Method to make it just stop.
+    static func justStop() -> Void {
+        let token = try! getKey().token
+        let running = WidgetManager.running
+        guard running != .noEntry else { return }
+        TimeEntry.stop(id: running.id, with: token) { _ in }
+    }
+    
     static func stop(
         id: Int64,
         with token: String,

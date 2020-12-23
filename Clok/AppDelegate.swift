@@ -73,6 +73,8 @@ final class NotificationCentre: NSObject, UNUserNotificationCenterDelegate {
                 #if DEBUG
                 print("Stop requested")
                 #endif
+                
+                TimeEntry.justStop()
             default:
                 break
             }
