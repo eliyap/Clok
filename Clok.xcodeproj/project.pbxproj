@@ -434,12 +434,6 @@
 		22E765C62592DACF002791DE /* ProvisionalNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E765C22592DACF002791DE /* ProvisionalNotification.swift */; };
 		22E765C72592DACF002791DE /* ProvisionalNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E765C22592DACF002791DE /* ProvisionalNotification.swift */; };
 		22E765D92592F4D4002791DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E765D82592F4D4002791DE /* AppDelegate.swift */; };
-		22E765DA2592F4D4002791DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E765D82592F4D4002791DE /* AppDelegate.swift */; };
-		22E765DB2592F4D4002791DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E765D82592F4D4002791DE /* AppDelegate.swift */; };
-		22E765DC2592F4D4002791DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E765D82592F4D4002791DE /* AppDelegate.swift */; };
-		22E765DD2592F4D4002791DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E765D82592F4D4002791DE /* AppDelegate.swift */; };
-		22E765DE2592F4D4002791DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E765D82592F4D4002791DE /* AppDelegate.swift */; };
-		22E765DF2592F4D4002791DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E765D82592F4D4002791DE /* AppDelegate.swift */; };
 		22E765E82592FBFF002791DE /* RunningNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E765E72592FBFF002791DE /* RunningNotification.swift */; };
 		22E765EB2592FBFF002791DE /* RunningNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E765E72592FBFF002791DE /* RunningNotification.swift */; };
 		22E765EC2592FBFF002791DE /* RunningNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E765E72592FBFF002791DE /* RunningNotification.swift */; };
@@ -2095,7 +2089,6 @@
 				C6EB477F2520170100FCD0CB /* URLStoreExtension.swift in Sources */,
 				22FFF66B2570FCA900A54471 /* FirstDayOfWeek.swift in Sources */,
 				229428D4251E7C61008C0BFF /* ColorBrightness.swift in Sources */,
-				22E765DD2592F4D4002791DE /* AppDelegate.swift in Sources */,
 				229428C4251E5E19008C0BFF /* AngleExtension.swift in Sources */,
 				2295214F2505BDE900085055 /* TimeIntervalExtension.swift in Sources */,
 				2292C4FE2505CC68005802B5 /* WidgetView.swift in Sources */,
@@ -2219,7 +2212,6 @@
 				22D9EA4B258DD1B000B3EBA0 /* RawTimeEntry.swift in Sources */,
 				2262882324E88691006B330C /* Workspace.swift in Sources */,
 				229428D3251E7C61008C0BFF /* ColorBrightness.swift in Sources */,
-				22E765DC2592F4D4002791DE /* AppDelegate.swift in Sources */,
 				C60856B9251FCE1B00E6D6C0 /* LoadProjects.swift in Sources */,
 				22275379258CB40500EB99C8 /* RunningEntry_Equatable.swift in Sources */,
 				C6EB47722520170100FCD0CB /* DateStridable.swift in Sources */,
@@ -2239,7 +2231,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22E765DF2592F4D4002791DE /* AppDelegate.swift in Sources */,
 				22D5F5352570E4A300806992 /* FirstDayOfWeek.swift in Sources */,
 				22275454258CC1D600EB99C8 /* TimeEntryLike.swift in Sources */,
 				22B26222254B9BE300182236 /* RR_Square.swift in Sources */,
@@ -2340,7 +2331,6 @@
 				221F621C251EE0FA000ECED9 /* FormRequest.swift in Sources */,
 				221F6223251EE101000ECED9 /* GetCredentials.swift in Sources */,
 				C6EB45D4251FEDC000FCD0CB /* CoreDataConstants.swift in Sources */,
-				22E765DE2592F4D4002791DE /* AppDelegate.swift in Sources */,
 				221F624E251EE15D000ECED9 /* RawProject.swift in Sources */,
 				22D4F4D7257724430053ABFB /* ColorTint.swift in Sources */,
 				2261B2FD258594090020604B /* MiscellaneousConstants.swift in Sources */,
@@ -2579,7 +2569,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22E765DA2592F4D4002791DE /* AppDelegate.swift in Sources */,
 				22E765A525921239002791DE /* ColorCast.swift in Sources */,
 				22D4F4C4257724400053ABFB /* ColorTint.swift in Sources */,
 				22E7663725933188002791DE /* NotificationConstants.swift in Sources */,
@@ -2593,7 +2582,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22E765DB2592F4D4002791DE /* AppDelegate.swift in Sources */,
 				22E765A625921239002791DE /* ColorCast.swift in Sources */,
 				22D4F4CC257724400053ABFB /* ColorTint.swift in Sources */,
 				22E7663825933188002791DE /* NotificationConstants.swift in Sources */,
