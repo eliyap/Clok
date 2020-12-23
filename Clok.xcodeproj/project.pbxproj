@@ -448,6 +448,9 @@
 		22E765DD2592F4D4002791DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E765D82592F4D4002791DE /* AppDelegate.swift */; };
 		22E765DE2592F4D4002791DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E765D82592F4D4002791DE /* AppDelegate.swift */; };
 		22E765DF2592F4D4002791DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E765D82592F4D4002791DE /* AppDelegate.swift */; };
+		22E765E82592FBFF002791DE /* RunningNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E765E72592FBFF002791DE /* RunningNotification.swift */; };
+		22E765EB2592FBFF002791DE /* RunningNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E765E72592FBFF002791DE /* RunningNotification.swift */; };
+		22E765EC2592FBFF002791DE /* RunningNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E765E72592FBFF002791DE /* RunningNotification.swift */; };
 		22EE4F132589AE11008EB632 /* UndoTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EE4F122589AE11008EB632 /* UndoTracker.swift */; };
 		22F2CD60254BA744008DEB9C /* RunningTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F4655B2541FAD1008BF6F0 /* RunningTimer.swift */; };
 		22F52411257E25FC005222C2 /* AxisToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F52410257E25FC005222C2 /* AxisToggle.swift */; };
@@ -847,6 +850,7 @@
 		22E765B22592D6F2002791DE /* NotificationSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettings.swift; sourceTree = "<group>"; };
 		22E765C22592DACF002791DE /* ProvisionalNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProvisionalNotification.swift; sourceTree = "<group>"; };
 		22E765D82592F4D4002791DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		22E765E72592FBFF002791DE /* RunningNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningNotification.swift; sourceTree = "<group>"; };
 		22EE4F122589AE11008EB632 /* UndoTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UndoTracker.swift; sourceTree = "<group>"; };
 		22F2CD51254BA3EE008DEB9C /* WidgetBundleExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WidgetBundleExtension.entitlements; sourceTree = "<group>"; };
 		22F4655B2541FAD1008BF6F0 /* RunningTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningTimer.swift; sourceTree = "<group>"; };
@@ -1248,6 +1252,7 @@
 				22D7459B2505E9B600013A80 /* ZoomLevel.swift */,
 				2295216B2505C16900085055 /* GraphMode.swift */,
 				2295216D2505C18200085055 /* ZeroStart.swift */,
+				22E765E72592FBFF002791DE /* RunningNotification.swift */,
 			);
 			path = WorkspaceManager;
 			sourceTree = "<group>";
@@ -2061,6 +2066,7 @@
 				C6EB47842520170100FCD0CB /* DateExtension.swift in Sources */,
 				229521582505BF0F00085055 /* GetCredentials.swift in Sources */,
 				22D5F43825707F9600806992 /* Tag+CoreDataClass.swift in Sources */,
+				22E765EC2592FBFF002791DE /* RunningNotification.swift in Sources */,
 				2292C4F32505CC1E005802B5 /* PieceLarge.swift in Sources */,
 				C6EB45D3251FEDBF00FCD0CB /* CoreDataConstants.swift in Sources */,
 				2292C4E92505CC1E005802B5 /* Piece5.swift in Sources */,
@@ -2216,6 +2222,7 @@
 				2261B2DA2584710A0020604B /* MiscellaneousConstants.swift in Sources */,
 				22B6E473251EA38F00530539 /* Arc.swift in Sources */,
 				229646CC24F3220300FE14E5 /* NetworkConstants.swift in Sources */,
+				22E765EB2592FBFF002791DE /* RunningNotification.swift in Sources */,
 				229646CD24F3220600FE14E5 /* TimeConstants.swift in Sources */,
 				229428BD251E5E18008C0BFF /* AngleExtension.swift in Sources */,
 				C6EB476B2520170100FCD0CB /* URLStoreExtension.swift in Sources */,
@@ -2402,6 +2409,7 @@
 				22275418258CBD3F00EB99C8 /* StaticProject.swift in Sources */,
 				229D4119257E117E00ABD26F /* StickyDateLabel.swift in Sources */,
 				C65B7D2C2497DE4A00EED981 /* EntryOperations.swift in Sources */,
+				22E765E82592FBFF002791DE /* RunningNotification.swift in Sources */,
 				22F52411257E25FC005222C2 /* AxisToggle.swift in Sources */,
 				22D56F042526BB030011C4AC /* RingSize.swift in Sources */,
 				22DC86A424BA838D00FF771F /* TimeEntry+CoreDataClass.swift in Sources */,
