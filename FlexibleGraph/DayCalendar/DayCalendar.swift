@@ -43,17 +43,6 @@ extension FlexibleGraph {
                 .layoutPriority(1)
                 .frame(maxWidth: size.width, minHeight: size.height, alignment: .top)
 
-            #warning("in development")
-            /// temporary placement fix while we integrate `TimeEntryLike` into everything
-            Color.clear
-                .frame(maxWidth: size.width, minHeight: size.height, alignment: .top)
-                .overlay(
-                    // WARNING: inefficient, does not check if runnning entry is in the correct place!
-                    DayRect(entry: WidgetManager.running, size: size, midnight: start, idx: idx)
-                        .offset(y: CGFloat((WidgetManager.running.start - start) / .day) * size.height),
-                    alignment: .top
-                )
-            
             
             /// show current time in `calendar` mode
             if start == Date().midnight {
@@ -63,11 +52,29 @@ extension FlexibleGraph {
                         minHeight: size.height,
                         alignment: .top
                     )
-//                NewRunningEntryView(terms: data.terms)
             }
         }
             .frame(height: size.height)
             .background(NewLinedBackground(divisions: evenDivisions(for: size.height)))
             .drawingGroup()
+    }
+    
+    func DayRunning(size: CGSize, start: Date, idx: Int) -> some View {
+        let running = WidgetManager.running
+        return Group {
+            if (running.start - start).isBetween(0, .day) {
+                #warning("in development")
+                /// temporary placement fix while we integrate `TimeEntryLike` into everything
+                Color.clear
+                    .frame(maxWidth: size.width, minHeight: size.height, alignment: .top)
+                    .overlay(
+                        DayRect(entry: running, size: size, midnight: start, idx: idx)
+                            .offset(y: CGFloat((running.start - start) / .day) * size.height),
+                        alignment: .top
+                    )
+            } else {
+                EmptyView()
+            }
+        }
     }
 }
