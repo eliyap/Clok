@@ -21,21 +21,16 @@ struct ExitButtons: View {
                 ExitButtonLabel("Delete", "trash")
             }
                 .foregroundColor(.red)
-                .frame(maxWidth: .infinity)
-                .background(Color.background)
-                .cornerRadius(radius)
             Button(action: save) {
                 ExitButtonLabel("Save", "checkmark")
             }
-                .frame(maxWidth: .infinity)
-                .background(Color.background)
-                .cornerRadius(radius)
         }
             .padding(.horizontal)
     }
     
     private struct ExitButtonLabel: View {
         
+        @ScaledMetric private var radius: CGFloat = 7
         @ScaledMetric private var labelPadding: CGFloat = 7
         
         private let text: String
@@ -55,6 +50,9 @@ struct ExitButtons: View {
                     .font(Self.font)
             }
                 .padding(labelPadding)
+                .frame(maxWidth: .infinity)
+                .background(Color.background)
+                .cornerRadius(radius)
         }
     }
 }
