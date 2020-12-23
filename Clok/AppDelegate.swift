@@ -20,8 +20,6 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
         self.notificationCentre = NotificationCentre()
         return true
     }
-    
-
 }
 
 final class NotificationCentre: NSObject, UNUserNotificationCenterDelegate {
@@ -53,5 +51,34 @@ final class NotificationCentre: NSObject, UNUserNotificationCenterDelegate {
     ) {
         /// display the alert, even when the app is in the foreground
         completionHandler(.list)
+    }
+    
+    func userNotificationCenter(
+        _ center: UNUserNotificationCenter,
+        didReceive response: UNNotificationResponse,
+        withCompletionHandler completionHandler: @escaping () -> Void
+    ) {
+        // pull out the buried userInfo dictionary
+        let userInfo = response.notification.request.content.userInfo
+
+        if let customData = userInfo["customData"] as? String {
+            print("Custom data received: \(customData)")
+
+            switch response.actionIdentifier {
+            case UNNotificationDefaultActionIdentifier:
+                #if DEBUG
+                print("User Swiped")
+                #endif
+            case NotificationConstants.Identifier.stop.rawValue:
+                #if DEBUG
+                print("Stop requested")
+                #endif
+            default:
+                break
+            }
+        }
+
+        // you must call the completion handler when you're done
+        completionHandler()
     }
 }
