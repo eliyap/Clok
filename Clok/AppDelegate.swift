@@ -20,6 +20,8 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
         self.notificationCentre = NotificationCentre()
         return true
     }
+    
+
 }
 
 final class NotificationCentre: NSObject, UNUserNotificationCenterDelegate {
@@ -28,10 +30,27 @@ final class NotificationCentre: NSObject, UNUserNotificationCenterDelegate {
     /// https://developer.apple.com/documentation/usernotifications/unusernotificationcenterdelegate
     override init() {
         super.init()
-        UNUserNotificationCenter.current().delegate = self
+        let center = UNUserNotificationCenter.current()
+        center.delegate = self
+        center.setNotificationCategories([
+            UNNotificationCategory(
+                identifier: NotificationConstants.RunningCategory,
+                actions: [
+                    UNNotificationAction(
+                        identifier: NotificationConstants.Identifier.stop.rawValue,
+                        title: "Stop"
+                    )
+                ],
+                intentIdentifiers: [] /// no intents to declare
+            )
+        ])
     }
     
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+    func userNotificationCenter(
+        _ center: UNUserNotificationCenter,
+        willPresent notification: UNNotification,
+        withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void
+    ) {
         /// display the alert, even when the app is in the foreground
         completionHandler(.list)
     }

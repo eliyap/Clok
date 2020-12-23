@@ -10,4 +10,8 @@ import Foundation
 
 enum NotificationConstants {
     static let RunningCategory = "RunningEntry"
+    
+    enum Identifier: String {
+        case stop = "stop"
+    }
 }
