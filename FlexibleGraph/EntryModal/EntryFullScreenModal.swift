@@ -111,6 +111,7 @@ struct EntryFullScreenModal: View {
                     .offset(y: max(0, scrollOffset))
                     /// place above `EntryHeader`
                     .zIndex(1)
+                    .actionSheet(isPresented: $isDiscarding) { DiscardSheet }
                 /// the rest of the view
                 VStack(alignment: .leading, spacing: .zero) {
                     EntryHeader
@@ -119,7 +120,7 @@ struct EntryFullScreenModal: View {
                         /// forces buttons to sit at the bottom before `GeometryReader` can munch all the space
                         .layoutPriority(1)
                     ExitButtons(delete: promptDelete, save: saveChanges)
-                    
+                        .actionSheet(isPresented: $isDeleting) { DeleteSheet }
                     /// monitors the position of the bottom of the view, and the offset of `Label` icon
                     Label {
                         GeometryReader { bottomGeo in
@@ -141,8 +142,6 @@ struct EntryFullScreenModal: View {
                     /// place above `ControlBar` and everything else
                     .zIndex(2)
             }
-                .actionSheet(isPresented: $isDiscarding) { DiscardSheet }
-                .actionSheet(isPresented: $isDeleting) { DeleteSheet }
                 .frame(height: geo.size.height, alignment: .top)
                 .coordinateSpace(name: coordSpaceName)
                 .gesture(ScrollDrag)
