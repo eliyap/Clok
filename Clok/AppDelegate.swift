@@ -63,23 +63,26 @@ final class NotificationCentre: NSObject, UNUserNotificationCenterDelegate {
 
         if let customData = userInfo["customData"] as? String {
             print("Custom data received: \(customData)")
-
-            switch response.actionIdentifier {
-            case UNNotificationDefaultActionIdentifier:
-                #if DEBUG
-                print("User Swiped")
-                #endif
-            case NotificationConstants.Identifier.stop.rawValue:
-                #if DEBUG
-                print("Stop requested")
-                #endif
-                
-                TimeEntry.justStop()
-            default:
-                break
-            }
         }
 
+        switch response.actionIdentifier {
+        case UNNotificationDefaultActionIdentifier:
+            #if DEBUG
+            print("User Swiped")
+            #endif
+        case NotificationConstants.Identifier.stop.rawValue:
+            #if DEBUG
+            print("Stop requested")
+            #endif
+            
+            let token = try! getKey().token
+            let running = WidgetManager.running
+            guard running != .noEntry else { return }
+            TimeEntry.stop(id: running.id, with: token, background: true) { _ in }
+        default:
+            break
+        }
+        
         // you must call the completion handler when you're done
         completionHandler()
     }

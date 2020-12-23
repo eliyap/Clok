@@ -29,5 +29,8 @@ enum NetworkConstants {
     /// for detailed reports, toggl dispenses at most 50 entries per request
     /// https://github.com/toggl/toggl_api_docs/blob/master/reports/detailed.md#response
     static let togglPageSize = 50
+    
+    /// used in the creation of a background `URLSession`
+    static let backgroundSessionID = "Clok.background"
 }
 
