@@ -50,13 +50,21 @@ func spawnTestNotification() -> Void {
     UNUserNotificationCenter.current().add(UNNotificationRequest(
         identifier: uuid,
         content: content,
-        /// notify instantly
-        trigger: UNTimeIntervalNotificationTrigger(timeInterval: 0, repeats: false)
+        /// notify almost instantly, as `timeInterval` cannot be 0
+        trigger: UNTimeIntervalNotificationTrigger(timeInterval: 0.005, repeats: false)
     )) { error in
         if let error = error {
             fatalError(error.localizedDescription)
         }
         /// remember this notification's ID, so that we can recall it later
         WorkspaceManager.RunningUUID = uuid
+    }
+}
+
+
+/// Withdraw the stored notification, if any
+func withdrawNotification() -> Void {
+    if let uuid = WorkspaceManager.RunningUUID {
+        UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: [uuid])
     }
 }

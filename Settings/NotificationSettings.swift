@@ -24,6 +24,7 @@ struct NotificationSection: View {
                 }
             }
             Button("Test Notification", action: spawnTestNotification)
+            Button("Withdraw Notification", action: withdrawNotification)
         }
     }
 }

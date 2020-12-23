@@ -32,7 +32,7 @@ final class NotificationCentre: NSObject, UNUserNotificationCenterDelegate {
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        /// use a banner to display the alert, even when the app is in the foreground
-        completionHandler(.banner)
+        /// display the alert, even when the app is in the foreground
+        completionHandler(.list)
     }
 }
