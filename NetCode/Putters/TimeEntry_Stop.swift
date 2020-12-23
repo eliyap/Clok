@@ -13,7 +13,7 @@ extension TimeEntry {
     static func stop(
         id: Int64,
         with token: String,
-        background: Bool = false,
+        downloadDelegate: DownloadDelegate? = nil,
         completion: @escaping (TimeEntry) -> Void
     ) {
         /// Docs @ https://github.com/toggl/toggl_api_docs/blob/master/chapters/time_entries.md#update-a-time-entry
@@ -23,7 +23,16 @@ extension TimeEntry {
         )
         request.httpMethod = "PUT"
         
-        if !background {
+        if let downloadDelegate = downloadDelegate {
+            URLSession(
+                configuration: URLSessionConfiguration.background(withIdentifier: NetworkConstants.backgroundSessionID),
+                delegate: downloadDelegate,
+                delegateQueue: nil /// following the guide, we do not specify a Queue here
+            )
+                /// note use of alternative `downloadTask`
+                .downloadTask(with: request)
+                .resume()
+        } else {
             URLSession.shared.dataTask(with: request){ (data: Data?, response: URLResponse?, error: Error?) -> Void in
                 if let error = error {
                     #if DEBUG
@@ -46,11 +55,6 @@ extension TimeEntry {
         //            completion(self)
                 }
             }
-                .resume()
-        } else {
-            URLSession(configuration: URLSessionConfiguration.background(withIdentifier: NetworkConstants.backgroundSessionID))
-                /// note use of alternative `downloadTask`
-                .downloadTask(with: request)
                 .resume()
         }
     }

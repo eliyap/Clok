@@ -82,7 +82,7 @@ final class NotificationCentre: NSObject, UNUserNotificationCenterDelegate {
             guard running != .noEntry else { return }
             
             /// since app is in the background, completion is handled in `urlSession(_:downloadTask:didFinishDownloadingTo:)`
-            TimeEntry.stop(id: running.id, with: token, background: true) { _ in }
+            TimeEntry.stop(id: running.id, with: token, downloadDelegate: DownloadDelegate()) { _ in }
         
         default:
             break
@@ -90,5 +90,11 @@ final class NotificationCentre: NSObject, UNUserNotificationCenterDelegate {
         
         // you must call the completion handler when you're done
         completionHandler()
+    }
+}
+
+final class DownloadDelegate: NSObject, URLSessionDownloadDelegate {
+    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
+        
     }
 }
