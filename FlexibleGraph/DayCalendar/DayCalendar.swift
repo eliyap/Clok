@@ -62,7 +62,8 @@ extension FlexibleGraph {
     func DayRunning(size: CGSize, start: Date, idx: Int) -> some View {
         let running = WidgetManager.running
         return Group {
-            if (running.start - start).isBetween(0, .day) {
+            /// do not show `.noEntry`, which causes an invalid bounds warning
+            if (running.start - start).isBetween(0, .day) && running != .noEntry {
                 #warning("in development")
                 /// temporary placement fix while we integrate `TimeEntryLike` into everything
                 Color.clear
