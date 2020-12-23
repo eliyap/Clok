@@ -42,6 +42,7 @@ func spawnTestNotification() -> Void {
     content.title = "Feed the cat"
     content.subtitle = "It looks hungry"
     content.body = "MY BODY IS READY"
+    content.categoryIdentifier = NotificationConstants.RunningCategory
 
     /// choose a random identifier
     let uuid = UUID().uuidString

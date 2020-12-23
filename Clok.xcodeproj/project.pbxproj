@@ -443,6 +443,13 @@
 		22E765E82592FBFF002791DE /* RunningNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E765E72592FBFF002791DE /* RunningNotification.swift */; };
 		22E765EB2592FBFF002791DE /* RunningNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E765E72592FBFF002791DE /* RunningNotification.swift */; };
 		22E765EC2592FBFF002791DE /* RunningNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E765E72592FBFF002791DE /* RunningNotification.swift */; };
+		22E7663625933188002791DE /* NotificationConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E7663525933188002791DE /* NotificationConstants.swift */; };
+		22E7663725933188002791DE /* NotificationConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E7663525933188002791DE /* NotificationConstants.swift */; };
+		22E7663825933188002791DE /* NotificationConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E7663525933188002791DE /* NotificationConstants.swift */; };
+		22E7663925933188002791DE /* NotificationConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E7663525933188002791DE /* NotificationConstants.swift */; };
+		22E7663A25933188002791DE /* NotificationConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E7663525933188002791DE /* NotificationConstants.swift */; };
+		22E7663B25933188002791DE /* NotificationConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E7663525933188002791DE /* NotificationConstants.swift */; };
+		22E7663C25933188002791DE /* NotificationConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E7663525933188002791DE /* NotificationConstants.swift */; };
 		22EE4F132589AE11008EB632 /* UndoTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EE4F122589AE11008EB632 /* UndoTracker.swift */; };
 		22F2CD60254BA744008DEB9C /* RunningTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F4655B2541FAD1008BF6F0 /* RunningTimer.swift */; };
 		22F52411257E25FC005222C2 /* AxisToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F52410257E25FC005222C2 /* AxisToggle.swift */; };
@@ -843,6 +850,7 @@
 		22E765C22592DACF002791DE /* ProvisionalNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProvisionalNotification.swift; sourceTree = "<group>"; };
 		22E765D82592F4D4002791DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22E765E72592FBFF002791DE /* RunningNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningNotification.swift; sourceTree = "<group>"; };
+		22E7663525933188002791DE /* NotificationConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationConstants.swift; sourceTree = "<group>"; };
 		22EE4F122589AE11008EB632 /* UndoTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UndoTracker.swift; sourceTree = "<group>"; };
 		22F2CD51254BA3EE008DEB9C /* WidgetBundleExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WidgetBundleExtension.entitlements; sourceTree = "<group>"; };
 		22F4655B2541FAD1008BF6F0 /* RunningTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningTimer.swift; sourceTree = "<group>"; };
@@ -1253,6 +1261,7 @@
 			isa = PBXGroup;
 			children = (
 				229646C824F3212700FE14E5 /* NetworkConstants.swift */,
+				22E7663525933188002791DE /* NotificationConstants.swift */,
 				2213DBE02590908000ADEA2F /* URLGenerator.swift */,
 				2295215E2505BFF500085055 /* KeychainConstants.swift */,
 				229646CA24F321AE00FE14E5 /* TimeConstants.swift */,
@@ -2055,6 +2064,7 @@
 				2295214B2505BD7600085055 /* RawSummary.swift in Sources */,
 				C6EB47882520170100FCD0CB /* DateAngle.swift in Sources */,
 				2295214E2505BDD700085055 /* DateComponent.swift in Sources */,
+				22E7663A25933188002791DE /* NotificationConstants.swift in Sources */,
 				C6EB47842520170100FCD0CB /* DateExtension.swift in Sources */,
 				229521582505BF0F00085055 /* GetCredentials.swift in Sources */,
 				22D5F43825707F9600806992 /* Tag+CoreDataClass.swift in Sources */,
@@ -2149,6 +2159,7 @@
 				228174CD2501B987008E471D /* DecoderExtension.swift in Sources */,
 				C60856B4251FCE1B00E6D6C0 /* Tag+CoreDataClass.swift in Sources */,
 				C6EB476F2520170100FCD0CB /* DateExtension.swift in Sources */,
+				22E7663925933188002791DE /* NotificationConstants.swift in Sources */,
 				C60856BC251FCE1B00E6D6C0 /* Tag+CoreDataProperties.swift in Sources */,
 				C60856B5251FCE1B00E6D6C0 /* Project+CoreDataProperties.swift in Sources */,
 				22DE5903251EC87900379396 /* IntentHandler.swift in Sources */,
@@ -2288,6 +2299,7 @@
 				22FFF6D0257109C400A54471 /* MainAppInit.swift in Sources */,
 				2205DC96254B9FDE00146EAB /* DateStridable.swift in Sources */,
 				2205DC64254B9F7A00146EAB /* CoreDataConstants.swift in Sources */,
+				22E7663C25933188002791DE /* NotificationConstants.swift in Sources */,
 				2205DD41254BA11500146EAB /* MR_Entry.swift in Sources */,
 				2205DD9A254BA1F200146EAB /* SummaryLoader.swift in Sources */,
 				2205DCE6254BA05500146EAB /* DecoderExtension.swift in Sources */,
@@ -2331,6 +2343,7 @@
 				2261B2FD258594090020604B /* MiscellaneousConstants.swift in Sources */,
 				22DE58EE251EC86F00379396 /* IntentHandler.swift in Sources */,
 				221F6231251EE10B000ECED9 /* KeychainError.swift in Sources */,
+				22E7663B25933188002791DE /* NotificationConstants.swift in Sources */,
 				22DE591D251EC91200379396 /* ClokWidget.intentdefinition in Sources */,
 				22D56F172526BB090011C4AC /* RingSize.swift in Sources */,
 				22D5F48D2570B1B900806992 /* MultiRing.intentdefinition in Sources */,
@@ -2549,6 +2562,7 @@
 				22027DD624AFFA6500C0BA90 /* Bounds.swift in Sources */,
 				228B100624AECDFF0026AD4B /* EntryView.swift in Sources */,
 				222D992624BAB2FD00F66E0F /* DecoderExtension.swift in Sources */,
+				22E7663625933188002791DE /* NotificationConstants.swift in Sources */,
 				224F5467257E5A2800E2BB18 /* MonitoredStrip.swift in Sources */,
 				22DF92D8251D6834007E4635 /* AnyTransitionSlide.swift in Sources */,
 				22F2CD60254BA744008DEB9C /* RunningTimer.swift in Sources */,
@@ -2564,6 +2578,7 @@
 				22E765DA2592F4D4002791DE /* AppDelegate.swift in Sources */,
 				22E765A525921239002791DE /* ColorCast.swift in Sources */,
 				22D4F4C4257724400053ABFB /* ColorTint.swift in Sources */,
+				22E7663725933188002791DE /* NotificationConstants.swift in Sources */,
 				22D4F4DF2577247A0053ABFB /* ColorHex.swift in Sources */,
 				C6C18D5C2448F96F000345D5 /* LandwarksTests.swift in Sources */,
 				22556BA925751684003DEB7D /* Clamp.swift in Sources */,
@@ -2577,6 +2592,7 @@
 				22E765DB2592F4D4002791DE /* AppDelegate.swift in Sources */,
 				22E765A625921239002791DE /* ColorCast.swift in Sources */,
 				22D4F4CC257724400053ABFB /* ColorTint.swift in Sources */,
+				22E7663825933188002791DE /* NotificationConstants.swift in Sources */,
 				22D4F4E72577247B0053ABFB /* ColorHex.swift in Sources */,
 				C6C18D672448F96F000345D5 /* LandwarksUITests.swift in Sources */,
 				22556BAA25751685003DEB7D /* Clamp.swift in Sources */,
