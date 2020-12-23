@@ -8,7 +8,12 @@
 
 import Foundation
 
-func getKey() throws -> (String, String, String, Int) {
+func getKey() throws -> (
+    email: String,
+    fullName: String,
+    token: String,
+    chosenWID: Int
+) {
     let query = [kSecClass: kSecClassInternetPassword,
                  kSecAttrServer: service,
                  kSecReturnAttributes: true,
