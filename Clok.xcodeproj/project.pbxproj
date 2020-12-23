@@ -450,6 +450,7 @@
 		22E7663A25933188002791DE /* NotificationConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E7663525933188002791DE /* NotificationConstants.swift */; };
 		22E7663B25933188002791DE /* NotificationConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E7663525933188002791DE /* NotificationConstants.swift */; };
 		22E7663C25933188002791DE /* NotificationConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E7663525933188002791DE /* NotificationConstants.swift */; };
+		22E7664525933B51002791DE /* TimeEntry_Stop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E7664425933B51002791DE /* TimeEntry_Stop.swift */; };
 		22EE4F132589AE11008EB632 /* UndoTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EE4F122589AE11008EB632 /* UndoTracker.swift */; };
 		22F2CD60254BA744008DEB9C /* RunningTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F4655B2541FAD1008BF6F0 /* RunningTimer.swift */; };
 		22F52411257E25FC005222C2 /* AxisToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F52410257E25FC005222C2 /* AxisToggle.swift */; };
@@ -851,6 +852,7 @@
 		22E765D82592F4D4002791DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22E765E72592FBFF002791DE /* RunningNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningNotification.swift; sourceTree = "<group>"; };
 		22E7663525933188002791DE /* NotificationConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationConstants.swift; sourceTree = "<group>"; };
+		22E7664425933B51002791DE /* TimeEntry_Stop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntry_Stop.swift; sourceTree = "<group>"; };
 		22EE4F122589AE11008EB632 /* UndoTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UndoTracker.swift; sourceTree = "<group>"; };
 		22F2CD51254BA3EE008DEB9C /* WidgetBundleExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WidgetBundleExtension.entitlements; sourceTree = "<group>"; };
 		22F4655B2541FAD1008BF6F0 /* RunningTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningTimer.swift; sourceTree = "<group>"; };
@@ -1621,6 +1623,7 @@
 				22FFF64C2570F8B200A54471 /* BeginningOfWeek.swift */,
 				22D9EA75258DD42100B3EBA0 /* TimeEntry_Update.swift */,
 				2213DBE9259090DE00ADEA2F /* TimeEntry_Delete.swift */,
+				22E7664425933B51002791DE /* TimeEntry_Stop.swift */,
 			);
 			path = Putters;
 			sourceTree = "<group>";
@@ -2484,6 +2487,7 @@
 				225F69B724AD8EF50012B5DB /* EntryList.swift in Sources */,
 				221810E424B01AAC00B63ECA /* InAndOut.swift in Sources */,
 				2295216A2505C14200085055 /* SearchTermsProjects.swift in Sources */,
+				22E7664525933B51002791DE /* TimeEntry_Stop.swift in Sources */,
 				22283DA824DFA166005AC0F3 /* FilterView.swift in Sources */,
 				229646CF24F322E600FE14E5 /* TagLoader.swift in Sources */,
 				22B0784224B17BEC00256EB8 /* RunningEntry.swift in Sources */,

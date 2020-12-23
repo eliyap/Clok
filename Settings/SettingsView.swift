@@ -12,7 +12,7 @@ import Combine
 struct SettingsView: View {
     
     @EnvironmentObject var data: TimeData
-    @EnvironmentObject var settings: Credentials
+    @EnvironmentObject var cred: Credentials
     @EnvironmentObject var zero: ZeroDate
     @Environment(\.managedObjectContext) var moc
     
@@ -26,6 +26,14 @@ struct SettingsView: View {
                 PrefsSection
                 LogOutSection
                 NotificationSection()
+                Button("STOP") {
+                    let running = WidgetManager.running
+                    guard running != .noEntry else { return }
+                    TimeEntry.stop(id: running.id, with: cred.user!.token) { _ in
+                        #warning("missing completion!")
+                        /// should probably update my stuff here
+                    }
+                }
             }
             .listStyle(InsetGroupedListStyle())
             .navigationBarTitle("Settings")
@@ -38,13 +46,13 @@ struct SettingsView: View {
             HStack {
                 Text("Logged in as")
                 Spacer()
-                Text(settings.user?.fullName ?? "No One")
+                Text(cred.user?.fullName ?? "No One")
             }
             NavigationLink(destination: WorkspaceMenu()){
                 HStack {
                     Text("Workspace")
                     Spacer()
-                    Text(settings.user?.chosen.name ?? "No Space")
+                    Text(cred.user?.chosen.name ?? "No Space")
                 }
             }
         }
@@ -100,7 +108,7 @@ extension SettingsView {
         
         /// animate appearance of `LoginView`
         withAnimation {
-            settings.user = nil
+            cred.user = nil
         }
     }
     
@@ -108,7 +116,7 @@ extension SettingsView {
         /// update `UserDefaults`
         WidgetManager.firstDayOfWeek = weekday
         
-        if let token = settings.user?.token {
+        if let token = cred.user?.token {
             putWeekday(weekday, token: token)
         }
         
