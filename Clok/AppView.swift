@@ -14,6 +14,9 @@ import WidgetKit
 @main
 struct ClokApp: App {
     
+    /// App Delegate
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    
     /// Running Timer
     @StateObject var timer = AppTimer()
     
@@ -95,6 +98,8 @@ struct ClokApp: App {
                 })
                 /// perform a fetch whenever a new window is opened
                 .onAppear{ fetchRunningEntry() }
+                /// request provisional `UserNotification` permission when the app is first launched
+                .onAppear(perform: getProvisional)
                 /// save to persistent storage when sent to background
                 .onBackgrounded { _ in
                     do {

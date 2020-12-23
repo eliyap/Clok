@@ -6,14 +6,25 @@
 //  Copyright © 2020 Secret Asian Man 3. All rights reserved.
 //
 
-import Foundation
+import SwiftUI
 import UserNotifications
 
 #warning("In Development")
-var NotificationSection: some View {
-    Section(header: Text("Notifications")) {
-        Button("Enable Notifications") {
-            
+
+struct NotificationSection: View {
+    var body: some View {
+        Section(header: Text("Notifications")) {
+            Button("Enable Notifications") {
+                UNUserNotificationCenter.current().requestAuthorization(options: [.alert]) { success, error in
+                    if success {
+                        print("Accepted")
+                    } else if let error = error {
+                        print(error.localizedDescription)
+                    }
+                }
+            }
+            Button("Test Notification", action: spawnTestNotification)
         }
     }
 }
+

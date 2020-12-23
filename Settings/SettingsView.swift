@@ -25,6 +25,7 @@ struct SettingsView: View {
                 AccountSection
                 PrefsSection
                 LogOutSection
+                NotificationSection()
             }
             .listStyle(InsetGroupedListStyle())
             .navigationBarTitle("Settings")
