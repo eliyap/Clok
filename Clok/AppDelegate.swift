@@ -70,15 +70,20 @@ final class NotificationCentre: NSObject, UNUserNotificationCenterDelegate {
             #if DEBUG
             print("User Swiped")
             #endif
+        
         case NotificationConstants.Identifier.stop.rawValue:
             #if DEBUG
             print("Stop requested")
             #endif
             
+            /// execute stop request in the background
             let token = try! getKey().token
             let running = WidgetManager.running
             guard running != .noEntry else { return }
+            
+            /// since app is in the background, completion is handled in `urlSession(_:downloadTask:didFinishDownloadingTo:)`
             TimeEntry.stop(id: running.id, with: token, background: true) { _ in }
+        
         default:
             break
         }
