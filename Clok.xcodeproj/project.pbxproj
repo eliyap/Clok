@@ -428,19 +428,11 @@
 		22E765A925921239002791DE /* ColorCast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E765A325921239002791DE /* ColorCast.swift */; };
 		22E765AA25921239002791DE /* ColorCast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E765A325921239002791DE /* ColorCast.swift */; };
 		22E765B32592D6F2002791DE /* NotificationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E765B22592D6F2002791DE /* NotificationSettings.swift */; };
-		22E765B42592D6F2002791DE /* NotificationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E765B22592D6F2002791DE /* NotificationSettings.swift */; };
-		22E765B52592D6F2002791DE /* NotificationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E765B22592D6F2002791DE /* NotificationSettings.swift */; };
 		22E765B62592D6F2002791DE /* NotificationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E765B22592D6F2002791DE /* NotificationSettings.swift */; };
 		22E765B72592D6F2002791DE /* NotificationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E765B22592D6F2002791DE /* NotificationSettings.swift */; };
-		22E765B82592D6F2002791DE /* NotificationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E765B22592D6F2002791DE /* NotificationSettings.swift */; };
-		22E765B92592D6F2002791DE /* NotificationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E765B22592D6F2002791DE /* NotificationSettings.swift */; };
 		22E765C32592DACF002791DE /* ProvisionalNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E765C22592DACF002791DE /* ProvisionalNotification.swift */; };
-		22E765C42592DACF002791DE /* ProvisionalNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E765C22592DACF002791DE /* ProvisionalNotification.swift */; };
-		22E765C52592DACF002791DE /* ProvisionalNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E765C22592DACF002791DE /* ProvisionalNotification.swift */; };
 		22E765C62592DACF002791DE /* ProvisionalNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E765C22592DACF002791DE /* ProvisionalNotification.swift */; };
 		22E765C72592DACF002791DE /* ProvisionalNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E765C22592DACF002791DE /* ProvisionalNotification.swift */; };
-		22E765C82592DACF002791DE /* ProvisionalNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E765C22592DACF002791DE /* ProvisionalNotification.swift */; };
-		22E765C92592DACF002791DE /* ProvisionalNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E765C22592DACF002791DE /* ProvisionalNotification.swift */; };
 		22E765D92592F4D4002791DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E765D82592F4D4002791DE /* AppDelegate.swift */; };
 		22E765DA2592F4D4002791DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E765D82592F4D4002791DE /* AppDelegate.swift */; };
 		22E765DB2592F4D4002791DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E765D82592F4D4002791DE /* AppDelegate.swift */; };
@@ -2247,7 +2239,6 @@
 				22275429258CBD6A00EB99C8 /* ProjectLite.swift in Sources */,
 				22D5F5062570CFE000806992 /* MR_TimeIndicator.swift in Sources */,
 				22D9B9C1257B4DEB00E923C5 /* RunningEntryFetcher.swift in Sources */,
-				22E765C92592DACF002791DE /* ProvisionalNotification.swift in Sources */,
 				228724272571D89E0082A490 /* MR_Intent_Default.swift in Sources */,
 				22B2624A254B9CD300182236 /* FormRequest.swift in Sources */,
 				2287246425721D970082A490 /* DetailedProject.swift in Sources */,
@@ -2304,7 +2295,6 @@
 				2287246525721D970082A490 /* DetailedEntry.swift in Sources */,
 				2205DC6E254B9F8600146EAB /* GetCredentials.swift in Sources */,
 				2205DCA0254B9FF100146EAB /* Project+CoreDataProperties.swift in Sources */,
-				22E765B92592D6F2002791DE /* NotificationSettings.swift in Sources */,
 				2205DD54254BA14300146EAB /* MR_Ring.swift in Sources */,
 				22556BAE25751685003DEB7D /* Clamp.swift in Sources */,
 				2205DD30254BA10600146EAB /* Summary.swift in Sources */,
@@ -2334,14 +2324,12 @@
 				22E765A925921239002791DE /* ColorCast.swift in Sources */,
 				221F621C251EE0FA000ECED9 /* FormRequest.swift in Sources */,
 				221F6223251EE101000ECED9 /* GetCredentials.swift in Sources */,
-				22E765C82592DACF002791DE /* ProvisionalNotification.swift in Sources */,
 				C6EB45D4251FEDC000FCD0CB /* CoreDataConstants.swift in Sources */,
 				22E765DE2592F4D4002791DE /* AppDelegate.swift in Sources */,
 				221F624E251EE15D000ECED9 /* RawProject.swift in Sources */,
 				22D4F4D7257724430053ABFB /* ColorTint.swift in Sources */,
 				2261B2FD258594090020604B /* MiscellaneousConstants.swift in Sources */,
 				22DE58EE251EC86F00379396 /* IntentHandler.swift in Sources */,
-				22E765B82592D6F2002791DE /* NotificationSettings.swift in Sources */,
 				221F6231251EE10B000ECED9 /* KeychainError.swift in Sources */,
 				22DE591D251EC91200379396 /* ClokWidget.intentdefinition in Sources */,
 				22D56F172526BB090011C4AC /* RingSize.swift in Sources */,
@@ -2576,11 +2564,9 @@
 				22E765DA2592F4D4002791DE /* AppDelegate.swift in Sources */,
 				22E765A525921239002791DE /* ColorCast.swift in Sources */,
 				22D4F4C4257724400053ABFB /* ColorTint.swift in Sources */,
-				22E765C42592DACF002791DE /* ProvisionalNotification.swift in Sources */,
 				22D4F4DF2577247A0053ABFB /* ColorHex.swift in Sources */,
 				C6C18D5C2448F96F000345D5 /* LandwarksTests.swift in Sources */,
 				22556BA925751684003DEB7D /* Clamp.swift in Sources */,
-				22E765B42592D6F2002791DE /* NotificationSettings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2591,11 +2577,9 @@
 				22E765DB2592F4D4002791DE /* AppDelegate.swift in Sources */,
 				22E765A625921239002791DE /* ColorCast.swift in Sources */,
 				22D4F4CC257724400053ABFB /* ColorTint.swift in Sources */,
-				22E765C52592DACF002791DE /* ProvisionalNotification.swift in Sources */,
 				22D4F4E72577247B0053ABFB /* ColorHex.swift in Sources */,
 				C6C18D672448F96F000345D5 /* LandwarksUITests.swift in Sources */,
 				22556BAA25751685003DEB7D /* Clamp.swift in Sources */,
-				22E765B52592D6F2002791DE /* NotificationSettings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -43,17 +43,20 @@ func spawnTestNotification() -> Void {
     content.subtitle = "It looks hungry"
     content.body = "MY BODY IS READY"
 
-    // show this notification five seconds from now
-    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 4, repeats: false)
-
-    // choose a random identifier
-    let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-
+    /// choose a random identifier
+    let uuid = UUID().uuidString
+    
     // add our notification request
-    UNUserNotificationCenter.current().add(request) { error in
+    UNUserNotificationCenter.current().add(UNNotificationRequest(
+        identifier: uuid,
+        content: content,
+        /// notify instantly
+        trigger: UNTimeIntervalNotificationTrigger(timeInterval: 0, repeats: false)
+    )) { error in
         if let error = error {
             fatalError(error.localizedDescription)
         }
+        /// remember this notification's ID, so that we can recall it later
+        WorkspaceManager.RunningUUID = uuid
     }
-    print("notified??")
 }

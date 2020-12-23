@@ -14,7 +14,7 @@ extension WorkspaceManager {
     
     static var RunningUUID: String? {
         get {
-            return suite?.string(forKey: Self.runningNotificationKey)
+            suite?.string(forKey: Self.runningNotificationKey)
         }
         set {
             suite?.set(newValue, forKey: Self.runningNotificationKey)
