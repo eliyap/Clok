@@ -23,6 +23,7 @@ extension TimeEntry {
         )
         request.httpMethod = "PUT"
         
+        /// if a `DownloadDelegate` is specified, this means we want to run the process in the background 
         if let downloadDelegate = downloadDelegate {
             URLSession(
                 configuration: URLSessionConfiguration.background(withIdentifier: NetworkConstants.backgroundSessionID),
