@@ -33,6 +33,7 @@ struct ClokApp: App {
     let projectLoader = ProjectLoader()
     let tagLoader = TagLoader()
     let saver: PrefSaver
+    let prevNextIndexer: PrevNextIndexer
     
     var nspc: NSPersistentContainer
         
@@ -51,6 +52,9 @@ struct ClokApp: App {
         
         /// attach Publishers to UserDefaults
         saver = PrefSaver(zero: zero, model: model, data: data)
+        
+        /// perform automatic indexing
+        self.prevNextIndexer = PrevNextIndexer(in: nspc.viewContext)
     }
     
     

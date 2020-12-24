@@ -44,7 +44,10 @@ struct PrevNextIndexer {
             #endif
             return
         }
-        (0..<entries.count).forEach{ entries[$0].next = entries[$0 + 1] }
+        /// avoid in indexing error by aborting if there are too few entries
+        guard entries.count > 1 else { return }
+        (0...(entries.count - 2)).forEach{ entries[$0].next = entries[$0 + 1] }
+        entries.forEach{ $0.lastIndexed = Date() }
         do { try context.save() }
         catch { assert(false, "Failed to save after indexing!") }
         #if DEBUG
