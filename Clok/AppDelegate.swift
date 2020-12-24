@@ -95,6 +95,8 @@ final class NotificationCentre: NSObject, UNUserNotificationCenterDelegate {
 
 final class DownloadDelegate: NSObject, URLSessionDownloadDelegate {
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
-        
+        #if DEBUG
+        print("finished")
+        #endif
     }
 }
