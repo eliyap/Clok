@@ -26,7 +26,12 @@ extension TimeEntry {
     @NSManaged public var project: Project?
     @NSManaged public var tags: NSSet?
     @NSManaged public var billable: Bool
-
+    
+    /// the `TimeEntry` whose `start` is next.
+    @NSManaged public var next: TimeEntry?
+    /// the `TimeEntry` whose `start` is previous.
+    @NSManaged public var previous: TimeEntry?
+    
     public var wrappedDescription: String {
         name ?? "[No Description]"
     }

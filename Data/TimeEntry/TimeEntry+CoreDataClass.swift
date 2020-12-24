@@ -21,11 +21,16 @@ public class TimeEntry: NSManagedObject {
     
     init(from raw: RawTimeEntry, context: NSManagedObjectContext, projects: [Project], tags: [Tag]) {
         super.init(entity: TimeEntry.entity(), insertInto: context)
-        update(from: raw, projects: projects, tags: tags)
+        update(context: context, from: raw, projects: projects, tags: tags)
     }
     
     /// copy properties from raw time entry into TimeEntry
-    func update(from raw: RawTimeEntry, projects: [Project], tags: [Tag]) {
+    func update(
+        context: NSManagedObjectContext,
+        from raw: RawTimeEntry,
+        projects: [Project],
+        tags: [Tag]
+    ) {
         self.setValuesForKeys([
             "name": raw.description,
             "start": raw.start,
@@ -46,5 +51,63 @@ public class TimeEntry: NSManagedObject {
         self.tags = Set(tags.filter {
             raw.tags.contains($0.name)
         }) as NSSet
+        
+        self.findPrevNext(context: context)
+    }
+    
+    func findPrevNext(context: NSManagedObjectContext) -> Void {
+        let nextRequest = NSFetchRequest<NSFetchRequestResult>(entityName: TimeEntry.entityName)
+        nextRequest.fetchLimit = 1
+        nextRequest.sortDescriptors = [NSSortDescriptor(key: "start", ascending: true)]
+        nextRequest.predicate = NSPredicate(
+            format: "start > %@",
+            NSDate(self.start)
+        )
+        /// fetch the `next` if there is exactly 1 candidate
+        let next = try? { () throws -> TimeEntry? in
+            switch try context.count(for: nextRequest) {
+            case 0:
+                return .none
+            case 1:
+                return (try context.fetch(nextRequest) as! [TimeEntry])[0]
+            default:
+                fatalError("Returned too many TimeEntries!")
+            }
+        }() ?? .none
+        
+        let prevRequest = NSFetchRequest<NSFetchRequestResult>(entityName: TimeEntry.entityName)
+        prevRequest.fetchLimit = 1
+        prevRequest.sortDescriptors = [NSSortDescriptor(key: "start", ascending: false)]
+        prevRequest.predicate = NSPredicate(
+            format: "start < %@",
+            NSDate(self.start)
+        )
+        /// fetch the `prev` if there is exactly 1 candidate
+        let prev = try? { () throws -> TimeEntry? in
+            switch try context.count(for: nextRequest) {
+            case 0:
+                return .none
+            case 1:
+                return (try context.fetch(nextRequest) as! [TimeEntry])[0]
+            default:
+                fatalError("Returned too many TimeEntries!")
+            }
+        }() ?? .none
+        
+        switch (next, prev) {
+        case (.some(let n), .some(let p)):
+            precondition(n.previous == p)
+            precondition(p.next == n)
+            self.next = n
+            self.previous = p
+        case (.some(let n), .none):
+            precondition(n.previous == .none)
+            self.next = n
+        case (.none, .some(let p)):
+            precondition(p.next == .none)
+            self.previous = p
+        case (.none, .none):
+            break
+        }
     }
 }

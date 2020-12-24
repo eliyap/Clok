@@ -31,6 +31,8 @@
         <attribute name="lastUpdated" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="start" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="next" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TimeEntry" inverseName="previous" inverseEntity="TimeEntry"/>
+        <relationship name="previous" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TimeEntry" inverseName="next" inverseEntity="TimeEntry"/>
         <relationship name="project" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="entries" inverseEntity="Project"/>
         <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="entries" inverseEntity="Tag"/>
         <uniquenessConstraints>
@@ -42,6 +44,6 @@
     <elements>
         <element name="Project" positionX="151.33984375" positionY="58.87109375" width="128" height="118"/>
         <element name="Tag" positionX="155.15234375" positionY="252.46484375" width="128" height="103"/>
-        <element name="TimeEntry" positionX="-131.171875" positionY="102.9375" width="128" height="178"/>
+        <element name="TimeEntry" positionX="-131.171875" positionY="102.9375" width="128" height="208"/>
     </elements>
 </model>
