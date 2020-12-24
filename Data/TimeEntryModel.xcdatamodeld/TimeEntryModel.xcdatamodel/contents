@@ -35,6 +35,7 @@
         <relationship name="next" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TimeEntry" inverseName="previous" inverseEntity="TimeEntry"/>
         <relationship name="previous" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TimeEntry" inverseName="next" inverseEntity="TimeEntry"/>
         <relationship name="project" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="entries" inverseEntity="Project"/>
+        <relationship name="representative" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TimeEntryRepresentative" inverseName="represents" inverseEntity="TimeEntryRepresentative"/>
         <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="entries" inverseEntity="Tag"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
@@ -42,9 +43,15 @@
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
+    <entity name="TimeEntryRepresentative" representedClassName="TimeEntryRepresentative" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES"/>
+        <relationship name="project" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Project"/>
+        <relationship name="represents" toMany="YES" deletionRule="Nullify" destinationEntity="TimeEntry" inverseName="representative" inverseEntity="TimeEntry"/>
+    </entity>
     <elements>
         <element name="Project" positionX="151.33984375" positionY="58.87109375" width="128" height="118"/>
-        <element name="Tag" positionX="155.15234375" positionY="252.46484375" width="128" height="103"/>
-        <element name="TimeEntry" positionX="-131.171875" positionY="102.9375" width="128" height="223"/>
+        <element name="Tag" positionX="153.2265625" positionY="373.265625" width="128" height="103"/>
+        <element name="TimeEntry" positionX="-493.9140625" positionY="55.98828125" width="128" height="238"/>
+        <element name="TimeEntryRepresentative" positionX="16.05078125" positionY="189.64453125" width="128" height="88"/>
     </elements>
 </model>

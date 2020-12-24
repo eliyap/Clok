@@ -181,6 +181,8 @@
 		2281D3912594569500A7800C /* AsNSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2293CEE824EC50F0000B68F4 /* AsNSDate.swift */; };
 		2281D39C2594821200A7800C /* PrevNextIndexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281D39B2594821200A7800C /* PrevNextIndexer.swift */; };
 		2281D3A525948A3F00A7800C /* Max1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281D3A425948A3F00A7800C /* Max1.swift */; };
+		2281D3B62594901100A7800C /* TimeEntryRepresentative+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281D3B42594901100A7800C /* TimeEntryRepresentative+CoreDataClass.swift */; };
+		2281D3B72594901100A7800C /* TimeEntryRepresentative+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281D3B52594901100A7800C /* TimeEntryRepresentative+CoreDataProperties.swift */; };
 		228724272571D89E0082A490 /* MR_Intent_Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2287241E2571D88E0082A490 /* MR_Intent_Default.swift */; };
 		22872437257214530082A490 /* AssignCancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22872436257214530082A490 /* AssignCancellable.swift */; };
 		2287243F257214570082A490 /* AssignCancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22872436257214530082A490 /* AssignCancellable.swift */; };
@@ -719,6 +721,8 @@
 		228174D62501CD12008E471D /* SummaryEquatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryEquatable.swift; sourceTree = "<group>"; };
 		2281D39B2594821200A7800C /* PrevNextIndexer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrevNextIndexer.swift; sourceTree = "<group>"; };
 		2281D3A425948A3F00A7800C /* Max1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Max1.swift; sourceTree = "<group>"; };
+		2281D3B42594901100A7800C /* TimeEntryRepresentative+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeEntryRepresentative+CoreDataClass.swift"; sourceTree = "<group>"; };
+		2281D3B52594901100A7800C /* TimeEntryRepresentative+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeEntryRepresentative+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		2287241E2571D88E0082A490 /* MR_Intent_Default.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MR_Intent_Default.swift; sourceTree = "<group>"; };
 		22872436257214530082A490 /* AssignCancellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignCancellable.swift; sourceTree = "<group>"; };
 		2287244725721D860082A490 /* DetailedProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedProject.swift; sourceTree = "<group>"; };
@@ -1493,6 +1497,8 @@
 		22D9EA3A258DD16D00B3EBA0 /* TimeEntry */ = {
 			isa = PBXGroup;
 			children = (
+				2281D3B42594901100A7800C /* TimeEntryRepresentative+CoreDataClass.swift */,
+				2281D3B52594901100A7800C /* TimeEntryRepresentative+CoreDataProperties.swift */,
 				22D9EA5D258DD24B00B3EBA0 /* TimeEntryLike */,
 				22275355258CB32500EB99C8 /* RunningEntry */,
 				22DC869E24BA838D00FF771F /* TimeEntry+CoreDataClass.swift */,
@@ -2409,6 +2415,7 @@
 				22A2CE1D24E59BB1000820AD /* DateStridable.swift in Sources */,
 				221D963C24A912B900C84F57 /* APIKeyHandler.swift in Sources */,
 				229646C924F3212700FE14E5 /* NetworkConstants.swift in Sources */,
+				2281D3B62594901100A7800C /* TimeEntryRepresentative+CoreDataClass.swift in Sources */,
 				2281D3A525948A3F00A7800C /* Max1.swift in Sources */,
 				2295216C2505C16900085055 /* GraphMode.swift in Sources */,
 				22E765C32592DACF002791DE /* ProvisionalNotification.swift in Sources */,
@@ -2498,6 +2505,7 @@
 				22E7664525933B51002791DE /* TimeEntry_Stop.swift in Sources */,
 				22283DA824DFA166005AC0F3 /* FilterView.swift in Sources */,
 				229646CF24F322E600FE14E5 /* TagLoader.swift in Sources */,
+				2281D3B72594901100A7800C /* TimeEntryRepresentative+CoreDataProperties.swift in Sources */,
 				22B0784224B17BEC00256EB8 /* RunningEntry.swift in Sources */,
 				2264CB3924AD33D900ECBF2B /* EmailFields.swift in Sources */,
 				2264CB3124AD250600ECBF2B /* WorkspaceManager.swift in Sources */,
