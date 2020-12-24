@@ -179,7 +179,7 @@
 		2281D3812594567C00A7800C /* TimeEntry+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC869E24BA838D00FF771F /* TimeEntry+CoreDataClass.swift */; };
 		2281D3892594567D00A7800C /* TimeEntry+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC869E24BA838D00FF771F /* TimeEntry+CoreDataClass.swift */; };
 		2281D3912594569500A7800C /* AsNSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2293CEE824EC50F0000B68F4 /* AsNSDate.swift */; };
-		2281D39C2594821200A7800C /* PrevNextIndexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281D39B2594821200A7800C /* PrevNextIndexer.swift */; };
+		2281D39C2594821200A7800C /* TimeEntryIndexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281D39B2594821200A7800C /* TimeEntryIndexer.swift */; };
 		2281D3A525948A3F00A7800C /* Max1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281D3A425948A3F00A7800C /* Max1.swift */; };
 		2281D3B62594901100A7800C /* TimeEntryRepresentative+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281D3B42594901100A7800C /* TimeEntryRepresentative+CoreDataClass.swift */; };
 		2281D3B72594901100A7800C /* TimeEntryRepresentative+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281D3B52594901100A7800C /* TimeEntryRepresentative+CoreDataProperties.swift */; };
@@ -719,7 +719,7 @@
 		228174D22501CB76008E471D /* RawSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawSummary.swift; sourceTree = "<group>"; };
 		228174D42501CBCB008E471D /* NoSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoSummary.swift; sourceTree = "<group>"; };
 		228174D62501CD12008E471D /* SummaryEquatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryEquatable.swift; sourceTree = "<group>"; };
-		2281D39B2594821200A7800C /* PrevNextIndexer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrevNextIndexer.swift; sourceTree = "<group>"; };
+		2281D39B2594821200A7800C /* TimeEntryIndexer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntryIndexer.swift; sourceTree = "<group>"; };
 		2281D3A425948A3F00A7800C /* Max1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Max1.swift; sourceTree = "<group>"; };
 		2281D3B42594901100A7800C /* TimeEntryRepresentative+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeEntryRepresentative+CoreDataClass.swift"; sourceTree = "<group>"; };
 		2281D3B52594901100A7800C /* TimeEntryRepresentative+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeEntryRepresentative+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -1226,7 +1226,7 @@
 		2281D39A2594820800A7800C /* Predictors */ = {
 			isa = PBXGroup;
 			children = (
-				2281D39B2594821200A7800C /* PrevNextIndexer.swift */,
+				2281D39B2594821200A7800C /* TimeEntryIndexer.swift */,
 			);
 			path = Predictors;
 			sourceTree = "<group>";
@@ -2478,7 +2478,7 @@
 				229646D924F3367800FE14E5 /* PrintError.swift in Sources */,
 				229D4122257E119900ABD26F /* Page.swift in Sources */,
 				229646D224F3294900FE14E5 /* Tag+CoreDataClass.swift in Sources */,
-				2281D39C2594821200A7800C /* PrevNextIndexer.swift in Sources */,
+				2281D39C2594821200A7800C /* TimeEntryIndexer.swift in Sources */,
 				C63FC2F8249BCEB900747D49 /* AngleExtension.swift in Sources */,
 				2229D7AA24EF6BDB004E1034 /* OldCurrentTimeIndicator.swift in Sources */,
 				22D9EA22258DBF0300B3EBA0 /* TimeEntryUpdate.swift in Sources */,

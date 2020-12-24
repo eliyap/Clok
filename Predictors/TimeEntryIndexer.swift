@@ -1,5 +1,5 @@
 //
-//  PrevNextIndexer.swift
+//  TimeEntryIndexer.swift
 //  Clok
 //
 //  Created by Secret Asian Man Dev on 24/12/20.
@@ -9,7 +9,7 @@
 import CoreData
 import Combine
 
-struct PrevNextIndexer {
+struct TimeEntryIndexer {
     
     let anyCancellable: AnyCancellable
     let context: NSManagedObjectContext
