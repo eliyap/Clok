@@ -183,6 +183,8 @@
 		2281D3A525948A3F00A7800C /* Max1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281D3A425948A3F00A7800C /* Max1.swift */; };
 		2281D3B62594901100A7800C /* TimeEntryRepresentative+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281D3B42594901100A7800C /* TimeEntryRepresentative+CoreDataClass.swift */; };
 		2281D3B72594901100A7800C /* TimeEntryRepresentative+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281D3B52594901100A7800C /* TimeEntryRepresentative+CoreDataProperties.swift */; };
+		2281D3D52594912E00A7800C /* PrevNextIndexing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281D3D42594912E00A7800C /* PrevNextIndexing.swift */; };
+		2281D3DE2594914C00A7800C /* RepresentativeIndexing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281D3DD2594914C00A7800C /* RepresentativeIndexing.swift */; };
 		228724272571D89E0082A490 /* MR_Intent_Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2287241E2571D88E0082A490 /* MR_Intent_Default.swift */; };
 		22872437257214530082A490 /* AssignCancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22872436257214530082A490 /* AssignCancellable.swift */; };
 		2287243F257214570082A490 /* AssignCancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22872436257214530082A490 /* AssignCancellable.swift */; };
@@ -723,6 +725,8 @@
 		2281D3A425948A3F00A7800C /* Max1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Max1.swift; sourceTree = "<group>"; };
 		2281D3B42594901100A7800C /* TimeEntryRepresentative+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeEntryRepresentative+CoreDataClass.swift"; sourceTree = "<group>"; };
 		2281D3B52594901100A7800C /* TimeEntryRepresentative+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeEntryRepresentative+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		2281D3D42594912E00A7800C /* PrevNextIndexing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrevNextIndexing.swift; sourceTree = "<group>"; };
+		2281D3DD2594914C00A7800C /* RepresentativeIndexing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepresentativeIndexing.swift; sourceTree = "<group>"; };
 		2287241E2571D88E0082A490 /* MR_Intent_Default.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MR_Intent_Default.swift; sourceTree = "<group>"; };
 		22872436257214530082A490 /* AssignCancellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignCancellable.swift; sourceTree = "<group>"; };
 		2287244725721D860082A490 /* DetailedProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedProject.swift; sourceTree = "<group>"; };
@@ -1227,6 +1231,8 @@
 			isa = PBXGroup;
 			children = (
 				2281D39B2594821200A7800C /* TimeEntryIndexer.swift */,
+				2281D3D42594912E00A7800C /* PrevNextIndexing.swift */,
+				2281D3DD2594914C00A7800C /* RepresentativeIndexing.swift */,
 			);
 			path = Predictors;
 			sourceTree = "<group>";
@@ -2514,6 +2520,7 @@
 				221810E024B0158500B63ECA /* Get24hourPref.swift in Sources */,
 				222753B6258CB89400EB99C8 /* TimeEntryLike.swift in Sources */,
 				22E6420025774E8300CCF49F /* TimeIndicator.swift in Sources */,
+				2281D3D52594912E00A7800C /* PrevNextIndexing.swift in Sources */,
 				22B261E6254B9AF500182236 /* WidgetBundle.intentdefinition in Sources */,
 				C6D448EC2484710E0072E7D4 /* ActivityIndicator.swift in Sources */,
 				22D9EA76258DD42100B3EBA0 /* TimeEntry_Update.swift in Sources */,
@@ -2586,6 +2593,7 @@
 				224F5467257E5A2800E2BB18 /* MonitoredStrip.swift in Sources */,
 				22DF92D8251D6834007E4635 /* AnyTransitionSlide.swift in Sources */,
 				22F2CD60254BA744008DEB9C /* RunningTimer.swift in Sources */,
+				2281D3DE2594914C00A7800C /* RepresentativeIndexing.swift in Sources */,
 				C6B1D64924EBAD27001E87C1 /* DataTaskMonitor.swift in Sources */,
 				2229D7B324F0560C004E1034 /* MainAppInit.swift in Sources */,
 			);
