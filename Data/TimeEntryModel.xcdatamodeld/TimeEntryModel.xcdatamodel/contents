@@ -43,8 +43,8 @@
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
-    <entity name="TimeEntryRepresentative" representedClassName="TimeEntryRepresentative" syncable="YES" codeGenerationType="class">
-        <attribute name="name" optional="YES"/>
+    <entity name="TimeEntryRepresentative" representedClassName="TimeEntryRepresentative" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String"/>
         <relationship name="project" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Project"/>
         <relationship name="represents" toMany="YES" deletionRule="Nullify" destinationEntity="TimeEntry" inverseName="representative" inverseEntity="TimeEntry"/>
     </entity>

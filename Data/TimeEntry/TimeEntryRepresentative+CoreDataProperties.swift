@@ -17,7 +17,7 @@ extension TimeEntryRepresentative {
         return NSFetchRequest<TimeEntryRepresentative>(entityName: "TimeEntryRepresentative")
     }
 
-    @NSManaged public var name: NSObject?
+    @NSManaged public var name: String?
     @NSManaged public var project: Project?
     @NSManaged public var represents: NSSet?
 
