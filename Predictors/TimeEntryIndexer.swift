@@ -23,7 +23,7 @@ struct TimeEntryIndexer {
             .publish(every: Self.Interval, on: .main, in: .common)
             .autoconnect()
             .sink{ _ in
-                Self.prevNextIndex(context: context)
+                Self.indexPrevNext(context: context)
             }
     }
 }

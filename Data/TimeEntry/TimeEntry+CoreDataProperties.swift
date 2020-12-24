@@ -27,6 +27,7 @@ extension TimeEntry {
     @NSManaged public var project: Project?
     @NSManaged public var tags: NSSet?
     @NSManaged public var billable: Bool
+    @NSManaged public var representative: TimeEntryRepresentative?
     
     /// the `TimeEntry` whose `start` is next.
     @NSManaged public var next: TimeEntry?

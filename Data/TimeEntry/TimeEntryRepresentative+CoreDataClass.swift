@@ -12,5 +12,5 @@ import CoreData
 
 @objc(TimeEntryRepresentative)
 public class TimeEntryRepresentative: NSManagedObject {
-
+    static let entityName = "TimeEntryRepresentative"
 }

@@ -9,7 +9,7 @@
 import CoreData
 
 extension TimeEntryIndexer {
-    static func prevNextIndex(context: NSManagedObjectContext) -> Void {
+    static func indexPrevNext(context: NSManagedObjectContext) -> Void {
         DispatchQueue.global(qos: .background).async {
             guard let target: TimeEntry = findTarget(context: context) else {
                 #if DEBUG
@@ -41,7 +41,6 @@ extension TimeEntryIndexer {
                 #endif
             }
         }
-        
     }
 
     /// only select entries which are potentially out of date due to having been updated recently

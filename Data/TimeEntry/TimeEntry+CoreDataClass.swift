@@ -31,6 +31,7 @@ public class TimeEntry: NSManagedObject {
         projects: [Project],
         tags: [Tag]
     ) {
+        #error("need to update TimeEntryRepresentative")
         self.setValuesForKeys([
             "name": raw.description,
             "start": raw.start,
