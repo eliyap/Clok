@@ -10,13 +10,10 @@ import SwiftUI
 import Combine
 import WidgetKit
 
-/// how long to wait before checking `RunningEntry` again
-fileprivate let interval = TimeInterval(10)
-
 struct NewRunningEntryView: View {
     
     /// manage the auto updating
-    @State var running: RunningEntry? = nil
+    var running: RunningEntry?
     
     var body: some View {
         GeometryReader { geo in
