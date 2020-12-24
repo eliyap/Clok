@@ -79,7 +79,7 @@ final class NotificationCentre: NSObject, UNUserNotificationCenterDelegate {
             /// execute stop request in the background
             let token = try! getKey().token
             let running = WidgetManager.running
-            guard running != .noEntry else { return }
+            guard running != .noEntry else { break }
             
             /// since app is in the background, completion is handled in `urlSession(_:downloadTask:didFinishDownloadingTo:)`
             TimeEntry.stop(id: running.id, with: token, downloadDelegate: DownloadDelegate()) { _ in }
