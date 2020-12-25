@@ -53,6 +53,6 @@
         <element name="Project" positionX="151.33984375" positionY="58.87109375" width="128" height="133"/>
         <element name="Tag" positionX="153.2265625" positionY="373.265625" width="128" height="103"/>
         <element name="TimeEntry" positionX="-493.9140625" positionY="55.98828125" width="128" height="238"/>
-        <element name="TimeEntryRepresentative" positionX="16.05078125" positionY="189.64453125" width="128" height="88"/>
+        <element name="TimeEntryRepresentative" positionX="-45.203125" positionY="191.296875" width="128" height="88"/>
     </elements>
 </model>
