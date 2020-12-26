@@ -12,19 +12,22 @@ import Combine
 struct TimeEntryIndexer {
     
     let anyCancellable: AnyCancellable
-    let context: NSManagedObjectContext
+    let container: NSPersistentContainer
     
     /// how long to wait in seconds before performing another index operation
     static private let Interval: TimeInterval = 10
     
-    init(in context: NSManagedObjectContext) {
-        self.context = context
+    init(in container: NSPersistentContainer) {
+        self.container = container
         self.anyCancellable = Timer
             .publish(every: Self.Interval, on: .main, in: .common)
             .autoconnect()
             .sink{ _ in
-                Self.indexPrevNext(in: context)
-                Self.indexRepresentative(in: context)
+                /// perform tasks in the background
+                container.performBackgroundTask { context in
+                    Self.indexPrevNext(in: context)
+                    Self.indexRepresentative(in: context)
+                }
             }
     }
 }

@@ -20,7 +20,11 @@ extension TimeEntryRepresentative {
     @NSManaged public var name: String?
     @NSManaged public var project: Project?
     @NSManaged public var represents: NSSet?
-
+    
+    /// transient computed variable that counts up the number of `TimeEntry`s this is representing
+    @objc var count: Int16 {
+        Int16(represents?.count ?? .zero)
+    }
 }
 
 // MARK: Generated accessors for represents

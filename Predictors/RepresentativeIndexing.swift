@@ -14,37 +14,32 @@ extension TimeEntryIndexer {
     static let representativeIndexCount = 200
     
     static func indexRepresentative(in context: NSManagedObjectContext) -> Void {
-        DispatchQueue.global(qos: .background).async {
-            guard let entries = Self.findEntries(in: context) else {
-                assert(false, "Failed to fetch entries for indexing")
+        guard let entries = Self.findEntries(in: context) else {
+            assert(false, "Failed to fetch entries for indexing")
+        }
+        
+        let popularRepresentatives = loadPopularRepresentatives(in: context)
+        entries.forEach { entry in
+            /// look for a `representative` in the most popular set
+            if let match = popularRepresentatives.first(where: {$0.name == entry.name && $0.project == entry.project}) {
+                entry.representative = match
             }
-            
-            let popularRepresentatives = loadPopularRepresentatives(in: context)
-            entries.forEach { entry in
-                /// look for a `representative` in the most popular set
-                if let match = popularRepresentatives.first(where: {$0.name == entry.name && $0.project == entry.project}) {
-                    entry.representative = match
-                }
-                /// otherwise, search the entire storage for a match
-                else if let match = findMatch(to: entry, in: context) {
-                    entry.representative = match
-                }
-                /// if there is still no match, create a new `representative`
-                else {
-                    let match = TimeEntryRepresentative(in: context, name: entry.name, project: entry.project)
-                    entry.representative = match
-                }
+            /// otherwise, search the entire storage for a match
+            else if let match = findMatch(to: entry, in: context) {
+                entry.representative = match
             }
-            
-            /// move to main thread to save changes
-            DispatchQueue.main.async {
-                do { try context.save() }
-                catch { assert(false, "Failed to save after indexing!") }
-                #if DEBUG
-                print("Indexed Representatives for \(entries.count) entries")
-                #endif
+            /// if there is still no match, create a new `representative`
+            else {
+                let match = TimeEntryRepresentative(in: context, name: entry.name, project: entry.project)
+                entry.representative = match
             }
         }
+        
+        do { try context.save() }
+        catch { assert(false, "Failed to save after indexing!") }
+        #if DEBUG
+        print("Indexed Representatives for \(entries.count) entries")
+        #endif
     }
     
     /// number of TimeEntryRepresentatives to allow into memory at once
@@ -53,7 +48,8 @@ extension TimeEntryIndexer {
         let req = NSFetchRequest<NSFetchRequestResult>(entityName: TimeEntryRepresentative.entityName)
         req.fetchLimit = Self.representativeCap
         /// filter to get the most popular entries
-        req.sortDescriptors = [NSSortDescriptor(key: "represents.count", ascending: false)]
+        /// NOTE: here is an excellent guide to understanding `SUBQUERY`: https://medium.com/@Czajnikowski/subquery-is-not-that-scary-3f95cb9e2d98
+        req.sortDescriptors = [NSSortDescriptor(key: "count", ascending: false)]
         guard let reps = try? context.fetch(req) else {
             assert(false, "Failed to fetch representatives!")
             return []
