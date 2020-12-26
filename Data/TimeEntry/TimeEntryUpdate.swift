@@ -38,8 +38,6 @@ extension TimeEntry {
         case .lite(_):
             fatalError("Tried to store LiteProject!")
         }
-        
-        #error("need to update TimeEntryRepresentative")
     }
     
     /// After updating Toggl's service on the user's changes, Toggl replies with it's new understanding of the `TimeEntry`.
