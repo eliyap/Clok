@@ -65,25 +65,22 @@ final class EntryLoader: ObservableObject {
                 guard let rawEntries = rawEntries else { return }
                 
                 /// fetch the CoreData records for this `DateRange`
-                var entries = context.loadEntries(in: range)
+                var toDelete = context.loadEntries(in: range) ?? []
                 
                 /// perform matching between new and stored data
                 rawEntries.forEach { (rawEntry: RawTimeEntry) in
-                    if let entryIdx = entries?.firstIndex(where: {$0.id == rawEntry.id}) {
-                        /// if a matching `TimeEntry` was found, update the record
-                        entries![entryIdx].update(context: context, from: rawEntry, projects: projects, tags: tags)
-                        /// and remove it from future consideration
-                        entries!.remove(at: entryIdx)
-                    } else {
-                        /// if no match was found, insert the new `TimeEntry`
-                        context.insert(TimeEntry(from: rawEntry, context: context, projects: projects, tags: tags))
+                    /// spare any entries that are still in the raw data
+                    if let entryIdx = toDelete.firstIndex(where: {$0.id == rawEntry.id}) {
+                        toDelete.remove(at: entryIdx)
                     }
+                    /// insert raw entry. Don't worry about conflicts since `CoreData` does uniquing
+                    context.insert(TimeEntry(from: rawEntry, context: context, projects: projects, tags: tags))
                 }
                 /**
                  Remaining `TimeEntry`s had no match in the fetched data.
                  Hence they must have been deleted, so we will delete them in CoreData as well.
                  */
-                for deletedEntry in entries ?? [] {
+                for deletedEntry in toDelete {
                     context.delete(deletedEntry)
                 }
                 try! context.save()
