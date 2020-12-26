@@ -35,8 +35,14 @@ extension TimeEntryIndexer {
             }
         }
         
-        do { try context.save() }
-        catch { assert(false, "Failed to save after indexing!") }
+        do {
+            try context.save()
+        } catch (let error) {
+            print("Failed to save after indexing with error: \(error.localizedDescription)")
+            print("Info: \((error as NSError).userInfo)")
+            assert(false)
+            
+        }
         #if DEBUG
         print("Indexed Representatives for \(entries.count) entries")
         #endif
@@ -49,7 +55,7 @@ extension TimeEntryIndexer {
         req.fetchLimit = Self.representativeCap
         /// filter to get the most popular entries
         /// NOTE: here is an excellent guide to understanding `SUBQUERY`: https://medium.com/@Czajnikowski/subquery-is-not-that-scary-3f95cb9e2d98
-        req.sortDescriptors = [NSSortDescriptor(key: "count", ascending: false)]
+        req.sortDescriptors = [NSSortDescriptor(key: "representsCount", ascending: false)]
         guard let reps = try? context.fetch(req) else {
             assert(false, "Failed to fetch representatives!")
             return []

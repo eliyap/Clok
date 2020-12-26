@@ -45,8 +45,8 @@
         </uniquenessConstraints>
     </entity>
     <entity name="TimeEntryRepresentative" representedClassName="TimeEntryRepresentative" syncable="YES">
-        <attribute name="count" attributeType="Integer 16" derived="YES" derivationExpression="" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="representsCount" optional="YES" attributeType="Integer 16" derived="YES" derivationExpression="represents.@count" usesScalarValueType="YES"/>
         <relationship name="project" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="representatives" inverseEntity="Project"/>
         <relationship name="represents" toMany="YES" deletionRule="Nullify" destinationEntity="TimeEntry" inverseName="representative" inverseEntity="TimeEntry"/>
     </entity>

@@ -54,7 +54,7 @@ struct ClokApp: App {
         saver = PrefSaver(zero: zero, model: model, data: data)
         
         /// perform automatic indexing
-        indexer = TimeEntryIndexer(in: nspc.viewContext)
+        indexer = TimeEntryIndexer(in: nspc)
     }
     
     
