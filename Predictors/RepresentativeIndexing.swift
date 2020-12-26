@@ -105,7 +105,7 @@ extension TimeEntryIndexer {
             else {
                 let marker = WorkspaceManager.lastIndexedRepresentatives
                 req.predicate = NSPredicate(
-                    format: "(updated >= %@) AND (id > %d)",
+                    format: "(lastUpdated >= %@) AND (id > %d)",
                     NSDate(marker.lastIndexed),
                     marker.id
                 )
