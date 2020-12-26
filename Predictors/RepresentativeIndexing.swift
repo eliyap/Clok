@@ -45,7 +45,6 @@ extension TimeEntryIndexer {
             print("Failed to save after indexing with error: \(error.localizedDescription)")
             print("Info: \((error as NSError).userInfo)")
             assert(false)
-            
         }
         #if DEBUG
         print("Indexed Representatives for \(entries.count) entries")
