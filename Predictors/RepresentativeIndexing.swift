@@ -18,6 +18,13 @@ extension TimeEntryIndexer {
             assert(false, "Failed to fetch entries for indexing")
         }
         
+        guard entries.count != 0 else {
+            #if DEBUG
+            print("All Entries have Representative indexed.")
+            #endif
+            return
+        }
+        
         let popularRepresentatives = loadPopularRepresentatives(in: context)
         entries.forEach { entry in
             /// look for a `representative` in the most popular set
@@ -114,12 +121,6 @@ extension TimeEntryIndexer {
                     NSSortDescriptor(key: "lastUpdated", ascending: true),
                     NSSortDescriptor(key: "id", ascending: true)
                 ]
-                guard try context.count(for: req) != 0 else {
-                    #if DEBUG
-                    print("All Entries have Representative indexed.")
-                    #endif
-                    return nil
-                }
                 return try context.fetch(req) as? [TimeEntry]
             }
         } catch {
