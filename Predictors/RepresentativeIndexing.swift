@@ -114,6 +114,12 @@ extension TimeEntryIndexer {
                     NSSortDescriptor(key: "lastUpdated", ascending: true),
                     NSSortDescriptor(key: "id", ascending: true)
                 ]
+                guard try context.count(for: req) != 0 else {
+                    #if DEBUG
+                    print("All Entries have Representative indexed.")
+                    #endif
+                    return nil
+                }
                 return try context.fetch(req) as? [TimeEntry]
             }
         } catch {
