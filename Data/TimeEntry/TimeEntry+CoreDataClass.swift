@@ -21,17 +21,9 @@ public class TimeEntry: NSManagedObject {
     
     init(from raw: RawTimeEntry, context: NSManagedObjectContext, projects: [Project], tags: [Tag]) {
         super.init(entity: TimeEntry.entity(), insertInto: context)
-        update(context: context, from: raw, projects: projects, tags: tags)
-    }
-    
-    /// copy properties from raw time entry into TimeEntry
-    func update(
-        context: NSManagedObjectContext,
-        from raw: RawTimeEntry,
-        projects: [Project],
-        tags: [Tag]
-    ) {
-        #error("need to update TimeEntryRepresentative")
+        
+        /// - Warning: `representative` is not set during `init`
+        /// copy properties from raw time entry into TimeEntry
         self.setValuesForKeys([
             "name": raw.description,
             "start": raw.start,
