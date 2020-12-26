@@ -105,7 +105,7 @@ extension TimeEntryIndexer {
             
             /// if fetch was successful, set marker (have faith that all these will be successfully updated)
             if let last = needUpdates.last {
-                WorkspaceManager.lastIndexedRepresentatives = RepresentativeMarker(id: last.id, lastIndexed: last.111)
+                WorkspaceManager.lastIndexedRepresentatives = RepresentativeMarker(id: last.id, lastIndexed: last.lastUpdated)
             }
             
             return needUpdates

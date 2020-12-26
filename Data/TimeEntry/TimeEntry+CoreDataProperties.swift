@@ -22,7 +22,7 @@ extension TimeEntry {
     @NSManaged public var start: Date
     @NSManaged public var end: Date
     @NSManaged public var dur: Double
-    @NSManaged public var lastUpdated: Date?
+    @NSManaged public var lastUpdated: Date
     @NSManaged public var lastIndexed: Date
     @NSManaged public var project: Project?
     @NSManaged public var tags: NSSet?

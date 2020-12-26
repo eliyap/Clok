@@ -30,7 +30,7 @@
         <attribute name="end" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="lastIndexed" attributeType="Date" defaultDateTimeInterval="189999660" usesScalarValueType="NO"/>
-        <attribute name="lastUpdated" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="lastUpdated" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="start" attributeType="Date" usesScalarValueType="NO"/>
         <relationship name="next" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TimeEntry" inverseName="previous" inverseEntity="TimeEntry"/>
