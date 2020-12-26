@@ -15,15 +15,7 @@ extension TimeEntryIndexer {
     
     static func indexRepresentative(context: NSManagedObjectContext) -> Void {
         DispatchQueue.global(qos: .background).async {
-            let req = NSFetchRequest<NSFetchRequestResult>(entityName: TimeEntry.entityName)
-            
-            /// cap the number of entries operated on at once
-            req.fetchLimit = Self.representativeIndexCount
-            
-            /// fetch entries without a `TimeEntryRepresentative`, or who were updated since the last indexing
-            req.predicate = NSPredicate(format: "representative == nil")
-            
-            guard let entries = try? context.fetch(req) as? [TimeEntry] else {
+            guard let entries = Self.findEntries(in: context) else {
                 assert(false, "Failed to fetch entries for indexing")
             }
             
