@@ -32,6 +32,7 @@
         <attribute name="lastIndexed" attributeType="Date" defaultDateTimeInterval="189999660" usesScalarValueType="NO"/>
         <attribute name="lastUpdated" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="nextRepresentative" optional="YES" derived="YES" derivationExpression="next.representative" customClassName="TimeEntryRepresentative"/>
         <attribute name="start" attributeType="Date" usesScalarValueType="NO"/>
         <relationship name="next" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TimeEntry" inverseName="previous" inverseEntity="TimeEntry"/>
         <relationship name="previous" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TimeEntry" inverseName="next" inverseEntity="TimeEntry"/>
@@ -53,7 +54,7 @@
     <elements>
         <element name="Project" positionX="151.33984375" positionY="58.87109375" width="128" height="133"/>
         <element name="Tag" positionX="153.2265625" positionY="373.265625" width="128" height="103"/>
-        <element name="TimeEntry" positionX="-493.9140625" positionY="55.98828125" width="128" height="238"/>
+        <element name="TimeEntry" positionX="-493.9140625" positionY="55.98828125" width="128" height="253"/>
         <element name="TimeEntryRepresentative" positionX="-45.203125" positionY="191.296875" width="128" height="103"/>
     </elements>
 </model>
