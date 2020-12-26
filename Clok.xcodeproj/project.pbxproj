@@ -191,6 +191,7 @@
 		2281D3F02594969E00A7800C /* TimeEntryRepresentative+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281D3B52594901100A7800C /* TimeEntryRepresentative+CoreDataProperties.swift */; };
 		2281D3F82594969F00A7800C /* TimeEntryRepresentative+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281D3B42594901100A7800C /* TimeEntryRepresentative+CoreDataClass.swift */; };
 		2281D3F92594969F00A7800C /* TimeEntryRepresentative+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281D3B52594901100A7800C /* TimeEntryRepresentative+CoreDataProperties.swift */; };
+		2281D402259706A400A7800C /* LastIndexedRepresentatives.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281D401259706A400A7800C /* LastIndexedRepresentatives.swift */; };
 		228724272571D89E0082A490 /* MR_Intent_Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2287241E2571D88E0082A490 /* MR_Intent_Default.swift */; };
 		22872437257214530082A490 /* AssignCancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22872436257214530082A490 /* AssignCancellable.swift */; };
 		2287243F257214570082A490 /* AssignCancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22872436257214530082A490 /* AssignCancellable.swift */; };
@@ -733,6 +734,7 @@
 		2281D3B52594901100A7800C /* TimeEntryRepresentative+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeEntryRepresentative+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		2281D3D42594912E00A7800C /* PrevNextIndexing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrevNextIndexing.swift; sourceTree = "<group>"; };
 		2281D3DD2594914C00A7800C /* RepresentativeIndexing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepresentativeIndexing.swift; sourceTree = "<group>"; };
+		2281D401259706A400A7800C /* LastIndexedRepresentatives.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastIndexedRepresentatives.swift; sourceTree = "<group>"; };
 		2287241E2571D88E0082A490 /* MR_Intent_Default.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MR_Intent_Default.swift; sourceTree = "<group>"; };
 		22872436257214530082A490 /* AssignCancellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignCancellable.swift; sourceTree = "<group>"; };
 		2287244725721D860082A490 /* DetailedProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedProject.swift; sourceTree = "<group>"; };
@@ -1278,6 +1280,7 @@
 				2295216B2505C16900085055 /* GraphMode.swift */,
 				2295216D2505C18200085055 /* ZeroStart.swift */,
 				22E765E72592FBFF002791DE /* RunningNotification.swift */,
+				2281D401259706A400A7800C /* LastIndexedRepresentatives.swift */,
 			);
 			path = WorkspaceManager;
 			sourceTree = "<group>";
@@ -2441,6 +2444,7 @@
 				22027DD024AFF63F00C0BA90 /* OrientationView.swift in Sources */,
 				228B100224AEA6E50026AD4B /* RoundBottomRect.swift in Sources */,
 				22D9EABC258DF61400B3EBA0 /* TagPicker.swift in Sources */,
+				2281D402259706A400A7800C /* LastIndexedRepresentatives.swift in Sources */,
 				2295215A2505BF2A00085055 /* KeychainError.swift in Sources */,
 				22275418258CBD3F00EB99C8 /* StaticProject.swift in Sources */,
 				229D4119257E117E00ABD26F /* StickyDateLabel.swift in Sources */,
