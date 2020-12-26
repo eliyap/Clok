@@ -10,8 +10,6 @@ import CoreData
 
 extension TimeEntryIndexer {
     
-    /// number of entries to index at once
-    static let representativeIndexCount = 200
     
     static func indexRepresentative(in context: NSManagedObjectContext) -> Void {
         guard let entries = Self.findEntries(in: context) else {
@@ -97,32 +95,20 @@ extension TimeEntryIndexer {
     }
     
     private static func findEntries(in context: NSManagedObjectContext) -> [TimeEntry]? {
-        let req = NSFetchRequest<NSFetchRequestResult>(entityName: TimeEntry.entityName)
-        
-        /// cap the number of entries operated on at once
-        req.fetchLimit = Self.representativeIndexCount
-        
         do {
-            /// prioritize entries without a `TimeEntryRepresentative`
-            req.predicate = NSPredicate(format: "representative == nil")
-            if try context.count(for: req) != 0 {
-                return try context.fetch(req) as? [TimeEntry]
+            if try context.count(for: ClokRequest.NoRepresentative) != 0 {
+                return try context.fetch(ClokRequest.NoRepresentative) as? [TimeEntry]
             }
-            /// if every entry has a `.representative`, look for those updated
-            else {
-                let marker = WorkspaceManager.lastIndexedRepresentatives
-                req.predicate = NSPredicate(
-                    format: "(lastUpdated >= %@) AND (id > %d)",
-                    NSDate(marker.lastIndexed),
-                    marker.id
-                )
-                /// sort by `.lastUpdated`, then `.id`
-                req.sortDescriptors = [
-                    NSSortDescriptor(key: "lastUpdated", ascending: true),
-                    NSSortDescriptor(key: "id", ascending: true)
-                ]
-                return try context.fetch(req) as? [TimeEntry]
+            
+            /// if every entry has a `.representative`, look for those updated since last time
+            let needUpdates = try context.fetch(ClokRequest.RepresentativeNeedsUpdate) as! [TimeEntry]
+            
+            /// if fetch was successful, set marker (have faith that all these will be successfully updated)
+            if let last = needUpdates.last {
+                WorkspaceManager.lastIndexedRepresentatives = RepresentativeMarker(id: last.id, lastIndexed: last.111)
             }
+            
+            return needUpdates
         } catch {
             return nil
         }

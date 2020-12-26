@@ -192,6 +192,10 @@
 		2281D3F82594969F00A7800C /* TimeEntryRepresentative+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281D3B42594901100A7800C /* TimeEntryRepresentative+CoreDataClass.swift */; };
 		2281D3F92594969F00A7800C /* TimeEntryRepresentative+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281D3B52594901100A7800C /* TimeEntryRepresentative+CoreDataProperties.swift */; };
 		2281D402259706A400A7800C /* LastIndexedRepresentatives.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281D401259706A400A7800C /* LastIndexedRepresentatives.swift */; };
+		2281D40A2597278200A7800C /* RepresentativeIndexing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281D3DD2594914C00A7800C /* RepresentativeIndexing.swift */; };
+		2281D41425972DE300A7800C /* NoRepresentative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281D41325972DE300A7800C /* NoRepresentative.swift */; };
+		2281D41D25972EA200A7800C /* ClokRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281D41C25972EA200A7800C /* ClokRequest.swift */; };
+		2281D42625972FC200A7800C /* RepresentativeNeedsUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281D42525972FC200A7800C /* RepresentativeNeedsUpdate.swift */; };
 		228724272571D89E0082A490 /* MR_Intent_Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2287241E2571D88E0082A490 /* MR_Intent_Default.swift */; };
 		22872437257214530082A490 /* AssignCancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22872436257214530082A490 /* AssignCancellable.swift */; };
 		2287243F257214570082A490 /* AssignCancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22872436257214530082A490 /* AssignCancellable.swift */; };
@@ -735,6 +739,9 @@
 		2281D3D42594912E00A7800C /* PrevNextIndexing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrevNextIndexing.swift; sourceTree = "<group>"; };
 		2281D3DD2594914C00A7800C /* RepresentativeIndexing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepresentativeIndexing.swift; sourceTree = "<group>"; };
 		2281D401259706A400A7800C /* LastIndexedRepresentatives.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastIndexedRepresentatives.swift; sourceTree = "<group>"; };
+		2281D41325972DE300A7800C /* NoRepresentative.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoRepresentative.swift; sourceTree = "<group>"; };
+		2281D41C25972EA200A7800C /* ClokRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClokRequest.swift; sourceTree = "<group>"; };
+		2281D42525972FC200A7800C /* RepresentativeNeedsUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepresentativeNeedsUpdate.swift; sourceTree = "<group>"; };
 		2287241E2571D88E0082A490 /* MR_Intent_Default.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MR_Intent_Default.swift; sourceTree = "<group>"; };
 		22872436257214530082A490 /* AssignCancellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignCancellable.swift; sourceTree = "<group>"; };
 		2287244725721D860082A490 /* DetailedProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedProject.swift; sourceTree = "<group>"; };
@@ -1245,6 +1252,16 @@
 			path = Predictors;
 			sourceTree = "<group>";
 		};
+		2281D41225972DC600A7800C /* NSFetchRequests */ = {
+			isa = PBXGroup;
+			children = (
+				2281D41325972DE300A7800C /* NoRepresentative.swift */,
+				2281D42525972FC200A7800C /* RepresentativeNeedsUpdate.swift */,
+				2281D41C25972EA200A7800C /* ClokRequest.swift */,
+			);
+			path = NSFetchRequests;
+			sourceTree = "<group>";
+		};
 		228B100024AEA6CA0026AD4B /* Shapes */ = {
 			isa = PBXGroup;
 			children = (
@@ -1539,6 +1556,7 @@
 		22DC86A824BA839100FF771F /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				2281D41225972DC600A7800C /* NSFetchRequests */,
 				2206C5522541DCEE00C78477 /* WidgetManager */,
 				221F623F251EE14D000ECED9 /* Project */,
 				22D9EA3A258DD16D00B3EBA0 /* TimeEntry */,
@@ -2337,6 +2355,7 @@
 				2205DC96254B9FDE00146EAB /* DateStridable.swift in Sources */,
 				2205DC64254B9F7A00146EAB /* CoreDataConstants.swift in Sources */,
 				22E7663C25933188002791DE /* NotificationConstants.swift in Sources */,
+				2281D40A2597278200A7800C /* RepresentativeIndexing.swift in Sources */,
 				2205DD41254BA11500146EAB /* MR_Entry.swift in Sources */,
 				2205DD9A254BA1F200146EAB /* SummaryLoader.swift in Sources */,
 				2205DCE6254BA05500146EAB /* DecoderExtension.swift in Sources */,
@@ -2468,6 +2487,7 @@
 				225F60B425908A3000A5A575 /* Int64_Optional.swift in Sources */,
 				22F52439257E5225005222C2 /* AlignedTimeIndicator.swift in Sources */,
 				22FA071A251D0DC800E20C27 /* TokenWebView.swift in Sources */,
+				2281D41425972DE300A7800C /* NoRepresentative.swift in Sources */,
 				22DE58FC251EC87900379396 /* IntentHandler.swift in Sources */,
 				229521562505BF0300085055 /* GetCredentials.swift in Sources */,
 				22D745982505E93900013A80 /* ChosenWorkspace.swift in Sources */,
@@ -2497,6 +2517,7 @@
 				22F5244B257E5280005222C2 /* WeekRect.swift in Sources */,
 				22A2CE2424E59DFE000820AD /* DateMean.swift in Sources */,
 				2277E8C724EB44AC00702086 /* EntryLoader.swift in Sources */,
+				2281D41D25972EA200A7800C /* ClokRequest.swift in Sources */,
 				229646D924F3367800FE14E5 /* PrintError.swift in Sources */,
 				229D4122257E119900ABD26F /* Page.swift in Sources */,
 				229646D224F3294900FE14E5 /* Tag+CoreDataClass.swift in Sources */,
@@ -2512,6 +2533,7 @@
 				C6C18D492448F96C000345D5 /* ContentView.swift in Sources */,
 				22D4F5002577345E0053ABFB /* FlexibleGraph.swift in Sources */,
 				22D7459C2505E9B600013A80 /* ZoomLevel.swift in Sources */,
+				2281D42625972FC200A7800C /* RepresentativeNeedsUpdate.swift in Sources */,
 				22885DB024DA1C9600A56FE3 /* Divisions.swift in Sources */,
 				C6B0FF9C246F124300DED011 /* ColorCustom.swift in Sources */,
 				22A2CE2724E59E4D000820AD /* AngleOperators.swift in Sources */,
