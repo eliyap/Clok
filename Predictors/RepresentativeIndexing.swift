@@ -46,7 +46,7 @@ extension TimeEntryIndexer {
                 do { try context.save() }
                 catch { assert(false, "Failed to save after indexing!") }
                 #if DEBUG
-                print("Indexed \(entries.count) entries")
+                print("Indexed Representatives for \(entries.count) entries")
                 #endif
             }
         }
