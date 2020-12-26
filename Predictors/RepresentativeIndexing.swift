@@ -13,7 +13,7 @@ extension TimeEntryIndexer {
     /// number of entries to index at once
     static let representativeIndexCount = 200
     
-    static func indexRepresentative(context: NSManagedObjectContext) -> Void {
+    static func indexRepresentative(in context: NSManagedObjectContext) -> Void {
         DispatchQueue.global(qos: .background).async {
             guard let entries = Self.findEntries(in: context) else {
                 assert(false, "Failed to fetch entries for indexing")
@@ -49,7 +49,7 @@ extension TimeEntryIndexer {
     
     /// number of TimeEntryRepresentatives to allow into memory at once
     static let representativeCap = 25
-    static func loadPopularRepresentatives(in context: NSManagedObjectContext) -> [TimeEntryRepresentative] {
+    private static func loadPopularRepresentatives(in context: NSManagedObjectContext) -> [TimeEntryRepresentative] {
         let req = NSFetchRequest<NSFetchRequestResult>(entityName: TimeEntryRepresentative.entityName)
         req.fetchLimit = Self.representativeCap
         /// filter to get the most popular entries
@@ -68,7 +68,7 @@ extension TimeEntryIndexer {
     ///   - entry: `TimeEntry` we want represented
     ///   - context: persistent storage context
     /// - Returns: the matching `TimeEntryRepresentative`, if any
-    static func findMatch(to entry: TimeEntry, in context: NSManagedObjectContext) -> TimeEntryRepresentative? {
+    private static func findMatch(to entry: TimeEntry, in context: NSManagedObjectContext) -> TimeEntryRepresentative? {
         let req = NSFetchRequest<NSFetchRequestResult>(entityName: TimeEntryRepresentative.entityName)
         req.fetchLimit = 1
         

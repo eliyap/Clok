@@ -9,7 +9,7 @@
 import CoreData
 
 extension TimeEntryIndexer {
-    static func indexPrevNext(context: NSManagedObjectContext) -> Void {
+    static func indexPrevNext(in context: NSManagedObjectContext) -> Void {
         DispatchQueue.global(qos: .background).async {
             guard let target: TimeEntry = findTarget(context: context) else {
                 #if DEBUG
