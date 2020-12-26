@@ -8,18 +8,34 @@
 
 import Foundation
 
+struct RepresentativeMarker: Codable {
+    ///  a `TimeEntry` id
+    var id: Int64 = .zero
+    
+    /// the date of the most recently indexed `TimeEntry`
+    var lastIndexed = Date()
+}
+
 extension WorkspaceManager {
     // MARK:- Date that TimeEntry Representatives were Last Indexed
     private static let lastIndexedRepresentativesKey = "Clok.Representatives"
     
-    static var lastIndexedRepresentatives: Date {
+    static var lastIndexedRepresentatives: RepresentativeMarker {
         get {
-            suite?.object(forKey: Self.lastIndexedRepresentativesKey) as? Date
-                /// default index of 0
-                ?? Date()
+            guard let decoded = suite?.object(forKey: Self.lastIndexedRepresentativesKey) as? Data else {
+                return RepresentativeMarker()
+            }
+            do {
+                return try JSONDecoder().decode(RepresentativeMarker.self, from: decoded)
+            } catch {
+                #if DEBUG
+                assert(false, "Unable to decode RepresentativeMarker!")
+                #endif
+                return RepresentativeMarker()
+            }
         }
         set {
-            suite?.set(newValue, forKey: Self.lastIndexedRepresentativesKey)
+            suite?.setValue(try! JSONEncoder().encode(newValue), forKey: Self.lastIndexedRepresentativesKey)
         }
     }
 }

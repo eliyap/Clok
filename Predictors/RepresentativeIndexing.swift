@@ -16,10 +16,13 @@ extension TimeEntryIndexer {
     static func indexRepresentative(context: NSManagedObjectContext) -> Void {
         DispatchQueue.global(qos: .background).async {
             let req = NSFetchRequest<NSFetchRequestResult>(entityName: TimeEntry.entityName)
+            
             /// cap the number of entries operated on at once
             req.fetchLimit = Self.representativeIndexCount
-            /// only fetch entries not already set
+            
+            /// fetch entries without a `TimeEntryRepresentative`, or who were updated since the last indexing
             req.predicate = NSPredicate(format: "representative == nil")
+            
             guard let entries = try? context.fetch(req) as? [TimeEntry] else {
                 assert(false, "Failed to fetch entries for indexing")
             }
@@ -90,5 +93,37 @@ extension TimeEntryIndexer {
         }
         
         return context.max1(for: req)
+    }
+    
+    private static func findEntries(in context: NSManagedObjectContext) -> [TimeEntry]? {
+        let req = NSFetchRequest<NSFetchRequestResult>(entityName: TimeEntry.entityName)
+        
+        /// cap the number of entries operated on at once
+        req.fetchLimit = Self.representativeIndexCount
+        
+        do {
+            /// prioritize entries without a `TimeEntryRepresentative`
+            req.predicate = NSPredicate(format: "representative == nil")
+            if try context.count(for: req) != 0 {
+                return try context.fetch(req) as? [TimeEntry]
+            }
+            /// if every entry has a `.representative`, look for those updated
+            else {
+                let marker = WorkspaceManager.lastIndexedRepresentatives
+                req.predicate = NSPredicate(
+                    format: "(updated >= %@) AND (id > %d)",
+                    NSDate(marker.lastIndexed),
+                    marker.id
+                )
+                /// sort by `.lastUpdated`, then `.id`
+                req.sortDescriptors = [
+                    NSSortDescriptor(key: "lastUpdated", ascending: true),
+                    NSSortDescriptor(key: "id", ascending: true)
+                ]
+                return try context.fetch(req) as? [TimeEntry]
+            }
+        } catch {
+            return nil
+        }
     }
 }
