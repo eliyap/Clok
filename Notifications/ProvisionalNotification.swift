@@ -26,9 +26,9 @@ func getProvisional() -> Void {
     }
     /// wait for request to go through
     s.wait()
-    sleep(1)
+    
+    /// check our new permissions
     #if DEBUG
-    /// in development, always check the status
     center.getNotificationSettings { settings in
         assert(settings.authorizationStatus == .provisional || settings.authorizationStatus == .authorized)
         s.signal()
