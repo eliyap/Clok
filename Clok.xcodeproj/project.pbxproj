@@ -192,7 +192,6 @@
 		2281D3F82594969F00A7800C /* TimeEntryRepresentative+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281D3B42594901100A7800C /* TimeEntryRepresentative+CoreDataClass.swift */; };
 		2281D3F92594969F00A7800C /* TimeEntryRepresentative+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281D3B52594901100A7800C /* TimeEntryRepresentative+CoreDataProperties.swift */; };
 		2281D402259706A400A7800C /* LastIndexedRepresentatives.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281D401259706A400A7800C /* LastIndexedRepresentatives.swift */; };
-		2281D40A2597278200A7800C /* RepresentativeIndexing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281D3DD2594914C00A7800C /* RepresentativeIndexing.swift */; };
 		2281D41425972DE300A7800C /* NoRepresentative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281D41325972DE300A7800C /* NoRepresentative.swift */; };
 		2281D41D25972EA200A7800C /* ClokRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281D41C25972EA200A7800C /* ClokRequest.swift */; };
 		2281D42625972FC200A7800C /* RepresentativeNeedsUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281D42525972FC200A7800C /* RepresentativeNeedsUpdate.swift */; };
@@ -2355,7 +2354,6 @@
 				2205DC96254B9FDE00146EAB /* DateStridable.swift in Sources */,
 				2205DC64254B9F7A00146EAB /* CoreDataConstants.swift in Sources */,
 				22E7663C25933188002791DE /* NotificationConstants.swift in Sources */,
-				2281D40A2597278200A7800C /* RepresentativeIndexing.swift in Sources */,
 				2205DD41254BA11500146EAB /* MR_Entry.swift in Sources */,
 				2205DD9A254BA1F200146EAB /* SummaryLoader.swift in Sources */,
 				2205DCE6254BA05500146EAB /* DecoderExtension.swift in Sources */,
