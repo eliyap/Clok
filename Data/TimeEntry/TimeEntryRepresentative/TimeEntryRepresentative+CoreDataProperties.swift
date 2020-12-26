@@ -20,7 +20,7 @@ extension TimeEntryRepresentative {
     @NSManaged public var name: String?
     @NSManaged public var project: Project?
     @NSManaged public var represents: NSSet?
-    @NSManaged public var representsCount: Int16
+    @NSManaged public var representsCount: Int16 /// NOTE: is optional, but cannot be marked optional here.
 }
 
 // MARK: Generated accessors for represents
