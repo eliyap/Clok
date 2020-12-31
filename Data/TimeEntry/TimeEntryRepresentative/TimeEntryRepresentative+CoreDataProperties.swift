@@ -21,6 +21,11 @@ extension TimeEntryRepresentative {
     @NSManaged public var project: Project?
     @NSManaged public var represents: NSSet?
     @NSManaged public var representsCount: Int16 /// NOTE: is optional, but cannot be marked optional here.
+    
+    /// cast toMany relationship to `Set`
+    public var _represents: Set<TimeEntry> {
+        Set(represents as? Set<TimeEntry> ?? [])
+    }
 }
 
 // MARK: Generated accessors for represents
