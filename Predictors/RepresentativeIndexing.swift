@@ -13,6 +13,7 @@ extension TimeEntryIndexer {
     static func indexRepresentative(in context: NSManagedObjectContext) -> Void {
         guard let entries = Self.findEntries(in: context) else {
             assert(false, "Failed to fetch entries for indexing")
+            return
         }
         
         guard entries.count != 0 else {
