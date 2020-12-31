@@ -12,6 +12,7 @@ struct CustomTabView: View {
     
     enum Tabs: Int {
         case spiral
+        case predict
         case bar
         case settings
     }
@@ -57,6 +58,8 @@ struct CustomTabView: View {
             switch tab {
             case .spiral:
                 FlexibleGraph()
+            case .predict:
+                EmptyView()
             case .bar:
                 BarStack()
             case .settings:
@@ -68,6 +71,7 @@ struct CustomTabView: View {
     var TabButtons: some View {
         Group {
             TabButton(select: .spiral, glyph: "arrow.counterclockwise")
+            TabButton(select: .predict, glyph: "play.circle.fill")
             TabButton(select: .bar, glyph: "chart.bar.fill")
             TabButton(select: .settings, glyph: "gear")
         }
