@@ -72,14 +72,6 @@ struct EntryFullScreenModal: View {
         self.namespace = namespace
         self.geometry = geometry
         self._entryModel = StateObject(wrappedValue: EntryModel(from: entry ?? StaticEntry.noEntry))
-        
-        #warning("debugging")
-        let nextRep = entry?
-            .representative?
-            ._represents
-            /// discard any nil results
-            .compactMap{$0.next?.representative}
-        print(("\(entry?.representative == .none), \(nextRep)"))
     }
     
     var body: some View {
