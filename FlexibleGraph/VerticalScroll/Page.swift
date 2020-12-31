@@ -21,7 +21,7 @@ extension FlexibleGraph {
             case .dayMode:
                 DayCalendar(size: size, idx: idx)
             case .listMode:
-                DayList(idx: idx)
+                DayList(idx: idx, in: moc)
             case .extendedMode:
                 EmptyView()
             }
