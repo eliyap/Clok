@@ -24,6 +24,9 @@ struct DayList: View {
         /// **NOTE**: this filter EXCLUDES entries that started before midnight, to prevent `matchedGeometryEffect` duplicates
         req.predicate = NSPredicate(format: "(start > %@) AND (start < %@)", NSDate(start), NSDate(start + .day))
         req.sortDescriptors = [NSSortDescriptor(key: "lastIndexed", ascending: true)]
+        /// we will need to get information from these objects, so get them in full, not as faults
+        /// docs: https://developer.apple.com/documentation/coredata/nsfetchrequest/1506756-returnsobjectsasfaults
+        req.returnsObjectsAsFaults = false
         do {
             self.entries = try context.fetch(req) as! [TimeEntry]
         } catch {
