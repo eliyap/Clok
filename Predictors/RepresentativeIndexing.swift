@@ -97,6 +97,10 @@ extension TimeEntryIndexer {
             if try context.count(for: ClokRequest.NoRepresentative) != 0 {
                 return try context.fetch(ClokRequest.NoRepresentative) as? [TimeEntry]
             }
+            #if DEBUG
+            print("No Entries Missing Representative")
+            #endif
+            
             
             /// if every entry has a `.representative`, look for those updated since last time
             let needUpdates = try context.fetch(ClokRequest.RepresentativeNeedsUpdate) as! [TimeEntry]
