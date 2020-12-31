@@ -15,7 +15,7 @@ struct TimeEntryIndexer {
     let container: NSPersistentContainer
     
     /// how long to wait in seconds before performing another index operation
-    static private let Interval: TimeInterval = 10
+    static private let Interval: TimeInterval = 2
     
     init(in container: NSPersistentContainer) {
         self.container = container
@@ -24,10 +24,9 @@ struct TimeEntryIndexer {
             .autoconnect()
             .sink{ _ in
                 /// perform tasks in the background
-                container.performBackgroundTask { context in
-                    Self.indexPrevNext(in: context)
-                    Self.indexRepresentative(in: context)
-                }
+                let context = container.newBackgroundContext()
+                context.performAndWait { Self.indexPrevNext(in: context) }
+                context.performAndWait { Self.indexRepresentative(in: context) }
             }
     }
 }

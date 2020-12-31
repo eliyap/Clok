@@ -11,7 +11,7 @@ import CoreData
 extension ClokRequest {
     
     /// number of entries to index at once
-    static let representativeIndexCount = 200
+    static let representativeIndexCount = 40
     
     static let NoRepresentative: NSFetchRequest<NSFetchRequestResult> = {
         let req = NSFetchRequest<NSFetchRequestResult>(entityName: TimeEntry.entityName)

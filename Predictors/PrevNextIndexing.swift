@@ -18,7 +18,12 @@ extension TimeEntryIndexer {
         }
         let req = NSFetchRequest<NSFetchRequestResult>(entityName: TimeEntry.entityName)
         /// to avoid hitting `CoreData` repeatedly, choose a range of dates to link together and fetch them at once
-        req.predicate = NSPredicate(format: "(start >= %@) AND (start <= %@)", NSDate(target.start), NSDate(target.start + .week))
+        req.predicate = NSPredicate(
+            format: "(start >= %@) AND (start <= %@)",
+            NSDate(target.start),
+            /// arbitrary limit of 2 days
+            NSDate(target.start + .day * 2)
+        )
         req.sortDescriptors = [NSSortDescriptor(key: "start", ascending: true)]
         guard let entries = try? context.fetch(req) as? [TimeEntry] else {
             #if DEBUG
@@ -31,7 +36,9 @@ extension TimeEntryIndexer {
         (0...(entries.count - 2)).forEach{ entries[$0].next = entries[$0 + 1] }
         entries.forEach{ $0.lastIndexed = Date() }
         
-        do { try context.save() }
+        do {
+            try context.save()
+        }
         catch { assert(false, "Failed to save after indexing!") }
         #if DEBUG
         print("Indexed next for \(entries.count) entries")
