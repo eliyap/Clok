@@ -18,6 +18,8 @@ extension TimeEntry {
     }
 
     @NSManaged public var name: String?
+    /// derived property from relationship
+    @NSManaged public var projectName: String?
     @NSManaged public var id: Int64
     @NSManaged public var start: Date
     @NSManaged public var end: Date
@@ -68,7 +70,6 @@ extension TimeEntry {
 extension TimeEntry: TimeEntryLike {
     /// compliance to `TimeEntryLike` protocol
     public var color: Color { wrappedColor }
-    public var projectName: String { wrappedProject.name }
     public var tagStrings: [String] { tagArray.map{$0.name} } /// just the names of the tags please
     public var entryDescription: String { wrappedDescription }
     public var duration: TimeInterval { dur }

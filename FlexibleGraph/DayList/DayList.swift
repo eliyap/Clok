@@ -43,7 +43,7 @@ struct DayList: View {
                         Text(entry.entryDescription)
                             .lineLimit(1)
                         Spacer()
-                        Text(entry.projectName)
+                        Text(entry.projectName ?? StaticProject.NoProject.name)
                             .lineLimit(1)
                     }
                     Spacer()
