@@ -108,6 +108,7 @@ extension TimeEntryIndexer {
             
             return needUpdates
         } catch {
+            assert(false, "Failed to fetch TimeEntries for Representative Indexing!")
             return nil
         }
     }
