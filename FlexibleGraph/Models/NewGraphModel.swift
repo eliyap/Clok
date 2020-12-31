@@ -22,5 +22,5 @@ final class NewGraphModel: ObservableObject {
     @Published var geometry: NamespaceModel? = nil
     
     /// registers what mode the view is in
-    @Published var mode: GraphMode = .dayMode
+    @Published var mode: GraphMode = .listMode
 }
