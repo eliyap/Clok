@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 extension FlexibleGraph {
     func DayCalendar(size: CGSize, idx: Int) -> some View {
@@ -16,17 +17,23 @@ extension FlexibleGraph {
         }
     }
     
+    func dayEntries(in context: NSManagedObjectContext, start: Date) -> [TimeEntry] {
+        let req = NSFetchRequest<NSFetchRequestResult>(entityName: TimeEntry.entityName)
+        req.predicate = NSPredicate(format: "(end > %@) AND (start < %@)", NSDate(start), NSDate(start + .day))
+        req.sortDescriptors = [NSSortDescriptor(key: "start", ascending: true)]
+        do {
+            return try context.fetch(req) as! [TimeEntry]
+        } catch {
+            assert(false, "Failed to fetch TimeEntry for DayCalendar!")
+            return []
+        }
+    }
+    
     func DayStack(size: CGSize, idx: Int) -> some View {
         let start = Date().midnight.advanced(by: Double(idx) * .day)
         
         return ZStack {
-            ForEach(entries
-                /// entries where any part falls within this 24 hour day
-                .filter{$0.end > start}
-                .filter{$0.start < start + .day}
-                /// chronological sort
-                .sorted{$0.start < $1.start}, id: \.id
-            ) { entry in
+            ForEach(dayEntries(in: moc, start: start), id: \.id) { entry in
                 DayRect(
                     entry: entry,
                     size: size,
