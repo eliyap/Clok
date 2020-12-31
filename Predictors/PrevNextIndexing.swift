@@ -12,7 +12,7 @@ extension TimeEntryIndexer {
     static func indexPrevNext(in context: NSManagedObjectContext) -> Void {
         guard let target: TimeEntry = findTarget(context: context) else {
             #if DEBUG
-            print("All Entries have Representative indexed.")
+            print("All Entries have .next indexed.")
             #endif
             return
         }
