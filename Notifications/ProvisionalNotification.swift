@@ -29,11 +29,12 @@ func getProvisional() -> Void {
     
     /// check our new permissions
     #if DEBUG
-    center.getNotificationSettings { settings in
-        assert(settings.authorizationStatus == .provisional || settings.authorizationStatus == .authorized)
-        s.signal()
-    }
-    s.wait()
+    #warning("disabled")
+//    center.getNotificationSettings { settings in
+//        assert(settings.authorizationStatus == .provisional || settings.authorizationStatus == .authorized)
+//        s.signal()
+//    }
+//    s.wait()
     #endif
 }
 
