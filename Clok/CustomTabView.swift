@@ -60,7 +60,9 @@ struct CustomTabView: View {
             case .spiral:
                 FlexibleGraph(in: moc)
             case .predict:
-                ClokTableView()
+                GeometryReader { proxy in
+                    ClokTableView(size: proxy.size)
+                }
             case .bar:
                 BarStack()
             case .settings:

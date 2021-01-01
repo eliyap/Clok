@@ -10,16 +10,38 @@ import SwiftUI
 import CoreData
 
 final class ClokTableCell: UITableViewCell {
-    var host: UIHostingController<AnyView>?
+    
+    var host: UIHostingController<AnyView> = UIHostingController(rootView: AnyView(EmptyView()))
     var idx: Int?
     var start: Date?
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.addSubview(host.view)
+        
+        /// set a constraint, value does not matter
+        self.heightAnchor.constraint(equalToConstant: .greatestFiniteMagnitude).isActive = true
+        self.widthAnchor.constraint(equalToConstant: .greatestFiniteMagnitude).isActive = true
+        host.view.translatesAutoresizingMaskIntoConstraints = false
+//        host.view.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
+//        host.view.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
+//        host.view.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+//        host.view.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("Not Implemented")
+    }
+    
 }
 
 struct ClokTableView: UIViewRepresentable {
     
     static let cellResuseIdentifier = "Cell"
     
-    @Environment(\.managedObjectContext) var moc
+    var size: CGSize
+    
+    @Environment(\.managedObjectContext) private var moc
     
     typealias UIViewType = UITableView
     
@@ -36,17 +58,18 @@ struct ClokTableView: UIViewRepresentable {
     }
     
     func makeCoordinator() -> Coordinator {
-        Coordinator(in: moc)
+        Coordinator(in: moc, size: size)
     }
     
     final class Coordinator: NSObject, UITableViewDataSource, UITableViewDelegate {
         
         var entries = [Int:[TimeEntry]]()
         var moc: NSManagedObjectContext
-//        var controller: NSFetchedResultsController
+        var size: CGSize
         
-        init(in context: NSManagedObjectContext) {
+        init(in context: NSManagedObjectContext, size: CGSize) {
             self.moc = context
+            self.size = size
 //            let req = NSFetchRequest<NSFetchRequestResult>(entityName: TimeEntry.entityName)
 //            req.sortDescriptors = [NSSortDescriptor(key: "start", ascending: true)]
 //            let controller = NSFetchedResultsController(fetchRequest: req, managedObjectContext: moc, sectionNameKeyPath: <#T##String?#>, cacheName: <#T##String?#>)
@@ -88,26 +111,18 @@ struct ClokTableView: UIViewRepresentable {
             let cell = tableView.dequeueReusableCell(withIdentifier: ClokTableView.cellResuseIdentifier, for: indexPath) as! ClokTableCell
             
             let entries = self.entries[indexPath.section] ?? fetchEntries(at: indexPath.section)
-            let view = TempListView(entries: entries)
+            let view = TempListView(entries: entries, size: size)
             
-            if cell.host == nil {
-                let controller = UIHostingController(rootView: AnyView(view))
-                cell.host = controller
-                
-                let tableCellViewContent = controller.view!
-                tableCellViewContent.translatesAutoresizingMaskIntoConstraints = false
-                cell.contentView.addSubview(tableCellViewContent)
-                tableCellViewContent.topAnchor.constraint(equalTo: cell.contentView.topAnchor).isActive = true
-                tableCellViewContent.leftAnchor.constraint(equalTo: cell.contentView.leftAnchor).isActive = true
-                tableCellViewContent.bottomAnchor.constraint(equalTo: cell.contentView.bottomAnchor).isActive = true
-                tableCellViewContent.rightAnchor.constraint(equalTo: cell.contentView.rightAnchor).isActive = true
-            } else {
-                cell.host?.rootView = AnyView(view)
-            }
-            cell.setNeedsLayout()
+            cell.host.rootView = AnyView(view)
             
             cell.idx = indexPath.section
             cell.start = Date().midnight.addingTimeInterval(-.day * Double(indexPath.section))
+            
+            cell.constraints
+                .first{$0.firstAttribute == .height && $0.relation == .equal}?
+                .constant = cell.host.sizeThatFits(in: self.size).height
+            cell.setNeedsLayout()
+            
             return cell
         }
         
@@ -132,12 +147,34 @@ struct ClokTableView: UIViewRepresentable {
 }
 
 struct TempListView: View {
+    
+    /// light / dark mode
+    @Environment(\.colorScheme) var colorScheme
+    
     var entries: [TimeEntry]
+    var size: CGSize
+    
     var body: some View {
         VStack {
             ForEach(entries, id: \.id) { entry in
-                Text(entry.projectName ?? StaticProject.NoProject.name)
+                VStack(alignment: .leading) {
+                    HStack {
+                        Text(entry.entryDescription)
+                            .lineLimit(1)
+                        Spacer()
+                        Text(entry.projectName ?? StaticProject.NoProject.name)
+                            .lineLimit(1)
+                    }
+//                    Spacer()
+                    if type(of: entry) == TimeEntry.self {
+                        Text(entry.duration.toString())
+                    }
+                }
+                    .padding(3)
+                    .background(entry.color(in: colorScheme))
             }
         }
+        .frame(width: size.width)
+        .border(Color.red)
     }
 }
