@@ -41,7 +41,7 @@ struct DayList: View {
                 .bold()
                 .foregroundColor(.clear)
             ForEach(entries, id: \.id) { entry in
-//                VStack(alignment: .leading) {
+                VStack(alignment: .leading) {
                     HStack {
                         Text(entry.entryDescription)
                             .lineLimit(1)
@@ -49,11 +49,11 @@ struct DayList: View {
                         Text(entry.projectName ?? StaticProject.NoProject.name)
                             .lineLimit(1)
                     }
-//                    Spacer()
-//                    if type(of: entry) == TimeEntry.self {
-//                        Text((entry.end - entry.start).toString())
-//                    }
-//                }
+                    Spacer()
+                    if type(of: entry) == TimeEntry.self {
+                        Text((entry.end - entry.start).toString())
+                    }
+                }
 //                    .padding(3)
 //                    .background(entry.color(in: colorScheme))
         //            /// push View to stack when tapped

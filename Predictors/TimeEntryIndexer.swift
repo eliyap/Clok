@@ -24,9 +24,10 @@ struct TimeEntryIndexer {
             .autoconnect()
             .sink{ _ in
                 /// perform tasks in the background
+                #warning("disabled")
                 let context = container.newBackgroundContext()
-                context.performAndWait { Self.indexPrevNext(in: context) }
-                context.performAndWait { Self.indexRepresentative(in: context) }
+//                context.performAndWait { Self.indexPrevNext(in: context) }
+//                context.performAndWait { Self.indexRepresentative(in: context) }
             }
     }
 }
