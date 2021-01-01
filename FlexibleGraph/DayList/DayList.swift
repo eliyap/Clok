@@ -12,27 +12,27 @@ import CoreData
 struct DayList: View {
     
     /// light / dark mode
-    @Environment(\.colorScheme) var colorScheme
+    @Environment(\.colorScheme) private var colorScheme
     
-    let start: Date
     var entries: [TimeEntry] = []
     
-    init(idx: Int, in context: NSManagedObjectContext) {
-        self.start = Date().midnight.advanced(by: Double(idx) * .day)
-        
-        let req = NSFetchRequest<NSFetchRequestResult>(entityName: TimeEntry.entityName)
-        /// **NOTE**: this filter EXCLUDES entries that started before midnight, to prevent `matchedGeometryEffect` duplicates
-        req.predicate = NSPredicate(format: "(start > %@) AND (start < %@)", NSDate(start), NSDate(start + .day))
-        req.sortDescriptors = [NSSortDescriptor(key: "lastIndexed", ascending: true)]
-        /// we will need to get information from these objects, so get them in full, not as faults
-        /// docs: https://developer.apple.com/documentation/coredata/nsfetchrequest/1506756-returnsobjectsasfaults
-        req.returnsObjectsAsFaults = false
-        do {
-            self.entries = try context.fetch(req) as! [TimeEntry]
-        } catch {
-            assert(false, "Failed to fetch TimeEntries!")
-        }
-    }
+//    init(idx: Int, in context: NSManagedObjectContext) {
+//        self.start = Date().midnight.advanced(by: Double(idx) * .day)
+//        
+//        let req = NSFetchRequest<NSFetchRequestResult>(entityName: TimeEntry.entityName)
+//        /// **NOTE**: this filter EXCLUDES entries that started before midnight, to prevent `matchedGeometryEffect` duplicates
+//        req.predicate = NSPredicate(format: "(start > %@) AND (start < %@)", NSDate(start), NSDate(start + .day))
+//        req.sortDescriptors = [NSSortDescriptor(key: "lastIndexed", ascending: true)]
+//        /// we will need to get information from these objects, so get them in full, not as faults
+//        /// docs: https://developer.apple.com/documentation/coredata/nsfetchrequest/1506756-returnsobjectsasfaults
+//        req.returnsObjectsAsFaults = false
+////        req.relationshipKeyPathsForPrefetching = ["project"]
+//        do {
+//            self.entries = try context.fetch(req) as! [TimeEntry]
+//        } catch {
+//            assert(false, "Failed to fetch TimeEntries!")
+//        }
+//    }
     
     var body: some View {
         VStack {
@@ -41,7 +41,7 @@ struct DayList: View {
                 .bold()
                 .foregroundColor(.clear)
             ForEach(entries, id: \.id) { entry in
-                VStack(alignment: .leading) {
+//                VStack(alignment: .leading) {
                     HStack {
                         Text(entry.entryDescription)
                             .lineLimit(1)
@@ -49,13 +49,13 @@ struct DayList: View {
                         Text(entry.projectName ?? StaticProject.NoProject.name)
                             .lineLimit(1)
                     }
-                    Spacer()
-                    if type(of: entry) == TimeEntry.self {
-                        Text((entry.end - entry.start).toString())
-                    }
-                }
-                    .padding(3)
-                    .background(entry.color(in: colorScheme))
+//                    Spacer()
+//                    if type(of: entry) == TimeEntry.self {
+//                        Text((entry.end - entry.start).toString())
+//                    }
+//                }
+//                    .padding(3)
+//                    .background(entry.color(in: colorScheme))
         //            /// push View to stack when tapped
         //            .onTapGesture { showModal(for: entry, at: idx) }
         //            .matchedGeometryEffect(

@@ -21,7 +21,10 @@ extension FlexibleGraph {
             case .dayMode:
                 DayCalendar(size: size, idx: idx)
             case .listMode:
-                DayList(idx: idx, in: moc)
+                DayList(entries: dataSource.entries[idx] ?? [])
+                    .onAppear{
+                        dataSource.load(for: idx)
+                    }
             case .extendedMode:
                 EmptyView()
             }
@@ -30,3 +33,38 @@ extension FlexibleGraph {
     }
 }
 
+import CoreData
+
+final class DataSource: ObservableObject {
+    @Published var entries = [Int:[TimeEntry]]()
+    
+    let context: NSManagedObjectContext
+    var req = NSFetchRequest<NSFetchRequestResult>(entityName: TimeEntry.entityName)
+    
+    init(in context: NSManagedObjectContext) {
+        self.context = context
+        req.sortDescriptors = [NSSortDescriptor(key: "lastIndexed", ascending: true)]
+        req.returnsObjectsAsFaults = false
+    }
+    
+    func load(for idx: Int) -> Void {
+        for idx in [idx - 1, idx + 1] {
+            #warning("TODO: load before and after, unless already loaded")
+            /// if already loaded, move on
+            if entries.keys.contains(idx) {
+                continue
+            }
+            
+            let start = Date().midnight.advanced(by: Double(idx) * .day)
+            req.predicate = NSPredicate(format: "(start > %@) AND (start < %@)", NSDate(start), NSDate(start + .day))
+            do {
+                entries[idx] = try context.fetch(req) as? [TimeEntry]
+            } catch {
+                assert(false, "Failed to fetch TimeEntries!")
+            }
+            #warning("TODO: perform cleanup work for old stuff")
+        }
+    }
+    
+    #warning("TODO: purge rolls on backgrounding")
+}

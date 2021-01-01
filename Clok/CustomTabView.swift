@@ -19,6 +19,7 @@ struct CustomTabView: View {
     
     @EnvironmentObject private var cred: Credentials
     @EnvironmentObject private var bounds: Bounds
+    @Environment(\.managedObjectContext) var moc
     @AppStorage(
         "MainTab",
         store: UserDefaults(suiteName: WorkspaceManager.suiteName)
@@ -57,7 +58,7 @@ struct CustomTabView: View {
         Group {
             switch tab {
             case .spiral:
-                FlexibleGraph()
+                FlexibleGraph(in: moc)
             case .predict:
                 ClokTableView()
             case .bar:

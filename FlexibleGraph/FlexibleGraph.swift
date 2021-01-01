@@ -8,6 +8,7 @@
 
 import SwiftUI
 import Combine
+import CoreData
 
 /**
  Against my better judgement, this entire view is written in ONE struct, so that they may all share `Namespace`s.
@@ -51,6 +52,8 @@ struct FlexibleGraph: View {
     @EnvironmentObject var bounds: Bounds
     @EnvironmentObject var cred: Credentials
     
+    #warning("experimental")
+    @StateObject var dataSource: DataSource
     //MARK:- InfiniteScroll Properties
     
     /// records the rows for `InfiniteScroll`
@@ -80,6 +83,10 @@ struct FlexibleGraph: View {
     
     /// arbitrary value to shift `id` for `PageAnchor`. Do not set to `1`!
     static let idOffset = 0.5
+    
+    init(in context: NSManagedObjectContext) {
+        self._dataSource = StateObject(wrappedValue: DataSource(in: context))
+    }
     
     //MARK:- Body
     var body: some View {
