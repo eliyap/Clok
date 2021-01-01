@@ -59,7 +59,7 @@ struct CustomTabView: View {
             case .spiral:
                 FlexibleGraph()
             case .predict:
-                PredictTab()
+                ClokTableView()
             case .bar:
                 BarStack()
             case .settings:
